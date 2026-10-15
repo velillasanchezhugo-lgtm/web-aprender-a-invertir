@@ -1,0 +1,155 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+---
+<Base title="Ejercicio final con dinero ficticio" description="Practica las decisiones de la ruta para principiantes con 15.000 € ficticios: objetivo, colchón, horizonte, costes, una caída de mercado y tus dudas." allowAds={false}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/empieza-desde-cero/', label: 'Empieza desde cero' }, { label: 'Ejercicio final' }]} />
+    <p class="eyebrow">Ejercicio final · unos 15 minutos</p>
+    <h1>Practica con dinero ficticio</h1>
+    <p class="lede">Tienes <strong>15.000 € ficticios</strong> ahorrados y gastas unos <strong>1.400 € al mes</strong>. Nadie te va a pedir que abras una cuenta ni que compres nada: el objetivo es practicar cómo pensar.</p>
+    <div class="callout note small"><p>Todo lo que escribas se queda en tu dispositivo. Las cifras de mercado de este ejercicio son supuestos ficticios.</p></div>
+
+    <form id="ex" novalidate>
+      <section class="step" aria-labelledby="s1">
+        <h2 id="s1"><span class="n">1</span> Elige un objetivo</h2>
+        <fieldset><legend>¿Para qué podría ser este dinero?</legend>
+          <label class="choice"><input type="radio" name="goal" value="vivienda" checked /> <span>Entrada de una vivienda</span></label>
+          <label class="choice"><input type="radio" name="goal" value="estudios" /> <span>Pagar unos estudios</span></label>
+          <label class="choice"><input type="radio" name="goal" value="jubilacion" /> <span>Complementar la jubilación</span></label>
+          <label class="choice"><input type="radio" name="goal" value="otro" /> <span>Otro objetivo</span></label>
+        </fieldset>
+        <div class="grid cols-2">
+          <div class="field"><label for="gamount">Importe que necesitarías (€)</label><input id="gamount" name="gamount" type="number" min="0" step="500" value="20000" /></div>
+          <div class="field"><label for="gyears">¿Dentro de cuántos años?</label><input id="gyears" name="gyears" type="number" min="1" max="45" value="4" /></div>
+        </div>
+      </section>
+
+      <section class="step" aria-labelledby="s2">
+        <h2 id="s2"><span class="n">2</span> Separa el dinero que necesitas del que podrías invertir</h2>
+        <div class="field"><label for="cushion">Fondo de emergencia que reservas (€) <output id="cushion-o">6.000 €</output></label><input id="cushion" name="cushion" type="range" min="0" max="15000" step="500" value="6000" /></div>
+        <div class="field"><label for="near">Gastos previstos en el próximo año que saldrán de estos ahorros (€)</label><input id="near" name="near" type="number" min="0" max="15000" step="100" value="1000" /></div>
+        <p class="callout learn" id="fb2" aria-live="polite"></p>
+      </section>
+
+      <section class="step" aria-labelledby="s3">
+        <h2 id="s3"><span class="n">3</span> Explora el horizonte</h2>
+        <p>Supón que el dinero disponible para invertir sufre una caída del 30 % y después se recupera a un 5 % anual (supuesto ficticio). ¿Llegaría a tiempo?</p>
+        <div class="table-wrap"><table class="data"><thead><tr><th>Horizonte</th><th class="num">Valor tras la caída</th><th class="num">Años para recuperar</th><th>¿Llega a tiempo?</th></tr></thead><tbody id="hz"></tbody></table></div>
+        <p class="callout learn" id="fb3" aria-live="polite"></p>
+      </section>
+
+      <section class="step" aria-labelledby="s4">
+        <h2 id="s4"><span class="n">4</span> Compara costes</h2>
+        <p>Dos fondos ficticios con la misma rentabilidad bruta supuesta (4 % anual) y costes distintos, durante el plazo de tu objetivo:</p>
+        <div class="kpis"><div class="kpi"><span class="k">Fondo A, costes 0,2 %</span><span class="v" id="ca">—</span></div><div class="kpi"><span class="k">Fondo B, costes 1,8 %</span><span class="v" id="cb">—</span></div><div class="kpi"><span class="k">Diferencia</span><span class="v loss" id="cd">—</span></div></div>
+      </section>
+
+      <section class="step" aria-labelledby="s5">
+        <h2 id="s5"><span class="n">5</span> Observa una caída de mercado</h2>
+        <p>Imagina que invertiste <strong id="inv5">—</strong> y, seis meses después, vale <strong id="down5">—</strong> (−30 %). Los medios hablan de crisis. ¿Qué harías?</p>
+        <fieldset><legend class="sr-only">Tu reacción</legend>
+          <label class="choice"><input type="radio" name="react" value="sell" /> <span>Vender todo para no perder más</span></label>
+          <label class="choice"><input type="radio" name="react" value="hold" /> <span>No hacer nada: no necesito ese dinero en años</span></label>
+          <label class="choice"><input type="radio" name="react" value="plan" /> <span>Seguir el plan que escribí antes de invertir</span></label>
+          <label class="choice"><input type="radio" name="react" value="dk" /> <span>No lo sé</span></label>
+        </fieldset>
+        <p class="callout learn" id="fb5" aria-live="polite" hidden></p>
+      </section>
+
+      <section class="step" aria-labelledby="s6">
+        <h2 id="s6"><span class="n">6</span> ¿Qué dudas resolverías antes de actuar?</h2>
+        <fieldset><legend>Marca las que tengas (o todas las que se te ocurran)</legend>
+          <label class="choice"><input type="checkbox" name="doubt" value="Cómo tributaría al vender o al cobrar rendimientos." /> <span>Cómo tributaría</span></label>
+          <label class="choice"><input type="checkbox" name="doubt" value="Qué costes totales tendría, incluidos los menos visibles." /> <span>Todos sus costes</span></label>
+          <label class="choice"><input type="checkbox" name="doubt" value="Qué entidad custodia el dinero, quién la supervisa y qué garantía aplica." /> <span>Quién custodia y qué garantía hay</span></label>
+          <label class="choice"><input type="checkbox" name="doubt" value="Cuánto podría caer en un mal año y si podría soportarlo." /> <span>Cuánto podría caer</span></label>
+          <label class="choice"><input type="checkbox" name="doubt" value="Si el producto está diversificado o depende de pocas empresas." /> <span>Si está diversificado</span></label>
+          <label class="choice"><input type="checkbox" name="doubt" value="Si mi objetivo y mi plazo son realistas." /> <span>Si mi objetivo es realista</span></label>
+        </fieldset>
+        <div class="field"><label for="other">Otras dudas</label><textarea id="other" name="other" rows="3" maxlength="800"></textarea></div>
+      </section>
+    </form>
+
+    <section id="summary" class="summary-box" aria-labelledby="sum-t">
+      <h2 id="sum-t">Tu hoja de decisiones</h2>
+      <div id="sum"></div>
+      <div class="actions no-print">
+        <button type="button" class="btn ghost small" id="print">Imprimir o guardar en PDF</button>
+        <button type="button" class="btn ghost small" id="clear">Borrar el ejercicio</button>
+      </div>
+      <p>No hace falta hacer nada más ahora. Si quieres seguir aprendiendo, la <a href="/es/biblioteca/">biblioteca</a> tiene lecciones para cada duda que hayas marcado.</p>
+    </section>
+  </div>
+</Base>
+<style>
+  .step { border-top: 1px solid var(--rule); padding-top: 0.5rem; margin-top: 1.5rem; }
+  .step h2 { display: flex; align-items: center; gap: 0.6rem; font-size: 1.35rem; }
+  .n { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 999px; background: var(--teal); color: var(--paper); font: 700 1rem var(--sans); flex: none; }
+  .summary-box { margin-top: 2.5rem; background: var(--card); border: 1px solid var(--rule); border-top: 4px solid var(--ochre-bright); border-radius: var(--radius); padding: 0.5rem 1.25rem 1rem; }
+  .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
+</style>
+<script>
+  import { compound } from '../../../lib/calc/compound';
+  import { yearsToRecover } from '../../../lib/calc/drawdown';
+  import { eur, num as fnum } from '../../../lib/calc/format';
+  import { read, write, remove, recordToolUse } from '../../../scripts/store';
+  const f = document.getElementById('ex') as HTMLFormElement;
+  const $ = (id: string) => document.getElementById(id)!;
+  const SAVINGS = 15000, MONTHLY = 1400;
+  const n = (name: string) => Number((f.elements.namedItem(name) as HTMLInputElement).value);
+  const val = (name: string) => (f.querySelector<HTMLInputElement>(`input[name="${name}"]:checked`)?.value ?? '');
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  const goalNames: Record<string, string> = { vivienda: 'la entrada de una vivienda', estudios: 'unos estudios', jubilacion: 'complementar la jubilación', otro: 'tu objetivo' };
+  function update(save = true) {
+    const cushion = n('cushion'), near = n('near'), gyears = Math.max(1, n('gyears')), gamount = n('gamount');
+    $('cushion-o').textContent = eur(cushion);
+    const months = cushion / MONTHLY;
+    const available = Math.max(0, SAVINGS - cushion - near);
+    $('fb2').textContent = `Tu colchón cubre ${fnum(months)} meses de gastos. ${months < 3 ? 'Es poco: un imprevisto podría obligarte a vender inversiones. ' : months > 9 ? 'Es amplio; está bien si tus ingresos son inestables. ' : ''}Dinero que podrías plantearte invertir: ${eur(available)}.${cushion + near > SAVINGS ? ' Ojo: reservas más de lo que tienes.' : ''}`;
+    const rec = yearsToRecover(0.3, 0.05);
+    const rows = [2, 5, 15].map((h) => `<tr><td>${h} años${h === gyears ? ' (el tuyo)' : ''}</td><td class="num">${eur(available * 0.7)}</td><td class="num">${fnum(rec)} años</td><td>${h - 1 >= rec ? 'Probablemente sí, con estos supuestos' : 'No, con estos supuestos'}</td></tr>`);
+    if (![2, 5, 15].includes(gyears)) rows.splice(0, 0, `<tr><td>${gyears} años (el tuyo)</td><td class="num">${eur(available * 0.7)}</td><td class="num">${fnum(rec)} años</td><td>${gyears - 1 >= rec ? 'Probablemente sí, con estos supuestos' : 'No, con estos supuestos'}</td></tr>`);
+    $('hz').innerHTML = rows.join('');
+    $('fb3').textContent = gyears < 5
+      ? `Con ${gyears} años para ${goalNames[val('goal')]}, una caída del 30 % podría no recuperarse a tiempo (la recuperación supuesta tarda ${fnum(rec)} años, y en la realidad puede tardar mucho más). Para este objetivo prima la estabilidad.`
+      : `Con ${gyears} años hay más margen para asumir fluctuaciones, aunque la recuperación no está garantizada y conviene reducir el riesgo al acercarse la fecha.`;
+    const a = compound({ initial: available, monthly: 0, annualRate: 0.04, years: gyears, annualFee: 0.002 }).at(-1)!.nominal;
+    const b = compound({ initial: available, monthly: 0, annualRate: 0.04, years: gyears, annualFee: 0.018 }).at(-1)!.nominal;
+    $('ca').textContent = eur(a); $('cb').textContent = eur(b); $('cd').textContent = eur(a - b);
+    $('inv5').textContent = eur(available); $('down5').textContent = eur(available * 0.7);
+    const r = val('react');
+    const fb5 = $('fb5');
+    const msgs: Record<string, string> = {
+      sell: 'Vender en la caída convierte una pérdida temporal en permanente. Si esta es tu reacción sincera, quizá el riesgo era demasiado alto para ti, o el dinero se necesitaba antes. Mejor descubrirlo aquí que con dinero real.',
+      hold: 'Mantener tiene sentido si de verdad no necesitas el dinero y la inversión está diversificada. Si tu objetivo era en pocos años, revisa el paso 3.',
+      plan: 'Tener un plan escrito antes de invertir es una de las mejores defensas contra el pánico. Asegúrate de que el plan incluye qué hacer si la caída dura años.',
+      dk: 'Es una respuesta honesta. Antes de invertir dinero real, conviene que sepas responderla. La lección sobre psicología del inversor te ayudará.',
+    };
+    fb5.hidden = !r; if (r) fb5.textContent = msgs[r];
+    const doubts = [...f.querySelectorAll<HTMLInputElement>('input[name="doubt"]:checked')].map((i) => i.value);
+    const other = (f.elements.namedItem('other') as HTMLTextAreaElement).value.trim();
+    $('sum').innerHTML = `<ul>
+      <li><strong>Objetivo:</strong> ${esc(goalNames[val('goal')])}, ${eur(gamount)} en ${gyears} años.</li>
+      <li><strong>Colchón:</strong> ${eur(cushion)} (${fnum(months)} meses de gastos). <strong>Disponible para invertir:</strong> ${eur(available)}.</li>
+      <li><strong>Horizonte:</strong> ${gyears < 5 ? 'corto: prima la estabilidad.' : 'largo: hay margen para fluctuaciones, sin garantías.'}</li>
+      <li><strong>Costes:</strong> la diferencia entre costes del 0,2 % y del 1,8 % sería de ${eur(a - b)} en ${gyears} años con los supuestos del ejercicio.</li>
+      <li><strong>Ante una caída del 30 %:</strong> ${r ? esc(({ sell: 'venderías', hold: 'mantendrías', plan: 'seguirías tu plan', dk: 'no lo sabes todavía' } as Record<string, string>)[r]) : 'sin responder'}.</li>
+      <li><strong>Dudas por resolver antes de actuar:</strong> ${doubts.length || other ? `<ul>${doubts.map((d) => `<li>${esc(d)}</li>`).join('')}${other ? `<li>${esc(other)}</li>` : ''}</ul>` : 'ninguna marcada (¿seguro?)'}</li>
+    </ul>`;
+    if (save) write('final-exercise', { cushion, near, gyears, gamount, goal: val('goal'), react: r, doubts, other });
+  }
+  const s = read<any>('final-exercise', null as any);
+  if (s) {
+    for (const k of ['cushion', 'near', 'gyears', 'gamount']) if (s[k] !== undefined) (f.elements.namedItem(k) as HTMLInputElement).value = String(s[k]);
+    if (s.goal) f.querySelector<HTMLInputElement>(`input[name=goal][value="${s.goal}"]`)!.checked = true;
+    if (s.react) f.querySelector<HTMLInputElement>(`input[name=react][value="${s.react}"]`)!.checked = true;
+    (s.doubts ?? []).forEach((d: string) => { const el = [...f.querySelectorAll<HTMLInputElement>('input[name=doubt]')].find((i) => i.value === d); if (el) el.checked = true; });
+    (f.elements.namedItem('other') as HTMLTextAreaElement).value = s.other ?? '';
+  }
+  let used = false;
+  f.addEventListener('input', () => { update(); if (!used) { used = true; recordToolUse('ejercicio-final'); } });
+  $('print').addEventListener('click', () => window.print());
+  $('clear').addEventListener('click', () => { remove('final-exercise'); f.reset(); update(false); });
+  update(false);
+</script>

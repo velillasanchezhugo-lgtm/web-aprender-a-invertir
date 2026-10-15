@@ -1,0 +1,133 @@
+{
+  "_doc": "Reglas del test de aprendizaje. Editables. No es una prueba psicológica validada ni un test regulatorio de idoneidad o conveniencia. No genera recomendaciones de productos, carteras ni cantidades. Condiciones: {\"q\": id, \"in\": [valores]} combinadas con \"all\" / \"any\" / \"not\". Para preguntas múltiples, \"in\" se cumple si alguna opción marcada está en la lista.",
+  "version": "1.0 (2026-10-15)",
+  "questions": [
+    { "id": "selfKnowledge", "block": "Conocimientos y experiencia", "text": "¿Cómo describirías tus conocimientos sobre inversión?", "options": [
+      { "v": "none", "label": "Prácticamente ninguno" },
+      { "v": "basic", "label": "Básicos: sé qué es una acción o un fondo" },
+      { "v": "good", "label": "Buenos: entiendo riesgo, costes y diversificación" },
+      { "v": "advanced", "label": "Avanzados: analizo productos y entiendo derivados" } ] },
+    { "id": "experience", "block": "Conocimientos y experiencia", "text": "¿Con qué has invertido alguna vez? (puedes marcar varias)", "multiple": true, "options": [
+      { "v": "nothing", "label": "Con nada todavía" },
+      { "v": "deposits", "label": "Depósitos o cuentas remuneradas" },
+      { "v": "funds", "label": "Fondos de inversión o planes de pensiones" },
+      { "v": "stocks", "label": "Acciones o ETF" },
+      { "v": "derivatives", "label": "CFD, futuros, opciones o productos apalancados" },
+      { "v": "crypto", "label": "Criptoactivos" } ] },
+    { "id": "c1", "block": "Comprensión (preguntas de comprobación)", "check": true, "text": "Si una inversión cae un 50 %, ¿qué subida necesita para volver al valor inicial?", "options": [
+      { "v": "a", "label": "Un 50 %" }, { "v": "b", "label": "Un 100 %", "correct": true }, { "v": "c", "label": "Un 25 %" }, { "v": "dk", "label": "No lo sé" } ], "concept": "riesgo-volatilidad-perdidas" },
+    { "id": "c2", "block": "Comprensión (preguntas de comprobación)", "check": true, "text": "Tener tres fondos que replican el mismo índice, ¿te diversifica más que tener uno?", "options": [
+      { "v": "a", "label": "Sí, el triple" }, { "v": "b", "label": "Prácticamente no", "correct": true }, { "v": "dk", "label": "No lo sé" } ], "concept": "diversificacion" },
+    { "id": "c3", "block": "Comprensión (preguntas de comprobación)", "check": true, "text": "Con un apalancamiento de 5 a 1, si el activo cae un 10 %, ¿cuánto pierdes sobre tu dinero aportado, antes de costes?", "options": [
+      { "v": "a", "label": "Un 10 %" }, { "v": "b", "label": "Un 50 %", "correct": true }, { "v": "c", "label": "Un 2 %" }, { "v": "dk", "label": "No lo sé" } ], "concept": "apalancamiento-margen-liquidacion" },
+    { "id": "c4", "block": "Comprensión (preguntas de comprobación)", "check": true, "text": "¿Te protege el Fondo de Garantía de Depósitos si tus acciones caen de precio?", "options": [
+      { "v": "a", "label": "Sí, hasta 100.000 €" }, { "v": "b", "label": "No: solo cubre la no devolución si la entidad falla", "correct": true }, { "v": "dk", "label": "No lo sé" } ], "concept": "investigar-broker-y-fraudes" },
+    { "id": "goal", "block": "Objetivos y horizonte", "text": "¿Qué te trae aquí, principalmente?", "options": [
+      { "v": "learn", "label": "Entender cómo funciona, sin un objetivo concreto todavía" },
+      { "v": "nearGoal", "label": "Un objetivo concreto en pocos años (vivienda, estudios…)" },
+      { "v": "retirement", "label": "Complementar la jubilación o crear patrimonio a largo plazo" },
+      { "v": "income", "label": "Obtener ingresos periódicos de mis ahorros" },
+      { "v": "fast", "label": "Ganar dinero rápido" } ] },
+    { "id": "horizon", "block": "Objetivos y horizonte", "text": "¿Cuándo crees que necesitarás el dinero que invertirías?", "options": [
+      { "v": "lt2", "label": "En menos de 2 años" }, { "v": "2to5", "label": "Entre 2 y 5 años" }, { "v": "5to10", "label": "Entre 5 y 10 años" }, { "v": "gt10", "label": "En más de 10 años" }, { "v": "dk", "label": "No lo sé" } ] },
+    { "id": "liquidity", "block": "Liquidez y estabilidad", "text": "¿Podrías necesitar ese dinero de forma imprevista en el próximo año?", "options": [
+      { "v": "yes", "label": "Sí, es probable" }, { "v": "maybe", "label": "Quizá" }, { "v": "no", "label": "No, está separado de mis gastos e imprevistos" } ] },
+    { "id": "cushion", "block": "Liquidez y estabilidad", "optional": true, "text": "Opcional: ¿cuántos meses de gastos esenciales podrías cubrir con ahorros disponibles?", "options": [
+      { "v": "0", "label": "Ninguno o casi ninguno" }, { "v": "lt3", "label": "Menos de 3 meses" }, { "v": "3to6", "label": "Entre 3 y 6 meses" }, { "v": "gt6", "label": "Más de 6 meses" } ] },
+    { "id": "debt", "block": "Liquidez y estabilidad", "optional": true, "text": "Opcional: ¿tienes deudas caras (tarjetas revolving, préstamos al consumo con interés alto)?", "options": [
+      { "v": "yes", "label": "Sí" }, { "v": "no", "label": "No" } ] },
+    { "id": "lossImpact", "block": "Capacidad para asumir pérdidas", "text": "Si el dinero que inviertes perdiera un 30 % durante un par de años, ¿qué efecto tendría en tu vida?", "options": [
+      { "v": "severe", "label": "Grave: afectaría a gastos o planes importantes" },
+      { "v": "uncomfortable", "label": "Incómodo, pero podría seguir con mis planes" },
+      { "v": "small", "label": "Poco: es dinero que no necesito" } ] },
+    { "id": "reaction", "block": "Reacción ante caídas", "text": "Imagina que tu inversión cae un 30 % en tres meses. ¿Qué crees que harías?", "options": [
+      { "v": "sellAll", "label": "Venderlo todo para no perder más" },
+      { "v": "sellPart", "label": "Vender una parte" },
+      { "v": "hold", "label": "No hacer nada y esperar" },
+      { "v": "plan", "label": "Seguir el plan que tenía escrito (aportar o rebalancear)" },
+      { "v": "dk", "label": "No lo sé" } ] },
+    { "id": "wish", "block": "Deseo de asumir riesgo", "text": "¿Qué frase se parece más a lo que buscas?", "options": [
+      { "v": "stable", "label": "Que mi dinero no fluctúe, aunque crezca poco" },
+      { "v": "balanced", "label": "Un equilibrio: algo de crecimiento con caídas moderadas" },
+      { "v": "growth", "label": "Máximo crecimiento a largo plazo, aceptando caídas fuertes" },
+      { "v": "quick", "label": "Ganancias rápidas, aunque pueda perder mucho" } ] },
+    { "id": "time", "block": "Tiempo y preferencias", "text": "¿Cuánto tiempo a la semana puedes dedicar a aprender?", "options": [
+      { "v": "lt1", "label": "Menos de 1 hora" }, { "v": "1to3", "label": "Entre 1 y 3 horas" }, { "v": "gt3", "label": "Más de 3 horas" } ] },
+    { "id": "style", "block": "Tiempo y preferencias", "text": "¿Cómo prefieres aprender? (puedes marcar varias)", "multiple": true, "options": [
+      { "v": "read", "label": "Lecturas breves" }, { "v": "numbers", "label": "Ejemplos con números" }, { "v": "tools", "label": "Herramientas y simulaciones" }, { "v": "stories", "label": "Casos históricos" } ] }
+  ],
+  "contradictions": [
+    { "id": "horizon-vs-wish", "when": { "all": [ { "q": "wish", "in": ["growth", "quick"] }, { "any": [ { "q": "horizon", "in": ["lt2"] }, { "q": "liquidity", "in": ["yes"] } ] } ] },
+      "title": "Buscas crecimiento con caídas fuertes, pero podrías necesitar el dinero pronto",
+      "why": "Las inversiones que más pueden crecer son también las que más pueden caer, y una caída puede tardar años en recuperarse. Si necesitas el dinero en poco tiempo, el riesgo de tener que vender en mal momento es alto.",
+      "lessons": ["objetivos-horizonte-liquidez", "riesgo-volatilidad-perdidas"] },
+    { "id": "wish-vs-reaction", "when": { "all": [ { "q": "wish", "in": ["growth", "quick"] }, { "q": "reaction", "in": ["sellAll", "sellPart"] } ] },
+      "title": "Tu deseo de riesgo y tu reacción ante caídas no encajan",
+      "why": "Quieres un crecimiento alto, que implica caídas fuertes, pero dices que venderías al caer un 30 %. Vender en la caída convierte una pérdida temporal en permanente. Es una de las contradicciones más frecuentes y merece reflexión antes de invertir.",
+      "lessons": ["psicologia-y-sesgos", "riesgo-volatilidad-perdidas"] },
+    { "id": "wish-vs-capacity", "when": { "all": [ { "q": "wish", "in": ["growth", "quick"] }, { "q": "lossImpact", "in": ["severe"] } ] },
+      "title": "Quieres asumir mucho riesgo, pero una pérdida te afectaría gravemente",
+      "why": "El deseo de riesgo no cambia tu capacidad de soportarlo. Si una caída del 30 % afectaría a gastos o planes importantes, tu capacidad es limitada, aunque tu actitud sea arriesgada.",
+      "lessons": ["deuda-presupuesto-emergencia", "gestion-del-riesgo"] },
+    { "id": "no-cushion", "when": { "all": [ { "q": "cushion", "in": ["0", "lt3"] }, { "q": "goal", "in": ["nearGoal", "retirement", "income", "fast"] } ] },
+      "title": "Tu colchón de emergencia es pequeño",
+      "why": "Sin un fondo para imprevistos, cualquier gasto inesperado puede obligarte a vender inversiones en mal momento o a endeudarte. Suele ser el primer paso antes de invertir.",
+      "lessons": ["deuda-presupuesto-emergencia"] },
+    { "id": "expensive-debt", "when": { "q": "debt", "in": ["yes"] },
+      "title": "Tienes deudas caras",
+      "why": "Amortizar una deuda con un interés alto equivale a obtener esa rentabilidad sin riesgo. Pocas inversiones lo superan de forma fiable.",
+      "lessons": ["deuda-presupuesto-emergencia"] },
+    { "id": "overconfidence", "when": { "all": [ { "q": "selfKnowledge", "in": ["good", "advanced"] }, { "score": "lt", "value": 3 } ] },
+      "title": "Te valoras con buenos conocimientos, pero has fallado varias preguntas de comprobación",
+      "why": "No pasa nada: le ocurre a mucha gente. Pero el exceso de confianza es uno de los sesgos más costosos en inversión, porque lleva a asumir riesgos que no se comprenden del todo.",
+      "lessons": ["psicologia-y-sesgos"] },
+    { "id": "derivatives-without-understanding", "when": { "all": [ { "q": "experience", "in": ["derivatives"] }, { "q": "c3", "in": ["a", "c", "dk"] } ] },
+      "title": "Has usado productos apalancados, pero la pregunta sobre apalancamiento no ha salido bien",
+      "why": "Con apalancamiento, las pérdidas se multiplican y la posición puede cerrarse con movimientos pequeños. Entenderlo con números es imprescindible antes de volver a usarlos, aunque sea en simulación.",
+      "lessons": ["apalancamiento-margen-liquidacion", "derivados-y-cfd"] },
+    { "id": "fast-money", "when": { "any": [ { "q": "goal", "in": ["fast"] }, { "q": "wish", "in": ["quick"] } ] },
+      "title": "Buscas ganancias rápidas",
+      "why": "Las estrategias de corto plazo tienen los costes más altos y la evidencia sobre particulares es desfavorable: la mayoría pierde dinero. Esto no te define como «apto» ni «no apto»; es información que conviene tener antes de decidir.",
+      "lessons": ["psicologia-y-sesgos", "analisis-tecnico-y-limites"] },
+    { "id": "short-horizon-goal", "when": { "all": [ { "q": "goal", "in": ["nearGoal"] }, { "q": "horizon", "in": ["5to10", "gt10"] } ] },
+      "title": "Dices que tu objetivo es cercano, pero el horizonte que indicas es largo",
+      "why": "Puede que tengas varios objetivos a la vez. Conviene separarlos: cada uno con su importe, su fecha y su nivel de riesgo.",
+      "lessons": ["objetivos-horizonte-liquidez"] }
+  ],
+  "startingPoints": [
+    { "id": "zero", "when": { "all": [ { "score": "lte", "value": 1 } ] }, "label": "Empiezas desde cero", "text": "Lo más útil ahora es la ruta inicial, en orden. Las dos primeras lecciones (unos quince minutos) ya dejan ideas útiles; la ruta completa dura alrededor de hora y media, repartida como quieras." },
+    { "id": "basic", "when": { "all": [ { "score": "lte", "value": 3 } ] }, "label": "Tienes una base con lagunas", "text": "Conoces algunas ideas, pero conviene asentar las que han fallado en las preguntas de comprobación antes de pasar a la academia." },
+    { "id": "solid", "when": { "all": [ { "score": "gte", "value": 4 } ] }, "label": "Tienes una base sólida", "text": "Has respondido bien a las preguntas de comprobación. Puedes repasar rápido la ruta inicial y centrarte en la academia según tu objetivo." }
+  ],
+  "goalLessons": {
+    "learn": ["inversion-a-largo-plazo", "gestion-indexada-y-activa", "psicologia-y-sesgos"],
+    "nearGoal": ["objetivos-horizonte-liquidez", "renta-fija-duracion-credito", "gestion-del-riesgo"],
+    "retirement": ["inversion-a-largo-plazo", "gestion-indexada-y-activa", "aportaciones-periodicas-vs-inicial", "asignacion-y-rebalanceo"],
+    "income": ["renta-fija-duracion-credito", "asignacion-y-rebalanceo", "estados-financieros"],
+    "fast": ["psicologia-y-sesgos", "analisis-tecnico-y-limites", "apalancamiento-margen-liquidacion"]
+  },
+  "goalTools": {
+    "learn": ["interes-compuesto", "simulador-caidas"],
+    "nearGoal": ["planificador-objetivos", "inflacion"],
+    "retirement": ["interes-compuesto", "diversificacion-rebalanceo", "cartera-practica"],
+    "income": ["inflacion", "cartera-practica"],
+    "fast": ["apalancamiento", "comparador-comisiones", "cartera-practica"]
+  },
+  "risks": [
+    { "when": { "q": "c1", "in": ["a", "c", "dk"] }, "text": "La asimetría de las pérdidas: recuperar una caída exige una subida mayor." },
+    { "when": { "q": "c2", "in": ["a", "dk"] }, "text": "La concentración oculta: varios productos pueden contener lo mismo." },
+    { "when": { "q": "c3", "in": ["a", "c", "dk"] }, "text": "El apalancamiento: multiplica pérdidas y puede cerrar tu posición con movimientos pequeños." },
+    { "when": { "q": "c4", "in": ["a", "dk"] }, "text": "Qué protegen (y qué no) los fondos de garantía: nunca cubren las pérdidas de mercado." },
+    { "when": { "q": "horizon", "in": ["lt2", "2to5", "dk"] }, "text": "El riesgo de plazo: no tener tiempo para recuperar una caída antes de necesitar el dinero." },
+    { "when": { "q": "experience", "in": ["crypto"] }, "text": "La volatilidad extrema y los riesgos de custodia y fraude de los criptoactivos." },
+    { "when": { "q": "goal", "in": ["income"] }, "text": "Que una rentabilidad alta prometida suele implicar más riesgo de impago o de recorte." },
+    { "when": { "q": "reaction", "in": ["sellAll", "dk"] }, "text": "El riesgo de comportamiento: vender en pánico es una de las causas más comunes de pérdidas permanentes." }
+  ],
+  "reviewConditions": [
+    "Cuando completes las lecciones de las semanas 1 y 2, repite las preguntas de comprobación.",
+    "Si cambia tu situación (ingresos, deudas, familia, vivienda), vuelve a hacer el test.",
+    "Antes de usar dinero real en cualquier producto que no hayas estudiado, repasa tu lista de comprobación.",
+    "Cada seis meses, aunque nada haya cambiado.",
+    "Si alguna vez sientes prisa por invertir, espera 48 horas y relee las contradicciones que te señalamos."
+  ]
+}

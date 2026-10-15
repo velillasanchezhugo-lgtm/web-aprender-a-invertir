@@ -1,0 +1,30 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import SourceList from '../../../components/SourceList.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+import { isoDate } from '../../../lib/content';
+export async function getStaticPaths() {
+  return (await getCollection('investors', ({ data }) => !data.draft)).map((s) => ({ params: { slug: s.id }, props: { s } }));
+}
+const { s } = Astro.props as { s: CollectionEntry<'investors'> };
+const d = s.data;
+const { Content } = await render(s);
+const others = Object.fromEntries((await getCollection('investors')).map((x) => [x.id, x]));
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description, inLanguage: 'es-ES', datePublished: isoDate(d.published), dateModified: isoDate(d.reviewed), author: { '@type': 'Organization', name: 'Redacción de Criterio' }, ...(d.kind === 'inversor' ? { about: { '@type': 'Person', name: d.name } } : {}) };
+---
+<Base title={d.title} description={d.description} ogType="article" jsonLd={jsonLd} allowAds={true}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/inversores/', label: 'Historias' }, { label: d.name }]} />
+    <p class="eyebrow">{d.kind === 'inversor' ? 'Trayectoria' : d.kind === 'caso' ? 'Caso documentado' : 'Concepto'} · {d.years}</p>
+    <h1>{d.title}</h1>
+    <p class="lede">{d.description}</p>
+    {d.kind !== 'concepto' && <p class="small"><strong>Enfoque:</strong> {d.approach}</p>}
+    <div class="callout note small"><p>Los resultados pasados de una persona o una empresa no predicen los futuros, ni son los que obtuvo cualquier inversor que la siguiera. Lee también <a href="/es/inversores/sesgo-de-supervivencia/">el sesgo de supervivencia</a>.</p></div>
+    <article class="prose"><Content /></article>
+    {d.related.length > 0 && <section><h2>Relacionado</h2><ul>{d.related.filter((r) => others[r]).map((r) => <li><a href={`/es/inversores/${r}/`}>{others[r].data.title}</a></li>)}</ul></section>}
+    <SourceList ids={d.sources} author={d.author} reviewer={d.reviewer} published={d.published} reviewed={d.reviewed} status={d.status} jurisdiction={d.jurisdiction} corrections={d.corrections} />
+    <AdSlot slot="inArticle" />
+  </div>
+</Base>

@@ -1,0 +1,117 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import rules from '../../../data/quiz.json';
+import { lessons, TOOLS } from '../../../lib/content';
+const all = await lessons();
+const lessonTitles = Object.fromEntries(all.map((l) => [l.id, { t: l.data.title, m: l.data.minutes }]));
+const toolTitles = Object.fromEntries(Object.entries(TOOLS).map(([k, v]) => [k, v.title]));
+const blocks = [...new Set(rules.questions.map((q) => q.block))];
+---
+<Base title="Test de aprendizaje financiero" description="Un cuestionario breve para crear tu plan de aprendizaje y práctica de cuatro semanas. No es un test psicológico ni de idoneidad, y no recomienda productos." allowAds={false}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Test de aprendizaje' }]} />
+    <p class="eyebrow">Unos 5 minutos</p>
+    <h1>Test de aprendizaje</h1>
+    <p class="lede">Responde lo que quieras: todas las preguntas se pueden dejar en blanco. Al final obtendrás un plan de aprendizaje y práctica de cuatro semanas.</p>
+    <div class="callout note small">
+      <p class="callout-title">Qué es y qué no es</p>
+      <ul>
+        <li>Es una guía para decidir <strong>qué aprender primero</strong>. No es una prueba psicológica validada ni el test de idoneidad o conveniencia que te hará un intermediario.</li>
+        <li>No te asigna productos, carteras ni cantidades. Las <a href="/es/test/reglas/">reglas son públicas</a> y puedes leerlas antes de empezar.</li>
+        <li>Tus respuestas no salen de tu navegador ni se comparten con servicios publicitarios. Solo se guardan si marcas la casilla del final, y puedes borrarlas cuando quieras.</li>
+      </ul>
+    </div>
+    <form id="quiz" class="quiz-form" novalidate>
+      {blocks.map((b) => (
+        <section class="qblock">
+          <h2>{b}</h2>
+          {b.startsWith('Comprensión') && <p class="small muted">Estas preguntas no puntúan «aptitud»: solo indican qué conceptos repasar. Si no lo sabes, marca «No lo sé».</p>}
+          {rules.questions.filter((q) => q.block === b).map((q) => (
+            <fieldset data-q={q.id}>
+              <legend>{q.text}</legend>
+              {q.options.map((o) => (
+                <label class="choice"><input type={q.multiple ? 'checkbox' : 'radio'} name={q.id} value={o.v} /> <span>{o.label}</span></label>
+              ))}
+              {!q.multiple && <button type="button" class="linkbtn small" data-clear={q.id}>Dejar sin responder</button>}
+            </fieldset>
+          ))}
+        </section>
+      ))}
+      <label class="choice"><input type="checkbox" id="save" /> <span>Guardar mis respuestas y mi plan en este dispositivo (puedes borrarlos en cualquier momento)</span></label>
+      <div class="actions">
+        <button type="submit" class="btn">Ver mi plan</button>
+        <button type="button" class="btn ghost small" id="wipe">Borrar respuestas</button>
+      </div>
+    </form>
+    <section id="result" class="result" hidden tabindex="-1" aria-labelledby="plan-title"></section>
+  </div>
+  <script type="application/json" id="quiz-rules" set:html={JSON.stringify(rules)} />
+  <script type="application/json" id="quiz-meta" set:html={JSON.stringify({ lessonTitles, toolTitles })} />
+</Base>
+<style>
+  .qblock h2 { font-size: 1.35rem; }
+  .quiz-form fieldset legend { font-family: var(--sans); font-size: 1.02rem; font-weight: 600; }
+  .linkbtn { background: none; border: 0; color: var(--ink-3); text-decoration: underline; cursor: pointer; padding: 0.3rem 0; }
+  .actions { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin: 1.2rem 0 2rem; }
+  .result { margin-top: 2rem; border-top: 3px solid var(--ochre-bright); padding-top: 1rem; }
+  .result :global(h3) { font-size: 1.15rem; }
+  .result :global(.week) { border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.8rem 1rem; margin-bottom: 0.8rem; background: var(--card); }
+  .result :global(.week h4) { margin: 0 0 0.4rem; font-family: var(--sans); font-size: 1rem; }
+</style>
+<script>
+  import { buildPlan, type Rules, type Answers } from '../../../lib/quiz';
+  import { read, write, remove } from '../../../scripts/store';
+  const rules = JSON.parse(document.getElementById('quiz-rules')!.textContent!) as Rules;
+  const meta = JSON.parse(document.getElementById('quiz-meta')!.textContent!) as { lessonTitles: Record<string, { t: string; m: number }>; toolTitles: Record<string, string> };
+  const form = document.getElementById('quiz') as HTMLFormElement;
+  const out = document.getElementById('result')!;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  const L = (slug: string) => meta.lessonTitles[slug] ? `<a href="/es/lecciones/${slug}/">${esc(meta.lessonTitles[slug].t)}</a> <span class="muted small">(${meta.lessonTitles[slug].m} min)</span>` : esc(slug);
+  const T = (id: string) => `<a href="/es/herramientas/${id}/">${esc(meta.toolTitles[id] ?? id)}</a>`;
+  function collect(): Answers {
+    const a: Answers = {};
+    for (const q of rules.questions) {
+      if (q.multiple) { const v = [...form.querySelectorAll<HTMLInputElement>(`input[name="${q.id}"]:checked`)].map((i) => i.value); if (v.length) a[q.id] = v; }
+      else { const el = form.querySelector<HTMLInputElement>(`input[name="${q.id}"]:checked`); if (el) a[q.id] = el.value; }
+    }
+    return a;
+  }
+  function restore(a: Answers) {
+    for (const [k, v] of Object.entries(a)) (Array.isArray(v) ? v : [v]).forEach((x) => { const el = form.querySelector<HTMLInputElement>(`input[name="${k}"][value="${x}"]`); if (el) el.checked = true; });
+  }
+  function render(a: Answers) {
+    const p = buildPlan(rules, a, meta.toolTitles);
+    const html: string[] = [];
+    html.push('<p class="eyebrow">Tu plan de aprendizaje y práctica</p><h2 id="plan-title">Plan orientativo de cuatro semanas</h2>');
+    if (p.unanswered.length) html.push(`<p class="callout note small">Has dejado ${p.unanswered.length} preguntas sin responder: el plan es más general. Puedes completarlas cuando quieras.</p>`);
+    html.push(`<h3>1. Punto de partida: ${esc(p.starting.label)}</h3><p>${esc(p.starting.text)} <span class="muted small">Preguntas de comprobación acertadas: ${p.score} de ${p.total}.</span></p>`);
+    html.push(`<h3>2. Conceptos que conviene reforzar</h3>${p.reinforce.length ? `<ul>${p.reinforce.map((s) => `<li>${L(s)}</li>`).join('')}</ul>` : '<p>Has acertado todas las preguntas de comprobación. Aun así, repasar la ruta inicial te llevará poco tiempo.</p>'}`);
+    if (p.contradictions.length) {
+      html.push(`<h3>Respuestas que merecen reflexión</h3><p class="small muted">No son errores: son tensiones entre lo que buscas y tu situación. Conviene resolverlas antes de invertir dinero real.</p>`);
+      html.push(p.contradictions.map((c) => `<div class="callout warn"><p class="callout-title">${esc(c.title)}</p><p>${esc(c.why)}</p><p class="small">Para profundizar: ${c.lessons.map(L).join(' · ')}</p></div>`).join(''));
+    }
+    html.push(`<h3>3. Tu ruta de lecciones</h3><ol>${p.route.map((s) => `<li>${L(s)}</li>`).join('')}</ol>`);
+    html.push(`<h3>4. Ejercicios recomendados</h3><ul>${p.tools.map((t) => `<li>${T(t)}</li>`).join('')}<li><a href="/es/empieza-desde-cero/ejercicio-final/">Ejercicio final con dinero ficticio</a></li></ul>`);
+    html.push(`<h3>5. Riesgos que deberías comprender mejor</h3>${p.risks.length ? `<ul>${p.risks.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>` : '<p>Ninguno destacado por tus respuestas; repasa igualmente la lección de riesgo.</p>'}`);
+    html.push(`<h3>6. Plan orientativo de cuatro semanas</h3>${p.weeks.map((w) => `<div class="week"><h4>${w.title}</h4>${w.lessons.length ? `<ul>${w.lessons.map((s) => `<li>${L(s)}</li>`).join('')}</ul>` : ''}${w.tasks.length ? `<ul>${w.tasks.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}</div>`).join('')}${p.later.length ? `<p class="small">Después: ${p.later.map(L).join(' · ')}</p>` : ''}`);
+    html.push(`<h3>7. Cuándo revisar tu progreso</h3><ul>${p.review.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>`);
+    html.push('<p class="small muted">Este plan es educativo y se genera con <a href="/es/test/reglas/">reglas públicas</a>. No es asesoramiento ni una evaluación de idoneidad, y no recomienda productos ni cantidades.</p>');
+    out.innerHTML = html.join('');
+    out.hidden = false;
+    out.focus();
+  }
+  const saved = read<{ answers: Answers }>('quiz', { answers: {} });
+  if (Object.keys(saved.answers).length) { restore(saved.answers); (document.getElementById('save') as HTMLInputElement).checked = true; }
+  form.addEventListener('click', (e) => {
+    const id = (e.target as HTMLElement).dataset?.clear;
+    if (id) form.querySelectorAll<HTMLInputElement>(`input[name="${id}"]`).forEach((i) => (i.checked = false));
+  });
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const a = collect();
+    if ((document.getElementById('save') as HTMLInputElement).checked) write('quiz', { answers: a, at: new Date().toISOString() }); else remove('quiz');
+    render(a);
+  });
+  document.getElementById('wipe')!.addEventListener('click', () => { form.reset(); remove('quiz'); out.hidden = true; out.innerHTML = ''; });
+</script>

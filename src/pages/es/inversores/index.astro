@@ -1,0 +1,32 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { getCollection } from 'astro:content';
+const all = (await getCollection('investors', ({ data }) => !data.draft)).sort((a, b) => a.data.order - b.data.order);
+const concept = all.filter((x) => x.data.kind === 'concepto');
+const people = all.filter((x) => x.data.kind === 'inversor');
+const cases = all.filter((x) => x.data.kind === 'caso');
+---
+<Base title="Historias de inversores: trayectorias, errores y lecciones" description="Buffett, Munger, Bogle, Lynch y Graham, con sus errores y ventajas; y casos de fracaso y fraude como LTCM, Madoff, Archegos o Fórum Filatélico y Afinsa." allowAds={true}>
+  <div class="container">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Historias de inversores' }]} />
+    <h1>Historias de inversores</h1>
+    <p class="lede">Trayectorias documentadas, con sus errores y con los recursos que un pequeño inversor no tiene. Sin citas inventadas y sin atribuir una fortuna a una sola operación.</p>
+    {concept.map((c) => (
+      <a class="card concept" href={`/es/inversores/${c.id}/`}><span class="eyebrow">Lee esto primero</span><h2 class="h3">{c.data.title}</h2><p class="small">{c.data.description}</p></a>
+    ))}
+    <h2>Inversores</h2>
+    <div class="grid cols-3">
+      {people.map((p) => (
+        <a class="card" href={`/es/inversores/${p.id}/`}><span class="small muted">{p.data.years}</span><h3>{p.data.name}</h3><p class="small">{p.data.approach}</p></a>
+      ))}
+    </div>
+    <h2>Fracasos, apalancamiento y fraudes</h2>
+    <div class="grid cols-2">
+      {cases.map((p) => (
+        <a class="card" href={`/es/inversores/${p.id}/`}><span class="small muted">{p.data.years}</span><h3>{p.data.name}</h3><p class="small">{p.data.description}</p></a>
+      ))}
+    </div>
+  </div>
+</Base>
+<style>.concept { margin: 1.5rem 0; border-left: 4px solid var(--ochre-bright); } .h3 { font-size: 1.35rem; margin: 0.3rem 0; }</style>

@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { lessons, TOPICS, LEVELS } from '../../lib/content';
+import { getCollection } from 'astro:content';
+const all = await lessons();
+const strategies = await getCollection('strategies');
+const items = [
+  ...all.map((l) => ({ href: `/es/lecciones/${l.id}/`, title: l.data.title, desc: l.data.description, level: l.data.level, topic: l.data.topic, type: 'Lección', minutes: l.data.minutes, route: !!l.data.route })),
+  ...strategies.map((s) => ({ href: `/es/estrategias/${s.id}/`, title: s.data.title, desc: s.data.description, level: s.data.level, topic: 'estrategias', type: 'Estrategia', minutes: 0, route: false })),
+];
+const topics = [...new Set(items.map((i) => i.topic))];
+const topicLabel = (t: string) => (t === 'estrategias' ? 'Estrategias' : TOPICS[t]?.label ?? t);
+const roadmap = ['Materias primas (módulo complementario)', 'Inversión inmobiliaria directa e indirecta (módulo complementario)', 'Planes de pensiones y fiscalidad de la jubilación', 'Fondos de inversión: cómo leer el KID y el folleto', 'Inversión en crecimiento: casos documentados', 'Fiscalidad de dividendos extranjeros y doble imposición'];
+---
+<Base title="Biblioteca: lecciones de inversión por tema y nivel" description="Todas las lecciones y estrategias de Criterio, de inicial a avanzado: largo plazo, renta fija, análisis de empresas, psicología, derivados y más, con fuentes." allowAds={true}>
+  <div class="container">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Biblioteca' }]} />
+    <h1>Biblioteca</h1>
+    <p class="lede">Lecciones y estrategias organizadas por tema y nivel. Avanzar de nivel significa comprender más, no operar más ni asumir más riesgo.</p>
+    <form class="filters" id="filters" aria-label="Filtrar la biblioteca">
+      <div class="field"><label for="ft">Tema</label><select id="ft" name="topic"><option value="">Todos</option>{topics.map((t) => <option value={t}>{topicLabel(t)}</option>)}</select></div>
+      <div class="field"><label for="fl">Nivel</label><select id="fl" name="level"><option value="">Todos</option>{Object.entries(LEVELS).map(([k, v]) => <option value={k}>{v}</option>)}</select></div>
+      <div class="field"><label for="fq">Filtrar por texto</label><input id="fq" name="q" type="search" placeholder="Palabra clave" /></div>
+      <p class="small muted" id="count" aria-live="polite"></p>
+    </form>
+    {topics.map((t) => (
+      <section class="topic" data-topic={t} aria-labelledby={`t-${t}`}>
+        <h2 id={`t-${t}`}>{t === 'estrategias' ? <a href="/es/estrategias/">Estrategias</a> : <a href={`/es/temas/${t}/`}>{topicLabel(t)}</a>}</h2>
+        {TOPICS[t] && <p class="small muted">{TOPICS[t].blurb}</p>}
+        <div class="grid cols-3">
+          {items.filter((i) => i.topic === t).map((i) => (
+            <a class="card item" href={i.href} data-level={i.level} data-text={`${i.title} ${i.desc}`.toLowerCase()}>
+              <span class="meta small"><span class={`tag level-${i.level}`}>{LEVELS[i.level]}</span> {i.type}{i.minutes ? ` · ${i.minutes} min` : ''}{i.route && ' · Ruta inicial'}</span>
+              <h3>{i.title}</h3>
+              <p class="small">{i.desc}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+    <AdSlot slot="listing" minHeight={250} />
+    <section aria-labelledby="roadmap">
+      <h2 id="roadmap">En preparación</h2>
+      <p class="small muted">Estos módulos aún no están publicados. No los presentamos como contenido terminado hasta que estén escritos, con fuentes y revisados.</p>
+      <ul>{roadmap.map((r) => <li>{r}</li>)}</ul>
+    </section>
+  </div>
+</Base>
+<style>
+  .filters { display: grid; gap: 0 1rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); align-items: end; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1rem 0; margin: 1.5rem 0; }
+  .topic h2 a { color: inherit; text-decoration: none; }
+  .topic h2 a:hover { color: var(--teal); }
+  .item h3 { font-size: 1.15rem; margin: 0.5rem 0 0.3rem; }
+  .meta { color: var(--ink-3); }
+</style>
+<script>
+  const f = document.getElementById('filters') as HTMLFormElement;
+  const params = new URLSearchParams(location.search);
+  for (const k of ['topic', 'level', 'q']) { const el = f.elements.namedItem(k) as HTMLInputElement; if (params.get(k)) el.value = params.get(k)!; }
+  function apply() {
+    const topic = (f.elements.namedItem('topic') as HTMLSelectElement).value;
+    const level = (f.elements.namedItem('level') as HTMLSelectElement).value;
+    const q = (f.elements.namedItem('q') as HTMLInputElement).value.trim().toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+    let shown = 0;
+    document.querySelectorAll<HTMLElement>('.topic').forEach((sec) => {
+      let n = 0;
+      sec.querySelectorAll<HTMLElement>('.item').forEach((it) => {
+        const text = it.dataset.text!.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+        const ok = (!topic || sec.dataset.topic === topic) && (!level || it.dataset.level === level) && (!q || text.includes(q));
+        it.hidden = !ok; if (ok) n++;
+      });
+      sec.hidden = n === 0; shown += n;
+    });
+    document.getElementById('count')!.textContent = `${shown} resultados`;
+    const p = new URLSearchParams();
+    if (topic) p.set('topic', topic); if (level) p.set('level', level); if (q) p.set('q', q);
+    history.replaceState(null, '', p.toString() ? `?${p}` : location.pathname);
+  }
+  f.addEventListener('input', apply);
+  f.addEventListener('submit', (e) => e.preventDefault());
+  apply();
+</script>

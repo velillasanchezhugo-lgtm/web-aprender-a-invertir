@@ -1,0 +1,57 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import rules from '../../../data/quiz.json';
+import { lessons } from '../../../lib/content';
+const titles = Object.fromEntries((await lessons()).map((l) => [l.id, l.data.title]));
+const qText = Object.fromEntries(rules.questions.map((q) => [q.id, q]));
+type C = any;
+function describe(c: C): string {
+  if (c.all) return c.all.map(describe).join(' y ');
+  if (c.any) return '(' + c.any.map(describe).join(' o ') + ')';
+  if (c.not) return 'no ' + describe(c.not);
+  if (c.score) return `aciertos en las preguntas de comprobación ${({ lt: 'menores que', lte: 'iguales o menores que', gte: 'iguales o mayores que', gt: 'mayores que' } as any)[c.score]} ${c.value}`;
+  const q = qText[c.q];
+  const labels = c.in.map((v: string) => q?.options.find((o: any) => o.v === v)?.label ?? v);
+  return `«${q?.text ?? c.q}» = ${labels.map((l: string) => `«${l}»`).join(' o ')}`;
+}
+---
+<Base title="Reglas del test de aprendizaje" description="Todas las reglas que usa el test para detectar contradicciones y construir el plan de aprendizaje, publicadas y editables. Sin puntuaciones ocultas." allowAds={false}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/test/', label: 'Test' }, { label: 'Reglas' }]} />
+    <h1>Reglas del test</h1>
+    <p class="lede">El test no usa puntuaciones ocultas ni algoritmos opacos. Estas son todas sus reglas, generadas a partir del mismo archivo que usa la herramienta (<code>src/data/quiz.json</code>, versión {rules.version}).</p>
+    <div class="prose">
+      <h2>Principios</h2>
+      <ul>
+        <li>Distingue tres cosas: el <strong>deseo</strong> de asumir riesgo (lo que buscas), la <strong>capacidad</strong> para soportarlo (tu situación) y la <strong>comprensión</strong> del riesgo (medida con cuatro preguntas de comprobación).</li>
+        <li>Solo produce un plan de aprendizaje: lecciones, ejercicios y reflexiones. Nunca productos, carteras concretas ni porcentajes o cantidades a invertir.</li>
+        <li>No etiqueta a nadie como «apto» para ninguna estrategia. Rasgos como la competitividad o la búsqueda de emociones no se valoran como cualidades para operar.</li>
+        <li>No es una prueba psicológica validada ni sustituye a la evaluación de idoneidad o conveniencia que la normativa exige a los intermediarios.</li>
+        <li>Las respuestas se procesan en tu navegador y solo se guardan si lo pides.</li>
+      </ul>
+      <h2>Punto de partida</h2>
+      <p>Se cuentan los aciertos en las cuatro preguntas de comprobación. No es una nota: solo decide por dónde empezar.</p>
+      <ul>{rules.startingPoints.map((s) => <li><strong>{s.label}</strong>: si {describe(s.when)}. Se aplica la primera regla que se cumple.</li>)}</ul>
+      <h2>Contradicciones que se señalan</h2>
+      {rules.contradictions.map((c) => (
+        <div class="callout note"><p class="callout-title">{c.title}</p><p class="small"><strong>Se activa si</strong> {describe(c.when)}.</p><p class="small">{c.why}</p><p class="small">Lecciones sugeridas: {c.lessons.map((l) => titles[l] ?? l).join(' · ')}</p></div>
+      ))}
+      <h2>Ruta de lecciones</h2>
+      <ol>
+        <li>Si fallas alguna pregunta de comprobación, la ruta inicial completa; si las aciertas todas, solo la lista de comprobación final.</li>
+        <li>Se añaden las lecciones de los conceptos fallados y de las contradicciones detectadas.</li>
+        <li>Se añaden lecciones según tu objetivo:
+          <ul>{Object.entries(rules.goalLessons).map(([g, ls]) => <li>{qText.goal.options.find((o) => o.v === g)?.label}: {ls.map((l) => titles[l] ?? l).join(', ')}.</li>)}</ul>
+        </li>
+        <li>Se reparten en cuatro semanas según el tiempo disponible: 3 lecciones por semana con menos de 1 hora, 5 con 1–3 horas y 7 con más de 3 horas (la cuarta semana, dos menos, para el ejercicio final).</li>
+      </ol>
+      <h2>Riesgos que se destacan</h2>
+      <ul>{rules.risks.map((r) => <li>{r.text} <span class="muted small">(si {describe(r.when)})</span></li>)}</ul>
+      <h2>Condiciones de revisión</h2>
+      <ul>{rules.reviewConditions.map((r) => <li>{r}</li>)}</ul>
+      <h2>¿Cómo proponer un cambio?</h2>
+      <p>Las reglas son editables. Si crees que alguna es injusta o confusa, escríbenos desde <a href="/es/contacto/">contacto</a>. Los cambios se anotan en <a href="/es/correcciones/">correcciones</a>.</p>
+    </div>
+  </div>
+</Base>

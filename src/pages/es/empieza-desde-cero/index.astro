@@ -1,0 +1,67 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { routeLessons } from '../../../lib/content';
+const route = await routeLessons();
+const total = route.reduce((a, l) => a + l.data.minutes, 0);
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Empieza desde cero: aprender a invertir', description: 'Diez lecciones breves para entender cómo funciona la inversión antes de poner dinero.', inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'Criterio' }, hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: `PT${total}M` }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', category: 'Free' } };
+---
+<Base title="Empieza desde cero: aprender a invertir en 10 pasos" description={`Diez lecciones breves (unos ${total} minutos en total) para entender ahorro, riesgo, costes y fraudes antes de invertir. Sin registro y sin vender nada.`} jsonLd={jsonLd} allowAds={false}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Empieza desde cero' }]} />
+    <p class="eyebrow">Ruta para principiantes</p>
+    <h1>Empieza desde cero</h1>
+    <p class="lede">Diez lecciones breves, en orden, y un ejercicio final con dinero ficticio. En total, unos {total} minutos que puedes repartir como quieras.</p>
+    <div class="callout learn">
+      <p class="callout-title">Tu primera sesión: unos 15 minutos</p>
+      <p>Lee las dos primeras lecciones. Al terminar sabrás distinguir invertir de especular y tendrás tu primer objetivo con importe y fecha. Eso ya evita algunos de los errores más caros.</p>
+      <p class="small">No vas a aprender a invertir «como un profesional» en un rato: nadie puede. Vas a construir una base sólida, paso a paso.</p>
+    </div>
+    <div class="route-progress no-print" aria-live="polite">
+      <div class="progress-bar" aria-hidden="true"><span id="route-bar"></span></div>
+      <p class="small muted" id="route-text">Tu progreso se guarda en este dispositivo.</p>
+    </div>
+    <ol class="route">
+      {route.map((l, i) => (
+        <li data-slug={l.id}>
+          <a href={`/es/lecciones/${l.id}/`} class="step">
+            <span class="num" aria-hidden="true">{i + 1}</span>
+            <span class="body">
+              <strong>{l.data.title}</strong>
+              <span class="small muted">{l.data.minutes} min · {l.data.description}</span>
+            </span>
+            <span class="done small" hidden>✓ Completada</span>
+          </a>
+        </li>
+      ))}
+      <li>
+        <a href="/es/empieza-desde-cero/ejercicio-final/" class="step final">
+          <span class="num" aria-hidden="true">★</span>
+          <span class="body"><strong>Ejercicio final con dinero ficticio</strong><span class="small muted">15 min · Pon en práctica lo aprendido sin abrir ninguna cuenta.</span></span>
+        </a>
+      </li>
+    </ol>
+    <p>¿Ya sabes algo? Haz el <a href="/es/test/">test de aprendizaje</a> para saber qué lecciones puedes saltarte. ¿Quieres ir más allá? Explora la <a href="/es/biblioteca/">biblioteca</a>.</p>
+  </div>
+</Base>
+<style>
+  .route { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: 0.6rem; }
+  .step { display: grid; grid-template-columns: 2.5rem 1fr auto; gap: 0.8rem; align-items: center; padding: 0.9rem 1rem; border: 1px solid var(--rule); border-radius: var(--radius); background: var(--card); color: var(--ink); text-decoration: none; }
+  .step:hover { border-color: var(--teal); }
+  .step strong { display: block; font-family: var(--serif); font-size: 1.12rem; margin-bottom: 0.15rem; }
+  .num { width: 2.2rem; height: 2.2rem; border-radius: 999px; display: grid; place-items: center; background: var(--teal-soft); color: var(--teal); font-weight: 700; }
+  li.is-done .num { background: var(--ochre-bright); color: #fff; }
+  .done { color: var(--ochre); font-weight: 600; }
+  .final { border-style: dashed; }
+  .route-progress { margin: 1.5rem 0 0; max-width: 420px; }
+  @media (max-width: 520px) { .step { grid-template-columns: 2.2rem 1fr; } .done { grid-column: 2; } }
+</style>
+<script>
+  import { getProgress } from '../../../scripts/store';
+  const p = getProgress();
+  const items = [...document.querySelectorAll<HTMLElement>('.route li[data-slug]')];
+  let done = 0;
+  items.forEach((li) => { if (p.completed[li.dataset.slug!]) { done++; li.classList.add('is-done'); li.querySelector<HTMLElement>('.done')!.hidden = false; } });
+  (document.getElementById('route-bar') as HTMLElement).style.width = `${(done / items.length) * 100}%`;
+  document.getElementById('route-text')!.textContent = done ? `Has completado ${done} de ${items.length} lecciones. Tu progreso se guarda solo en este dispositivo.` : 'Aún no has completado ninguna lección. Tu progreso se guardará solo en este dispositivo.';
+</script>

@@ -1,0 +1,32 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { getCollection } from 'astro:content';
+import { LEVELS } from '../../../lib/content';
+const items = (await getCollection('strategies', ({ data }) => !data.draft)).sort((a, b) => ({ inicial: 0, intermedio: 1, avanzado: 2 })[a.data.level] - ({ inicial: 0, intermedio: 1, avanzado: 2 })[b.data.level]);
+const ev = { favorable: 'Evidencia favorable', mixta: 'Evidencia mixta', desfavorable: 'Evidencia desfavorable' } as const;
+---
+<Base title="Estrategias de inversión: qué son, qué cuestan y qué dice la evidencia" description="Indexación, valor, crecimiento, dividendos, swing trading e intradía: cómo funcionan, costes, evidencia a favor y en contra, riesgos y ejemplos." allowAds={true}>
+  <div class="container">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Estrategias' }]} />
+    <h1>Estrategias</h1>
+    <p class="lede">Cada estrategia explicada con la misma estructura: qué es, qué intenta, cómo funciona, qué exige, qué cuesta, qué dice la evidencia, cuándo falla, qué puede hacerte perder y un ejemplo favorable y otro desfavorable.</p>
+    <div class="callout note"><p>Ninguna estrategia es «mejor» para todo el mundo, y ninguna garantiza rentabilidad. Distinguimos las ventajas teóricas de los resultados demostrados. Pasar a estrategias de más corto plazo no es un nivel superior de aprendizaje: es otra actividad, con más costes y riesgos.</p></div>
+    <div class="grid cols-3">
+      {items.map((s) => (
+        <a class="card" href={`/es/estrategias/${s.id}/`}>
+          <span class="small"><span class={`tag level-${s.data.level}`}>{LEVELS[s.data.level]}</span> <span class={`tag ev-${s.data.evidence}`}>{ev[s.data.evidence]}</span></span>
+          <h2 class="h3">{s.data.title}</h2>
+          <p class="small">{s.data.description}</p>
+          <p class="small muted">Horizonte: {s.data.horizon}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>
+<style>
+  .h3 { font-size: 1.25rem; margin: 0.6rem 0 0.4rem; }
+  :global(.tag.ev-favorable) { background: var(--teal-soft); color: var(--teal); border-color: transparent; }
+  :global(.tag.ev-mixta) { background: var(--ochre-soft); color: var(--ochre); border-color: transparent; }
+  :global(.tag.ev-desfavorable) { background: var(--loss-soft); color: var(--loss); border-color: transparent; }
+</style>

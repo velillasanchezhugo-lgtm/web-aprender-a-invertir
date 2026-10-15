@@ -1,0 +1,33 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+import { lessons, TOPICS, LEVELS, TOOLS } from '../../../lib/content';
+export async function getStaticPaths() {
+  const all = await lessons();
+  const topics = [...new Set(all.map((l) => l.data.topic))];
+  return topics.map((t) => ({ params: { topic: t }, props: { items: all.filter((l) => l.data.topic === t) } }));
+}
+const { topic } = Astro.params;
+const { items } = Astro.props as { items: Awaited<ReturnType<typeof lessons>> };
+const meta = TOPICS[topic!] ?? { label: topic!, blurb: '' };
+const order = { inicial: 0, intermedio: 1, avanzado: 2 } as const;
+const sorted = [...items].sort((a, b) => order[a.data.level] - order[b.data.level]);
+const tools = [...new Set(items.flatMap((l) => l.data.tools))];
+---
+<Base title={`${meta.label}: lecciones para aprender a invertir`} description={`${meta.blurb} ${items.length} lecciones ordenadas de inicial a avanzado, con ejemplos numéricos y fuentes.`} allowAds={true}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/biblioteca/', label: 'Biblioteca' }, { label: meta.label }]} />
+    <p class="eyebrow">Tema</p>
+    <h1>{meta.label}</h1>
+    <p class="lede">{meta.blurb}</p>
+    <ol class="list">
+      {sorted.map((l) => (
+        <li><a href={`/es/lecciones/${l.id}/`}><strong>{l.data.title}</strong></a> <span class={`tag level-${l.data.level}`}>{LEVELS[l.data.level]}</span><br /><span class="small muted">{l.data.minutes} min · {l.data.description}</span></li>
+      ))}
+    </ol>
+    {tools.length > 0 && <p>Herramientas relacionadas: {tools.map((t, i) => <>{i > 0 && ' · '}<a href={`/es/herramientas/${t}/`}>{TOOLS[t]?.title ?? t}</a></>)}</p>}
+    <AdSlot slot="listing" minHeight={250} />
+  </div>
+</Base>
+<style>.list { padding-left: 1.2rem; } .list li { margin-bottom: 1rem; } .list strong { font-family: var(--serif); font-size: 1.15rem; }</style>

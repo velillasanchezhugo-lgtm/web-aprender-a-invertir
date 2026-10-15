@@ -1,0 +1,46 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import SourceList from '../../../components/SourceList.astro';
+import Quiz from '../../../components/Quiz.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+import { lessons, LEVELS, isoDate } from '../../../lib/content';
+export async function getStaticPaths() {
+  return (await getCollection('strategies', ({ data }) => !data.draft)).map((s) => ({ params: { slug: s.id }, props: { s } }));
+}
+const { s } = Astro.props as { s: CollectionEntry<'strategies'> };
+const d = s.data;
+const { Content } = await render(s);
+const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l]));
+const ev = { favorable: 'Favorable', mixta: 'Mixta', desfavorable: 'Desfavorable' } as const;
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description, inLanguage: 'es-ES', datePublished: isoDate(d.published), dateModified: isoDate(d.reviewed), author: { '@type': 'Organization', name: 'Redacción de Criterio' } };
+---
+<Base title={`${d.title}: cómo funciona, costes y evidencia`} description={d.description} ogType="article" jsonLd={jsonLd} allowAds={true}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/estrategias/', label: 'Estrategias' }, { label: d.title }]} />
+    <p class="eyebrow">Estrategia</p>
+    <h1>{d.title}</h1>
+    <p class="lede">{d.description}</p>
+    <dl class="facts">
+      <div><dt>Nivel</dt><dd><span class={`tag level-${d.level}`}>{LEVELS[d.level]}</span></dd></div>
+      <div><dt>Horizonte</dt><dd>{d.horizon}</dd></div>
+      <div><dt>Tiempo</dt><dd>{d.time}</dd></div>
+      <div><dt>Conocimientos</dt><dd>{d.knowledge}</dd></div>
+      <div class="wide"><dt>Evidencia: {ev[d.evidence]}</dt><dd>{d.evidenceNote}</dd></div>
+    </dl>
+    <article class="prose"><Content /></article>
+    {d.quiz.length > 0 && <Quiz id={`estrategia-${s.id}`} questions={d.quiz} />}
+    {d.related.length > 0 && (
+      <section><h2>Lecciones relacionadas</h2><ul>{d.related.filter((r) => ls[r]).map((r) => <li><a href={`/es/lecciones/${r}/`}>{ls[r].data.title}</a></li>)}</ul></section>
+    )}
+    <SourceList ids={d.sources} author={d.author} reviewer={d.reviewer} published={d.published} reviewed={d.reviewed} status={d.status} jurisdiction={d.jurisdiction} corrections={d.corrections} />
+    <AdSlot slot="inArticle" />
+  </div>
+</Base>
+<style>
+  .facts { display: grid; gap: 0.6rem 1.2rem; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem; margin: 1.5rem 0; }
+  .facts dt { font-size: 0.8rem; color: var(--ink-3); font-weight: 600; }
+  .facts dd { margin: 0.2rem 0 0; font-size: 0.95rem; }
+  .facts .wide { grid-column: 1 / -1; }
+</style>
