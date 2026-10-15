@@ -1,0 +1,10 @@
+---
+import LegalPage from '../../components/LegalPage.astro';
+import corrections from '../../data/corrections.json';
+---
+<LegalPage title="Correcciones" description="Cómo corregimos errores y el historial de correcciones y cambios sustanciales del contenido." updated="2026-10-15">
+  <h2>Cómo corregimos</h2>
+  <p>Si detectas un error, escríbenos desde <a href="/es/contacto/">contacto</a> indicando la página y, si puedes, la fuente correcta. Revisamos cada aviso. Los errores relevantes se corrigen en la página, que muestra la fecha y la nota de corrección, y se registran aquí.</p>
+  <h2>Historial</h2>
+  {corrections.length ? <ul>{corrections.map((c: any) => <li><time>{c.date}</time> · <a href={c.url}>{c.page}</a>: {c.note}</li>)}</ul> : <p>Todavía no hay correcciones registradas. El contenido se publicó por primera vez el 15 de octubre de 2026.</p>}
+</LegalPage>

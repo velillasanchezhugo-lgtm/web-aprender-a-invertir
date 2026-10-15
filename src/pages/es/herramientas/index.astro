@@ -1,0 +1,19 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { TOOLS } from '../../../lib/content';
+---
+<Base title="Herramientas educativas de inversión" description="Calculadoras de interés compuesto, inflación con datos del INE, caídas, diversificación, apalancamiento, objetivos, comisiones y una cartera de práctica ficticia." allowAds={false}>
+  <div class="container">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Herramientas' }]} />
+    <h1>Herramientas</h1>
+    <p class="lede">Cada herramienta muestra sus fórmulas, unidades, supuestos, limitaciones y el origen de sus datos. Ninguna simula cotizaciones en directo ni ofrece probabilidades de éxito.</p>
+    <div class="grid cols-3">
+      {Object.entries(TOOLS).map(([id, t]) => (
+        <a class="card" href={`/es/herramientas/${id}/`}><h2 class="h3">{t.title}</h2><p class="small">{t.blurb}</p></a>
+      ))}
+    </div>
+    <div class="callout note"><p class="callout-title">Nominal y real</p><p>Siempre que tiene sentido, separamos el resultado en euros corrientes (nominal) y en euros con el poder de compra de hoy (real). Una tasa constante es un supuesto para entender el mecanismo, no el comportamiento esperado del mercado.</p></div>
+  </div>
+</Base>
+<style>.h3 { font-size: 1.2rem; margin: 0 0 0.4rem; }</style>

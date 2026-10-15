@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { lessons, TOOLS } from '../../lib/content';
+const all = await lessons();
+const meta = Object.fromEntries(all.map((l) => [l.id, { t: l.data.title, route: l.data.route?.order ?? null, q: l.data.quiz.length }]));
+const checklist = ['Tengo un fondo de emergencia suficiente.', 'He controlado mis deudas caras.', 'Tengo un objetivo con importe y fecha, y no necesitaré este dinero antes.', 'Sé qué es el producto y de dónde sale su rentabilidad.', 'Sé cómo puede perder valor y cuánto podría caer en un mal año.', 'Conozco todos sus costes y cómo tributa.', 'Está diversificado.', 'He leído su documento de datos fundamentales (KID) o su folleto.', 'He comprobado la entidad, su supervisor, su registro y su sistema de garantía.', 'Sé qué haría si cayera un 30 %, y por qué.'];
+---
+<Base title="Mi progreso" description="Tu progreso, marcadores y repasos, guardados solo en este dispositivo. Puedes exportarlos o borrarlos." noindex={true} allowAds={false}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Mi progreso' }]} />
+    <h1>Mi progreso</h1>
+    <p class="lede">Todo lo que ves aquí se guarda solo en este navegador. No hay cuentas ni servidores: si cambias de dispositivo o borras los datos del navegador, se pierde.</p>
+    <section aria-labelledby="h-route"><h2 id="h-route">Ruta «Empieza desde cero»</h2><div class="progress-bar"><span id="bar"></span></div><p id="route-txt" class="small"></p><p id="continue"></p></section>
+    <section aria-labelledby="h-learn"><h2 id="h-learn">Lo que has aprendido</h2>
+      <div class="kpis"><div class="kpi"><span class="k">Lecciones completadas</span><span class="v" id="k-done">0</span></div><div class="kpi"><span class="k">Repasos respondidos</span><span class="v" id="k-rev">0</span></div><div class="kpi"><span class="k">Aciertos en repasos</span><span class="v" id="k-acc">—</span></div><div class="kpi"><span class="k">Herramientas usadas</span><span class="v" id="k-tools">0</span></div></div>
+      <ul id="done-list"></ul>
+      <p id="review-hint" class="small"></p>
+    </section>
+    <section aria-labelledby="h-bm"><h2 id="h-bm">Marcadores</h2><ul id="bm"></ul></section>
+    <section aria-labelledby="h-check"><h2 id="h-check">Mi lista de comprobación antes de invertir</h2>
+      <form id="chk">{checklist.map((c, i) => <label class="choice"><input type="checkbox" name="c" value={i} /> <span>{c}</span></label>)}</form>
+    </section>
+    <section aria-labelledby="h-rem"><h2 id="h-rem">Recordatorios (opcional)</h2>
+      <p>No enviamos correos ni notificaciones. Si quieres, puedes descargar un archivo de calendario con cuatro recordatorios semanales para estudiar y añadirlo a tu aplicación de calendario.</p>
+      <div class="row"><label for="rday" class="sr-only">Día</label><select id="rday"><option value="1">Lunes</option><option value="2">Martes</option><option value="3">Miércoles</option><option value="4">Jueves</option><option value="5">Viernes</option><option value="6" selected>Sábado</option><option value="0">Domingo</option></select>
+      <label for="rtime" class="sr-only">Hora</label><input id="rtime" type="time" value="10:00" /><button class="btn ghost small" id="ics" type="button">Descargar recordatorios (.ics)</button></div>
+    </section>
+    <section aria-labelledby="h-data"><h2 id="h-data">Tus datos</h2>
+      <p class="small">Guardamos en este navegador, con el prefijo <code>criterio:</code>: progreso, marcadores, repasos, uso de herramientas, tema visual, tu lista de comprobación y, solo si lo pediste, las respuestas del test y el ejercicio final. Nada se envía a terceros ni a sistemas publicitarios.</p>
+      <div class="row"><button class="btn ghost small" id="export" type="button">Exportar mis datos (JSON)</button><button class="btn danger small" id="wipe" type="button">Borrar todos mis datos</button></div>
+      <p id="msg" class="small" aria-live="polite"></p>
+    </section>
+  </div>
+  <script type="application/json" id="meta" set:html={JSON.stringify({ meta, tools: Object.fromEntries(Object.entries(TOOLS).map(([k, v]) => [k, v.title])) })} />
+</Base>
+<style>.row { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; } .row select, .row input { width: auto; } section { margin-bottom: 2rem; }</style>
+<script>
+  import { getProgress, exportAll, wipeAll, read, write } from '../../scripts/store';
+  const { meta, tools } = JSON.parse(document.getElementById('meta')!.textContent!) as { meta: Record<string, { t: string; route: number | null; q: number }>; tools: Record<string, string> };
+  const $ = (id: string) => document.getElementById(id)!;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  function render() {
+    const p = getProgress();
+    const route = Object.entries(meta).filter(([, m]) => m.route).sort((a, b) => a[1].route! - b[1].route!);
+    const done = route.filter(([s]) => p.completed[s]).length;
+    ($('bar') as HTMLElement).style.width = `${(done / route.length) * 100}%`;
+    $('route-txt').textContent = `${done} de ${route.length} lecciones completadas.`;
+    const next = route.find(([s]) => !p.completed[s]);
+    $('continue').innerHTML = next ? `Siguiente: <a href="/es/lecciones/${next[0]}/">${esc(next[1].t)}</a>` : '¡Ruta completada! Haz el <a href="/es/empieza-desde-cero/ejercicio-final/">ejercicio final</a> si aún no lo has hecho.';
+    const doneSlugs = Object.keys(p.completed).filter((s) => meta[s]);
+    $('k-done').textContent = String(doneSlugs.length);
+    const revs = Object.values(p.reviews);
+    $('k-rev').textContent = String(revs.length);
+    const c = revs.reduce((a, r) => a + r.correct, 0), t = revs.reduce((a, r) => a + r.total, 0);
+    $('k-acc').textContent = t ? `${Math.round((c / t) * 100)} %` : '—';
+    $('k-tools').textContent = String(Object.keys(p.tools).length);
+    $('done-list').innerHTML = doneSlugs.map((s) => `<li><a href="/es/lecciones/${s}/">${esc(meta[s].t)}</a> <span class="small muted">${new Date(p.completed[s]).toLocaleDateString('es-ES')}</span></li>`).join('');
+    const weak = Object.entries(p.reviews).filter(([id, r]) => meta[id] && r.correct < r.total).map(([id]) => id);
+    $('review-hint').innerHTML = weak.length ? `Conviene repasar: ${weak.map((s) => `<a href="/es/lecciones/${s}/#quiz-${s}">${esc(meta[s].t)}</a>`).join(' · ')}` : '';
+    $('bm').innerHTML = p.bookmarks.length ? p.bookmarks.filter((u) => u.startsWith('/es/')).map((u) => { const slug = u.split('/').filter(Boolean).pop()!; return `<li><a href="${esc(u)}">${esc(meta[slug]?.t ?? u)}</a></li>`; }).join('') : '<li class="muted">Aún no has guardado ninguna página.</li>';
+    const chk = read<{ items: string[] }>('checklist', { items: [] });
+    document.querySelectorAll<HTMLInputElement>('#chk input').forEach((i) => (i.checked = chk.items.includes(i.value)));
+  }
+  $('chk').addEventListener('change', () => write('checklist', { items: [...document.querySelectorAll<HTMLInputElement>('#chk input:checked')].map((i) => i.value) }));
+  $('export').addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(exportAll(), null, 2)], { type: 'application/json' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'criterio-mis-datos.json'; a.click(); URL.revokeObjectURL(a.href);
+  });
+  $('wipe').addEventListener('click', () => {
+    if (!confirm('¿Borrar todo tu progreso, marcadores, respuestas y notas guardadas en este navegador? No se puede deshacer.')) return;
+    wipeAll(); render(); $('msg').textContent = 'Datos borrados de este navegador.';
+  });
+  $('ics').addEventListener('click', () => {
+    const day = Number(($('rday') as HTMLSelectElement).value); const [hh, mm] = ($('rtime') as HTMLInputElement).value.split(':').map(Number);
+    const d = new Date(); d.setHours(hh, mm, 0, 0); while (d.getDay() !== day || d < new Date()) d.setDate(d.getDate() + 1);
+    const pad = (n: number) => String(n).padStart(2, '0');
+    const fmt = (x: Date) => `${x.getFullYear()}${pad(x.getMonth() + 1)}${pad(x.getDate())}T${pad(x.getHours())}${pad(x.getMinutes())}00`;
+    const end = new Date(d.getTime() + 30 * 60000);
+    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Criterio//Recordatorios//ES', 'BEGIN:VEVENT', `UID:${Date.now()}@criterio`, `DTSTAMP:${fmt(new Date())}`, `DTSTART:${fmt(d)}`, `DTEND:${fmt(end)}`, 'RRULE:FREQ=WEEKLY;COUNT=4', 'SUMMARY:Criterio: 30 minutos para aprender a invertir', `DESCRIPTION:Continúa tu plan: ${location.origin}/es/progreso/`, 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'criterio-recordatorios.ics'; a.click(); URL.revokeObjectURL(a.href);
+  });
+  render();
+</script>

@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+<Base title="Buscar" description="Busca en las lecciones, estrategias, historias, herramientas y el glosario de Criterio." noindex={true} allowAds={false}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Buscar' }]} />
+    <h1>Buscar</h1>
+    <form role="search" id="sf" action="/es/buscar/" method="get">
+      <label for="q" class="sr-only">Término de búsqueda</label>
+      <div class="row"><input id="q" name="q" type="search" placeholder="Por ejemplo: traspaso, inflación, apalancamiento" autocomplete="off" /><button class="btn" type="submit">Buscar</button></div>
+    </form>
+    <p id="status" class="small muted" aria-live="polite"></p>
+    <ol id="results" class="results"></ol>
+    <noscript><p>La búsqueda necesita JavaScript. Puedes explorar la <a href="/es/biblioteca/">biblioteca</a> o el <a href="/es/glosario/">glosario</a>.</p></noscript>
+  </div>
+</Base>
+<style>
+  .row { display: flex; gap: 0.5rem; } .row input { flex: 1; }
+  .results { list-style: none; padding: 0; margin: 1rem 0; }
+  .results :global(li) { border-bottom: 1px solid var(--rule); padding: 0.9rem 0; }
+  .results :global(a) { font-family: var(--serif); font-size: 1.15rem; font-weight: 650; }
+  .results :global(mark) { background: var(--ochre-soft); color: inherit; }
+</style>
+<script>
+  import { search, type Doc } from '../../scripts/search';
+  const q = document.getElementById('q') as HTMLInputElement;
+  const status = document.getElementById('status')!;
+  const list = document.getElementById('results')!;
+  let docs: Doc[] | null = null;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  async function run(push = false) {
+    const term = q.value.trim();
+    if (push) history.replaceState(null, '', term ? `?q=${encodeURIComponent(term)}` : location.pathname);
+    if (!term) { list.innerHTML = ''; status.textContent = ''; return; }
+    if (!docs) { status.textContent = 'Cargando…'; docs = await (await fetch('/es/buscar.json')).json(); }
+    const res = search(docs!, term).slice(0, 30);
+    status.textContent = res.length ? `${res.length} resultados para «${term}»` : `Sin resultados para «${term}». Prueba con otra palabra o explora la biblioteca.`;
+    list.innerHTML = res.map((r) => `<li><span class="tag">${esc(r.doc.k)}</span> <a href="${esc(r.doc.u)}">${esc(r.doc.t)}</a><p class="small">${esc(r.doc.d)}</p></li>`).join('');
+  }
+  q.value = new URLSearchParams(location.search).get('q') ?? '';
+  document.getElementById('sf')!.addEventListener('submit', (e) => { e.preventDefault(); run(true); });
+  let timer: number | undefined;
+  q.addEventListener('input', () => { clearTimeout(timer); timer = window.setTimeout(() => run(true), 200); });
+  run();
+</script>

@@ -43,7 +43,7 @@ export const TOOLS: Record<string, { title: string; blurb: string }> = {
   'simulador-caidas': { title: 'Caídas y recuperación', blurb: 'Cuánto hay que subir para recuperar una caída y cuánto se tarda.' },
   'diversificacion-rebalanceo': { title: 'Diversificación y rebalanceo', blurb: 'Cómo baja el riesgo al diversificar y qué hace el rebalanceo.' },
   apalancamiento: { title: 'Simulador de apalancamiento', blurb: 'Cómo el apalancamiento amplifica pérdidas, con margen y financiación.' },
-  'planificador-objetivos': { title: 'Planificador de objetivos', blurb: 'Cuánto aportar al mes para un objetivo con fecha.' },
+  'planificador-objetivos': { title: 'Planificador de objetivos', blurb: 'Cuánto aportar al mes para alcanzar un objetivo con importe y fecha, con varios supuestos.' },
   'cartera-practica': { title: 'Cartera de práctica', blurb: 'Reparte 10.000 € ficticios y observa escenarios ficticios.' },
 };
 

@@ -1,0 +1,41 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import data from '../../../data/brokers.json';
+import { sourceById, fmtDate } from '../../../lib/content';
+export function getStaticPaths() { return data.brokers.map((b) => ({ params: { slug: b.id }, props: { b } })); }
+const { b } = Astro.props as { b: any };
+const V = { si: 'Verificado', parcial: 'Parcial', no: 'Pendiente' } as const;
+const fields: [string, string][] = [['entity', 'Entidad jurídica'], ['regulator', 'Supervisor y registro'], ['country', 'País y condiciones'], ['products', 'Productos'], ['realVsDerivatives', 'Activos reales y derivados'], ['automatic', 'Aportaciones automáticas'], ['fractions', 'Fracciones'], ['accounts', 'Tipos de cuenta'], ['support', 'Atención e idioma'], ['tax', 'Documentación fiscal'], ['transfer', 'Transferencia de valores'], ['protection', 'Protección']];
+const feeRows: [string, string][] = [['buySell', 'Compra y venta'], ['custody', 'Custodia y fijos'], ['fx', 'Cambio de divisa'], ['withdrawal', 'Retirada'], ['inactivity', 'Inactividad'], ['external', 'Otros costes']];
+const srcLink = (id: string) => { const s = sourceById(id); return s ? { href: s.url, title: s.title, checked: s.checked } : null; };
+---
+<Base title={`${b.name}: entidad, supervisor, tarifas y protección`} description={`Ficha de ${b.name} para residentes en España: entidad jurídica, supervisor, productos, comisiones, protección y fiscalidad, con fuente y fecha de revisión.`} allowAds={false}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/brokers/', label: 'Brókeres' }, { label: b.name }]} />
+    <p class="eyebrow">Ficha de intermediario · revisada el {fmtDate(new Date(data.reviewed))}</p>
+    <h1>{b.name}</h1>
+    <p class="small muted">Información objetiva tomada de la documentación de la entidad. No es una recomendación ni contiene enlaces de afiliación.</p>
+    <h2>Datos de la entidad</h2>
+    <dl class="sheet">
+      {fields.map(([k, label]) => { const f = b[k]; const s = srcLink(f.src); return (
+        <div><dt>{label} <span class={`vtag v-${f.v}`}>{V[f.v as keyof typeof V]}</span></dt><dd>{f.value}{f.registry && <> · <a href={f.registry} rel="noopener" target="_blank">Registro del supervisor</a></>}{s && <span class="small muted"> Fuente: {s.href ? <a href={s.href} rel="noopener" target="_blank">{s.title}</a> : s.title}.</span>}</dd></div>
+      ); })}
+    </dl>
+    <h2>Costes <span class={`vtag v-${b.fees.v}`}>{V[b.fees.v as keyof typeof V]}</span></h2>
+    <dl class="sheet">
+      {feeRows.map(([k, label]) => <div><dt>{label}</dt><dd>{b.fees.text[k]}</dd></div>)}
+    </dl>
+    <p class="small muted">Fuente de tarifas: {(() => { const s = srcLink(b.fees.src); return s?.href ? <a href={s.href} rel="noopener" target="_blank">{s.title}</a> : s?.title; })()}. Comprueba siempre la tarifa vigente antes de operar.</p>
+    <div class="grid cols-2">
+      <div class="callout note"><p class="callout-title">Ventajas</p><ul>{b.pros.map((p: string) => <li>{p}</li>)}</ul></div>
+      <div class="callout warn"><p class="callout-title">Limitaciones</p><ul>{b.cons.map((p: string) => <li>{p}</li>)}</ul></div>
+    </div>
+    <p><a class="btn secondary" href="/es/herramientas/comparador-comisiones/">Comparar costes en tu caso</a></p>
+  </div>
+</Base>
+<style>
+  .sheet > div { border-bottom: 1px solid var(--rule); padding: 0.7rem 0; }
+  .sheet dt { font-weight: 700; font-size: 0.9rem; }
+  .sheet dd { margin: 0.25rem 0 0; }
+</style>

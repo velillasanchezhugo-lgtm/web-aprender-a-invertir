@@ -1,0 +1,11 @@
+---
+import { OWNER } from '../config/site';
+const P = '[Pendiente: completar en src/config/site.ts]';
+---
+<ul>
+  <li><strong>Titular:</strong> {OWNER.legalName || P}</li>
+  <li><strong>NIF:</strong> {OWNER.taxId || P}</li>
+  <li><strong>Domicilio:</strong> {OWNER.address || P}</li>
+  <li><strong>Correo electrónico:</strong> {OWNER.email ? <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a> : P}</li>
+  {OWNER.registry && <li><strong>Datos registrales:</strong> {OWNER.registry}</li>}
+</ul>

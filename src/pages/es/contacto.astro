@@ -1,0 +1,15 @@
+---
+import LegalPage from '../../components/LegalPage.astro';
+import { OWNER } from '../../config/site';
+---
+<LegalPage title="Contacto" description="Cómo contactar con Criterio para avisar de errores, proponer temas o ejercer tus derechos de privacidad." updated="2026-10-15">
+  {OWNER.email
+    ? <p>Escríbenos a <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a>.</p>
+    : <p class="callout warn">[Pendiente: el titular debe indicar un correo de contacto en <code>src/config/site.ts</code> antes de publicar.]</p>}
+  <h2>Antes de escribir</h2>
+  <ul>
+    <li>No podemos darte asesoramiento personalizado ni opinar sobre si comprar un producto concreto.</li>
+    <li>Si crees haber sido víctima de un fraude, contacta con la CNMV (900 535 015) o con la policía.</li>
+    <li>Para reclamar a una entidad financiera, sigue el procedimiento de su servicio de atención al cliente y, después, el de la CNMV o el Banco de España.</li>
+  </ul>
+</LegalPage>

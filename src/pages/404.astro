@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Página no encontrada" description="La página que buscas no existe o ha cambiado de dirección." noindex={true}>
+  <div class="narrow">
+    <h1>No encontramos esta página</h1>
+    <p class="lede">Puede que haya cambiado de dirección. Prueba a buscar o vuelve al inicio.</p>
+    <form action="/es/buscar/" method="get" role="search"><label for="q">Buscar</label><div style="display:flex;gap:.5rem"><input id="q" name="q" type="search" /><button class="btn" type="submit">Buscar</button></div></form>
+    <p><a href="/es/">Volver al inicio</a> · <a href="/es/empieza-desde-cero/">Empieza desde cero</a></p>
+  </div>
+</Base>

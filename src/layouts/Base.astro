@@ -67,6 +67,7 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     import { initThemeToggle } from '../scripts/theme';
     initThemeToggle();
     initGlossaryPopovers();
+    document.querySelectorAll<HTMLElement>('.table-wrap:not([tabindex])').forEach((el) => { el.tabIndex = 0; el.setAttribute('role', 'region'); el.setAttribute('aria-label', 'Tabla (desplazable)'); });
   </script>
 </body>
 </html>

@@ -45,7 +45,7 @@ import ToolLayout from '../../../components/ToolLayout.astro';
   <Fragment slot="method">
     <details class="method" open>
       <summary>Escenarios ficticios utilizados</summary>
-      <div class="table-wrap"><table class="data"><thead><tr><th>Escenario</th><th class="num">Liquidez</th><th class="num">Bonos</th><th class="num">Acciones globales</th><th class="num">Una empresa</th><th class="num">Inflación</th></tr></thead>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabla (desplazable)"><table class="data"><thead><tr><th>Escenario</th><th class="num">Liquidez</th><th class="num">Bonos</th><th class="num">Acciones globales</th><th class="num">Una empresa</th><th class="num">Inflación</th></tr></thead>
       <tbody id="scen-table"></tbody></table></div>
       <ul>
         <li>Cada año: <span class="formula">valor_i = valor_i × (1 + r_i) × (1 − 0,2 %)</span> (costes anuales supuestos). Sin rebalanceo automático: los pesos derivan.</li>

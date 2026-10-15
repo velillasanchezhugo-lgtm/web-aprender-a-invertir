@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import { ownerComplete } from '../config/site';
+interface Props { title: string; description: string; updated: string; legal?: boolean }
+const { title, description, updated, legal = false } = Astro.props;
+---
+<Base title={title} description={description} noindex={legal && !ownerComplete} allowAds={false}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: title }]} />
+    <h1>{title}</h1>
+    <p class="small muted">Última actualización: {new Date(updated).toLocaleDateString('es-ES', { timeZone: 'UTC' })}</p>
+    {legal && <div class="callout warn small"><p class="callout-title">Borrador pendiente de revisión jurídica</p><p>Este texto es una base de trabajo. Debe revisarlo un profesional y completarse con los datos reales del titular antes de publicar la web.{!ownerComplete && ' Los datos del titular aún no se han introducido.'}</p></div>}
+    <div class="prose"><slot /></div>
+  </div>
+</Base>

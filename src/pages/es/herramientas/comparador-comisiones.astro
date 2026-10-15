@@ -17,7 +17,7 @@ const list = brokers.brokers.map((b) => ({ id: b.id, name: b.name, verified: b.f
       <div class="field"><label for="n">Operaciones al año</label><input id="n" name="n" type="number" min="1" max="2000" value="12" /></div>
     </form>
     <div class="tool-output" aria-live="polite">
-      <div class="table-wrap"><table class="data"><thead><tr><th>Intermediario</th><th class="num">Por operación</th><th class="num">Al año</th><th class="num">% sobre lo invertido</th><th>Notas</th></tr></thead><tbody id="rows"></tbody></table></div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Tabla (desplazable)"><table class="data"><thead><tr><th>Intermediario</th><th class="num">Por operación</th><th class="num">Al año</th><th class="num">% sobre lo invertido</th><th>Notas</th></tr></thead><tbody id="rows"></tbody></table></div>
       <p class="small muted">Ordenado de menor a mayor coste estimado <strong>solo para esta situación</strong>. No es una clasificación general: con otros importes el orden cambia, y el coste no es el único criterio (protección, fiscalidad, servicio). No hay enlaces de afiliación.</p>
     </div>
   </div>

@@ -1,0 +1,24 @@
+---
+import LegalPage from '../../components/LegalPage.astro';
+import { adsActive } from '../../config/site';
+---
+<LegalPage title="Política de cookies" description="Qué cookies y tecnologías de almacenamiento usa este sitio y cómo gestionar tu consentimiento." updated="2026-10-15" legal>
+  <h2>Situación actual</h2>
+  {adsActive
+    ? <p>El sitio usa publicidad de Google AdSense, que puede utilizar cookies y otros identificadores. Solo se usan los no necesarios si das tu consentimiento en el mensaje de la plataforma de gestión del consentimiento, que permite aceptar, rechazar o configurar con la misma facilidad, y retirar el consentimiento después desde «Configurar privacidad» en el pie de página.</p>
+    : <p>El sitio <strong>no usa cookies de terceros, publicidad ni analítica</strong>. Por eso no ves un aviso de cookies.</p>}
+  <h2>Almacenamiento local necesario</h2>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Tabla (desplazable)"><table>
+    <thead><tr><th>Clave</th><th>Finalidad</th><th>Duración</th><th>Tipo</th></tr></thead>
+    <tbody>
+      <tr><td><code>criterio:progress</code></td><td>Lecciones completadas, marcadores, repasos y uso de herramientas</td><td>Hasta que lo borres</td><td>Propia, solicitada por ti</td></tr>
+      <tr><td><code>criterio:theme</code></td><td>Recordar el tema claro u oscuro</td><td>Hasta que lo borres</td><td>Propia, preferencia</td></tr>
+      <tr><td><code>criterio:quiz</code></td><td>Respuestas del test (solo si marcas «guardar»)</td><td>Hasta que lo borres</td><td>Propia, solicitada por ti</td></tr>
+      <tr><td><code>criterio:checklist</code>, <code>criterio:practice</code>, <code>criterio:final-exercise</code></td><td>Tu lista de comprobación, la cartera de práctica y el ejercicio final</td><td>Hasta que lo borres</td><td>Propia, solicitada por ti</td></tr>
+    </tbody>
+  </table></div>
+  <p>Este almacenamiento no se envía a ningún servidor. Según el criterio de la AEPD sobre cookies técnicas y de preferencias solicitadas por el usuario, puede considerarse exceptuado del deber de consentimiento; [pendiente de confirmar en la revisión jurídica].</p>
+  <h2>Si se activa la publicidad</h2>
+  <p>Google exige a los editores que muestran anuncios en el Espacio Económico Europeo, Reino Unido y Suiza usar una plataforma de gestión del consentimiento certificada por Google e integrada con el marco TCF de IAB. Además, la normativa española (LSSI, art. 22.2) y la guía de la AEPD exigen consentimiento previo, informado y revocable para cookies no necesarias. Usar anuncios no personalizados no elimina por sí solo todas estas obligaciones.</p>
+  <p>Gestiona también las cookies desde la configuración de tu navegador.</p>
+</LegalPage>

@@ -1,0 +1,72 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import data from '../../../data/brokers.json';
+import { fmtDate } from '../../../lib/content';
+import { AFFILIATES } from '../../../config/site';
+const V = { si: 'Verificado', parcial: 'Parcial', no: 'Pendiente' } as const;
+const rows: { label: string; key: string }[] = [
+  { label: 'Entidad que presta el servicio', key: 'entity' },
+  { label: 'Supervisor', key: 'regulator' },
+  { label: 'Compraventa', key: 'fees.buySell' },
+  { label: 'Custodia y otros fijos', key: 'fees.custody' },
+  { label: 'Cambio de divisa', key: 'fees.fx' },
+  { label: 'Protección si la entidad falla', key: 'protection' },
+  { label: 'Fiscalidad', key: 'tax' },
+];
+const get = (b: any, k: string) => k.startsWith('fees.') ? { v: b.fees.v, value: b.fees.text[k.slice(5)] } : b[k];
+---
+<Base title="Comparador de brókeres para residentes en España" description="Entidad, supervisor, protección, productos y tarifas verificadas en fuentes oficiales de MyInvestor, DEGIRO, Interactive Brokers y Trade Republic, con fecha de revisión." allowAds={false}>
+  <div class="container">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Brókeres' }]} />
+    <h1>Comparador de brókeres</h1>
+    <p class="lede">Datos de cada intermediario tomados de su documentación oficial, con fuente y fecha. No hay un «mejor bróker» universal: depende de cómo vayas a invertir.</p>
+    <div class="grid cols-3 intro">
+      <div class="callout note small"><p class="callout-title">Criterio de selección</p><p>{data.criteria}</p></div>
+      <div class="callout note small"><p class="callout-title">Revisión</p><p>Tarifas consultadas el {fmtDate(new Date(data.reviewed))}. Cada dato indica si está verificado, es parcial o está pendiente. Si algo no está claro en la fuente, lo decimos.</p></div>
+      <div class="callout note small"><p class="callout-title">Sin afiliación</p><p>{AFFILIATES.enabled ? 'Algunos enlaces son de afiliación y están marcados.' : 'No cobramos de ningún intermediario y los enlaces no son de afiliación.'} La remuneración nunca decidiría el orden. <a href="/es/financiacion/">Más información</a>.</p></div>
+    </div>
+    <p><a class="btn" href="/es/herramientas/comparador-comisiones/">Calcular el coste en mi caso</a></p>
+    <div class="table-wrap" tabindex="0" role="region" aria-label="Tabla (desplazable)">
+      <table class="data compare">
+        <caption class="sr-only">Comparación de intermediarios</caption>
+        <thead><tr><th scope="col">Dato</th>{data.brokers.map((b) => <th scope="col"><a href={`/es/brokers/${b.id}/`}>{b.name}</a></th>)}</tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr><th scope="row">{r.label}</th>{data.brokers.map((b) => { const c = get(b, r.key); return <td><span class={`vtag v-${c.v}`}>{V[c.v as keyof typeof V]}</span> {c.value}</td>; })}</tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <section class="prose" aria-labelledby="prot">
+      <h2 id="prot">Protección de activos, garantía de depósitos e indemnización: no es lo mismo</h2>
+      <ul>
+        <li><strong>Segregación de activos</strong>: tus valores deben estar separados del patrimonio de la entidad. Es la primera protección si la entidad quiebra.</li>
+        <li><strong>Garantía de depósitos</strong> (FGD en España): cubre el <em>efectivo</em> en entidades de crédito hasta 100.000 € por titular y entidad.</li>
+        <li><strong>Sistemas de indemnización de inversores</strong> (FOGAIN en España; en otros países de la UE, el suyo, con mínimo de 20.000 €): actúan si la entidad no puede devolverte tu dinero o tus valores.</li>
+        <li><strong>Ninguno de ellos te protege de las pérdidas de mercado.</strong> Si tus acciones caen, no hay garantía que lo compense.</li>
+        <li>Los <strong>CFD y otros derivados</strong> son contratos con la entidad, no valores depositados a tu nombre: su protección es distinta.</li>
+      </ul>
+      <h2>Conclusiones editoriales por uso (no son recomendaciones personales)</h2>
+      <p>Con los datos verificados en esta revisión y solo para comisiones explícitas:</p>
+      <ul>
+        <li><strong>Aportaciones pequeñas y periódicas</strong>: las comisiones mínimas por operación pesan mucho. Los planes de inversión sin cargo (como el que Trade Republic documentaba en 2023) o los fondos indexados sin comisión de compra suelen ser más baratos que comprar ETF manualmente cada mes.</li>
+        <li><strong>Fondos indexados con traspasos</strong>: las entidades que comercializan fondos con el régimen de traspasos español (entre las analizadas, MyInvestor y, según su anuncio de 2025, Trade Republic) permiten cambiar de fondo sin tributar en ese momento, algo que los ETF no ofrecen.</li>
+        <li><strong>Compras en otra divisa</strong>: el coste de cambio varía mucho (del 0,002 % con mínimo de 2 USD en Interactive Brokers al 0,30 % en MyInvestor, según sus tarifas).</li>
+        <li><strong>Simplicidad fiscal</strong>: una entidad española informa a la AEAT y practica retenciones; con entidades extranjeras, la declaración y las obligaciones informativas corresponden más a ti.</li>
+        <li><strong>Protección</strong>: los sistemas de indemnización difieren: 100.000 € en España (FOGAIN) frente al 90 % hasta 20.000 € en el sistema alemán, por ejemplo.</li>
+      </ul>
+      <h2>Cómo comprobarlo tú</h2>
+      <p>Busca la entidad en el <a href="https://www.cnmv.es/portal/inversor/entidades-autorizadas" rel="noopener" target="_blank">registro de la CNMV</a> y en el de su supervisor de origen, compara el nombre y el dominio, y lee el folleto de tarifas vigente. Repasa la lección <a href="/es/lecciones/investigar-broker-y-fraudes/">Cómo investigar un bróker y detectar fraudes</a>.</p>
+    </section>
+  </div>
+</Base>
+<style>
+  .intro { margin: 1.5rem 0; } .intro .callout { margin: 0; }
+  .compare td, .compare th { min-width: 200px; font-size: 0.88rem; }
+  .compare th[scope=row] { min-width: 150px; position: sticky; left: 0; background: var(--card); }
+  :global(.vtag) { display: inline-block; font: 700 0.68rem/1 var(--sans); text-transform: uppercase; letter-spacing: 0.04em; padding: 0.3em 0.45em; border-radius: 4px; margin-right: 0.25rem; }
+  :global(.v-si) { background: var(--teal-soft); color: var(--teal); }
+  :global(.v-parcial) { background: var(--ochre-soft); color: var(--ochre); }
+  :global(.v-no) { background: var(--loss-soft); color: var(--loss); }
+</style>

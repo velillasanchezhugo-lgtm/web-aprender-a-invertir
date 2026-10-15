@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import sources from '../../data/sources.json';
+import { fmtDate } from '../../lib/content';
+const entries = Object.entries(sources).filter(([k]) => k !== '_doc') as [string, { title: string; publisher: string; url: string | null; type: string; checked: string | null }][];
+const types: Record<string, string> = { normativa: 'Normativa', supervisor: 'Supervisores y organismos públicos', fiscal: 'Fiscalidad', datos: 'Datos', intermediario: 'Documentación de intermediarios', empresa: 'Empresas', academico: 'Investigación académica', investigacion: 'Investigación de gestoras', libro: 'Libros', judicial: 'Resoluciones y procedimientos judiciales', plataforma: 'Plataformas' };
+const grouped = Object.keys(types).map((t) => [t, entries.filter(([, s]) => s.type === t)] as const).filter(([, l]) => l.length);
+---
+<Base title="Fuentes" description="Registro de todas las fuentes utilizadas en Criterio: normativa, supervisores, AEAT, INE, documentación de intermediarios e investigación académica, con fecha de consulta." allowAds={false}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Fuentes' }]} />
+    <h1>Fuentes</h1>
+    <p class="lede">Todas las fuentes que citamos, con la fecha en que las consultamos. Las marcadas como «no consultada en línea» son referencias bibliográficas cuya edición y páginas están pendientes de comprobar.</p>
+    {grouped.map(([t, list]) => (
+      <section><h2>{types[t]}</h2><ul>{list.map(([id, s]) => <li id={id}>{s.url ? <a href={s.url} rel="noopener" target="_blank">{s.title}</a> : s.title}. <span class="muted small">{s.publisher}. {s.checked ? `Consultada el ${fmtDate(new Date(s.checked))}.` : 'No consultada en línea en esta revisión.'}</span></li>)}</ul></section>
+    ))}
+  </div>
+</Base>
