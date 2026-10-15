@@ -1,7 +1,7 @@
-const eur0 = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
-const eur2 = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const eur0 = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0, useGrouping: 'always' } as Intl.NumberFormatOptions);
+const eur2 = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: 'always' } as Intl.NumberFormatOptions);
 const pct1 = new Intl.NumberFormat('es-ES', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 });
-const num1 = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 1 });
+const num1 = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 1, useGrouping: 'always' } as Intl.NumberFormatOptions);
 export const eur = (v: number) => eur0.format(v);
 export const eurc = (v: number) => eur2.format(v);
 export const pct = (v: number) => pct1.format(v);

@@ -1,0 +1,55 @@
+---
+import ToolLayout from '../../../components/ToolLayout.astro';
+---
+<ToolLayout id="planificador-objetivos" lede="Define un objetivo con importe y fecha y calcula cuánto tendrías que aportar al mes con distintos supuestos de rentabilidad. Sirve para ordenar ideas, no para elegir productos." dataNote="No usa datos de mercado.">
+  <div class="tool">
+    <form class="tool-inputs" id="f" novalidate>
+      <div class="field"><label for="name">Nombre del objetivo (opcional)</label><input id="name" name="name" type="text" maxlength="60" placeholder="Por ejemplo, entrada de una vivienda" /></div>
+      <div class="field"><label for="target">Importe necesario, en euros de hoy (€)</label><input id="target" name="target" type="number" min="1" step="500" value="20000" /></div>
+      <div class="field"><label for="current">Ahorro ya destinado a este objetivo (€)</label><input id="current" name="current" type="number" min="0" step="100" value="2000" /></div>
+      <div class="field"><label for="years">Años hasta la fecha</label><input id="years" name="years" type="number" min="0.5" max="50" step="0.5" value="4" /></div>
+      <div class="field"><label for="infl">Inflación supuesta (%)</label><input id="infl" name="infl" type="number" min="0" max="20" step="0.1" value="2" /></div>
+      <p class="errors small" role="alert" id="errors"></p>
+    </form>
+    <div class="tool-output" aria-live="polite">
+      <p id="sentence" class="lede" style="font-size:1.1rem"></p>
+      <div class="table-wrap"><table class="data"><thead><tr><th>Supuesto de rentabilidad anual neta</th><th class="num">Aportación mensual necesaria</th><th class="num">Total que aportarías</th></tr></thead><tbody id="rows"></tbody></table></div>
+      <div class="callout learn small" id="advice"></div>
+    </div>
+  </div>
+  <Fragment slot="method">
+    <details class="method" open>
+      <summary>Metodología y limitaciones</summary>
+      <ul>
+        <li>El objetivo en euros de hoy se convierte a euros del futuro: <span class="formula">objetivo × (1 + inflación)^años</span>.</li>
+        <li>Aportación mensual: <span class="formula">PMT = (FV − PV·(1+m)^n) · m / ((1+m)^n − 1)</span>, con <em>m</em> la tasa mensual equivalente y <em>n</em> los meses.</li>
+        <li>Los supuestos de rentabilidad son <strong>ilustrativos y constantes</strong>; una inversión con riesgo puede rendir menos o perder valor justo antes de la fecha. Por eso, para plazos cortos, lo prudente es fijarse en la fila del 0–1 %.</li>
+        <li>Nada de lo que escribes se guarda ni se envía.</li>
+      </ul>
+    </details>
+  </Fragment>
+</ToolLayout>
+<script>
+  import { requiredMonthly } from '../../../lib/calc/goals';
+  import { eur } from '../../../lib/calc/format';
+  import { num } from '../../../scripts/chart';
+  import { recordToolUse } from '../../../scripts/store';
+  const f = document.getElementById('f') as HTMLFormElement;
+  const $ = (id: string) => document.getElementById(id)!;
+  let used = false;
+  function run() {
+    const target = num(f, 'target'), current = num(f, 'current'), years = num(f, 'years'), infl = num(f, 'infl') / 100;
+    if (!(target > 0) || !(current >= 0) || !(years >= 0.5)) { $('errors').textContent = 'Revisa los valores.'; return; }
+    $('errors').textContent = '';
+    const name = (f.elements.namedItem('name') as HTMLInputElement).value.trim() || 'tu objetivo';
+    const rates = [0, 0.01, 0.02, 0.04, 0.06];
+    const res = rates.map((r) => requiredMonthly({ target, current, years, annualRate: r, inflation: infl, targetInTodayEuros: true }));
+    $('sentence').textContent = `Para ${name}, ${eur(target)} de hoy equivalen a unos ${eur(res[0].nominalTarget)} dentro de ${years.toLocaleString('es-ES')} años con una inflación del ${(infl * 100).toLocaleString('es-ES')} %.`;
+    $('rows').innerHTML = res.map((r, i) => `<tr><td>${(rates[i] * 100).toLocaleString('es-ES')} %${i === 0 ? ' (sin rentabilidad)' : ''}</td><td class="num">${r.alreadyReached ? 'Ya cubierto' : eur(r.monthly)}</td><td class="num">${r.alreadyReached ? '—' : eur(r.monthly * r.months + current)}</td></tr>`).join('');
+    $('advice').innerHTML = years < 5
+      ? '<p class="callout-title">Plazo corto</p><p>Con menos de cinco años, una caída de mercado podría no recuperarse a tiempo. Repasa la lección sobre <a href="/es/lecciones/objetivos-horizonte-liquidez/">horizonte y liquidez</a>.</p>'
+      : '<p class="callout-title">Plazo largo</p><p>Con más tiempo hay margen para asumir algo de fluctuación, pero la rentabilidad no está garantizada. Revisa el plan cada año y reduce el riesgo al acercarte a la fecha.</p>';
+  }
+  f.addEventListener('input', () => { run(); if (!used) { used = true; recordToolUse('planificador-objetivos'); } });
+  run();
+</script>

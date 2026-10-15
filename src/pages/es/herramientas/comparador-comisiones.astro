@@ -1,0 +1,60 @@
+---
+import ToolLayout from '../../../components/ToolLayout.astro';
+import brokers from '../../../data/brokers.json';
+const list = brokers.brokers.map((b) => ({ id: b.id, name: b.name, verified: b.fees.v, ...b.fees, text: undefined }));
+---
+<ToolLayout id="comparador-comisiones" lede="Estima el coste anual de las comisiones explícitas en varios intermediarios para cuatro situaciones habituales. Cambia los importes y el número de operaciones para que se parezcan a tu caso." dataNote={`Tarifas de documentación oficial revisada el ${new Date(brokers.reviewed).toLocaleDateString('es-ES', { timeZone: 'UTC' })}. Las tarifas cambian: comprueba siempre la vigente.`}>
+  <div class="tool">
+    <form class="tool-inputs" id="f" novalidate>
+      <fieldset>
+        <legend>Situación</legend>
+        <label class="choice"><input type="radio" name="sc" value="monthly-small" checked /> <span><strong>Aportaciones pequeñas</strong>: un ETF europeo cada mes</span></label>
+        <label class="choice"><input type="radio" name="sc" value="occasional" /> <span><strong>Compra ocasional</strong>: un ETF europeo, pocas veces al año</span></label>
+        <label class="choice"><input type="radio" name="sc" value="foreign" /> <span><strong>Otra divisa</strong>: acción estadounidense comprada con euros</span></label>
+        <label class="choice"><input type="radio" name="sc" value="frequent" /> <span><strong>Operativa frecuente</strong>: acciones de la Bolsa de Madrid</span></label>
+      </fieldset>
+      <div class="field"><label for="amount">Importe por operación (€)</label><input id="amount" name="amount" type="number" min="1" step="10" value="100" /></div>
+      <div class="field"><label for="n">Operaciones al año</label><input id="n" name="n" type="number" min="1" max="2000" value="12" /></div>
+    </form>
+    <div class="tool-output" aria-live="polite">
+      <div class="table-wrap"><table class="data"><thead><tr><th>Intermediario</th><th class="num">Por operación</th><th class="num">Al año</th><th class="num">% sobre lo invertido</th><th>Notas</th></tr></thead><tbody id="rows"></tbody></table></div>
+      <p class="small muted">Ordenado de menor a mayor coste estimado <strong>solo para esta situación</strong>. No es una clasificación general: con otros importes el orden cambia, y el coste no es el único criterio (protección, fiscalidad, servicio). No hay enlaces de afiliación.</p>
+    </div>
+  </div>
+  <script type="application/json" id="fees-data" set:html={JSON.stringify(list)} />
+  <Fragment slot="method">
+    <details class="method" open>
+      <summary>Supuestos publicados y limitaciones</summary>
+      <ul>
+        <li>Coste por operación = máx(mínimo, fijo + porcentaje × importe), limitado por el máximo si existe, más la comisión de tramitación externa cuando el intermediario la publica.</li>
+        <li><strong>Aportaciones pequeñas</strong>: si existe un plan de inversión automático verificado, se usa su tarifa; si no, la compra manual de un ETF en bolsa europea en euros.</li>
+        <li><strong>Otra divisa</strong>: comisión de acción estadounidense + cambio de divisa sobre el importe (solo la entrada; al vender se paga de nuevo). En Interactive Brokers, comisión fija EE. UU. aproximada a su mínimo (1 USD ≈ 1 €), válido para órdenes de hasta 200 acciones.</li>
+        <li>DEGIRO: se suma la conectividad (2,50 € al año) suponiendo una bolsa extranjera, salvo en la Bolsa de Madrid. Su ETF de «Selección Principal» (0 € + 1 €) no se usa por defecto: consulta sus condiciones.</li>
+        <li><strong>No incluye</strong>: diferencial, cánones de bolsa, impuestos sobre transacciones financieras, gastos corrientes de los ETF, impuestos sobre ganancias ni el coste de la venta.</li>
+        <li>Trade Republic: tarifas de su lista oficial de abril de 2023 (la vigente se publica en la aplicación): resultados marcados como parciales.</li>
+      </ul>
+    </details>
+  </Fragment>
+</ToolLayout>
+<script>
+  import { annualCost, type BrokerFees } from '../../../lib/calc/fees';
+  import { eurc, pct } from '../../../lib/calc/format';
+  import { num } from '../../../scripts/chart';
+  import { recordToolUse } from '../../../scripts/store';
+  const data = JSON.parse(document.getElementById('fees-data')!.textContent!) as (BrokerFees & { verified: string })[];
+  const f = document.getElementById('f') as HTMLFormElement;
+  const defaults: Record<string, [number, number]> = { 'monthly-small': [100, 12], occasional: [2000, 2], foreign: [1000, 4], frequent: [1500, 100] };
+  let used = false; let lastSc = 'monthly-small';
+  const esc = (s: string) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]!));
+  function run() {
+    const sc = (f.elements.namedItem('sc') as RadioNodeList).value as any;
+    if (sc !== lastSc) { lastSc = sc; (f.elements.namedItem('amount') as HTMLInputElement).value = String(defaults[sc][0]); (f.elements.namedItem('n') as HTMLInputElement).value = String(defaults[sc][1]); }
+    const amount = num(f, 'amount'), n = Math.round(num(f, 'n'));
+    if (!(amount > 0) || !(n >= 1)) return;
+    const res = data.map((b) => ({ r: annualCost({ ...b, verified: b.verified === 'si' }, { scenario: sc, amount, tradesPerYear: n }), v: b.verified }))
+      .sort((a, b) => (a.r.annual ?? Infinity) - (b.r.annual ?? Infinity));
+    document.getElementById('rows')!.innerHTML = res.map(({ r, v }) => `<tr><th scope="row"><a href="/es/brokers/${r.id}/">${esc(r.name)}</a>${v !== 'si' ? ' <span class="tag">Verificación parcial</span>' : ''}</th><td class="num">${r.perTrade === null ? '—' : eurc(r.perTrade)}</td><td class="num">${r.annual === null ? '—' : eurc(r.annual)}</td><td class="num">${r.pctOfInvested === null ? '—' : pct(r.pctOfInvested)}</td><td class="small">${r.notes.map(esc).join(' ')}</td></tr>`).join('');
+  }
+  f.addEventListener('input', () => { run(); if (!used) { used = true; recordToolUse('comparador-comisiones'); } });
+  run();
+</script>

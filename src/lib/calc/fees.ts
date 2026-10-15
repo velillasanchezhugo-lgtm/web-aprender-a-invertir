@@ -30,6 +30,8 @@ export interface BrokerFees {
   fxMin?: number;
   /** Coste anual fijo de custodia/conectividad estimado (EUR). */
   annualFixed?: number | null;
+  /** El coste fijo anual no se aplica a la operativa en la Bolsa de Madrid (p. ej., conectividad). */
+  annualFixedNotES?: boolean;
   verified: boolean;
 }
 
@@ -68,7 +70,7 @@ export function annualCost(b: BrokerFees, s: ScenarioInput): ScenarioResult {
   const per = tradeCost(rule, s.amount);
   if (per === null) return { id: b.id, name: b.name, annual: null, perTrade: null, pctOfInvested: null, notes: [...notes, 'Tarifa no disponible o no verificada para este supuesto.'] };
   const perTrade = per + fx;
-  const fixed = b.annualFixed ?? 0;
+  const fixed = s.scenario === 'frequent' && b.annualFixedNotES ? 0 : (b.annualFixed ?? 0);
   if (b.annualFixed === null) notes.push('Costes anuales fijos no verificados.');
   const annual = perTrade * s.tradesPerYear + fixed;
   const invested = s.amount * s.tradesPerYear;

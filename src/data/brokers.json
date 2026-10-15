@@ -1,0 +1,426 @@
+{
+ "_doc": "Datos de intermediarios. Cada campo indica valor y fuente. 'v' (verificado): 'si' = comprobado en documentación oficial en la fecha indicada; 'parcial' = documento oficial antiguo o información incompleta; 'no' = pendiente. Nunca rellenar sin fuente. La calculadora solo usa reglas 'fees' marcadas como verificadas o parciales, y avisa en el segundo caso. Afiliación: ninguna.",
+ "reviewed": "2026-10-15",
+ "criteria": "Intermediarios con servicio dirigido a residentes en España, documentación de tarifas pública en línea y supervisión en la UE. Conjunto inicial reducido para poder verificarlo; no es un ranking ni una lista exhaustiva.",
+ "brokers": [
+  {
+   "id": "myinvestor",
+   "name": "MyInvestor",
+   "entity": {
+    "v": "si",
+    "value": "MyInvestor Banco, S.A. (entidad de crédito, NIF A-86701711)",
+    "src": "myinvestor-legal"
+   },
+   "regulator": {
+    "v": "si",
+    "value": "Banco de España (registro n.º 1544) y CNMV, según la propia entidad",
+    "src": "myinvestor-legal",
+    "registry": "https://www.bde.es/wbe/en/entidades-profesionales/supervisadas/supervisadas/entidades-supervisadas.html"
+   },
+   "country": {
+    "v": "si",
+    "value": "España. Banco español; la plataforma de valores es Inversis, según la propia entidad.",
+    "src": "myinvestor-broker"
+   },
+   "products": {
+    "v": "si",
+    "value": "Acciones y ETF (más de 9.200 según la entidad), fondos de inversión, planes de pensiones, carteras automatizadas, cuentas remuneradas. Ofrece también crédito para invertir (apalancamiento), que esta plataforma no analiza.",
+    "src": "myinvestor-broker"
+   },
+   "realVsDerivatives": {
+    "v": "si",
+    "value": "Activos reales (acciones, ETF, fondos). Ofrece ETP inversos o cortos, que son productos complejos.",
+    "src": "myinvestor-broker"
+   },
+   "fees": {
+    "v": "si",
+    "src": "myinvestor-broker",
+    "etfEU": {
+     "pct": 0.0012,
+     "min": 1,
+     "max": 25
+    },
+    "stockES": {
+     "pct": 0.0012,
+     "min": 3,
+     "max": 25
+    },
+    "stockUS": {
+     "pct": 0.0012,
+     "min": 3,
+     "max": 25
+    },
+    "savingsPlan": null,
+    "fxPct": 0.003,
+    "annualFixed": 0,
+    "text": {
+     "buySell": "0,12 % por operación; ETF: mínimo 1 €, máximo 25 €; acciones: mínimo 3 €, máximo 25 €. Con la cuenta Premium, los ETF no tienen mínimo.",
+     "custody": "0 € (mantenimiento, depositaría, custodia e inactividad, según la entidad).",
+     "fx": "0,30 %, aplicado también al cobro de dividendos en otra divisa.",
+     "withdrawal": "No consta comisión en la página consultada (pendiente de confirmar en el folleto de tarifas).",
+     "inactivity": "0 €.",
+     "external": "Cánones de bolsa y tasas sobre transacciones financieras de terceros no incluidos; diferencial implícito."
+    }
+   },
+   "automatic": {
+    "v": "parcial",
+    "value": "Aportaciones periódicas en fondos y carteras automatizadas; no se ha verificado un plan automático de compra de ETF en el bróker.",
+    "src": "myinvestor-broker"
+   },
+   "fractions": {
+    "v": "si",
+    "value": "No se indica la compra de fracciones de acciones en el bróker; los fondos permiten importes pequeños.",
+    "src": "myinvestor-broker"
+   },
+   "accounts": {
+    "v": "parcial",
+    "value": "Cuentas individuales, conjuntas y junior (cuentas remuneradas); pendiente confirmar la titularidad múltiple en la cuenta de valores.",
+    "src": "myinvestor-broker"
+   },
+   "support": {
+    "v": "si",
+    "value": "Español; teléfono 910 005 961 según su página de bróker.",
+    "src": "myinvestor-broker"
+   },
+   "tax": {
+    "v": "si",
+    "value": "Entidad española: informa a la AEAT y practica retenciones; según la entidad, no hay que presentar el modelo 720 por las posiciones en ella. Tramita el formulario W-8BEN.",
+    "src": "myinvestor-broker"
+   },
+   "transfer": {
+    "v": "si",
+    "value": "Traspaso de acciones de entrada con un mínimo de 10.000 €; traspaso de salida sin comisión, según la entidad. Traspasos de fondos con diferimiento fiscal.",
+    "src": "myinvestor-broker"
+   },
+   "protection": {
+    "v": "si",
+    "value": "Efectivo: FGD hasta 100.000 €. Valores en entidad de crédito: garantía de valores del FGD hasta 100.000 € por no devolución (no cubre pérdidas de mercado). Acciones extranjeras en cuentas ómnibus con registro individualizado.",
+    "src": "fgd-valores"
+   },
+   "pros": [
+    "Entidad española: fiscalidad y retenciones gestionadas.",
+    "Fondos indexados y traspasos con diferimiento fiscal en la misma plataforma.",
+    "Sin custodia ni inactividad."
+   ],
+   "cons": [
+    "Comisión porcentual con mínimo: en compras pequeñas de acciones (3 € mínimo) pesa más que en otras opciones.",
+    "Cambio de divisa del 0,30 %.",
+    "Órdenes stop solo en algunos mercados (NYSE, Nasdaq, Xetra)."
+   ]
+  },
+  {
+   "id": "degiro",
+   "name": "DEGIRO",
+   "entity": {
+    "v": "si",
+    "value": "flatexDEGIRO Bank Dutch Branch, sucursal neerlandesa de flatexDEGIRO Bank SE (banco alemán)",
+    "src": "degiro-seguridad"
+   },
+   "regulator": {
+    "v": "si",
+    "value": "BaFin (Alemania) como supervisor principal; en Países Bajos, registrada en DNB y supervisada por AFM y DNB. Opera en España desde otro Estado de la UE.",
+    "src": "degiro-seguridad",
+    "registry": "https://portal.mvp.bafin.de/database/InstInfo/"
+   },
+   "country": {
+    "v": "si",
+    "value": "Alemania / Países Bajos. Atención en español.",
+    "src": "degiro-tarifas"
+   },
+   "products": {
+    "v": "si",
+    "value": "Acciones, ETF, bonos, fondos, opciones, futuros, productos estructurados y trackers de criptomonedas; operativa a crédito.",
+    "src": "degiro-tarifas"
+   },
+   "realVsDerivatives": {
+    "v": "si",
+    "value": "Activos reales y derivados cotizados (opciones, futuros) y productos estructurados; ofrece operativa a crédito, con riesgo de perder más de lo aportado.",
+    "src": "degiro-tarifas"
+   },
+   "fees": {
+    "v": "si",
+    "src": "degiro-tarifas",
+    "etfEU": {
+     "fixed": 2,
+     "extra": 1
+    },
+    "etfCore": {
+     "fixed": 0,
+     "extra": 1
+    },
+    "stockES": {
+     "fixed": 1,
+     "extra": 1
+    },
+    "stockUS": {
+     "fixed": 1,
+     "extra": 1
+    },
+    "savingsPlan": null,
+    "fxPct": 0.0025,
+    "annualFixed": 2.5,
+    "text": {
+     "buySell": "Bolsa de Madrid: 1 € + 1 € de tramitación. EE. UU.: 1 € + 1 €. ETF globales: 2 € + 1 €. ETF de la «Selección Principal»: 0 € + 1 € de tramitación. Tarifas actualizadas el 01.10.2025 según la propia página.",
+     "custody": "0 € de custodia. Comisión de conectividad: 0,25 % del valor de la cuenta con un máximo de 2,50 € por año y por bolsa en la que se opere o se tengan posiciones, excluida la Bolsa de Madrid.",
+     "fx": "0,25 % con la conversión automática (Auto FX).",
+     "withdrawal": "0 €.",
+     "inactivity": "0 €.",
+     "external": "Pueden aplicarse costes externos de producto y diferencial."
+    },
+    "annualFixedNotES": true
+   },
+   "automatic": {
+    "v": "no",
+    "value": "No verificado en esta revisión.",
+    "src": "degiro-tarifas"
+   },
+   "fractions": {
+    "v": "no",
+    "value": "No verificado en esta revisión.",
+    "src": "degiro-tarifas"
+   },
+   "accounts": {
+    "v": "parcial",
+    "value": "Distintos perfiles (Basic, Active, Trader, Day Trader) según la página de tarifas; pendiente verificar cuentas conjuntas.",
+    "src": "degiro-tarifas"
+   },
+   "support": {
+    "v": "si",
+    "value": "Español; teléfono +34 911 239 678 y correo clientes@degiro.es.",
+    "src": "degiro-tarifas"
+   },
+   "tax": {
+    "v": "parcial",
+    "value": "Ofrece información para la declaración de la renta; al ser entidad extranjera, la declaración y las posibles obligaciones informativas corresponden al cliente. Pendiente verificar el detalle del informe fiscal.",
+    "src": "degiro-tarifas"
+   },
+   "transfer": {
+    "v": "no",
+    "value": "Pendiente verificar comisiones de traspaso de valores.",
+    "src": "degiro-tarifas"
+   },
+   "protection": {
+    "v": "si",
+    "value": "Valores segregados en una entidad separada. Si los activos segregados no pudieran devolverse, sistema alemán de indemnización de inversores: 90 % con un máximo de 20.000 €. Efectivo en flatexDEGIRO Bank SE: garantía de depósitos alemana hasta 100.000 €.",
+    "src": "degiro-seguridad"
+   },
+   "pros": [
+    "Comisiones fijas bajas en Bolsa de Madrid y EE. UU.",
+    "Cambio de divisa del 0,25 %.",
+    "Amplia gama de mercados."
+   ],
+   "cons": [
+    "Sistema de indemnización alemán (90 % hasta 20.000 €) menor que el FOGAIN español.",
+    "Comisión de conectividad anual por bolsa extranjera.",
+    "Ofrece derivados y operativa a crédito, que no deben confundirse con invertir."
+   ]
+  },
+  {
+   "id": "interactive-brokers",
+   "name": "Interactive Brokers",
+   "entity": {
+    "v": "si",
+    "value": "Interactive Brokers Ireland Limited",
+    "src": "ibkr-other"
+   },
+   "regulator": {
+    "v": "si",
+    "value": "Banco Central de Irlanda (número de referencia C423427); miembro del Investor Compensation Scheme irlandés. Presta servicios en España desde otro Estado de la UE.",
+    "src": "ibkr-other",
+    "registry": "https://registers.centralbank.ie/"
+   },
+   "country": {
+    "v": "si",
+    "value": "Irlanda (Dublín). El grupo es estadounidense.",
+    "src": "ibkr-other"
+   },
+   "products": {
+    "v": "si",
+    "value": "Acciones, ETF, opciones, futuros, divisas, CFD, bonos, fondos, metales y criptoactivos, en numerosos mercados.",
+    "src": "ibkr-other"
+   },
+   "realVsDerivatives": {
+    "v": "si",
+    "value": "Activos reales y una gama muy amplia de derivados, incluidos CFD y operativa con margen. La propia entidad advierte de que las pérdidas pueden superar la inversión original en algunos productos.",
+    "src": "ibkr-other"
+   },
+   "fees": {
+    "v": "si",
+    "src": "ibkr-eu-stocks",
+    "etfEU": {
+     "pct": 0.0005,
+     "min": 3
+    },
+    "stockES": {
+     "pct": 0.0005,
+     "min": 3
+    },
+    "stockUS": {
+     "fixed": 0,
+     "pct": 0,
+     "min": 1,
+     "perShareUSD": 0.005,
+     "note": "Tarifa fija EE. UU.: 0,005 USD por acción, mínimo 1 USD, máximo 1 % del valor; la calculadora aproxima 1 USD ≈ 1 € para el mínimo"
+    },
+    "savingsPlan": null,
+    "fxPct": 2e-05,
+    "fxMin": 2,
+    "annualFixed": 0,
+    "text": {
+     "buySell": "Tarifa fija en bolsas europeas en EUR (Alemania, España) con IB SmartRouting: 0,05 % del valor, mínimo 3 €; el enrutamiento directo y la tarifa por niveles tienen otros importes. EE. UU., tarifa fija: 0,005 USD por acción, mínimo 1 USD, máximo 1 % del valor.",
+     "custody": "IBKR no cobra custodia según su web; terceros podrían cobrarla.",
+     "fx": "0,20 puntos básicos (0,002 %) del valor, con un mínimo de 2 USD por conversión (nivel I).",
+     "withdrawal": "Pendiente de verificar en esta revisión.",
+     "inactivity": "Pendiente de verificar en esta revisión.",
+     "external": "En tarifa por niveles se suman cuotas de bolsa y compensación; en EE. UU., tasas regulatorias en ventas."
+    }
+   },
+   "automatic": {
+    "v": "parcial",
+    "value": "Ofrece «inversiones programadas» según su web; pendiente verificar condiciones.",
+    "src": "ibkr-other"
+   },
+   "fractions": {
+    "v": "si",
+    "value": "Acciones fraccionarias disponibles en varios mercados, con comisiones mínimas específicas (por ejemplo, 1,25 € en bolsas europeas).",
+    "src": "ibkr-eu-stocks"
+   },
+   "accounts": {
+    "v": "si",
+    "value": "Cuentas individuales, conjuntas, de fideicomiso y familiares, según su web.",
+    "src": "ibkr-other"
+   },
+   "support": {
+    "v": "parcial",
+    "value": "Web y plataforma en español; pendiente verificar la atención telefónica en español.",
+    "src": "ibkr-other"
+   },
+   "tax": {
+    "v": "parcial",
+    "value": "Entidad extranjera: no practica retenciones españolas; el cliente declara y debe valorar las obligaciones informativas sobre bienes en el extranjero. Ofrece informes de actividad.",
+    "src": "ibkr-other"
+   },
+   "transfer": {
+    "v": "no",
+    "value": "Pendiente verificar.",
+    "src": "ibkr-other"
+   },
+   "protection": {
+    "v": "parcial",
+    "value": "Miembro del sistema irlandés de indemnización de inversores (cobertura por fallo de la entidad, no por pérdidas de mercado). Pendiente documentar el límite con la fuente irlandesa.",
+    "src": "ibkr-other"
+   },
+   "pros": [
+    "Comisiones bajas en importes medios y altos.",
+    "Cambio de divisa muy barato.",
+    "Acceso a muchos mercados y fracciones."
+   ],
+   "cons": [
+    "Plataforma compleja, orientada también a operadores profesionales.",
+    "Mínimo de 3 € por operación en Europa con tarifa fija.",
+    "Gran oferta de derivados y margen: exige separar con claridad invertir de especular."
+   ]
+  },
+  {
+   "id": "trade-republic",
+   "name": "Trade Republic",
+   "entity": {
+    "v": "si",
+    "value": "Trade Republic Bank GmbH, que opera en España mediante Trade Republic Bank GmbH, Sucursal en España",
+    "src": "tr-contract-es"
+   },
+   "regulator": {
+    "v": "si",
+    "value": "BaFin y Deutsche Bundesbank (Alemania), según la nota de prensa de junio de 2025; sucursal en España en régimen de libertad de establecimiento.",
+    "src": "tr-branch-2025",
+    "registry": "https://portal.mvp.bafin.de/database/InstInfo/"
+   },
+   "country": {
+    "v": "si",
+    "value": "Alemania (Berlín); sucursal en España con IBAN español desde 2025.",
+    "src": "tr-branch-2025"
+   },
+   "products": {
+    "v": "si",
+    "value": "Acciones, ETF, bonos, fondos de inversión (desde junio de 2025), planes de inversión, criptoactivos y derivados titulizados (warrants y certificados).",
+    "src": "tr-branch-2025"
+   },
+   "realVsDerivatives": {
+    "v": "parcial",
+    "value": "Activos reales y derivados titulizados (warrants, certificados); ejecución principalmente en Lang & Schwarz Exchange según terceros (pendiente confirmar en la política de ejecución).",
+    "src": "tr-pricelist-2023"
+   },
+   "fees": {
+    "v": "parcial",
+    "src": "tr-pricelist-2023",
+    "etfEU": {
+     "fixed": 1
+    },
+    "stockES": {
+     "fixed": 1
+    },
+    "stockUS": {
+     "fixed": 1
+    },
+    "savingsPlan": {
+     "fixed": 0
+    },
+    "fxPct": null,
+    "annualFixed": 0,
+    "text": {
+     "buySell": "Según la lista de precios oficial de abril de 2023: comisión de liquidación externa de 1 € por operación, excepto planes de inversión. Los precios vigentes se publican en la aplicación, según el contrato con el cliente; pendiente verificar que no han cambiado.",
+     "custody": "Gestión de la cuenta de valores: sin cargo (lista de 2023).",
+     "fx": "No verificado: no figura en el documento consultado.",
+     "withdrawal": "Transferencia a la cuenta de referencia: sin cargo (lista de 2023).",
+     "inactivity": "No figura en el documento consultado.",
+     "external": "Planes de inversión de 10 € a 10.000 € por ejecución sin cargo (lista de 2023). Ingreso con tarjeta: 0,7 %."
+    }
+   },
+   "automatic": {
+    "v": "parcial",
+    "value": "Planes de inversión en ETF y acciones sin cargo por ejecución según la lista de 2023.",
+    "src": "tr-pricelist-2023"
+   },
+   "fractions": {
+    "v": "parcial",
+    "value": "Operativa fraccionada de acciones y ETF, según la nota de prensa de 2025; pendiente verificar condiciones (titularidad, voto, traspaso).",
+    "src": "tr-branch-2025"
+   },
+   "accounts": {
+    "v": "no",
+    "value": "Pendiente verificar tipos de cuenta.",
+    "src": "tr-contract-es"
+   },
+   "support": {
+    "v": "parcial",
+    "value": "Atención en la aplicación; idioma español pendiente de confirmar en documento oficial.",
+    "src": "tr-contract-es"
+   },
+   "tax": {
+    "v": "parcial",
+    "value": "Retención fiscal automática en España anunciada en junio de 2025; pendiente verificar alcance y documentación fiscal.",
+    "src": "tr-branch-2025"
+   },
+   "transfer": {
+    "v": "parcial",
+    "value": "Transferencia desde la cuenta de valores sin cargo, más posibles comisiones externas (lista de 2023). Traspasos de fondos anunciados en 2025.",
+    "src": "tr-pricelist-2023"
+   },
+   "protection": {
+    "v": "parcial",
+    "value": "Efectivo: garantía de depósitos europea hasta 100.000 € en bancos asociados, según la nota de prensa. Valores: sistema de indemnización alemán (pendiente documentar con fuente oficial).",
+    "src": "tr-branch-2025"
+   },
+   "pros": [
+    "Planes de inversión sin cargo por ejecución (según lista de 2023).",
+    "Comisión fija baja por operación.",
+    "Sucursal en España con retención fiscal (anunciada en 2025)."
+   ],
+   "cons": [
+    "La lista oficial de precios consultada es de 2023; la vigente está en la aplicación.",
+    "Coste de cambio de divisa y calidad de ejecución sin verificar.",
+    "Ofrece derivados titulizados y criptoactivos junto a productos de inversión."
+   ]
+  }
+ ]
+}

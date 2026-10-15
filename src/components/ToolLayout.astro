@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import AdSlot from './AdSlot.astro';
+import { TOOLS, fmtDate } from '../lib/content';
+interface Props { id: keyof typeof TOOLS | string; lede: string; dataNote: string; updated?: string }
+const { id, lede, dataNote, updated = '2026-10-15' } = Astro.props;
+const t = TOOLS[id];
+const jsonLd = { '@context': 'https://schema.org', '@type': 'WebApplication', name: t.title, description: t.blurb, applicationCategory: 'EducationalApplication', operatingSystem: 'Web', inLanguage: 'es-ES', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } };
+---
+<Base title={t.title} description={t.blurb} jsonLd={jsonLd} allowAds={true}>
+  <div class="container">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/herramientas/', label: 'Herramientas' }, { label: t.title }]} />
+    <header class="tool-head">
+      <p class="eyebrow">Herramienta educativa</p>
+      <h1>{t.title}</h1>
+      <p class="lede">{lede}</p>
+      <p class="small muted">Los cálculos se hacen en tu navegador; no se envía nada. {dataNote} Actualizada el {fmtDate(new Date(updated))}.</p>
+    </header>
+    <slot />
+    <div class="narrow-left">
+      <slot name="method" />
+      <p class="small muted" style="margin-top:1.5rem">Herramienta educativa: los resultados dependen de supuestos que eliges tú y no son una previsión ni una recomendación. <a href="/es/metodologia/">Metodología</a>.</p>
+    </div>
+    <AdSlot slot="inArticle" />
+  </div>
+</Base>
+<style>
+  .tool-head { max-width: 760px; margin-bottom: 1.5rem; }
+  .narrow-left { max-width: 820px; }
+</style>

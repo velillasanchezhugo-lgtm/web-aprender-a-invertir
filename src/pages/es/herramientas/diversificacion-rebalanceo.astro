@@ -1,0 +1,103 @@
+---
+import ToolLayout from '../../../components/ToolLayout.astro';
+---
+<ToolLayout id="diversificacion-rebalanceo" lede="Dos experimentos: cómo baja el riesgo al añadir activos según su correlación, y qué ocurre con una cartera de dos activos si se rebalancea cada año o no se toca." dataNote="Modelo simplificado y escenarios ficticios que puedes editar; no son datos de mercado.">
+  <h2>1. Diversificación: riesgo frente a número de activos</h2>
+  <div class="tool">
+    <form class="tool-inputs" id="fd" novalidate>
+      <div class="field"><label for="sigma">Volatilidad anual de cada activo (%)</label><input id="sigma" name="sigma" type="number" min="1" max="100" value="30" /></div>
+      <div class="field"><label for="rho">Correlación media entre activos <output id="rho-o" for="rho">0,30</output></label><input id="rho" name="rho" type="range" min="0" max="1" step="0.05" value="0.3" /></div>
+      <div class="field"><label for="n">Número de activos a comparar</label><input id="n" name="n" type="number" min="1" max="500" value="20" /></div>
+    </form>
+    <div class="tool-output" aria-live="polite">
+      <div class="kpis">
+        <div class="kpi"><span class="k">Volatilidad con 1 activo</span><span class="v" id="k-one">—</span></div>
+        <div class="kpi"><span class="k">Con <span id="k-n-l">n</span> activos</span><span class="v" id="k-n">—</span></div>
+        <div class="kpi"><span class="k">Límite con infinitos activos</span><span class="v" id="k-inf">—</span></div>
+      </div>
+      <div class="chart" id="chart-d"></div>
+    </div>
+  </div>
+
+  <h2>2. Rebalanceo con un escenario ficticio</h2>
+  <div class="tool">
+    <form class="tool-inputs" id="fr" novalidate>
+      <div class="field"><label for="start">Cartera inicial (€)</label><input id="start" name="start" type="number" min="100" step="100" value="10000" /></div>
+      <div class="field"><label for="w">Peso objetivo del activo A (%)<span class="hint">El resto va al activo B.</span></label><input id="w" name="w" type="number" min="0" max="100" value="60" /></div>
+      <div class="field"><label for="cost">Coste del rebalanceo (% del importe movido)</label><input id="cost" name="cost" type="number" min="0" max="5" step="0.05" value="0.1" /></div>
+      <div class="field"><label for="ret">Rentabilidades anuales ficticias (A, B en %), una línea por año<span class="hint">Ejemplo: «25, 2». Edítalas para probar otros escenarios.</span></label>
+        <textarea id="ret" name="ret" rows="8">25, 2
+20, 3
+-30, 5
+15, 1
+8, -4
+-12, 6
+18, 2
+5, 3</textarea></div>
+      <p class="errors small" role="alert" id="errors"></p>
+    </form>
+    <div class="tool-output" aria-live="polite">
+      <div class="kpis">
+        <div class="kpi"><span class="k">Sin rebalancear</span><span class="v" id="k-bh">—</span></div>
+        <div class="kpi"><span class="k">Rebalanceo anual</span><span class="v" id="k-rb">—</span></div>
+        <div class="kpi"><span class="k">Peso final de A sin rebalancear</span><span class="v" id="k-w">—</span></div>
+      </div>
+      <div class="chart" id="chart-r"></div>
+      <div id="table-r"></div>
+    </div>
+  </div>
+  <Fragment slot="method">
+    <details class="method" open>
+      <summary>Metodología y limitaciones</summary>
+      <ul>
+        <li>Volatilidad de una cartera equiponderada de <em>n</em> activos con la misma volatilidad σ y correlación ρ entre pares: <span class="formula">σ_p = σ × √(1/n + (1 − 1/n) × ρ)</span>. Con infinitos activos tiende a <span class="formula">σ × √ρ</span>: el riesgo de mercado que no se puede diversificar.</li>
+        <li>Rebalanceo: cada año se aplican las rentabilidades y, en la cartera rebalanceada, se vuelve a los pesos objetivo pagando el coste indicado sobre el importe comprado y vendido.</li>
+        <li><strong>No incluye impuestos</strong>: en España, vender con plusvalías tributa (salvo traspasos entre fondos no cotizados).</li>
+        <li><strong>Limitaciones</strong>: en la realidad cada activo tiene su volatilidad y las correlaciones cambian, sobre todo en crisis. Los escenarios son ficticios; el resultado de rebalancear depende de la secuencia de rentabilidades.</li>
+      </ul>
+    </details>
+  </Fragment>
+</ToolLayout>
+<script>
+  import { equalWeightVol, simulateRebalance } from '../../../lib/calc/rebalance';
+  import { eur, pct } from '../../../lib/calc/format';
+  import { lineChart, dataTable, palette, num } from '../../../scripts/chart';
+  import { recordToolUse } from '../../../scripts/store';
+  const $ = (id: string) => document.getElementById(id)!;
+  const fd = document.getElementById('fd') as HTMLFormElement;
+  const fr = document.getElementById('fr') as HTMLFormElement;
+  let used = false;
+  const mark = () => { if (!used) { used = true; recordToolUse('diversificacion-rebalanceo'); } };
+  function runD() {
+    const s = num(fd, 'sigma') / 100, rho = num(fd, 'rho'), n = Math.max(1, Math.round(num(fd, 'n')));
+    $('rho-o').textContent = rho.toLocaleString('es-ES', { minimumFractionDigits: 2 });
+    $('k-one').textContent = pct(s); $('k-n-l').textContent = String(n);
+    $('k-n').textContent = pct(equalWeightVol(s, n, rho)); $('k-inf').textContent = pct(s * Math.sqrt(rho));
+    const ns = [1, 2, 3, 5, 10, 15, 20, 30, 50, 100];
+    const p = palette();
+    $('chart-d').innerHTML = lineChart({ labels: ns, title: 'Volatilidad de la cartera según el número de activos', desc: `Con correlación ${rho}, la volatilidad baja de ${pct(s)} hacia ${pct(s * Math.sqrt(rho))}.`, yFormat: (v) => `${Math.round(v * 100)} %`, zeroLine: true,
+      series: [{ name: `Correlación ${rho.toLocaleString('es-ES')}`, values: ns.map((k) => equalWeightVol(s, k, rho)), color: p.teal }, { name: 'Correlación 0 (teórica)', values: ns.map((k) => equalWeightVol(s, k, 0)), color: p.ink, dashed: true }] });
+  }
+  function runR() {
+    const err = $('errors'); err.textContent = '';
+    const lines = (fr.elements.namedItem('ret') as HTMLTextAreaElement).value.split('\n').map((l) => l.trim()).filter(Boolean);
+    const returns: number[][] = [];
+    for (const [i, l] of lines.entries()) {
+      const parts = l.split(/[;,\s]+/).filter(Boolean).map((x) => Number(x.replace(',', '.')));
+      if (parts.length !== 2 || parts.some((x) => !Number.isFinite(x) || x <= -100)) { err.textContent = `Revisa la línea ${i + 1}: escribe dos números (A, B) mayores que −100.`; return; }
+      returns.push(parts.map((x) => x / 100));
+    }
+    const w = num(fr, 'w') / 100, start = num(fr, 'start'), cost = num(fr, 'cost') / 100;
+    if (!(w >= 0 && w <= 1) || !(start > 0) || returns.length === 0) { err.textContent = 'Revisa el peso, el importe y las rentabilidades.'; return; }
+    const rows = simulateRebalance({ start, weights: [w, 1 - w], returns, costPct: cost });
+    const last = rows[rows.length - 1];
+    $('k-bh').textContent = eur(last.buyHold); $('k-rb').textContent = eur(last.rebalanced); $('k-w').textContent = pct(last.buyHoldWeights[0]);
+    const p = palette();
+    $('chart-r').innerHTML = lineChart({ labels: rows.map((r) => r.year), title: 'Cartera con y sin rebalanceo', desc: `Final: ${eur(last.buyHold)} sin rebalancear y ${eur(last.rebalanced)} rebalanceando.`, yFormat: (v) => `${Math.round(v / 1000)} k€`,
+      series: [{ name: 'Sin rebalancear', values: rows.map((r) => r.buyHold), color: p.ochre }, { name: 'Rebalanceo anual', values: rows.map((r) => r.rebalanced), color: p.teal }] });
+    $('table-r').innerHTML = dataTable('Resultados por año', ['Año', 'Sin rebalancear', 'Peso de A', 'Rebalanceado', 'Importe movido'], rows.map((r) => [r.year, eur(r.buyHold), pct(r.buyHoldWeights[0]), eur(r.rebalanced), eur(r.turnover)]));
+  }
+  fd.addEventListener('input', () => { runD(); mark(); });
+  fr.addEventListener('input', () => { runR(); mark(); });
+  runD(); runR();
+</script>

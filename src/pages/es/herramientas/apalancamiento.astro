@@ -1,0 +1,95 @@
+---
+import ToolLayout from '../../../components/ToolLayout.astro';
+---
+<ToolLayout id="apalancamiento" lede="Comprueba con números cómo el apalancamiento amplifica pérdidas y ganancias, cuánto cuesta financiarlo, cuándo se cerraría la posición y si podrías deber dinero. Solo simulación." dataNote="Reglas de garantía y cierre de las resoluciones de la CNMV de 2019 y 2023 (consultadas el 15/10/2026).">
+  <div class="callout warn"><p class="callout-title">Simulación educativa</p><p>Esta herramienta no enlaza con ningún proveedor ni sirve para operar. Según las advertencias normalizadas de la CNMV, la mayoría de cuentas minoristas que operan con CFD pierden dinero.</p></div>
+  <div class="tool">
+    <form class="tool-inputs" id="f" novalidate>
+      <div class="field"><label for="margin">Garantía aportada (€)</label><input id="margin" name="margin" type="number" min="1" step="100" value="1000" /></div>
+      <div class="field"><label for="under">Tipo de subyacente (límite para CFD a minoristas en España)</label>
+        <select id="under" name="under">
+          <option value="30">Divisas principales: hasta 30:1</option>
+          <option value="20">Índices principales, otras divisas, oro: hasta 20:1</option>
+          <option value="10">Otras materias primas e índices: hasta 10:1</option>
+          <option value="5" selected>Acciones: hasta 5:1</option>
+          <option value="2">Criptodivisas: hasta 2:1</option>
+        </select></div>
+      <div class="field"><label for="lev">Apalancamiento <output id="lev-o" for="lev">5:1</output></label><input id="lev" name="lev" type="range" min="1" max="30" step="1" value="5" /><span class="hint small" id="lev-warn"></span></div>
+      <div class="field"><label for="move">Variación del subyacente (%) <output id="move-o" for="move">−10 %</output></label><input id="move" name="move" type="range" min="-40" max="40" step="0.5" value="-10" /></div>
+      <div class="field"><label for="days">Días con la posición abierta</label><input id="days" name="days" type="number" min="0" max="3650" value="30" /></div>
+      <div class="field"><label for="fin">Coste de financiación anual (%)<span class="hint">Supuesto: cada entidad publica el suyo.</span></label><input id="fin" name="fin" type="number" min="0" max="30" step="0.1" value="6" /></div>
+      <div class="field"><label for="costs">Comisiones y diferencial (€)</label><input id="costs" name="costs" type="number" min="0" step="1" value="5" /></div>
+      <fieldset>
+        <legend>Producto</legend>
+        <label class="choice"><input type="radio" name="prot" value="1" checked /> <span>CFD de un proveedor sujeto a la normativa de la UE para minoristas (con protección frente a saldo negativo)</span></label>
+        <label class="choice"><input type="radio" name="prot" value="0" /> <span>Futuro, cuenta de margen u otro producto sin protección frente a saldo negativo</span></label>
+      </fieldset>
+    </form>
+    <div class="tool-output" aria-live="polite">
+      <div class="kpis">
+        <div class="kpi"><span class="k">Exposición</span><span class="v" id="k-notional">—</span></div>
+        <div class="kpi"><span class="k">Resultado neto</span><span class="v" id="k-net">—</span></div>
+        <div class="kpi"><span class="k">Sobre tu garantía</span><span class="v" id="k-pct">—</span></div>
+        <div class="kpi"><span class="k">Financiación</span><span class="v" id="k-fin">—</span></div>
+        <div class="kpi"><span class="k">Caída que activa el cierre al 50 %</span><span class="v" id="k-close">—</span></div>
+        <div class="kpi"><span class="k">Deuda con la entidad</span><span class="v" id="k-debt">—</span></div>
+      </div>
+      <p id="msg" class="callout note"></p>
+      <div class="chart" id="chart"></div>
+      <div id="table"></div>
+    </div>
+  </div>
+  <Fragment slot="method">
+    <details class="method" open>
+      <summary>Metodología, normativa y limitaciones</summary>
+      <ul>
+        <li>Exposición = garantía × apalancamiento. Resultado bruto = exposición × variación.</li>
+        <li>Financiación (simplificada) = (exposición − garantía) × tipo anual × días / 365. En CFD suele cobrarse cada noche sobre el nocional según la fórmula de cada entidad.</li>
+        <li>Cierre de posición (CFD a minoristas en España, Resolución CNMV de 27/06/2019; extendido a futuros y opciones de riesgo ilimitado por la Resolución de 11/07/2023): cuando el saldo cae por debajo del 50 % de la garantía inicial. Movimiento que lo activa, sin costes: <span class="formula">−50 % / apalancamiento</span>.</li>
+        <li>Protección frente a saldo negativo: obligatoria en CFD para minoristas en la UE. Sin ella, si el precio salta por encima del umbral de cierre, el saldo puede quedar negativo.</li>
+        <li>Garantías iniciales mínimas para CFD a minoristas: 3,33 % (divisas principales), 5 % (índices principales, otras divisas, oro), 10 % (otras materias primas e índices), 20 % (acciones), 50 % (criptodivisas).</li>
+        <li><strong>Limitaciones</strong>: el resultado supone que la posición se mantiene hasta el final del movimiento; en la realidad la entidad la cerraría antes, al cruzar el umbral, salvo huecos de precio. No incluye impuestos ni deslizamiento.</li>
+      </ul>
+    </details>
+  </Fragment>
+</ToolLayout>
+<script>
+  import { simulate } from '../../../lib/calc/leverage';
+  import { eurc, pct } from '../../../lib/calc/format';
+  import { lineChart, dataTable, palette, num } from '../../../scripts/chart';
+  import { recordToolUse } from '../../../scripts/store';
+  const f = document.getElementById('f') as HTMLFormElement;
+  const $ = (id: string) => document.getElementById(id)!;
+  let used = false;
+  function run() {
+    const margin = num(f, 'margin'), lev = num(f, 'lev'), move = num(f, 'move') / 100, days = num(f, 'days'), fin = num(f, 'fin') / 100, costs = num(f, 'costs');
+    const maxLev = num(f, 'under');
+    const prot = (f.elements.namedItem('prot') as RadioNodeList).value === '1';
+    $('lev-o').textContent = `${lev}:1`;
+    $('move-o').textContent = `${move > 0 ? '+' : ''}${(move * 100).toLocaleString('es-ES')} %`;
+    $('lev-warn').textContent = prot && lev > maxLev ? `Por encima del máximo permitido para CFD a minoristas en este subyacente (${maxLev}:1).` : '';
+    if (!(margin > 0)) return;
+    const r = simulate({ margin, leverage: lev, move, days, financingRate: fin, costs, negativeBalanceProtection: prot });
+    $('k-notional').textContent = eurc(r.notional);
+    $('k-net').textContent = eurc(r.netPnl); $('k-net').className = 'v ' + (r.netPnl < 0 ? 'loss' : 'gain');
+    $('k-pct').textContent = pct(r.pctOnMargin); $('k-pct').className = 'v ' + (r.netPnl < 0 ? 'loss' : 'gain');
+    $('k-fin').textContent = eurc(r.financing);
+    $('k-close').textContent = lev > 1 ? pct(r.closeOutMove) : 'No aplica (sin apalancamiento)';
+    $('k-debt').textContent = r.lossBeyondDeposit > 0 ? eurc(r.lossBeyondDeposit) : '0 €';
+    $('k-debt').className = 'v ' + (r.lossBeyondDeposit > 0 ? 'loss' : '');
+    let msg = '';
+    if (lev === 1) msg = 'Sin apalancamiento, tu resultado sigue exactamente al subyacente.';
+    else if (r.closedOut) msg = `Con este movimiento, la entidad cerraría tu posición al cruzar una caída del ${pct(-r.closeOutMove)} del subyacente, con una pérdida aproximada de ${eurc(-r.closeOutLoss)} (la mitad de tu garantía) más costes, salvo que el precio salte de golpe. Ya no podrías esperar a una recuperación.`;
+    else msg = `Tu posición seguiría abierta. Fíjate en que una caída del ${pct(-r.closeOutMove)} bastaría para que te la cerraran.`;
+    if (!prot && r.lossBeyondDeposit > 0) msg += ` Sin protección frente a saldo negativo, si el precio salta hasta este nivel, deberías ${eurc(r.lossBeyondDeposit)} a la entidad además de perder tu garantía.`;
+    $('msg').textContent = msg;
+    const moves = Array.from({ length: 17 }, (_, i) => -0.4 + i * 0.05);
+    const p = palette();
+    const at = (L: number, m: number) => simulate({ margin, leverage: L, move: m, days, financingRate: fin, costs, negativeBalanceProtection: prot }).pctOnMargin;
+    $('chart').innerHTML = lineChart({ labels: moves.map((m) => `${Math.round(m * 100)} %`), title: 'Resultado sobre la garantía según la variación del subyacente', desc: `Comparación entre ${lev}:1 y sin apalancamiento.`, yFormat: (v) => `${Math.round(v * 100)} %`, zeroLine: true,
+      series: [{ name: `Apalancamiento ${lev}:1`, values: moves.map((m) => at(lev, m)), color: p.loss }, { name: 'Sin apalancamiento', values: moves.map((m) => at(1, m)), color: p.teal }] });
+    $('table').innerHTML = dataTable('Sensibilidad', ['Variación', 'Resultado neto', 'Sobre la garantía', '¿Cierre?'], moves.map((m) => { const s = simulate({ margin, leverage: lev, move: m, days, financingRate: fin, costs, negativeBalanceProtection: prot }); return [`${Math.round(m * 100)} %`, eurc(s.netPnl), pct(s.pctOnMargin), lev > 1 && s.closedOut ? 'Sí' : 'No']; }));
+  }
+  f.addEventListener('input', () => { run(); if (!used) { used = true; recordToolUse('apalancamiento'); } });
+  run();
+</script>

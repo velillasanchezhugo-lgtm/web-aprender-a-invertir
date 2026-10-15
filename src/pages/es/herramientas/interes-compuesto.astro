@@ -1,0 +1,77 @@
+---
+import ToolLayout from '../../../components/ToolLayout.astro';
+---
+<ToolLayout id="interes-compuesto" lede="Calcula cómo puede crecer una inversión inicial y unas aportaciones mensuales con una tasa supuesta, y separa el resultado nominal, el real y lo que se llevan los costes." dataNote="No usa datos de mercado: tú eliges la tasa.">
+  <div class="tool">
+    <form class="tool-inputs" id="f" novalidate>
+      <div class="field"><label for="initial">Inversión inicial (€)</label><input id="initial" name="initial" type="number" min="0" step="100" value="1000" inputmode="decimal" /></div>
+      <div class="field"><label for="monthly">Aportación mensual (€)</label><input id="monthly" name="monthly" type="number" min="0" step="10" value="150" inputmode="decimal" /></div>
+      <div class="field"><label for="years">Plazo (años)</label><input id="years" name="years" type="number" min="1" max="70" step="1" value="20" /></div>
+      <div class="field"><label for="rate">Rentabilidad anual supuesta, antes de costes (%)<span class="hint">Constante cada año: es un supuesto didáctico, no lo esperable.</span></label><input id="rate" name="rate" type="number" min="-20" max="30" step="0.1" value="5" /></div>
+      <div class="field"><label for="fee">Costes anuales totales (%)<span class="hint">Gastos del fondo, custodia, etc.</span></label><input id="fee" name="fee" type="number" min="0" max="10" step="0.05" value="0.3" /></div>
+      <div class="field"><label for="infl">Inflación anual supuesta (%)</label><input id="infl" name="infl" type="number" min="-5" max="20" step="0.1" value="2" /></div>
+      <div class="field"><label for="growth">Subida anual de la aportación (%)<span class="hint">0 = la misma cantidad siempre.</span></label><input id="growth" name="growth" type="number" min="0" max="20" step="0.5" value="0" /></div>
+      <p class="errors small" role="alert" id="errors"></p>
+    </form>
+    <div class="tool-output" aria-live="polite">
+      <div class="kpis">
+        <div class="kpi"><span class="k">Aportado</span><span class="v" id="k-contrib">—</span></div>
+        <div class="kpi"><span class="k">Valor final nominal</span><span class="v" id="k-nominal">—</span></div>
+        <div class="kpi"><span class="k">En euros de hoy</span><span class="v" id="k-real">—</span></div>
+        <div class="kpi"><span class="k">Costes acumulados (estimados)</span><span class="v loss" id="k-fees">—</span></div>
+      </div>
+      <div class="chart" id="chart"></div>
+      <div id="table"></div>
+      <div class="callout note small"><p class="callout-title">Prueba también con escenarios menos favorables</p><p>Cambia la rentabilidad a un 2 % o a un 0 % y compara. Los mercados reales alternan años positivos y negativos; una tasa constante no muestra ese riesgo. Para ver el efecto de una caída, usa el <a href="/es/herramientas/simulador-caidas/">simulador de caídas</a>.</p></div>
+    </div>
+  </div>
+  <Fragment slot="method">
+    <details class="method" open>
+      <summary>Metodología, fórmulas y limitaciones</summary>
+      <ul>
+        <li>Tasa mensual equivalente: <span class="formula">m = (1 + r)^(1/12) − 1</span>, donde <em>r</em> es la tasa anual neta de costes.</li>
+        <li>Tasa neta de costes: <span class="formula">r = (1 + r_bruta) × (1 − costes) − 1</span>.</li>
+        <li>Cada mes: <span class="formula">saldo = saldo × (1 + m) + aportación</span>. Aportaciones a final de mes.</li>
+        <li>Valor en euros de hoy: <span class="formula">real = nominal / (1 + inflación)^años</span>.</li>
+        <li>Costes acumulados: diferencia entre el resultado sin costes y con costes (incluye lo que esos costes habrían rendido).</li>
+        <li><strong>Unidades</strong>: euros corrientes (nominal) y euros con el poder de compra de hoy (real). <strong>No incluye impuestos.</strong></li>
+        <li><strong>Limitaciones</strong>: la rentabilidad real de los mercados varía cada año y puede ser negativa durante periodos largos; el orden de los años importa cuando hay aportaciones. No es una previsión.</li>
+      </ul>
+    </details>
+  </Fragment>
+</ToolLayout>
+<script>
+  import { compound, validate } from '../../../lib/calc/compound';
+  import { eur } from '../../../lib/calc/format';
+  import { lineChart, dataTable, palette, num } from '../../../scripts/chart';
+  import { recordToolUse } from '../../../scripts/store';
+  const f = document.getElementById('f') as HTMLFormElement;
+  let used = false;
+  function run() {
+    const input = { initial: num(f, 'initial'), monthly: num(f, 'monthly'), years: num(f, 'years'), annualRate: num(f, 'rate') / 100, annualFee: num(f, 'fee') / 100, inflation: num(f, 'infl') / 100, contributionGrowth: num(f, 'growth') / 100 };
+    const errs = validate(input);
+    document.getElementById('errors')!.textContent = errs.join(' ');
+    if (errs.length) return;
+    const rows = compound(input);
+    const last = rows[rows.length - 1];
+    document.getElementById('k-contrib')!.textContent = eur(last.contributed);
+    document.getElementById('k-nominal')!.textContent = eur(last.nominal);
+    document.getElementById('k-real')!.textContent = eur(last.real);
+    document.getElementById('k-fees')!.textContent = eur(last.feesPaid);
+    const p = palette();
+    document.getElementById('chart')!.innerHTML = lineChart({
+      labels: rows.map((r) => r.year), title: 'Evolución del valor de la inversión',
+      desc: `Tras ${input.years} años: ${eur(last.nominal)} nominales, ${eur(last.real)} en euros de hoy, ${eur(last.contributed)} aportados.`,
+      yFormat: (v) => (Math.abs(v) >= 1000 ? `${Math.round(v / 1000)} k€` : `${Math.round(v)} €`), zeroLine: true,
+      series: [
+        { name: 'Valor nominal', values: rows.map((r) => r.nominal), color: p.teal },
+        { name: 'En euros de hoy', values: rows.map((r) => r.real), color: p.ochre },
+        { name: 'Aportado', values: rows.map((r) => r.contributed), color: p.ink, dashed: true },
+      ],
+    });
+    document.getElementById('table')!.innerHTML = dataTable('Valores por año', ['Año', 'Aportado', 'Nominal', 'Euros de hoy', 'Costes acumulados'],
+      rows.map((r) => [r.year, eur(r.contributed), eur(r.nominal), eur(r.real), eur(r.feesPaid)]));
+  }
+  f.addEventListener('input', () => { run(); if (!used) { used = true; recordToolUse('interes-compuesto'); } });
+  run();
+</script>

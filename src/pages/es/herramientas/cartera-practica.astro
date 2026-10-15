@@ -1,0 +1,128 @@
+---
+import ToolLayout from '../../../components/ToolLayout.astro';
+---
+<ToolLayout id="cartera-practica" lede="Reparte 10.000 € ficticios entre cuatro tipos de activo y avanza año a año por escenarios ficticios. Sirve para sentir qué hace cada reparto en años buenos y malos, no para elegir una cartera." dataNote="Escenarios y rentabilidades ficticios y estilizados; no son datos históricos ni previsiones. Sin cotizaciones reales.">
+  <div class="callout note"><p class="callout-title">Todo es ficticio</p><p>Los activos, los escenarios y sus rentabilidades están inventados con fines didácticos. Ningún resultado de este ejercicio indica lo que pasará con productos reales.</p></div>
+  <div class="tool">
+    <form class="tool-inputs" id="f" novalidate>
+      <fieldset>
+        <legend>Reparto inicial (10.000 €)</legend>
+        <div class="field"><label for="a0">Liquidez (cuenta remunerada) (%)</label><input id="a0" name="a0" type="number" min="0" max="100" value="20" /></div>
+        <div class="field"><label for="a1">Bonos de alta calidad (%)</label><input id="a1" name="a1" type="number" min="0" max="100" value="30" /></div>
+        <div class="field"><label for="a2">Acciones globales diversificadas (%)</label><input id="a2" name="a2" type="number" min="0" max="100" value="50" /></div>
+        <div class="field"><label for="a3">Una sola empresa (%)</label><input id="a3" name="a3" type="number" min="0" max="100" value="0" /></div>
+        <p class="small" id="sum" aria-live="polite"></p>
+      </fieldset>
+      <div class="field"><label for="scen">Escenario del próximo año</label>
+        <select id="scen" name="scen">
+          <option value="random">Al azar (como en la vida real: no lo eliges)</option>
+          <option value="calm">Año tranquilo</option>
+          <option value="crisis">Crisis financiera</option>
+          <option value="inflation">Inflación alta y subida de tipos</option>
+          <option value="euphoria">Euforia bursátil</option>
+          <option value="recovery">Recuperación</option>
+          <option value="bankrupt">La empresa individual quiebra</option>
+        </select></div>
+      <div class="btns">
+        <button type="button" class="btn" id="step">Avanzar un año</button>
+        <button type="button" class="btn ghost small" id="reset">Empezar de nuevo</button>
+      </div>
+      <p class="errors small" role="alert" id="errors"></p>
+    </form>
+    <div class="tool-output" aria-live="polite">
+      <div class="kpis">
+        <div class="kpi"><span class="k">Año</span><span class="v" id="k-year">0</span></div>
+        <div class="kpi"><span class="k">Valor nominal</span><span class="v" id="k-value">10.000 €</span></div>
+        <div class="kpi"><span class="k">En euros del inicio</span><span class="v" id="k-real">10.000 €</span></div>
+        <div class="kpi"><span class="k">Peor caída desde un máximo</span><span class="v loss" id="k-dd">0 %</span></div>
+      </div>
+      <p id="event" class="callout learn" hidden></p>
+      <div class="chart" id="chart"></div>
+      <div id="table"></div>
+      <div class="field" style="margin-top:1rem"><label for="note">¿Qué habrías hecho tras este año? Escríbelo (se guarda solo en tu dispositivo)</label><textarea id="note" rows="3" maxlength="600"></textarea></div>
+    </div>
+  </div>
+  <Fragment slot="method">
+    <details class="method" open>
+      <summary>Escenarios ficticios utilizados</summary>
+      <div class="table-wrap"><table class="data"><thead><tr><th>Escenario</th><th class="num">Liquidez</th><th class="num">Bonos</th><th class="num">Acciones globales</th><th class="num">Una empresa</th><th class="num">Inflación</th></tr></thead>
+      <tbody id="scen-table"></tbody></table></div>
+      <ul>
+        <li>Cada año: <span class="formula">valor_i = valor_i × (1 + r_i) × (1 − 0,2 %)</span> (costes anuales supuestos). Sin rebalanceo automático: los pesos derivan.</li>
+        <li>«Al azar» elige un escenario con probabilidades fijas e ilustrativas (tranquilo 35 %, recuperación 20 %, euforia 15 %, crisis 15 %, inflación 10 %, quiebra 5 %). <strong>No son probabilidades reales.</strong></li>
+        <li>El reparto y tus notas se guardan solo en este navegador; puedes borrarlos en <a href="/es/progreso/">Mi progreso</a>.</li>
+      </ul>
+    </details>
+  </Fragment>
+</ToolLayout>
+<style>.btns { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }</style>
+<script>
+  import { eur, pct } from '../../../lib/calc/format';
+  import { lineChart, dataTable, palette, num } from '../../../scripts/chart';
+  import { read, write, recordToolUse } from '../../../scripts/store';
+  const SCEN: Record<string, { name: string; r: number[]; infl: number; text: string }> = {
+    calm: { name: 'Año tranquilo', r: [0.02, 0.03, 0.08, 0.1], infl: 0.02, text: 'Un año sin sobresaltos. Casi todo sube un poco.' },
+    crisis: { name: 'Crisis financiera', r: [0.02, 0.04, -0.35, -0.55], infl: 0.01, text: 'Las acciones se desploman. ¿Venderías ahora, o tienes un plan?' },
+    inflation: { name: 'Inflación alta y subida de tipos', r: [0.03, -0.12, -0.15, -0.2], infl: 0.08, text: 'Suben los tipos: los bonos y las acciones caen a la vez, y la inflación resta poder de compra a todo.' },
+    euphoria: { name: 'Euforia bursátil', r: [0.01, 0, 0.25, 0.6], infl: 0.03, text: 'Todo el mundo habla de bolsa. Tentación de concentrarse en lo que más ha subido.' },
+    recovery: { name: 'Recuperación', r: [0.01, 0.04, 0.22, 0.3], infl: 0.02, text: 'Tras una mala época, el mercado se recupera. Solo lo aprovecha quien siguió invertido.' },
+    bankrupt: { name: 'La empresa individual quiebra', r: [0.02, 0.03, 0.05, -1], infl: 0.02, text: 'La empresa en la que concentraste dinero quiebra. El resto de la cartera apenas lo nota.' },
+  };
+  const WEIGHTS: [string, number][] = [['calm', 0.35], ['recovery', 0.2], ['euphoria', 0.15], ['crisis', 0.15], ['inflation', 0.1], ['bankrupt', 0.05]];
+  const NAMES = ['Liquidez', 'Bonos', 'Acciones globales', 'Una empresa'];
+  const COST = 0.002;
+  interface State { alloc: number[]; holdings: number[][]; scen: string[]; deflator: number[]; note: string }
+  const f = document.getElementById('f') as HTMLFormElement;
+  const $ = (id: string) => document.getElementById(id)!;
+  document.getElementById('scen-table')!.innerHTML = Object.values(SCEN).map((s) => `<tr><td>${s.name}</td>${s.r.map((x) => `<td class="num">${pct(x)}</td>`).join('')}<td class="num">${pct(s.infl)}</td></tr>`).join('');
+  let st: State = read<State>('practice', { alloc: [], holdings: [], scen: [], deflator: [1], note: '' });
+  const alloc = () => [0, 1, 2, 3].map((i) => num(f, 'a' + i) / 100);
+  if (st.alloc.length === 4) st.alloc.forEach((a, i) => ((f.elements.namedItem('a' + i) as HTMLInputElement).value = String(Math.round(a * 100))));
+  (document.getElementById('note') as HTMLTextAreaElement).value = st.note ?? '';
+  function validAlloc() {
+    const a = alloc(); const s = a.reduce((x, y) => x + y, 0);
+    $('sum').textContent = `Suma: ${Math.round(s * 100)} %${Math.abs(s - 1) > 1e-6 ? ' (debe ser 100 %)' : ''}`;
+    return Math.abs(s - 1) < 1e-6 && a.every((x) => x >= 0) ? a : null;
+  }
+  function render() {
+    const totals = st.holdings.map((h) => h.reduce((a, b) => a + b, 0));
+    const years = totals.length - 1;
+    $('k-year').textContent = String(Math.max(0, years));
+    const lastT = totals[totals.length - 1] ?? 10000;
+    $('k-value').textContent = eur(lastT);
+    $('k-real').textContent = eur(lastT / (st.deflator[st.deflator.length - 1] ?? 1));
+    let peak = 0, dd = 0; totals.forEach((t) => { peak = Math.max(peak, t); dd = Math.min(dd, t / peak - 1); });
+    $('k-dd').textContent = pct(dd);
+    if (totals.length > 1) {
+      const p = palette();
+      $('chart').innerHTML = lineChart({ labels: totals.map((_, i) => i), title: 'Valor de la cartera ficticia', desc: `Tras ${years} años ficticios: ${eur(lastT)}.`, yFormat: (v) => `${(v / 1000).toLocaleString('es-ES', { maximumFractionDigits: 1 })} k€`,
+        series: [{ name: 'Valor nominal', values: totals, color: p.teal }, { name: 'En euros del inicio', values: totals.map((t, i) => t / st.deflator[i]), color: p.ochre }, { name: 'Inicial', values: totals.map(() => 10000), color: p.ink, dashed: true }] });
+      $('table').innerHTML = dataTable('Años ficticios', ['Año', 'Escenario', 'Valor', ...NAMES.map((n) => `Peso ${n}`)], st.holdings.map((h, i) => { const t = h.reduce((a, b) => a + b, 0); return [i, i ? SCEN[st.scen[i - 1]].name : 'Inicio', eur(t), ...h.map((x) => pct(t ? x / t : 0))]; }));
+    } else { $('chart').innerHTML = '<p class="muted small" style="padding:1rem">Elige un reparto y pulsa «Avanzar un año».</p>'; $('table').innerHTML = ''; }
+  }
+  function start() {
+    const a = validAlloc();
+    if (!a) { $('errors').textContent = 'El reparto debe sumar 100 %.'; return false; }
+    $('errors').textContent = '';
+    st = { alloc: a, holdings: [a.map((x) => x * 10000)], scen: [], deflator: [1], note: st.note };
+    return true;
+  }
+  $('step').addEventListener('click', () => {
+    if (st.holdings.length === 0 && !start()) return;
+    let key = (f.elements.namedItem('scen') as HTMLSelectElement).value;
+    if (key === 'random') { let u = Math.random(), acc = 0; key = WEIGHTS.find(([, w]) => (acc += w) >= u)?.[0] ?? 'calm'; }
+    const s = SCEN[key];
+    const prev = st.holdings[st.holdings.length - 1];
+    st.holdings.push(prev.map((v, i) => Math.max(0, v * (1 + s.r[i]) * (1 - COST))));
+    st.scen.push(key);
+    st.deflator.push(st.deflator[st.deflator.length - 1] * (1 + s.infl));
+    write('practice', st);
+    const ev = $('event'); ev.hidden = false; ev.textContent = `Año ${st.scen.length}: ${s.name}. ${s.text}`;
+    recordToolUse('cartera-practica');
+    render();
+  });
+  $('reset').addEventListener('click', () => { st = { alloc: [], holdings: [], scen: [], deflator: [1], note: st.note }; write('practice', st); $('event').hidden = true; validAlloc(); render(); });
+  f.addEventListener('input', () => { validAlloc(); if (st.holdings.length <= 1) { st.holdings = []; render(); } });
+  document.getElementById('note')!.addEventListener('input', (e) => { st.note = (e.target as HTMLTextAreaElement).value; write('practice', st); });
+  validAlloc(); render();
+</script>

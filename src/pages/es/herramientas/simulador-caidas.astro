@@ -1,0 +1,75 @@
+---
+import ToolLayout from '../../../components/ToolLayout.astro';
+---
+<ToolLayout id="simulador-caidas" lede="Simula una caída de tu cartera y comprueba qué subida haría falta para recuperarla, cuánto tardaría con una tasa supuesta y qué cambia si sigues aportando." dataNote="Simulación con supuestos que eliges; los ejemplos históricos se citan con su fuente.">
+  <div class="tool">
+    <form class="tool-inputs" id="f" novalidate>
+      <div class="field"><label for="start">Valor inicial de la cartera (€)</label><input id="start" name="start" type="number" min="1" step="500" value="20000" /></div>
+      <div class="field"><label for="drop">Caída (%) <output id="drop-o" for="drop">35 %</output></label><input id="drop" name="drop" type="range" min="5" max="90" step="1" value="35" /></div>
+      <div class="field"><label for="rate">Rentabilidad anual supuesta tras la caída (%)<span class="hint">Constante: supuesto, no previsión.</span></label><input id="rate" name="rate" type="number" min="-10" max="30" step="0.5" value="6" /></div>
+      <div class="field"><label for="yearly">Aportación anual tras la caída (€)</label><input id="yearly" name="yearly" type="number" min="0" step="100" value="0" /></div>
+      <div class="field"><label for="years">Años a simular</label><input id="years" name="years" type="number" min="2" max="40" value="12" /></div>
+      <p class="errors small" role="alert" id="errors"></p>
+    </form>
+    <div class="tool-output" aria-live="polite">
+      <div class="kpis">
+        <div class="kpi"><span class="k">Valor tras la caída</span><span class="v loss" id="k-after">—</span></div>
+        <div class="kpi"><span class="k">Subida necesaria para recuperar</span><span class="v" id="k-gain">—</span></div>
+        <div class="kpi"><span class="k">Años para recuperar (sin aportar)</span><span class="v" id="k-years">—</span></div>
+        <div class="kpi"><span class="k">Valor al final del periodo</span><span class="v" id="k-end">—</span></div>
+      </div>
+      <div class="chart" id="chart"></div>
+      <div id="table"></div>
+      <h2 style="font-size:1.25rem">Algunas caídas documentadas</h2>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Índice (precio, sin dividendos)</th><th>Del máximo al mínimo</th><th class="num">Caída</th><th>Recuperación del máximo (precio)</th></tr></thead>
+          <tbody>
+            <tr><td>S&amp;P 500 (USD)</td><td>9/10/2007 (1.565,15) → 9/3/2009 (676,53)</td><td class="num">−56,8 %</td><td>Marzo de 2013</td></tr>
+            <tr><td>Nikkei 225 (JPY)</td><td>29/12/1989 (38.915,87) → mínimos posteriores</td><td class="num">Más del −75 %</td><td>22/2/2024, más de 34 años después</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">Fuentes: S&amp;P Dow Jones Indices y Nikkei Inc. (datos de cierre). Índices de precios en su moneda, sin dividendos, sin inflación ni costes. Con dividendos reinvertidos las recuperaciones fueron algo más rápidas. Se citan precisamente porque no son casos favorables; no predicen el futuro.</p>
+    </div>
+  </div>
+  <Fragment slot="method">
+    <details class="method" open>
+      <summary>Metodología y limitaciones</summary>
+      <ul>
+        <li>Subida necesaria: <span class="formula">caída / (1 − caída)</span>.</li>
+        <li>Años para recuperar sin aportaciones: <span class="formula">ln(1 / (1 − caída)) / ln(1 + r)</span>.</li>
+        <li>Trayectoria: el año 1 aplica la caída; después, cada año <span class="formula">valor = valor × (1 + r) + aportación</span>.</li>
+        <li><strong>Limitaciones</strong>: la recuperación real no sigue una tasa constante, puede ser mucho más lenta o no producirse (en una empresa individual, nunca). No incluye impuestos ni costes. La caída del Nikkei de «más del 75 %» se indica de forma aproximada y está pendiente de precisar con la serie oficial.</li>
+      </ul>
+    </details>
+  </Fragment>
+</ToolLayout>
+<script>
+  import { requiredGain, yearsToRecover, path } from '../../../lib/calc/drawdown';
+  import { eur, pct, num as fnum } from '../../../lib/calc/format';
+  import { lineChart, dataTable, palette, num } from '../../../scripts/chart';
+  import { recordToolUse } from '../../../scripts/store';
+  const f = document.getElementById('f') as HTMLFormElement;
+  const $ = (id: string) => document.getElementById(id)!;
+  let used = false;
+  function run() {
+    const start = num(f, 'start'), drop = num(f, 'drop') / 100, rate = num(f, 'rate') / 100, yearly = num(f, 'yearly'), years = Math.round(num(f, 'years'));
+    $('drop-o').textContent = `${Math.round(drop * 100)} %`;
+    if (!(start > 0) || !(years >= 2)) { $('errors').textContent = 'Revisa los valores.'; return; }
+    $('errors').textContent = '';
+    const rows = path({ start, drop, rate, years, yearly });
+    const y = yearsToRecover(drop, rate);
+    $('k-after').textContent = eur(start * (1 - drop));
+    $('k-gain').textContent = '+' + pct(requiredGain(drop));
+    $('k-years').textContent = Number.isFinite(y) ? `${fnum(y)} años` : 'No se recupera con esa tasa';
+    $('k-end').textContent = eur(rows[rows.length - 1].value);
+    const p = palette();
+    $('chart').innerHTML = lineChart({ labels: rows.map((r) => r.year), title: 'Valor de la cartera tras una caída', desc: `Caída del ${Math.round(drop * 100)} % y recuperación al ${pct(rate)} anual supuesto.`,
+      yFormat: (v) => `${Math.round(v / 1000)} k€`, zeroLine: true,
+      series: [{ name: 'Valor de la cartera', values: rows.map((r) => r.value), color: p.teal }, { name: 'Valor inicial', values: rows.map(() => start), color: p.ink, dashed: true }, ...(yearly > 0 ? [{ name: 'Total aportado', values: rows.map((r) => r.contributed), color: p.ochre, dashed: true }] : [])] });
+    $('table').innerHTML = dataTable('Trayectoria por año', ['Año', 'Valor', 'Aportado'], rows.map((r) => [r.year, eur(r.value), eur(r.contributed)]));
+  }
+  f.addEventListener('input', () => { run(); if (!used) { used = true; recordToolUse('simulador-caidas'); } });
+  run();
+</script>

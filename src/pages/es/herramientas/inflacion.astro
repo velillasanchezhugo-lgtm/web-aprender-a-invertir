@@ -1,0 +1,99 @@
+---
+import ToolLayout from '../../../components/ToolLayout.astro';
+import ipc from '../../../data/ipc-spain.json';
+const years = Object.keys(ipc.values).map(Number).sort((a, b) => a - b);
+const first = years[0], last = years[years.length - 1];
+---
+<ToolLayout id="inflacion" lede="Comprueba cuánto poder de compra pierde una cantidad con la inflación, con un supuesto constante o con los datos reales del IPC de España publicados por el INE." dataNote={`Datos del INE (IPC, variación anual en diciembre) de ${first} a ${last}, descargados el 15/10/2026; no se actualizan solos.`}>
+  <div class="tool">
+    <form class="tool-inputs" id="f" novalidate>
+      <div class="field"><label for="amount">Cantidad (€)</label><input id="amount" name="amount" type="number" min="0" step="100" value="10000" /></div>
+      <fieldset>
+        <legend>Modo</legend>
+        <label class="choice"><input type="radio" name="mode" value="hist" checked /> <span>Datos históricos del INE</span></label>
+        <label class="choice"><input type="radio" name="mode" value="const" /> <span>Inflación constante supuesta</span></label>
+      </fieldset>
+      <div data-mode="hist">
+        <div class="field"><label for="from">Desde diciembre de</label><select id="from" name="from">{years.slice(0, -1).map((y) => <option value={y} selected={y === 2015}>{y}</option>)}</select></div>
+        <div class="field"><label for="to">Hasta diciembre de</label><select id="to" name="to">{years.slice(1).map((y) => <option value={y} selected={y === last}>{y}</option>)}</select></div>
+      </div>
+      <div data-mode="const" hidden>
+        <div class="field"><label for="rate">Inflación anual (%)</label><input id="rate" name="rate" type="number" min="-5" max="30" step="0.1" value="2.5" /></div>
+        <div class="field"><label for="yrs">Años</label><input id="yrs" name="yrs" type="number" min="1" max="60" value="10" /></div>
+        <div class="field"><label for="dep">Rentabilidad nominal de tu dinero (%)<span class="hint">Por ejemplo, la de una cuenta remunerada, antes de impuestos.</span></label><input id="dep" name="dep" type="number" min="-10" max="30" step="0.1" value="0" /></div>
+      </div>
+      <p class="errors small" role="alert" id="errors"></p>
+    </form>
+    <div class="tool-output" aria-live="polite">
+      <div class="kpis">
+        <div class="kpi"><span class="k">Inflación acumulada</span><span class="v loss" id="k-cum">—</span></div>
+        <div class="kpi"><span class="k">Media anual equivalente</span><span class="v" id="k-ann">—</span></div>
+        <div class="kpi"><span class="k">Poder de compra al final</span><span class="v" id="k-real">—</span></div>
+        <div class="kpi"><span class="k">Precio equivalente de lo que costaba la cantidad</span><span class="v" id="k-price">—</span></div>
+      </div>
+      <p id="sentence" class="lede" style="font-size:1.1rem"></p>
+      <div class="chart" id="chart"></div>
+      <div id="table"></div>
+    </div>
+  </div>
+  <script type="application/json" id="ipc-data" set:html={JSON.stringify(ipc.values)} />
+  <Fragment slot="method">
+    <details class="method" open>
+      <summary>Metodología, fuente y limitaciones</summary>
+      <ul>
+        <li><strong>Fuente</strong>: INE, serie IPC251856 «Nacional. Índice general. Variación anual», dato de diciembre de cada año (consulta del 15/10/2026). El dato de diciembre mide la variación de los precios entre diciembre del año anterior y diciembre de ese año.</li>
+        <li>Inflación acumulada entre diciembre de A y diciembre de B: <span class="formula">Π(1 + i_t) − 1</span> para t = A+1 … B.</li>
+        <li>Poder de compra: <span class="formula">cantidad / (1 + inflación acumulada)</span>.</li>
+        <li>Con inflación constante: <span class="formula">cantidad × ((1 + r_nominal) / (1 + inflación))^años</span>.</li>
+        <li><strong>Limitaciones</strong>: el IPC mide una cesta media; tu inflación personal puede ser distinta (vivienda, alimentación, energía pesan diferente). El INE revisa y cambia de base sus series; los datos aquí son estáticos.</li>
+      </ul>
+    </details>
+  </Fragment>
+</ToolLayout>
+<script>
+  import { cumulative, annualized } from '../../../lib/calc/inflation';
+  import { eur, pct } from '../../../lib/calc/format';
+  import { lineChart, dataTable, palette, num } from '../../../scripts/chart';
+  import { recordToolUse } from '../../../scripts/store';
+  const raw = JSON.parse(document.getElementById('ipc-data')!.textContent!);
+  const series: Record<number, number> = Object.fromEntries(Object.entries(raw).map(([k, v]) => [Number(k), v as number]));
+  const f = document.getElementById('f') as HTMLFormElement;
+  const $ = (id: string) => document.getElementById(id)!;
+  let used = false;
+  function run() {
+    const mode = (f.elements.namedItem('mode') as RadioNodeList).value;
+    f.querySelectorAll<HTMLElement>('[data-mode]').forEach((el) => (el.hidden = el.dataset.mode !== mode));
+    const amount = num(f, 'amount');
+    const err = $('errors'); err.textContent = '';
+    if (!(amount >= 0)) { err.textContent = 'Introduce una cantidad válida.'; return; }
+    const p = palette();
+    let labels: number[] = [], realVals: number[] = [], cum = 0, years = 0;
+    if (mode === 'hist') {
+      const from = num(f, 'from'), to = num(f, 'to');
+      if (to <= from) { err.textContent = 'El año final debe ser posterior al inicial.'; return; }
+      cum = cumulative(series, from + 1, to); years = to - from;
+      let factor = 1; labels = [from]; realVals = [amount];
+      for (let y = from + 1; y <= to; y++) { factor *= 1 + series[y] / 100; labels.push(y); realVals.push(amount / factor); }
+      $('sentence').textContent = `${eur(amount)} de diciembre de ${from} compraban lo mismo que ${eur(amount * (1 + cum))} en diciembre de ${to}. Guardados sin rentabilidad, equivalen a ${eur(amount / (1 + cum))} de ${from}.`;
+    } else {
+      const r = num(f, 'rate') / 100, n = Math.round(num(f, 'yrs')), dep = num(f, 'dep') / 100;
+      if (!(n >= 1) || !(r > -1)) { err.textContent = 'Revisa los años y la tasa.'; return; }
+      years = n; cum = Math.pow(1 + r, n) - 1;
+      labels = Array.from({ length: n + 1 }, (_, i) => i);
+      realVals = labels.map((i) => amount * Math.pow((1 + dep) / (1 + r), i));
+      $('sentence').textContent = `Con una inflación del ${pct(r)} anual y una rentabilidad nominal del ${pct(dep)}, dentro de ${n} años tus ${eur(amount)} comprarán lo que hoy cuesta ${eur(realVals[n])}.`;
+    }
+    $('k-cum').textContent = pct(cum);
+    $('k-ann').textContent = pct(annualized(cum, years));
+    $('k-real').textContent = eur(realVals[realVals.length - 1]);
+    $('k-price').textContent = eur(amount * (1 + cum));
+    $('chart').innerHTML = lineChart({ labels, title: 'Poder de compra de la cantidad', desc: $('sentence').textContent!, yFormat: (v) => `${Math.round(v).toLocaleString('es-ES')} €`, zeroLine: false,
+      series: [{ name: 'Poder de compra (euros del inicio)', values: realVals, color: p.loss }, { name: 'Valor nominal sin rentabilidad', values: labels.map(() => amount), color: p.ink, dashed: true }] });
+    $('table').innerHTML = mode === 'hist'
+      ? dataTable('IPC por año', ['Año', 'IPC dic. (%)', 'Poder de compra'], labels.slice(1).map((y, i) => [y, series[y].toLocaleString('es-ES'), eur(realVals[i + 1])]))
+      : dataTable('Poder de compra por año', ['Año', 'Poder de compra'], labels.map((y, i) => [y, eur(realVals[i])]));
+  }
+  f.addEventListener('input', () => { run(); if (!used) { used = true; recordToolUse('inflacion'); } });
+  f.addEventListener('change', run);
+  run();
+</script>
