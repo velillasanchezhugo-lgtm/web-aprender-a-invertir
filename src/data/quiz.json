@@ -95,7 +95,7 @@
       "lessons": ["objetivos-horizonte-liquidez"] }
   ],
   "startingPoints": [
-    { "id": "zero", "when": { "all": [ { "score": "lte", "value": 1 } ] }, "label": "Empiezas desde cero", "text": "Lo más útil ahora es la ruta inicial, en orden. Las dos primeras lecciones (unos quince minutos) ya dejan ideas útiles; la ruta completa dura alrededor de hora y media, repartida como quieras." },
+    { "id": "zero", "when": { "all": [ { "score": "lte", "value": 1 } ] }, "label": "Empiezas desde cero", "text": "Lo más útil ahora es la ruta inicial, en orden. Las dos primeras lecciones (unos quince minutos) ya dejan ideas útiles; la ruta completa dura unos 80 minutos, repartidos como quieras." },
     { "id": "basic", "when": { "all": [ { "score": "lte", "value": 3 } ] }, "label": "Tienes una base con lagunas", "text": "Conoces algunas ideas, pero conviene asentar las que han fallado en las preguntas de comprobación antes de pasar a la academia." },
     { "id": "solid", "when": { "all": [ { "score": "gte", "value": 4 } ] }, "label": "Tienes una base sólida", "text": "Has respondido bien a las preguntas de comprobación. Puedes repasar rápido la ruta inicial y centrarte en la academia según tu objetivo." }
   ],

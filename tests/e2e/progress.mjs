@@ -1,0 +1,27 @@
+/** Persistencia y borrado del progreso, marcadores, test y navegación por teclado. */
+import { createRequire } from 'module';
+const require = createRequire(process.env.PLAYWRIGHT_ROOT || '/opt/node22/lib/node_modules/');
+const { chromium } = require('playwright');
+const BASE = process.env.BASE || 'http://localhost:4322';
+const b = await chromium.launch(); const p = await b.newPage();
+const ok = (c, m) => { if (!c) { console.error('✗ ' + m); process.exitCode = 1; } else console.log('✓ ' + m); };
+await p.goto(BASE + '/es/lecciones/ahorrar-invertir-especular/');
+await p.click('[data-action=complete]'); await p.click('[data-action=bookmark]');
+await p.check('input[name="ahorrar-invertir-especular-q0"][value="2"]');
+await p.goto(BASE + '/es/empieza-desde-cero/');
+ok((await p.textContent('#route-text')).includes('1 de 10'), 'la ruta muestra 1 de 10 completadas');
+await p.goto(BASE + '/es/');
+ok(await p.isVisible('#resume'), 'la portada ofrece continuar la última lección');
+await p.goto(BASE + '/es/progreso/');
+ok((await p.textContent('#k-done')) === '1', 'Mi progreso cuenta 1 lección');
+ok((await p.textContent('#bm')).includes('Ahorrar'), 'el marcador aparece');
+await p.goto(BASE + '/es/test/');
+await p.check('input[name="goal"][value="learn"]'); await p.check('#save'); await p.click('button[type=submit]');
+ok(await p.evaluate(() => !!localStorage.getItem('criterio:quiz')), 'el test se guarda solo si se pide');
+await p.goto(BASE + '/es/progreso/');
+p.once('dialog', (d) => d.accept()); await p.click('#wipe');
+ok(await p.evaluate(() => Object.keys(localStorage).filter((k) => k.startsWith('criterio:')).length === 0), 'borrar elimina todos los datos');
+await p.goto(BASE + '/es/');
+await p.keyboard.press('Tab');
+ok((await p.evaluate(() => document.activeElement?.className)) === 'skip-link', 'el primer tabulador lleva al enlace «Saltar al contenido»');
+await b.close();

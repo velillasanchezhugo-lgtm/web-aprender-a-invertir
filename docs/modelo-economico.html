@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Modelo económico editable</title>
+<style>
+  :root { --paper:#fbf9f4; --ink:#1b1f23; --muted:#5f6770; --rule:#e2dccf; --teal:#0f4c5c; --loss:#a1452e; --card:#fff; }
+  @media (prefers-color-scheme: dark) { :root { --paper:#14171a; --ink:#ece8df; --muted:#a29f98; --rule:#2e343a; --teal:#7cc3d1; --loss:#e8937c; --card:#1e2328; } }
+  body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.5 system-ui, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 16px; }
+  h1 { font-family: Georgia, serif; }
+  .note { border-left:4px solid var(--loss); padding:8px 12px; background:var(--card); }
+  table { width:100%; border-collapse:collapse; margin:16px 0; background:var(--card); }
+  th, td { border-bottom:1px solid var(--rule); padding:6px 8px; text-align:right; }
+  th:first-child, td:first-child { text-align:left; }
+  input { width: 100%; max-width: 120px; font: inherit; padding: 4px; background: var(--card); color: var(--ink); border: 1px solid var(--rule); border-radius: 4px; }
+  .wrap { overflow-x: auto; }
+  .neg { color: var(--loss); } .pos { color: var(--teal); }
+  button { font: inherit; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--teal); background: transparent; color: var(--teal); cursor: pointer; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Modelo económico editable</h1>
+  <p class="note">Los valores iniciales son <strong>supuestos ilustrativos</strong>, no datos ni previsiones. Sustitúyelos por los reales. Fórmula: ingresos = páginas vistas monetizables / 1.000 × RPM de página.</p>
+  <div class="wrap">
+  <table id="t">
+    <thead><tr><th>Variable</th><th>Escenario A</th><th>Escenario B</th><th>Escenario C</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  </div>
+  <button id="add">Añadir escenario</button>
+  <p><small>Los cambios se guardan en este navegador. Visitas ≠ usuarios ≠ páginas vistas ≠ impresiones: ver MODELO-ECONOMICO.md.</small></p>
+</main>
+<script>
+  const ROWS = [
+    ['visits', 'Visitas al mes', 'n'], ['ppv', 'Páginas por visita', 'n'], ['adShare', '% de páginas con anuncios', 'p'],
+    ['consent', '% con anuncios servidos (consentimiento)', 'p'], ['rpm', 'RPM de página supuesto (€)', 'n'],
+    ['domain', 'Dominio (€/año)', 'n'], ['hosting', 'Alojamiento (€/mes)', 'n'], ['hours', 'Horas editoriales al mes', 'n'],
+    ['rate', 'Coste por hora (€)', 'n'], ['other', 'Otros costes (€/mes)', 'n'],
+  ];
+  const OUT = [['pv', 'Páginas vistas'], ['mpv', 'Páginas vistas monetizables'], ['rev', 'Ingresos estimados (€/mes)'], ['cost', 'Costes (€/mes)'], ['res', 'Resultado (€/mes)']];
+  let sc = [];
+  try { sc = JSON.parse(localStorage.getItem('modelo') || 'null') || null; } catch (e) {}
+  if (!sc) sc = [
+    { visits: 5000, ppv: 2, adShare: 60, consent: 60, rpm: 3, domain: 15, hosting: 0, hours: 10, rate: 0, other: 0 },
+    { visits: 30000, ppv: 2.5, adShare: 60, consent: 60, rpm: 5, domain: 15, hosting: 10, hours: 20, rate: 0, other: 5 },
+    { visits: 100000, ppv: 2.5, adShare: 60, consent: 60, rpm: 8, domain: 15, hosting: 20, hours: 40, rate: 0, other: 10 },
+  ];
+  const fmt = (v) => v.toLocaleString('es-ES', { maximumFractionDigits: 2 });
+  function calc(s) {
+    const pv = s.visits * s.ppv, mpv = pv * s.adShare / 100 * s.consent / 100, rev = mpv / 1000 * s.rpm;
+    const cost = s.domain / 12 + s.hosting + s.hours * s.rate + s.other;
+    return { pv, mpv, rev, cost, res: rev - cost };
+  }
+  function render() {
+    const head = document.querySelector('#t thead tr');
+    head.innerHTML = '<th>Variable</th>' + sc.map((_, i) => `<th>Escenario ${String.fromCharCode(65 + i)}</th>`).join('');
+    const tb = document.querySelector('#t tbody');
+    tb.innerHTML = ROWS.map(([k, l]) => `<tr><td><label>${l}</label></td>${sc.map((s, i) => `<td><input type="number" step="any" data-i="${i}" data-k="${k}" value="${s[k]}" aria-label="${l}, escenario ${String.fromCharCode(65 + i)}"></td>`).join('')}</tr>`).join('')
+      + OUT.map(([k, l]) => `<tr><th>${l}</th>${sc.map((s) => { const v = calc(s)[k]; return `<td class="${k === 'res' ? (v < 0 ? 'neg' : 'pos') : ''}">${fmt(v)}</td>`; }).join('')}</tr>`).join('');
+  }
+  document.addEventListener('input', (e) => {
+    const el = e.target; if (!el.dataset.k) return;
+    sc[+el.dataset.i][el.dataset.k] = Number(el.value) || 0;
+    try { localStorage.setItem('modelo', JSON.stringify(sc)); } catch (err) {}
+    const pos = el.selectionStart; render();
+    const again = document.querySelector(`input[data-i="${el.dataset.i}"][data-k="${el.dataset.k}"]`); again.focus();
+  });
+  document.getElementById('add').addEventListener('click', () => { sc.push({ ...sc[sc.length - 1] }); render(); });
+  render();
+</script>
+</body>
+</html>
