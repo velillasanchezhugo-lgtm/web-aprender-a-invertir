@@ -64,7 +64,7 @@ const investors = defineCollection({
   schema: z.object({
     title: z.string(),
     name: z.string(),
-    kind: z.enum(['inversor', 'caso']),
+    kind: z.enum(['inversor', 'caso', 'concepto']),
     years: z.string(),
     description: z.string().max(170),
     approach: z.string(),

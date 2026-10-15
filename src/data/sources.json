@@ -384,5 +384,33 @@
   "url": "https://eur-lex.europa.eu/eli/reg/2014/1286/oj",
   "type": "normativa",
   "checked": "2026-10-15"
+ },
+ "madoff-trustee": {
+  "title": "Madoff Recovery Initiative (administrador concursal SIPA de Bernard L. Madoff Investment Securities): información sobre recuperaciones y reclamaciones",
+  "publisher": "Irving H. Picard, Trustee",
+  "url": "https://www.madofftrustee.com/",
+  "type": "judicial",
+  "checked": "2026-10-15"
+ },
+ "fidelity-magellan": {
+  "title": "Fidelity Investments: información histórica sobre Peter Lynch y Fidelity Magellan Fund (1977-1990)",
+  "publisher": "Fidelity Investments",
+  "url": "https://www.fidelity.com/",
+  "type": "empresa",
+  "checked": null
+ },
+ "vanguard-history": {
+  "title": "Vanguard: historia de la compañía y del primer fondo indexado para minoristas (1975-1976)",
+  "publisher": "The Vanguard Group",
+  "url": "https://corporate.vanguard.com/content/corporatesite/us/en/corp/who-we-are/sets-us-apart/our-history.html",
+  "type": "empresa",
+  "checked": "2026-10-15"
+ },
+ "ley-bienes-tangibles": {
+  "title": "Ley 43/2007, de protección de los consumidores en la contratación de bienes con oferta de restitución del precio",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-21490",
+  "type": "normativa",
+  "checked": null
  }
 }
