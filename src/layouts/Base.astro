@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Consent from '../components/Consent.astro';
+import { SITE } from '../config/site';
+
+export interface Alternate { lang: string; href: string }
+interface Props {
+  title: string;
+  description: string;
+  /** Ruta canónica (sin dominio). Por defecto, la ruta actual sin parámetros. */
+  canonical?: string;
+  noindex?: boolean;
+  lang?: string;
+  alternates?: Alternate[];
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  ogType?: 'website' | 'article';
+  /** Permite anuncios en esta página (se exige contenido suficiente). */
+  allowAds?: boolean;
+}
+
+const {
+  title, description, canonical, noindex = false, lang = 'es', alternates = [], jsonLd,
+  ogType = 'website', allowAds = false,
+} = Astro.props;
+
+const site = Astro.site!;
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, site);
+const fullTitle = title.includes(SITE.name) ? title : `${title} · ${SITE.name}`;
+const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonicalURL.href} />}
+  {!noindex && alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={new URL(a.href, site).href} />)}
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:url" content={canonicalURL.href} />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_GB'} />
+  <meta property="og:image" content={new URL('/og-default.png', site).href} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0f4c5c" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <script is:inline>
+    try { const t = localStorage.getItem('criterio:theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  {ld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+  <Consent allowAds={allowAds} />
+</head>
+<body data-ads={allowAds ? 'allowed' : 'blocked'}>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <Header />
+  <main id="contenido" tabindex="-1">
+    <slot />
+  </main>
+  <Footer />
+  <script>
+    import { initGlossaryPopovers } from '../scripts/glossary';
+    import { initThemeToggle } from '../scripts/theme';
+    initThemeToggle();
+    initGlossaryPopovers();
+  </script>
+</body>
+</html>

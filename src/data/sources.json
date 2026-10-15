@@ -1,0 +1,388 @@
+{
+ "_doc": "Registro de fuentes. 'checked' = fecha en que se consultó la fuente durante la elaboración; null = referencia bibliográfica no consultada en línea en esta revisión (pendiente de comprobar edición y páginas).",
+ "cnmv-cfd-2019": {
+  "title": "Resolución de 27 de junio de 2019 de la CNMV sobre medidas de intervención de producto relativas a opciones binarias y CFD (BOE-A-2019-9737)",
+  "publisher": "BOE / CNMV",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2019-9737",
+  "type": "normativa",
+  "checked": "2026-10-15"
+ },
+ "cnmv-cfd-2023": {
+  "title": "Resolución de 11 de julio de 2023 de la CNMV sobre medidas de intervención de producto adicionales sobre CFD y otros productos apalancados (BOE-A-2023-16394)",
+  "publisher": "BOE / CNMV",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-16394",
+  "type": "normativa",
+  "checked": "2026-10-15"
+ },
+ "cnmv-cfd-faq": {
+  "title": "Preguntas y respuestas sobre la Resolución de CFD (versión julio 2024)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/docportal/Legislacion/FAQ/FAQ_CFD.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-15"
+ },
+ "cnmv-entidades": {
+  "title": "¿Cuáles son las entidades autorizadas? Registros oficiales",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/portal/inversor/entidades-autorizadas",
+  "type": "supervisor",
+  "checked": "2026-10-15"
+ },
+ "cnmv-chiringuitos": {
+  "title": "Guía «Chiringuitos financieros»",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/docportal/Publicaciones/Guias/chiringuitos.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-15"
+ },
+ "cnmv-fogain": {
+  "title": "Ficha GR14: Fondo General de Garantía de Inversiones (FOGAIN)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/DocPortal/Publicaciones/Fichas/GR14_FOGAIN.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-15"
+ },
+ "cnmv-inversor": {
+  "title": "Portal del Inversor",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/portal/inversor/indice.aspx",
+  "type": "supervisor",
+  "checked": "2026-10-15"
+ },
+ "fgd-home": {
+  "title": "Fondo de Garantía de Depósitos de Entidades de Crédito: información general",
+  "publisher": "FGD",
+  "url": "https://www.fgd.es/",
+  "type": "supervisor",
+  "checked": "2026-10-15"
+ },
+ "fgd-valores": {
+  "title": "Depósitos en valores garantizados",
+  "publisher": "FGD",
+  "url": "https://www.fgd.es/informacion-general/que-es-el-fgd/depositos-en-valores/depositos-en-valores-garantizados/",
+  "type": "supervisor",
+  "checked": "2026-10-15"
+ },
+ "bde-registro": {
+  "title": "Entidades supervisadas y Registro de entidades",
+  "publisher": "Banco de España",
+  "url": "https://www.bde.es/wbe/en/entidades-profesionales/supervisadas/supervisadas/entidades-supervisadas.html",
+  "type": "supervisor",
+  "checked": "2026-10-15"
+ },
+ "aeat-ahorro-2025": {
+  "title": "Manual práctico Renta 2025: gravamen estatal de la base liquidable del ahorro",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-ahorro/gravamen-estatal.html",
+  "type": "fiscal",
+  "checked": "2026-10-15"
+ },
+ "aeat-traspasos-2025": {
+  "title": "Manual práctico Renta 2025: régimen especial de diferimiento en traspasos de IIC",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c11-ganancias-perdidas-patrimoniales/determinacion-importe-ganancias-perdidas-patrimon-especificas/transmisiones-reembolsos-acciones-iic/regimen-especial-diferimiento-tributacion.html",
+  "type": "fiscal",
+  "checked": "2026-10-15"
+ },
+ "aeat-dos-meses-2025": {
+  "title": "Manual práctico Renta 2025: pérdidas patrimoniales que no se computan (recompra de valores homogéneos)",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c11-ganancias-perdidas-patrimoniales/ganancias-perdidas-patrimoniales-que-no-bi/perdidas-patrimoniales-que-no-se-tales.html",
+  "type": "fiscal",
+  "checked": "2026-10-15"
+ },
+ "ine-ipc": {
+  "title": "Índice de Precios de Consumo. Nacional. Índice general. Variación anual (serie IPC251856)",
+  "publisher": "INE",
+  "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/IPC251856?nult=400",
+  "type": "datos",
+  "checked": "2026-10-15"
+ },
+ "brk-2025": {
+  "title": "Berkshire Hathaway Inc., carta a los accionistas 2025 (incluye tabla de rentabilidad 1965-2025)",
+  "publisher": "Berkshire Hathaway",
+  "url": "https://www.berkshirehathaway.com/letters/2025ltr.pdf",
+  "type": "empresa",
+  "checked": "2026-10-15"
+ },
+ "brk-letters": {
+  "title": "Cartas anuales de Berkshire Hathaway a los accionistas (archivo)",
+  "publisher": "Berkshire Hathaway",
+  "url": "https://www.berkshirehathaway.com/letters/letters.html",
+  "type": "empresa",
+  "checked": "2026-10-15"
+ },
+ "myinvestor-broker": {
+  "title": "MyInvestor: Acciones y ETF (tarifas y preguntas frecuentes)",
+  "publisher": "MyInvestor Banco, S.A.",
+  "url": "https://myinvestor.es/inversion/broker/",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "myinvestor-legal": {
+  "title": "MyInvestor: aviso legal",
+  "publisher": "MyInvestor Banco, S.A.",
+  "url": "https://myinvestor.es/aviso-legal/",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "degiro-tarifas": {
+  "title": "DEGIRO: tarifas (actualizadas el 01.10.2025 según la propia página)",
+  "publisher": "flatexDEGIRO Bank Dutch Branch",
+  "url": "https://www.degiro.es/tarifas",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "degiro-seguridad": {
+  "title": "DEGIRO: sólido y fiable (segregación, garantías y supervisión)",
+  "publisher": "flatexDEGIRO Bank Dutch Branch",
+  "url": "https://www.degiro.es/acerca-de-degiro/solido-y-fiable",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "ibkr-eu-stocks": {
+  "title": "Interactive Brokers Ireland: comisiones de acciones y ETF en Europa",
+  "publisher": "Interactive Brokers Ireland Ltd",
+  "url": "https://www.interactivebrokers.ie/es/pricing/commissions-stocks-europe.php",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "ibkr-us-stocks": {
+  "title": "Interactive Brokers Ireland: comisiones de acciones y ETF en América",
+  "publisher": "Interactive Brokers Ireland Ltd",
+  "url": "https://www.interactivebrokers.ie/es/pricing/commissions-stocks.php",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "ibkr-fx": {
+  "title": "Interactive Brokers Ireland: comisiones de divisas al contado",
+  "publisher": "Interactive Brokers Ireland Ltd",
+  "url": "https://www.interactivebrokers.ie/es/pricing/commissions-spot-currencies.php",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "ibkr-other": {
+  "title": "Interactive Brokers Ireland: otras comisiones y datos de la entidad",
+  "publisher": "Interactive Brokers Ireland Ltd",
+  "url": "https://www.interactivebrokers.ie/es/pricing/other-fees-overview.php",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "tr-pricelist-2023": {
+  "title": "Trade Republic: Lista de precios y servicios (estado 04/2023)",
+  "publisher": "Trade Republic Bank GmbH",
+  "url": "https://assets.traderepublic.com/documents/ES/FURTHER_INFORMATION_PRICE_LIST_20230426144247.pdf",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "tr-branch-2025": {
+  "title": "Trade Republic: nota de prensa de lanzamiento de la sucursal en España (5 de junio de 2025)",
+  "publisher": "Trade Republic Bank GmbH",
+  "url": "https://assets.traderepublic.com/assets/files/250605_TradeRepublic_PressRelease_SpainBranchLaunch_ES_EN.pdf",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "tr-contract-es": {
+  "title": "Trade Republic: contrato con el cliente (España)",
+  "publisher": "Trade Republic Bank GmbH",
+  "url": "https://assets.traderepublic.com/assets/files/CA_ES-en-es.pdf",
+  "type": "intermediario",
+  "checked": "2026-10-15"
+ },
+ "adsense-cmp": {
+  "title": "Requisito de CMP certificada por Google para publicar anuncios en el EEE, Reino Unido y Suiza",
+  "publisher": "Google AdSense (Ayuda)",
+  "url": "https://support.google.com/adsense/answer/13554020",
+  "type": "plataforma",
+  "checked": "2026-10-15"
+ },
+ "aepd-cookies": {
+  "title": "Guía sobre el uso de las cookies (actualización de julio de 2023)",
+  "publisher": "Agencia Española de Protección de Datos",
+  "url": "https://www.aepd.es/guias/guia-cookies.pdf",
+  "type": "normativa",
+  "checked": "2026-10-15"
+ },
+ "lssi": {
+  "title": "Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758",
+  "type": "normativa",
+  "checked": "2026-10-15"
+ },
+ "graham-intelligent": {
+  "title": "Benjamin Graham, The Intelligent Investor (1.ª ed. 1949; ed. revisada 1973)",
+  "publisher": "Harper & Brothers / HarperCollins",
+  "url": null,
+  "type": "libro",
+  "checked": null
+ },
+ "graham-dodd": {
+  "title": "Benjamin Graham y David Dodd, Security Analysis (1934)",
+  "publisher": "McGraw-Hill",
+  "url": null,
+  "type": "libro",
+  "checked": null
+ },
+ "bogle-common-sense": {
+  "title": "John C. Bogle, The Little Book of Common Sense Investing (2007; ed. 10.º aniversario 2017)",
+  "publisher": "Wiley",
+  "url": null,
+  "type": "libro",
+  "checked": null
+ },
+ "bogle-stay-course": {
+  "title": "John C. Bogle, Stay the Course: The Story of Vanguard and the Index Revolution (2018)",
+  "publisher": "Wiley",
+  "url": null,
+  "type": "libro",
+  "checked": null
+ },
+ "lynch-one-up": {
+  "title": "Peter Lynch con John Rothchild, One Up on Wall Street (1989)",
+  "publisher": "Simon & Schuster",
+  "url": null,
+  "type": "libro",
+  "checked": null
+ },
+ "munger-almanack": {
+  "title": "Peter D. Kaufman (ed.), Poor Charlie's Almanack (2005; ed. Stripe Press 2023)",
+  "publisher": "Donning / Stripe Press",
+  "url": null,
+  "type": "libro",
+  "checked": null
+ },
+ "pwg-ltcm": {
+  "title": "President's Working Group on Financial Markets, Hedge Funds, Leverage, and the Lessons of Long-Term Capital Management (abril de 1999)",
+  "publisher": "President's Working Group (versión HTML en CFTC)",
+  "url": "https://www.cftc.gov/tm/tmhedgefundreport.htm",
+  "type": "supervisor",
+  "checked": "2026-10-15"
+ },
+ "sec-oig-madoff": {
+  "title": "SEC Office of Inspector General, Investigation of Failure of the SEC to Uncover Bernard Madoff's Ponzi Scheme (Informe OIG-509, 2009)",
+  "publisher": "U.S. SEC",
+  "url": "https://www.sec.gov/files/oig-509.pdf",
+  "type": "supervisor",
+  "checked": null
+ },
+ "cs-archegos": {
+  "title": "Credit Suisse Group Special Committee of the Board of Directors, Report on Archegos Capital Management (29 de julio de 2021)",
+  "publisher": "Credit Suisse / Paul, Weiss",
+  "url": null,
+  "type": "empresa",
+  "checked": null
+ },
+ "doj-hwang": {
+  "title": "U.S. Department of Justice, comunicados sobre la condena y sentencia de Sung Kook (Bill) Hwang (2024)",
+  "publisher": "U.S. DOJ (S.D.N.Y.)",
+  "url": "https://www.justice.gov/usao-sdny",
+  "type": "judicial",
+  "checked": "2026-10-15"
+ },
+ "fama-french-2010": {
+  "title": "Eugene F. Fama y Kenneth R. French, «Luck versus Skill in the Cross-Section of Mutual Fund Returns», Journal of Finance 65(5), 2010",
+  "publisher": "Journal of Finance",
+  "url": "https://doi.org/10.1111/j.1540-6261.2010.01598.x",
+  "type": "academico",
+  "checked": null
+ },
+ "spiva": {
+  "title": "S&P Dow Jones Indices, SPIVA Scorecards (Europa y EE. UU.)",
+  "publisher": "S&P Dow Jones Indices",
+  "url": "https://www.spglobal.com/spdji/en/research-insights/spiva/",
+  "type": "datos",
+  "checked": null
+ },
+ "barber-odean-2000": {
+  "title": "Brad M. Barber y Terrance Odean, «Trading Is Hazardous to Your Wealth», Journal of Finance 55(2), 2000",
+  "publisher": "Journal of Finance",
+  "url": "https://doi.org/10.1111/0022-1082.00226",
+  "type": "academico",
+  "checked": null
+ },
+ "chague-daytrade-2019": {
+  "title": "Fernando Chague, Rodrigo De-Losso y Bruno Giovannetti, «Day Trading for a Living?» (documento de trabajo, 2019)",
+  "publisher": "SSRN",
+  "url": "https://doi.org/10.2139/ssrn.3423101",
+  "type": "academico",
+  "checked": null
+ },
+ "barber-taiwan-2014": {
+  "title": "Barber, Lee, Liu y Odean, «The Cross-Section of Speculator Skill: Evidence from Day Trading», Journal of Financial Markets 18, 2014",
+  "publisher": "Journal of Financial Markets",
+  "url": "https://doi.org/10.1016/j.finmar.2013.05.006",
+  "type": "academico",
+  "checked": "2026-10-15"
+ },
+ "kahneman-tversky-1979": {
+  "title": "Daniel Kahneman y Amos Tversky, «Prospect Theory: An Analysis of Decision under Risk», Econometrica 47(2), 1979",
+  "publisher": "Econometrica",
+  "url": "https://doi.org/10.2307/1914185",
+  "type": "academico",
+  "checked": "2026-10-15"
+ },
+ "markowitz-1952": {
+  "title": "Harry Markowitz, «Portfolio Selection», Journal of Finance 7(1), 1952",
+  "publisher": "Journal of Finance",
+  "url": "https://doi.org/10.1111/j.1540-6261.1952.tb01525.x",
+  "type": "academico",
+  "checked": null
+ },
+ "vanguard-lumpsum-2012": {
+  "title": "Vanguard Research, «Dollar-cost averaging just means taking risk later» (2012)",
+  "publisher": "Vanguard",
+  "url": null,
+  "type": "investigacion",
+  "checked": null
+ },
+ "esma-crypto-warning": {
+  "title": "ESMA, EBA y EIOPA: advertencias conjuntas a los consumidores sobre los riesgos de los criptoactivos",
+  "publisher": "ESMA / EBA / EIOPA",
+  "url": "https://www.esma.europa.eu/",
+  "type": "supervisor",
+  "checked": null
+ },
+ "bde-cliente-bancario": {
+  "title": "Portal del Cliente Bancario",
+  "publisher": "Banco de España",
+  "url": "https://clientebancario.bde.es/",
+  "type": "supervisor",
+  "checked": "2026-10-15"
+ },
+ "nikkei-history": {
+  "title": "Nikkei Inc., Nikkei 225: datos históricos de cierre (máximo de 29/12/1989 y superación el 22/02/2024)",
+  "publisher": "Nikkei Inc.",
+  "url": "https://indexes.nikkei.co.jp/en/nkave/archives/data",
+  "type": "datos",
+  "checked": null
+ },
+ "sp500-history": {
+  "title": "S&P Dow Jones Indices, S&P 500 (índice de precios): máximos y mínimos históricos de cierre 2007-2013",
+  "publisher": "S&P Dow Jones Indices",
+  "url": "https://www.spglobal.com/spdji/en/indices/equity/sp-500/",
+  "type": "datos",
+  "checked": null
+ },
+ "an-forum-afinsa": {
+  "title": "Audiencia Nacional, sentencias de los casos Fórum Filatélico (2018) y Afinsa (2016) — pendiente de enlazar al CENDOJ",
+  "publisher": "Consejo General del Poder Judicial (CENDOJ)",
+  "url": "https://www.poderjudicial.es/search/indexAN.jsp",
+  "type": "judicial",
+  "checked": null
+ },
+ "mica": {
+  "title": "Reglamento (UE) 2023/1114 relativo a los mercados de criptoactivos (MiCA)",
+  "publisher": "EUR-Lex",
+  "url": "https://eur-lex.europa.eu/eli/reg/2023/1114/oj",
+  "type": "normativa",
+  "checked": "2026-10-15"
+ },
+ "priips-kid": {
+  "title": "Reglamento (UE) 1286/2014 sobre documentos de datos fundamentales (PRIIPs)",
+  "publisher": "EUR-Lex",
+  "url": "https://eur-lex.europa.eu/eli/reg/2014/1286/oj",
+  "type": "normativa",
+  "checked": "2026-10-15"
+ }
+}

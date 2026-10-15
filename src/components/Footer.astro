@@ -1,0 +1,61 @@
+---
+import Logo from './Logo.astro';
+import { SITE, adsActive } from '../config/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="cols">
+      <div class="about">
+        <Logo size={26} />
+        <p class="small muted">Plataforma educativa sobre inversión para residentes en España. No prestamos asesoramiento financiero, no comercializamos productos y no ejecutamos operaciones. <a href="/es/alcance-educativo/">Qué somos y qué no</a>.</p>
+      </div>
+      <nav aria-label="Aprender">
+        <h2>Aprender</h2>
+        <ul>
+          <li><a href="/es/empieza-desde-cero/">Empieza desde cero</a></li>
+          <li><a href="/es/test/">Test de aprendizaje</a></li>
+          <li><a href="/es/biblioteca/">Biblioteca</a></li>
+          <li><a href="/es/glosario/">Glosario</a></li>
+          <li><a href="/es/progreso/">Mi progreso</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Explorar">
+        <h2>Explorar</h2>
+        <ul>
+          <li><a href="/es/herramientas/">Herramientas</a></li>
+          <li><a href="/es/brokers/">Comparador de brókeres</a></li>
+          <li><a href="/es/estrategias/">Estrategias</a></li>
+          <li><a href="/es/inversores/">Historias de inversores</a></li>
+          <li><a href="/es/fuentes/">Fuentes</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Transparencia y legal">
+        <h2>Transparencia</h2>
+        <ul>
+          <li><a href="/es/metodologia/">Metodología editorial</a></li>
+          <li><a href="/es/financiacion/">Financiación y conflictos</a></li>
+          <li><a href="/es/correcciones/">Correcciones</a></li>
+          <li><a href="/es/aviso-legal/">Aviso legal</a></li>
+          <li><a href="/es/privacidad/">Privacidad</a></li>
+          <li><a href="/es/cookies/">Cookies</a></li>
+          <li><a href="/es/condiciones/">Condiciones de uso</a></li>
+          <li><a href="/es/contacto/">Contacto</a></li>
+          {adsActive && <li><button type="button" class="linklike" id="privacy-settings">Configurar privacidad</button></li>}
+        </ul>
+      </nav>
+    </div>
+    <p class="small muted legal">© {year} {SITE.name} (nombre provisional). Contenido educativo general: no tiene en cuenta tu situación personal. Invertir conlleva riesgo de pérdida, incluida la del capital. Rentabilidades pasadas no garantizan resultados futuros.</p>
+  </div>
+</footer>
+<style>
+  .site-footer { border-top: 1px solid var(--rule); background: var(--paper-2); padding: 2.5rem 0 2rem; margin-top: 2rem; }
+  .cols { display: grid; gap: 1.5rem; }
+  @media (min-width: 760px) { .cols { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+  h2 { font: 700 0.8rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin: 0.3rem 0 0.8rem; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin-bottom: 0.15rem; }
+  li a, .linklike { display: inline-block; padding: 0.3rem 0; color: var(--ink-2); font-size: 0.92rem; }
+  .linklike { background: none; border: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 0.18em; }
+  .legal { margin-top: 2rem; max-width: 80ch; }
+</style>

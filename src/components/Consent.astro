@@ -1,0 +1,37 @@
+---
+/**
+ * Carga de publicidad y consentimiento.
+ * - Si la publicidad está desactivada (por defecto), no se carga NINGÚN script de terceros.
+ * - Con publicidad activa, se carga el código de AdSense solo en páginas que lo permiten.
+ *   La CMP certificada de Google (Privacidad y mensajes, configurada en la cuenta de AdSense)
+ *   se sirve con ese código y gestiona aceptar / rechazar / configurar / retirar.
+ * - Nunca se envían a terceros respuestas del test, progreso ni datos financieros: viven solo en localStorage.
+ */
+import { ADS, adsActive } from '../config/site';
+interface Props { allowAds?: boolean }
+const { allowAds = false } = Astro.props;
+const load = adsActive && allowAds;
+---
+{load && ADS.cmp === 'google' && (
+  <script
+    async
+    is:inline
+    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS.client}`}
+    crossorigin="anonymous"
+  ></script>
+)}
+{adsActive && (
+  <script is:inline>
+    document.addEventListener('click', function (e) {
+      var t = e.target;
+      if (t && t.id === 'privacy-settings') {
+        window.googlefc = window.googlefc || {};
+        window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+        window.googlefc.callbackQueue.push(function () { window.googlefc.showRevocationMessage(); });
+        if (!document.querySelector('script[src*="adsbygoogle"]')) {
+          alert('La configuración de privacidad se gestiona en las páginas con publicidad. En esta página no se ha cargado ningún servicio publicitario.');
+        }
+      }
+    });
+  </script>
+)}

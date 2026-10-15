@@ -1,0 +1,83 @@
+---
+import Logo from './Logo.astro';
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/es/empieza-desde-cero/', label: 'Empieza desde cero' },
+  { href: '/es/biblioteca/', label: 'Biblioteca' },
+  { href: '/es/herramientas/', label: 'Herramientas' },
+  { href: '/es/brokers/', label: 'Brókeres' },
+  { href: '/es/estrategias/', label: 'Estrategias' },
+  { href: '/es/inversores/', label: 'Historias' },
+  { href: '/es/glosario/', label: 'Glosario' },
+];
+const isCurrent = (href: string) => path.startsWith(href);
+---
+<header class="site-header">
+  <div class="container bar">
+    <a href="/es/" class="brand" aria-label="Criterio, inicio">
+      <Logo />
+    </a>
+    <nav aria-label="Principal" class="main-nav" id="main-nav">
+      <ul>
+        {nav.map((n) => (
+          <li><a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <div class="actions">
+      <a href="/es/buscar/" class="icon-btn" aria-label="Buscar">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </a>
+      <a href="/es/progreso/" class="icon-btn" aria-label="Mi progreso">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </a>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Cambiar tema claro u oscuro">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="icon-btn menu-btn" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+  .bar { display: flex; align-items: center; gap: 1rem; min-height: 64px; }
+  .brand { color: var(--ink); text-decoration: none; display: inline-flex; flex: none; }
+  .main-nav { margin-left: auto; }
+  .main-nav ul { list-style: none; display: flex; gap: 0.15rem; margin: 0; padding: 0; }
+  .main-nav a { display: block; padding: 0.5rem 0.6rem; border-radius: var(--radius-sm); color: var(--ink-2); text-decoration: none; font-size: 0.92rem; font-weight: 500; }
+  .main-nav a:hover { background: var(--paper-2); color: var(--ink); }
+  .main-nav a[aria-current='page'] { color: var(--teal); box-shadow: inset 0 -2px 0 var(--teal); border-radius: 0; }
+  .actions { display: flex; gap: 0.25rem; align-items: center; }
+  .icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink-2); cursor: pointer; }
+  .icon-btn:hover { background: var(--paper-2); color: var(--ink); }
+  .menu-btn { display: none; }
+  @media (max-width: 1080px) {
+    .menu-btn { display: inline-flex; }
+    .actions { margin-left: auto; }
+    .main-nav { position: absolute; top: 64px; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--rule); display: none; margin: 0; }
+    .main-nav.open { display: block; }
+    .main-nav ul { flex-direction: column; padding: 0.5rem var(--gutter) 1rem; }
+    .main-nav a { padding: 0.8rem 0.5rem; font-size: 1rem; border-bottom: 1px solid var(--rule); border-radius: 0; }
+    .main-nav a[aria-current='page'] { box-shadow: inset 3px 0 0 var(--teal); padding-left: 0.8rem; }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open') ?? false;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav?.classList.contains('open')) {
+      nav.classList.remove('open');
+      btn?.setAttribute('aria-expanded', 'false');
+      btn?.focus();
+    }
+  });
+</script>
