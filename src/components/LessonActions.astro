@@ -1,0 +1,41 @@
+---
+interface Props { slug: string; title: string }
+const { slug, title } = Astro.props;
+---
+<div class="lesson-actions no-print" data-slug={slug} data-title={title}>
+  <button type="button" class="btn" data-action="complete" aria-pressed="false">Marcar como completada</button>
+  <button type="button" class="btn ghost small" data-action="bookmark" aria-pressed="false">Guardar en marcadores</button>
+  <span class="small muted" data-msg aria-live="polite"></span>
+</div>
+<style>
+  .lesson-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin: 2rem 0; }
+</style>
+<script>
+  import { getProgress, markComplete, unmarkComplete, toggleBookmark, setLast } from '../scripts/store';
+  const box = document.querySelector<HTMLElement>('.lesson-actions');
+  if (box) {
+    const slug = box.dataset.slug!;
+    const path = location.pathname;
+    setLast(path, box.dataset.title!);
+    const done = box.querySelector<HTMLButtonElement>('[data-action=complete]')!;
+    const mark = box.querySelector<HTMLButtonElement>('[data-action=bookmark]')!;
+    const msg = box.querySelector<HTMLElement>('[data-msg]')!;
+    const render = () => {
+      const p = getProgress();
+      const isDone = !!p.completed[slug];
+      done.setAttribute('aria-pressed', String(isDone));
+      done.textContent = isDone ? '✓ Completada (desmarcar)' : 'Marcar como completada';
+      done.classList.toggle('secondary', isDone);
+      const isMarked = p.bookmarks.includes(path);
+      mark.setAttribute('aria-pressed', String(isMarked));
+      mark.textContent = isMarked ? '★ En marcadores' : 'Guardar en marcadores';
+    };
+    done.addEventListener('click', () => {
+      if (getProgress().completed[slug]) { unmarkComplete(slug); msg.textContent = 'Marcada como pendiente.'; }
+      else { markComplete(slug); msg.textContent = 'Guardado en este dispositivo.'; }
+      render();
+    });
+    mark.addEventListener('click', () => { msg.textContent = toggleBookmark(path) ? 'Añadida a marcadores.' : 'Quitada de marcadores.'; render(); });
+    render();
+  }
+</script>

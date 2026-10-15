@@ -15,7 +15,7 @@ summary:
   - La inflación hace que el mismo dinero compre menos con el tiempo; entre diciembre de 2020 y diciembre de 2025 los precios subieron en España un 22,8 % acumulado según el IPC del INE.
   - Rentabilidad real = (1 + nominal) / (1 + inflación) − 1.
   - El interés compuesto hace crecer los rendimientos sobre rendimientos; el tiempo es su ingrediente principal.
-  - Los costes también se componen: una diferencia de 1,6 puntos anuales puede llevarse un tercio del resultado en 25 años.
+  - "Los costes también se componen: una diferencia de 1,6 puntos anuales puede llevarse un tercio del resultado en 25 años."
 quiz:
   - q: "Un depósito te paga un 3 % anual y la inflación es del 2,9 %. ¿Cuál es aproximadamente tu rentabilidad real antes de impuestos?"
     options: ["5,9 %", "0,1 %", "3 %"]

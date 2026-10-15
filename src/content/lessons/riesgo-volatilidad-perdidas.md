@@ -15,7 +15,7 @@ summary:
   - La volatilidad mide cuánto oscila un precio; es incómoda, pero no siempre implica pérdida final.
   - Una caída del 50 % exige una subida del 100 % solo para volver al punto de partida.
   - La pérdida se vuelve permanente por quiebra, fraude, venta forzada o un horizonte que se acaba antes de la recuperación.
-  - Tu riesgo real depende también de tu situación: el mismo producto es más arriesgado para quien puede necesitar el dinero pronto.
+  - "Tu riesgo real depende también de tu situación: el mismo producto es más arriesgado para quien puede necesitar el dinero pronto."
 quiz:
   - q: "Una cartera cae un 40 %. ¿Qué subida necesita para recuperar su valor inicial?"
     options: ["40 %", "Alrededor del 67 %", "100 %"]

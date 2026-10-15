@@ -1,0 +1,54 @@
+---
+/** Preguntas de repaso con explicación. Sin publicidad cerca. Se guarda el resultado solo en el dispositivo. */
+interface Q { q: string; options: string[]; answer: number; explain: string }
+interface Props { id: string; questions: Q[]; title?: string }
+const { id, questions, title = 'Comprueba lo que has aprendido' } = Astro.props;
+---
+<section class="quiz" data-quiz={id} data-total={questions.length} aria-labelledby={`quiz-${id}`}>
+  <h2 id={`quiz-${id}`}>{title}</h2>
+  {questions.map((q, i) => (
+    <fieldset class="qitem" data-answer={q.answer}>
+      <legend>{i + 1}. {q.q}</legend>
+      {q.options.map((o, j) => (
+        <label class="choice"><input type="radio" name={`${id}-q${i}`} value={j} /> <span>{o}</span></label>
+      ))}
+      <div class="feedback" role="status" aria-live="polite" hidden>
+        <p class="verdict"></p>
+        <p class="explain">{q.explain}</p>
+      </div>
+    </fieldset>
+  ))}
+  <p class="score small muted" aria-live="polite"></p>
+</section>
+<style>
+  .quiz { margin: 2.5rem 0; font-family: var(--sans); }
+  .qitem legend { font-size: 1.05rem; line-height: 1.4; }
+  .feedback { margin-top: 0.5rem; padding: 0.7rem 0.9rem; border-radius: var(--radius-sm); background: var(--paper-2); }
+  .feedback.ok { background: var(--teal-soft); }
+  .feedback.ko { background: var(--loss-soft); }
+  .verdict { font-weight: 700; margin-bottom: 0.25rem; }
+  .explain { margin: 0; }
+</style>
+<script>
+  import { recordReview } from '../scripts/store';
+  document.querySelectorAll<HTMLElement>('[data-quiz]').forEach((quiz) => {
+    const id = quiz.dataset.quiz!;
+    const total = Number(quiz.dataset.total);
+    const answered = new Map<number, boolean>();
+    quiz.querySelectorAll<HTMLFieldSetElement>('.qitem').forEach((fs, idx) => {
+      const correct = Number(fs.dataset.answer);
+      fs.addEventListener('change', (e) => {
+        const v = Number((e.target as HTMLInputElement).value);
+        const ok = v === correct;
+        answered.set(idx, ok);
+        const fb = fs.querySelector<HTMLElement>('.feedback')!;
+        fb.hidden = false;
+        fb.classList.toggle('ok', ok); fb.classList.toggle('ko', !ok);
+        fb.querySelector('.verdict')!.textContent = ok ? 'Correcto.' : `No es esa. La respuesta correcta es: «${fs.querySelectorAll('label span')[correct].textContent}».`;
+        const score = [...answered.values()].filter(Boolean).length;
+        quiz.querySelector('.score')!.textContent = `Has respondido ${answered.size} de ${total}; aciertos: ${score}. Puedes cambiar tus respuestas.`;
+        if (answered.size === total) recordReview(id, score, total);
+      });
+    });
+  });
+</script>

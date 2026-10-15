@@ -1,0 +1,38 @@
+---
+import { sourceById, fmtDate, STATUS } from '../lib/content';
+interface Props { ids: string[]; author: string; reviewer: string | null; published: Date; reviewed: Date; status: keyof typeof STATUS; jurisdiction: string; corrections?: { date: Date; note: string }[] }
+const { ids, author, reviewer, published, reviewed, status, jurisdiction, corrections = [] } = Astro.props;
+const list = ids.map((id) => ({ id, s: sourceById(id) }));
+---
+<section class="sources" aria-labelledby="fuentes">
+  <h2 id="fuentes">Fuentes y revisión</h2>
+  <ol class="small">
+    {list.map(({ id, s }) => s ? (
+      <li id={`src-${id}`}>
+        {s.url ? <a href={s.url} rel="noopener" target="_blank">{s.title}</a> : <span>{s.title}</span>}. <span class="muted">{s.publisher}.</span>
+        {s.checked ? <span class="muted"> Consultada el {fmtDate(new Date(s.checked))}.</span> : <span class="muted"> Referencia no consultada en línea en esta revisión.</span>}
+      </li>
+    ) : <li class="missing">Fuente «{id}» no encontrada en el registro (error editorial).</li>)}
+  </ol>
+  <dl class="meta small">
+    <div><dt>Autoría</dt><dd>{author}</dd></div>
+    <div><dt>Revisión experta</dt><dd>{reviewer ?? 'Sin revisor externo por ahora'}</dd></div>
+    <div><dt>Publicado</dt><dd><time datetime={published.toISOString().slice(0,10)}>{fmtDate(published)}</time></dd></div>
+    <div><dt>Última revisión sustancial</dt><dd><time datetime={reviewed.toISOString().slice(0,10)}>{fmtDate(reviewed)}</time></dd></div>
+    <div><dt>Estado editorial</dt><dd><span class="tag status">{STATUS[status]}</span></dd></div>
+    <div><dt>Jurisdicción</dt><dd>{jurisdiction}</dd></div>
+  </dl>
+  {corrections.length > 0 && (
+    <div class="small"><h3>Correcciones</h3><ul>{corrections.map((c) => <li><time>{fmtDate(c.date)}</time>: {c.note}</li>)}</ul></div>
+  )}
+  <p class="small muted">¿Has visto un error? <a href="/es/correcciones/">Así lo corregimos</a>. Contenido educativo general: no es asesoramiento personalizado.</p>
+</section>
+<style>
+  .sources { border-top: 1px solid var(--rule); margin-top: 3rem; padding-top: 0.5rem; }
+  .sources ol { padding-left: 1.2rem; }
+  .sources li { margin-bottom: 0.4rem; }
+  .missing { color: var(--loss); }
+  .meta { display: grid; gap: 0.5rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin: 1.2rem 0; }
+  .meta dt { color: var(--ink-3); font-size: 0.8rem; }
+  .meta dd { margin: 0; }
+</style>

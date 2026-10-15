@@ -1,0 +1,137 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import SourceList from '../../../components/SourceList.astro';
+import Quiz from '../../../components/Quiz.astro';
+import LessonActions from '../../../components/LessonActions.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+import { lessons, routeLessons, TOPICS, LEVELS, TOOLS, isoDate, type Lesson } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const all = await lessons();
+  return all.map((l) => ({ params: { slug: l.id }, props: { lesson: l } }));
+}
+const { lesson } = Astro.props as { lesson: Lesson };
+const d = lesson.data;
+const all = await lessons();
+const bySlug = Object.fromEntries(all.map((l) => [l.id, l]));
+const route = await routeLessons();
+const step = d.route ? route.findIndex((l) => l.id === lesson.id) + 1 : 0;
+const next = d.next ? bySlug[d.next] : null;
+const prereqs = d.prereqs.map((s) => bySlug[s]).filter(Boolean);
+const related = d.related.map((s) => bySlug[s]).filter(Boolean);
+const { Content } = await render(lesson);
+const topic = TOPICS[d.topic]?.label ?? d.topic;
+const path = `/es/lecciones/${lesson.id}/`;
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description,
+  inLanguage: 'es-ES', datePublished: isoDate(d.published), dateModified: isoDate(d.reviewed),
+  author: { '@type': 'Organization', name: 'Redacción de Criterio' },
+  publisher: { '@type': 'Organization', name: 'Criterio' },
+  mainEntityOfPage: new URL(path, Astro.site).href, educationalLevel: LEVELS[d.level], timeRequired: `PT${d.minutes}M`,
+  isAccessibleForFree: true,
+};
+---
+<Base title={d.title} description={d.description} ogType="article" jsonLd={jsonLd} allowAds={true}>
+  <div class="narrow">
+    <Breadcrumbs items={d.route
+      ? [{ href: '/es/', label: 'Inicio' }, { href: '/es/empieza-desde-cero/', label: 'Empieza desde cero' }, { label: d.title }]
+      : [{ href: '/es/', label: 'Inicio' }, { href: '/es/biblioteca/', label: 'Biblioteca' }, { href: `/es/temas/${d.topic}/`, label: topic }, { label: d.title }]} />
+
+    <header class="lesson-head">
+      {d.route ? (
+        <div class="route-step">
+          <p class="eyebrow">Ruta «Empieza desde cero» · Paso {step} de {route.length}</p>
+          <div class="progress-bar" aria-hidden="true"><span style={`width:${(step / route.length) * 100}%`}></span></div>
+        </div>
+      ) : <p class="eyebrow">{topic}</p>}
+      <h1>{d.title}</h1>
+      <p class="lede">{d.description}</p>
+      <p class="facts small muted">
+        <span class={`tag level-${d.level}`}>{LEVELS[d.level]}</span>
+        <span>{d.minutes} min de lectura</span>
+        <span>Revisado el <time datetime={isoDate(d.reviewed)}>{d.reviewed.toLocaleDateString('es-ES', { timeZone: 'UTC' })}</time></span>
+      </p>
+    </header>
+
+    <div class="intro-grid">
+      <div class="callout learn">
+        <p class="callout-title">Qué aprenderás</p>
+        <ul>{d.learn.map((x) => <li>{x}</li>)}</ul>
+      </div>
+      <div class="callout note">
+        <p class="callout-title">Antes de empezar</p>
+        {prereqs.length
+          ? <p>Conviene haber leído: {prereqs.map((p, i) => <>{i > 0 && ', '}<a href={`/es/lecciones/${p.id}/`}>{p.data.title}</a></>)}.</p>
+          : <p>No necesitas conocimientos previos.</p>}
+      </div>
+    </div>
+
+    <article class="prose">
+      <Content />
+    </article>
+
+    <div class="callout warn">
+      <p class="callout-title">Error frecuente</p>
+      <p>{d.mistake}</p>
+    </div>
+
+    <Quiz id={lesson.id} questions={d.quiz} />
+
+    <section class="summary" aria-labelledby="resumen">
+      <h2 id="resumen">Resumen</h2>
+      <ol>{d.summary.map((s) => <li>{s}</li>)}</ol>
+    </section>
+
+    {d.tools.length > 0 && (
+      <p class="small">Practica con: {d.tools.map((t, i) => <>{i > 0 && ' · '}<a href={`/es/herramientas/${t}/`}>{TOOLS[t]?.title ?? t}</a></>)}</p>
+    )}
+
+    <LessonActions slug={lesson.id} title={d.title} />
+
+    <nav class="next-nav" aria-label="Siguiente paso">
+      {next ? (
+        <a class="card next" href={`/es/lecciones/${next.id}/`}>
+          <span class="small muted">Siguiente lección</span>
+          <strong>{next.data.title}</strong>
+          <span class="small">{next.data.description}</span>
+        </a>
+      ) : d.route ? (
+        <a class="card next" href="/es/empieza-desde-cero/ejercicio-final/">
+          <span class="small muted">Último paso</span>
+          <strong>Ejercicio final con dinero ficticio</strong>
+          <span class="small">Practica las decisiones de la ruta sin abrir ninguna cuenta.</span>
+        </a>
+      ) : (
+        <a class="card next" href={`/es/temas/${d.topic}/`}><span class="small muted">Sigue explorando</span><strong>Más sobre {topic}</strong></a>
+      )}
+      {related.length > 0 && (
+        <div class="related">
+          <h2 class="h-small">Relacionado</h2>
+          <ul>{related.map((r) => <li><a href={`/es/lecciones/${r.id}/`}>{r.data.title}</a></li>)}</ul>
+        </div>
+      )}
+    </nav>
+
+    <SourceList ids={d.sources} author={d.author} reviewer={d.reviewer} published={d.published} reviewed={d.reviewed} status={d.status} jurisdiction={d.jurisdiction} corrections={d.corrections} />
+  </div>
+  <div class="narrow"><AdSlot slot="inArticle" /></div>
+</Base>
+<style>
+  .lesson-head { margin-bottom: 1.5rem; }
+  .route-step { max-width: 360px; margin-bottom: 0.5rem; }
+  .route-step .progress-bar { margin-top: 0.3rem; }
+  .facts { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; }
+  .intro-grid { display: grid; gap: 0 1rem; }
+  @media (min-width: 720px) { .intro-grid { grid-template-columns: 1.4fr 1fr; } }
+  .intro-grid ul { margin: 0; padding-left: 1.1rem; }
+  .summary { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 0.2rem 1.25rem 0.6rem; margin: 2rem 0; }
+  .summary h2 { margin-top: 1rem; font-size: 1.3rem; }
+  .summary ol { padding-left: 1.2rem; font-family: var(--serif); font-size: 1.05rem; }
+  .summary li { margin-bottom: 0.5rem; }
+  .next-nav { display: grid; gap: 1rem; margin: 2rem 0; }
+  .next strong { display: block; font-family: var(--serif); font-size: 1.25rem; margin: 0.2rem 0; color: var(--teal); }
+  .h-small { font-size: 1rem; font-family: var(--sans); margin: 0.5rem 0; }
+  .related ul { padding-left: 1.1rem; margin: 0; }
+</style>

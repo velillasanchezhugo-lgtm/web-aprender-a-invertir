@@ -14,7 +14,7 @@ mistake: Creer que tener cinco fondos es estar diversificado. Si los cinco invie
 summary:
   - Diversificar reduce el riesgo específico de cada empresa o emisor.
   - Cuanto menos se parezcan los movimientos de los activos (menor correlación), más ayuda.
-  - No elimina el riesgo de mercado: en una crisis general casi todo cae a la vez.
+  - "No elimina el riesgo de mercado: en una crisis general casi todo cae a la vez."
   - Comprueba qué hay dentro de cada fondo, no solo cuántos tienes.
 quiz:
   - q: "¿Qué tipo de riesgo reduce más la diversificación entre muchas empresas?"
