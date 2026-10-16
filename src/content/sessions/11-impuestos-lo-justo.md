@@ -1,35 +1,48 @@
 ---
 title: "Impuestos: lo justo para no equivocarte"
-description: Cuándo pagas impuestos por invertir en España, cuánto en 2025 y la diferencia entre fondos y ETF que te puede ahorrar dinero.
+description: Cuándo pagas a Hacienda por invertir en España, qué es un traspaso entre fondos y por qué con los ETF funciona distinto.
 level: cero
 track: camino-cero
 order: 11
 skills: [fiscalidad-espana]
 goals: [jubilacion, objetivo, ordenar]
 prereqs: [09-los-cuatro-productos]
-hook: "Si tu fondo sube un 20 % este año pero no lo vendes, ¿pagas impuestos por esa ganancia?"
-takeaway: Las ganancias tributan al vender. Entre fondos puedes traspasar sin tributar; entre ETF, no.
+hook: "Tu fondo ha subido bastante este año, pero no lo has vendido. ¿Tienes que pagar impuestos por esa ganancia?"
+takeaway: Por lo general pagas cuando vendes con ganancias, no mientras mantienes. Entre fondos puedes traspasar sin pagar en ese momento; entre ETF, no.
+scenario:
+  kind: operacion
+  label: Caso
+  title: Andrés quiere cambiar de fondo
+  body: "Andrés tiene un fondo caro que ha ganado dinero y quiere pasarse a uno más barato. Piensa que tendrá que venderlo y pagar impuestos por la ganancia. En su nuevo bróker le explican que puede pedir un traspaso: el dinero pasa de un fondo a otro sin pagar a Hacienda en ese momento. Pagará cuando venda de verdad, dentro de muchos años."
+  note: Ejemplo ficticio con fines educativos.
 questions:
-  - type: estimate
-    id: s11-q1
-    q: "Vendes un fondo con 6.000 € de ganancia, sin otras rentas del ahorro. Con la escala de 2025 (19 % los primeros 6.000 €), ¿cuánto pagas?"
-    answer: 1140
-    tolerance: 0
-    min: 0
-    max: 3000
-    step: 10
-    unit: "€"
-    explain: "6.000 € × 19 % = 1.140 €. Es una simplificación: tu declaración puede incluir otras rentas y compensaciones."
   - type: truefalse
     id: s11-q2
     q: "En España puedes pasar el dinero de un ETF a otro sin tributar, igual que con los fondos."
     answer: false
-    explain: "Según la AEAT, el régimen de traspasos sin tributación no se aplica a los fondos cotizados (ETF). Vender un ETF con ganancias tributa."
+    explain: "Según la AEAT, los traspasos sin tributar no se aplican a los fondos cotizados (ETF). Vender un ETF con ganancias tributa."
+  - type: choice
+    id: s11-q3
+    q: "Tienes un fondo con ganancias y quieres cambiar a otro fondo más barato. ¿Qué harías?"
+    options: ["Venderlo y comprar el otro: es lo mismo", "Pedir un traspaso desde la entidad del fondo nuevo", "Esperar a que baje para no pagar impuestos"]
+    answer: 1
+    explain: "Con el traspaso no pagas impuestos en ese momento y la ganancia sigue invirtiéndose. Si vendes y compras, tributas ahora."
+  - type: choice
+    id: s11-q4
+    q: "¿Cuándo pagas impuestos normalmente por un fondo de acciones que solo has ido manteniendo?"
+    options: ["Cada año, por lo que haya subido", "Cuando lo vendes y hay ganancia", "Nunca, porque es a largo plazo"]
+    answer: 1
+    explain: "Mientras mantienes, no tributas por la subida. Al vender con ganancias, esa ganancia va a tu declaración de la renta."
+tips:
+  - "Antes de cambiar de fondo, pide un traspaso en lugar de vender y volver a comprar."
+  - "Guarda los justificantes de compra y venta: te harán falta en la declaración."
+  - "Revisa en el borrador de la renta que tus ganancias y pérdidas aparecen bien."
+  - "Pregunta a un asesor fiscal o consulta la web de la AEAT si tu caso no es sencillo."
 action:
   title: Fondo o ETF
   steps:
-    - "Mira si lo que te interesa (o lo que tienes) es un fondo de inversión o un ETF."
-    - "Anota qué implica: con un fondo puedes cambiar a otro sin pagar impuestos en ese momento; con un ETF, cada venta con ganancias tributa."
+    - "Mira si lo que tienes o lo que te interesa es un fondo de inversión o un ETF (lo dice su KID)."
+    - "Apunta qué implica: con un fondo puedes traspasar sin pagar en ese momento; con un ETF, cada venta con ganancias tributa."
   check: Sé si mi producto permite traspasos sin tributar
 deeper: comisiones-y-fiscalidad
 tool: null
@@ -44,20 +57,17 @@ sources: [aeat-ahorro-2025, aeat-traspasos-2025, aeat-dos-meses-2025]
 
 ## La idea
 
-Lo básico, para residentes en territorio común (no País Vasco ni Navarra):
+Lo básico para residentes en territorio común (no País Vasco ni Navarra, que tienen sus propias normas):
 
-- Las ganancias por vender acciones, fondos o ETF, los dividendos y los intereses van a la **base del ahorro**.
-- **Pagas al vender**, no mientras mantienes. Los dividendos e intereses tributan cada año que los cobras.
-- Escala de 2025: **19 %** hasta 6.000 €, **21 %** hasta 50.000 €, **23 %** hasta 200.000 €, **27 %** hasta 300.000 € y **30 %** a partir de ahí.
-- **Traspasos**: entre fondos de inversión no cotizados puedes cambiar sin tributar en ese momento. Con los ETF, no.
-- **Regla de los dos meses**: si vendes con pérdidas y recompras lo mismo en dos meses, no puedes restar esa pérdida todavía.
+- **Mientras mantienes, no pagas** por lo que suba. Pagas cuando **vendes con ganancias**.
+- Los **dividendos** (lo que reparte una empresa) y los **intereses** sí tributan el año en que los cobras.
+- Todo eso va a la parte «del ahorro» de la declaración de la renta, con un tipo que en 2025 empieza en el 19 % y sube cuanto más ganes.
+- Si vendes con **pérdidas**, en general puedes restarlas de tus ganancias.
 
-No es asesoramiento fiscal: comprueba siempre la escala del año que declares en la web de la AEAT.
+## En la práctica
 
-## Con números
+- **Traspaso**: pasar el dinero de un fondo de inversión a otro sin pagar impuestos en ese momento. Se pide en la entidad del fondo nuevo, no vendiendo tú.
+- Con los **ETF** no hay traspaso: si vendes uno con ganancias para comprar otro, tributas.
+- Si vendes con pérdidas y vuelves a comprar lo mismo en los dos meses siguientes, esa pérdida no la puedes restar todavía.
 
-Ganancia de **8.000 €** al vender un fondo:
-
-`6.000 × 19 % + 2.000 × 21 % = 1.140 + 420 = 1.560 €`
-
-Si en lugar de vender lo **traspasas** a otro fondo, no pagas ahora: la ganancia se arrastra hasta que vendas definitivamente.
+Esto es información general, no asesoramiento fiscal: comprueba siempre las normas del año en la web de la AEAT.

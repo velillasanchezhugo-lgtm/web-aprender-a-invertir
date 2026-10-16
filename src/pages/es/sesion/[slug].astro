@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import { sessions, lessons, TOOLS, TRACKS, sourceById, isoDate, guessFor, type Session } from '../../../lib/content';
+import BrokerDisclosure from '../../../components/BrokerDisclosure.astro';
 export async function getStaticPaths() {
   const all = await sessions();
   return all.map((s) => {
@@ -47,6 +48,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
         </div>
       </section>
 
+      {d.track === 'trade-republic' && <BrokerDisclosure compact />}
       <div class="body prose" id="session-body"><Content />{d.tips && <aside class="tips" aria-label="Te recomendamos"><p class="tips-title">Te recomendamos</p><ul>{d.tips.map((t) => <li>{t}</li>)}</ul></aside>}</div>
 
       {sc && (

@@ -15,7 +15,7 @@
  */
 import type { Goal, LevelId } from './academy';
 
-export type TrackId = 'camino-cero' | 'productos' | 'formas' | 'invertir-ya' | 'empresas' | 'noticias' | 'trading';
+export type TrackId = 'camino-cero' | 'productos' | 'formas' | 'invertir-ya' | 'trade-republic' | 'empresas' | 'noticias' | 'trading';
 export type Experience = 'nada' | 'algo' | 'invierto';
 export type QType = 'choice' | 'truefalse' | 'estimate';
 
@@ -31,6 +31,7 @@ export const TRACKS: Record<TrackId, { label: string; short: string }> = {
   productos: { label: 'Productos de inversión', short: 'Qué es cada producto y para quién encaja' },
   formas: { label: 'Formas de invertir', short: 'Por tu cuenta, gestionada o automatizada' },
   'invertir-ya': { label: 'Invertir ya', short: 'Cómo empezar, paso a paso' },
+  'trade-republic': { label: 'Empieza con Trade Republic', short: 'Abrir la cuenta, usar la app y comparar productos' },
   empresas: { label: 'Conocer empresas', short: 'Para saber más: cómo ver si una empresa va bien' },
   noticias: { label: 'Entender noticias', short: 'Para saber más: qué te afecta y qué no' },
   trading: { label: 'Tipos de trading', short: 'Para saber más: entenderlo sin jugarte el dinero' },
@@ -100,7 +101,7 @@ function prereqOk(id: string, catalog: Map<string, CatalogItem>, model: Model, c
 }
 
 /** Prioridad pedagógica: qué es invertir → productos → formas de invertir → empezar. El resto, para saber más. */
-const BOOST: Partial<Record<TrackId, number>> = { productos: 0.9, formas: 0.85, 'invertir-ya': 0.8 };
+const BOOST: Partial<Record<TrackId, number>> = { productos: 0.9, formas: 0.85, 'invertir-ya': 0.8, 'trade-republic': 0.75 };
 function trackBoost(track: TrackId, profile: Profile | null): number {
   const e = profile?.experience ?? 'nada';
   if (track === 'camino-cero') return e === 'invierto' ? 0.2 : 1.2;

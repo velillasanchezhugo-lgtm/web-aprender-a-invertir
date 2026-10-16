@@ -83,7 +83,7 @@ const sessionQuestion = z.discriminatedUnion('type', [
 ]);
 
 /** Módulos de sesiones. 'camino-cero' es el nivel Cero; el resto forman el nivel Básico. */
-export const TRACK_IDS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'empresas', 'noticias', 'trading'] as const;
+export const TRACK_IDS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'empresas', 'noticias', 'trading'] as const;
 
 /** Sesiones de 5 minutos: gancho, idea, ejemplo, test y una acción aplicable hoy. */
 const sessions = defineCollection({

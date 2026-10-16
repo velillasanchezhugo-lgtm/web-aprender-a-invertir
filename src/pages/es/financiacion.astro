@@ -1,13 +1,14 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
-import { adsActive, AFFILIATES } from '../../config/site';
+import { adsActive, AFFILIATES, RECOMMENDED_BROKER } from '../../config/site';
 ---
 <LegalPage title="Financiación y conflictos de interés" description="Cómo se financia umotion Academy, qué reglas aplicamos a la publicidad y qué haríamos si algún día hubiera afiliación." updated="2026-10-15">
   <h2>Situación actual</h2>
   <ul>
     <li>Publicidad: {adsActive ? 'activa (Google AdSense).' : 'desactivada. El sitio está preparado para mostrar anuncios de Google AdSense en el futuro.'}</li>
     <li>Afiliación con brókeres u otras entidades: {AFFILIATES.enabled ? 'activa, con enlaces identificados.' : 'ninguna.'}</li>
-    <li>No recibimos pagos de intermediarios, gestoras ni emisores por aparecer o por su posición.</li>
+    <li>{RECOMMENDED_BROKER.paid ? `Recibimos una remuneración de ${RECOMMENDED_BROKER.name}, a quien recomendamos para empezar; está identificada como colaboración pagada en cada página donde aparece.` : 'No recibimos pagos de intermediarios, gestoras ni emisores por aparecer o por su posición.'}</li>
+    <li>Recomendamos {RECOMMENDED_BROKER.name} a quien empieza de cero como opinión editorial. Contamos sus ventajas y sus limitaciones y mantenemos el comparador con los mismos datos para todas las entidades.</li>
   </ul>
   <h2>Reglas para la publicidad</h2>
   <ul>

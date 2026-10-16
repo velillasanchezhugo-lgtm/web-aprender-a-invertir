@@ -1,36 +1,49 @@
 ---
 title: La inflación te cobra aunque no hagas nada
-description: Por qué el dinero quieto pierde poder de compra y cómo calcular tu rentabilidad real con una sola fórmula.
+description: Por qué el dinero quieto en la cuenta pierde valor con los años, cómo notarlo en tu día a día y qué puedes hacer para protegerte.
 level: cero
 track: camino-cero
 order: 5
 skills: [inflacion-real]
 goals: [entender, jubilacion, miedo]
 prereqs: [01-invertir-no-es-apostar]
-hook: "Guardaste 10.000 € en 2020. Siguen siendo 10.000 €. ¿Has perdido dinero?"
-takeaway: "Rentabilidad real = (1 + nominal) / (1 + inflación) − 1. Si no supera a la inflación, pierdes poder de compra."
+hook: "Hace unos años llenabas el carro de la compra con bastante menos dinero que hoy. Tus ahorros, en cambio, siguen siendo los mismos euros."
+takeaway: El dinero quieto no se queda igual. Si lo que gana no supera a la subida de precios, cada año compra menos.
+scenario:
+  kind: operacion
+  label: Caso práctico
+  title: Carmen y el dinero del cajón
+  body: "Carmen guardó sus ahorros en una cuenta sin intereses hace cinco años. Hoy tiene exactamente los mismos euros, pero con ellos compra bastante menos: la compra, la luz y el alquiler han subido. No ha perdido ningún euro, pero sí poder de compra."
+  note: Ejemplo ficticio con fines educativos.
 questions:
-  - type: estimate
-    id: s05-q1
-    q: "Una cuenta te paga un 3 % y la inflación es del 3 %. ¿Cuál es tu rentabilidad real, aproximadamente?"
-    answer: 0
-    tolerance: 0.3
-    min: -5
-    max: 6
-    step: 0.1
-    unit: "%"
-    explain: "(1,03 / 1,03) − 1 = 0 %. Tu dinero mantiene su poder de compra, pero no crece. Y aún falta pagar impuestos por los intereses."
   - type: truefalse
     id: s05-q2
     q: "Si el saldo de tu cuenta en euros no baja, no pierdes nada."
     answer: false
     explain: "Con inflación, los mismos euros compran menos cosas. Es una pérdida silenciosa de poder de compra."
+  - type: choice
+    id: s05-q3
+    q: "Tu cuenta te paga menos de lo que suben los precios. ¿Qué está pasando con tu dinero?"
+    options: ["Crece, porque el saldo sube", "Pierde poder de compra poco a poco", "Está perfectamente protegido"]
+    answer: 1
+    explain: "Aunque veas más euros, si los precios suben más deprisa, compras menos. Lo que importa es ganar más que la inflación."
+  - type: choice
+    id: s05-q4
+    q: "¿Qué es lo más sensato para el dinero que no vas a necesitar en muchos años?"
+    options: ["Dejarlo en la cuenta corriente sin intereses", "Invertirlo de forma diversificada y a largo plazo", "Gastarlo antes de que pierda valor"]
+    answer: 1
+    explain: "Para el largo plazo, invertir con calma en activos que crecen ayuda a ganarle a la inflación. El colchón sí debe seguir en una cuenta o depósito."
+tips:
+  - "Mira qué interés te paga tu cuenta y compáralo con el último dato de inflación del INE."
+  - "Deja en la cuenta solo el colchón y el dinero que vas a usar pronto."
+  - "Elige cuentas o depósitos que paguen algo por tu colchón en lugar de nada."
+  - "Para el dinero de muchos años, plantéate invertir: es la forma habitual de ganarle a la subida de precios."
 action:
   title: Compara tu cuenta con la inflación
   steps:
     - "Mira qué interés (TAE) te paga la cuenta donde tienes tus ahorros."
-    - "Compáralo con el último dato de inflación del INE (IPC). En diciembre de 2025 fue del 2,9 %."
-    - "Prueba la calculadora de inflación con tu cantidad."
+    - "Busca en la web del INE el último dato del IPC (la inflación)."
+    - "Si tu cuenta paga menos, piensa qué parte de ese dinero no vas a necesitar en años."
   check: Sé si mi dinero ahorrado gana o pierde frente a la inflación
 deeper: inflacion-e-interes-compuesto
 tool: inflacion
@@ -45,17 +58,24 @@ sources: [ine-ipc]
 
 ## La idea
 
-La **inflación** es la subida general de los precios. En España la mide el INE con el IPC. Si los precios suben, el mismo dinero compra menos.
+La **inflación** es la subida general de los precios. En España la mide el INE con un indicador llamado IPC. Cuando los precios suben, el mismo billete de 50 € compra menos cosas que antes.
 
-Por eso hay dos rentabilidades:
+Por eso el dinero quieto no «se queda igual»: **pierde poder de compra** cada año que hay inflación. No lo ves en el saldo, pero lo notas en el súper.
 
-- **Nominal**: lo que ganas en euros.
-- **Real**: lo que ganas en poder de compra. Se calcula con una fórmula: `(1 + nominal) / (1 + inflación) − 1`.
+La pregunta que importa no es «¿cuántos euros tengo?», sino «¿cuántas cosas puedo comprar con ellos?».
 
-El dinero en efectivo o en una cuenta sin intereses no «se queda igual»: pierde poder de compra cada año que hay inflación.
+| Dónde está el dinero | Frente a la inflación | Para qué sirve |
+|---|---|---|
+| Cuenta sin intereses | Pierde | Gastos del mes |
+| Cuenta remunerada o depósito | Suele aguantar, a veces pierde | Colchón |
+| Inversión diversificada a largo plazo | Históricamente ha ganado, con altibajos | Objetivos de muchos años |
 
-## Con números
+## En la práctica
 
-Según el IPC del INE (dato de diciembre de cada año), los precios subieron un **22,8 %** entre diciembre de 2020 y diciembre de 2025, sobre todo por la inflación de 2021 (6,5 %) y 2022 (5,7 %).
+- En los últimos años los precios en España subieron con fuerza, sobre todo en 2021 y 2022: quien tenía todo en la cuenta lo notó.
+- No se trata de invertirlo todo: el colchón debe seguir a mano.
+- Lo que no vas a necesitar en años es el que más sufre si se queda parado.
 
-Quien guardó **10.000 €** en efectivo esos cinco años sigue teniendo 10.000 €, pero con ellos compra lo que antes costaba unos **8.145 €**. Ha perdido casi 1.900 € de poder de compra sin hacer nada.
+## Error frecuente
+
+Creer que no invertir es «no arriesgar». Dejar el dinero parado también tiene un coste.

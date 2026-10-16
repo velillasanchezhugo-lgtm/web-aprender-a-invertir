@@ -3,7 +3,8 @@ import Base from '../../../layouts/Base.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import data from '../../../data/brokers.json';
 import { fmtDate } from '../../../lib/content';
-import { AFFILIATES } from '../../../config/site';
+import { AFFILIATES, RECOMMENDED_BROKER } from '../../../config/site';
+import BrokerDisclosure from '../../../components/BrokerDisclosure.astro';
 const V = { si: 'Verificado', parcial: 'Parcial', no: 'Pendiente' } as const;
 const rows: { label: string; key: string }[] = [
   { label: 'Entidad que presta el servicio', key: 'entity' },
@@ -24,8 +25,15 @@ const get = (b: any, k: string) => k.startsWith('fees.') ? { v: b.fees.v, value:
     <div class="grid cols-3 intro">
       <div class="callout note small"><p class="callout-title">Criterio de selección</p><p>{data.criteria}</p></div>
       <div class="callout note small"><p class="callout-title">Revisión</p><p>Tarifas consultadas el {fmtDate(new Date(data.reviewed))}. Cada dato indica si está verificado, es parcial o está pendiente. Si algo no está claro en la fuente, lo decimos.</p></div>
-      <div class="callout note small"><p class="callout-title">Sin afiliación</p><p>{AFFILIATES.enabled ? 'Algunos enlaces son de afiliación y están marcados.' : 'No cobramos de ningún intermediario y los enlaces no son de afiliación.'} La remuneración nunca decidiría el orden. <a href="/es/financiacion/">Más información</a>.</p></div>
+      <div class="callout note small"><p class="callout-title">Sin afiliación</p><p>{AFFILIATES.enabled || RECOMMENDED_BROKER.paid ? `Hay una colaboración remunerada con ${RECOMMENDED_BROKER.name} y está identificada.` : 'No cobramos de ningún intermediario y los enlaces no son de afiliación.'} Los datos de la tabla son los mismos para todos. <a href="/es/financiacion/">Más información</a>.</p></div>
     </div>
+    <section class="card reco" aria-labelledby="reco-t">
+      <p class="eyebrow">Si empiezas de cero</p>
+      <h2 id="reco-t" class="h3">Nuestra recomendación: {RECOMMENDED_BROKER.name}</h2>
+      <p>Entidad regulada en la UE con sucursal en España, costes bajos, planes de inversión periódicos y una app sencilla. Te enseñamos a abrir la cuenta, usar la app, comparar ETF y acciones y lo que no conviene tocar al empezar.</p>
+      <p><a class="btn brand small" href={RECOMMENDED_BROKER.module}>Ver el módulo «Empieza con {RECOMMENDED_BROKER.name}»</a></p>
+      <BrokerDisclosure compact />
+    </section>
     <p><a class="btn" href="/es/herramientas/comparador-comisiones/">Calcular el coste en mi caso</a></p>
     <div class="table-wrap" tabindex="0" role="region" aria-label="Tabla (desplazable)">
       <table class="data compare">
@@ -61,6 +69,7 @@ const get = (b: any, k: string) => k.startsWith('fees.') ? { v: b.fees.v, value:
     </section>
   </div>
 </Base>
+<style>.reco { margin: 1.4rem 0; border-left: 4px solid var(--u-blue); } .reco .h3 { margin: 0.2rem 0 0.4rem; font-size: 1.35rem; } .reco .eyebrow { margin: 0; }</style>
 <style>
   .intro { margin: 1.5rem 0; } .intro .callout { margin: 0; }
   .compare td, .compare th { min-width: 200px; font-size: 0.88rem; }

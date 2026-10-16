@@ -3,6 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { sessions, TRACKS, skillById } from '../../../lib/content';
 import type { TrackId } from '../../../lib/adaptive';
+import BrokerDisclosure from '../../../components/BrokerDisclosure.astro';
 export async function getStaticPaths() {
   const all = await sessions();
   return (Object.keys(TRACKS) as TrackId[]).filter((t) => t !== 'camino-cero' && all.some((s) => s.data.track === t)).map((t) => ({ params: { track: t }, props: { track: t, ss: all.filter((s) => s.data.track === t) } }));
@@ -13,6 +14,7 @@ const skills = [...new Set(ss.flatMap((s) => s.data.skills))].map((k) => skillBy
 const NOTE: Partial<Record<TrackId, string>> = {
   trading: 'Este módulo explica el trading para que lo entiendas y no caigas en sus trampas. Los datos son claros: la mayoría de particulares que operan a corto plazo pierden dinero. Todos los ejercicios son simulaciones.',
   empresas: 'Las empresas de los casos son ficticias. Analizar empresas te ayuda a entender lo que tienes en tu cartera; para la mayoría, la base sigue siendo una cartera diversificada.',
+  'trade-republic': 'Las pantallas de la app pueden cambiar con las actualizaciones; describimos su funcionamiento según el centro de ayuda oficial de la entidad. Los productos de los ejemplos son ficticios: no te decimos qué comprar, sino cómo comparar.',
   noticias: 'Las noticias de los casos son ficticias, escritas para practicar. La acción de cada sesión la harás con noticias reales.',
 };
 const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${info.label} · umotion Academy`, description: info.short, inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' } };
@@ -49,6 +51,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${i
         <ul>{skills.map((k) => <li><strong>{k.label}.</strong> {k.can}</li>)}</ul>
       </div>
       {NOTE[track] && <div class="callout note"><p>{NOTE[track]}</p></div>}
+      {track === 'trade-republic' && <BrokerDisclosure />}
     </aside>
   </div>
 </Base>

@@ -1,0 +1,15 @@
+---
+import { RECOMMENDED_BROKER as R } from '../config/site';
+const { compact = false } = Astro.props as { compact?: boolean };
+---
+<p class:list={['disclosure', { compact }]}>
+  <strong>{R.paid ? 'Colaboración pagada.' : 'Recomendación editorial.'}</strong>
+  {R.paid
+    ? ` umotion recibe una remuneración de ${R.name}. Aun así, contamos sus ventajas y sus limitaciones, y te animamos a comparar con otras entidades antes de decidir.`
+    : ` Recomendamos ${R.name} para empezar porque creemos que encaja con quien empieza de cero; umotion no recibe dinero de ${R.name} por ello. Compara siempre antes de decidir: no es la única buena opción.`}
+  {' '}<a href="/es/financiacion/">Cómo nos financiamos</a>.
+</p>
+<style>
+  .disclosure { font-size: 0.88rem; line-height: 1.5; color: var(--ink-2); background: var(--paper-2); border: 1px solid var(--rule); border-radius: 14px; padding: 0.7rem 0.9rem; margin: 0.8rem 0; }
+  .disclosure.compact { font-size: 0.8rem; padding: 0.5rem 0.75rem; }
+</style>

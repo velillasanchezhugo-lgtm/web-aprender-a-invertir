@@ -78,3 +78,15 @@ export const AI_TUTOR = {
   endpoint: '/api/tutor',
   provider: 'Anthropic (Claude)',
 };
+
+/**
+ * Recomendación editorial de bróker para quien empieza de cero.
+ * paid: pon `true` si umotion recibe cualquier remuneración de la entidad (referidos, afiliación, acuerdos):
+ * entonces la web la identifica como «Publicidad / colaboración pagada» en todas partes.
+ */
+export const RECOMMENDED_BROKER = {
+  id: 'trade-republic',
+  name: 'Trade Republic',
+  paid: (import.meta.env.PUBLIC_BROKER_PAID ?? 'false') === 'true',
+  module: '/es/modulos/trade-republic/',
+};

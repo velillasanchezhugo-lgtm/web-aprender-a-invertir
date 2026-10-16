@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import academy from '../../data/academy.json';
+import { RECOMMENDED_BROKER } from '../../config/site';
 import { sessions, zeroSessions, TOOLS, glossaryList, TRACKS, SKILLS } from '../../lib/content';
 const all = await zeroSessions();
 const allSessions = await sessions();
@@ -151,7 +152,7 @@ const jsonLd = [
   <section class="container trust" aria-labelledby="tr-t">
     <h2 id="tr-t" class="sr-only">Cómo trabajamos</h2>
     <ul class="grid cols-4">
-      <li><strong>No vendemos productos</strong><span class="small">Ni asesoramos, ni cobramos de brókeres, ni ejecutamos operaciones.</span></li>
+      <li><strong>No vendemos productos</strong><span class="small">{RECOMMENDED_BROKER.paid ? `Ni asesoramos de forma personalizada ni ejecutamos operaciones. Colaboramos con ${RECOMMENDED_BROKER.name}, y lo indicamos.` : `Ni asesoramos de forma personalizada, ni cobramos de brókeres, ni ejecutamos operaciones. Recomendamos ${RECOMMENDED_BROKER.name} para empezar como opinión editorial.`}</span></li>
       <li><strong>Fuentes oficiales</strong><span class="small">CNMV, Banco de España, AEAT, INE e investigación académica, con fecha.</span></li>
       <li><strong>Para España</strong><span class="small">Impuestos, garantías y normativa explicados para residentes en España.</span></li>
       <li><strong>Tus datos, contigo</strong><span class="small">Sin registro. Plan, progreso y respuestas, solo en tu dispositivo.</span></li>

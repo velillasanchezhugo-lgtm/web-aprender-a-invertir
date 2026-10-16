@@ -145,6 +145,18 @@
       "can": "Sabes, paso a paso, cómo comprar un fondo o un ETF y qué revisar antes de confirmar."
     },
     {
+      "id": "usar-app-broker",
+      "domain": "cartera",
+      "label": "Usar la app de tu bróker",
+      "can": "Abres la cuenta, ingresas dinero, buscas un producto, compras y encuentras tus documentos en la app."
+    },
+    {
+      "id": "comparar-productos",
+      "domain": "cartera",
+      "label": "Comparar ETF y acciones",
+      "can": "Comparas dos ETF o dos acciones con unas pocas preguntas sencillas antes de comprar."
+    },
+    {
       "id": "aportaciones-periodicas",
       "domain": "cartera",
       "label": "Aportaciones periódicas",

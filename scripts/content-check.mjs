@@ -57,7 +57,7 @@ const qids = new Set();
 const skillMap = JSON.parse(readFileSync('src/data/skills.json', 'utf8'));
 const skillIds = new Set(skillMap.skills.map((k) => k.id));
 const taught = new Set();
-const TRACKS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'empresas', 'noticias', 'trading'];
+const TRACKS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'empresas', 'noticias', 'trading'];
 const orders = new Map();
 for (const x of sessions) {
   const track = x.data.track ?? 'camino-cero';

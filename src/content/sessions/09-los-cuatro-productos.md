@@ -1,42 +1,43 @@
 ---
 title: Acciones, bonos, fondos y ETF en 5 minutos
-description: Qué eres cuando compras cada uno, de dónde sale su rentabilidad y cómo puede perder valor. Lo justo para no perderte.
+description: Qué compras con cada uno, para qué sirve y cómo puede perder valor. Lo justo para no perderte cuando te ofrezcan algo.
 level: cero
 track: camino-cero
 order: 9
 skills: [acciones, renta-fija, fondos-etf]
 goals: [entender, objetivo]
 prereqs: [08-no-todos-los-huevos]
-hook: "¿Puede un bono, que «paga intereses fijos», bajar de precio?"
-takeaway: Acción = parte de una empresa. Bono = préstamo. Fondo y ETF = cesta gestionada. Ninguno está libre de riesgo.
+hook: "En el banco te hablan de acciones, bonos, fondos y ETF como si fuera evidente. ¿Sabrías decir en qué se diferencian?"
+takeaway: Acción es ser dueño de un trocito de empresa. Bono es prestar. Fondo y ETF son cestas con muchas cosas dentro. Ninguno está libre de riesgo.
+scenario:
+  kind: producto
+  label: Caso
+  title: Pablo y su primera inversión
+  body: "Pablo tiene 4.000 € que no necesitará en muchos años. Un amigo le recomienda comprar acciones de una empresa que sale mucho en las noticias; en el banco le ofrecen un fondo. Antes de decidir, Pablo se pregunta qué estaría comprando en cada caso y cómo podría perder dinero. Descubre que con un fondo amplio tendría cientos de empresas a la vez, y no solo una."
+  note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: s09-q1
     q: "¿Qué eres cuando compras una acción?"
-    options: ["Prestamista de la empresa", "Copropietario de una pequeña parte de la empresa", "Cliente con depósito garantizado"]
+    options: ["Prestamista de la empresa", "Dueño de una pequeña parte de la empresa", "Cliente con un depósito garantizado"]
     answer: 1
-    explain: "Una acción es una parte del capital. Si la empresa va bien, puedes beneficiarte; si quiebra, los accionistas cobran los últimos."
+    explain: "Una acción es un trocito de la empresa. Si va bien, puedes ganar; si quiebra, los accionistas son los últimos en cobrar."
   - type: truefalse
     id: s09-q2
     q: "Un bono no puede bajar de precio porque paga intereses fijos."
     answer: false
-    explain: "Si los tipos de interés suben, los bonos ya emitidos valen menos en el mercado. Si lo mantienes hasta el vencimiento y el emisor paga, recibes lo pactado."
-  - type: estimate
-    id: s09-q3
-    q: "Bono a 10 años al 3 %. Los tipos del mercado suben al 4 %. ¿Cuánto cae su precio, aproximadamente?"
-    answer: 8
-    tolerance: 1.5
-    min: 0
-    max: 30
-    step: 0.5
-    unit: "%"
-    explain: "Su precio teórico pasa de 100 % a 91,9 %: cae un 8,1 %. Un bono a 2 años apenas caería un 1,9 %. Cuanto más largo, más sensible."
+    explain: "Si suben los tipos de interés, los bonos que ya existen valen menos, porque los nuevos pagan más. Si lo guardas hasta el final y el emisor paga, recibes lo pactado."
+tips:
+  - "Empieza por entender cómo puede perder valor un producto antes de mirar cuánto puede ganar."
+  - "Para la mayoría de principiantes, una buena base es un fondo indexado global de bajo coste."
+  - "Desconfía de quien te recomiende una sola acción como si fuera una apuesta segura."
+  - "Pide siempre el KID antes de comprar un fondo o un ETF, y léelo."
 action:
   title: Encuentra un KID
   steps:
     - "Busca cualquier fondo o ETF y descarga su «documento de datos fundamentales» (KID)."
-    - "Localiza su indicador de riesgo, una escala del 1 al 7."
-    - "Busca también la sección «¿Cuáles son los costes?»: la usarás en la sesión 10."
+    - "Localiza su indicador de riesgo, una escala del 1 (menos riesgo) al 7 (más riesgo)."
+    - "Busca también el apartado «¿Cuáles son los costes?»: lo usarás en la sesión siguiente."
   check: He encontrado el indicador de riesgo de un KID
 deeper: productos-basicos
 tool: null
@@ -51,20 +52,19 @@ sources: [priips-kid, cnmv-inversor, aeat-traspasos-2025]
 
 ## La idea
 
-| Producto | Qué eres | De dónde sale lo que ganas | Cómo puede perder |
-|---|---|---|---|
-| **Acción** | Copropietario | Beneficios y dividendos | Caídas, quiebra (hasta perderlo todo) |
-| **Bono** | Prestamista | Intereses | Subida de tipos, impago |
-| **Fondo** | Partícipe de una cesta | Lo que ganen sus activos, menos costes | Lo que caigan sus activos |
-| **ETF** | Partícipe de un fondo que cotiza en bolsa | Igual que un fondo | Igual que un fondo |
+| Producto | Qué compras | Para qué sirve | Riesgo | Para quién |
+|---|---|---|---|---|
+| **Acción** | Un trocito de una empresa | Crecer a largo plazo | Alto si es una sola | Quien sabe lo que hace y diversifica |
+| **Bono** | Un préstamo a una empresa o un Estado | Cobrar intereses con más calma | Bajo o medio | Quien busca estabilidad |
+| **Fondo** | Una cesta gestionada con muchos activos | Diversificar de una vez | Según lo que tenga dentro | Casi todo el mundo |
+| **ETF** | Un fondo que se compra y vende en bolsa | Lo mismo que un fondo | Según lo que tenga dentro | Quien usa un bróker |
 
-Dos detalles útiles en España:
+## En la práctica
 
-- Antes de comprar un fondo o ETF te deben dar su **KID**, un documento de 3 páginas con riesgo, escenarios y costes.
-- Los **traspasos** entre fondos no tributan en ese momento; entre ETF, sí (lo verás en la sesión 11).
+- Antes de comprar un fondo o un ETF te deben dar su **KID**, un documento corto con el riesgo y los costes.
+- Un fondo de acciones puede caer mucho en un mal año; uno de bonos a corto plazo, mucho menos.
+- En España, los **fondos** se pueden cambiar por otros sin pagar impuestos en ese momento; los **ETF**, no (lo verás en la sesión 11).
 
-## Con números
+## Error frecuente
 
-Un bono de 1.000 € a 10 años con un cupón del 3 %. Si los tipos de ese plazo suben al 4 %, su valor de mercado baja a unos **919 €** (−8,1 %).
-
-Si no lo vendes y el emisor paga, cobras tus 30 € anuales y los 1.000 € al final: la caída solo es pérdida si vendes antes.
+Pensar que «fondo» significa «seguro». Un fondo es tan arriesgado como lo que lleva dentro.
