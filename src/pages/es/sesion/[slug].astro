@@ -1,21 +1,30 @@
 ---
 import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
-import { sessions, lessons, TOOLS, sourceById, isoDate, type Session } from '../../../lib/content';
+import { sessions, lessons, TOOLS, TRACKS, sourceById, isoDate, guessFor, type Session } from '../../../lib/content';
 export async function getStaticPaths() {
   const all = await sessions();
-  return all.map((s, i) => ({ params: { slug: s.id }, props: { s, index: i, total: all.length, next: all[i + 1] ?? null } }));
+  return all.map((s) => {
+    const mod = all.filter((x) => x.data.track === s.data.track);
+    const i = mod.indexOf(s);
+    return { params: { slug: s.id }, props: { s, index: i, total: mod.length, next: mod[i + 1] ?? null } };
+  });
 }
 const { s, index, total, next } = Astro.props as { s: Session; index: number; total: number; next: Session | null };
 const d = s.data;
 const { Content } = await render(s);
 const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l.data.title]));
 const nQ = d.questions.length;
-const steps = ['Pregunta', 'La idea', 'Con números', ...d.questions.map((_, i) => `Test ${i + 1}`), 'Acción de hoy', 'Hecho'];
+const sc = d.scenario;
+const qBase = sc ? 4 : 3;
+const steps = ['Pregunta', 'La idea', 'Con números', ...(sc ? ['Caso práctico'] : []), ...d.questions.map((_, i) => `Test ${i + 1}`), 'Acción de hoy', 'Hecho'];
+const trackLabel = TRACKS[d.track].label;
+const qmeta = Object.fromEntries(d.questions.map((q) => [q.id, { skills: q.skills ?? d.skills, guess: guessFor(q) }]));
+const SC_LABEL = { noticia: 'Noticia', empresa: 'Empresa', operacion: 'Operación', producto: 'Producto' } as const;
 const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', name: d.title, description: d.description, inLanguage: 'es-ES', timeRequired: `PT${d.minutes}M`, educationalLevel: 'Principiante', learningResourceType: 'Microlección', isAccessibleForFree: true, datePublished: isoDate(d.published), provider: { '@type': 'Organization', name: 'umotion Academy' } };
 ---
-<Base title={`${d.title} · Sesión ${index + 1}`} description={d.description} jsonLd={jsonLd} allowAds={false} focusMode={true}>
-  <div class="player" data-id={s.id} data-next={next ? `/es/sesion/${next.id}/` : ''} data-next-title={next?.data.title ?? ''} data-index={index + 1} data-total={total}>
+<Base title={`${d.title} · ${trackLabel} ${index + 1}`} description={d.description} jsonLd={jsonLd} allowAds={false} focusMode={true}>
+  <div class="player" data-id={s.id} data-next={next ? `/es/sesion/${next.id}/` : ''} data-next-title={next?.data.title ?? ''} data-index={index + 1} data-total={total} data-track={d.track} data-track-label={trackLabel}>
     <div class="topbar">
       <div class="container tb-inner">
         <a href="/es/mi-plan/" class="close" aria-label="Salir de la sesión">
@@ -27,7 +36,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
     </div>
 
     <div class="stage narrow">
-      <p class="eyebrow">Camino Cero · Sesión {index + 1} de {total} · {d.minutes} min</p>
+      <p class="eyebrow">{trackLabel} · Sesión {index + 1} de {total} · {d.minutes} min</p>
 
       <section class="step" data-step="0" aria-labelledby="h-hook">
         <h1 id="h-hook" class="title">{d.title}</h1>
@@ -40,9 +49,23 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
 
       <div class="body prose" id="session-body"><Content /></div>
 
+      {sc && (
+        <section class="step scenario-step" data-step="3" aria-labelledby="h-sc">
+          <span class="chip">Caso práctico</span>
+          <h2 id="h-sc" class="q-text">Lee este caso: lo usarás en el test</h2>
+          <article class={`scenario sc-${sc.kind}`}>
+            <p class="sc-label mono small">{sc.label}</p>
+            <h3 class="sc-title">{sc.title}</h3>
+            <div class="sc-body">{sc.body.split(/\n\n+/).map((para) => <p>{para}</p>)}</div>
+            {sc.note && <p class="sc-note small">{sc.note}</p>}
+          </article>
+        </section>
+      )}
+
       {d.questions.map((q, i) => (
-        <section class="step q" data-step={3 + i} data-qid={q.id} data-type={q.type} aria-labelledby={`h-${q.id}`}>
+        <section class="step q" data-step={qBase + i} data-qid={q.id} data-type={q.type} aria-labelledby={`h-${q.id}`}>
           <span class="chip">Test {i + 1} de {nQ}</span>
+          {sc && <details class="sc-mini"><summary>Ver el caso: {sc.title}</summary><div>{sc.body.split(/\n\n+/).map((para) => <p>{para}</p>)}</div></details>}
           <h2 id={`h-${q.id}`} class="q-text">{q.q}</h2>
           {q.type === 'choice' && (
             <div class="opts" role="group" aria-labelledby={`h-${q.id}`}>
@@ -67,12 +90,13 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
           <div class="feedback" role="status" aria-live="polite" hidden>
             <p class="verdict"></p>
             <p class="explain">{q.explain}</p>
+            <p class="tutor-link small" hidden><a href={`/es/tutor/?sesion=${s.id}&pregunta=${q.id}`}>No lo veo claro: pregúntale al tutor →</a></p>
           </div>
           <noscript><details><summary>Ver la respuesta</summary><p>{q.type === 'choice' ? q.options[q.answer] : q.type === 'truefalse' ? (q.answer ? 'Verdadero' : 'Falso') : `${q.answer} ${q.unit}`}. {q.explain}</p></details></noscript>
         </section>
       ))}
 
-      <section class="step action" data-step={3 + nQ} aria-labelledby="h-action">
+      <section class="step action" data-step={qBase + nQ} aria-labelledby="h-action">
         <span class="chip">Acción de hoy · 2 minutos</span>
         <h2 id="h-action">{d.action.title}</h2>
         <ol class="action-steps">{d.action.steps.map((st) => <li>{st}</li>)}</ol>
@@ -82,7 +106,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
         <p class="small muted">Puedes hacerla ahora o más tarde: la encontrarás en «Mi plan».</p>
       </section>
 
-      <section class="step finish" data-step={4 + nQ} aria-labelledby="h-finish">
+      <section class="step finish" data-step={qBase + 1 + nQ} aria-labelledby="h-finish">
         <div class="panel-dark finish-card">
           <span class="chip">Sesión completada</span>
           <h2 id="h-finish">Hoy te llevas esto:</h2>
@@ -90,8 +114,13 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
           <div class="stats">
             <div><span class="k mono">Aciertos</span><span class="v" id="f-score">—</span></div>
             <div><span class="k mono">Racha</span><span class="v" id="f-streak">—</span></div>
-            <div><span class="k mono">Camino Cero</span><span class="v" id="f-progress">—</span></div>
+            <div><span class="k mono">{trackLabel}</span><span class="v" id="f-progress">—</span></div>
           </div>
+        </div>
+        <div class="card rec-next" id="rec-next" hidden>
+          <p class="eyebrow">Recomendado para ti</p>
+          <h3 class="h4"><a id="rec-link" href="#"></a></h3>
+          <ul class="rec-why small" id="rec-why"></ul>
         </div>
         <div class="finish-actions">
           {next ? <a class="btn brand" href={`/es/sesion/${next.id}/`} id="next-btn">Siguiente: {next.data.title} <span class="arrow" aria-hidden="true">→</span></a>
@@ -112,7 +141,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
       </nav>
     </div>
   </div>
-  <script type="application/json" id="session-data" set:html={JSON.stringify({ questions: d.questions.map((q) => q.id), zero: total })} />
+  <script type="application/json" id="session-data" set:html={JSON.stringify({ questions: d.questions.map((q) => q.id), qmeta, skills: d.skills })} />
 </Base>
 
 <style>
@@ -149,6 +178,21 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
   .feedback.ko { border-left-color: var(--loss); background: var(--loss-soft); }
   .verdict { font-weight: 700; margin-bottom: 0.3rem; }
   .explain { margin: 0; }
+  .scenario { background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--u-blue); border-radius: 18px; padding: 1.2rem 1.3rem; box-shadow: var(--shadow); }
+  .sc-noticia { border-left-color: var(--ochre); }
+  .sc-label { text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin: 0 0 0.4rem; }
+  .sc-title { font-size: 1.3rem; line-height: 1.25; margin: 0 0 0.6rem; }
+  .sc-body p { margin: 0 0 0.6rem; }
+  .sc-note { color: var(--ink-3); margin: 0.4rem 0 0; font-style: italic; }
+  .sc-mini { margin: 0.8rem 0 0; font-size: 0.95rem; }
+  .sc-mini summary { cursor: pointer; color: var(--teal); font-weight: 600; }
+  .sc-mini div { padding: 0.6rem 0.9rem; border-left: 3px solid var(--rule-strong); margin-top: 0.4rem; }
+  .sc-mini p { margin: 0 0 0.4rem; }
+  .tutor-link { margin: 0.6rem 0 0; }
+  .rec-next { margin: 1.2rem 0 0; padding: 1.1rem 1.2rem; }
+  .rec-next .eyebrow { margin: 0; }
+  .h4 { font-size: 1.2rem; margin: 0.3rem 0 0.4rem; }
+  .rec-why { margin: 0; padding-left: 1.1rem; color: var(--ink-2); }
   .action h2 { margin-top: 0.9rem; }
   .action-steps { padding-left: 1.3rem; font-size: 1.08rem; }
   .action-steps li { margin-bottom: 0.6rem; }
@@ -172,8 +216,10 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
 </style>
 
 <script>
-  import { getState, saveState, answer, completeSession } from '../../../scripts/academy-store';
+  import { getState, saveState, answer, completeSession, type QMeta } from '../../../scripts/academy-store';
   import { grade, streak, type Question } from '../../../lib/academy';
+  import { showRecommendation } from '../../../scripts/recommend-ui';
+  const SD = JSON.parse(document.getElementById('session-data')!.textContent!) as { questions: string[]; qmeta: Record<string, QMeta>; skills: string[] };
   const root = document.querySelector<HTMLElement>('.player')!;
   const id = root.dataset.id!;
   const body = document.getElementById('session-body')!;
@@ -181,11 +227,12 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
   // Divide el cuerpo Markdown en los pasos «La idea» y «Con números» según sus h2.
   const parts: HTMLElement[][] = [[], []];
   let part = -1;
-  [...body.children].forEach((el) => { if (el.tagName === 'H2') part++; if (part >= 0 && part < 2) parts[part].push(el as HTMLElement); });
+  [...body.children].forEach((el) => { if (el.tagName === 'H2') part++; if (part >= 0) parts[Math.min(part, 1)].push(el as HTMLElement); });
   const steps = [...root.querySelectorAll<HTMLElement>('.step')];
   // Pasos virtuales 1 y 2 = partes del cuerpo
   const total = steps.length + 2;
   const qSteps = steps.filter((s) => s.classList.contains('q'));
+  if (root.querySelector('.scenario-step')) labels.push('Caso práctico');
   qSteps.forEach((_, i) => labels.push(`Test ${i + 1}`));
   labels.push('Acción de hoy', 'Hecho');
   const segs = [...root.querySelectorAll<HTMLElement>('.segments span')];
@@ -221,10 +268,11 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
     const qid = step.dataset.qid!;
     if (answered.has(qid)) return;
     answered.set(qid, ok);
-    let st = getState(); st = answer(st, qid, ok); saveState(st);
+    let st = getState(); st = answer(st, qid, ok, SD.qmeta[qid]); saveState(st);
     const fb = step.querySelector<HTMLElement>('.feedback')!;
     fb.hidden = false; fb.classList.add(ok ? 'ok' : 'ko');
     fb.querySelector('.verdict')!.textContent = ok ? '¡Correcto!' : `No exactamente. ${given}`;
+    if (!ok) fb.querySelector<HTMLElement>('.tutor-link')?.removeAttribute('hidden');
     nextBtn.disabled = false;
     nextBtn.focus();
   }
@@ -266,13 +314,15 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
   note.addEventListener('input', () => { const s = getState(); s.notes[id] = note.value; saveState(s); });
 
   function finish() {
-    let s = getState(); s = completeSession(s, id); saveState(s);
+    let s = getState();
+    const first = !s.completed[id];
+    s = completeSession(s, id, first ? SD.skills : []); saveState(s);
     const correct = [...answered.values()].filter(Boolean).length;
     document.getElementById('f-score')!.textContent = `${correct}/${qSteps.length}`;
     const k = streak(s.activity, s.activity[s.activity.length - 1]);
     document.getElementById('f-streak')!.textContent = `${k.current} ${k.current === 1 ? 'día' : 'días'}`;
-    const zero = Object.keys(s.completed).filter((x) => /^\d\d-/.test(x)).length;
-    document.getElementById('f-progress')!.textContent = `${zero}/${root.dataset.total}`;
+    document.getElementById('f-progress')!.textContent = `${root.dataset.index}/${root.dataset.total}`;
+    showRecommendation(document.getElementById('rec-next')!, { exclude: id, lastTrack: root.dataset.track });
   }
 
   prevBtn.addEventListener('click', () => show(cur - 1));

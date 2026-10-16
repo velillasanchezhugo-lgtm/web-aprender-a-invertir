@@ -13,7 +13,7 @@ El repositorio estaba vacío. No se ha usado Claude Design: no estaba disponible
 | Interactividad | TypeScript sin framework | Menos dependencias, mejor rendimiento en móvil |
 | Cálculos verificables | Módulos puros en `src/lib/calc/` con pruebas `node:test` | La misma función se usa en la web y en las pruebas |
 | Búsqueda | Índice JSON generado al compilar y búsqueda en el navegador | Sin servicios externos ni cookies |
-| Progreso | `localStorage` con prefijo `criterio:` | Sin cuentas: no hay un backend seguro que justifique pedir datos |
+| Progreso | `localStorage` con prefijo `uacademy:` | Sin cuentas: no hay un backend seguro que justifique pedir datos |
 | Tipografías | Source Serif 4 e Inter alojadas en el propio sitio (Fontsource) | Evita transferir la IP del visitante a terceros |
 | Publicidad | Componente `AdSlot` y `Consent`, desactivados por defecto | Ningún script de terceros hasta que exista configuración real |
 | SEO | Canonical, metadatos únicos, datos estructurados, sitemap generado desde el HTML final, robots | El sitemap solo incluye páginas sin `noindex` |

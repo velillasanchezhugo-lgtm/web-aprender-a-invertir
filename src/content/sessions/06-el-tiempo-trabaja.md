@@ -2,7 +2,9 @@
 title: El tiempo trabaja por ti
 description: El interés compuesto explicado con números, por qué empezar pronto pesa más que la cantidad, y su lado oscuro.
 level: cero
+track: camino-cero
 order: 6
+skills: [interes-compuesto]
 goals: [jubilacion, entender]
 prereqs: [05-la-inflacion-te-cobra]
 hook: "Dos personas invierten 100 € al mes. Una empieza 10 años antes. ¿Cuánta diferencia crees que hay al final?"

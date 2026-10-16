@@ -2,7 +2,9 @@
 title: Las caídas son normales (y asimétricas)
 description: Por qué una caída del 50 % exige una subida del 100 %, cuánto han tardado algunas recuperaciones reales y cuándo una pérdida se vuelve permanente.
 level: cero
+track: camino-cero
 order: 7
+skills: [caidas-recuperacion, psicologia-sesgos]
 goals: [miedo, entender, jubilacion]
 prereqs: [06-el-tiempo-trabaja]
 hook: "Tu inversión cae un 50 %. ¿Cuánto tiene que subir después para volver a donde estabas?"

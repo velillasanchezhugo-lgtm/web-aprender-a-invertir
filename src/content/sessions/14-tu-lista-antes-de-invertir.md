@@ -2,7 +2,9 @@
 title: Tu lista antes de invertir
 description: Seis preguntas que reúnen todo el Camino Cero. Si puedes responderlas todas, tienes la base; si no, ya sabes qué repasar.
 level: cero
+track: camino-cero
 order: 14
+skills: [plan-inversion, comprobar-broker]
 goals: [entender, objetivo, jubilacion, miedo, ordenar]
 prereqs: [03-el-colchon-primero, 04-deudas-caras-primero, 10-el-uno-por-ciento, 11-impuestos-lo-justo, 13-detecta-un-fraude]
 hook: "Llevas 13 sesiones. ¿Podrías explicar a un amigo qué comprobar antes de poner un euro?"

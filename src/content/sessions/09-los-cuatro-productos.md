@@ -2,7 +2,9 @@
 title: Acciones, bonos, fondos y ETF en 5 minutos
 description: Qué eres cuando compras cada uno, de dónde sale su rentabilidad y cómo puede perder valor. Lo justo para no perderte.
 level: cero
+track: camino-cero
 order: 9
+skills: [acciones, renta-fija, fondos-etf]
 goals: [entender, objetivo]
 prereqs: [08-no-todos-los-huevos]
 hook: "¿Puede un bono, que «paga intereses fijos», bajar de precio?"

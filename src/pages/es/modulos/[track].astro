@@ -1,0 +1,84 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { sessions, TRACKS, skillById } from '../../../lib/content';
+import type { TrackId } from '../../../lib/adaptive';
+export async function getStaticPaths() {
+  const all = await sessions();
+  return (Object.keys(TRACKS) as TrackId[]).filter((t) => t !== 'camino-cero' && all.some((s) => s.data.track === t)).map((t) => ({ params: { track: t }, props: { track: t, ss: all.filter((s) => s.data.track === t) } }));
+}
+const { track, ss } = Astro.props as { track: TrackId; ss: Awaited<ReturnType<typeof sessions>> };
+const info = TRACKS[track];
+const skills = [...new Set(ss.flatMap((s) => s.data.skills))].map((k) => skillById[k]).filter(Boolean);
+const NOTE: Partial<Record<TrackId, string>> = {
+  trading: 'Este módulo explica el trading para que lo entiendas y no caigas en sus trampas. Los datos son claros: la mayoría de particulares que operan a corto plazo pierden dinero. Todos los ejercicios son simulaciones.',
+  empresas: 'Las empresas de los casos son ficticias. Analizar empresas te ayuda a entender lo que tienes en tu cartera; para la mayoría, la base sigue siendo una cartera diversificada.',
+  noticias: 'Las noticias de los casos son ficticias, escritas para practicar. La acción de cada sesión la harás con noticias reales.',
+};
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${info.label} · umotion Academy`, description: info.short, inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' } };
+---
+<Base title={`${info.label}: ${ss.length} sesiones de 5 minutos`} description={`Módulo del nivel Básico de umotion Academy: ${info.short.toLowerCase()}. ${ss.length} sesiones con caso práctico, test y acción.`} jsonLd={jsonLd} allowAds={false}>
+  <section class="m-hero dots">
+    <div class="container">
+      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/modulos/', label: 'Módulos' }, { label: info.label }]} />
+      <p class="eyebrow">Nivel Básico · {ss.length} sesiones · {ss.length * 5} minutos</p>
+      <h1>{info.label}</h1>
+      <p class="lede">{info.short}.</p>
+      <div class="m-cta">
+        <a class="btn brand" href={`/es/sesion/${ss[0].id}/`} id="m-start">Empezar <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn secondary" href="/es/empezar/">Plan personalizado</a>
+      </div>
+      <div class="m-bar"><div class="progress-bar" aria-hidden="true"><span id="m-bar"></span></div><p class="small muted" id="m-txt" aria-live="polite"></p></div>
+    </div>
+  </section>
+  <div class="container m-grid">
+    <ol class="sessions">
+      {ss.map((s, i) => (
+        <li data-id={s.id}>
+          <a class="card sess" href={`/es/sesion/${s.id}/`}>
+            <span class="sn mono">{String(i + 1).padStart(2, '0')}</span>
+            <span class="sb"><strong>{s.data.title}</strong><span class="small muted">{s.data.description}</span>{s.data.scenario && <span class="small act">Caso práctico: {s.data.scenario.title}</span>}</span>
+            <span class="state small mono">5 min</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+    <aside>
+      <div class="card can">
+        <h2 class="h3">Al terminar sabrás…</h2>
+        <ul>{skills.map((k) => <li><strong>{k.label}.</strong> {k.can}</li>)}</ul>
+      </div>
+      {NOTE[track] && <div class="callout note"><p>{NOTE[track]}</p></div>}
+    </aside>
+  </div>
+</Base>
+<style>
+  .m-hero { border-bottom: 1px solid var(--rule); padding: 0.5rem 0 2.2rem; margin-bottom: 1.5rem; }
+  .m-hero h1 { font-size: clamp(2.4rem, 1.7rem + 3.4vw, 4.4rem); margin: 0.2rem 0 0.6rem; }
+  .m-cta { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1.3rem 0; }
+  .m-bar { max-width: 460px; }
+  .m-grid { display: grid; gap: 1.5rem; padding-bottom: 3rem; }
+  @media (min-width: 960px) { .m-grid { grid-template-columns: 1fr 340px; align-items: start; } aside { position: sticky; top: 90px; } }
+  .sessions { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+  .sess { display: grid; grid-template-columns: 3rem 1fr auto; gap: 0.9rem; align-items: center; padding: 1rem 1.1rem; }
+  .sn { width: 2.8rem; height: 2.8rem; display: grid; place-items: center; border-radius: 14px; background: var(--u-ink); color: var(--u-cyan); }
+  li.is-done .sn { background: var(--u-grad); color: #fff; }
+  .sb { display: flex; flex-direction: column; gap: 0.15rem; }
+  .sb strong { font-size: 1.08rem; }
+  .act { color: var(--ochre); }
+  .state { color: var(--ink-3); }
+  li.is-done .state { color: var(--gain); }
+  .can ul { padding-left: 1.1rem; margin: 0.6rem 0 0; display: grid; gap: 0.45rem; font-size: 0.95rem; }
+  .h3 { font-size: 1.25rem; margin: 0; }
+  @media (max-width: 520px) { .sess { grid-template-columns: 2.8rem 1fr; } .state { grid-column: 2; } }
+</style>
+<script>
+  import { getState } from '../../../scripts/academy-store';
+  const s = getState();
+  const items = [...document.querySelectorAll<HTMLElement>('.sessions li')];
+  let n = 0; let first: string | null = null;
+  items.forEach((li) => { const id = li.dataset.id!; if (s.completed[id]) { n++; li.classList.add('is-done'); li.querySelector('.state')!.textContent = '✓ Hecha'; } else first ??= id; });
+  (document.getElementById('m-bar') as HTMLElement).style.width = `${(n / items.length) * 100}%`;
+  document.getElementById('m-txt')!.textContent = n ? `Llevas ${n} de ${items.length} sesiones.` : `${items.length} sesiones. Tu progreso se guarda solo en este dispositivo.`;
+  if (n && first) { const b = document.getElementById('m-start') as HTMLAnchorElement; b.href = `/es/sesion/${first}/`; b.firstChild!.textContent = 'Continuar '; }
+</script>

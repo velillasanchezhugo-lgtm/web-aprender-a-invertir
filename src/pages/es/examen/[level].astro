@@ -1,7 +1,8 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import academy from '../../../data/academy.json';
-import { examQuestions } from '../../../lib/content';
+import { examQuestions, academyIndex } from '../../../lib/content';
+const { qmeta } = await academyIndex();
 export async function getStaticPaths() {
   return Promise.all(academy.levels.map(async (l) => ({ params: { level: l.id }, props: { level: l, questions: await examQuestions(l.id) } })));
 }
@@ -19,7 +20,7 @@ const { level, questions } = Astro.props as { level: (typeof academy.levels)[num
     <div class="ex-ctrl"><button class="btn" id="ex-next" type="button" hidden>Siguiente <span class="arrow" aria-hidden="true">→</span></button></div>
     <div id="ex-result" hidden tabindex="-1"></div>
   </div>
-  <script type="application/json" id="ex-data" set:html={JSON.stringify(questions)} />
+  <script type="application/json" id="ex-data" set:html={JSON.stringify(questions.map((q) => ({ ...q, meta: qmeta[q.id] ?? null })))} />
 </Base>
 <style>.ex { padding-top: 1.5rem; padding-bottom: 3rem; } .ex-ctrl { margin: 1rem 0; display: flex; justify-content: flex-end; } #ex-q { margin-top: 1rem; }</style>
 <script>
@@ -37,7 +38,7 @@ const { level, questions } = Astro.props as { level: (typeof academy.levels)[num
       ($('ex-bar') as HTMLElement).style.width = `${(i / qs.length) * 100}%`;
       const r = await ask($('ex-q'), qs[i]);
       if (r) ok++; else failed.push(qs[i].q);
-      let st = getState(); st = answer(st, qs[i].id, r); saveState(st);
+      let st = getState(); st = answer(st, qs[i].id, r, qs[i].meta ?? undefined); saveState(st);
       const nx = $('ex-next') as HTMLButtonElement; nx.hidden = false; nx.focus();
       await new Promise((res) => nx.addEventListener('click', res, { once: true })); nx.hidden = true;
     }

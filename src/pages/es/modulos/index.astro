@@ -1,0 +1,68 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { sessions, TRACKS, SKILLS, skillById } from '../../../lib/content';
+import type { TrackId } from '../../../lib/adaptive';
+const all = await sessions();
+const BLURB: Record<TrackId, string> = {
+  'camino-cero': 'Ahorro, colchón, deudas, inflación, interés compuesto, caídas, diversificación, productos, costes, impuestos y fraudes.',
+  'invertir-ya': 'Tu plan por escrito, cuánto en bolsa, una cartera indexada sencilla, tu primera compra, aportar cada mes y qué hacer cuando cae.',
+  productos: 'Acciones, bonos, cuentas, depósitos y Letras, fondos, ETF, planes de pensiones, inmobiliario, oro, criptoactivos y productos complejos.',
+  empresas: 'Cómo gana dinero una empresa, cuenta de resultados, márgenes, deuda, caja, ventajas competitivas y si algo está caro.',
+  noticias: 'Hecho u opinión, el BCE y los tipos, IPC y PIB, resultados y expectativas, noticias de empresas y si te afectan.',
+  trading: 'Estilos de trading, órdenes, apalancamiento, tamaño de posición, análisis técnico y lo que dicen los datos. Para entenderlo, no para jugarte el dinero.',
+};
+const tracks = (Object.keys(TRACKS) as TrackId[]).map((t) => {
+  const ss = all.filter((s) => s.data.track === t);
+  const skills = [...new Set(ss.flatMap((s) => s.data.skills))];
+  return { t, ss, skills };
+}).filter((x) => x.ss.length);
+---
+<Base title="Módulos: todo lo que aprenderás" description="Seis módulos de sesiones de 5 minutos: tu base, invertir ya, productos, conocer empresas, entender noticias y tipos de trading." allowAds={false}>
+  <div class="container">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Módulos' }]} />
+    <p class="eyebrow">{all.length} sesiones de 5 minutos · {SKILLS.length} competencias</p>
+    <h1>Módulos</h1>
+    <p class="lede">Cada módulo es una serie de sesiones cortas con un caso práctico, un test y una acción para ese día. No hace falta seguirlos en orden: <a href="/es/empezar/">tu plan personalizado</a> elige qué te conviene según lo que ya sabes y lo que quieres conseguir.</p>
+    <ol class="tracks">
+      {tracks.map(({ t, ss, skills }, i) => (
+        <li class="reveal" data-track={t} data-ids={ss.map((s) => s.id).join(' ')}>
+          <a class="card trk" href={t === 'camino-cero' ? '/es/camino-cero/' : `/es/modulos/${t}/`}>
+            <span class="tn mono">{i === 0 ? '0' : `1.${i}`}</span>
+            <span class="tb">
+              <span class="small mono muted">{i === 0 ? 'Nivel Cero' : 'Nivel Básico'} · {ss.length} sesiones · {ss.length * 5} min</span>
+              <strong>{TRACKS[t].label}</strong>
+              <span class="small muted">{BLURB[t]}</span>
+              <span class="chips">{skills.slice(0, 6).map((k) => <span class="sk small">{skillById[k]?.label ?? k}</span>)}{skills.length > 6 && <span class="sk small">+{skills.length - 6}</span>}</span>
+              <span class="progress-bar" aria-hidden="true"><span></span></span>
+              <span class="small muted prog" aria-live="polite"></span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+    <div class="callout learn"><p class="callout-title">Cómo se personaliza</p><p>Cada respuesta que das actualiza, solo en tu dispositivo, una estimación de cuánto dominas cada competencia. Con eso, «Mi plan» te propone la siguiente sesión y te explica por qué: lo que aún no has trabajado, lo que has fallado, lo que te interesa y lo que te acerca antes a invertir con criterio.</p></div>
+  </div>
+</Base>
+<style>
+  .tracks { list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 0.8rem; }
+  @media (min-width: 860px) { .tracks { grid-template-columns: 1fr 1fr; } }
+  .trk { display: grid; grid-template-columns: 3.2rem 1fr; gap: 1rem; padding: 1.2rem; height: 100%; }
+  .tn { width: 3.2rem; height: 3.2rem; border-radius: 16px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); font-size: 1.05rem; }
+  [data-track='camino-cero'] .tn { background: var(--u-grad); color: #fff; }
+  .tb { display: flex; flex-direction: column; gap: 0.35rem; }
+  .tb strong { font-size: 1.3rem; letter-spacing: -0.01em; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.2rem; }
+  .sk { border: 1px solid var(--rule-strong); border-radius: 999px; padding: 0.1rem 0.55rem; color: var(--ink-2); }
+  .progress-bar { margin-top: 0.5rem; }
+</style>
+<script>
+  import { getState } from '../../../scripts/academy-store';
+  const s = getState();
+  document.querySelectorAll<HTMLElement>('.tracks > li').forEach((li) => {
+    const ids = li.dataset.ids!.split(' ');
+    const n = ids.filter((id) => s.completed[id]).length;
+    (li.querySelector('.progress-bar span') as HTMLElement).style.width = `${(n / ids.length) * 100}%`;
+    li.querySelector('.prog')!.textContent = n ? `${n} de ${ids.length} hechas` : '';
+  });
+</script>

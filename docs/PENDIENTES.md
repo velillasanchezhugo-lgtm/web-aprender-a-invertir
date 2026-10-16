@@ -21,6 +21,16 @@ No hace falta ninguna credencial para ejecutar ni compilar la web.
 2. **Fiscal**: lección de comisiones y fiscalidad (escala del ahorro 2025, traspasos, regla de los dos meses), criptoactivos y fiscalidad de dividendos. Confirmar la escala de 2026 cuando esté disponible.
 3. **Financiera / editorial**: todas las lecciones, estrategias e historias están en estado «Pendiente de revisión humana».
 
+## Contenido nuevo del nivel Básico (40 sesiones)
+
+Escrito con asistencia de IA y en estado «Pendiente de revisión humana». Prioridades de revisión:
+
+- **Fiscalidad y planes de pensiones** (Productos 06, Invertir ya 04): límites de aportación y supuestos de rescate vigentes.
+- **Tipos del BCE** (Noticias 02): cita la facilidad de depósito vigente en octubre de 2026; actualizar con cada decisión.
+- **Estudios citados de forma indirecta**: Chague et al. y Barber et al. (Taiwán), verificados en sus resúmenes (RePEc), no en el texto completo; Bessembinder (2018), por su resumen; Baumeister (2001), URL no accesible; Vanguard (2012), sin URL.
+- **Umbrales orientativos** (deuda neta/EBITDA, cobertura de intereses) presentados como referencia, no como norma.
+- Las empresas, noticias y operaciones de los casos son ficticias y lo indican.
+
 ## Contenido pendiente de verificar (señalado en la propia web)
 
 - **Trade Republic**: la lista de precios oficial consultada es de abril de 2023; la vigente está en la aplicación. Pendiente: coste de cambio de divisa, tipos de cuenta, condiciones de las fracciones y protección de valores.
@@ -40,6 +50,6 @@ No hace falta ninguna credencial para ejecutar ni compilar la web.
 - **Cuentas de usuario**: no existe un backend seguro; el progreso es local, exportable y borrable.
 - **Recordatorios por correo o notificaciones**: no hay integración real. Se ofrece un archivo de calendario `.ics` generado en el navegador.
 - **Analítica**: no se ha instalado. Si se añade, debe respetar el consentimiento (o ser una analítica sin cookies, revisada jurídicamente) y nunca recibir respuestas del test.
-- **Chatbot financiero**: no se ha añadido; exigiría fuentes, controles y una necesidad real.
+- **Tutor con IA**: construido pero desactivado. Para activarlo hace falta una clave de la API de Anthropic, revisión jurídica y de privacidad, y un límite de gasto (ver `docs/TUTOR-IA.md`). Mientras tanto funciona en modo guiado sin conexión.
 - **Cotizaciones en tiempo real**: no se usan; no se simulan.
 - **Módulos de materias primas, inmobiliario, planes de pensiones**: anunciados como «En preparación», sin páginas vacías.

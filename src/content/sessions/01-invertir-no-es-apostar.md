@@ -2,7 +2,9 @@
 title: Invertir no es apostar
 description: La diferencia entre ahorrar, invertir y especular, y la pregunta que te dice qué estás haciendo con tu dinero.
 level: cero
+track: camino-cero
 order: 1
+skills: [objetivo-horizonte, riesgo-volatilidad]
 goals: [entender, miedo]
 prereqs: []
 hook: "Un amigo te dice que una acción «va a pegar un pelotazo» esta semana. Si la compras, ¿estás invirtiendo?"

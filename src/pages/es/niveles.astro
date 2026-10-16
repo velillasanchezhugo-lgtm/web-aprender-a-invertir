@@ -2,9 +2,10 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import academy from '../../data/academy.json';
-import { sessions, lessons } from '../../lib/content';
+import { sessions, zeroSessions, lessons, TRACKS } from '../../lib/content';
 import { getCollection } from 'astro:content';
-const ss = await sessions();
+const ss = await zeroSessions();
+const allS = await sessions();
 const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l]));
 const st = Object.fromEntries((await getCollection('strategies')).map((s) => [s.id, s]));
 ---
@@ -23,18 +24,21 @@ const st = Object.fromEntries((await getCollection('strategies')).map((s) => [s.
               <h2>{l.title} <span class="small muted tag-line">{l.tagline}</span></h2>
               <p>{l.desc}</p>
               <details>
-                <summary>Ver contenido ({l.kind === 'sessions' ? ss.length : l.items.length + ((l as any).strategies?.length ?? 0)})</summary>
+                <summary>Ver contenido ({l.kind === 'sessions' ? ss.length : l.items.length + ((l as any).strategies?.length ?? 0) + allS.filter((s) => ((l as any).tracks ?? []).includes(s.data.track)).length})</summary>
                 <ul>
                   {l.kind === 'sessions'
                     ? ss.map((s) => <li><a href={`/es/sesion/${s.id}/`}>{s.data.title}</a> <span class="small muted">5 min</span></li>)
-                    : l.items.map((id) => ls[id] && <li><a href={`/es/lecciones/${id}/`}>{ls[id].data.title}</a> <span class="small muted">{ls[id].data.minutes} min</span></li>)}
+                    : <>
+                        {((l as any).tracks ?? []).map((t: keyof typeof TRACKS) => <li><a href={`/es/modulos/${t}/`}><strong>Módulo: {TRACKS[t].label}</strong></a> <span class="small muted">{allS.filter((s) => s.data.track === t).length} sesiones de 5 min</span></li>)}
+                        {l.items.map((id) => ls[id] && <li><a href={`/es/lecciones/${id}/`}>Lectura: {ls[id].data.title}</a> <span class="small muted">{ls[id].data.minutes} min</span></li>)}
+                      </>}
                   {((l as any).strategies ?? []).map((id: string) => st[id] && <li><a href={`/es/estrategias/${id}/`}>Estrategia: {st[id].data.title}</a></li>)}
                   {l.id === 'basico' && <li><a href="/es/empieza-desde-cero/ejercicio-final/">Ejercicio final con dinero ficticio</a></li>}
                   {l.id === 'experto' && <li><a href="/es/inversores/">Historias, fracasos y fraudes documentados</a></li>}
                 </ul>
               </details>
               <p class="links">
-                {l.kind === 'sessions' ? <a class="btn small brand" href="/es/camino-cero/">Empezar el Camino Cero</a> : <a class="btn small secondary" href={l.id === 'basico' ? '/es/empieza-desde-cero/' : `/es/lecciones/${l.items[0]}/`}>Empezar el nivel</a>}
+                {l.kind === 'sessions' ? <a class="btn small brand" href="/es/camino-cero/">Empezar el Camino Cero</a> : <a class="btn small secondary" href={l.id === 'basico' ? '/es/modulos/' : `/es/lecciones/${l.items[0]}/`}>{l.id === 'basico' ? 'Ver los módulos' : 'Empezar el nivel'}</a>}
                 <a class="btn small ghost" href={`/es/examen/${l.id}/`}>Examen</a>
               </p>
             </div>

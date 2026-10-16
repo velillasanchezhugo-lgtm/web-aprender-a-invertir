@@ -32,16 +32,30 @@ Todas las sesiones enlazan a una lectura más profunda (nivel Básico) y, cuando
 
 Cierre: **examen del nivel Cero** (14 preguntas, una por sesión; se aprueba con el 80 %).
 
+## 3 bis. Nivel Básico: saber invertir de verdad
+
+Diseñado a partir del análisis de 15 cursos (`docs/ANALISIS-CURSOS.md`). Cinco módulos de sesiones de 5 minutos, cada una con un **caso práctico** (una noticia, una empresa, una operación o un producto ficticios) sobre el que se responde el test:
+
+| Módulo | Sesiones | Lo que sabrás hacer |
+|---|---|---|
+| **Invertir ya** | 8 | Escribir tu plan, decidir cuánto en bolsa, montar una cartera indexada de 1 a 3 piezas, elegir entre fondo y ETF, hacer tu primera compra, automatizar aportaciones, rebalancear y actuar ante una caída |
+| **Productos de inversión** | 9 | Acciones, bonos y tipos, cuentas, depósitos y Letras, fondos, ETF, planes de pensiones, inmobiliario, oro y materias primas, criptoactivos y productos complejos |
+| **Conocer empresas** | 9 | Modelo de negocio, cuenta de resultados, márgenes, balance y deuda, caja, ventaja competitiva, PER y valoración, informe de resultados y una ficha de empresa |
+| **Entender noticias** | 7 | Hecho, dato u opinión; BCE y tipos; IPC, PIB y paro; resultados frente a expectativas; noticias de empresa; titulares de pánico; el filtro «¿me afecta?» |
+| **Tipos de trading** | 7 | Inversión frente a trading, estilos, órdenes, apalancamiento y CFD, tamaño de posición, análisis técnico y lo que dicen los datos. Para entenderlo, siempre en simulación |
+
+El hito «ya sé invertir» son el Camino Cero y el módulo Invertir ya (22 sesiones, menos de dos horas en total). El resto se ordena según el objetivo y los intereses de cada persona.
+
 ## 4. Planificación según el objetivo
 
-El asistente `/es/empezar/` pregunta objetivo, minutos al día (5, 10 o 15), días y hora, y ofrece una prueba de nivel de 6 preguntas.
+El asistente `/es/empezar/` pregunta objetivo, punto de partida (experiencia e intereses), minutos al día (5, 10 o 15), días y hora, y ofrece un **diagnóstico adaptativo** de hasta 10 preguntas.
 
-- **Orden**: se respetan los prerrequisitos de cada sesión y se adelantan 3 puestos las que encajan con el objetivo. Por ejemplo, con «Ahorrar para algo concreto» llegan antes el número del mes, el colchón y los impuestos.
+- **Personalización**: un modelo del alumno estima cuánto domina cada una de las 48 competencias y se actualiza con cada respuesta. El recomendador elige la siguiente sesión por lo que falta por dominar, el interés, el objetivo y la prioridad de saber invertir cuanto antes, y explica siempre por qué. Detalles en `docs/TUTOR-IA.md`.
 - **Ritmo**: 5 min = 1 sesión; 10 min = 2; 15 min = 3 por día de estudio. Cada día incluye repaso.
-- **Prueba de nivel**: lo que la persona ya domina **no se elimina**: pasa al final del plan como repaso.
+- **Lo ya dominado no se elimina**: pasa al final como repaso. Lo fallado tras estudiarlo se propone como refuerzo.
 - **Calendario**: se descarga un `.ics` con un recordatorio por sesión a la hora elegida.
 
-La lógica está en `src/lib/academy.ts` y tiene pruebas automáticas.
+La lógica está en `src/lib/academy.ts` y `src/lib/adaptive.ts`, con pruebas automáticas.
 
 ## 5. Retención: por qué vuelven
 
@@ -50,13 +64,14 @@ La lógica está en `src/lib/academy.ts` y tiene pruebas automáticas.
 3. **Logros por comprender y ser constante** (primer paso, 3 y 7 días seguidos, 5 acciones, 10 conceptos dominados, Camino Cero, examen). **Nunca** por invertir, operar ni arriesgar.
 4. **Término del día** e **idea para recordar**, distintos cada día.
 5. **Acciones pendientes**: lo que no hiciste en la sesión te espera en «Mi plan».
+6. **Mapa de competencias** con fortalezas y huecos, y **tutor** para dudas y noticias (`/es/tutor/`).
 
 ## 6. Niveles
 
 | Nivel | Formato | Contenido |
 |---|---|---|
 | 0 · Cero | 14 sesiones de 5 min | Camino Cero |
-| 1 · Básico | 10 lecturas de 6–10 min y un ejercicio con dinero ficticio | Las mismas ideas con más profundidad |
+| 1 · Básico | 5 módulos (40 sesiones de 5 min), 10 lecturas y un ejercicio con dinero ficticio | Invertir ya, productos, empresas, noticias y tipos de trading |
 | 2 · Intermedio | 9 lecturas y 2 estrategias | Largo plazo, indexación, asignación, renta fija, divisas, psicología, riesgo, órdenes |
 | 3 · Avanzado | 4 lecturas y 2 estrategias | Estados financieros, valoración, análisis técnico, criptoactivos |
 | 4 · Experto | 2 lecturas, 2 estrategias y casos | Apalancamiento, derivados, trading de corto plazo, fracasos y fraudes, siempre en simulación |
@@ -74,7 +89,7 @@ Hoy todo se mide en el dispositivo del usuario y se le muestra a él: sesiones c
 
 ## 8. Próximas mejoras propuestas
 
-1. **Convertir el nivel Básico en sesiones de 5 minutos** con el mismo formato (quedan las lecturas como profundización).
+1. **Cubrir los huecos del análisis de cursos**: leer el extracto del bróker, una sesión específica del KID y un examen práctico con un caso completo.
 2. **Más tipos de pregunta**: ordenar pasos, emparejar conceptos y «¿qué harías?» con escenarios.
 3. **Notificaciones web opcionales** (con permiso expreso) como alternativa al calendario.
 4. **Sincronizar el progreso entre dispositivos** con una cuenta opcional, cuando exista un backend seguro.

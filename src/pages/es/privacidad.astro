@@ -1,7 +1,7 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
 import OwnerData from '../../components/OwnerData.astro';
-import { adsActive, AUTHOR } from '../../config/site';
+import { adsActive, AUTHOR, AI_TUTOR } from '../../config/site';
 ---
 <LegalPage title="Política de privacidad" description="Qué datos se tratan en este sitio, con qué finalidad y cómo ejercer tus derechos. El progreso y el test se guardan solo en tu dispositivo." updated="2026-10-15" legal>
   <h2>Responsable</h2>
@@ -20,6 +20,10 @@ import { adsActive, AUTHOR } from '../../config/site';
   <p>Si nos escribes, trataremos tu nombre, correo y mensaje para responderte (base jurídica: tu consentimiento o la aplicación de medidas a petición tuya). Los conservaremos el tiempo necesario para atender la consulta. [Pendiente de revisión.]</p>
   <h3>3. Publicidad (solo si se activa)</h3>
   <p>Si se activa Google AdSense, se informará aquí de los proveedores, finalidades y bases jurídicas, y se pedirá tu consentimiento mediante una plataforma de gestión del consentimiento certificada por Google antes de usar cookies o identificadores no necesarios. Podrás retirarlo en cualquier momento desde «Configurar privacidad» en el pie de página.</p>
+  <h3>4. Personalización y tutor</h3>
+  <p>La personalización (tu perfil, el diagnóstico y la estimación de lo que dominas) se calcula y se guarda solo en tu navegador. {AI_TUTOR.enabled
+    ? `Si usas el tutor con inteligencia artificial, el texto que escribes y un resumen de tu nivel (sin nombre, correo ni datos financieros) se envían a nuestro servidor y a ${AI_TUTOR.provider} para generar la respuesta. No guardamos las conversaciones. Te pedimos que no incluyas datos personales. [Pendiente de revisión: base jurídica, encargado del tratamiento y transferencias internacionales.]`
+    : 'Hoy el tutor funciona en modo guiado dentro de tu navegador y no envía nada a terceros. Si se activa el tutor con inteligencia artificial, se informará aquí antes de usarlo.'}</p>
   <h2>Tus derechos</h2>
   <p>Puedes ejercer los derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo al correo del responsable. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es). Como el progreso se guarda en tu dispositivo, puedes borrarlo directamente en <a href="/es/progreso/">Mi progreso</a>.</p>
   <p class="author-fine">Autor y responsable del contenido: {AUTHOR.name} · {AUTHOR.email}</p>

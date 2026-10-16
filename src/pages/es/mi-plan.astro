@@ -1,14 +1,16 @@
 ---
 import Base from '../../layouts/Base.astro';
 import academy from '../../data/academy.json';
-import { sessions, sessionMeta, glossaryList, lessons } from '../../lib/content';
+import { sessions, sessionMeta, glossaryList, lessons, academyIndex, SKILLS, DOMAINS, TRACKS } from '../../lib/content';
 import { BADGES } from '../../lib/academy';
 const all = await sessions();
 const ls = await lessons();
+const { catalog, qmeta } = await academyIndex();
 const data = {
-  sessions: all.map((s) => ({ ...sessionMeta(s), title: s.data.title, desc: s.data.description, action: s.data.action.title, takeaway: s.data.takeaway })),
+  sessions: all.map((s) => ({ ...sessionMeta(s), track: s.data.track, title: s.data.title, desc: s.data.description, action: s.data.action.title, takeaway: s.data.takeaway })),
+  catalog, qids: Object.keys(qmeta), skills: SKILLS, domains: DOMAINS, tracks: TRACKS,
   glossary: glossaryList.map((g) => ({ id: g.id, term: g.term, def: g.def })),
-  levels: academy.levels.map((l) => ({ id: l.id, title: l.title, items: l.kind === 'sessions' ? all.map((s) => s.id) : l.items, kind: l.kind })),
+  levels: academy.levels.map((l) => ({ id: l.id, title: l.title, kind: l.kind, items: l.kind === 'sessions' ? all.filter((s) => s.data.track === 'camino-cero').map((s) => s.id) : l.items, sessions: all.filter((s) => ((l as any).tracks ?? []).includes(s.data.track)).map((s) => s.id) })),
   lessonTitles: Object.fromEntries(ls.map((l) => [l.id, l.data.title])),
   badges: BADGES.map((b) => ({ id: b.id, title: b.title, desc: b.desc })),
   goals: Object.fromEntries(academy.goals.map((g) => [g.id, g.label])),
@@ -36,6 +38,7 @@ const data = {
         <span class="chip" id="t-chip">Sesión de hoy · 5 min</span>
         <h2 id="t-title">—</h2>
         <p id="t-desc" class="t-desc"></p>
+        <ul class="t-why small" id="t-why" aria-label="Por qué esta sesión"></ul>
         <div class="t-actions"><a class="btn brand" id="t-btn" href="/es/sesion/01-invertir-no-es-apostar/">Empezar <span class="arrow" aria-hidden="true">→</span></a></div>
         <div class="progress-bar dark" aria-hidden="true"><span id="zero-bar"></span></div>
         <p class="small t-meta" id="zero-txt"></p>
@@ -53,6 +56,25 @@ const data = {
         </dl>
       </section>
     </div>
+
+    <section class="card refuerzo" id="refuerzo" hidden aria-labelledby="rf-title">
+      <p class="eyebrow">Refuerzo personalizado</p>
+      <h2 id="rf-title" class="h3"><a id="rf-link" href="#"></a></h2>
+      <p class="small muted" id="rf-why"></p>
+    </section>
+
+    <section aria-labelledby="m-title">
+      <h2 id="m-title" class="h3 sec">Tu mapa de competencias</h2>
+      <p class="small muted">Estimación de cuánto dominas cada área, calculada en tu dispositivo con tus respuestas. Sube al acertar en sesiones, repasos y exámenes.</p>
+      <div class="grid map-grid">
+        <ul class="dmap card" id="dmap"></ul>
+        <div class="card sg">
+          <p class="eyebrow">Tus fortalezas</p><ul id="strong" class="small"></ul>
+          <p class="eyebrow">Lo que más te conviene reforzar</p><ul id="weak" class="small"></ul>
+          <p class="small"><a href="/es/modulos/">Ver todos los módulos</a> · <a href="/es/empezar/">Rehacer el diagnóstico</a></p>
+        </div>
+      </div>
+    </section>
 
     <section aria-labelledby="w-title">
       <h2 id="w-title" class="h3 sec">Tu semana</h2>
@@ -106,6 +128,20 @@ const data = {
   .progress-bar.dark { background: #1c2238; border-color: #232a42; }
   .t-meta { color: #a3acc4; margin: 0.4rem 0 0; }
   .review { display: flex; flex-direction: column; align-items: flex-start; }
+  .t-why { margin: 0.2rem 0 0.4rem; padding-left: 1.1rem; color: #9be2ff; }
+  .t-why:empty { display: none; }
+  .refuerzo { margin-top: 1rem; border-left: 4px solid var(--ochre); }
+  .refuerzo h2 { margin: 0.2rem 0 0.3rem; }
+  .map-grid { gap: 1rem; }
+  @media (min-width: 900px) { .map-grid { grid-template-columns: 1.4fr 1fr; } }
+  .dmap { list-style: none; margin: 0; padding: 1.1rem 1.2rem; display: grid; gap: 0.6rem; }
+  .dmap :global(li) { display: grid; grid-template-columns: 10rem 1fr 2.8rem; gap: 0.7rem; align-items: center; font-size: 0.93rem; }
+  .dmap :global(.bar) { height: 8px; border-radius: 999px; background: var(--paper-2); overflow: hidden; }
+  .dmap :global(.bar span) { display: block; height: 100%; background: var(--u-grad); border-radius: 999px; }
+  .dmap :global(.pc) { font: 500 0.8rem/1 var(--mono); color: var(--ink-3); text-align: right; }
+  @media (max-width: 480px) { .dmap :global(li) { grid-template-columns: 1fr 2.8rem; } .dmap :global(.bar) { grid-column: 1 / -1; grid-row: 2; } }
+  .sg ul { padding-left: 1.1rem; margin: 0.3rem 0 1rem; }
+  .sg .eyebrow { margin: 0; }
   .review h2 { margin: 0.2rem 0 0.3rem; }
   .h3 { font-size: 1.35rem; }
   .sec { margin: 2.4rem 0 0.9rem; }
@@ -144,13 +180,19 @@ const data = {
   import { getState } from '../../scripts/academy-store';
   import { getProgress } from '../../scripts/store';
   import { streak, dueToday, mastered, earnedBadges, pickOfDay, schedule, planToIcs, toDay, addDays, type LevelId } from '../../lib/academy';
+  import { recommend, personalRoute, domainSummary, strengthsAndGaps, type SkillDef } from '../../lib/adaptive';
   const D = JSON.parse(document.getElementById('dash-data')!.textContent!);
   const $ = (id: string) => document.getElementById(id)!;
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
   const s = getState();
   const now = toDay(new Date());
   const byId = Object.fromEntries(D.sessions.map((x: any) => [x.id, x]));
-  const order: string[] = s.plan?.order ?? D.sessions.map((x: any) => x.id);
+  const defs = Object.fromEntries(D.skills.map((x: SkillDef) => [x.id, x])) as Record<string, SkillDef>;
+  const lastId = Object.entries(s.completed).sort((a, b) => String(b[1]).localeCompare(String(a[1])))[0]?.[0];
+  const lastTrack = lastId ? byId[lastId]?.track ?? null : null;
+  // La ruta se recalcula con el modelo actual: lo fallado se refuerza y lo dominado se adelanta o se salta.
+  const recs = recommend(D.catalog, s.model, s.profile, s.completed, { defs, limit: 8, lastTrack });
+  const order: string[] = personalRoute(D.catalog, s.model, s.profile, s.completed, { defs, lastTrack });
   const pending = order.filter((id) => !s.completed[id]);
   const doneToday = Object.entries(s.completed).filter(([, t]) => toDay(new Date(t as string)) === now).length;
   const perDay = (s.plan?.minutesPerDay ?? 5) / 5;
@@ -164,24 +206,38 @@ const data = {
   // Sesión de hoy
   const next = pending[0];
   if (!next) {
-    $('t-chip').textContent = 'Camino Cero completado';
-    $('t-title').textContent = '¡Has terminado las 14 sesiones!';
-    $('t-desc').textContent = 'Siguiente paso: el examen del nivel Cero y después el nivel Básico.';
-    ($('t-btn') as HTMLAnchorElement).href = '/es/examen/cero/'; $('t-btn').innerHTML = 'Hacer el examen <span class="arrow" aria-hidden="true">→</span>';
+    $('t-chip').textContent = 'Todas las sesiones completadas';
+    $('t-title').textContent = '¡Has terminado todos los módulos!';
+    $('t-desc').textContent = 'Siguiente paso: los exámenes de nivel y las lecturas de profundización.';
+    ($('t-btn') as HTMLAnchorElement).href = '/es/niveles/'; $('t-btn').innerHTML = 'Ver los niveles <span class="arrow" aria-hidden="true">→</span>';
   } else {
     const x = byId[next];
     const reached = doneToday >= perDay;
     $('t-chip').textContent = reached ? 'Objetivo de hoy cumplido · sesión extra' : `Sesión de hoy · ${x.minutes} min`;
     $('t-title').textContent = x.title; $('t-desc').textContent = x.desc;
+    const why = recs.find((r) => r.id === next)?.reasons ?? [];
+    $('t-why').innerHTML = why.map((w) => `<li>${esc(w)}</li>`).join('');
     ($('t-btn') as HTMLAnchorElement).href = `/es/sesion/${next}/`;
     $('t-btn').innerHTML = `${reached ? 'Adelantar la siguiente' : Object.keys(s.completed).length ? 'Continuar' : 'Empezar'} <span class="arrow" aria-hidden="true">→</span>`;
   }
-  const zeroDone = D.sessions.filter((x: any) => s.completed[x.id]).length;
-  ($('zero-bar') as HTMLElement).style.width = `${(zeroDone / D.sessions.length) * 100}%`;
-  $('zero-txt').textContent = `Camino Cero: ${zeroDone} de ${D.sessions.length} sesiones`;
+  const doneAll = D.sessions.filter((x: any) => s.completed[x.id]).length;
+  ($('zero-bar') as HTMLElement).style.width = `${(doneAll / D.sessions.length) * 100}%`;
+  $('zero-txt').textContent = `Tu ruta: ${doneAll} de ${D.sessions.length} sesiones${x0()}`;
+  function x0() { const t = byId[next ?? '']?.track; return t ? ` · ahora: ${D.tracks[t].label}` : ''; }
+
+  // Refuerzo
+  const ref = recs.find((r) => r.kind === 'refuerzo');
+  if (ref) { $('refuerzo').hidden = false; ($('rf-link') as HTMLAnchorElement).href = `/es/sesion/${ref.id}/`; $('rf-link').textContent = `Repasa «${byId[ref.id].title}»`; $('rf-why').textContent = ref.reasons.join(' · '); }
+
+  // Mapa de competencias
+  $('dmap').innerHTML = domainSummary(D.domains, D.skills, s.model, s.profile).map((d) => `<li><span>${esc(d.label)}</span><span class="bar"><span style="width:${Math.round(d.p * 100)}%"></span></span><span class="pc">${Math.round(d.p * 100)} %</span></li>`).join('');
+  const sg = strengthsAndGaps(D.skills, s.model);
+  $('strong').innerHTML = sg.strong.length ? sg.strong.map((x) => `<li><strong>${esc(x.label)}</strong>: ${esc(x.can)}</li>`).join('') : '<li class="muted">Responde algunas preguntas y aparecerán aquí.</li>';
+  $('weak').innerHTML = sg.weak.length ? sg.weak.map((x) => `<li><strong>${esc(x.label)}</strong>: ${esc(x.can)}</li>`).join('') : '<li class="muted">De momento, nada que destacar.</li>';
 
   // Repaso
-  const due = dueToday(s.deck, now, 50).filter((id) => /^s\d\d-/.test(id));
+  const qset = new Set(D.qids as string[]);
+  const due = dueToday(s.deck, now, 50).filter((id) => qset.has(id));
   $('due-n').textContent = String(due.length);
   $('due-txt').textContent = due.length ? 'Lo que fallaste (y lo que toca reforzar) vuelve hoy.' : Object.keys(s.deck).length ? 'Estás al día. Vuelve mañana.' : 'Empieza una sesión y aquí aparecerán tus repasos.';
   $('k-mastered').textContent = String(mastered(s.deck));
@@ -225,13 +281,14 @@ const data = {
   // Niveles
   const oldDone = getProgress().completed;
   $('levels').innerHTML = D.levels.map((l: any, i: number) => {
-    const n = l.items.filter((id: string) => (l.kind === 'sessions' ? s.completed[id] : oldDone[id])).length;
+    const items = [...l.sessions, ...l.items];
+    const n = items.filter((id: string) => s.completed[id] || oldDone[id]).length;
     const exam = s.exams[l.id as LevelId];
     const href = i === 0 ? '/es/camino-cero/' : `/es/niveles/#nivel-${l.id}`;
-    return `<li><span class="ln">${i}</span><span><a href="${href}"><strong>${esc(l.title)}</strong></a> <span class="small muted">${n}/${l.items.length}${exam?.passed ? ' · examen superado' : ''}</span><div class="lbar"><span style="width:${(n / l.items.length) * 100}%"></span></div></span><a class="small" href="/es/examen/${l.id}/">Examen</a></li>`;
+    return `<li><span class="ln">${i}</span><span><a href="${href}"><strong>${esc(l.title)}</strong></a> <span class="small muted">${n}/${items.length}${exam?.passed ? ' · examen superado' : ''}</span><div class="lbar"><span style="width:${(n / Math.max(items.length, 1)) * 100}%"></span></div></span><a class="small" href="/es/examen/${l.id}/">Examen</a></li>`;
   }).join('');
 
   // Logros
-  const earned = earnedBadges({ completed: Object.keys(s.completed), zeroIds: D.sessions.map((x: any) => x.id), streakBest: k.best, examsPassed: (Object.entries(s.exams) as any).filter(([, v]: any) => v?.passed).map(([kk]: any) => kk), masteredCards: mastered(s.deck), actionsDone: Object.keys(s.actions).length });
+  const earned = earnedBadges({ completed: Object.keys(s.completed), zeroIds: D.sessions.filter((x: any) => x.track === 'camino-cero').map((x: any) => x.id), streakBest: k.best, examsPassed: (Object.entries(s.exams) as any).filter(([, v]: any) => v?.passed).map(([kk]: any) => kk), masteredCards: mastered(s.deck), actionsDone: Object.keys(s.actions).length });
   $('badges').innerHTML = D.badges.map((b: any) => `<li class="${earned.includes(b.id) ? '' : 'locked'}"><span class="bi" aria-hidden="true">${earned.includes(b.id) ? '✓' : '·'}</span><strong>${esc(b.title)}</strong><span class="small">${esc(b.desc)}</span><span class="sr-only">${earned.includes(b.id) ? 'Conseguido' : 'Pendiente'}</span></li>`).join('');
 </script>

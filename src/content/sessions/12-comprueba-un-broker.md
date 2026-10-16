@@ -2,7 +2,9 @@
 title: Comprueba un bróker en 3 minutos
 description: Las tres comprobaciones que separan una entidad seria de un riesgo, y qué te protege (y qué no) si la entidad quiebra.
 level: cero
+track: camino-cero
 order: 12
+skills: [comprobar-broker]
 goals: [miedo, ordenar, objetivo]
 prereqs: [09-los-cuatro-productos]
 hook: "Una app de inversión tiene buenas valoraciones y anuncios por todas partes. ¿Es suficiente para confiar?"

@@ -412,5 +412,306 @@
   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-21490",
   "type": "normativa",
   "checked": null
+ },
+ "cnmv-ifa": {
+  "title": "Informes financieros anuales de entidades emisoras (registro oficial)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/portal/consultas/em_inffinanual.aspx?id=EE",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "cnmv-ifi": {
+  "title": "Información financiera intermedia de entidades emisoras (búsqueda por entidad)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/portal/consultas/busqueda.aspx?id=6",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "cnmv-guia-bolsa": {
+  "title": "Guía «Cómo invertir en bolsa»",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/docportal/publicaciones/guias/guia_como_invertir_en_bolsa.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "lmv-informes-financieros": {
+  "title": "Ley 6/2023, de los Mercados de Valores y de los Servicios de Inversión, arts. 99 y 100 (informes financieros anual y semestral)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-7053",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "esma-apm": {
+  "title": "Directrices de ESMA sobre medidas alternativas de rendimiento (ESMA/2015/1415)",
+  "publisher": "ESMA",
+  "url": "https://www.esma.europa.eu/sites/default/files/library/2015/10/2015-esma-1415en.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "bessembinder-2018": {
+  "title": "Hendrik Bessembinder, «Do stocks outperform Treasury bills?», Journal of Financial Economics 129 (2018), 440-457",
+  "publisher": "Elsevier",
+  "url": "https://doi.org/10.1016/j.jfineco.2018.06.004",
+  "type": "academico",
+  "checked": "2026-10-16"
+ },
+ "cnmv-etf-guia-rapida": {
+  "title": "Guía rápida de la CNMV: Fondos cotizados (ETF) (fiscalidad de acciones, sin traspasos, horario de negociación, diferencial y costes del intermediario)",
+  "publisher": "CNMV",
+  "url": "https://internet.cnmv.es/DocPortal/Publicaciones/Fichas/GR06_ETF.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "cnmv-mifid-infografia": {
+  "title": "Infografía de la CNMV: Tu protección como inversor. Conoce la Directiva MiFID (clasificación, test de conveniencia e idoneidad)",
+  "publisher": "CNMV",
+  "url": "https://internet.cnmv.es/DocPortal/Publicaciones/Infografias/MiFIDII.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "jpm-retirement-2025": {
+  "title": "J.P. Morgan Asset Management: nota de prensa de la 2025 Guide to Retirement (4 de marzo de 2025): perderse los 10 mejores días en 20 años reduce la rentabilidad anualizada casi a la mitad; los mejores días suelen estar cerca de los peores",
+  "publisher": "J.P. Morgan Asset Management",
+  "url": "https://am.jpmorgan.com/us/en/asset-management/adv/about-us/media/press-releases/jp-morgan-asset-management-releases-2025-guide-to-retirement/",
+  "type": "empresa",
+  "checked": "2026-10-16"
+ },
+ "bce-tipos-oficiales": {
+  "title": "Tipos de interés oficiales del BCE (facilidad de depósito, operaciones principales de financiación y facilidad marginal de crédito): serie de cambios",
+  "publisher": "Banco Central Europeo",
+  "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.es.html",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "bce-estrategia": {
+  "title": "Estrategia de política monetaria del BCE (objetivo simétrico de inflación del 2 % a medio plazo)",
+  "publisher": "Banco Central Europeo",
+  "url": "https://www.ecb.europa.eu/mopo/strategy/html/index.es.html",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "bce-decisiones": {
+  "title": "Decisiones de política monetaria (comunicados del Consejo de Gobierno, declaraciones y cuentas)",
+  "publisher": "Banco Central Europeo",
+  "url": "https://www.ecb.europa.eu/press/govcdec/mopo/html/index.es.html",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "bde-tipos-referencia": {
+  "title": "¿Qué tipos de interés publica el Banco de España? (Euríbor y otros índices oficiales de referencia hipotecaria)",
+  "publisher": "Banco de España, Portal del Cliente Bancario",
+  "url": "https://clientebancario.bde.es/pcb/es/blog/que-tipos-de-interes-publica-el-banco-de-espana-.html",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "ine-ipc-ultimos": {
+  "title": "Índice de Precios de Consumo (IPC). Últimos datos (índice general, tasas anual y mensual, inflación subyacente)",
+  "publisher": "INE",
+  "url": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176802&menu=ultiDatos&idp=1254735976607",
+  "type": "datos",
+  "checked": "2026-10-16"
+ },
+ "ine-ipc-adelantado": {
+  "title": "Nota de prensa: Indicador adelantado del IPC y del IPCA. Julio 2026",
+  "publisher": "INE",
+  "url": "https://ine.es/dyngs/Prensa/es/adIPC0726.htm",
+  "type": "datos",
+  "checked": "2026-10-16"
+ },
+ "ine-cntr": {
+  "title": "Contabilidad nacional trimestral de España: principales agregados (CNTR). Últimos datos",
+  "publisher": "INE",
+  "url": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736164439&menu=ultiDatos&idp=1254735576581",
+  "type": "datos",
+  "checked": "2026-10-16"
+ },
+ "ine-epa": {
+  "title": "Encuesta de Población Activa (EPA). Últimos datos",
+  "publisher": "INE",
+  "url": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176918&menu=ultiDatos&idp=1254735976595",
+  "type": "datos",
+  "checked": "2026-10-16"
+ },
+ "ine-paro-epa-registrado": {
+  "title": "Comparación de las magnitudes estadísticas de paro según la EPA y los datos de los Servicios Públicos de Empleo (segundo trimestre de 2023; publicado en febrero de 2025)",
+  "publisher": "INE / Consejo Superior de Estadística",
+  "url": "https://ine.es/daco/daco42/daco4211/compa_paro_2023.pdf",
+  "type": "datos",
+  "checked": "2026-10-16"
+ },
+ "cnmv-cip-oir": {
+  "title": "Instrucciones para las comunicaciones de información privilegiada (CIP) y otra información relevante (OIR), con la tipología de ambas (arts. 226 y 227 LMV)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/DocPortal/Legislacion/ModelosNormalizados/EMI/Instrucciones_CIP_OIR.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "cnmv-opas": {
+  "title": "Guía rápida «Las opas. Qué son y cómo actuar»",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/DocPortal/Publicaciones/Fichas/GR11_OPAS.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "cnmv-dsp": {
+  "title": "Guía rápida «Los derechos de suscripción preferente (DSP)»",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/DocPortal/Publicaciones/Fichas/GR08_DSP.PDF",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "rd-1066-2007-opas": {
+  "title": "Real Decreto 1066/2007, de 27 de julio, sobre el régimen de las ofertas públicas de adquisición de valores (BOE n.º 180, 28/07/2007)",
+  "publisher": "BOE",
+  "url": "https://boe.es/boe/dias/2007/07/28/pdfs/A32829-32852.pdf",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "baumeister-2001": {
+  "title": "Roy F. Baumeister, Ellen Bratslavsky, Catrin Finkenauer y Kathleen D. Vohs, «Bad Is Stronger Than Good», Review of General Psychology 5(4), 323-370, 2001",
+  "publisher": "American Psychological Association",
+  "url": "https://doi.org/10.1037/1089-2680.5.4.323",
+  "type": "academico",
+  "checked": null
+ },
+ "boe-lsc": {
+  "title": "Real Decreto Legislativo 1/2010, texto refundido de la Ley de Sociedades de Capital (texto consolidado; arts. 93 y 304: derechos del socio y derecho de preferencia)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/eli/es/rdlg/2010/07/02/1/con",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "boe-irpf": {
+  "title": "Ley 35/2006 del Impuesto sobre la Renta de las Personas Físicas (texto consolidado; arts. 17.2.a, 25.2 y 52)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/eli/es/l/2006/11/28/35/con",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "boe-rirpf": {
+  "title": "Real Decreto 439/2007, Reglamento del IRPF (texto consolidado; art. 75.3.b: Letras del Tesoro sin retención)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/eli/es/rd/2007/03/30/439/con",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "boe-planes-pensiones": {
+  "title": "Real Decreto Legislativo 1/2002, texto refundido de la Ley de Regulación de los Planes y Fondos de Pensiones (texto consolidado; art. 8.8 y disposición transitoria séptima)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/eli/es/rdlg/2002/11/29/1/con",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "aeat-pensiones-2025": {
+  "title": "Manual práctico Renta 2025: ejemplo de aportaciones a sistemas de previsión social (límites de reducción)",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c13-determinacion-renta-contribuyente-sujeta-gravamen/reducciones-base-imponible-general/reducciones-aportaciones-contribuciones-sistemas-prevision-social/normas-comunes-aplicables-aportaciones-sistemas-social/ejemplo-aportaciones-sistemas-prevision-social.html",
+  "type": "fiscal",
+  "checked": "2026-10-16"
+ },
+ "boe-rd-iic": {
+  "title": "Real Decreto 1082/2012, Reglamento de la Ley de Instituciones de Inversión Colectiva (texto consolidado; art. 5: límites de comisiones)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/eli/es/rd/2012/07/13/1082/con",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "boe-socimi": {
+  "title": "Ley 11/2009, por la que se regulan las Sociedades Anónimas Cotizadas de Inversión en el Mercado Inmobiliario (SOCIMI) (texto consolidado; art. 6: distribución de resultados)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/eli/es/l/2009/10/26/11/con",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "cnmv-circular-1-2018": {
+  "title": "Circular 1/2018 de la CNMV sobre advertencias relativas a instrumentos financieros (BOE-A-2018-4247)",
+  "publisher": "BOE / CNMV",
+  "url": "https://www.boe.es/eli/es/cir/2018/03/12/1",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "cnmv-renta-fija-publica": {
+  "title": "Portal del Inversor: productos de renta fija pública (Letras, Bonos y Obligaciones del Estado)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/portal/inversor/rentafija-publica",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "tesoro-letras": {
+  "title": "Tesoro Público: Letras del Tesoro (características y compra directa)",
+  "publisher": "Secretaría General del Tesoro y Financiación Internacional",
+  "url": "https://www.tesoro.es/deuda-publica/instrumentos-de-deuda-publica/letras-del-tesoro",
+  "type": "supervisor",
+  "checked": null
+ },
+ "cnmv-guia-fondos": {
+  "title": "Guía de la CNMV: Los fondos de inversión y la inversión colectiva",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/DocPortal/Publicaciones/Guias/Los_fondos_de_inversion.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "cnmv-guia-etf": {
+  "title": "Guía de la CNMV: Los fondos cotizados (ETF) (noviembre de 2015)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/DocPortal/Publicaciones/Guias/Los_fondos_cotizados_ETF.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "reg-crowdfunding": {
+  "title": "Reglamento (UE) 2020/1503 relativo a los proveedores europeos de servicios de financiación participativa para empresas (arts. 21 y 22)",
+  "publisher": "EUR-Lex",
+  "url": "https://eur-lex.europa.eu/eli/reg/2020/1503/oj",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "bde-cripto-2025": {
+  "title": "Los supervisores advierten a los consumidores de los riesgos y la protección limitada de determinados criptoactivos (15/10/2025; advertencia de EBA, ESMA y EIOPA suscrita por CNMV, Banco de España y DGSFP)",
+  "publisher": "Banco de España, Portal del Cliente Bancario",
+  "url": "https://clientebancario.bde.es/pcb/es/blog/los-supervisores-advierten-a-los-consumidores-de-los-riesgos-y-la-proteccion-limitada-de-determinados-criptoactivos.html",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "esma-cfd-2018": {
+  "title": "ESMA agrees to prohibit binary options and restrict CFDs to protect retail investors (nota de prensa, 27 de marzo de 2018)",
+  "publisher": "ESMA (Autoridad Europea de Valores y Mercados)",
+  "url": "https://www.esma.europa.eu/press-news/esma-news/esma-agrees-prohibit-binary-options-and-restrict-cfds-protect-retail-investors",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "esma-cfd-notice-2018": {
+  "title": "Notice of ESMA's Product Intervention Decisions in relation to contracts for differences and binary options (ESMA35-43-1135, 2018)",
+  "publisher": "ESMA (Autoridad Europea de Valores y Mercados)",
+  "url": "https://www.esma.europa.eu/sites/default/files/library/esma35-43-1135_notice_of_pi_decisions_on_cfds_and_binary_options.pdf",
+  "type": "normativa",
+  "checked": "2026-10-16"
+ },
+ "cnmv-guia-ordenes": {
+  "title": "Guía «Órdenes de valores» (G05)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/DocPortal/Publicaciones/Guias/G05_Ordenes_de_valores.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "esma-copy-trading-2023": {
+  "title": "Supervisory Briefing on supervisory expectations in relation to firms offering copy trading services (ESMA35-42-1428, 30 de marzo de 2023)",
+  "publisher": "ESMA (Autoridad Europea de Valores y Mercados)",
+  "url": "https://www.esma.europa.eu/sites/default/files/2023-03/ESMA35-42-1428_Supervisory_Briefing_on_Copy_Trading.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "cnmv-finfluencers-guia": {
+  "title": "Guía «Finfluencers: cómo actuar con responsabilidad» (2026)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/DocPortal/Publicaciones/Guias/GuiaparaFinfluencers.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "cnmv-finfluencers-infografia": {
+  "title": "Infografía «Del like a la inversión»: 10 consejos para el inversor sobre finfluencers (2026)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/DocPortal/Publicaciones/Infografias/DelLikeALaInversion.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-16"
  }
 }

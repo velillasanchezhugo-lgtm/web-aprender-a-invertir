@@ -2,7 +2,9 @@
 title: Tu número del mes
 description: Cuánto puedes apartar de verdad cada mes y por qué conviene hacerlo nada más cobrar, no a fin de mes.
 level: cero
+track: camino-cero
 order: 2
+skills: [presupuesto-ahorro]
 goals: [ordenar, objetivo]
 prereqs: [01-invertir-no-es-apostar]
 hook: "Sin saber cuánto te sobra cada mes, cualquier plan de inversión es una suposición. ¿Sabes tu número?"

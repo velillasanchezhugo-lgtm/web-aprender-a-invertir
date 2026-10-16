@@ -1,0 +1,192 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { sessions, SKILLS } from '../../lib/content';
+import { AI_TUTOR } from '../../config/site';
+import academy from '../../data/academy.json';
+const all = await sessions();
+const questions = Object.fromEntries(all.flatMap((s) => s.data.questions.map((q) => [q.id, { q: q.q, explain: q.explain, session: s.data.title }])));
+const EXAMPLES = ['¿Qué diferencia hay entre un fondo indexado y un ETF?', '¿Por qué baja el precio de los bonos cuando suben los tipos?', 'Explícame el PER con un ejemplo', '¿Cómo sé si un bróker es de fiar?'];
+---
+<Base title="Tutor" description="Pregunta tus dudas de inversión o analiza una noticia paso a paso. Respuestas educativas adaptadas a tu nivel, sin recomendaciones de productos." allowAds={false}>
+  <div class="narrow tutor" data-ai={AI_TUTOR.enabled ? '1' : '0'} data-endpoint={AI_TUTOR.endpoint}>
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Tutor' }]} />
+    <p class="eyebrow">{AI_TUTOR.enabled ? 'Con inteligencia artificial' : 'Modo guiado'} · adaptado a tu nivel</p>
+    <h1>Tu tutor</h1>
+    <p class="lede">Pregunta lo que no entiendas o pega una noticia para analizarla. Te explica las cosas según lo que ya sabes y te lleva a la sesión que más te ayuda. Es educación, no asesoramiento: nunca te dirá qué comprar.</p>
+
+    <div class="modes" role="group" aria-label="Qué quieres hacer">
+      <button type="button" class="mode" data-mode="pregunta" aria-pressed="true">Pregunta una duda</button>
+      <button type="button" class="mode" data-mode="noticia" aria-pressed="false">Analiza una noticia</button>
+    </div>
+
+    <div class="ctx callout learn" id="ctx" hidden></div>
+
+    <ol class="log" id="log" aria-live="polite"></ol>
+
+    <form id="tf" class="ask">
+      <label for="msg" class="sr-only" id="msg-label">Tu pregunta</label>
+      <textarea id="msg" rows="3" maxlength="1200" placeholder="Escribe tu duda…"></textarea>
+      <div class="ask-row">
+        <span class="small muted" id="hint">No incluyas datos personales.</span>
+        <button class="btn brand" type="submit" id="send">Enviar <span class="arrow" aria-hidden="true">→</span></button>
+      </div>
+      <div class="examples" id="examples">{EXAMPLES.map((e) => <button type="button" class="ex small">{e}</button>)}</div>
+    </form>
+
+    <div class="card filter" id="filter" hidden>
+      <h2 class="h3">¿Me afecta esta noticia?</h2>
+      <p class="small muted">Contesta pensando en tu plan, no en lo que diga el titular.</p>
+      <fieldset><legend>1. ¿Cambia tu objetivo o cuándo necesitarás el dinero?</legend><label class="choice"><input type="radio" name="f1" value="1" /> Sí</label><label class="choice"><input type="radio" name="f1" value="0" /> No</label></fieldset>
+      <fieldset><legend>2. ¿Cambia el motivo por el que tienes lo que tienes (por ejemplo, la empresa deja de ser lo que era)?</legend><label class="choice"><input type="radio" name="f2" value="1" /> Sí</label><label class="choice"><input type="radio" name="f2" value="0" /> No</label></fieldset>
+      <fieldset><legend>3. ¿Es información nueva y de una fuente fiable (no una opinión o una previsión)?</legend><label class="choice"><input type="radio" name="f3" value="1" /> Sí</label><label class="choice"><input type="radio" name="f3" value="0" /> No</label></fieldset>
+      <p class="verdict" id="verdict" aria-live="polite"></p>
+    </div>
+
+    <details class="small about">
+      <summary>Cómo funciona y qué pasa con lo que escribes</summary>
+      {AI_TUTOR.enabled
+        ? <p>Tus preguntas se envían a nuestro servidor y de ahí a {AI_TUTOR.provider}, que genera la respuesta. Junto a la pregunta enviamos un resumen de tu nivel (qué áreas dominas y cuáles te cuestan), calculado en tu dispositivo, sin nombre, correo ni datos financieros. No guardamos las conversaciones. Detalles en la <a href="/es/privacidad/">política de privacidad</a>.</p>
+        : <p>Ahora mismo el tutor funciona en modo guiado, sin conexión con ningún servicio externo: busca en las sesiones, lecturas y glosario de la academia, y analiza las noticias paso a paso en tu propio navegador. Nada de lo que escribes sale de tu dispositivo.</p>}
+      <p>El tutor puede equivocarse. Para cifras fiscales o legales, comprueba siempre la fuente oficial (AEAT, CNMV, Banco de España).</p>
+    </details>
+  </div>
+  <script type="application/json" id="tutor-data" set:html={JSON.stringify({ questions, skills: SKILLS, goals: Object.fromEntries(academy.goals.map((g) => [g.id, g.label])) })} />
+</Base>
+<style>
+  .tutor { padding-bottom: 4rem; }
+  .modes { display: inline-flex; gap: 0.3rem; padding: 0.3rem; border: 1px solid var(--rule); border-radius: 999px; background: var(--card); margin: 1rem 0 1.2rem; flex-wrap: wrap; }
+  .mode { border: 0; background: transparent; color: var(--ink-2); font: 600 0.95rem/1 var(--sans); padding: 0.65rem 1rem; border-radius: 999px; cursor: pointer; }
+  .mode[aria-pressed='true'] { background: var(--u-ink); color: var(--u-cream); }
+  :global([data-theme='dark']) .mode[aria-pressed='true'] { background: var(--u-cyan); color: #05060b; }
+  .log { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: 0.8rem; }
+  .log :global(li) { padding: 0.9rem 1.1rem; border-radius: 18px; max-width: 92%; line-height: 1.55; }
+  .log :global(li.u) { justify-self: end; background: var(--teal-soft); border: 1px solid var(--rule); white-space: pre-wrap; }
+  .log :global(li.a) { background: var(--card); border: 1px solid var(--rule); box-shadow: var(--shadow); }
+  .log :global(li.a p) { margin: 0 0 0.6rem; }
+  .log :global(li.a p:last-child) { margin: 0; }
+  .log :global(li.a ul) { margin: 0 0 0.6rem; padding-left: 1.1rem; }
+  .log :global(li.err) { background: var(--loss-soft); }
+  .log :global(.tag) { display: block; font: 500 0.7rem/1 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 0.5rem; }
+  .log :global(.res) { display: block; margin: 0.3rem 0; }
+  .log :global(.fact) { border-left: 3px solid var(--gain); padding-left: 0.6rem; margin: 0.3rem 0; }
+  .log :global(.op) { border-left: 3px solid var(--ochre); padding-left: 0.6rem; margin: 0.3rem 0; }
+  .log :global(.typing) { color: var(--ink-3); }
+  .ask textarea { width: 100%; font: inherit; padding: 0.9rem 1rem; border-radius: 16px; border: 1.5px solid var(--rule-strong); background: var(--card); color: var(--ink); resize: vertical; }
+  .ask textarea:focus { outline: 3px solid var(--focus); outline-offset: 1px; }
+  .ask-row { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; margin: 0.6rem 0; flex-wrap: wrap; }
+  .examples { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .ex { border: 1px solid var(--rule-strong); background: transparent; color: var(--ink-2); border-radius: 999px; padding: 0.45rem 0.8rem; cursor: pointer; text-align: left; }
+  .ex:hover { border-color: var(--u-blue); color: var(--ink); }
+  .filter { margin: 1.4rem 0; }
+  .filter fieldset { border: 0; padding: 0; margin: 0.8rem 0; }
+  .filter legend { font-weight: 600; margin-bottom: 0.3rem; }
+  .filter .choice { display: inline-flex; margin-right: 1rem; }
+  .verdict { font-weight: 600; margin: 0.8rem 0 0; }
+  .verdict.revisar { color: var(--loss); } .verdict.informarse { color: var(--teal); } .verdict.ruido { color: var(--gain); }
+  .about { margin-top: 2rem; }
+  .about summary { cursor: pointer; font-weight: 600; }
+  .h3 { font-size: 1.3rem; margin: 0 0 0.3rem; }
+</style>
+<script>
+  import { getState } from '../../scripts/academy-store';
+  import { learnerBrief, type SkillDef } from '../../lib/adaptive';
+  import { analyzeNews, filterVerdict } from '../../lib/news';
+  import { search, type Doc } from '../../scripts/search';
+  const root = document.querySelector<HTMLElement>('.tutor')!;
+  const D = JSON.parse(document.getElementById('tutor-data')!.textContent!) as { questions: Record<string, { q: string; explain: string; session: string }>; skills: SkillDef[]; goals: Record<string, string> };
+  let ai = root.dataset.ai === '1';
+  const endpoint = root.dataset.endpoint!;
+  const $ = (id: string) => document.getElementById(id)!;
+  const log = $('log'); const msg = $('msg') as HTMLTextAreaElement; const form = $('tf') as HTMLFormElement;
+  const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  let mode: 'pregunta' | 'noticia' | 'explicar' = 'pregunta';
+  const history: { role: 'user' | 'assistant'; content: string }[] = [];
+  const st = getState();
+  const brief = learnerBrief(st.profile, D.skills, st.model, Object.keys(st.completed).length, st.profile ? D.goals[st.profile.goal] : undefined);
+
+  // Contexto: vienes de una pregunta fallada en una sesión.
+  const params = new URLSearchParams(location.search);
+  const ctxQ = D.questions[params.get('pregunta') ?? ''];
+  let context: { session: string; question: string; explain: string } | null = null;
+  if (ctxQ) {
+    context = { session: ctxQ.session, question: ctxQ.q, explain: ctxQ.explain };
+    mode = 'explicar';
+    const c = $('ctx'); c.hidden = false;
+    c.innerHTML = `<p class="callout-title">Sobre la pregunta de «${esc(ctxQ.session)}»</p><p>${esc(ctxQ.q)}</p>`;
+    msg.value = 'No lo he entendido. ¿Me lo explicas de otra forma, con otro ejemplo?';
+  }
+
+  // Si la función del servidor no está activa, el tutor pasa al modo guiado.
+  if (ai) fetch(endpoint).then((r) => r.json()).then((j) => { if (!j.enabled) ai = false; }).catch(() => (ai = false));
+
+  // Markdown mínimo y seguro para las respuestas: párrafos, listas, negritas y enlaces internos.
+  function md(t: string): string {
+    const inline = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\[([^\]]+)\]\((\/es\/[^)\s]*)\)/g, '<a href="$2">$1</a>').replace(/(^|\s)(\/es\/sesion\/[a-z0-9-]+\/)/g, '$1<a href="$2">$2</a>');
+    return t.split(/\n{2,}/).map((block) => {
+      const lines = block.split('\n');
+      if (lines.every((l) => /^\s*([-*]|\d+[.)])\s+/.test(l))) return `<ul>${lines.map((l) => `<li>${inline(l.replace(/^\s*([-*]|\d+[.)])\s+/, ''))}</li>`).join('')}</ul>`;
+      return `<p>${lines.map(inline).join('<br />')}</p>`;
+    }).join('');
+  }
+  function add(cls: string, html: string) { const li = document.createElement('li'); li.className = cls; li.innerHTML = html; log.append(li); li.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); return li; }
+
+  let docs: Doc[] | null = null;
+  async function offlineAnswer(text: string) {
+    if (mode === 'noticia') {
+      const a = analyzeNews(text);
+      const parts = [`<span class="tag">Análisis guiado</span>`];
+      parts.push(`<p><strong>Hechos y datos</strong> (lo que ha pasado):</p>${a.facts.length ? a.facts.map((f) => `<span class="res fact">${esc(f)}</span>`).join('') : '<p class="small">No veo datos claros: desconfía si todo son opiniones.</p>'}`);
+      parts.push(`<p><strong>Opiniones o previsiones</strong> (lo que alguien cree que pasará):</p>${a.opinions.length ? a.opinions.map((f) => `<span class="res op">${esc(f)}</span>`).join('') : '<p class="small">No he detectado previsiones.</p>'}`);
+      if (a.alarms.length) parts.push(`<p>Palabras para generar emoción: <strong>${a.alarms.map(esc).join(', ')}</strong>. Busca el porcentaje real y compáralo con lo que es normal.</p>`);
+      if (a.topics.length) parts.push(`<p>Para entenderla mejor: ${a.topics.map((t) => `<a href="/es/sesion/${t.session}/">${esc(t.label)}</a>`).join(' · ')}.</p>`);
+      parts.push('<p>Ahora pásala por el filtro de abajo.</p>');
+      add('a', parts.join(''));
+      $('filter').hidden = false;
+      return;
+    }
+    docs ??= await fetch('/es/buscar.json').then((r) => r.json());
+    const hits = search(docs!, text).slice(0, 5);
+    add('a', `<span class="tag">Modo guiado · en la academia</span>${hits.length ? `<p>Esto es lo que mejor responde a tu duda:</p><ul>${hits.map((h) => `<li><a href="${h.doc.u}">${esc(h.doc.t)}</a> <span class="small muted">${esc(h.doc.k)}</span><br /><span class="small">${esc(h.doc.d)}</span></li>`).join('')}</ul>` : '<p>No he encontrado nada con esas palabras. Prueba con otras (por ejemplo: «ETF», «inflación», «traspaso») o mira el <a href="/es/glosario/">glosario</a>.</p>'}`);
+  }
+
+  async function send(text: string) {
+    add('u', esc(text));
+    msg.value = '';
+    if (!ai) return offlineAnswer(text);
+    const wait = add('a', '<span class="typing">Pensando…</span>');
+    try {
+      const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode, message: text, history, context, learner: brief }) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.reply) {
+        if (r.status === 503) { ai = false; wait.remove(); return offlineAnswer(text); }
+        wait.className = 'a err'; wait.textContent = j.error ?? 'El tutor no está disponible ahora mismo.'; return;
+      }
+      wait.innerHTML = md(j.reply);
+      history.push({ role: 'user', content: text }, { role: 'assistant', content: j.reply });
+      if (mode === 'noticia') $('filter').hidden = false;
+      if (mode === 'explicar') { mode = 'pregunta'; context = null; }
+    } catch { wait.remove(); ai = false; offlineAnswer(text); }
+  }
+
+  form.addEventListener('submit', (e) => { e.preventDefault(); const t = msg.value.trim(); if (t) send(t); });
+  msg.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) form.requestSubmit(); });
+  document.querySelectorAll<HTMLButtonElement>('.ex').forEach((b) => b.addEventListener('click', () => { setMode('pregunta'); send(b.textContent!); }));
+  function setMode(m: 'pregunta' | 'noticia') {
+    mode = m; context = null; $('ctx').hidden = true;
+    document.querySelectorAll<HTMLButtonElement>('.mode').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === m)));
+    msg.placeholder = m === 'noticia' ? 'Pega aquí el titular o un fragmento de la noticia…' : 'Escribe tu duda…';
+    $('msg-label').textContent = m === 'noticia' ? 'Texto de la noticia' : 'Tu pregunta';
+    $('examples').hidden = m === 'noticia';
+    $('filter').hidden = true;
+    msg.focus();
+  }
+  document.querySelectorAll<HTMLButtonElement>('.mode').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode as 'pregunta' | 'noticia')));
+  document.querySelectorAll<HTMLInputElement>('#filter input').forEach((i) => i.addEventListener('change', () => {
+    const v = (n: string) => document.querySelector<HTMLInputElement>(`input[name=${n}]:checked`)?.value;
+    if (!v('f1') || !v('f2') || !v('f3')) return;
+    const r = filterVerdict({ changesGoal: v('f1') === '1', changesReason: v('f2') === '1', newAndReliable: v('f3') === '1' });
+    const el = $('verdict'); el.className = `verdict ${r.level}`; el.textContent = r.text;
+  }));
+  if (params.get('modo') === 'noticia') setMode('noticia');
+</script>

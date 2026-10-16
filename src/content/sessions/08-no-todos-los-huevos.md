@@ -2,7 +2,9 @@
 title: No pongas todos los huevos en la misma cesta
 description: Qué consigue diversificar, qué no consigue, y cómo comprobar en dos minutos si un fondo está de verdad diversificado.
 level: cero
+track: camino-cero
 order: 8
+skills: [diversificacion]
 goals: [entender, jubilacion]
 prereqs: [07-las-caidas-son-normales]
 hook: "Tienes tres fondos distintos. ¿Estás más diversificado que con uno?"

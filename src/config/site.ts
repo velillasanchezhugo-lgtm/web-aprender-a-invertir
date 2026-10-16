@@ -67,3 +67,14 @@ export const AFFILIATES = { enabled: false };
 
 /** Versiones lingüísticas publicadas. Solo las publicadas generan hreflang e indexación. */
 export const LOCALES_PUBLISHED = ['es'] as const;
+
+/**
+ * Tutor con IA (función api/tutor.js con Claude). Desactivado por defecto.
+ * Activar: PUBLIC_AI_TUTOR=true (muestra el chat) y, en el servidor, AI_TUTOR_ENABLED=true + ANTHROPIC_API_KEY.
+ * Sin él, el tutor funciona en modo guiado sin conexión (análisis de noticias paso a paso y búsqueda en la academia).
+ */
+export const AI_TUTOR = {
+  enabled: (import.meta.env.PUBLIC_AI_TUTOR ?? 'false') === 'true',
+  endpoint: '/api/tutor',
+  provider: 'Anthropic (Claude)',
+};

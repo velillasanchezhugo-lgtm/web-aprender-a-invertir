@@ -54,7 +54,18 @@ if (route.join() !== Array.from({ length: route.length }, (_, i) => i + 1).join(
 const sessionIds = new Set(sessions.map((x) => x.id));
 const toolIds = new Set(readdirSync('src/pages/es/herramientas').map((f) => f.replace(/\.astro$/, '')));
 const qids = new Set();
+const skillMap = JSON.parse(readFileSync('src/data/skills.json', 'utf8'));
+const skillIds = new Set(skillMap.skills.map((k) => k.id));
+const taught = new Set();
+const TRACKS = ['camino-cero', 'invertir-ya', 'productos', 'empresas', 'noticias', 'trading'];
+const orders = new Map();
 for (const x of sessions) {
+  const track = x.data.track ?? 'camino-cero';
+  if (!TRACKS.includes(track)) errors.push(`${x.file}: módulo desconocido «${track}»`);
+  if (orders.has(x.data.order)) errors.push(`${x.file}: orden ${x.data.order} repetido (también en ${orders.get(x.data.order)})`); orders.set(x.data.order, x.file);
+  if (!(x.data.skills ?? []).length) errors.push(`${x.file}: sin competencias (skills)`);
+  for (const k of [...(x.data.skills ?? []), ...x.data.questions.flatMap((q) => q.skills ?? [])]) { if (!skillIds.has(k)) errors.push(`${x.file}: competencia desconocida «${k}»`); taught.add(k); }
+  if (['noticias', 'empresas'].includes(track) && !x.data.scenario) errors.push(`${x.file}: las sesiones de ${track} necesitan un caso práctico (scenario)`);
   need(x, ['La idea', 'Con números']);
   for (const p of x.data.prereqs ?? []) if (!sessionIds.has(p)) errors.push(`${x.file}: prerrequisito inexistente «${p}»`);
   if (x.data.deeper && !lessonIds.has(x.data.deeper)) errors.push(`${x.file}: lectura «${x.data.deeper}» inexistente`);
@@ -65,6 +76,7 @@ for (const x of sessions) {
     if (q.type === 'estimate' && (q.answer < q.min || q.answer > q.max || (q.answer - q.min) % q.step > 1e-9 && Math.abs(((q.answer - q.min) % q.step) - q.step) > 1e-9 && q.tolerance < q.step)) errors.push(`${x.file}: «${q.id}» no se puede responder exactamente con el deslizador`);
   }
 }
+for (const k of skillIds) if (!taught.has(k)) warnings.push(`competencia «${k}» sin ninguna sesión que la enseñe`);
 console.log(`Revisados: ${sessions.length} sesiones, ${lessons.length} lecciones, ${strategies.length} estrategias, ${investors.length} historias, ${glossary.length} términos.`);
 warnings.forEach((w) => console.warn('AVISO: ' + w));
 if (errors.length) { errors.forEach((e) => console.error('ERROR: ' + e)); process.exit(1); }

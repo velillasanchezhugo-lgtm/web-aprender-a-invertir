@@ -2,7 +2,9 @@
 title: La inflación te cobra aunque no hagas nada
 description: Por qué el dinero quieto pierde poder de compra y cómo calcular tu rentabilidad real con una sola fórmula.
 level: cero
+track: camino-cero
 order: 5
+skills: [inflacion-real]
 goals: [entender, jubilacion, miedo]
 prereqs: [01-invertir-no-es-apostar]
 hook: "Guardaste 10.000 € en 2020. Siguen siendo 10.000 €. ¿Has perdido dinero?"

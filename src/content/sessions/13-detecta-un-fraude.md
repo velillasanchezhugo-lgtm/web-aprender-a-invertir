@@ -2,7 +2,9 @@
 title: Detecta un fraude antes de que te detecte a ti
 description: Las cinco señales que comparten casi todas las estafas financieras, con un caso real y la cuenta que lo delata.
 level: cero
+track: camino-cero
 order: 13
+skills: [detectar-fraude]
 goals: [miedo]
 prereqs: [12-comprueba-un-broker]
 hook: "Te escriben por WhatsApp ofreciendo un 2 % al mes «garantizado» con criptomonedas. ¿Qué haces?"

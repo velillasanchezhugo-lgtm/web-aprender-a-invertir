@@ -2,7 +2,9 @@
 title: "Impuestos: lo justo para no equivocarte"
 description: Cuándo pagas impuestos por invertir en España, cuánto en 2025 y la diferencia entre fondos y ETF que te puede ahorrar dinero.
 level: cero
+track: camino-cero
 order: 11
+skills: [fiscalidad-espana]
 goals: [jubilacion, objetivo, ordenar]
 prereqs: [09-los-cuatro-productos]
 hook: "Si tu fondo sube un 20 % este año pero no lo vendes, ¿pagas impuestos por esa ganancia?"

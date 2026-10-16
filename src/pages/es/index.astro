@@ -1,8 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro';
 import academy from '../../data/academy.json';
-import { sessions, TOOLS, glossaryList } from '../../lib/content';
-const all = await sessions();
+import { sessions, zeroSessions, TOOLS, glossaryList, TRACKS, SKILLS } from '../../lib/content';
+const all = await zeroSessions();
+const allSessions = await sessions();
+const modTracks = (Object.keys(TRACKS) as (keyof typeof TRACKS)[]).map((id) => ({ id, ...TRACKS[id], n: allSessions.filter((s) => s.data.track === id).length })).filter((t) => t.n);
 const blocks = [
   { t: 'Tu base', r: [1, 4] }, { t: 'Cómo se mueve el dinero', r: [5, 8] }, { t: 'Productos y costes', r: [9, 11] }, { t: 'Protegerte', r: [12, 14] },
 ];
@@ -61,7 +63,7 @@ const jsonLd = [
     <p class="eyebrow">Cómo funciona</p>
     <h2 id="how-t">Tres pasos. Cinco minutos.</h2>
     <ol class="steps">
-      <li class="card reveal"><span class="sn mono">01</span><h3>Elige objetivo y tiempo</h3><p>Entender lo básico, ordenar tus finanzas, ahorrar para algo o perder el miedo. En 2 minutos tienes un plan con fechas.</p></li>
+      <li class="card reveal"><span class="sn mono">01</span><h3>Cuéntanos de dónde partes</h3><p>Tu objetivo, lo que ya sabes y lo que te interesa. Un diagnóstico que se adapta a tus respuestas crea tu ruta en 3 minutos.</p></li>
       <li class="card reveal"><span class="sn mono">02</span><h3>Haz tu sesión</h3><p>Una idea, un ejemplo con números reales y un test interactivo. Sin teoría de relleno.</p></li>
       <li class="card reveal"><span class="sn mono">03</span><h3>Aplícalo hoy</h3><p>Cada sesión termina con una acción de 2 minutos: calcular tu colchón, mirar la comisión de un fondo, comprobar un bróker…</p></li>
     </ol>
@@ -81,6 +83,26 @@ const jsonLd = [
         ))}
       </div>
       <p><a class="btn small secondary inv" href="/es/camino-cero/">Ver el Camino Cero</a></p>
+    </div>
+  </section>
+
+  <section class="container perso" aria-labelledby="perso-t">
+    <div class="grid cols-2 perso-grid">
+      <div>
+        <p class="eyebrow">Formación personalizada</p>
+        <h2 id="perso-t">Cada persona, su ruta</h2>
+        <p class="lede">Cada respuesta actualiza, en tu dispositivo, cuánto dominas cada una de las {SKILLS.length} competencias de la academia. Con eso decidimos tu siguiente sesión y te decimos por qué: lo que aún no has trabajado, lo que has fallado y lo que te acerca antes a invertir con criterio.</p>
+        <ul class="checks">
+          <li>Diagnóstico adaptativo: no repites lo que ya sabes</li>
+          <li>Refuerzo automático de lo que te cuesta</li>
+          <li>Mapa de competencias con tus fortalezas y huecos</li>
+          <li>Tutor para tus dudas y para analizar noticias</li>
+        </ul>
+        <p><a class="btn brand" href="/es/empezar/">Crear mi ruta <span class="arrow" aria-hidden="true">→</span></a> <a class="btn secondary" href="/es/tutor/">Probar el tutor</a></p>
+      </div>
+      <ol class="mods reveal">
+        {modTracks.map((t, i) => <li><a class="card mod" href={t.id === 'camino-cero' ? '/es/camino-cero/' : `/es/modulos/${t.id}/`}><span class="mono small muted">{i === 0 ? 'Nivel Cero' : 'Nivel Básico'} · {t.n} sesiones</span><strong>{t.label}</strong><span class="small muted">{t.short}</span></a></li>)}
+      </ol>
     </div>
   </section>
 
@@ -143,7 +165,7 @@ const jsonLd = [
       <a class="btn brand" href="/es/empezar/">Crear mi plan gratis <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </section>
-  <script type="application/json" id="home-data" set:html={JSON.stringify({ glossary: glossaryList.map((g) => ({ id: g.id, term: g.term, def: g.def })), titles: Object.fromEntries(all.map((s) => [s.id, s.data.title])), order: all.map((s) => s.id) })} />
+  <script type="application/json" id="home-data" set:html={JSON.stringify({ glossary: glossaryList.map((g) => ({ id: g.id, term: g.term, def: g.def })), titles: Object.fromEntries(allSessions.map((s) => [s.id, s.data.title])), order: all.map((s) => s.id) })} />
 </Base>
 <style>
   .hero { padding: 2.5rem 0 3.5rem; border-bottom: 1px solid var(--rule); background-color: var(--paper); position: relative; overflow: hidden; }
@@ -183,6 +205,12 @@ const jsonLd = [
   .dot { width: 8px; height: 8px; border-radius: 999px; background: #35c8ff; box-shadow: 0 0 0 4px rgb(53 200 255 / 18%); animation: pulse 2.4s var(--ease-seda) infinite; }
   @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgb(53 200 255 / 0%); } }
   section.how, section.daily-sec, section.trust { margin-top: 4.5rem; }
+  section.perso { margin-top: 4.5rem; }
+  .perso-grid { gap: 2rem; align-items: center; }
+  .mods { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+  @media (min-width: 640px) { .mods { grid-template-columns: 1fr 1fr; } }
+  .mod { display: flex; flex-direction: column; gap: 0.2rem; padding: 1rem 1.1rem; height: 100%; text-decoration: none; }
+  .mod strong { font-size: 1.1rem; color: var(--ink); }
   .how h2, .daily-sec h2 { margin-top: 0.2rem; }
   .steps { list-style: none; padding: 0; display: grid; gap: 1rem; margin: 1.5rem 0; }
   @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); } }

@@ -1,8 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { sessions } from '../../lib/content';
+import { sessions, guessFor } from '../../lib/content';
 const all = await sessions();
-const bank = Object.fromEntries(all.flatMap((s) => s.data.questions.map((q) => [q.id, { ...q, session: s.id, sessionTitle: s.data.title }])));
+const bank = Object.fromEntries(all.flatMap((s) => s.data.questions.map((q) => [q.id, { ...q, session: s.id, sessionTitle: s.data.title, meta: { skills: q.skills ?? s.data.skills, guess: guessFor(q) } }])));
 ---
 <Base title="Repaso diario" description="Un minuto al día: vuelven las preguntas que fallaste y las que toca reforzar, con repaso espaciado." noindex={true} allowAds={false}>
   <div class="narrow rv">
@@ -47,7 +47,7 @@ const bank = Object.fromEntries(all.flatMap((s) => s.data.questions.map((q) => [
       const q = bank[queue[i]];
       const res = await ask($('rv-q'), q, `De: ${q.sessionTitle}`);
       if (res) ok++;
-      if (!practice) { st = getState(); st = answer(st, q.id, res); saveState(st); }
+      st = getState(); st = answer(st, q.id, res, q.meta, { spaced: !practice }); saveState(st);
       const nx = $('rv-next') as HTMLButtonElement;
       nx.hidden = false; nx.focus();
       await new Promise((r) => nx.addEventListener('click', r, { once: true }));

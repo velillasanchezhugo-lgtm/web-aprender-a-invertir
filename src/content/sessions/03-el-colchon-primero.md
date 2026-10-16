@@ -2,7 +2,9 @@
 title: El colchón, antes que la bolsa
 description: Qué es un fondo de emergencia, cuánto debería tener y por qué te protege de vender tus inversiones en el peor momento.
 level: cero
+track: camino-cero
 order: 3
+skills: [colchon-emergencia]
 goals: [ordenar, objetivo, miedo]
 prereqs: [02-tu-numero-del-mes]
 hook: "Se te estropea el coche justo cuando la bolsa ha caído un 30 %. ¿De dónde sacas el dinero?"

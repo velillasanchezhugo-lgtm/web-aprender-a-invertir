@@ -2,7 +2,9 @@
 title: Las deudas caras, primero
 description: Por qué devolver una tarjeta revolving al 20 % suele ser la mejor «inversión» que tienes a mano, y cómo detectarlo con la TAE.
 level: cero
+track: camino-cero
 order: 4
+skills: [deudas-caras]
 goals: [ordenar]
 prereqs: [02-tu-numero-del-mes]
 hook: "Tienes 3.000 € ahorrados y debes 3.000 € en una tarjeta al 21 %. ¿Inviertes o pagas?"

@@ -60,10 +60,49 @@ import academyData from '../data/academy.json';
 /** Banco de preguntas por nivel para los exámenes. */
 export async function examQuestions(level: string) {
   const lv = academyData.levels.find((l) => l.id === level)!;
-  if (lv.kind === 'sessions') return (await sessions()).map((s) => s.data.questions[0]);
+  if (lv.kind === 'sessions') return (await zeroSessions()).map((s) => s.data.questions[0]);
+  const tracks = ((lv as any).tracks ?? []) as TrackId[];
+  if (tracks.length) {
+    // Una pregunta de cada sesión de los módulos del nivel (la segunda, para no repetir el diagnóstico), hasta 20, repartidas.
+    const pool = (await sessions()).filter((s) => tracks.includes(s.data.track)).map((s) => s.data.questions[1] ?? s.data.questions[0]);
+    const step = Math.max(1, pool.length / 20);
+    return Array.from({ length: Math.min(20, pool.length) }, (_, i) => pool[Math.floor(i * step)]);
+  }
   const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l]));
   const strat = Object.fromEntries((await getCollection('strategies')).map((s) => [s.id, s]));
   const qs = lv.items.flatMap((id) => (ls[id]?.data.quiz ?? []).slice(0, lv.items.length >= 8 ? 1 : 3).map((q, i) => ({ type: 'choice' as const, id: `ex-${id}-${i}`, q: q.q, options: q.options, answer: q.answer, explain: q.explain })));
   const sq = ((lv as any).strategies ?? []).flatMap((id: string) => (strat[id]?.data.quiz ?? []).map((q: any, i: number) => ({ type: 'choice' as const, id: `ex-${id}-${i}`, q: q.q, options: q.options, answer: q.answer, explain: q.explain })));
   return [...qs, ...sq];
+}
+
+// ---------- Módulos y motor adaptativo ----------
+import skillsData from '../data/skills.json';
+import { guessRate, TRACKS, type CatalogItem, type TrackId, type SkillDef, type DomainDef } from './adaptive';
+export { TRACKS };
+export const SKILLS = skillsData.skills as SkillDef[];
+export const DOMAINS = skillsData.domains as DomainDef[];
+export const skillById = Object.fromEntries(SKILLS.map((s) => [s.id, s])) as Record<string, SkillDef>;
+
+/** Sesiones de un módulo, en orden. */
+export async function trackSessions(track: TrackId): Promise<Session[]> {
+  return (await sessions()).filter((s) => s.data.track === track);
+}
+export const zeroSessions = () => trackSessions('camino-cero');
+export const guessFor = (q: Session['data']['questions'][number]) => guessRate(q.type, q.type === 'choice' ? q.options.length : 2);
+
+/** Todo lo que necesita el motor adaptativo en el navegador: catálogo, qué mide cada pregunta y banco de diagnóstico. */
+export async function academyIndex() {
+  const all = await sessions();
+  const catalog: CatalogItem[] = all.map((s) => ({ id: s.id, track: s.data.track, order: s.data.order, level: s.data.level, goals: s.data.goals, prereqs: s.data.prereqs, skills: s.data.skills, title: s.data.title }));
+  const qmeta: Record<string, { skills: string[]; guess: number }> = {};
+  const bank: { qid: string; skills: string[]; domain: string; q: Session['data']['questions'][number]; session: string }[] = [];
+  for (const s of all) {
+    s.data.questions.forEach((q, i) => {
+      const skills = q.skills ?? s.data.skills;
+      qmeta[q.id] = { skills, guess: guessFor(q) };
+      if (i === 0) bank.push({ qid: q.id, skills, domain: skillById[skills[0]]?.domain ?? 'base', q, session: s.id });
+    });
+  }
+  const titles = Object.fromEntries(all.map((s) => [s.id, s.data.title]));
+  return { catalog, qmeta, bank, titles };
 }

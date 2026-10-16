@@ -74,11 +74,16 @@ const investors = defineCollection({
   }),
 });
 
+/** `skills` opcional: competencias que mide la pregunta (si falta, las de la sesión). */
+const qSkills = { skills: z.array(z.string()).optional() };
 const sessionQuestion = z.discriminatedUnion('type', [
-  z.object({ type: z.literal('choice'), id: z.string(), q: z.string(), options: z.array(z.string()).min(2), answer: z.number().int().nonnegative(), explain: z.string() }),
-  z.object({ type: z.literal('truefalse'), id: z.string(), q: z.string(), answer: z.boolean(), explain: z.string() }),
-  z.object({ type: z.literal('estimate'), id: z.string(), q: z.string(), answer: z.number(), tolerance: z.number().nonnegative(), min: z.number(), max: z.number(), step: z.number().positive(), unit: z.string(), explain: z.string() }),
+  z.object({ type: z.literal('choice'), id: z.string(), q: z.string(), options: z.array(z.string()).min(2), answer: z.number().int().nonnegative(), explain: z.string(), ...qSkills }),
+  z.object({ type: z.literal('truefalse'), id: z.string(), q: z.string(), answer: z.boolean(), explain: z.string(), ...qSkills }),
+  z.object({ type: z.literal('estimate'), id: z.string(), q: z.string(), answer: z.number(), tolerance: z.number().nonnegative(), min: z.number(), max: z.number(), step: z.number().positive(), unit: z.string(), explain: z.string(), ...qSkills }),
 ]);
+
+/** Módulos de sesiones. 'camino-cero' es el nivel Cero; el resto forman el nivel Básico. */
+export const TRACK_IDS = ['camino-cero', 'invertir-ya', 'productos', 'empresas', 'noticias', 'trading'] as const;
 
 /** Sesiones de 5 minutos: gancho, idea, ejemplo, test y una acción aplicable hoy. */
 const sessions = defineCollection({
@@ -87,8 +92,12 @@ const sessions = defineCollection({
     title: z.string(),
     description: z.string().max(170),
     level: z.enum(['cero', 'basico', 'intermedio', 'avanzado', 'experto']),
+    track: z.enum(TRACK_IDS).default('camino-cero'),
     order: z.number().int(),
     minutes: z.number().int().default(5),
+    skills: z.array(z.string()).min(1),
+    /** Caso práctico opcional: una noticia, una empresa o una operación ficticia para analizar. */
+    scenario: z.object({ kind: z.enum(['noticia', 'empresa', 'operacion', 'producto']), label: z.string(), title: z.string(), body: z.string(), note: z.string().optional() }).optional(),
     goals: z.array(z.enum(['entender', 'objetivo', 'jubilacion', 'miedo', 'ordenar'])).default([]),
     prereqs: z.array(z.string()).default([]),
     hook: z.string(),

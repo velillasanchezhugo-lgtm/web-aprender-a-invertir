@@ -12,10 +12,10 @@ await p.goto(BASE + '/es/empezar/');
 await p.click('label.goal:has(input[value=objetivo])');
 if (SHOTS) await p.screenshot({ path: SHOTS + '/wz1.png' });
 await p.click('#fwd');
+await p.click('#fwd'); // punto de partida: valores por defecto
 await p.click('label.min-card:has(input[value="10"])');
 await p.click('#fwd');
-await p.check('input[name=p1][value="1"]', { force: true }); await p.check('input[name=p4][value="2"]', { force: true });
-await p.click('#fwd');
+await p.click('#fwd'); // salta el diagnóstico
 await p.waitForSelector('.wz-step.result.active');
 const items = await p.$$eval('#plan-list li', (l) => l.length);
 ok(items > 0, `el plan muestra ${items} días`);

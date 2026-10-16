@@ -96,3 +96,14 @@ Ver `docs/PUBLICAR-Y-ADSENSE.md`: publicación estática, Search Console, requis
 ## 7. Prioridades para los primeros 90 días
 
 Ver `docs/CRECIMIENTO-90-DIAS.md` y `docs/CALENDARIO-EDITORIAL.md`. En resumen: fiabilidad y revisión humana primero; después profundidad útil (KID de fondos, pensiones, tutorial de registros); y monetización prudente solo cuando el contenido esté revisado, midiendo el aprendizaje y no solo el tiempo de permanencia.
+
+## Versión 3: formación personalizada y nivel Básico completo (2026-10-16)
+
+- **Análisis de 15 cursos** de inversión y bolsa (oficiales, académicos, de brókeres y comerciales) con matriz de frecuencia y lista priorizada de habilidades: `docs/ANALISIS-CURSOS.md`.
+- **Mapa de 48 competencias** en 9 áreas (`src/data/skills.json`), enlazado a cada sesión y pregunta.
+- **40 sesiones nuevas** de 5 minutos con caso práctico, en cinco módulos del nivel Básico: Invertir ya (8), Productos (9), Conocer empresas (9), Entender noticias (7) y Tipos de trading (7). 43 fuentes nuevas registradas.
+- **Motor adaptativo** (`src/lib/adaptive.ts`): modelo del alumno con trazado bayesiano del conocimiento, diagnóstico adaptativo, recomendador con motivos, refuerzos y ruta personal recalculada. Asistente de inicio con perfil e intereses; «Mi plan» con la sesión recomendada, los motivos, el refuerzo y el mapa de competencias.
+- **Tutor** (`/es/tutor/`): modo guiado sin conexión (búsqueda en la academia y analizador de noticias con el filtro «¿me afecta?») y modo IA opcional con Claude mediante `api/tutor.js` (desactivado por defecto; ver `docs/TUTOR-IA.md`).
+- Páginas de módulos (`/es/modulos/`), examen del nivel Básico con preguntas de los módulos y navegación actualizada.
+
+**Comprobado**: 63 pruebas unitarias, control editorial (54 sesiones), compilación (164 páginas), auditoría de accesibilidad en modo claro y oscuro (48 páginas, sin fallos) y recorridos en navegador de la academia, la personalización (24 comprobaciones) y el progreso.

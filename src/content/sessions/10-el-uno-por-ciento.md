@@ -2,7 +2,9 @@
 title: El 1 % que se come un tercio
 description: Por qué los costes anuales pesan más de lo que parecen, dónde encontrarlos y cuánto pueden llevarse en 25 años.
 level: cero
+track: camino-cero
 order: 10
+skills: [costes-comisiones]
 goals: [jubilacion, entender, ordenar]
 prereqs: [06-el-tiempo-trabaja, 09-los-cuatro-productos]
 hook: "Un fondo cobra un 1,8 % al año y otro un 0,2 %. Parece poca diferencia. ¿Lo es?"
