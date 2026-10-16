@@ -195,6 +195,46 @@
   "track": "formas"
  },
  {
+  "id": "app-01-por-que-trade-republic",
+  "title": "Por qué te recomendamos Trade Republic para empezar",
+  "track": "trade-republic"
+ },
+ {
+  "id": "app-02-abrir-la-cuenta",
+  "title": "Abre tu cuenta paso a paso",
+  "track": "trade-republic"
+ },
+ {
+  "id": "app-03-conoce-la-app",
+  "title": "Conoce la app sin perderte",
+  "track": "trade-republic"
+ },
+ {
+  "id": "app-04-compara-etf",
+  "title": "Compara dos ETF con cinco preguntas",
+  "track": "trade-republic"
+ },
+ {
+  "id": "app-05-compara-acciones",
+  "title": "Compara acciones sin dejarte llevar",
+  "track": "trade-republic"
+ },
+ {
+  "id": "app-06-tu-primer-plan-de-inversion",
+  "title": "Crea tu primer plan de inversión",
+  "track": "trade-republic"
+ },
+ {
+  "id": "app-07-impuestos-y-documentos",
+  "title": "Impuestos y documentos en la app",
+  "track": "trade-republic"
+ },
+ {
+  "id": "app-08-lo-que-no-debes-tocar",
+  "title": "Lo que no debes tocar al empezar",
+  "track": "trade-republic"
+ },
+ {
   "id": "em-01-como-gana-dinero",
   "title": "Cómo gana dinero una empresa",
   "track": "empresas"

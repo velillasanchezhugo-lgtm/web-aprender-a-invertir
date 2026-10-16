@@ -713,5 +713,82 @@
   "url": "https://www.cnmv.es/DocPortal/Publicaciones/Infografias/DelLikeALaInversion.pdf",
   "type": "supervisor",
   "checked": "2026-10-16"
+ },
+ "tr-web-es-2026": {
+  "title": "Trade Republic España: web oficial (preguntas frecuentes, fijación de precios, protección del dinero, supervisión e información legal)",
+  "publisher": "Trade Republic Bank GmbH, Sucursal en España",
+  "url": "https://traderepublic.com/es-es",
+  "type": "intermediario",
+  "checked": "2026-10-16"
+ },
+ "tr-ayuda-es-2026": {
+  "title": "Trade Republic: sección de Ayuda para España (configuración en España, comisiones, planes de inversión, tipos de órdenes, fracciones, impuestos, apertura y seguridad de la cuenta)",
+  "publisher": "Trade Republic Bank GmbH",
+  "url": "https://traderepublic.com/es-es/support",
+  "type": "intermediario",
+  "checked": "2026-10-16"
+ },
+ "tr-riesgos-2025": {
+  "title": "Trade Republic: ¿Cuáles son los riesgos de invertir en distintos activos financieros? (acciones, ETF, derivados, bonos, criptoactivos)",
+  "publisher": "Trade Republic Bank GmbH",
+  "url": "https://traderepublic.com/es-es/support?articleId=83f10962-c73e-4d75-83c2-f411feddf350",
+  "type": "intermediario",
+  "checked": "2026-10-16"
+ },
+ "tr-divisas-2025": {
+  "title": "Trade Republic: conversión de divisas (márgenes aplicados a ingresos en moneda extranjera)",
+  "publisher": "Trade Republic Bank GmbH",
+  "url": "https://traderepublic.com/es-es/support?articleId=0311b855-af60-44ec-93cc-1637a0b2751e",
+  "type": "intermediario",
+  "checked": "2026-10-16"
+ },
+ "tr-dic-2025": {
+  "title": "Trade Republic: Documento Informativo de las Comisiones de la cuenta corriente (junio de 2025)",
+  "publisher": "Trade Republic Bank GmbH",
+  "url": "https://assets.traderepublic.com/documents/ES/FURTHER_INFORMATION_FEES_20250604133115.pdf",
+  "type": "intermediario",
+  "checked": "2026-10-16"
+ },
+ "tr-branch-2025-es": {
+  "title": "Trade Republic: nota de prensa «Trade Republic alcanza 1 millón de clientes en España y lanza su oferta bancaria local» (5 de junio de 2025, versión en español)",
+  "publisher": "Trade Republic Bank GmbH",
+  "url": "https://assets.traderepublic.com/assets/files/250605_TradeRepublic_PressRelease_SpainBranchLaunch_ES_ES.pdf",
+  "type": "intermediario",
+  "checked": "2026-10-16"
+ },
+ "boe-tr-sucursal-2025": {
+  "title": "Resolución de 11 de marzo de 2025, del Banco de España, por la que se publica el alta en el Registro de entidades de crédito de Trade Republic Bank GmbH, Sucursal en España (BOE-A-2025-5909; código 1586)",
+  "publisher": "BOE / Banco de España",
+  "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-5909",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "cnmv-tr-693": {
+  "title": "CNMV: registro de entidades de crédito comunitarias operantes en España en régimen de libre prestación de servicios: Trade Republic Bank GmbH (n.º 693)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/portal/consultas/esi/esisentcredito?tipo=ECCLP&numero=693&vista=15",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "cnmv-tr-clon-2025": {
+  "title": "CNMV: advertencia al público sobre «Trade Republic Bank (clon)» (17 de febrero de 2025), buscador de entidades advertidas",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/portal/resultadobusqueda?nombre=trade+republic&tipo=1&sortExpression=Fecha&sortDirection=0",
+  "type": "supervisor",
+  "checked": "2026-10-16"
+ },
+ "aeat-720": {
+  "title": "Modelo 720. Declaración informativa sobre bienes y derechos situados en el extranjero",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/procedimientoini/GI34.shtml",
+  "type": "fiscal",
+  "checked": "2026-10-16"
+ },
+ "aeat-721-faq": {
+  "title": "Preguntas frecuentes sobre el modelo 721 (monedas virtuales situadas en el extranjero): quiénes están obligados y requisitos de la entidad custodia",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/todas-gestiones/impuestos-tasas/declaraciones-informativas/modelo-721-decla-sobre-monedas-extranjero/preguntas-frecuentes-sobre-modelo-721.html",
+  "type": "fiscal",
+  "checked": "2026-10-16"
  }
 }

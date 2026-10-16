@@ -93,7 +93,7 @@ ok(await p.isVisible('#ctx'), 'el tutor recibe el contexto de la pregunta fallad
 
 // 5. Módulos
 await p.goto(BASE + '/es/modulos/');
-ok((await p.$$eval('.tracks > li', (l) => l.length)) === 6, 'hay 6 módulos');
+ok((await p.$$eval('.tracks > li', (l) => l.length)) === 8, 'hay 8 módulos');
 await p.goto(BASE + '/es/modulos/empresas/');
 ok((await p.$$eval('.sessions li', (l) => l.length)) >= 8, 'el módulo de empresas lista sus sesiones');
 

@@ -21,7 +21,13 @@ No hace falta ninguna credencial para ejecutar ni compilar la web.
 2. **Fiscal**: lección de comisiones y fiscalidad (escala del ahorro 2025, traspasos, regla de los dos meses), criptoactivos y fiscalidad de dividendos. Confirmar la escala de 2026 cuando esté disponible.
 3. **Financiera / editorial**: todas las lecciones, estrategias e historias están en estado «Pendiente de revisión humana».
 
-## Contenido nuevo del nivel Básico (40 sesiones)
+## Recomendación de Trade Republic
+
+- **Confirmar si hay remuneración** (referidos, afiliación o acuerdo). Si la hay, definir `PUBLIC_BROKER_PAID=true`: la web lo mostrará como «Colaboración pagada» en todas las páginas donde aparece. Hoy figura como recomendación editorial sin remuneración.
+- Datos verificados el 16/10/2026 en fuentes oficiales (web, ayuda, contrato, registros del Banco de España y la CNMV). Pendiente: modelo 721 para cripto (lo presta la sede alemana), criterio de la AEAT sobre el modelo 720 (solo lo afirma la entidad), traspasos de entrada de fondos y sus costes, planes periódicos en fondos y nombres exactos de las pantallas de la app.
+- Revisar el módulo cada vez que cambien las condiciones o la app.
+
+## Contenido nuevo del nivel Básico
 
 Escrito con asistencia de IA y en estado «Pendiente de revisión humana». Prioridades de revisión:
 

@@ -107,3 +107,12 @@ Ver `docs/CRECIMIENTO-90-DIAS.md` y `docs/CALENDARIO-EDITORIAL.md`. En resumen: 
 - Páginas de módulos (`/es/modulos/`), examen del nivel Básico con preguntas de los módulos y navegación actualizada.
 
 **Comprobado**: 63 pruebas unitarias, control editorial (54 sesiones), compilación (164 páginas), auditoría de accesibilidad en modo claro y oscuro (48 páginas, sin fallos) y recorridos en navegador de la academia, la personalización (24 comprobaciones) y el progreso.
+
+## Versión 4: sin matemáticas y con Trade Republic (2026-10-16)
+
+- Las 62 sesiones existentes, reescritas sin fórmulas ni cálculos: «La idea», «En la práctica», test de decisión práctica y «Te recomendamos».
+- Nuevo módulo **Formas de invertir** (8 sesiones) y nuevo módulo **Empieza con Trade Republic** (8 sesiones), con nota de transparencia configurable.
+- Comparador: datos de Trade Republic actualizados con fuentes de 2026 (incluidos los fondos traspasables).
+- Empresas, noticias y trading pasan a «Para saber más».
+
+**Comprobado**: 63 pruebas unitarias, control editorial (70 sesiones), compilación (182 páginas), auditoría de accesibilidad en modo claro y oscuro y recorridos en navegador.

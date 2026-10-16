@@ -331,28 +331,28 @@
    },
    "regulator": {
     "v": "si",
-    "value": "BaFin y Deutsche Bundesbank (Alemania), según la nota de prensa de junio de 2025; sucursal en España en régimen de libertad de establecimiento.",
-    "src": "tr-branch-2025",
-    "registry": "https://portal.mvp.bafin.de/database/InstInfo/"
+    "value": "BaFin (Alemania). La sucursal en España figura en el registro de entidades de crédito del Banco de España (código 1586, alta el 28/02/2025) y en el registro de la CNMV (n.º 693).",
+    "src": "cnmv-tr-693",
+    "registry": "https://www.cnmv.es/portal/consultas/esi/esisentcredito?tipo=ECCLP&numero=693&vista=15"
    },
    "country": {
     "v": "si",
-    "value": "Alemania (Berlín); sucursal en España con IBAN español desde 2025.",
-    "src": "tr-branch-2025"
+    "value": "Alemania (Berlín); sucursal en Madrid con IBAN español.",
+    "src": "boe-tr-sucursal-2025"
    },
    "products": {
     "v": "si",
-    "value": "Acciones, ETF, bonos, fondos de inversión (desde junio de 2025), planes de inversión, criptoactivos y derivados titulizados (warrants y certificados).",
-    "src": "tr-branch-2025"
+    "value": "Acciones, ETF, fondos de inversión traspasables (desde junio de 2025), bonos, planes de inversión periódicos, fracciones, criptoactivos, derivados titulizados (warrants y certificados) y mercados privados (ELTIF).",
+    "src": "tr-ayuda-es-2026"
    },
    "realVsDerivatives": {
-    "v": "parcial",
-    "value": "Activos reales y derivados titulizados (warrants, certificados); ejecución principalmente en Lang & Schwarz Exchange según terceros (pendiente confirmar en la política de ejecución).",
-    "src": "tr-pricelist-2023"
+    "v": "si",
+    "value": "Activos reales y también derivados titulizados (warrants y certificados) y criptoactivos, que no son adecuados para quien empieza.",
+    "src": "tr-riesgos-2025"
    },
    "fees": {
     "v": "parcial",
-    "src": "tr-pricelist-2023",
+    "src": "tr-web-es-2026",
     "etfEU": {
      "fixed": 1
     },
@@ -368,48 +368,48 @@
     "fxPct": null,
     "annualFixed": 0,
     "text": {
-     "buySell": "Según la lista de precios oficial de abril de 2023: comisión de liquidación externa de 1 € por operación, excepto planes de inversión. Los precios vigentes se publican en la aplicación, según el contrato con el cliente; pendiente verificar que no han cambiado.",
-     "custody": "Gestión de la cuenta de valores: sin cargo (lista de 2023).",
-     "fx": "No verificado: no figura en el documento consultado.",
-     "withdrawal": "Transferencia a la cuenta de referencia: sin cargo (lista de 2023).",
-     "inactivity": "No figura en el documento consultado.",
-     "external": "Planes de inversión de 10 € a 10.000 € por ejecución sin cargo (lista de 2023). Ingreso con tarjeta: 0,7 %."
+     "buySell": "Sin comisión de orden; comisión de liquidación de 1 € por operación suelta (2 € en la bolsa de Precio Directo). Planes de inversión sin cargo. Aparte, el diferencial y los costes de los productos (gastos de los ETF y fondos).",
+     "custody": "Sin comisión de custodia ni mínimos.",
+     "fx": "Los ingresos en otra divisa (por ejemplo, dividendos) se convierten con un margen publicado por la entidad. El porcentaje concreto no se ha incorporado al cálculo.",
+     "withdrawal": "Transferencias sin cargo. Retirar menos de 100 € en cajero cuesta 1 € (documento de comisiones de junio de 2025).",
+     "inactivity": "No consta comisión de inactividad.",
+     "external": "Tarjeta virtual gratuita; tarjetas físicas con pago único."
     }
    },
    "automatic": {
-    "v": "parcial",
-    "value": "Planes de inversión en ETF y acciones sin cargo por ejecución según la lista de 2023.",
-    "src": "tr-pricelist-2023"
+    "v": "si",
+    "value": "Planes de inversión periódicos en acciones, ETF y criptoactivos (semanal, quincenal o mensual) sin comisión de ejecución.",
+    "src": "tr-ayuda-es-2026"
    },
    "fractions": {
-    "v": "parcial",
-    "value": "Operativa fraccionada de acciones y ETF, según la nota de prensa de 2025; pendiente verificar condiciones (titularidad, voto, traspaso).",
-    "src": "tr-branch-2025"
+    "v": "si",
+    "value": "Fracciones desde 1 €: solo con orden de mercado y no se pueden traspasar a otro bróker.",
+    "src": "tr-ayuda-es-2026"
    },
    "accounts": {
-    "v": "no",
-    "value": "Pendiente verificar tipos de cuenta.",
-    "src": "tr-contract-es"
+    "v": "si",
+    "value": "Cuenta corriente con IBAN español (Bizum, domiciliaciones) y cuenta de valores; el efectivo puede remunerarse (tipo vigente en la app).",
+    "src": "tr-web-es-2026"
    },
    "support": {
     "v": "parcial",
-    "value": "Atención en la aplicación; idioma español pendiente de confirmar en documento oficial.",
-    "src": "tr-contract-es"
+    "value": "Atención en la aplicación y centro de ayuda en español.",
+    "src": "tr-ayuda-es-2026"
    },
    "tax": {
-    "v": "parcial",
-    "value": "Retención fiscal automática en España anunciada en junio de 2025; pendiente verificar alcance y documentación fiscal.",
-    "src": "tr-branch-2025"
+    "v": "si",
+    "value": "Con IBAN español retiene el 19 % de intereses, dividendos y ventas de fondos y entrega un informe fiscal en la app; no retiene en ventas de acciones, ETF ni cripto (se declaran en la renta). Según la entidad, sin Modelo 720 para clientes de la sucursal; el 721 (cripto) no está claro.",
+    "src": "tr-ayuda-es-2026"
    },
    "transfer": {
     "v": "parcial",
-    "value": "Transferencia desde la cuenta de valores sin cargo, más posibles comisiones externas (lista de 2023). Traspasos de fondos anunciados en 2025.",
-    "src": "tr-pricelist-2023"
+    "value": "Fondos de inversión traspasables sin tributar (desde junio de 2025); los ETF no son traspasables. Traspasos de entrada y sus condiciones, pendientes de documento oficial.",
+    "src": "tr-branch-2025-es"
    },
    "protection": {
-    "v": "parcial",
-    "value": "Efectivo: garantía de depósitos europea hasta 100.000 € en bancos asociados, según la nota de prensa. Valores: sistema de indemnización alemán (pendiente documentar con fuente oficial).",
-    "src": "tr-branch-2025"
+    "v": "si",
+    "value": "Efectivo en cuentas fiduciarias en bancos asociados, cubierto por el fondo de garantía de cada banco hasta 100.000 € por cliente y banco. Los valores son del cliente y se guardan separados en depositarios.",
+    "src": "tr-web-es-2026"
    },
    "pros": [
     "Planes de inversión sin cargo por ejecución (según lista de 2023).",

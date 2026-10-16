@@ -37,17 +37,19 @@ Cierre: **examen del nivel Cero** (14 preguntas, una por sesión; se aprueba con
 
 ## 3 bis. Nivel Básico: saber invertir de verdad
 
-Diseñado a partir del análisis de 15 cursos (`docs/ANALISIS-CURSOS.md`). Cinco módulos de sesiones de 5 minutos, cada una con un **caso práctico** (una noticia, una empresa, una operación o un producto ficticios) sobre el que se responde el test:
+Diseñado a partir del análisis de 15 cursos (`docs/ANALISIS-CURSOS.md`) y simplificado a petición del titular: sin fórmulas ni cálculos. Cada sesión tiene un caso cotidiano, un test de decisión práctica y consejos («Te recomendamos»).
 
-| Módulo | Sesiones | Lo que sabrás hacer |
+| Módulo | Sesiones | Lo que sabrás |
 |---|---|---|
-| **Invertir ya** | 8 | Escribir tu plan, decidir cuánto en bolsa, montar una cartera indexada de 1 a 3 piezas, elegir entre fondo y ETF, hacer tu primera compra, automatizar aportaciones, rebalancear y actuar ante una caída |
-| **Productos de inversión** | 9 | Acciones, bonos y tipos, cuentas, depósitos y Letras, fondos, ETF, planes de pensiones, inmobiliario, oro y materias primas, criptoactivos y productos complejos |
-| **Conocer empresas** | 9 | Modelo de negocio, cuenta de resultados, márgenes, balance y deuda, caja, ventaja competitiva, PER y valoración, informe de resultados y una ficha de empresa |
-| **Entender noticias** | 7 | Hecho, dato u opinión; BCE y tipos; IPC, PIB y paro; resultados frente a expectativas; noticias de empresa; titulares de pánico; el filtro «¿me afecta?» |
-| **Tipos de trading** | 7 | Inversión frente a trading, estilos, órdenes, apalancamiento y CFD, tamaño de posición, análisis técnico y lo que dicen los datos. Para entenderlo, siempre en simulación |
+| **Productos de inversión** | 9 | Qué es cada producto (acciones, bonos, cuentas, depósitos y Letras, fondos, ETF, planes de pensiones, inmobiliario, oro, cripto y productos complejos), su riesgo, si puedes sacar el dinero, su coste y para quién encaja |
+| **Formas de invertir** | 8 | Por tu cuenta con indexados, con un gestor automatizado, a través del banco, para la jubilación, con acciones sueltas o con vivienda, y cómo elegir la tuya |
+| **Invertir ya** | 8 | Tu plan, cuánto arriesgar, una cartera de 1 a 3 piezas, fondo o ETF, tu primera compra, aportar cada mes, revisar una vez al año y qué hacer si cae |
+| **Empieza con Trade Republic** | 8 | Recomendación editorial para empezar: por qué, abrir la cuenta, la app, comparar ETF y acciones, tu primer plan de inversión, impuestos y lo que no conviene tocar |
+| Para saber más: **Conocer empresas** | 9 | Cómo ver con palabras si una empresa va bien |
+| Para saber más: **Entender noticias** | 7 | Qué te afecta y qué no |
+| Para saber más: **Tipos de trading** | 7 | Entenderlo sin jugarte el dinero |
 
-El hito «ya sé invertir» son el Camino Cero y el módulo Invertir ya (22 sesiones, menos de dos horas en total). El resto se ordena según el objetivo y los intereses de cada persona.
+Recorrido principal: Camino Cero → Productos → Formas de invertir → Invertir ya → Trade Republic. La ruta personal adapta el orden a cada persona.
 
 ## 4. Planificación según el objetivo
 
