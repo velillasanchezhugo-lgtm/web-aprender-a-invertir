@@ -5,6 +5,7 @@ level: basico
 track: invertir-ya
 order: 102
 skills: [asignacion-activos, riesgo-volatilidad]
+terms: [renta-variable, renta-fija, asignacion-de-activos, perfil-de-riesgo]
 goals: [objetivo, jubilacion, miedo]
 prereqs: [ya-01-tu-plan-en-una-pagina]
 hook: "Tienes unos ahorros y te preguntas si meterlo todo en bolsa, la mitad o casi nada. La respuesta no está en las noticias: está en tu calendario."

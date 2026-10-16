@@ -5,6 +5,7 @@ level: basico
 track: productos
 order: 208
 skills: [materias-primas, diversificacion]
+terms: [etc, futuro, diversificacion]
 goals: [entender, miedo]
 prereqs: [pr-05-etf-por-dentro]
 hook: "En las noticias, el oro «marca máximos» y un familiar te dice que es lo único seguro. ¿Qué tienes de verdad cuando tienes oro?"

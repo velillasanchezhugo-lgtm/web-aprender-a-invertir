@@ -5,6 +5,7 @@ level: basico
 track: trade-republic
 order: 262
 skills: [usar-app-broker, ejecutar-compra]
+terms: [iban, test-de-conveniencia, broker]
 goals: [objetivo, ordenar]
 prereqs: [app-01-por-que-trade-republic]
 hook: "Te has decidido y descargas la app. Te pide DNI, un selfie y unas preguntas sobre inversión. ¿Es normal todo esto?"

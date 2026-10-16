@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 6
 skills: [interes-compuesto]
+terms: [interes-compuesto, aportaciones-periodicas, comision-de-gestion]
 goals: [jubilacion, entender]
 prereqs: [05-la-inflacion-te-cobra]
 hook: "Dos amigas ahorran lo mismo cada mes. Una empieza diez años antes. Al final, la diferencia es mucho mayor de lo que imaginas."

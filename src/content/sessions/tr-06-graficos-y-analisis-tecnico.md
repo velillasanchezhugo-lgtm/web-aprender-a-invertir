@@ -5,6 +5,7 @@ level: basico
 track: trading
 order: 506
 skills: [analisis-tecnico-limites, psicologia-sesgos]
+terms: [analisis-tecnico, backtest, cotizacion]
 goals: [entender, miedo]
 prereqs: [tr-02-estilos-de-trading]
 hook: "Un curso te enseña una regla con gráficos que «ganó muchísimo en los últimos cinco años». ¿Qué preguntas antes de creértelo?"

@@ -5,6 +5,7 @@ level: basico
 track: empresas
 order: 301
 skills: [modelo-negocio, acciones]
+terms: [accion, analisis-fundamental]
 goals: [entender]
 prereqs: [09-los-cuatro-productos]
 hook: "Tomas café casi cada mañana en la misma cadena. Si comprases una acción suya, ¿sabrías explicar en dos frases de dónde sale su dinero?"

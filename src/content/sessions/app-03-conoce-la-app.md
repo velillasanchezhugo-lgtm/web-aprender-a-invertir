@@ -5,6 +5,7 @@ level: basico
 track: trade-republic
 order: 263
 skills: [usar-app-broker]
+terms: [cartera, plan-de-inversion, isin, tipo-de-interes]
 goals: [entender, ordenar]
 prereqs: [app-02-abrir-la-cuenta]
 hook: "Abres la app por primera vez: gráficos, colores, listas de lo que sube y baja. ¿Qué tienes que mirar de verdad?"

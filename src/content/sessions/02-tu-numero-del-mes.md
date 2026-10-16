@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 2
 skills: [presupuesto-ahorro]
+terms: [aportaciones-periodicas, fondo-de-emergencia]
 goals: [ordenar, objetivo]
 prereqs: [01-invertir-no-es-apostar]
 hook: "Llega el día 28 y te preguntas a dónde se ha ido el sueldo. Te pasa a ti y a casi todo el mundo."

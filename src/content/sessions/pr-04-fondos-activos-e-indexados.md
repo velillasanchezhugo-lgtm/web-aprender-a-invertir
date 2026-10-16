@@ -5,6 +5,7 @@ level: basico
 track: productos
 order: 204
 skills: [fondos-etf, costes-comisiones]
+terms: [gestion-activa, gestion-pasiva, gastos-corrientes, valor-liquidativo]
 goals: [jubilacion, entender, ordenar]
 prereqs: [10-el-uno-por-ciento]
 hook: "En tu banco te ofrecen un fondo «gestionado por expertos». En una app, uno indexado mucho más barato. ¿Qué te llevas con cada uno?"

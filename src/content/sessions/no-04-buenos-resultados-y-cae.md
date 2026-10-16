@@ -5,6 +5,7 @@ level: basico
 track: noticias
 order: 404
 skills: [resultados-expectativas, cuenta-resultados]
+terms: [consenso-de-analistas, resultados-trimestrales, beneficio-neto]
 goals: [entender, miedo]
 prereqs: [no-01-hecho-dato-opinion]
 hook: "Una empresa anuncia el mayor beneficio de su historia y su acción cae ese mismo día. ¿El mercado se ha vuelto loco?"

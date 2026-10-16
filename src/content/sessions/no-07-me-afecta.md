@@ -5,6 +5,7 @@ level: basico
 track: noticias
 order: 407
 skills: [filtro-noticias, plan-inversion]
+terms: [horizonte-temporal, tipo-de-interes, comision-de-gestion]
 goals: [miedo, jubilacion, entender]
 prereqs: [no-06-titulares-de-panico-y-euforia]
 hook: "Cada mañana te llegan diez titulares que parecen urgentes. ¿Cuántos deberían cambiar lo que haces con tu dinero?"

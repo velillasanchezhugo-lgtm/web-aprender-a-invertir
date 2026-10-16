@@ -5,6 +5,7 @@ level: basico
 track: empresas
 order: 305
 skills: [flujo-caja]
+terms: [flujo-de-caja-libre, beneficio-neto, dividendo]
 goals: [entender, miedo]
 prereqs: [em-04-el-balance-y-la-deuda]
 hook: "Una fábrica anuncia un beneficio récord y, meses después, pide un préstamo urgente para pagar nóminas. ¿Cómo es posible?"

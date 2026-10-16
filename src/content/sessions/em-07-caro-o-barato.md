@@ -5,6 +5,7 @@ level: basico
 track: empresas
 order: 307
 skills: [valoracion-basica]
+terms: [per, capitalizacion-bursatil, consenso-de-analistas]
 goals: [entender, miedo]
 prereqs: [em-05-caja-no-beneficio]
 hook: "Nubia Software es mejor negocio que Café Brío. ¿Significa eso que su acción es mejor compra?"

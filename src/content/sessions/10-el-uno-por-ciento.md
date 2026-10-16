@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 10
 skills: [costes-comisiones]
+terms: [ter, kid, gastos-corrientes, comision-de-custodia]
 goals: [jubilacion, entender, ordenar]
 prereqs: [06-el-tiempo-trabaja, 09-los-cuatro-productos]
 hook: "Un fondo cobra un 1,8 % al año y otro un 0,2 %. Parece una diferencia pequeña. ¿Lo es?"

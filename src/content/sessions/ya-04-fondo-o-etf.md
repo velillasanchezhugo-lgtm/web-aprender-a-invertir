@@ -5,6 +5,7 @@ level: basico
 track: invertir-ya
 order: 104
 skills: [fondos-etf, fiscalidad-espana, costes-comisiones]
+terms: [fondo-indexado, etf, traspaso]
 goals: [jubilacion, objetivo, ordenar]
 prereqs: [ya-03-una-cartera-indexada]
 hook: "Un fondo indexado y un ETF pueden seguir el mismo índice y costar lo mismo al año. Entonces, ¿da igual cuál compres? En España, no del todo."

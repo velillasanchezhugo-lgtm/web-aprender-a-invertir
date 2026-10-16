@@ -5,6 +5,7 @@ level: basico
 track: formas
 order: 257
 skills: [inmobiliario, formas-invertir]
+terms: [socimi, reit, liquidez]
 goals: [entender, objetivo, jubilacion]
 prereqs: [fo-01-mapa-de-formas]
 hook: "Siempre has oído que «el ladrillo nunca baja» y que lo mejor es comprar un piso para alquilarlo. ¿Es tan sencillo?"

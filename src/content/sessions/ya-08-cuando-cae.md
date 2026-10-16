@@ -5,6 +5,7 @@ level: basico
 track: invertir-ya
 order: 108
 skills: [psicologia-sesgos, caidas-recuperacion, plan-inversion]
+terms: [caida-maxima, perdida-permanente, aportaciones-periodicas]
 goals: [miedo, jubilacion, objetivo]
 prereqs: [ya-07-rebalancear]
 hook: "Abres la app y tu inversión vale bastante menos que hace tres meses. Todos los titulares hablan de crisis. ¿Qué haces hoy?"

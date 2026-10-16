@@ -5,6 +5,7 @@ level: basico
 track: trade-republic
 order: 264
 skills: [comparar-productos, fondos-etf, costes-comisiones]
+terms: [ter, acumulacion-distribucion, indice, msci-world]
 goals: [entender, objetivo]
 prereqs: [app-03-conoce-la-app]
 hook: "Buscas «ETF mundial» en la app y salen veinte resultados con nombres casi iguales. ¿Cómo eliges sin volverte loco?"

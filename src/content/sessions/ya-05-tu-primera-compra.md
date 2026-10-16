@@ -5,6 +5,7 @@ level: basico
 track: invertir-ya
 order: 105
 skills: [ejecutar-compra, ordenes-mercado, comprobar-broker]
+terms: [test-de-conveniencia, kid, isin, indicador-de-riesgo]
 goals: [objetivo, miedo, ordenar]
 prereqs: [ya-04-fondo-o-etf]
 hook: "Tienes el plan y sabes qué buscas. Llega la pantalla de compra con diez campos y un botón verde. ¿Qué miras antes de pulsarlo?"

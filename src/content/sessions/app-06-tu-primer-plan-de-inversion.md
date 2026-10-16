@@ -5,6 +5,7 @@ level: basico
 track: trade-republic
 order: 266
 skills: [aportaciones-periodicas, usar-app-broker, ejecutar-compra]
+terms: [plan-de-inversion, orden-limitada, orden-de-mercado, renta-variable-global]
 goals: [objetivo, jubilacion, ordenar]
 prereqs: [app-04-compara-etf]
 hook: "Cada mes te propones invertir algo y cada mes se te olvida, o esperas al «mejor momento». ¿Y si lo haces automático?"

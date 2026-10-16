@@ -5,6 +5,7 @@ level: basico
 track: formas
 order: 258
 skills: [formas-invertir, plan-inversion, gestion-delegada]
+terms: [perfil-de-riesgo, horizonte-temporal, gestion-pasiva]
 goals: [objetivo, ordenar, jubilacion]
 prereqs: [fo-02-por-tu-cuenta-con-indexados, fo-03-gestores-automatizados]
 hook: "Ya conoces las formas de invertir. Ahora toca la pregunta difícil: ¿cuál es la tuya?"

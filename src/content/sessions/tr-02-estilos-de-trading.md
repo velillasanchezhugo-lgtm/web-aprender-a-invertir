@@ -5,6 +5,7 @@ level: basico
 track: trading
 order: 502
 skills: [tipos-trading]
+terms: [scalping, swing-trading, diferencial]
 goals: [entender, miedo]
 prereqs: [tr-01-invertir-o-hacer-trading]
 hook: "Un vídeo dice que con el scalping «solo necesitas sacar unos euros por operación». Si pagas algo en cada una, ¿cuántas veces lo pagas al mes?"

@@ -5,6 +5,7 @@ level: basico
 track: formas
 order: 256
 skills: [acciones, diversificacion, formas-invertir]
+terms: [accion, diversificacion, dividendo]
 goals: [entender, objetivo]
 prereqs: [fo-02-por-tu-cuenta-con-indexados]
 hook: "Usas a diario los productos de una empresa y piensas: «¿Y si compro acciones suyas?». ¿Es buena idea?"

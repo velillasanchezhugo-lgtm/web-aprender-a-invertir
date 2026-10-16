@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 9
 skills: [acciones, renta-fija, fondos-etf]
+terms: [accion, bono, etf, valor-liquidativo]
 goals: [entender, objetivo]
 prereqs: [08-no-todos-los-huevos]
 hook: "En el banco te hablan de acciones, bonos, fondos y ETF como si fuera evidente. ¿Sabrías decir en qué se diferencian?"

@@ -5,6 +5,7 @@ level: basico
 track: trading
 order: 501
 skills: [tipos-trading, objetivo-horizonte]
+terms: [especular, diferencial, fondo-indexado]
 goals: [entender, miedo]
 prereqs: [01-invertir-no-es-apostar]
 hook: "En redes ves a alguien que «vive del trading» desde el sofá. Tú tienes un fondo indexado que apenas miras. ¿Hacéis lo mismo a distinta velocidad?"

@@ -5,6 +5,7 @@ level: basico
 track: trade-republic
 order: 261
 skills: [comprobar-broker, costes-comisiones]
+terms: [bafin, broker, fgd, cuenta-remunerada]
 goals: [entender, objetivo, miedo]
 prereqs: [12-comprueba-un-broker]
 hook: "Hay decenas de apps para invertir y todas dicen ser la mejor. Si empiezas de cero, ¿por dónde empiezas?"

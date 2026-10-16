@@ -5,6 +5,7 @@ level: basico
 track: productos
 order: 209
 skills: [cripto-critico, productos-complejos, detectar-fraude]
+terms: [criptoactivo, mica, cfd, stablecoin]
 goals: [miedo, entender]
 prereqs: [pr-01-acciones-por-dentro]
 hook: "En la misma semana te ofrecen una criptomoneda que «paga un 2 % semanal», un producto que «da un 8 % si el mercado no se hunde» y operar con oro «con solo 1.000 €». ¿Por dónde empiezas?"

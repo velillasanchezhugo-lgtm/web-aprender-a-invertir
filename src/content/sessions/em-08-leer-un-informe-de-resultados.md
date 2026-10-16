@@ -5,6 +5,7 @@ level: basico
 track: empresas
 order: 308
 skills: [informacion-empresas, resultados-expectativas, cuenta-resultados]
+terms: [cnmv, resultados-trimestrales, ebitda]
 goals: [entender, ordenar]
 prereqs: [em-07-caro-o-barato]
 hook: "Café Brío presenta resultados y el titular de su nota de prensa dice «beneficio ajustado récord». ¿Es una buena noticia?"

@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 3
 skills: [colchon-emergencia]
+terms: [fondo-de-emergencia, liquidez, cuenta-remunerada, fgd]
 goals: [ordenar, objetivo, miedo]
 prereqs: [02-tu-numero-del-mes]
 hook: "Se te estropea el coche justo cuando la bolsa ha caído mucho. ¿De dónde sacas el dinero?"

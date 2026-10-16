@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 8
 skills: [diversificacion]
+terms: [diversificacion, correlacion, fondo-indexado]
 goals: [entender, jubilacion]
 prereqs: [07-las-caidas-son-normales]
 hook: "Tienes tres fondos distintos y te sientes muy diversificado. Pero ¿y si los tres compran las mismas empresas?"

@@ -5,6 +5,7 @@ level: basico
 track: formas
 order: 252
 skills: [formas-invertir, cartera-indexada, fondos-etf]
+terms: [fondo-indexado, etf, gestion-pasiva, broker]
 goals: [entender, objetivo, jubilacion]
 prereqs: [fo-01-mapa-de-formas]
 hook: "Has leído que con un fondo indexado puedes invertir tú solo, sin nadie que te cobre por elegir. ¿De verdad es tan sencillo?"

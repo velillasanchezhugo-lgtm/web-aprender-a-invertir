@@ -5,6 +5,7 @@ level: basico
 track: productos
 order: 202
 skills: [renta-fija, tipos-interes-bce]
+terms: [bono, renta-fija, duracion, rating]
 goals: [entender, miedo]
 prereqs: [09-los-cuatro-productos]
 hook: "Tu fondo de renta fija ha bajado en un año en el que los tipos de interés subieron. ¿Cómo puede perder dinero algo que paga intereses fijos?"

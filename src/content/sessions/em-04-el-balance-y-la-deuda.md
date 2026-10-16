@@ -5,6 +5,7 @@ level: basico
 track: empresas
 order: 304
 skills: [balance-deuda]
+terms: [deuda-neta, tipo-de-interes, ebitda]
 goals: [entender, miedo]
 prereqs: [em-02-la-cuenta-de-resultados]
 hook: "Dos cadenas de restauración ganan dinero. Una puede pasar una crisis sin problemas; la otra podría tener que vender tiendas para pagar al banco. ¿Cómo lo distingues?"

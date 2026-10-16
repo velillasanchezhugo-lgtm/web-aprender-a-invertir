@@ -5,6 +5,7 @@ level: basico
 track: empresas
 order: 306
 skills: [ventaja-competitiva, modelo-negocio]
+terms: [ventaja-competitiva, margen-de-beneficio]
 goals: [entender]
 prereqs: [em-03-margenes]
 hook: "Si un negocio gana mucho dinero, ¿por qué no aparece alguien que lo copie y le quite los clientes?"

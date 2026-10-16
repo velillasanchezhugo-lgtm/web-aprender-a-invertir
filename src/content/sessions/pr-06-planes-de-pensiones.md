@@ -5,6 +5,7 @@ level: basico
 track: productos
 order: 206
 skills: [planes-pensiones, fiscalidad-espana]
+terms: [plan-de-pensiones, rescate, traspaso-de-plan, irpf]
 goals: [jubilacion, objetivo]
 prereqs: [11-impuestos-lo-justo]
 hook: "Cada diciembre oyes «aporta a tu plan y desgrava». ¿Te ahorras impuestos de verdad o solo los dejas para más adelante?"

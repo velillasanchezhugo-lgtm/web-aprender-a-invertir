@@ -5,6 +5,7 @@ level: basico
 track: productos
 order: 201
 skills: [acciones, riesgo-volatilidad]
+terms: [accion, dividendo, renta-variable, bolsa]
 goals: [entender, objetivo]
 prereqs: [09-los-cuatro-productos]
 hook: "Un compañero de trabajo te cuenta que ha comprado acciones de la marca de zapatillas que lleva. ¿Qué tiene exactamente? ¿Un trozo de la empresa o una apuesta?"

@@ -5,6 +5,7 @@ level: basico
 track: invertir-ya
 order: 107
 skills: [rebalanceo, asignacion-activos]
+terms: [rebalanceo, asignacion-de-activos, cartera]
 goals: [jubilacion, ordenar, miedo]
 prereqs: [ya-06-aportar-cada-mes]
 hook: "Tu plan decía «sobre todo acciones y algo de renta fija». Tras un año muy bueno de la bolsa, las acciones pesan bastante más de lo que elegiste. Nadie te ha avisado."

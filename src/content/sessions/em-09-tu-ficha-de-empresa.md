@@ -5,6 +5,7 @@ level: basico
 track: empresas
 order: 309
 skills: [modelo-negocio, valoracion-basica, diversificacion]
+terms: [analisis-fundamental, fondo-indexado, diversificacion]
 goals: [entender, ordenar, objetivo]
 prereqs: [em-08-leer-un-informe-de-resultados]
 hook: "Ya sabes mirar una empresa por dentro. ¿Basta eso para poner la mitad de tus ahorros en la que mejor te parece?"

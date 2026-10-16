@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 7
 skills: [caidas-recuperacion, psicologia-sesgos]
+terms: [volatilidad, caida-maxima, perdida-permanente, indice]
 goals: [miedo, entender, jubilacion]
 prereqs: [06-el-tiempo-trabaja]
 hook: "Abres la app y tu inversión ha bajado mucho en un mes. Los telediarios hablan de desplome. ¿Qué haces?"

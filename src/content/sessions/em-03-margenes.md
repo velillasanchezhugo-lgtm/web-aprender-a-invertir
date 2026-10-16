@@ -5,6 +5,7 @@ level: basico
 track: empresas
 order: 303
 skills: [cuenta-resultados, ventaja-competitiva]
+terms: [margen-de-beneficio, ventaja-competitiva]
 goals: [entender]
 prereqs: [em-02-la-cuenta-de-resultados]
 hook: "Una cafetería y una empresa de programas informáticos ganan más o menos lo mismo al año. ¿Son igual de buen negocio?"

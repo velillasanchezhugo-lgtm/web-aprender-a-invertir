@@ -5,6 +5,7 @@ level: basico
 track: invertir-ya
 order: 106
 skills: [aportaciones-periodicas, psicologia-sesgos, interes-compuesto]
+terms: [aportaciones-periodicas, plan-de-inversion, interes-compuesto]
 goals: [jubilacion, objetivo, miedo]
 prereqs: [ya-05-tu-primera-compra]
 hook: "Ya hiciste tu primera compra. ¿Y el mes que viene? Si depende de que te acuerdes o de que «sea buen momento», probablemente no ocurra."

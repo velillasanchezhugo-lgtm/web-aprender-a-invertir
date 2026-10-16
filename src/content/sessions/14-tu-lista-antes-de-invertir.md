@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 14
 skills: [plan-inversion, comprobar-broker]
+terms: [horizonte-temporal, kid, chiringuito]
 goals: [entender, objetivo, jubilacion, miedo, ordenar]
 prereqs: [03-el-colchon-primero, 04-deudas-caras-primero, 10-el-uno-por-ciento, 11-impuestos-lo-justo, 13-detecta-un-fraude]
 hook: "Llevas 13 sesiones. ¿Podrías explicarle a un amigo qué comprobar antes de poner un euro?"

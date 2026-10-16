@@ -5,6 +5,7 @@ level: basico
 track: invertir-ya
 order: 101
 skills: [plan-inversion, objetivo-horizonte]
+terms: [horizonte-temporal, aportaciones-periodicas, fondo-de-emergencia]
 goals: [objetivo, jubilacion, ordenar, miedo]
 prereqs: [14-tu-lista-antes-de-invertir]
 hook: "Ya tienes colchón y sabes qué es un fondo. Antes de la primera compra te falta algo que no vende ningún banco: una página escrita por ti."

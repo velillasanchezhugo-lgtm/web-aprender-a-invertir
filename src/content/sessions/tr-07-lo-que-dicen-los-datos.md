@@ -5,6 +5,7 @@ level: basico
 track: trading
 order: 507
 skills: [evidencia-trading, detectar-fraude]
+terms: [copy-trading, finfluencer, sesgo-de-supervivencia, backtest]
 goals: [miedo, entender]
 prereqs: [tr-04-apalancamiento-y-cfd]
 hook: "Un perfil con miles de seguidores vende un canal de señales: «85 % de aciertos, copia mis operaciones y vive del trading en 90 días». ¿Qué dicen los datos de la gente real que lo intenta?"

@@ -5,6 +5,7 @@ level: basico
 track: productos
 order: 203
 skills: [depositos-letras, inflacion-real]
+terms: [letras-del-tesoro, deposito-a-plazo, fondo-monetario, fgd]
 goals: [ordenar, miedo, objetivo]
 prereqs: [pr-02-bonos-y-tipos]
 hook: "Tienes un dinero que necesitarás dentro de un año para la entrada de un coche. No quieres arriesgarlo, pero tampoco que se quede quieto. ¿Dónde lo pones?"

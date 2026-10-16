@@ -5,6 +5,7 @@ level: basico
 track: formas
 order: 255
 skills: [planes-pensiones, objetivo-horizonte]
+terms: [plan-de-pensiones, plan-de-empleo, rescate]
 goals: [jubilacion, objetivo]
 prereqs: [fo-01-mapa-de-formas]
 hook: "En diciembre te llegan anuncios de planes de pensiones que «desgravan». ¿Es la mejor forma de ahorrar para cuando te jubiles?"

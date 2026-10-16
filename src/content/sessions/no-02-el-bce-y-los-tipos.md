@@ -5,6 +5,7 @@ level: basico
 track: noticias
 order: 402
 skills: [tipos-interes-bce, renta-fija]
+terms: [bce, tipo-de-interes, euribor, inflacion]
 goals: [entender, jubilacion]
 prereqs: [no-01-hecho-dato-opinion]
 hook: "«El BCE sube los tipos». ¿Te va a subir la hipoteca mañana? ¿Y qué pasa con tus ahorros?"

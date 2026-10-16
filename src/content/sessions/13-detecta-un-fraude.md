@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 13
 skills: [detectar-fraude]
+terms: [chiringuito, cnmv, broker]
 goals: [miedo]
 prereqs: [12-comprueba-un-broker]
 hook: "Te escriben por WhatsApp ofreciendo ganancias «garantizadas» cada mes con criptomonedas. ¿Qué haces?"

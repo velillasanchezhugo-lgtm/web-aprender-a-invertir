@@ -5,6 +5,7 @@ level: basico
 track: trading
 order: 504
 skills: [apalancamiento-cfd, productos-complejos]
+terms: [apalancamiento, cfd, margen, proteccion-saldo-negativo]
 goals: [miedo, entender]
 prereqs: [tr-03-tipos-de-ordenes]
 hook: "Con 1.000 € te dejan «mover» 20.000 € en un índice. Suena a multiplicar tus ganancias. ¿Qué más multiplica?"

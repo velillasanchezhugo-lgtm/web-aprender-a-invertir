@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 1
 skills: [objetivo-horizonte, riesgo-volatilidad]
+terms: [especular, horizonte-temporal, volatilidad]
 goals: [entender, miedo]
 prereqs: []
 hook: "Un amigo te dice que una acción «va a pegar un pelotazo» esta semana. Si la compras, ¿estás invirtiendo?"

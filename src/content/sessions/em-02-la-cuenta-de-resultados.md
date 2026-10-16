@@ -5,6 +5,7 @@ level: basico
 track: empresas
 order: 302
 skills: [cuenta-resultados]
+terms: [beneficio-neto, resultados-trimestrales]
 goals: [entender]
 prereqs: [em-01-como-gana-dinero]
 hook: "Un titular dice «Café Brío bate su récord de ventas». ¿Eso significa que el negocio va mejor?"

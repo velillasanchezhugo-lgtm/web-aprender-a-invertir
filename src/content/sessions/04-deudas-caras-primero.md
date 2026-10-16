@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 4
 skills: [deudas-caras]
+terms: [tae, tin, interes-compuesto]
 goals: [ordenar]
 prereqs: [02-tu-numero-del-mes]
 hook: "Tienes algo ahorrado y, a la vez, debes dinero en una tarjeta que cobra intereses altísimos. ¿Inviertes o pagas?"

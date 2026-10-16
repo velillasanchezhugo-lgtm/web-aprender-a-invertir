@@ -5,6 +5,7 @@ level: basico
 track: productos
 order: 207
 skills: [inmobiliario, diversificacion]
+terms: [socimi, reit, liquidez]
 goals: [entender, objetivo]
 prereqs: [pr-01-acciones-por-dentro]
 hook: "Un anuncio dice: «Piso para inversores, alta rentabilidad». Y una app te ofrece invertir en ladrillo «desde 500 €». ¿Es lo mismo? ¿Qué te llevas en cada caso?"

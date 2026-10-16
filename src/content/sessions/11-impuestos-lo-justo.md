@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 11
 skills: [fiscalidad-espana]
+terms: [irpf, traspaso, plusvalia, base-del-ahorro]
 goals: [jubilacion, objetivo, ordenar]
 prereqs: [09-los-cuatro-productos]
 hook: "Tu fondo ha subido bastante este año, pero no lo has vendido. ¿Tienes que pagar impuestos por esa ganancia?"

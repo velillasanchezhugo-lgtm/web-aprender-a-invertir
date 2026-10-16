@@ -5,6 +5,7 @@ level: basico
 track: noticias
 order: 403
 skills: [macro-indicadores, inflacion-real]
+terms: [ipc, ipc-subyacente, pib, recesion]
 goals: [entender, jubilacion]
 prereqs: [no-01-hecho-dato-opinion]
 hook: "Un titular dice que los precios bajaron en septiembre y otro que la inflación subió. ¿Pueden ser verdad los dos a la vez?"

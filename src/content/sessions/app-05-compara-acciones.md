@@ -5,6 +5,7 @@ level: basico
 track: trade-republic
 order: 265
 skills: [comparar-productos, acciones, modelo-negocio]
+terms: [capitalizacion-bursatil, dividendo, ticker]
 goals: [entender, miedo]
 prereqs: [app-03-conoce-la-app]
 hook: "Un vídeo dice que una acción va a «explotar» y en la app la ves subir en verde. ¿Compras ya o te paras a mirar?"

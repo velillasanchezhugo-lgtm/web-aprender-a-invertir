@@ -5,6 +5,7 @@ level: basico
 track: formas
 order: 254
 skills: [gestion-delegada, fondos-etf, costes-comisiones]
+terms: [asesoramiento-independiente, mifid, test-de-idoneidad, gestion-activa]
 goals: [entender, miedo, ordenar]
 prereqs: [fo-01-mapa-de-formas]
 hook: "Vas al banco a por una gestión rápida y sales con una propuesta para invertir tus ahorros «en algo mejor que la cuenta». ¿Firmas?"

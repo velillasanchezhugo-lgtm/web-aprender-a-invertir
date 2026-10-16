@@ -5,6 +5,7 @@ level: basico
 track: trade-republic
 order: 267
 skills: [fiscalidad-espana, usar-app-broker]
+terms: [retencion, irpf, modelo-720, modelo-721]
 goals: [ordenar, miedo]
 prereqs: [app-03-conoce-la-app]
 hook: "Llega la campaña de la renta y has cobrado intereses, algún dividendo y has vendido un ETF. ¿Ya lo ha hecho todo la app o te toca a ti?"

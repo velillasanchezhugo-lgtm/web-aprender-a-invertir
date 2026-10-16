@@ -11,9 +11,9 @@ import yaml from 'js-yaml';
 
 const sources = JSON.parse(readFileSync('src/data/sources.json', 'utf8'));
 const glossary = JSON.parse(readFileSync('src/data/glossary.json', 'utf8'));
-const glossIds = new Set();
+const seenGloss = new Set();
 for (const g of glossary) {
-  if (glossIds.has(g.id)) errors.push(`glosario: id repetido «${g.id}»`); glossIds.add(g.id);
+  if (seenGloss.has(g.id)) errors.push(`glosario: id repetido «${g.id}»`); seenGloss.add(g.id);
   if (!g.short) errors.push(`glosario «${g.id}»: falta la definición corta (short)`);
   else if (g.short.length > 120) errors.push(`glosario «${g.id}»: la definición corta pasa de 120 caracteres`);
 }

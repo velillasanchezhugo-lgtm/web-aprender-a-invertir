@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 12
 skills: [comprobar-broker]
+terms: [cnmv, banco-de-espana, fogain, fgd]
 goals: [miedo, ordenar, objetivo]
 prereqs: [09-los-cuatro-productos]
 hook: "Una app de inversión tiene buenas valoraciones y anuncios por todas partes. ¿Basta eso para confiarle tus ahorros?"

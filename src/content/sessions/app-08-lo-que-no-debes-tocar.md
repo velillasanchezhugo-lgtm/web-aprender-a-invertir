@@ -5,6 +5,7 @@ level: basico
 track: trade-republic
 order: 268
 skills: [productos-complejos, apalancamiento-cfd, cripto-critico, detectar-fraude]
+terms: [cfd, apalancamiento, criptoactivo]
 goals: [miedo, ordenar]
 prereqs: [app-03-conoce-la-app]
 hook: "La app te enseña productos que «multiplican» lo que ganas y criptomonedas que suben un 20 % en un día. Y te llega un SMS urgente «de tu bróker». ¿Qué haces?"

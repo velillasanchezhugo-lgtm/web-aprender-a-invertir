@@ -5,6 +5,7 @@ level: basico
 track: noticias
 order: 401
 skills: [hecho-opinion, psicologia-sesgos]
+terms: [cnmv, bce, finfluencer]
 goals: [entender, miedo]
 prereqs: [01-invertir-no-es-apostar]
 hook: "Lees: «Los expertos advierten de que la bolsa podría caer con fuerza». ¿Ha pasado algo o solo alguien ha dicho algo?"

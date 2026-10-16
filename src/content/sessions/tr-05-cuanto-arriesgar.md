@@ -5,6 +5,7 @@ level: basico
 track: trading
 order: 505
 skills: [gestion-riesgo-trading, caidas-recuperacion]
+terms: [caida-maxima, perdida-permanente, fondo-de-emergencia]
 goals: [miedo, entender]
 prereqs: [tr-03-tipos-de-ordenes]
 hook: "Llevas tres operaciones ganadoras y te sientes imparable. ¿Y si en la próxima lo pones casi todo?"

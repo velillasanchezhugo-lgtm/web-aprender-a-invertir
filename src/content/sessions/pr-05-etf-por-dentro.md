@@ -5,6 +5,7 @@ level: basico
 track: productos
 order: 205
 skills: [fondos-etf, diversificacion]
+terms: [etf, acumulacion-distribucion, ucits, traspaso]
 goals: [entender, jubilacion, ordenar]
 prereqs: [pr-04-fondos-activos-e-indexados]
 hook: "Buscas un ETF en tu bróker y aparecen nombres como «Índice Mundial UCITS ETF (Acc)» o «Tecnología 2x Diario». ¿Qué te dice cada palabra?"

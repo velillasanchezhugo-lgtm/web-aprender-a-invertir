@@ -5,6 +5,7 @@ level: basico
 track: noticias
 order: 406
 skills: [psicologia-sesgos, caidas-recuperacion, hecho-opinion]
+terms: [indice, ibex-35, volatilidad]
 goals: [miedo, entender, jubilacion]
 prereqs: [no-01-hecho-dato-opinion]
 hook: "«Sangría en la bolsa: el Ibex se desploma 300 puntos». Suena a catástrofe. ¿Lo es para ti?"

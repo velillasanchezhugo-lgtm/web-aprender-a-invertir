@@ -5,6 +5,7 @@ level: basico
 track: noticias
 order: 405
 skills: [eventos-corporativos, acciones]
+terms: [opa, ampliacion-de-capital, split, ex-dividendo]
 goals: [entender, miedo]
 prereqs: [no-04-buenos-resultados-y-cae]
 hook: "Tu acción amanece más barata sin ninguna mala noticia. ¿Has perdido dinero?"

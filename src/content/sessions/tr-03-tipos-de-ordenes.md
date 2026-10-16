@@ -5,6 +5,7 @@ level: basico
 track: trading
 order: 503
 skills: [ordenes-mercado]
+terms: [orden-de-mercado, orden-limitada, orden-stop]
 goals: [entender, miedo]
 prereqs: [tr-01-invertir-o-hacer-trading]
 hook: "Pones un stop para vender si tu acción baja de cierto precio. Una mañana abre mucho más abajo tras malas noticias. ¿A qué precio vendes?"

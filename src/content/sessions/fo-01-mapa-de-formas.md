@@ -5,6 +5,7 @@ level: basico
 track: formas
 order: 251
 skills: [formas-invertir, objetivo-horizonte]
+terms: [fondo-indexado, roboadvisor, plan-de-pensiones, especular]
 goals: [entender, jubilacion, objetivo]
 prereqs: [09-los-cuatro-productos]
 hook: "Tu compañera invierte con una app, tu cuñado tiene un piso alquilado y tu banco te ofrece un fondo. ¿Son lo mismo? ¿Cuál es para ti?"

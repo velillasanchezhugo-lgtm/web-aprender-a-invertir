@@ -5,6 +5,7 @@ level: basico
 track: invertir-ya
 order: 103
 skills: [cartera-indexada, diversificacion, fondos-etf]
+terms: [cartera, renta-variable-global, renta-fija, liquidez]
 goals: [jubilacion, objetivo, entender]
 prereqs: [ya-02-cuanto-en-bolsa]
 hook: "Hay miles de fondos y parece que tienes que elegir entre todos. Para empezar bien bastan tres piezas, y a veces una."

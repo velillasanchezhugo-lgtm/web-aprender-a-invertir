@@ -5,6 +5,7 @@ level: cero
 track: camino-cero
 order: 5
 skills: [inflacion-real]
+terms: [inflacion, ipc, rentabilidad-real]
 goals: [entender, jubilacion, miedo]
 prereqs: [01-invertir-no-es-apostar]
 hook: "Hace unos años llenabas el carro de la compra con bastante menos dinero que hoy. Tus ahorros, en cambio, siguen siendo los mismos euros."

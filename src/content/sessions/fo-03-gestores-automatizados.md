@@ -5,6 +5,7 @@ level: basico
 track: formas
 order: 253
 skills: [gestion-delegada, costes-comisiones]
+terms: [roboadvisor, comision-de-gestion, rebalanceo, perfil-de-riesgo]
 goals: [entender, objetivo, jubilacion]
 prereqs: [fo-01-mapa-de-formas]
 hook: "Una app te promete invertir por ti: respondes unas preguntas y ella se encarga de todo. ¿Qué hace exactamente y cuánto te cuesta?"
