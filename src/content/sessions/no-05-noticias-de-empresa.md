@@ -1,49 +1,50 @@
 ---
 title: Dividendos, ampliaciones, splits y OPA
-description: Qué significan las noticias corporativas más habituales, qué pasa con el precio y con tus acciones, y cuáles exigen que hagas algo.
+description: Qué significan las noticias de empresa más habituales, qué pasa con tus acciones y cuáles te piden tomar una decisión.
 level: basico
 track: noticias
 order: 405
 skills: [eventos-corporativos, acciones]
 goals: [entender, miedo]
 prereqs: [no-04-buenos-resultados-y-cae]
-hook: "Tu acción amanece un 2,5 % más barata sin ninguna mala noticia. ¿Has perdido dinero?"
-takeaway: "Dividendos y splits reparten o trocean lo que ya tenías: no crean valor de golpe. Ampliaciones y OPA sí pueden pedirte una decisión: lee siempre el folleto en la CNMV."
+hook: "Tu acción amanece más barata sin ninguna mala noticia. ¿Has perdido dinero?"
+takeaway: "Dividendos y splits reparten o trocean lo que ya tenías: no te hacen más rico de golpe. Ampliaciones y OPA sí pueden pedirte una decisión: lee siempre lo que publica la CNMV."
 scenario:
   kind: noticia
   label: Noticia de ejemplo
-  title: "Aceites del Sur paga 0,50 € de dividendo y aprueba un split; Grupo Faro lanza una OPA sobre Conservas Atlántico"
-  body: "Aceites del Sur S.A., que cotiza a 20 €, pagará un dividendo bruto de 0,50 € por acción; la fecha ex-dividendo es el 3 de noviembre. Su junta aprobó además un desdoblamiento (split) de 4 acciones nuevas por cada antigua y un programa de recompra del 2 % de su capital. Por otro lado, Grupo Faro ha anunciado una OPA sobre el 100 % de Conservas Atlántico S.A. a 15 € por acción en efectivo; ayer, antes del anuncio, Conservas cerró a 12 €. El plazo de aceptación se conocerá cuando la CNMV autorice la oferta."
+  title: "Aceites del Sur paga dividendo y aprueba un split; Grupo Faro lanza una OPA sobre Conservas Atlántico"
+  body: "Aceites del Sur pagará un dividendo a sus accionistas y además dividirá cada acción en cuatro (un split). Por otro lado, Grupo Faro ofrece comprar todas las acciones de Conservas Atlántico a un precio más alto que el que tenían en bolsa. La CNMV todavía tiene que autorizar la oferta. Mientras, Hostelería Norte anuncia que emitirá acciones nuevas para conseguir dinero."
   note: Noticia ficticia con fines educativos.
 questions:
-  - type: estimate
+  - type: choice
     id: no05-q1
-    q: "Aceites del Sur cierra a 20,00 € el día antes de la fecha ex-dividendo. Si nada más cambia, ¿a qué precio teórico abrirá ese día, tras descontar el dividendo de 0,50 €?"
-    answer: 19.5
-    tolerance: 0.1
-    min: 18
-    max: 21
-    step: 0.1
-    unit: "€"
-    explain: "20,00 − 0,50 = 19,50 € (−2,5 %). No has perdido: ese 0,50 € te llega como dinero, del que además se descuenta la retención de IRPF. Lo que tenías vale lo mismo, repartido entre acción y efectivo."
+    q: "El día en que se descuenta el dividendo, la acción de Aceites del Sur abre más barata. ¿Has perdido dinero?"
+    options: ["Sí, has perdido esa diferencia", "No: el precio baja más o menos lo que recibes en dinero", "Sí, porque es una mala noticia para la empresa", "No, porque el dividendo siempre hace subir la acción"]
+    answer: 1
+    explain: "Parte del valor de tu acción pasa a tu cuenta como dinero. Además, ese dividendo tributa en tu declaración de la renta."
   - type: choice
     id: no05-q2
-    q: "Tienes 100 acciones de Aceites del Sur a 20 € (2.000 €). Tras el split de 4 por 1, ¿qué tienes?"
-    options: ["100 acciones a 80 €", "400 acciones a 5 €: siguen siendo 2.000 €", "400 acciones a 20 €: ahora 8.000 €", "100 acciones a 5 €"]
+    q: "Tienes 100 acciones y la empresa hace un split de 4 por 1. ¿Qué pasa?"
+    options: ["Tienes 400 acciones y tu dinero se multiplica por cuatro", "Tienes 400 acciones que valen la cuarta parte cada una: tu dinero es el mismo", "Sigues con 100 acciones que valen cuatro veces más", "Pierdes tres de cada cuatro acciones"]
     answer: 1
-    explain: "Un split solo trocea la empresa en más partes: cada acción vale una cuarta parte. Tu porcentaje y tu dinero no cambian. Un contrasplit hace lo contrario (agrupa) y tampoco cambia el valor."
+    explain: "Un split solo corta la misma tarta en más trozos. Tu parte de la empresa y tu dinero no cambian."
   - type: choice
     id: no05-q3
-    q: "La OPA ofrece 15 € y Conservas Atlántico cotizaba a 12 €. ¿Qué prima ofrece y qué tienes que hacer si tienes acciones?"
-    options: ["Un 3 %; tus acciones se venden solas", "Un 25 %; acudir es voluntario y, si quieres, das la orden de aceptación en tu entidad dentro del plazo", "Un 20 %; estás obligado a vender", "Un 25 %; tienes que vender ya en bolsa"]
+    q: "Tienes acciones de Conservas Atlántico. ¿Qué tienes que hacer con la OPA?"
+    options: ["Nada: tus acciones se venden solas", "Decidir si aceptas: es voluntario y, si quieres, das la orden en tu entidad dentro del plazo", "Estás obligado a vender", "Venderlas ya en bolsa antes de que acabe el plazo"]
     answer: 1
-    explain: "Prima = 15 / 12 − 1 = 25 %. Según la CNMV, acudir a una OPA siempre es voluntario y no acudir no te hace perder las acciones. Excepción: si la aceptan al menos el 90 % y se cumplen los requisitos, el oferente puede exigir la venta forzosa al precio de la OPA."
+    explain: "Según la CNMV, acudir a una OPA es voluntario. La excepción: si la acepta casi todo el capital y se cumplen ciertos requisitos, el comprador puede obligar al resto a vender al mismo precio."
+tips:
+  - "Lee la información de la CNMV cuando haya una OPA o una ampliación."
+  - "Revisa los mensajes de tu bróker: algunas operaciones te piden decidir en un plazo."
+  - "No compres justo antes del dividendo «para cobrarlo gratis»."
+  - "Recuerda que un split no te hace ni más rico ni más pobre."
 action:
-  title: Revisa un evento corporativo real
+  title: Revisa un evento de empresa real
   steps:
-    - "Busca en la web de la CNMV o en la de relación con inversores de una cotizada española su último dividendo, ampliación u OPA."
-    - "Anota la fecha clave (ex-dividendo, periodo de derechos o plazo de aceptación) y el importe."
-    - "Calcula el efecto en el precio: dividendo restado, prima de la OPA o valor teórico del derecho."
+    - "Busca en la web de la CNMV o de una cotizada española su último dividendo, ampliación u OPA."
+    - "Anota de qué tipo es y si los accionistas tenían que hacer algo."
+    - "Si tienes acciones, revisa en tu bróker dónde te avisaría de algo así."
   check: Sé qué significa un dividendo, un split, una ampliación o una OPA y si me exige actuar
 deeper: productos-basicos
 tool: null
@@ -58,26 +59,21 @@ sources: [cnmv-opas, cnmv-dsp, rd-1066-2007-opas, boe-lsc, cnmv-cip-oir]
 
 ## La idea
 
-Cinco noticias de empresa y lo que significan para ti:
+Cuatro noticias de empresa y lo que significan para ti:
 
-- **Dividendo**: la empresa reparte caja. En la **fecha ex-dividendo** el precio baja más o menos lo que paga. No ganas ni pierdes ese día: pasas parte del valor a efectivo.
-- **Split / contrasplit**: trocea o agrupa las acciones. **No cambia el valor** de lo que tienes.
-- **Recompra de acciones**: la empresa compra sus propias acciones. Si las amortiza, cada acción restante representa un trozo algo mayor.
-- **Ampliación de capital**: se emiten acciones nuevas. Si no acudes, tu porcentaje se **diluye**. Para compensarlo recibes **derechos de suscripción preferente**, que puedes usar o vender (cotizan al menos 15 días naturales). Si no das instrucciones, tu entidad suele venderlos por ti.
-- **OPA**: alguien ofrece comprar las acciones a un precio, normalmente con **prima**. Acudir es **voluntario**; el plazo de aceptación va de 15 a 70 días naturales.
+| Noticia | Qué es | ¿Cambia lo que vale tu parte? | ¿Tienes que hacer algo? |
+|---|---|---|---|
+| **Dividendo** | La empresa reparte dinero a sus accionistas | No: el precio baja más o menos lo que cobras | No |
+| **Split** | Divide cada acción en varias más pequeñas | No | No |
+| **Ampliación de capital** | Emite acciones nuevas para conseguir dinero | Puede, si no participas | Sí, decidir |
+| **OPA** | Alguien ofrece comprar las acciones a un precio | Suele ofrecer más que el precio de bolsa | Sí, decidir si aceptas |
 
-## Con números
+## En la práctica
 
-Ampliación ficticia: **1 acción nueva por cada 4** que tengas, a **8 €**, con la acción cotizando a **12 €**.
-
-| | Cálculo | Resultado |
-|---|---|---:|
-| Precio teórico tras la ampliación | (4 × 12 + 8) / 5 | 11,20 € |
-| Valor teórico de cada derecho | 12 − 11,20 | 0,80 € |
-| Tu porcentaje si no acudes | 4 / 5 del anterior | −20 % |
-
-Si no acudes pero vendes tus derechos, recuperas en dinero lo que pierdes en precio. Si los dejas caducar, pierdes ese valor.
+- En una **ampliación**, si no compras acciones nuevas, tu trozo de la empresa se hace más pequeño. Para compensarlo suelen darte **derechos de suscripción**, que puedes usar o vender. Si no dices nada, tu entidad suele venderlos por ti.
+- En una **OPA**, aceptar es voluntario y hay un plazo. Tu bróker te avisará, pero conviene leer el folleto autorizado por la CNMV.
+- Si tienes un fondo indexado, todo esto lo gestiona el fondo por ti.
 
 ## Error frecuente
 
-Comprar justo antes del dividendo «para cobrarlo gratis». El precio baja lo mismo y encima tributas por el dividendo.
+Comprar justo antes del dividendo «para cobrarlo gratis». El precio baja lo mismo y encima pagas impuestos por el dividendo.
