@@ -1,6 +1,6 @@
 ---
-title: El balance y la deuda peligrosa
-description: "Qué tiene la empresa, qué debe y qué es de los accionistas. Y dos ratios sencillos para saber si su deuda es manejable o un riesgo."
+title: ¿Debe demasiado?
+description: "Qué es la deuda de una empresa, cuándo es normal y cuándo es peligrosa, y tres preguntas sencillas para saber si podría aguantar un mal año."
 level: basico
 track: empresas
 order: 304
@@ -8,43 +8,43 @@ skills: [balance-deuda]
 goals: [entender, miedo]
 prereqs: [em-02-la-cuenta-de-resultados]
 hook: "Dos cadenas de restauración ganan dinero. Una puede pasar una crisis sin problemas; la otra podría tener que vender tiendas para pagar al banco. ¿Cómo lo distingues?"
-takeaway: "Deuda neta / EBITDA y EBIT / intereses te dicen en un minuto si la deuda es cómoda. Luego mira cuándo vence y si su tipo es variable."
+takeaway: Deber dinero es normal; deber más de lo que el negocio puede devolver con calma es peligroso. Pregunta cuánto debe, cuándo tiene que pagarlo y qué pasa si suben los tipos.
 scenario:
   kind: empresa
   label: Empresas de ejemplo
   title: Café Brío S.A. frente a Bocados Rápidos S.A.
-  body: "Café Brío, 31/12/2025: activo total 150 M€ (incluye 10 M€ de caja). Pasivo 90 M€: 40 M€ de deuda bancaria (vence en 2028, la mitad a tipo variable), 30 M€ de proveedores y 20 M€ de otros pasivos. EBITDA 30 M€, EBIT 18 M€, intereses 2 M€. Bocados Rápidos (otra cadena): deuda neta 100 M€, EBITDA 20 M€, EBIT 8 M€, intereses 6 M€; toda su deuda es a tipo variable y el 70 % vence en 2027."
+  body: "Café Brío tiene un préstamo con el banco, pero pequeño comparado con lo que gana: podría devolverlo en poco tiempo, y no vence hasta dentro de varios años. Bocados Rápidos, otra cadena, debe muchísimo: necesitaría muchos años de ganancias para devolverlo, casi todo lo que gana se le va en intereses y tiene que renovar la mayor parte de sus préstamos el año que viene, todos a tipo variable."
   note: Ejemplo ficticio con fines educativos.
 questions:
-  - type: estimate
-    id: em04-q1
-    q: "¿Cuál es el patrimonio neto de Café Brío, en millones de euros?"
-    answer: 60
-    tolerance: 0
-    min: 0
-    max: 200
-    step: 5
-    unit: "M€"
-    explain: "Activo = pasivo + patrimonio neto. 150 − 90 = 60 M€: lo que pertenece a los accionistas según la contabilidad."
   - type: choice
     id: em04-q2
-    q: "¿Cuál es la deuda neta / EBITDA de cada empresa?"
-    options: ["Café Brío 1,3 veces; Bocados 5 veces", "Café Brío 1 vez; Bocados 5 veces", "Café Brío 3 veces; Bocados 0,2 veces", "Las dos, 1 vez"]
+    q: "¿Qué empresa tiene una deuda más peligrosa?"
+    options: ["Café Brío, porque tiene un préstamo", "Bocados Rápidos: debe mucho para lo que gana, los intereses se comen casi todo y vence pronto", "Ninguna: si ganan dinero, la deuda no importa", "Las dos igual, porque las dos deben dinero"]
     answer: 1
-    explain: "Café Brío: deuda neta = 40 − 10 de caja = 30; 30 / 30 = 1 vez. Bocados: 100 / 20 = 5 veces. Restar la caja es lo que convierte la deuda en deuda neta."
+    explain: "Lo que importa no es tener deuda, sino si el negocio puede pagarla con calma. Bocados va justa ya hoy: cualquier tropiezo la pone en apuros."
   - type: choice
     id: em04-q3
-    q: "Si los tipos de interés suben, ¿qué empresa sufre más y por qué?"
-    options: ["Café Brío, porque tiene más tiendas", "Bocados Rápidos: cubre sus intereses solo 1,3 veces (8/6), toda su deuda es variable y casi toda vence pronto", "Ninguna, la deuda no depende de los tipos", "Las dos igual"]
+    q: "Si los tipos de interés suben, ¿qué empresa sufre más?"
+    options: ["Café Brío, porque tiene más tiendas", "Bocados Rápidos, porque su deuda es variable y tiene que renovarla pronto, así que pagará más intereses", "Ninguna, la deuda no depende de los tipos", "Las dos igual"]
     answer: 1
-    explain: "Café Brío cubre sus intereses 9 veces (18/2). Bocados va justa ya hoy: si el tipo sube o el banco renueva en 2027 en peores condiciones, los intereses pueden comerse todo su beneficio operativo."
+    explain: "Con deuda a tipo variable, cuando suben los tipos sube la cuota. Y si hay que renovar préstamos en mal momento, el banco puede poner peores condiciones."
+  - type: truefalse
+    id: em04-q4
+    q: "Una empresa con algo de deuda que vence dentro de muchos años y que gana de sobra para pagar sus intereses puede ser perfectamente sana."
+    answer: true
+    explain: "Muchas buenas empresas usan préstamos para crecer. La deuda se vuelve un problema cuando es grande para lo que gana o cuando vence de golpe en mal momento."
+tips:
+  - "Pregunta siempre si la empresa podría devolver su deuda en pocos años con lo que gana."
+  - "Desconfía si casi todo lo que gana se le va en pagar intereses."
+  - "Mira cuándo vence la deuda: renovar mucho de golpe en un mal año es arriesgado."
+  - "Recuerda que la base de la cartera, para la mayoría, es un fondo indexado diversificado; así un tropiezo de una empresa endeudada no te hunde."
 action:
-  title: Mide la deuda de una empresa real
+  title: Mira la deuda de una empresa real
   steps:
-    - "En el balance de la empresa que estás siguiendo, suma la deuda financiera (deudas con entidades de crédito, bonos u obligaciones, a corto y largo plazo) y resta el efectivo."
-    - "Divide esa deuda neta entre el EBITDA (muchas empresas lo publican; si no, resultado de explotación + amortizaciones)."
-    - "Busca en la memoria o en el informe de gestión la tabla de vencimientos de la deuda y anota cuánto vence en los próximos dos años."
-  check: Sé si la deuda de una empresa real es cómoda o preocupante
+    - "En la presentación de resultados de una cotizada que conozcas, busca «deuda» o «deuda neta» (la deuda menos el dinero que tiene en caja)."
+    - "Mira si sube o baja respecto al año anterior y si la empresa dice cuándo vence."
+    - "Escribe en una frase si te parece una deuda cómoda o preocupante y por qué."
+  check: Sé decir con palabras si la deuda de una empresa real es cómoda o preocupante
 deeper: estados-financieros
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -58,31 +58,20 @@ sources: [graham-intelligent, cnmv-ifa]
 
 ## La idea
 
-El **balance** es una foto en un día concreto:
+Las empresas, como las familias, piden préstamos. No es malo: sirve para abrir tiendas o comprar máquinas. El problema llega cuando **debe más de lo que el negocio puede devolver con calma**.
 
-- **Activo**: lo que la empresa tiene (locales, máquinas, existencias, caja).
-- **Pasivo**: lo que debe (bancos, bonos, proveedores).
-- **Patrimonio neto** = activo − pasivo. Lo que sería de los accionistas.
+Tres preguntas para saberlo:
 
-Deber dinero no es malo; deber **más de lo que el negocio puede pagar** sí. Dos ratios rápidos:
+- **¿Cuánto debe comparado con lo que gana?** Si podría devolverlo en pocos años, es cómodo. Si necesitaría muchísimos, es frágil.
+- **¿Le cuesta pagar los intereses?** Si se le va casi todo lo que gana en intereses, cualquier tropiezo duele.
+- **¿Cuándo vence y a qué tipo?** Si tiene que renovar mucho de golpe, o su deuda es variable y suben los tipos, pagará más.
 
-1. **Deuda neta / EBITDA** (deuda financiera − caja, entre EBITDA): cuántos años de resultado haría falta para pagarla. Por debajo de 2 suele ser cómodo; por encima de 4 merece atención (depende del sector).
-2. **Cobertura de intereses** (EBIT / intereses): cuántas veces paga sus intereses con lo que gana. Por debajo de 3, poco margen de error.
+## En la práctica
 
-Y dos preguntas: **¿cuándo vence?** (refinanciar en mal momento es caro) y **¿a qué tipo?** (si es variable, una subida de tipos encarece la deuda).
+Es como dos vecinos con hipoteca: uno debe poco para lo que cobra y tiene años por delante; el otro debe mucho, la cuota se lleva casi todo su sueldo y su préstamo se revisa el año que viene. Si llega un mal año, sabes quién lo pasa peor.
 
-## Con números
-
-| | Café Brío | Bocados Rápidos |
-|---|---:|---:|
-| Deuda neta | 40 − 10 = 30 M€ | 100 M€ |
-| Deuda neta / EBITDA | 30/30 = **1 vez** | 100/20 = **5 veces** |
-| EBIT / intereses | 18/2 = **9 veces** | 8/6 = **1,3 veces** |
-| Vencimientos | 2028 | 70 % en 2027 |
-| Tipo | 50 % variable | 100 % variable |
-
-Mismo sector, riesgo muy distinto.
+Con Café Brío y Bocados Rápidos pasa igual: mismo sector, riesgo muy distinto. Las empresas suelen explicar su deuda en la presentación de resultados.
 
 ## Error frecuente
 
-Olvidar los alquileres. En las cuentas consolidadas con normas internacionales (NIIF 16), los alquileres largos aparecen como «pasivos por arrendamiento»; comprueba si la deuda que te dan los incluye o no.
+Mirar solo si la empresa gana dinero. Una empresa con beneficios pero ahogada en deuda puede acabar mal en una crisis.

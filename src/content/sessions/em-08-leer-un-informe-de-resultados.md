@@ -1,49 +1,50 @@
 ---
-title: Un informe de resultados en 5 minutos
-description: "Dónde encontrar los resultados de una cotizada (su web y la CNMV) y qué mirar primero: ventas, márgenes, caja, deuda, previsiones y el «beneficio ajustado»."
+title: Dónde encontrar la información de una empresa
+description: "Dónde publica sus cuentas una empresa cotizada (su web de inversores y la CNMV), qué mirar primero y por qué desconfiar de las cifras «ajustadas»."
 level: basico
 track: empresas
 order: 308
 skills: [informacion-empresas, resultados-expectativas, cuenta-resultados]
 goals: [entender, ordenar]
 prereqs: [em-07-caro-o-barato]
-hook: "Café Brío presenta resultados y el titular de su nota de prensa dice «récord de EBITDA ajustado». ¿Es una buena noticia?"
-takeaway: "Lee primero las cifras oficiales, luego las «ajustadas», y pregunta siempre qué se ha quitado y por qué."
+hook: "Café Brío presenta resultados y el titular de su nota de prensa dice «beneficio ajustado récord». ¿Es una buena noticia?"
+takeaway: "La información oficial está en la web de inversores de la empresa y en la CNMV. Lee primero las cifras oficiales y pregunta siempre qué se ha quitado en las «ajustadas»."
 scenario:
   kind: empresa
   label: Informe de ejemplo
-  title: "Café Brío S.A., resultados del primer semestre de 2026"
-  body: "Ventas: 106 M€ (1S 2025: 96 M€); ventas en tiendas comparables (abiertas más de un año): +3 %. EBITDA: 14 M€ (1S 2025: 14,4 M€). «EBITDA ajustado récord»: 17 M€, excluyendo 3 M€ de costes de apertura y reestructuración (es el tercer semestre seguido con ese ajuste). La empresa alarga la vida útil contable de sus cafeteras de 5 a 8 años, lo que reduce la amortización en 2 M€. Flujo de caja libre: 1 M€. Deuda neta: 38 M€ (diciembre de 2025: 30 M€). Mantiene su previsión de ventas para 2026 (215-220 M€) y rebaja la de margen EBITDA ajustado del 16-17 % al 15-16 %."
+  title: "Café Brío S.A., resultados del primer semestre"
+  body: "Café Brío vende más que hace un año, sobre todo porque ha abierto tiendas nuevas; en las de siempre, solo un poco más. Con las cifras oficiales gana algo menos que el año pasado. Pero el titular presume de un «beneficio ajustado récord», que deja fuera unos gastos que llama extraordinarios y que ya excluyó también en los dos semestres anteriores. Además, ha entrado poco dinero en caja, la deuda ha subido y la empresa rebaja lo que espera ganar este año."
   note: Ejemplo ficticio con fines educativos.
 questions:
-  - type: estimate
-    id: em08-q1
-    q: "¿Cuál es el margen EBITDA del semestre con la cifra oficial (no ajustada)?"
-    answer: 13.2
-    tolerance: 0.5
-    min: 0
-    max: 30
-    step: 0.1
-    unit: "%"
-    explain: "14 / 106 = 13,2 %. Un año antes fue 14,4 / 96 = 15 %. Con la cifra oficial, el margen baja; con la ajustada (17/106 = 16 %) parece que sube."
   - type: truefalse
     id: em08-q2
-    q: "Si una empresa excluye los mismos «costes extraordinarios» semestre tras semestre, lo prudente es tratarlos como costes normales del negocio."
+    q: "Si una empresa excluye los mismos «gastos extraordinarios» semestre tras semestre, lo prudente es tratarlos como gastos normales del negocio."
     answer: true
-    explain: "Lo extraordinario no se repite cada seis meses. Las directrices de ESMA piden a las cotizadas definir y conciliar estas medidas alternativas con las cifras oficiales, justo para que puedas comprobar qué se ha quitado."
+    explain: "Lo extraordinario no se repite cada seis meses. Las normas europeas piden a las cotizadas explicar cómo pasan de sus cifras ajustadas a las oficiales, justo para que puedas comprobarlo."
   - type: choice
     id: em08-q3
     q: "Con todo el informe, ¿qué lectura es más completa?"
-    options: ["Récord de EBITDA ajustado: va mejor que nunca", "Vende más, sobre todo por tiendas nuevas; el margen oficial baja, la caja libre casi desaparece, la deuda sube, rebaja su previsión de margen y un cambio contable mejora el beneficio", "Va fatal porque ha subido la deuda", "No se puede decir nada sin el precio de la acción"]
+    options: ["Beneficio ajustado récord: va mejor que nunca", "Vende más, pero sobre todo por tiendas nuevas; con cifras oficiales gana menos, entra poca caja, sube la deuda y rebaja previsiones", "Va fatal porque ha subido la deuda", "No se puede decir nada sin mirar el gráfico de la acción"]
     answer: 1
-    explain: "En 5 minutos: ventas (+10,4 %, solo +3 % en tiendas comparables), margen (baja), caja (1 M€), deuda (+8 M€), previsiones (rebaja) y contabilidad (amortiza más despacio). No es un desastre, pero no es un récord."
+    explain: "No es un desastre, pero tampoco un récord. El titular destaca la cifra que mejor queda; tu trabajo es leer el resto."
+  - type: choice
+    id: em08-q4
+    q: "Quieres ver las cuentas oficiales de una cotizada española. ¿Dónde es más fiable buscar?"
+    options: ["En un foro de bolsa", "En la web de relación con inversores de la empresa y en la web de la CNMV", "En un vídeo de un influencer", "En un anuncio de un bróker"]
+    answer: 1
+    explain: "La empresa publica sus resultados en su web de inversores y, como información regulada, en la CNMV. Foros y redes pueden servir de pista, pero no son la fuente."
+tips:
+  - "Busca siempre la información en la fuente: la web de inversores de la empresa y la CNMV."
+  - "Lee primero las cifras oficiales y después las «ajustadas»."
+  - "Desconfía si la empresa quita los mismos «gastos extraordinarios» año tras año."
+  - "Recuerda que seguir empresas es opcional: para la mayoría, la base de la cartera es un fondo indexado diversificado y las acciones sueltas, una parte pequeña."
 action:
   title: Encuentra un informe de resultados real
   steps:
-    - "Entra en la web de inversores de una cotizada española que conozcas y descarga su última presentación o nota de resultados."
-    - "Busca el mismo informe en la CNMV: Consultas a registros oficiales → Entidades emisoras → Información financiera intermedia, por el nombre de la empresa."
-    - "Anota las seis cosas del semáforo: ventas, margen, caja, deuda, previsiones y si destacan alguna cifra «ajustada»."
-  check: He encontrado un informe de resultados en la CNMV y lo he revisado con el semáforo de seis puntos
+    - "Entra en la web de una cotizada española que conozcas y busca la sección «Inversores» o «Accionistas»; descarga su última presentación de resultados."
+    - "Busca la misma empresa en la web de la CNMV (consultas a registros oficiales, entidades emisoras) y localiza su último informe financiero."
+    - "Anota con palabras: ¿vende más?, ¿gana más?, ¿le entra dinero?, ¿debe más?, ¿qué espera para este año?"
+  check: He encontrado el informe de resultados de una empresa real en su web y en la CNMV
 deeper: estados-financieros
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -57,29 +58,23 @@ sources: [cnmv-ifi, cnmv-ifa, lmv-informes-financieros, esma-apm]
 
 ## La idea
 
-**Dónde están los resultados**:
+Las empresas que cotizan en bolsa están obligadas a publicar sus cuentas. Las encuentras en dos sitios:
 
-- En la **web de relación con inversores** de la empresa: nota de prensa, presentación y, a veces, vídeo.
-- En la **CNMV**, como información regulada: las cotizadas españolas publican un **informe financiero anual** auditado (como tarde, cuatro meses después del cierre) y uno **semestral** (como tarde, tres meses después del semestre), según la Ley del Mercado de Valores.
+- **Su web de relación con inversores** (sección «Inversores» o «Accionistas»): nota de prensa, presentación con gráficos y, a veces, un vídeo.
+- **La CNMV**, el supervisor de la bolsa en España: ahí está la información oficial, como el informe anual revisado por auditores y el informe de cada semestre.
 
-**Qué mirar en 5 minutos**, en este orden:
+Qué mirar primero, en este orden:
 
-1. **Ventas**: ¿cuánto crecen? ¿por tiendas o clientes nuevos o porque los de siempre compran más?
-2. **Márgenes**: con las cifras oficiales, frente al mismo periodo del año anterior.
-3. **Caja**: flujo de caja libre.
-4. **Deuda**: deuda neta, y si sube.
-5. **Previsiones** (*guidance*): ¿las mantiene, sube o baja? Moverán la cotización más que el pasado.
-6. **Letra pequeña**: cambios contables y cifras **«ajustadas»**. Son medidas alternativas de rendimiento: útiles, pero las elige la empresa.
+1. **Ventas**: ¿vende más? ¿por qué?
+2. **Beneficio**: con las cifras oficiales, frente al año anterior.
+3. **Caja**: ¿le entra dinero de verdad?
+4. **Deuda**: ¿sube o baja?
+5. **Previsiones**: ¿mantiene, sube o rebaja lo que espera? Suele mover más la acción que el pasado.
 
-## Con números
+## En la práctica
 
-| Café Brío, 1S | 2025 | 2026 | |
-|---|---:|---:|---|
-| Ventas | 96 | 106 | +10,4 % |
-| EBITDA oficial | 14,4 | 14 | margen 15 % → **13,2 %** |
-| EBITDA «ajustado» | | 17 | margen 16 % |
-| Flujo de caja libre | | 1 | |
+Muchas notas de prensa destacan cifras **«ajustadas»**: resultados a los que la empresa quita algunos gastos. Pueden ser útiles, pero las elige ella. Pregunta siempre qué se ha quitado y si se repite cada año.
 
-La deuda neta pasa de 30 M€ en diciembre a 38 M€ en junio.
+## Error frecuente
 
-El titular habla de la fila que mejor queda. Tu trabajo es leer las demás.
+Quedarse con el titular. La nota de prensa enseña la cifra que mejor queda.

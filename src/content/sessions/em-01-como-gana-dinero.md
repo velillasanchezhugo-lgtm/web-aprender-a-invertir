@@ -1,6 +1,6 @@
 ---
 title: Cómo gana dinero una empresa
-description: "Las cuatro preguntas que explican cualquier negocio: quién paga, qué compra, cuánto cuesta dárselo y si vuelve a pagar."
+description: "Cuatro preguntas sencillas para entender cualquier negocio: quién paga, qué compra, qué le cuesta a la empresa dárselo y si el cliente vuelve."
 level: basico
 track: empresas
 order: 301
@@ -13,36 +13,36 @@ scenario:
   kind: empresa
   label: Empresa de ejemplo
   title: Café Brío S.A., cadena de cafeterías
-  body: "400 cafeterías en España. Ventas de 2025: 200 millones de euros. Unos 50 millones de tickets al año, con un ticket medio de 4 €. El café, la leche, la comida y los envases le cuestan 64 millones; el personal, 70; los alquileres y otros gastos, 36. El 60 % de las compras se hacen con su app de fidelización, y la mayoría de esos clientes repite varias veces por semana."
+  body: "Café Brío tiene cientos de cafeterías en España, cerca de oficinas y estaciones. Vende café y desayunos rápidos a buen precio. Sus mayores gastos son el café y la comida, el personal y los alquileres de los locales. Más de la mitad de las compras se pagan con su app de puntos, y muchos de esos clientes vuelven varias veces por semana."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: em01-q1
-    q: "En Café Brío, ¿qué dato responde mejor a la pregunta «¿se repite?»?"
-    options: ["Que tiene 400 cafeterías", "Que el 60 % de las compras se hacen con la app y esos clientes vuelven varias veces por semana", "Que las ventas son 200 millones", "Que el café le cuesta poco"]
+    q: "En Café Brío, ¿qué dato responde mejor a la pregunta «¿el cliente vuelve?»?"
+    options: ["Que tiene cientos de cafeterías", "Que muchos clientes de la app compran varias veces por semana", "Que vende mucho dinero al año", "Que sus locales están en buenas calles"]
     answer: 1
-    explain: "Las tiendas y las ventas dicen el tamaño, no la repetición. La recurrencia se ve en clientes que vuelven sin que haya que convencerlos otra vez: eso hace los ingresos más previsibles."
-  - type: estimate
-    id: em01-q2
-    q: "Con 400 cafeterías, 50 millones de tickets al año y un ticket medio de 4 €, ¿cuánto vende de media cada cafetería al año (en miles de euros)?"
-    answer: 500
-    tolerance: 25
-    min: 0
-    max: 2000
-    step: 25
-    unit: "mil €"
-    explain: "50 millones × 4 € = 200 millones; entre 400 tiendas = 500.000 € por tienda, unos 1.370 € al día. Bajar al nivel de una tienda te ayuda a ver si las cifras tienen sentido."
+    explain: "El número de tiendas o de ventas habla del tamaño, no de la repetición. Lo que hace previsibles los ingresos son clientes que vuelven sin tener que convencerlos otra vez."
   - type: truefalse
     id: em01-q3
     q: "Si conoces bien los productos de una empresa porque eres cliente, ya sabes lo suficiente para invertir en ella."
     answer: false
-    explain: "Ser cliente es un buen punto de partida (lo defendía Peter Lynch), pero falta saber cuánto le cuesta servirte, si gana dinero con ello, cuánto debe y qué precio pagas por la acción."
+    explain: "Ser cliente es un buen punto de partida, pero falta saber si gana dinero con lo que vende, si debe mucho y si el precio de la acción es razonable."
+  - type: choice
+    id: em01-q4
+    q: "¿Qué negocio tiene ingresos que se repiten más?"
+    options: ["Una empresa que vende cocinas a medida", "Una empresa que cobra una suscripción mensual que casi nadie cancela", "Una constructora que vende pisos", "Una empresa que organiza un gran evento cada cuatro años"]
+    answer: 1
+    explain: "Una cocina o un piso se compran una vez cada muchos años: hay que buscar cliente nuevo cada vez. Una suscripción que la gente mantiene trae dinero cada mes."
+tips:
+  - "Empieza por empresas cuyo negocio entiendas y puedas explicar a un amigo."
+  - "Desconfía de «me encanta el producto» como único motivo para comprar una acción."
+  - "Recuerda que, para la mayoría, la base de la cartera es un fondo indexado diversificado; las acciones sueltas son, como mucho, una parte pequeña."
 action:
   title: Explica un negocio en dos frases
   steps:
     - "Elige una empresa cotizada cuyo producto uses (una cadena, una app, una eléctrica)."
-    - "Responde por escrito: ¿quién paga?, ¿qué compra?, ¿cuánto le cuesta a la empresa dárselo?, ¿vuelve a pagar?"
-    - "Resume tus respuestas en dos frases. Si alguna pregunta no la sabes, apúntala: es lo primero que buscarás en sus cuentas."
+    - "Responde por escrito: ¿quién paga?, ¿qué compra?, ¿qué le cuesta a la empresa dárselo?, ¿vuelve a pagar?"
+    - "Resúmelo en dos frases. Lo que no sepas, apúntalo: es lo primero que buscarás."
   check: Sé explicar en dos frases cómo gana dinero una empresa que conozco
 deeper: analisis-fundamental-valoracion
 tool: null
@@ -57,28 +57,26 @@ sources: [lynch-one-up, graham-intelligent, cnmv-guia-bolsa]
 
 ## La idea
 
-Una [acción](/es/glosario/#accion) es un trozo de un negocio. Antes de mirar el precio, entiende el negocio con **cuatro preguntas**:
+Una [acción](/es/glosario/#accion) es un trocito de un negocio. Antes de mirar su precio, entiende el negocio con **cuatro preguntas**:
 
-1. **¿Quién paga?** El cliente final, otra empresa, el Estado…
-2. **¿Qué compra?** El producto o servicio, y por qué lo elige a él y no a otro.
-3. **¿Cuánto le cuesta a la empresa dárselo?** Materias primas, personal, locales, tecnología.
+1. **¿Quién paga?** Personas, otras empresas, el Estado…
+2. **¿Qué compra?** Y por qué lo elige a ella y no a otra.
+3. **¿Qué le cuesta a la empresa dárselo?** Materiales, personal, locales, tecnología.
 4. **¿Se repite?** ¿El cliente vuelve solo (café diario, suscripción) o hay que venderle de nuevo cada vez (una cocina, un coche)?
 
-Los ingresos que **se repiten** son más previsibles. No es bueno ni malo por sí solo, pero cambia mucho el riesgo.
+Los ingresos que se repiten son más previsibles. No es bueno ni malo por sí solo, pero cambia mucho el riesgo.
 
-## Con números
+## En la práctica
 
-Café Brío, en un año:
+Café Brío, en cuatro respuestas:
 
-| Pregunta | Respuesta |
-|---|---|
-| ¿Quién paga? | Personas que compran café y desayuno |
-| ¿Qué compra? | Café rápido cerca de casa o del trabajo, a 4 € de media |
-| ¿Cuánto le cuesta? | 64 M€ de producto + 70 M€ de personal + 36 M€ de alquileres y otros = 170 M€ |
-| ¿Se repite? | Sí: el 60 % de las compras viene de clientes de la app que vuelven cada semana |
+- **Quién paga**: gente que quiere un café rápido.
+- **Qué compra**: comodidad, cerca de casa o del trabajo, a buen precio.
+- **Qué le cuesta**: café y comida, sueldos y alquileres.
+- **Se repite**: sí, muchos clientes vuelven cada semana gracias a la app.
 
-De los 200 M€ que vende, le quedan **30 M€** antes de amortizaciones, intereses e impuestos. Lo verás paso a paso en la siguiente sesión.
+Si puedes contarlo así de claro, vas bien. Si te atascas en alguna pregunta, ahí está lo que aún no sabes.
 
 ## Error frecuente
 
-Confundir «me gusta el producto» con «es un buen negocio». Un producto excelente puede venderse con pérdidas.
+Confundir «me gusta el producto» con «es un buen negocio». Un producto excelente puede venderse perdiendo dinero.

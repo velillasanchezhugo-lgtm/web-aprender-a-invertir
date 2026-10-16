@@ -1,6 +1,6 @@
 ---
 title: ¿Caro o barato?
-description: "PER, rentabilidad por beneficio, rentabilidad por flujo de caja libre y valor empresa: qué expectativas paga el precio y por qué un gran negocio puede ser mala inversión."
+description: "Por qué el precio de una acción ya incluye lo que el mercado espera, y cómo una empresa excelente puede ser una mala inversión si pagas demasiado por ella."
 level: basico
 track: empresas
 order: 307
@@ -8,43 +8,43 @@ skills: [valoracion-basica]
 goals: [entender, miedo]
 prereqs: [em-05-caja-no-beneficio]
 hook: "Nubia Software es mejor negocio que Café Brío. ¿Significa eso que su acción es mejor compra?"
-takeaway: El precio ya incluye lo que el mercado espera. Un gran negocio comprado demasiado caro puede ser una mala inversión.
+takeaway: El precio ya incluye lo que el mercado espera. Pagar demasiado por algo bueno puede salir tan mal como comprar algo malo.
 scenario:
   kind: empresa
   label: Empresas de ejemplo
   title: Café Brío S.A. y Nubia Software S.A. en bolsa
-  body: "Café Brío: 50 millones de acciones a 4,80 €. Beneficio neto 12 M€, flujo de caja libre 12 M€, deuda neta 30 M€, EBITDA 30 M€. Nubia Software: 20 millones de acciones a 45 €. Beneficio neto 15 M€, flujo de caja libre 18 M€, caja neta 20 M€ (sin deuda). Sus ventas crecen un 25 % al año."
+  body: "Todo el mundo sabe que Nubia es un negocio excelente, y su acción está carísima: el precio da por hecho que seguirá creciendo muchísimo durante años. Café Brío es un negocio más normal y su acción tiene un precio más moderado. Un año, Nubia sigue creciendo, pero menos de lo que se esperaba, y su acción cae con fuerza aunque la empresa va bien."
   note: Ejemplo ficticio con fines educativos.
 questions:
-  - type: estimate
+  - type: choice
     id: em07-q1
-    q: "¿Cuál es el PER de Café Brío (precio / beneficio por acción)?"
-    answer: 20
-    tolerance: 1
-    min: 0
-    max: 80
-    step: 1
-    unit: "veces"
-    explain: "Beneficio por acción = 12 M€ / 50 M acciones = 0,24 €. PER = 4,80 / 0,24 = 20. Es lo mismo que capitalización / beneficio: 240 / 12 = 20."
+    q: "¿Por qué cae la acción de Nubia si la empresa sigue creciendo?"
+    options: ["Porque la bolsa es irracional y no tiene explicación", "Porque el precio daba por hecho un crecimiento mayor; al no llegar, los inversores pagan menos por ella", "Porque la empresa ha empezado a perder dinero", "Porque ha bajado su producto"]
+    answer: 1
+    explain: "El precio refleja expectativas. Si la realidad es buena pero peor de lo esperado, el precio se ajusta a la baja. Así una buena empresa se convierte en una mala inversión."
   - type: choice
     id: em07-q2
-    q: "Nubia cotiza a un PER de 60 (900/15). ¿Qué rentabilidad por beneficio te ofrece hoy?"
-    options: ["60 %", "Un 6 %", "Alrededor del 1,7 %", "Un 25 %, como su crecimiento"]
-    answer: 2
-    explain: "Es la inversa del PER: 1/60 ≈ 1,7 %. Café Brío ofrece 1/20 = 5 %. Quien compra Nubia acepta poco hoy a cambio de que el beneficio crezca mucho durante años."
-  - type: choice
-    id: em07-q3
-    q: "El beneficio de Nubia crece un 10 % el año que viene (de 15 a 16,5 M€), pero el mercado esperaba más y su PER baja de 60 a 30. ¿Qué pasa con su valor en bolsa?"
-    options: ["Sube un 10 %, como el beneficio", "Cae alrededor de un 45 %, de 900 a 495 M€", "No cambia", "Se duplica"]
+    q: "Tu cuñado te dice: «Compra Nubia, es la mejor empresa del sector». ¿Qué pregunta te falta hacer?"
+    options: ["¿Cuántos empleados tiene?", "¿Qué tiene que salir bien para que el precio actual tenga sentido, y qué pasa si no sale?", "¿De qué color es su logotipo?", "Ninguna: si es la mejor, hay que comprar"]
     answer: 1
-    explain: "16,5 × 30 = 495 M€, un 45 % menos que 900. La empresa va bien, pero no tan bien como el precio daba por hecho. Así una buena empresa se convierte en mala inversión."
+    explain: "Que sea la mejor ya lo sabe todo el mundo y suele estar en el precio. La pregunta útil es cuánto optimismo estás pagando."
+  - type: truefalse
+    id: em07-q4
+    q: "Una empresa normal comprada a un precio razonable puede salir mejor inversión que una excelente comprada carísima."
+    answer: true
+    explain: "Si pagas poco y el negocio va algo mejor de lo esperado, ganas. Si pagas mucho, necesitas que todo salga perfecto. Benjamin Graham lo llamaba margen de seguridad."
+tips:
+  - "Pregunta siempre qué tiene que salir bien para que el precio de hoy tenga sentido."
+  - "Desconfía de comprar algo solo porque «todo el mundo sabe que es buena empresa»."
+  - "Deja margen para equivocarte: no pagues un precio que solo funciona si todo sale perfecto."
+  - "Recuerda que con un fondo indexado diversificado no tienes que acertar con el precio de cada empresa; por eso, para la mayoría, es la base y las acciones sueltas, una parte pequeña."
 action:
-  title: Mira cuánto pagas por una empresa real
+  title: Pregúntate qué estás pagando
   steps:
-    - "Busca la capitalización bursátil de la empresa que estás siguiendo (precio × número de acciones; aparece en su web de inversores o en cualquier página de cotizaciones)."
-    - "Divide la capitalización entre el beneficio neto del último año (PER) y entre su flujo de caja libre."
-    - "Escribe qué crecimiento crees que espera el mercado: con PER por encima de 30, pregúntate qué tendría que salir bien."
-  check: Sé calcular el PER y la rentabilidad por flujo de caja libre de una empresa real
+    - "Elige una empresa muy popular cuya acción haya subido mucho."
+    - "Escribe qué crees que espera el mercado de ella en los próximos años (crecer mucho, mantenerse, recuperarse…)."
+    - "Escribe qué pasaría con la acción si eso sale solo a medias."
+  check: Sé explicar por qué una buena empresa puede ser una mala inversión si se paga demasiado
 deeper: analisis-fundamental-valoracion
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -58,23 +58,21 @@ sources: [graham-intelligent, brk-letters]
 
 ## La idea
 
-Precio y valor no son lo mismo. Cuatro medidas sencillas:
+**Buena empresa** y **buena compra** no son lo mismo. Lo primero depende del negocio; lo segundo, también del **precio**.
 
-- **Capitalización** = precio × número de acciones. Lo que cuesta comprar todas las acciones.
-- **Valor empresa (VE)** = capitalización + deuda neta. Lo que costaría el negocio entero, deudas incluidas. Sirve para comparar empresas con distinto endeudamiento.
-- **[PER](/es/glosario/#per)** = capitalización / beneficio neto. Cuántos años de beneficio actual pagas.
-- **Rentabilidad por beneficio** (1/PER) y **por flujo de caja libre** (FCL / capitalización): cuánto «rinde» tu precio hoy, comparable con lo que te paga un depósito o un bono.
+El precio de una acción ya incluye lo que los inversores esperan de ella:
 
-Un PER alto no es «caro» por sí solo: significa que el mercado **espera mucho crecimiento**. El riesgo es que no llegue.
+- Si esperan muchísimo, la acción está cara y **todo tiene que salir perfecto**.
+- Si esperan poco, está barata y basta con que salga **algo mejor de lo previsto**.
 
-## Con números
+Es como un piso: puede ser precioso, pero si pagas el doble de lo que vale, has hecho un mal negocio aunque el piso sea bueno.
 
-| | Café Brío | Nubia Software |
-|---|---:|---:|
-| Capitalización | 50 M × 4,80 € = 240 M€ | 20 M × 45 € = 900 M€ |
-| Valor empresa | 240 + 30 = 270 M€ | 900 − 20 = 880 M€ |
-| PER | 240/12 = **20** | 900/15 = **60** |
-| Rentabilidad por beneficio | **5 %** | **1,7 %** |
-| Rentabilidad por FCL | 12/240 = **5 %** | 18/900 = **2 %** |
+## En la práctica
 
-Graham lo resumía con el **margen de seguridad**: pagar bastante menos de lo que crees que vale, por si te equivocas.
+Verás en las noticias una cifra llamada **PER**: compara el precio de la acción con lo que gana la empresa. No hace falta calcularla. Basta con saber que un PER muy alto significa que el mercado espera mucho crecimiento, y que si ese crecimiento no llega la acción puede caer aunque la empresa vaya bien.
+
+Benjamin Graham lo resumía en el **margen de seguridad**: pagar bastante menos de lo que crees que vale algo, por si te equivocas.
+
+## Error frecuente
+
+Pensar que «es la mejor empresa» basta para comprar. Pagar demasiado por algo bueno también hace perder dinero.

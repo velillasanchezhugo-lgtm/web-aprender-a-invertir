@@ -1,54 +1,50 @@
 ---
-title: La cuenta de resultados, en cascada
-description: "De las ventas al beneficio neto en cuatro escalones: qué se resta en cada uno y cómo calcular cuánto ha crecido la empresa."
+title: ¿Vende cada vez más?
+description: "Cómo saber si una empresa crece de verdad: si vende más que hace unos años, por qué lo hace y si sus beneficios acompañan."
 level: basico
 track: empresas
 order: 302
 skills: [cuenta-resultados]
 goals: [entender]
 prereqs: [em-01-como-gana-dinero]
-hook: "Un titular dice «Café Brío gana 12 millones». ¿Es mucho o poco? ¿Y de dónde salen, si vende 200?"
-takeaway: "Lee la cuenta de resultados de arriba abajo: ventas, beneficio bruto, beneficio operativo (EBIT) y beneficio neto. Y compárala siempre con el año anterior."
+hook: "Un titular dice «Café Brío bate su récord de ventas». ¿Eso significa que el negocio va mejor?"
+takeaway: Una empresa sana suele vender algo más cada año y ganar dinero con ello. Mira varios años, no solo el último, y pregunta de dónde sale el crecimiento.
 scenario:
   kind: empresa
   label: Empresa de ejemplo
-  title: Café Brío S.A., cuenta de resultados de 2025
-  body: "Ventas: 200 M€ (2024: 184 M€). Coste de ventas (café, leche, comida, envases): 64 M€. Personal: 70 M€. Alquileres y otros gastos: 36 M€. Amortizaciones: 12 M€. Intereses de la deuda: 2 M€. Impuesto sobre beneficios: 4 M€. Beneficio neto de 2024: 10 M€."
+  title: Café Brío S.A., los últimos años
+  body: "Café Brío lleva varios años vendiendo un poco más cada año. Parte del crecimiento viene de abrir cafeterías nuevas y parte de que en las de siempre entra más gente. Su beneficio, lo que le queda después de pagar todos los gastos, también ha subido, aunque no todos los años al mismo ritmo."
   note: Ejemplo ficticio con fines educativos.
 questions:
-  - type: estimate
+  - type: choice
     id: em02-q1
-    q: "¿Cuál es el beneficio operativo (EBIT) de Café Brío en 2025, en millones de euros?"
-    answer: 18
-    tolerance: 0
-    min: 0
-    max: 100
-    step: 1
-    unit: "M€"
-    explain: "200 − 64 = 136 de beneficio bruto. 136 − 70 − 36 = 30 (EBITDA). 30 − 12 de amortizaciones = 18 M€ de EBIT. Los intereses y los impuestos se restan después."
-  - type: estimate
+    q: "Dos cafeterías venden más que el año pasado. ¿Qué crecimiento es más sólido?"
+    options: ["El de la que solo vende más porque ha abierto muchas tiendas nuevas, mientras en las antiguas entra menos gente", "El de la que vende más en sus tiendas de siempre y además abre algunas nuevas", "Los dos son iguales: lo que importa es el total", "El de la que ha subido mucho los precios aunque pierde clientes"]
+    answer: 1
+    explain: "Si las tiendas antiguas venden más, los clientes la eligen cada vez más. Crecer solo abriendo locales puede tapar que el negocio de siempre se está enfriando."
+  - type: truefalse
     id: em02-q2
-    q: "¿Cuánto han crecido las ventas de Café Brío respecto a 2024?"
-    answer: 8.7
-    tolerance: 0.5
-    min: 0
-    max: 30
-    step: 0.1
-    unit: "%"
-    explain: "(200 − 184) / 184 = 0,087, es decir, un 8,7 %. Calcula siempre sobre la cifra del año anterior, no sobre la nueva (16/200 daría un 8 %, que es incorrecto)."
+    q: "Un año de ventas récord basta para saber que una empresa crece bien."
+    answer: false
+    explain: "Un solo año puede ser suerte o algo puntual. Lo que dice más es la tendencia de cinco o más años, incluidos los años malos."
   - type: choice
     id: em02-q3
-    q: "El beneficio neto pasa de 10 a 12 M€ (+20 %) mientras las ventas suben un 8,7 %. ¿Qué es lo más razonable concluir?"
-    options: ["Que la empresa crecerá un 20 % cada año", "Que ha ganado más por cada euro vendido este año; conviene ver por qué y si se repetirá", "Que el dato está mal, porque deben crecer igual", "Nada: el beneficio neto no importa"]
+    q: "Las ventas suben año tras año, pero el beneficio baja. ¿Qué es lo más sensato?"
+    options: ["Ignorarlo: lo importante es vender más", "Preguntarse por qué: quizá le cuesta cada vez más vender, o baja precios para crecer", "Concluir que la empresa va a quebrar", "Comprar más acciones porque crece"]
     answer: 1
-    explain: "Si el beneficio crece más que las ventas, los márgenes han mejorado (precios, costes, menos intereses…). La pregunta útil es si es duradero o puntual: lo verás con los márgenes."
+    explain: "Vender más sin ganar más puede ser una fase de inversión o una señal de que el negocio se complica. No es una alarma automática, pero sí una pregunta obligatoria."
+tips:
+  - "Mira al menos cinco años de ventas y beneficios, no solo el último."
+  - "Pregunta siempre de dónde sale el crecimiento: más clientes, más tiendas, precios más altos o compras de otras empresas."
+  - "Desconfía de los titulares de «récord» que no comparan con años anteriores."
+  - "Ten presente que una acción suelta es solo una parte pequeña de una cartera cuya base, para la mayoría, es un fondo indexado diversificado."
 action:
-  title: Encuentra la cascada en unas cuentas reales
+  title: Mira cómo ha crecido una empresa real
   steps:
-    - "Busca el último informe anual o semestral de una cotizada que conozcas (en su web, sección «Inversores» o «Accionistas»)."
-    - "Localiza la cuenta de resultados consolidada y anota cuatro cifras: ventas (o «importe neto de la cifra de negocios»), resultado de explotación, resultado antes de impuestos y resultado del ejercicio."
-    - "Calcula cuánto han crecido las ventas respecto al año anterior."
-  check: He encontrado las cuatro cifras clave de una cuenta de resultados real
+    - "Busca en la web de inversores de una cotizada que conozcas su último informe anual o presentación de resultados."
+    - "Fíjate en si sus ventas y su beneficio suben, bajan o van a saltos en los últimos años (muchas presentaciones traen un gráfico)."
+    - "Escribe en una frase de dónde dice la empresa que viene su crecimiento."
+  check: Sé decir si una empresa real vende cada vez más y por qué
 deeper: estados-financieros
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -62,26 +58,20 @@ sources: [cnmv-ifa, graham-dodd]
 
 ## La idea
 
-La cuenta de resultados es una **cascada**: arriba entra todo lo que vende la empresa y en cada escalón se resta un tipo de gasto.
+Toda empresa publica cada año su **cuenta de resultados**: arriba, lo que ha vendido; abajo, lo que le queda después de pagar todos sus gastos e impuestos, el **beneficio**.
 
-1. **Ventas** (en las cuentas españolas, «importe neto de la cifra de negocios»).
-2. **Beneficio bruto** = ventas − lo que cuesta directamente lo vendido.
-3. **Beneficio operativo o EBIT** («resultado de explotación») = beneficio bruto − gastos del día a día (personal, alquileres, amortizaciones). Mide **el negocio en sí**.
-4. **Beneficio neto** = EBIT − intereses − impuestos. Es lo que queda para los accionistas.
+Para saber si crece, hazte tres preguntas:
 
-Un paso intermedio muy citado es el **EBITDA**: el EBIT antes de restar amortizaciones. Es útil, pero ignora que las máquinas y los locales se gastan y hay que reponerlos.
+- **¿Vende más que hace cinco años?** La tendencia importa más que un año suelto.
+- **¿De dónde sale?** Más clientes, más tiendas, precios más altos o comprar otras empresas. No todo crecimiento vale igual.
+- **¿El beneficio acompaña?** Vender más y ganar menos es una pregunta pendiente.
 
-## Con números
+## En la práctica
 
-Café Brío, 2025 (millones de euros):
+En Café Brío, las ventas suben poco a poco y vienen de dos sitios: tiendas nuevas y más clientes en las antiguas. Eso es buena señal, porque muestra que la gente sigue eligiéndola.
 
-| Escalón | Cálculo | Resultado |
-|---|---|---:|
-| Ventas | | 200 |
-| Beneficio bruto | 200 − 64 | 136 |
-| EBITDA | 136 − 70 − 36 | 30 |
-| EBIT | 30 − 12 | 18 |
-| Beneficio antes de impuestos | 18 − 2 | 16 |
-| Beneficio neto | 16 − 4 | **12** |
+Lo verás en su web de inversores: casi todas las presentaciones incluyen un gráfico con las ventas y el beneficio de varios años. No hace falta calcular nada: basta con ver si la línea sube, baja o va a saltos.
 
-Crecimiento interanual: ventas **+8,7 %** (de 184 a 200); beneficio neto **+20 %** (de 10 a 12).
+## Error frecuente
+
+Fijarse solo en el último año. Un buen año lo tiene cualquiera; lo difícil es crecer durante mucho tiempo.
