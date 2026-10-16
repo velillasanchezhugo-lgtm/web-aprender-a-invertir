@@ -17,7 +17,7 @@ const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l.data.title])
 const nQ = d.questions.length;
 const sc = d.scenario;
 const qBase = sc ? 4 : 3;
-const steps = ['Pregunta', 'La idea', 'Con números', ...(sc ? ['Caso práctico'] : []), ...d.questions.map((_, i) => `Test ${i + 1}`), 'Acción de hoy', 'Hecho'];
+const steps = ['Pregunta', 'La idea', 'En la práctica', ...(sc ? ['Caso práctico'] : []), ...d.questions.map((_, i) => `Test ${i + 1}`), 'Acción de hoy', 'Hecho'];
 const trackLabel = TRACKS[d.track].label;
 const qmeta = Object.fromEntries(d.questions.map((q) => [q.id, { skills: q.skills ?? d.skills, guess: guessFor(q) }]));
 const SC_LABEL = { noticia: 'Noticia', empresa: 'Empresa', operacion: 'Operación', producto: 'Producto' } as const;
@@ -47,7 +47,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
         </div>
       </section>
 
-      <div class="body prose" id="session-body"><Content /></div>
+      <div class="body prose" id="session-body"><Content />{d.tips && <aside class="tips" aria-label="Te recomendamos"><p class="tips-title">Te recomendamos</p><ul>{d.tips.map((t) => <li>{t}</li>)}</ul></aside>}</div>
 
       {sc && (
         <section class="step scenario-step" data-step="3" aria-labelledby="h-sc">
@@ -178,6 +178,10 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
   .feedback.ko { border-left-color: var(--loss); background: var(--loss-soft); }
   .verdict { font-weight: 700; margin-bottom: 0.3rem; }
   .explain { margin: 0; }
+  .tips { margin: 1.4rem 0 0; padding: 1.1rem 1.2rem; border-radius: 18px; background: var(--teal-soft); border: 1px solid var(--rule); }
+  .tips-title { font: 600 0.78rem/1 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); margin: 0 0 0.6rem; }
+  .tips ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.45rem; }
+  .tips li::marker { color: var(--teal); }
   .scenario { background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--u-blue); border-radius: 18px; padding: 1.2rem 1.3rem; box-shadow: var(--shadow); }
   .sc-noticia { border-left-color: var(--ochre); }
   .sc-label { text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin: 0 0 0.4rem; }
@@ -223,8 +227,8 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
   const root = document.querySelector<HTMLElement>('.player')!;
   const id = root.dataset.id!;
   const body = document.getElementById('session-body')!;
-  const labels = ['Pregunta', 'La idea', 'Con números'];
-  // Divide el cuerpo Markdown en los pasos «La idea» y «Con números» según sus h2.
+  const labels = ['Pregunta', 'La idea', 'En la práctica'];
+  // Divide el cuerpo Markdown en los pasos «La idea» y «En la práctica» según sus h2 (lo que sigue, incluidos los consejos, va en el segundo).
   const parts: HTMLElement[][] = [[], []];
   let part = -1;
   [...body.children].forEach((el) => { if (el.tagName === 'H2') part++; if (part >= 0) parts[Math.min(part, 1)].push(el as HTMLElement); });

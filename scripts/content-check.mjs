@@ -57,7 +57,7 @@ const qids = new Set();
 const skillMap = JSON.parse(readFileSync('src/data/skills.json', 'utf8'));
 const skillIds = new Set(skillMap.skills.map((k) => k.id));
 const taught = new Set();
-const TRACKS = ['camino-cero', 'invertir-ya', 'productos', 'empresas', 'noticias', 'trading'];
+const TRACKS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'empresas', 'noticias', 'trading'];
 const orders = new Map();
 for (const x of sessions) {
   const track = x.data.track ?? 'camino-cero';
@@ -66,7 +66,9 @@ for (const x of sessions) {
   if (!(x.data.skills ?? []).length) errors.push(`${x.file}: sin competencias (skills)`);
   for (const k of [...(x.data.skills ?? []), ...x.data.questions.flatMap((q) => q.skills ?? [])]) { if (!skillIds.has(k)) errors.push(`${x.file}: competencia desconocida «${k}»`); taught.add(k); }
   if (['noticias', 'empresas'].includes(track) && !x.data.scenario) errors.push(`${x.file}: las sesiones de ${track} necesitan un caso práctico (scenario)`);
-  need(x, ['La idea', 'Con números']);
+  need(x, ['La idea', 'En la práctica']);
+  if (!(x.data.tips ?? []).length) errors.push(`${x.file}: falta «tips» (Te recomendamos)`);
+  for (const q of x.data.questions) if (q.type === 'estimate') warnings.push(`${x.file}: «${q.id}» es de estimación; las sesiones deben evitar cálculos`);
   for (const p of x.data.prereqs ?? []) if (!sessionIds.has(p)) errors.push(`${x.file}: prerrequisito inexistente «${p}»`);
   if (x.data.deeper && !lessonIds.has(x.data.deeper)) errors.push(`${x.file}: lectura «${x.data.deeper}» inexistente`);
   if (x.data.tool && !toolIds.has(x.data.tool)) errors.push(`${x.file}: herramienta «${x.data.tool}» inexistente`);

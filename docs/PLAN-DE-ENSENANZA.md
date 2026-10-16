@@ -1,5 +1,7 @@
 # Plan de enseñanza de umotion Academy
 
+> **Enfoque (octubre de 2026)**: menos teoría y sin matemáticas. Cada sesión explica qué es un producto o una forma de invertir con palabras sencillas, cómo se usa en la práctica y qué te recomendamos hacer. El recorrido principal es: qué es invertir (Camino Cero) → productos de inversión → formas de invertir → invertir ya. Empresas, noticias y trading quedan como módulos opcionales para saber más.
+
 **Idea clave**: enseñar de verdad a quien quiere aprender, con cosas útiles para invertir que pueda aplicar ese mismo día, sin quitarle mucho tiempo.
 
 ## 1. A quién nos dirigimos primero
@@ -14,8 +16,9 @@ Cada sesión sigue siempre la misma estructura, para que el usuario sepa qué es
 |---|---|---|---|
 | Pregunta para empezar | 15 s | Plantea una situación real («se te estropea el coche cuando la bolsa ha caído un 30 %…») | Activa la curiosidad y lo que ya sabe |
 | La idea | 1–1,5 min | Una sola idea, explicada sin jerga | Una idea por sesión se recuerda; cinco, no |
-| Con números | 1 min | Un ejemplo con cifras reales o verificadas | El dinero se entiende con números |
-| Test (2–3 preguntas) | 1 min | Opción múltiple, verdadero o falso y **estimación con deslizador** | Recordar activamente fija más que releer; estimar obliga a pensar |
+| En la práctica | 1 min | Cómo se hace o se usa en la vida real, con un ejemplo cotidiano y sin fórmulas | Lo práctico se recuerda; las fórmulas asustan a quien empieza |
+| Te recomendamos | 30 s | 2-4 consejos generales de buenas prácticas (nunca productos concretos) | Saber qué hacer, no solo qué es |
+| Test (2–3 preguntas) | 1 min | Opción múltiple y verdadero o falso, sobre todo de decisión práctica («¿qué harías?») | Recordar activamente fija más que releer |
 | Acción de hoy | 2 min | Algo práctico con su propio dinero: calcular su colchón, mirar la TAE de sus deudas, encontrar el coste de un fondo, comprobar un bróker | Convierte el aprendizaje en hábito y utilidad inmediata |
 | Hecho | 15 s | Frase para recordar, aciertos, racha y siguiente sesión | Cierre claro y motivo para volver mañana |
 

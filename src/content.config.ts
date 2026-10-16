@@ -83,7 +83,7 @@ const sessionQuestion = z.discriminatedUnion('type', [
 ]);
 
 /** Módulos de sesiones. 'camino-cero' es el nivel Cero; el resto forman el nivel Básico. */
-export const TRACK_IDS = ['camino-cero', 'invertir-ya', 'productos', 'empresas', 'noticias', 'trading'] as const;
+export const TRACK_IDS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'empresas', 'noticias', 'trading'] as const;
 
 /** Sesiones de 5 minutos: gancho, idea, ejemplo, test y una acción aplicable hoy. */
 const sessions = defineCollection({
@@ -103,6 +103,8 @@ const sessions = defineCollection({
     hook: z.string(),
     takeaway: z.string(),
     questions: z.array(sessionQuestion).min(2).max(4),
+    /** «Te recomendamos»: 2-4 consejos prácticos y generales (nunca productos concretos). */
+    tips: z.array(z.string()).min(1).max(5).optional(),
     action: z.object({ title: z.string(), steps: z.array(z.string()).min(1), check: z.string() }),
     deeper: z.string().nullable().default(null),
     tool: z.string().nullable().default(null),

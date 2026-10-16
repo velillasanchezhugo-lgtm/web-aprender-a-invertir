@@ -15,7 +15,7 @@
  */
 import type { Goal, LevelId } from './academy';
 
-export type TrackId = 'camino-cero' | 'invertir-ya' | 'productos' | 'empresas' | 'noticias' | 'trading';
+export type TrackId = 'camino-cero' | 'productos' | 'formas' | 'invertir-ya' | 'empresas' | 'noticias' | 'trading';
 export type Experience = 'nada' | 'algo' | 'invierto';
 export type QType = 'choice' | 'truefalse' | 'estimate';
 
@@ -27,12 +27,13 @@ export interface Profile { goal: Goal; experience: Experience; interests: TrackI
 export interface CatalogItem { id: string; track: TrackId; order: number; level: LevelId; goals: Goal[]; prereqs: string[]; skills: string[]; title?: string }
 
 export const TRACKS: Record<TrackId, { label: string; short: string }> = {
-  'camino-cero': { label: 'Camino Cero', short: 'Tu base' },
-  'invertir-ya': { label: 'Invertir ya', short: 'Tu primera cartera' },
-  productos: { label: 'Productos de inversión', short: 'Qué es cada producto' },
-  empresas: { label: 'Conocer empresas', short: 'Cuentas, caja y valoración' },
-  noticias: { label: 'Entender noticias', short: 'Qué te afecta y qué no' },
-  trading: { label: 'Tipos de trading', short: 'Entenderlo sin jugarte el dinero' },
+  'camino-cero': { label: 'Camino Cero', short: 'Qué es invertir' },
+  productos: { label: 'Productos de inversión', short: 'Qué es cada producto y para quién encaja' },
+  formas: { label: 'Formas de invertir', short: 'Por tu cuenta, gestionada o automatizada' },
+  'invertir-ya': { label: 'Invertir ya', short: 'Cómo empezar, paso a paso' },
+  empresas: { label: 'Conocer empresas', short: 'Para saber más: cómo ver si una empresa va bien' },
+  noticias: { label: 'Entender noticias', short: 'Para saber más: qué te afecta y qué no' },
+  trading: { label: 'Tipos de trading', short: 'Para saber más: entenderlo sin jugarte el dinero' },
 };
 
 // ---------- Modelo del alumno (BKT) ----------
@@ -98,12 +99,12 @@ function prereqOk(id: string, catalog: Map<string, CatalogItem>, model: Model, c
   return it.skills.length > 0 && it.skills.every((s) => pOf(model, s, o.defs, profile) >= MASTERED);
 }
 
-/** Prioridad pedagógica: primero la base; justo después, saber invertir. */
+/** Prioridad pedagógica: qué es invertir → productos → formas de invertir → empezar. El resto, para saber más. */
+const BOOST: Partial<Record<TrackId, number>> = { productos: 0.9, formas: 0.85, 'invertir-ya': 0.8 };
 function trackBoost(track: TrackId, profile: Profile | null): number {
   const e = profile?.experience ?? 'nada';
   if (track === 'camino-cero') return e === 'invierto' ? 0.2 : 1.2;
-  if (track === 'invertir-ya') return 0.8;
-  return 0;
+  return BOOST[track] ?? 0;
 }
 
 export function recommend(catalog: CatalogItem[], model: Model, profile: Profile | null, completed: Record<string, unknown>, o: RecOpts): Recommendation[] {
@@ -135,7 +136,7 @@ export function recommend(catalog: CatalogItem[], model: Model, profile: Profile
     else if (gap > 0.6) reasons.push(`Aún no has trabajado «${label(weakest[0])}»`);
     if (known) reasons.push('Ya parece que lo dominas: sirve de repaso');
     if (it.track === 'camino-cero' && !known && (profile?.experience ?? 'nada') !== 'invierto') reasons.push('Es parte de la base que todo lo demás necesita');
-    if (it.track === 'invertir-ya' && !known) reasons.push('Te acerca a invertir por tu cuenta, con criterio');
+    if ((it.track === 'invertir-ya' || it.track === 'formas' || it.track === 'productos') && !known) reasons.push(it.track === 'productos' ? 'Conocer los productos es el primer paso para elegir bien' : it.track === 'formas' ? 'Te ayuda a elegir cómo invertir' : 'Te acerca a invertir por tu cuenta, con criterio');
     if (interest) reasons.push(`Te interesa: ${TRACKS[it.track].label}`);
     if (goal) reasons.push('Encaja con tu objetivo');
     out.push({ id: it.id, kind: 'nueva', score, reasons: reasons.slice(0, 3), weakest: weakest.slice(0, 2) });

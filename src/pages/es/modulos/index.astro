@@ -6,6 +6,7 @@ import type { TrackId } from '../../../lib/adaptive';
 const all = await sessions();
 const BLURB: Record<TrackId, string> = {
   'camino-cero': 'Ahorro, colchón, deudas, inflación, interés compuesto, caídas, diversificación, productos, costes, impuestos y fraudes.',
+  formas: 'Por tu cuenta con fondos indexados, con un gestor automatizado, a través del banco, con un plan de pensiones, con acciones sueltas o con vivienda. Y cómo elegir la tuya.',
   'invertir-ya': 'Tu plan por escrito, cuánto en bolsa, una cartera indexada sencilla, tu primera compra, aportar cada mes y qué hacer cuando cae.',
   productos: 'Acciones, bonos, cuentas, depósitos y Letras, fondos, ETF, planes de pensiones, inmobiliario, oro, criptoactivos y productos complejos.',
   empresas: 'Cómo gana dinero una empresa, cuenta de resultados, márgenes, deuda, caja, ventajas competitivas y si algo está caro.',
@@ -30,7 +31,7 @@ const tracks = (Object.keys(TRACKS) as TrackId[]).map((t) => {
           <a class="card trk" href={t === 'camino-cero' ? '/es/camino-cero/' : `/es/modulos/${t}/`}>
             <span class="tn mono">{i === 0 ? '0' : `1.${i}`}</span>
             <span class="tb">
-              <span class="small mono muted">{i === 0 ? 'Nivel Cero' : 'Nivel Básico'} · {ss.length} sesiones · {ss.length * 5} min</span>
+              <span class="small mono muted">{i === 0 ? 'Nivel Cero' : ['empresas', 'noticias', 'trading'].includes(t) ? 'Para saber más' : 'Nivel Básico'} · {ss.length} sesiones · {ss.length * 5} min</span>
               <strong>{TRACKS[t].label}</strong>
               <span class="small muted">{BLURB[t]}</span>
               <span class="chips">{skills.slice(0, 6).map((k) => <span class="sk small">{skillById[k]?.label ?? k}</span>)}{skills.length > 6 && <span class="sk small">+{skills.length - 6}</span>}</span>

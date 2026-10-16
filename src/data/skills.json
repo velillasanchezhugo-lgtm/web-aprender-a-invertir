@@ -1,72 +1,352 @@
 {
   "_doc": "Mapa de competencias de umotion Academy. Cada sesión enseña una o varias competencias; el motor adaptativo estima cuánto domina cada persona cada competencia a partir de sus respuestas. Basado en el análisis de cursos de docs/ANALISIS-CURSOS.md.",
   "domains": [
-    { "id": "base", "label": "Tu base", "desc": "Objetivos, ahorro, colchón, deudas, inflación e interés compuesto." },
-    { "id": "riesgo", "label": "Riesgo y cabeza fría", "desc": "Volatilidad, caídas, diversificación y sesgos." },
-    { "id": "cartera", "label": "Invertir ya", "desc": "Montar, comprar, aportar y mantener tu primera cartera." },
-    { "id": "productos", "label": "Productos de inversión", "desc": "Qué es cada producto, cómo gana o pierde y para quién encaja." },
-    { "id": "costes", "label": "Costes e impuestos", "desc": "Comisiones, gastos corrientes y fiscalidad en España." },
-    { "id": "empresas", "label": "Conocer empresas", "desc": "Modelo de negocio, cuentas, caja, deuda, ventajas y valoración." },
-    { "id": "noticias", "label": "Entender noticias", "desc": "Separar hechos de opiniones, macro, resultados y si te afecta." },
-    { "id": "trading", "label": "Tipos de trading", "desc": "Cómo funciona cada estilo, sus costes, su riesgo y sus datos reales." },
-    { "id": "proteccion", "label": "Protegerte", "desc": "Comprobar entidades y detectar fraudes." }
+    {
+      "id": "base",
+      "label": "Tu base",
+      "desc": "Objetivos, ahorro, colchón, deudas, inflación e interés compuesto."
+    },
+    {
+      "id": "riesgo",
+      "label": "Riesgo y cabeza fría",
+      "desc": "Volatilidad, caídas, diversificación y sesgos."
+    },
+    {
+      "id": "cartera",
+      "label": "Invertir ya",
+      "desc": "Montar, comprar, aportar y mantener tu primera cartera."
+    },
+    {
+      "id": "productos",
+      "label": "Productos de inversión",
+      "desc": "Qué es cada producto, cómo gana o pierde y para quién encaja."
+    },
+    {
+      "id": "costes",
+      "label": "Costes e impuestos",
+      "desc": "Comisiones, gastos corrientes y fiscalidad en España."
+    },
+    {
+      "id": "empresas",
+      "label": "Conocer empresas",
+      "desc": "Modelo de negocio, cuentas, caja, deuda, ventajas y valoración."
+    },
+    {
+      "id": "noticias",
+      "label": "Entender noticias",
+      "desc": "Separar hechos de opiniones, macro, resultados y si te afecta."
+    },
+    {
+      "id": "trading",
+      "label": "Tipos de trading",
+      "desc": "Cómo funciona cada estilo, sus costes, su riesgo y sus datos reales."
+    },
+    {
+      "id": "proteccion",
+      "label": "Protegerte",
+      "desc": "Comprobar entidades y detectar fraudes."
+    }
   ],
   "skills": [
-    { "id": "objetivo-horizonte", "domain": "base", "label": "Objetivo y horizonte", "can": "Defines para qué inviertes, cuándo necesitarás el dinero y cuánto riesgo te encaja." },
-    { "id": "presupuesto-ahorro", "domain": "base", "label": "Presupuesto y ahorro", "can": "Sabes cuánto puedes apartar cada mes sin descuadrar tu vida." },
-    { "id": "colchon-emergencia", "domain": "base", "label": "Fondo de emergencia", "can": "Calculas tu colchón y sabes dónde tenerlo." },
-    { "id": "deudas-caras", "domain": "base", "label": "Deudas caras", "can": "Ordenas tus deudas por coste y sabes cuándo amortizar antes de invertir." },
-    { "id": "inflacion-real", "domain": "base", "label": "Inflación y rentabilidad real", "can": "Calculas si tu dinero gana o pierde poder de compra." },
-    { "id": "interes-compuesto", "domain": "base", "label": "Interés compuesto", "can": "Estimas cuánto puede crecer un ahorro y por qué importa el tiempo." },
-
-    { "id": "riesgo-volatilidad", "domain": "riesgo", "label": "Riesgo y volatilidad", "can": "Relacionas rentabilidad esperada con riesgo y sabes qué significa la volatilidad." },
-    { "id": "caidas-recuperacion", "domain": "riesgo", "label": "Caídas y recuperación", "can": "Sabes cuánto hay que subir para recuperar una caída y cuánto suelen durar." },
-    { "id": "diversificacion", "domain": "riesgo", "label": "Diversificación", "can": "Repartes el riesgo entre empresas, países y tipos de activo." },
-    { "id": "psicologia-sesgos", "domain": "riesgo", "label": "Psicología y sesgos", "can": "Reconoces el miedo, la euforia y los sesgos que hacen perder dinero." },
-
-    { "id": "plan-inversion", "domain": "cartera", "label": "Tu plan por escrito", "can": "Escribes en una página qué harás, cuánto, cada cuánto y qué harás si cae." },
-    { "id": "asignacion-activos", "domain": "cartera", "label": "Asignación de activos", "can": "Decides qué parte va a acciones, a renta fija y a liquidez según tu horizonte." },
-    { "id": "cartera-indexada", "domain": "cartera", "label": "Cartera indexada", "can": "Montas una cartera sencilla, global y barata con uno a tres fondos o ETF." },
-    { "id": "ejecutar-compra", "domain": "cartera", "label": "Hacer tu primera compra", "can": "Sabes, paso a paso, cómo comprar un fondo o un ETF y qué revisar antes de confirmar." },
-    { "id": "aportaciones-periodicas", "domain": "cartera", "label": "Aportaciones periódicas", "can": "Automatizas una aportación mensual y sabes por qué funciona." },
-    { "id": "rebalanceo", "domain": "cartera", "label": "Rebalanceo", "can": "Devuelves la cartera a su reparto objetivo con una regla sencilla." },
-
-    { "id": "acciones", "domain": "productos", "label": "Acciones", "can": "Sabes qué compras al comprar una acción y de dónde sale su rentabilidad." },
-    { "id": "renta-fija", "domain": "productos", "label": "Bonos y renta fija", "can": "Entiendes cupón, vencimiento, tipos de interés y riesgo de crédito." },
-    { "id": "depositos-letras", "domain": "productos", "label": "Depósitos, cuentas y Letras", "can": "Comparas cuentas remuneradas, depósitos, Letras del Tesoro y fondos monetarios." },
-    { "id": "fondos-etf", "domain": "productos", "label": "Fondos y ETF", "can": "Distingues fondo indexado, fondo activo y ETF, y lees su ficha y su KID." },
-    { "id": "planes-pensiones", "domain": "productos", "label": "Planes de pensiones", "can": "Conoces su ventaja fiscal, su iliquidez y cuándo encajan." },
-    { "id": "inmobiliario", "domain": "productos", "label": "Inmobiliario cotizado", "can": "Sabes qué es una SOCIMI o un REIT frente a comprar un piso." },
-    { "id": "materias-primas", "domain": "productos", "label": "Oro y materias primas", "can": "Entiendes cómo se invierte en oro y materias primas y sus límites." },
-    { "id": "cripto-critico", "domain": "productos", "label": "Criptoactivos", "can": "Conoces sus riesgos, su regulación (MiCA) y cómo no perderlo todo." },
-    { "id": "productos-complejos", "domain": "productos", "label": "Productos complejos", "can": "Identificas estructurados, warrants y otros productos que no conviene comprar sin entenderlos." },
-
-    { "id": "costes-comisiones", "domain": "costes", "label": "Costes y comisiones", "can": "Encuentras y comparas todos los costes de un producto y de un bróker." },
-    { "id": "fiscalidad-espana", "domain": "costes", "label": "Fiscalidad en España", "can": "Sabes cuándo tributas, cuánto y qué son los traspasos y la regla de los dos meses." },
-
-    { "id": "modelo-negocio", "domain": "empresas", "label": "Modelo de negocio", "can": "Explicas cómo gana dinero una empresa, quién le paga y por qué." },
-    { "id": "cuenta-resultados", "domain": "empresas", "label": "Cuenta de resultados", "can": "Lees ventas, márgenes y beneficio, y ves si crecen." },
-    { "id": "balance-deuda", "domain": "empresas", "label": "Balance y deuda", "can": "Ves qué tiene y qué debe una empresa, y si su deuda es peligrosa." },
-    { "id": "flujo-caja", "domain": "empresas", "label": "Flujo de caja", "can": "Distingues beneficio contable de dinero que entra de verdad." },
-    { "id": "ventaja-competitiva", "domain": "empresas", "label": "Ventaja competitiva", "can": "Reconoces qué protege a una empresa de sus competidores." },
-    { "id": "valoracion-basica", "domain": "empresas", "label": "Valoración básica", "can": "Usas PER, rentabilidad por flujo de caja y expectativas para saber si algo parece caro." },
-    { "id": "informacion-empresas", "domain": "empresas", "label": "Fuentes de información", "can": "Encuentras informes oficiales (CNMV, relación con inversores) y sabes qué mirar." },
-
-    { "id": "hecho-opinion", "domain": "noticias", "label": "Hecho, dato u opinión", "can": "Separas lo que ha pasado de lo que alguien cree que pasará." },
-    { "id": "tipos-interes-bce", "domain": "noticias", "label": "Bancos centrales y tipos", "can": "Entiendes qué hace el BCE y cómo afectan los tipos a hipotecas, bonos y bolsa." },
-    { "id": "macro-indicadores", "domain": "noticias", "label": "Indicadores económicos", "can": "Interpretas IPC, PIB, paro y su efecto real en tu plan." },
-    { "id": "resultados-expectativas", "domain": "noticias", "label": "Resultados y expectativas", "can": "Entiendes por qué una acción cae con buenos resultados o sube con pérdidas." },
-    { "id": "eventos-corporativos", "domain": "noticias", "label": "Noticias de empresas", "can": "Sabes qué significan dividendos, ampliaciones, recompras, OPA o splits." },
-    { "id": "filtro-noticias", "domain": "noticias", "label": "¿Me afecta?", "can": "Aplicas un filtro de tres preguntas para decidir si una noticia cambia tu plan." },
-
-    { "id": "tipos-trading", "domain": "trading", "label": "Estilos de trading", "can": "Distingues scalping, intradía, swing, posicional y sistemático, y lo que exige cada uno." },
-    { "id": "ordenes-mercado", "domain": "trading", "label": "Tipos de órdenes", "can": "Usas órdenes de mercado, limitadas y stop, y conoces el diferencial." },
-    { "id": "apalancamiento-cfd", "domain": "trading", "label": "Apalancamiento y CFD", "can": "Calculas cómo el apalancamiento multiplica las pérdidas y qué es un margen." },
-    { "id": "gestion-riesgo-trading", "domain": "trading", "label": "Tamaño de posición y stop", "can": "Calculas cuánto arriesgar por operación y por qué un stop no garantiza el precio." },
-    { "id": "analisis-tecnico-limites", "domain": "trading", "label": "Análisis técnico y sus límites", "can": "Sabes qué es un gráfico de velas, una media móvil o un soporte, y por qué no predicen solos." },
-    { "id": "evidencia-trading", "domain": "trading", "label": "Lo que dicen los datos", "can": "Conoces las estadísticas reales de pérdidas en trading y las trampas de señales y copy trading." },
-
-    { "id": "comprobar-broker", "domain": "proteccion", "label": "Comprobar una entidad", "can": "Verificas autorización, supervisor y garantías de un intermediario." },
-    { "id": "detectar-fraude", "domain": "proteccion", "label": "Detectar fraudes", "can": "Reconoces las señales de chiringuitos, esquemas Ponzi y suplantaciones." }
+    {
+      "id": "objetivo-horizonte",
+      "domain": "base",
+      "label": "Objetivo y horizonte",
+      "can": "Defines para qué inviertes, cuándo necesitarás el dinero y cuánto riesgo te encaja."
+    },
+    {
+      "id": "presupuesto-ahorro",
+      "domain": "base",
+      "label": "Presupuesto y ahorro",
+      "can": "Sabes cuánto puedes apartar cada mes sin descuadrar tu vida."
+    },
+    {
+      "id": "colchon-emergencia",
+      "domain": "base",
+      "label": "Fondo de emergencia",
+      "can": "Calculas tu colchón y sabes dónde tenerlo."
+    },
+    {
+      "id": "deudas-caras",
+      "domain": "base",
+      "label": "Deudas caras",
+      "can": "Ordenas tus deudas por coste y sabes cuándo amortizar antes de invertir."
+    },
+    {
+      "id": "inflacion-real",
+      "domain": "base",
+      "label": "Inflación y rentabilidad real",
+      "can": "Calculas si tu dinero gana o pierde poder de compra."
+    },
+    {
+      "id": "interes-compuesto",
+      "domain": "base",
+      "label": "Interés compuesto",
+      "can": "Estimas cuánto puede crecer un ahorro y por qué importa el tiempo."
+    },
+    {
+      "id": "riesgo-volatilidad",
+      "domain": "riesgo",
+      "label": "Riesgo y volatilidad",
+      "can": "Relacionas rentabilidad esperada con riesgo y sabes qué significa la volatilidad."
+    },
+    {
+      "id": "caidas-recuperacion",
+      "domain": "riesgo",
+      "label": "Caídas y recuperación",
+      "can": "Sabes cuánto hay que subir para recuperar una caída y cuánto suelen durar."
+    },
+    {
+      "id": "diversificacion",
+      "domain": "riesgo",
+      "label": "Diversificación",
+      "can": "Repartes el riesgo entre empresas, países y tipos de activo."
+    },
+    {
+      "id": "psicologia-sesgos",
+      "domain": "riesgo",
+      "label": "Psicología y sesgos",
+      "can": "Reconoces el miedo, la euforia y los sesgos que hacen perder dinero."
+    },
+    {
+      "id": "plan-inversion",
+      "domain": "cartera",
+      "label": "Tu plan por escrito",
+      "can": "Escribes en una página qué harás, cuánto, cada cuánto y qué harás si cae."
+    },
+    {
+      "id": "asignacion-activos",
+      "domain": "cartera",
+      "label": "Asignación de activos",
+      "can": "Decides qué parte va a acciones, a renta fija y a liquidez según tu horizonte."
+    },
+    {
+      "id": "formas-invertir",
+      "domain": "cartera",
+      "label": "Formas de invertir",
+      "can": "Conoces las distintas formas de invertir (por tu cuenta, gestionada, automatizada) y cuál encaja contigo."
+    },
+    {
+      "id": "gestion-delegada",
+      "domain": "cartera",
+      "label": "Delegar la gestión",
+      "can": "Sabes qué hacen un gestor automatizado, un fondo gestionado o un asesor, y qué preguntar antes de contratarlos."
+    },
+    {
+      "id": "cartera-indexada",
+      "domain": "cartera",
+      "label": "Cartera indexada",
+      "can": "Montas una cartera sencilla, global y barata con uno a tres fondos o ETF."
+    },
+    {
+      "id": "ejecutar-compra",
+      "domain": "cartera",
+      "label": "Hacer tu primera compra",
+      "can": "Sabes, paso a paso, cómo comprar un fondo o un ETF y qué revisar antes de confirmar."
+    },
+    {
+      "id": "aportaciones-periodicas",
+      "domain": "cartera",
+      "label": "Aportaciones periódicas",
+      "can": "Automatizas una aportación mensual y sabes por qué funciona."
+    },
+    {
+      "id": "rebalanceo",
+      "domain": "cartera",
+      "label": "Rebalanceo",
+      "can": "Devuelves la cartera a su reparto objetivo con una regla sencilla."
+    },
+    {
+      "id": "acciones",
+      "domain": "productos",
+      "label": "Acciones",
+      "can": "Sabes qué compras al comprar una acción y de dónde sale su rentabilidad."
+    },
+    {
+      "id": "renta-fija",
+      "domain": "productos",
+      "label": "Bonos y renta fija",
+      "can": "Entiendes cupón, vencimiento, tipos de interés y riesgo de crédito."
+    },
+    {
+      "id": "depositos-letras",
+      "domain": "productos",
+      "label": "Depósitos, cuentas y Letras",
+      "can": "Comparas cuentas remuneradas, depósitos, Letras del Tesoro y fondos monetarios."
+    },
+    {
+      "id": "fondos-etf",
+      "domain": "productos",
+      "label": "Fondos y ETF",
+      "can": "Distingues fondo indexado, fondo activo y ETF, y lees su ficha y su KID."
+    },
+    {
+      "id": "planes-pensiones",
+      "domain": "productos",
+      "label": "Planes de pensiones",
+      "can": "Conoces su ventaja fiscal, su iliquidez y cuándo encajan."
+    },
+    {
+      "id": "inmobiliario",
+      "domain": "productos",
+      "label": "Inmobiliario cotizado",
+      "can": "Sabes qué es una SOCIMI o un REIT frente a comprar un piso."
+    },
+    {
+      "id": "materias-primas",
+      "domain": "productos",
+      "label": "Oro y materias primas",
+      "can": "Entiendes cómo se invierte en oro y materias primas y sus límites."
+    },
+    {
+      "id": "cripto-critico",
+      "domain": "productos",
+      "label": "Criptoactivos",
+      "can": "Conoces sus riesgos, su regulación (MiCA) y cómo no perderlo todo."
+    },
+    {
+      "id": "productos-complejos",
+      "domain": "productos",
+      "label": "Productos complejos",
+      "can": "Identificas estructurados, warrants y otros productos que no conviene comprar sin entenderlos."
+    },
+    {
+      "id": "costes-comisiones",
+      "domain": "costes",
+      "label": "Costes y comisiones",
+      "can": "Encuentras y comparas todos los costes de un producto y de un bróker."
+    },
+    {
+      "id": "fiscalidad-espana",
+      "domain": "costes",
+      "label": "Fiscalidad en España",
+      "can": "Sabes cuándo tributas, cuánto y qué son los traspasos y la regla de los dos meses."
+    },
+    {
+      "id": "modelo-negocio",
+      "domain": "empresas",
+      "label": "Modelo de negocio",
+      "can": "Explicas cómo gana dinero una empresa, quién le paga y por qué."
+    },
+    {
+      "id": "cuenta-resultados",
+      "domain": "empresas",
+      "label": "Cuenta de resultados",
+      "can": "Lees ventas, márgenes y beneficio, y ves si crecen."
+    },
+    {
+      "id": "balance-deuda",
+      "domain": "empresas",
+      "label": "Balance y deuda",
+      "can": "Ves qué tiene y qué debe una empresa, y si su deuda es peligrosa."
+    },
+    {
+      "id": "flujo-caja",
+      "domain": "empresas",
+      "label": "Flujo de caja",
+      "can": "Distingues beneficio contable de dinero que entra de verdad."
+    },
+    {
+      "id": "ventaja-competitiva",
+      "domain": "empresas",
+      "label": "Ventaja competitiva",
+      "can": "Reconoces qué protege a una empresa de sus competidores."
+    },
+    {
+      "id": "valoracion-basica",
+      "domain": "empresas",
+      "label": "Valoración básica",
+      "can": "Usas PER, rentabilidad por flujo de caja y expectativas para saber si algo parece caro."
+    },
+    {
+      "id": "informacion-empresas",
+      "domain": "empresas",
+      "label": "Fuentes de información",
+      "can": "Encuentras informes oficiales (CNMV, relación con inversores) y sabes qué mirar."
+    },
+    {
+      "id": "hecho-opinion",
+      "domain": "noticias",
+      "label": "Hecho, dato u opinión",
+      "can": "Separas lo que ha pasado de lo que alguien cree que pasará."
+    },
+    {
+      "id": "tipos-interes-bce",
+      "domain": "noticias",
+      "label": "Bancos centrales y tipos",
+      "can": "Entiendes qué hace el BCE y cómo afectan los tipos a hipotecas, bonos y bolsa."
+    },
+    {
+      "id": "macro-indicadores",
+      "domain": "noticias",
+      "label": "Indicadores económicos",
+      "can": "Interpretas IPC, PIB, paro y su efecto real en tu plan."
+    },
+    {
+      "id": "resultados-expectativas",
+      "domain": "noticias",
+      "label": "Resultados y expectativas",
+      "can": "Entiendes por qué una acción cae con buenos resultados o sube con pérdidas."
+    },
+    {
+      "id": "eventos-corporativos",
+      "domain": "noticias",
+      "label": "Noticias de empresas",
+      "can": "Sabes qué significan dividendos, ampliaciones, recompras, OPA o splits."
+    },
+    {
+      "id": "filtro-noticias",
+      "domain": "noticias",
+      "label": "¿Me afecta?",
+      "can": "Aplicas un filtro de tres preguntas para decidir si una noticia cambia tu plan."
+    },
+    {
+      "id": "tipos-trading",
+      "domain": "trading",
+      "label": "Estilos de trading",
+      "can": "Distingues scalping, intradía, swing, posicional y sistemático, y lo que exige cada uno."
+    },
+    {
+      "id": "ordenes-mercado",
+      "domain": "trading",
+      "label": "Tipos de órdenes",
+      "can": "Usas órdenes de mercado, limitadas y stop, y conoces el diferencial."
+    },
+    {
+      "id": "apalancamiento-cfd",
+      "domain": "trading",
+      "label": "Apalancamiento y CFD",
+      "can": "Calculas cómo el apalancamiento multiplica las pérdidas y qué es un margen."
+    },
+    {
+      "id": "gestion-riesgo-trading",
+      "domain": "trading",
+      "label": "Tamaño de posición y stop",
+      "can": "Calculas cuánto arriesgar por operación y por qué un stop no garantiza el precio."
+    },
+    {
+      "id": "analisis-tecnico-limites",
+      "domain": "trading",
+      "label": "Análisis técnico y sus límites",
+      "can": "Sabes qué es un gráfico de velas, una media móvil o un soporte, y por qué no predicen solos."
+    },
+    {
+      "id": "evidencia-trading",
+      "domain": "trading",
+      "label": "Lo que dicen los datos",
+      "can": "Conoces las estadísticas reales de pérdidas en trading y las trampas de señales y copy trading."
+    },
+    {
+      "id": "comprobar-broker",
+      "domain": "proteccion",
+      "label": "Comprobar una entidad",
+      "can": "Verificas autorización, supervisor y garantías de un intermediario."
+    },
+    {
+      "id": "detectar-fraude",
+      "domain": "proteccion",
+      "label": "Detectar fraudes",
+      "can": "Reconoces las señales de chiringuitos, esquemas Ponzi y suplantaciones."
+    }
   ]
 }

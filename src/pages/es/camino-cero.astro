@@ -11,13 +11,13 @@ const blocks = [
 ];
 const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Camino Cero: aprende a invertir en 14 sesiones de 5 minutos', description: 'Curso gratuito para empezar a invertir desde cero: 14 microsesiones con test y una acción práctica diaria.', inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' }, hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'PT70M' }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', category: 'Free' } };
 ---
-<Base title="Camino Cero: aprende a invertir en 14 sesiones de 5 minutos" description="El curso gratuito para empezar desde cero: 14 sesiones de 5 minutos con una idea, un ejemplo con números, un test y una acción útil para ese mismo día." jsonLd={jsonLd} allowAds={false}>
+<Base title="Camino Cero: aprende a invertir en 14 sesiones de 5 minutos" description="El curso gratuito para empezar desde cero: 14 sesiones de 5 minutos con una idea, un ejemplo real, un test y consejos prácticos para empezar a invertir." jsonLd={jsonLd} allowAds={false}>
   <section class="cz-hero dots">
     <div class="container">
       <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Camino Cero' }]} />
       <p class="eyebrow">Nivel 0 · gratis · sin registro</p>
       <h1>Camino <span class="grad-text">Cero</span></h1>
-      <p class="lede">14 sesiones de 5 minutos. Cada una te deja una idea clara, un ejemplo con números, un test rápido y <strong>algo útil que hacer ese mismo día</strong> con tu dinero.</p>
+      <p class="lede">14 sesiones de 5 minutos. Cada una te explica una idea con palabras sencillas y un ejemplo real, te hace un test rápido y te deja <strong>consejos prácticos y algo útil que hacer ese mismo día</strong>.</p>
       <div class="cz-cta">
         <a class="btn brand" href="/es/empezar/">Crear mi plan en 2 minutos <span class="arrow" aria-hidden="true">→</span></a>
         <a class="btn secondary" href={`/es/sesion/${all[0].id}/`}>Empezar sin plan</a>

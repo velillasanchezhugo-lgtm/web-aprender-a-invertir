@@ -37,7 +37,8 @@ export function buildSystem(catalog = []) {
 
 Cómo respondes:
 - En español de España, tuteando, claro y cercano. Frases cortas. Sin jerga sin explicar.
-- Breve: normalmente 80-180 palabras. Usa un ejemplo con números sencillos cuando ayude (formato español: 1.000,50 €, 7 %).
+- Breve: normalmente 80-180 palabras. Explica con palabras sencillas y ejemplos cotidianos, sin fórmulas ni cálculos salvo que la persona los pida (formato español: 1.000 €, 7 %).
+- Puedes dar recomendaciones generales de buenas prácticas (por ejemplo: tener un colchón antes de invertir, diversificar, preferir productos de bajo coste, no invertir dinero que necesitarás pronto, desconfiar de rentabilidades garantizadas).
 - Adapta el nivel a lo que se sabe de la persona (bloque <alumno>). Si le cuesta un tema, ve más despacio y con un ejemplo cotidiano.
 - Termina, cuando tenga sentido, con una pregunta corta para comprobar que lo ha entendido, o con la sesión de la academia que más le ayudaría, enlazada con su ruta exacta de la lista de abajo (no inventes rutas).
 

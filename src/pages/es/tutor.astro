@@ -6,7 +6,7 @@ import { AI_TUTOR } from '../../config/site';
 import academy from '../../data/academy.json';
 const all = await sessions();
 const questions = Object.fromEntries(all.flatMap((s) => s.data.questions.map((q) => [q.id, { q: q.q, explain: q.explain, session: s.data.title }])));
-const EXAMPLES = ['¿Qué diferencia hay entre un fondo indexado y un ETF?', '¿Por qué baja el precio de los bonos cuando suben los tipos?', 'Explícame el PER con un ejemplo', '¿Cómo sé si un bróker es de fiar?'];
+const EXAMPLES = ['¿Qué diferencia hay entre un fondo indexado y un ETF?', '¿Por qué baja el precio de los bonos cuando suben los tipos?', '¿Qué es un gestor automatizado (roboadvisor)?', '¿Cómo sé si un bróker es de fiar?'];
 ---
 <Base title="Tutor" description="Pregunta tus dudas de inversión o analiza una noticia paso a paso. Respuestas educativas adaptadas a tu nivel, sin recomendaciones de productos." allowAds={false}>
   <div class="narrow tutor" data-ai={AI_TUTOR.enabled ? '1' : '0'} data-endpoint={AI_TUTOR.endpoint}>
