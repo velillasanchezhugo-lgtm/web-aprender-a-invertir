@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import { sessions, lessons, TOOLS, TRACKS, sourceById, isoDate, guessFor, type Session } from '../../../lib/content';
 import BrokerDisclosure from '../../../components/BrokerDisclosure.astro';
+import TermCards from '../../../components/TermCards.astro';
 export async function getStaticPaths() {
   const all = await sessions();
   return all.map((s) => {
@@ -17,8 +18,9 @@ const { Content } = await render(s);
 const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l.data.title]));
 const nQ = d.questions.length;
 const sc = d.scenario;
-const qBase = sc ? 4 : 3;
-const steps = ['Pregunta', 'La idea', 'En la práctica', ...(sc ? ['Caso práctico'] : []), ...d.questions.map((_, i) => `Test ${i + 1}`), 'Acción de hoy', 'Hecho'];
+const K = d.terms?.length ? 1 : 0;
+const qBase = (sc ? 4 : 3) + K;
+const steps = ['Pregunta', ...(K ? ['Palabras clave'] : []), 'La idea', 'En la práctica', ...(sc ? ['Caso práctico'] : []), ...d.questions.map((_, i) => `Test ${i + 1}`), 'Acción de hoy', 'Hecho'];
 const trackLabel = TRACKS[d.track].label;
 const qmeta = Object.fromEntries(d.questions.map((q) => [q.id, { skills: q.skills ?? d.skills, guess: guessFor(q) }]));
 const SC_LABEL = { noticia: 'Noticia', empresa: 'Empresa', operacion: 'Operación', producto: 'Producto' } as const;
@@ -48,11 +50,18 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
         </div>
       </section>
 
+      {K === 1 && (
+        <section class="step keywords" data-step="1" aria-labelledby="h-kw">
+          <span class="chip">Palabras clave</span>
+          <TermCards ids={d.terms!} title="Antes de empezar, estas palabras" intro="Las vas a ver en esta sesión. Una frase cada una." headingId="h-kw" />
+        </section>
+      )}
+
       {d.track === 'trade-republic' && <BrokerDisclosure compact />}
       <div class="body prose" id="session-body"><Content />{d.tips && <aside class="tips" aria-label="Te recomendamos"><p class="tips-title">Te recomendamos</p><ul>{d.tips.map((t) => <li>{t}</li>)}</ul></aside>}</div>
 
       {sc && (
-        <section class="step scenario-step" data-step="3" aria-labelledby="h-sc">
+        <section class="step scenario-step" data-step={3 + K} aria-labelledby="h-sc">
           <span class="chip">Caso práctico</span>
           <h2 id="h-sc" class="q-text">Lee este caso: lo usarás en el test</h2>
           <article class={`scenario sc-${sc.kind}`}>
@@ -229,7 +238,8 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
   const root = document.querySelector<HTMLElement>('.player')!;
   const id = root.dataset.id!;
   const body = document.getElementById('session-body')!;
-  const labels = ['Pregunta', 'La idea', 'En la práctica'];
+  const K = root.querySelector('.keywords') ? 1 : 0;
+  const labels = ['Pregunta', ...(K ? ['Palabras clave'] : []), 'La idea', 'En la práctica'];
   // Divide el cuerpo Markdown en los pasos «La idea» y «En la práctica» según sus h2 (lo que sigue, incluidos los consejos, va en el segundo).
   const parts: HTMLElement[][] = [[], []];
   let part = -1;
@@ -253,7 +263,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
     steps.forEach((s) => s.classList.remove('active'));
     body.querySelectorAll('.shown').forEach((e) => e.classList.remove('shown'));
     if (cur === 0) steps[0].classList.add('active');
-    else if (cur <= 2) parts[cur - 1].forEach((e) => e.classList.add('shown'));
+    else if (cur > K && cur <= 2 + K) parts[cur - 1 - K].forEach((e) => e.classList.add('shown'));
     else steps.find((s) => Number(s.dataset.step) === cur)?.classList.add('active');
     segs.forEach((s, k) => s.classList.toggle('on', k <= cur));
     label.textContent = labels[cur];
@@ -265,7 +275,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
     nextBtn.innerHTML = cur === total - 2 ? 'Terminar sesión <span class="arrow" aria-hidden="true">→</span>' : 'Continuar <span class="arrow" aria-hidden="true">→</span>';
     if (cur === total - 1) finish();
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-    const h = cur === 0 ? steps[0].querySelector('h1') : cur <= 2 ? parts[cur - 1][0] : active?.querySelector('h2');
+    const h = cur === 0 ? steps[0].querySelector('h1') : cur > K && cur <= 2 + K ? parts[cur - 1 - K][0] : active?.querySelector('h2');
     (h as HTMLElement | null)?.setAttribute('tabindex', '-1');
     (h as HTMLElement | null)?.focus({ preventScroll: true });
   }

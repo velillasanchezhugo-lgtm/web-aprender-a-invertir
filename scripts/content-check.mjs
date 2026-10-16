@@ -11,6 +11,12 @@ import yaml from 'js-yaml';
 
 const sources = JSON.parse(readFileSync('src/data/sources.json', 'utf8'));
 const glossary = JSON.parse(readFileSync('src/data/glossary.json', 'utf8'));
+const glossIds = new Set();
+for (const g of glossary) {
+  if (glossIds.has(g.id)) errors.push(`glosario: id repetido «${g.id}»`); glossIds.add(g.id);
+  if (!g.short) errors.push(`glosario «${g.id}»: falta la definición corta (short)`);
+  else if (g.short.length > 120) errors.push(`glosario «${g.id}»: la definición corta pasa de 120 caracteres`);
+}
 const errors = [], warnings = [];
 const load = (dir) => readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) => {
   const s = readFileSync(`${dir}/${f}`, 'utf8');
@@ -68,6 +74,8 @@ for (const x of sessions) {
   if (['noticias', 'empresas'].includes(track) && !x.data.scenario) errors.push(`${x.file}: las sesiones de ${track} necesitan un caso práctico (scenario)`);
   need(x, ['La idea', 'En la práctica']);
   if (!(x.data.tips ?? []).length) errors.push(`${x.file}: falta «tips» (Te recomendamos)`);
+  if (!(x.data.terms ?? []).length) warnings.push(`${x.file}: sin palabras clave (terms)`);
+  for (const t of x.data.terms ?? []) if (!glossary.some((g) => g.id === t)) errors.push(`${x.file}: término «${t}» no está en el glosario`);
   for (const q of x.data.questions) if (q.type === 'estimate') warnings.push(`${x.file}: «${q.id}» es de estimación; las sesiones deben evitar cálculos`);
   for (const p of x.data.prereqs ?? []) if (!sessionIds.has(p)) errors.push(`${x.file}: prerrequisito inexistente «${p}»`);
   if (x.data.deeper && !lessonIds.has(x.data.deeper)) errors.push(`${x.file}: lectura «${x.data.deeper}» inexistente`);

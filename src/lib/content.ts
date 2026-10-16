@@ -26,7 +26,7 @@ export const LEVELS = { inicial: 'Inicial', intermedio: 'Intermedio', avanzado: 
 export const STATUS = { borrador: 'Borrador', 'revision-pendiente': 'Pendiente de revisión humana', revisado: 'Revisado' } as const;
 
 export const sourceById = (id: string): Source | undefined => (sources as Record<string, Source>)[id];
-export const glossaryList = glossary as { id: string; term: string; def: string; lesson: string | null }[];
+export const glossaryList = glossary as { id: string; term: string; def: string; short?: string; abbr?: string; lesson: string | null }[];
 
 export async function lessons(): Promise<Lesson[]> {
   return (await getCollection('lessons', ({ data }) => !data.draft)).sort((a, b) =>

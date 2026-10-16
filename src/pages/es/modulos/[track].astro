@@ -4,6 +4,7 @@ import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { sessions, TRACKS, skillById } from '../../../lib/content';
 import type { TrackId } from '../../../lib/adaptive';
 import BrokerDisclosure from '../../../components/BrokerDisclosure.astro';
+import TermCards from '../../../components/TermCards.astro';
 export async function getStaticPaths() {
   const all = await sessions();
   return (Object.keys(TRACKS) as TrackId[]).filter((t) => t !== 'camino-cero' && all.some((s) => s.data.track === t)).map((t) => ({ params: { track: t }, props: { track: t, ss: all.filter((s) => s.data.track === t) } }));
@@ -11,6 +12,7 @@ export async function getStaticPaths() {
 const { track, ss } = Astro.props as { track: TrackId; ss: Awaited<ReturnType<typeof sessions>> };
 const info = TRACKS[track];
 const skills = [...new Set(ss.flatMap((s) => s.data.skills))].map((k) => skillById[k]).filter(Boolean);
+const vocab = [...new Set(ss.flatMap((s) => s.data.terms ?? []))];
 const NOTE: Partial<Record<TrackId, string>> = {
   trading: 'Este módulo explica el trading para que lo entiendas y no caigas en sus trampas. Los datos son claros: la mayoría de particulares que operan a corto plazo pierden dinero. Todos los ejercicios son simulaciones.',
   empresas: 'Las empresas de los casos son ficticias. Analizar empresas te ayuda a entender lo que tienes en tu cartera; para la mayoría, la base sigue siendo una cartera diversificada.',
@@ -33,6 +35,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${i
       <div class="m-bar"><div class="progress-bar" aria-hidden="true"><span id="m-bar"></span></div><p class="small muted" id="m-txt" aria-live="polite"></p></div>
     </div>
   </section>
+  {vocab.length > 0 && <div class="container vocab"><TermCards ids={vocab} title="Vocabulario del módulo" intro="Las palabras y siglas que vas a aprender, en una frase cada una." headingId="vocab-t" /></div>}
   <div class="container m-grid">
     <ol class="sessions">
       {ss.map((s, i) => (
@@ -60,6 +63,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${i
   .m-hero h1 { font-size: clamp(2.4rem, 1.7rem + 3.4vw, 4.4rem); margin: 0.2rem 0 0.6rem; }
   .m-cta { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1.3rem 0; }
   .m-bar { max-width: 460px; }
+  .vocab { margin-bottom: 2rem; }
   .m-grid { display: grid; gap: 1.5rem; padding-bottom: 3rem; }
   @media (min-width: 960px) { .m-grid { grid-template-columns: 1fr 340px; align-items: start; } aside { position: sticky; top: 90px; } }
   .sessions { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }

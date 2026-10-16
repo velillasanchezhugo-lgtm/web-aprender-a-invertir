@@ -96,6 +96,8 @@ const sessions = defineCollection({
     order: z.number().int(),
     minutes: z.number().int().default(5),
     skills: z.array(z.string()).min(1),
+    /** Palabras clave (ids del glosario) que se muestran como cartulinas al empezar. */
+    terms: z.array(z.string()).max(5).optional(),
     /** Caso práctico opcional: una noticia, una empresa o una operación ficticia para analizar. */
     scenario: z.object({ kind: z.enum(['noticia', 'empresa', 'operacion', 'producto']), label: z.string(), title: z.string(), body: z.string(), note: z.string().optional() }).optional(),
     goals: z.array(z.enum(['entender', 'objetivo', 'jubilacion', 'miedo', 'ordenar'])).default([]),

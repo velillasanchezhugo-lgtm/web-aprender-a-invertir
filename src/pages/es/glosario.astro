@@ -19,15 +19,16 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'DefinedTermSet', na
         const L = t.term[0].toUpperCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
         const first = i === 0 || terms[i - 1].term[0].toUpperCase().normalize('NFD').replace(/\p{Diacritic}/gu, '') !== L;
         return (
-          <div class="entry" id={t.id} data-text={`${t.term} ${t.def}`.toLowerCase()}>
+          <div class="entry" id={t.id} data-text={`${t.term} ${t.abbr ?? ''} ${t.short ?? ''} ${t.def}`.toLowerCase()}>
             <dt id={first ? `letra-${L}` : undefined} data-letter={first ? L : undefined}>{t.term}</dt>
-            <dd>{t.def}{t.lesson && titles[t.lesson] && <> <a class="small" href={`/es/lecciones/${t.lesson}/`}>Lección: {titles[t.lesson]}</a></>}</dd>
+            <dd>{t.abbr && <span class="abbr mono small">{t.abbr}</span>}{t.short && <strong class="short">{t.short}</strong>} {t.def}{t.lesson && titles[t.lesson] && <> <a class="small" href={`/es/lecciones/${t.lesson}/`}>Lección: {titles[t.lesson]}</a></>}</dd>
           </div>
         );
       })}
     </dl>
   </div>
 </Base>
+<style>.gloss .abbr { display: block; color: var(--teal); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.15rem; } .gloss .short { display: block; font-weight: 600; margin-bottom: 0.2rem; }</style>
 <style>
   .letters { display: flex; flex-wrap: wrap; gap: 0.3rem 0.6rem; margin: 1rem 0; }
   .letters a { text-decoration: none; font-weight: 700; padding: 0.3rem; }
