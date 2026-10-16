@@ -31,7 +31,7 @@
  },
  {
   "id": "07-las-caidas-son-normales",
-  "title": "Las caídas son normales (y asimétricas)",
+  "title": "Las caídas son normales",
   "track": "camino-cero"
  },
  {
@@ -101,7 +101,7 @@
  },
  {
   "id": "ya-07-rebalancear",
-  "title": "Rebalancear sin complicarte",
+  "title": "Revisa tu cartera una vez al año",
   "track": "invertir-ya"
  },
  {
@@ -111,12 +111,12 @@
  },
  {
   "id": "pr-01-acciones-por-dentro",
-  "title": "Acciones por dentro: qué compras de verdad",
+  "title": "Acciones: qué compras de verdad",
   "track": "productos"
  },
  {
   "id": "pr-02-bonos-y-tipos",
-  "title": "Bonos: cupón, TIR y por qué bajan cuando suben los tipos",
+  "title": "Bonos: prestar tu dinero a cambio de intereses",
   "track": "productos"
  },
  {
@@ -131,17 +131,17 @@
  },
  {
   "id": "pr-05-etf-por-dentro",
-  "title": "ETF por dentro: lo que dice (y esconde) su nombre",
+  "title": "ETF: fondos que se compran como una acción",
   "track": "productos"
  },
  {
   "id": "pr-06-planes-de-pensiones",
-  "title": "Planes de pensiones: la rebaja de hoy y la factura de mañana",
+  "title": "Planes de pensiones: rebaja hoy, impuestos mañana",
   "track": "productos"
  },
  {
   "id": "pr-07-inmobiliario-sin-comprar-piso",
-  "title": "Inmobiliario sin comprar un piso (y qué rinde un piso de verdad)",
+  "title": "Inmobiliario: comprar un piso o invertir en ladrillo sin comprarlo",
   "track": "productos"
  },
  {
@@ -155,28 +155,68 @@
   "track": "productos"
  },
  {
+  "id": "fo-01-mapa-de-formas",
+  "title": "El mapa de las formas de invertir",
+  "track": "formas"
+ },
+ {
+  "id": "fo-02-por-tu-cuenta-con-indexados",
+  "title": "Invertir por tu cuenta con indexados",
+  "track": "formas"
+ },
+ {
+  "id": "fo-03-gestores-automatizados",
+  "title": "Gestores automatizados (roboadvisors)",
+  "track": "formas"
+ },
+ {
+  "id": "fo-04-el-banco-y-los-fondos-gestionados",
+  "title": "El banco y los fondos gestionados",
+  "track": "formas"
+ },
+ {
+  "id": "fo-05-invertir-para-la-jubilacion",
+  "title": "Invertir para la jubilación",
+  "track": "formas"
+ },
+ {
+  "id": "fo-06-acciones-sueltas",
+  "title": "Comprar acciones sueltas",
+  "track": "formas"
+ },
+ {
+  "id": "fo-07-invertir-en-vivienda",
+  "title": "Invertir en vivienda",
+  "track": "formas"
+ },
+ {
+  "id": "fo-08-elige-tu-forma",
+  "title": "Elige tu forma de invertir",
+  "track": "formas"
+ },
+ {
   "id": "em-01-como-gana-dinero",
   "title": "Cómo gana dinero una empresa",
   "track": "empresas"
  },
  {
   "id": "em-02-la-cuenta-de-resultados",
-  "title": "La cuenta de resultados, en cascada",
+  "title": "¿Vende cada vez más?",
   "track": "empresas"
  },
  {
   "id": "em-03-margenes",
-  "title": "Márgenes, cuánto se queda de cada euro",
+  "title": "¿Cuánto se queda de lo que vende?",
   "track": "empresas"
  },
  {
   "id": "em-04-el-balance-y-la-deuda",
-  "title": "El balance y la deuda peligrosa",
+  "title": "¿Debe demasiado?",
   "track": "empresas"
  },
  {
   "id": "em-05-caja-no-beneficio",
-  "title": "La caja manda, no el beneficio",
+  "title": "¿Gana dinero de verdad?",
   "track": "empresas"
  },
  {
@@ -191,12 +231,12 @@
  },
  {
   "id": "em-08-leer-un-informe-de-resultados",
-  "title": "Un informe de resultados en 5 minutos",
+  "title": "Dónde encontrar la información de una empresa",
   "track": "empresas"
  },
  {
   "id": "em-09-tu-ficha-de-empresa",
-  "title": "Tu ficha de empresa en una página",
+  "title": "Tu ficha de empresa en seis preguntas",
   "track": "empresas"
  },
  {
@@ -241,7 +281,7 @@
  },
  {
   "id": "tr-02-estilos-de-trading",
-  "title": "Scalping, intradía, swing: el reloj decide los costes",
+  "title": "Scalping, intradía, swing y más: los estilos de trading",
   "track": "trading"
  },
  {
@@ -251,12 +291,12 @@
  },
  {
   "id": "tr-04-apalancamiento-y-cfd",
-  "title": "Apalancamiento y CFD: un 3 % que se lleva el 60 %",
+  "title": "Apalancamiento y CFD: por qué se pierde tan rápido",
   "track": "trading"
  },
  {
   "id": "tr-05-cuanto-arriesgar",
-  "title": "Cuánto arriesgar: el tamaño lo decide el stop",
+  "title": "Por qué conviene arriesgar poco",
   "track": "trading"
  },
  {
