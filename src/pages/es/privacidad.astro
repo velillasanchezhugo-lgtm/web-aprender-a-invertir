@@ -1,7 +1,7 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
 import OwnerData from '../../components/OwnerData.astro';
-import { adsActive } from '../../config/site';
+import { adsActive, AUTHOR } from '../../config/site';
 ---
 <LegalPage title="Política de privacidad" description="Qué datos se tratan en este sitio, con qué finalidad y cómo ejercer tus derechos. El progreso y el test se guardan solo en tu dispositivo." updated="2026-10-15" legal>
   <h2>Responsable</h2>
@@ -22,4 +22,6 @@ import { adsActive } from '../../config/site';
   <p>Si se activa Google AdSense, se informará aquí de los proveedores, finalidades y bases jurídicas, y se pedirá tu consentimiento mediante una plataforma de gestión del consentimiento certificada por Google antes de usar cookies o identificadores no necesarios. Podrás retirarlo en cualquier momento desde «Configurar privacidad» en el pie de página.</p>
   <h2>Tus derechos</h2>
   <p>Puedes ejercer los derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo al correo del responsable. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es). Como el progreso se guarda en tu dispositivo, puedes borrarlo directamente en <a href="/es/progreso/">Mi progreso</a>.</p>
+  <p class="author-fine">Autor y responsable del contenido: {AUTHOR.name} · {AUTHOR.email}</p>
 </LegalPage>
+<style>.author-fine { margin-top: 4rem; font-size: 0.68rem; line-height: 1.4; color: var(--ink-3); font-family: var(--sans); }</style>

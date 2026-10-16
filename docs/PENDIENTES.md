@@ -9,7 +9,7 @@
 | Proveedor de alojamiento | Política de privacidad | Información sobre tratamientos y transferencias |
 | Cuenta de AdSense (`ca-pub-…`) y bloques de anuncios | Variables `PUBLIC_*` | Publicidad (solo cuando todo lo demás esté listo) |
 | Mensaje de consentimiento configurado en AdSense (Privacidad y mensajes) | Panel de AdSense | CMP certificada exigida por Google en el EEE |
-| Confirmar el nombre de autor tal como debe aparecer | `src/config/site.ts` → `AUTHOR` | Se ha tomado «Hugo Velilla Sánchez» a partir del correo de la cuenta; corrígelo si no es exacto |
+| Confirmar el nombre de autor tal como debe aparecer | `src/config/site.ts` → `AUTHOR` | Solo se muestra en letra pequeña al final de la política de privacidad. Se ha tomado «Hugo Velilla Sánchez» del correo de la cuenta; corrígelo si no es exacto. Al monetizar, completar `OWNER` para el aviso legal |
 | Dominio definitivo y comprobación de la marca «umotion Academy» | Registrador, OEPM/EUIPO | Hoy es un prototipo sin indexar |
 | Revisores reales, si los hay (nombre y credencial verificable) | Frontmatter `reviewer` | Solo si existen; no se inventan |
 

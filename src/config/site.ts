@@ -21,7 +21,7 @@ export const SITE = {
 };
 
 /**
- * Autoría del proyecto. Se muestra en letra pequeña al final de cada página.
+ * Autoría del proyecto. Solo se muestra en letra pequeña al final de la política de privacidad.
  * Revisa que el nombre sea exactamente como quieres que aparezca.
  */
 export const AUTHOR = {
@@ -31,10 +31,10 @@ export const AUTHOR = {
 
 /** Datos del titular. Obligatorios por la LSSI (art. 10) antes de publicar con dominio y publicidad. */
 export const OWNER = {
-  legalName: AUTHOR.name, // Nombre o razón social (confirmar antes de publicar)
+  legalName: '', // Nombre o razón social (completar al monetizar; hoy la autoría figura solo en la política de privacidad)
   taxId: '', // NIF/CIF
   address: '',
-  email: AUTHOR.email, // Correo de contacto
+  email: '', // Correo de contacto
   registry: '', // Datos registrales si es sociedad
 };
 

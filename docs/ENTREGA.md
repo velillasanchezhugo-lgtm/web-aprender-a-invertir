@@ -13,7 +13,7 @@ La web pasa a ser **umotion Academy**, la academia de inversión de umotion, cen
 - **Repaso espaciado** (`/es/repaso/`) y **exámenes por nivel** (`/es/examen/…`, aprobado con el 80 %).
 - **Niveles** de Cero a Experto (`/es/niveles/`), reutilizando las 25 lecturas y 6 estrategias como niveles 1 a 4.
 - Portada nueva con una pregunta interactiva real.
-- Autoría en letra pequeña al final de cada página.
+- Autoría solo en letra pequeña al final de la política de privacidad.
 - **Modo prototipo**: sin indexar hasta tener dominio.
 - `vercel.json` para publicar prototipos.
 

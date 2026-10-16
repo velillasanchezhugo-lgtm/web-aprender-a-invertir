@@ -1,6 +1,6 @@
 ---
 import Logo from './Logo.astro';
-import { SITE, AUTHOR, adsActive } from '../config/site';
+import { SITE, adsActive } from '../config/site';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
@@ -49,7 +49,7 @@ const year = new Date().getFullYear();
       </nav>
     </div>
     <p class="disclaimer">Contenido educativo general: no tiene en cuenta tu situación personal y no es asesoramiento financiero. Invertir conlleva riesgo de pérdida, incluida la del capital. Rentabilidades pasadas no garantizan resultados futuros.</p>
-    <p class="fine">© {year} {SITE.name} · {SITE.parent}. Autor y responsable del contenido: {AUTHOR.name} · <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a>{!SITE.indexable && ' · Versión prototipo, no indexada.'}</p>
+    <p class="fine">© {year} {SITE.name} · {SITE.parent}.{!SITE.indexable && ' Versión prototipo, no indexada.'}</p>
   </div>
 </footer>
 <style>
