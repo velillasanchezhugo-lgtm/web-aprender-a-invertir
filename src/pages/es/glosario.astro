@@ -5,7 +5,7 @@ import { glossaryList, lessons } from '../../lib/content';
 const titles = Object.fromEntries((await lessons()).map((l) => [l.id, l.data.title]));
 const terms = [...glossaryList].sort((a, b) => a.term.localeCompare(b.term, 'es'));
 const letters = [...new Set(terms.map((t) => t.term[0].toUpperCase().normalize('NFD').replace(/\p{Diacritic}/gu, '')))];
-const jsonLd = { '@context': 'https://schema.org', '@type': 'DefinedTermSet', name: 'Glosario de inversión de Criterio', inLanguage: 'es-ES', hasDefinedTerm: terms.map((t) => ({ '@type': 'DefinedTerm', name: t.term, description: t.def, url: new URL(`/es/glosario/#${t.id}`, Astro.site).href })) };
+const jsonLd = { '@context': 'https://schema.org', '@type': 'DefinedTermSet', name: 'Glosario de inversión de umotion Academy', inLanguage: 'es-ES', hasDefinedTerm: terms.map((t) => ({ '@type': 'DefinedTerm', name: t.term, description: t.def, url: new URL(`/es/glosario/#${t.id}`, Astro.site).href })) };
 ---
 <Base title="Glosario de inversión" description={`${terms.length} términos de inversión explicados en una o dos frases: apalancamiento, duración, ETF, FOGAIN, regla de los dos meses, TER y más.`} jsonLd={jsonLd} allowAds={true}>
   <div class="narrow">

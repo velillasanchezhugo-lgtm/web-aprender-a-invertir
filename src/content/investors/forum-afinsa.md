@@ -7,7 +7,7 @@ description: El mayor caso de este tipo en España. Ofrecían rentabilidades fij
 approach: Venta de sellos con compromiso de recompra y rentabilidad fija, que funcionaba en la práctica como un esquema piramidal.
 order: 13
 related: [madoff]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

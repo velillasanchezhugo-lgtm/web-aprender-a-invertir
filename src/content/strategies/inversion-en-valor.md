@@ -13,7 +13,7 @@ quiz:
     options: ["Un seguro contra pérdidas", "La diferencia entre el valor estimado y el precio pagado, que protege de errores de estimación", "Un tipo de orden"]
     answer: 1
     explain: "Graham propuso comprar con descuento porque las estimaciones fallan. No elimina el riesgo; lo reduce si el análisis es correcto."
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

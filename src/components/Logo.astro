@@ -1,17 +1,20 @@
 ---
-/* Marca provisional: una «C» abierta con un nivel horizontal (criterio = medir antes de actuar). */
-interface Props { size?: number; wordmark?: boolean }
-const { size = 30, wordmark = true } = Astro.props;
+/* Marca: logotipo de umotion + «Academy». Versión clara u oscura según el tema. */
+interface Props { size?: number; inverse?: boolean }
+const { size = 28, inverse = false } = Astro.props;
+const w = Math.round(size * 4.02);
 ---
-<span class="logo">
-  <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true">
-    <rect width="32" height="32" rx="8" fill="var(--teal)" />
-    <path d="M22.5 10.2A8 8 0 1 0 22.5 21.8" fill="none" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" />
-    <path d="M12.5 16h11" stroke="var(--ochre-bright)" stroke-width="3" stroke-linecap="round" />
-  </svg>
-  {wordmark && <span class="word">Criterio</span>}
+<span class="logo" style={`--h:${size}px`}>
+  {inverse
+    ? <img src="/brand/umotion-logo-claro.webp" width={w} height={size} alt="umotion" />
+    : <>
+        <img class="only-light" src="/brand/umotion-logo-oscuro.webp" width={w} height={size} alt="umotion" />
+        <img class="only-dark" src="/brand/umotion-logo-claro.webp" width={w} height={size} alt="umotion" />
+      </>}
+  <span class="word">Academy</span>
 </span>
 <style>
-  .logo { display: inline-flex; align-items: center; gap: 0.5rem; }
-  .word { font-family: var(--serif); font-weight: 700; font-size: 1.35rem; letter-spacing: -0.01em; }
+  .logo { display: inline-flex; align-items: center; gap: 0.55rem; }
+  .logo img { height: var(--h); width: auto; display: block; }
+  .word { font: 500 0.72rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; padding: 0.45em 0.6em; border-radius: 999px; border: 1px solid currentColor; opacity: 0.85; }
 </style>

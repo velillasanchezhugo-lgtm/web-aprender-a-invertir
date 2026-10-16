@@ -12,7 +12,7 @@ const { s } = Astro.props as { s: CollectionEntry<'investors'> };
 const d = s.data;
 const { Content } = await render(s);
 const others = Object.fromEntries((await getCollection('investors')).map((x) => [x.id, x]));
-const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description, inLanguage: 'es-ES', datePublished: isoDate(d.published), dateModified: isoDate(d.reviewed), author: { '@type': 'Organization', name: 'Redacción de Criterio' }, ...(d.kind === 'inversor' ? { about: { '@type': 'Person', name: d.name } } : {}) };
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description, inLanguage: 'es-ES', datePublished: isoDate(d.published), dateModified: isoDate(d.reviewed), author: { '@type': 'Organization', name: 'Equipo de umotion Academy' }, ...(d.kind === 'inversor' ? { about: { '@type': 'Person', name: d.name } } : {}) };
 ---
 <Base title={d.title} description={d.description} ogType="article" jsonLd={jsonLd} allowAds={true}>
   <div class="narrow">

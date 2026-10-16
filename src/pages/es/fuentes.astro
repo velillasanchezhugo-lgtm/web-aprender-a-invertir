@@ -7,7 +7,7 @@ const entries = Object.entries(sources).filter(([k]) => k !== '_doc') as [string
 const types: Record<string, string> = { normativa: 'Normativa', supervisor: 'Supervisores y organismos públicos', fiscal: 'Fiscalidad', datos: 'Datos', intermediario: 'Documentación de intermediarios', empresa: 'Empresas', academico: 'Investigación académica', investigacion: 'Investigación de gestoras', libro: 'Libros', judicial: 'Resoluciones y procedimientos judiciales', plataforma: 'Plataformas' };
 const grouped = Object.keys(types).map((t) => [t, entries.filter(([, s]) => s.type === t)] as const).filter(([, l]) => l.length);
 ---
-<Base title="Fuentes" description="Registro de todas las fuentes utilizadas en Criterio: normativa, supervisores, AEAT, INE, documentación de intermediarios e investigación académica, con fecha de consulta." allowAds={false}>
+<Base title="Fuentes" description="Todas las fuentes de umotion Academy: normativa, supervisores, AEAT, INE, documentación de intermediarios e investigación académica, con fecha de consulta." allowAds={false}>
   <div class="narrow">
     <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Fuentes' }]} />
     <h1>Fuentes</h1>

@@ -7,7 +7,7 @@ import { readdirSync, readFileSync, writeFileSync, statSync, existsSync } from '
 import { join } from 'node:path';
 
 const DIST = 'dist';
-const site = (process.env.SITE_URL || 'https://criterio.example').replace(/\/$/, '');
+const site = (process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://umotion-academy.example')).replace(/\/$/, '');
 const adsClient = process.env.PUBLIC_ADSENSE_CLIENT || '';
 const adsEnabled = process.env.PUBLIC_ADS_ENABLED === 'true' && /^ca-pub-\d{10,20}$/.test(adsClient);
 
@@ -24,7 +24,8 @@ const urls = [];
 for (const f of html) {
   const s = readFileSync(f, 'utf8');
   const route = '/' + f.slice(DIST.length + 1).replace(/index\.html$/, '').replace(/\\/g, '/');
-  const noindex = /<meta name="robots" content="noindex/.test(s);
+  const prototype = /data-prototype="true"/.test(s);
+  const noindex = !prototype && /<meta name="robots" content="noindex/.test(s);
   const title = s.match(/<title>([^<]*)<\/title>/)?.[1];
   const desc = s.match(/<meta name="description" content="([^"]*)"/)?.[1];
   if (!title) errors.push(`${route}: sin <title>`);
@@ -58,6 +59,7 @@ if (adsEnabled) writeFileSync(join(DIST, 'ads.txt'), `google.com, ${adsClient.re
 else if (existsSync(join(DIST, 'ads.txt'))) errors.push('ads.txt presente sin configuración de AdSense');
 
 console.log(`Comprobadas ${html.length} páginas; ${urls.length} indexables en sitemap.xml${adsEnabled ? '; ads.txt generado' : '; publicidad desactivada (sin ads.txt)'}.`);
-if (site.includes('criterio.example')) warnings.push('SITE_URL no definida: canonical y sitemap usan https://criterio.example');
+if (html.some((f) => /data-prototype="true"/.test(readFileSync(f, 'utf8')))) warnings.push('Modo prototipo: todas las páginas llevan noindex y robots.txt bloquea el rastreo (PUBLIC_INDEXABLE=true para publicar).');
+if (site.includes('umotion-academy.example')) warnings.push('SITE_URL no definida: canonical y sitemap usan https://umotion-academy.example');
 warnings.forEach((w) => console.warn('AVISO: ' + w));
 if (errors.length) { errors.forEach((e) => console.error('ERROR: ' + e)); process.exit(1); }

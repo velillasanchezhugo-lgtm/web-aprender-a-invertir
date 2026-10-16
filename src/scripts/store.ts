@@ -2,7 +2,7 @@
  * Almacenamiento local del progreso. Todo vive en este dispositivo (localStorage);
  * nada se envía a ningún servidor ni a sistemas publicitarios.
  */
-const PREFIX = 'criterio:';
+const PREFIX = 'uacademy:';
 
 export interface Progress {
   completed: Record<string, string>; // slug -> fecha ISO

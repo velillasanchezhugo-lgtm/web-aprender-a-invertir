@@ -7,7 +7,7 @@ description: Gestor del fondo Magellan de Fidelity entre 1977 y 1990. Qué hizo,
 approach: Gestión activa con mucho análisis de empresas, buscando crecimiento a precio razonable en compañías que el gestor pudiera entender.
 order: 4
 related: [john-bogle, sesgo-de-supervivencia]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

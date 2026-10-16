@@ -7,7 +7,7 @@ description: Cómo construyó Berkshire Hathaway, de dónde procede su patrimoni
 approach: Inversión en valor evolucionada hacia empresas de calidad a precio razonable, mantenidas a muy largo plazo.
 order: 1
 related: [charlie-munger, benjamin-graham, sesgo-de-supervivencia]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

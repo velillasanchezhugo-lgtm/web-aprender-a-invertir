@@ -7,7 +7,7 @@ description: Por qué el creador del primer fondo indexado para particulares no 
 approach: Fondos indexados de bajo coste mantenidos a largo plazo; reducir costes como principal palanca al alcance del inversor.
 order: 3
 related: [peter-lynch, sesgo-de-supervivencia]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

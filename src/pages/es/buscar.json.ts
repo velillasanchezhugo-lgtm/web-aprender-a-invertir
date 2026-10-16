@@ -1,11 +1,12 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { lessons, glossaryList, TOOLS, TOPICS } from '../../lib/content';
+import { lessons, glossaryList, TOOLS, TOPICS, sessions } from '../../lib/content';
 import brokers from '../../data/brokers.json';
 /** Índice de búsqueda estático. Se genera en cada compilación a partir del contenido publicado. */
 const strip = (md: string) => md.replace(/<[^>]+>/g, ' ').replace(/[#*_`>|\[\]()-]/g, ' ').replace(/\s+/g, ' ').trim();
 export const GET: APIRoute = async () => {
   const docs: { t: string; d: string; u: string; k: string; b: string }[] = [];
+  for (const x of await sessions()) docs.push({ t: x.data.title, d: x.data.description, u: `/es/sesion/${x.id}/`, k: 'Sesión de 5 min', b: strip(x.body ?? '').slice(0, 3000) + ' ' + x.data.takeaway });
   for (const l of await lessons()) docs.push({ t: l.data.title, d: l.data.description, u: `/es/lecciones/${l.id}/`, k: 'Lección', b: strip(l.body ?? '').slice(0, 4000) + ' ' + l.data.summary.join(' ') });
   for (const s of await getCollection('strategies')) docs.push({ t: s.data.title, d: s.data.description, u: `/es/estrategias/${s.id}/`, k: 'Estrategia', b: strip(s.body ?? '').slice(0, 4000) });
   for (const s of await getCollection('investors')) docs.push({ t: s.data.title, d: s.data.description, u: `/es/inversores/${s.id}/`, k: 'Historia', b: strip(s.body ?? '').slice(0, 3000) });

@@ -28,7 +28,7 @@ quiz:
 next: investigar-broker-y-fraudes
 related: [inflacion-e-interes-compuesto, gestion-indexada-y-activa]
 tools: [comparador-comisiones, interes-compuesto]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

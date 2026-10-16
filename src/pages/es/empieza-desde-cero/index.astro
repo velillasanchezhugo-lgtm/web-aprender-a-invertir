@@ -4,18 +4,17 @@ import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { routeLessons } from '../../../lib/content';
 const route = await routeLessons();
 const total = route.reduce((a, l) => a + l.data.minutes, 0);
-const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Empieza desde cero: aprender a invertir', description: 'Diez lecciones breves para entender cómo funciona la inversión antes de poner dinero.', inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'Criterio' }, hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: `PT${total}M` }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', category: 'Free' } };
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Nivel Básico: diez lecturas para entender la inversión', description: 'Diez lecturas con ejemplos y ejercicios que amplían el Camino Cero.', inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' }, hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: `PT${total}M` }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', category: 'Free' } };
 ---
-<Base title="Empieza desde cero: aprender a invertir en 10 pasos" description={`Diez lecciones breves (unos ${total} minutos en total) para entender ahorro, riesgo, costes y fraudes antes de invertir. Sin registro y sin vender nada.`} jsonLd={jsonLd} allowAds={false}>
+<Base title="Nivel Básico: 10 lecturas para entender la inversión" description={`Diez lecturas (unos ${total} minutos en total) que amplían el Camino Cero: ahorro, riesgo, costes, fiscalidad y fraudes, con ejercicios y un caso práctico.`} jsonLd={jsonLd} allowAds={false}>
   <div class="narrow">
-    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Empieza desde cero' }]} />
-    <p class="eyebrow">Ruta para principiantes</p>
-    <h1>Empieza desde cero</h1>
-    <p class="lede">Diez lecciones breves, en orden, y un ejercicio final con dinero ficticio. En total, unos {total} minutos que puedes repartir como quieras.</p>
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/', label: 'Niveles' }, { label: 'Nivel Básico' }]} />
+    <p class="eyebrow">Nivel 1 · Básico</p>
+    <h1>Nivel Básico</h1>
+    <p class="lede">Diez lecturas en orden y un ejercicio final con dinero ficticio. Amplían, con más ejemplos y matices, lo que viste en el Camino Cero. En total, unos {total} minutos.</p>
     <div class="callout learn">
-      <p class="callout-title">Tu primera sesión: unos 15 minutos</p>
-      <p>Lee las dos primeras lecciones. Al terminar sabrás distinguir invertir de especular y tendrás tu primer objetivo con importe y fecha. Eso ya evita algunos de los errores más caros.</p>
-      <p class="small">No vas a aprender a invertir «como un profesional» en un rato: nadie puede. Vas a construir una base sólida, paso a paso.</p>
+      <p class="callout-title">¿Empiezas de cero de verdad?</p>
+      <p>Haz primero el <a href="/es/camino-cero/">Camino Cero</a>: 14 sesiones de 5 minutos con test y una acción práctica. Después, estas lecturas te darán profundidad.</p>
     </div>
     <div class="route-progress no-print" aria-live="polite">
       <div class="progress-bar" aria-hidden="true"><span id="route-bar"></span></div>
@@ -41,7 +40,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Emp
         </a>
       </li>
     </ol>
-    <p>¿Ya sabes algo? Haz el <a href="/es/test/">test de aprendizaje</a> para saber qué lecciones puedes saltarte. ¿Quieres ir más allá? Explora la <a href="/es/biblioteca/">biblioteca</a>.</p>
+    <p>Al terminar, haz el <a href="/es/examen/basico/">examen del nivel Básico</a>. ¿Quieres ir más allá? Mira los <a href="/es/niveles/">niveles</a> o la <a href="/es/biblioteca/">biblioteca</a>.</p>
   </div>
 </Base>
 <style>

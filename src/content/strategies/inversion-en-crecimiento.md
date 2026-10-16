@@ -13,7 +13,7 @@ quiz:
     options: ["Porque pagan muchos dividendos", "Porque gran parte de su valor depende de beneficios lejanos, que se descuentan más cuando suben los tipos", "Porque tienen mucha deuda siempre"]
     answer: 1
     explain: "Cuanto más lejos están los flujos, más afecta un cambio en la tasa de descuento. Es parecido a la duración de un bono largo."
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

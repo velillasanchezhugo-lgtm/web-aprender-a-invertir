@@ -7,7 +7,7 @@ description: Una oficina familiar acumuló exposiciones enormes con derivados en
 approach: Posiciones concentradas y apalancadas en pocas acciones mediante derivados.
 order: 12
 related: [ltcm, madoff]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

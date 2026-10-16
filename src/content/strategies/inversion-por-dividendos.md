@@ -13,7 +13,7 @@ quiz:
     options: ["Sube 2 €", "Baja aproximadamente 2 €", "No cambia"]
     answer: 1
     explain: "El dinero sale de la empresa y llega a tu cuenta (menos impuestos). Tu patrimonio total no aumenta por el pago en sí."
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

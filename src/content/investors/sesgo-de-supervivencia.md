@@ -7,7 +7,7 @@ description: Las historias de éxito se cuentan porque triunfaron. Cómo este se
 approach: Concepto estadístico y psicológico.
 order: 0
 related: [warren-buffett, peter-lynch, madoff]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

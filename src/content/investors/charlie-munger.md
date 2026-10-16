@@ -7,7 +7,7 @@ description: El socio de Buffett que impulsó la compra de empresas de calidad. 
 approach: Pocas inversiones en empresas excelentes, mantenidas durante mucho tiempo, con un enfoque de «modelos mentales» de varias disciplinas.
 order: 2
 related: [warren-buffett, benjamin-graham]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

@@ -1,0 +1,81 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { sessions } from '../../lib/content';
+const all = await sessions();
+const blocks = [
+  { title: 'Tu base', range: [1, 4], desc: 'Para qué inviertes, cuánto puedes apartar, tu colchón y tus deudas.' },
+  { title: 'Cómo se mueve el dinero', range: [5, 8], desc: 'Inflación, interés compuesto, caídas y diversificación.' },
+  { title: 'Productos y costes', range: [9, 11], desc: 'Qué compras, cuánto te cuesta y cómo tributa.' },
+  { title: 'Protegerte', range: [12, 14], desc: 'Comprobar un bróker, detectar fraudes y tu lista final.' },
+];
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Camino Cero: aprende a invertir en 14 sesiones de 5 minutos', description: 'Curso gratuito para empezar a invertir desde cero: 14 microsesiones con test y una acción práctica diaria.', inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' }, hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'PT70M' }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', category: 'Free' } };
+---
+<Base title="Camino Cero: aprende a invertir en 14 sesiones de 5 minutos" description="El curso gratuito para empezar desde cero: 14 sesiones de 5 minutos con una idea, un ejemplo con números, un test y una acción útil para ese mismo día." jsonLd={jsonLd} allowAds={false}>
+  <section class="cz-hero dots">
+    <div class="container">
+      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Camino Cero' }]} />
+      <p class="eyebrow">Nivel 0 · gratis · sin registro</p>
+      <h1>Camino <span class="grad-text">Cero</span></h1>
+      <p class="lede">14 sesiones de 5 minutos. Cada una te deja una idea clara, un ejemplo con números, un test rápido y <strong>algo útil que hacer ese mismo día</strong> con tu dinero.</p>
+      <div class="cz-cta">
+        <a class="btn brand" href="/es/empezar/">Crear mi plan en 2 minutos <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn secondary" href={`/es/sesion/${all[0].id}/`}>Empezar sin plan</a>
+      </div>
+      <div class="cz-bar"><div class="progress-bar" aria-hidden="true"><span id="cz-bar"></span></div><p class="small muted" id="cz-txt" aria-live="polite">Tu progreso se guarda en este dispositivo.</p></div>
+    </div>
+  </section>
+  <div class="container">
+    {blocks.map((b, bi) => (
+      <section class="block reveal" aria-labelledby={`b-${bi}`}>
+        <div class="block-head"><span class="mono small muted">Semana {bi < 2 ? 1 : 2} · bloque {bi + 1}</span><h2 id={`b-${bi}`}>{b.title}</h2><p class="muted">{b.desc}</p></div>
+        <ol class="sessions">
+          {all.filter((s) => s.data.order >= b.range[0] && s.data.order <= b.range[1]).map((s) => (
+            <li data-id={s.id}>
+              <a class="card sess" href={`/es/sesion/${s.id}/`}>
+                <span class="sn mono">{String(s.data.order).padStart(2, '0')}</span>
+                <span class="sb"><strong>{s.data.title}</strong><span class="small muted">{s.data.description}</span><span class="small act">Acción de hoy: {s.data.action.title}</span></span>
+                <span class="state small mono">5 min</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+    <section class="card exam-cta reveal">
+      <h2 class="h3">Examen del nivel Cero</h2>
+      <p class="muted">14 preguntas, una de cada sesión. Si aciertas el 80 %, desbloqueas el logro «Nivel Cero superado» y pasas al nivel Básico.</p>
+      <a class="btn secondary" href="/es/examen/cero/">Hacer el examen</a>
+    </section>
+  </div>
+</Base>
+<style>
+  .cz-hero { border-bottom: 1px solid var(--rule); padding: 0.5rem 0 2.5rem; margin-bottom: 1.5rem; }
+  .cz-hero h1 { font-size: clamp(2.6rem, 1.8rem + 4vw, 5rem); margin: 0.2rem 0 0.8rem; }
+  .cz-cta { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1.5rem 0; }
+  .cz-bar { max-width: 460px; }
+  .block { display: grid; gap: 1rem; margin: 2.5rem 0; }
+  @media (min-width: 900px) { .block { grid-template-columns: 280px 1fr; } }
+  .block-head h2 { margin: 0.3rem 0 0.4rem; }
+  .sessions { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+  .sess { display: grid; grid-template-columns: 3rem 1fr auto; gap: 0.9rem; align-items: center; padding: 1rem 1.1rem; }
+  .sn { font-size: 1.1rem; width: 2.8rem; height: 2.8rem; display: grid; place-items: center; border-radius: 14px; background: var(--u-ink); color: var(--u-cyan); }
+  li.is-done .sn { background: var(--u-grad); color: #fff; }
+  .sb { display: flex; flex-direction: column; gap: 0.15rem; }
+  .sb strong { font-size: 1.08rem; }
+  .act { color: var(--ochre); }
+  .state { color: var(--ink-3); }
+  li.is-done .state { color: var(--gain); }
+  .exam-cta { margin: 2rem 0; }
+  .h3 { font-size: 1.35rem; margin: 0 0 0.4rem; }
+  @media (max-width: 520px) { .sess { grid-template-columns: 2.8rem 1fr; } .state { grid-column: 2; } }
+</style>
+<script>
+  import { getState } from '../../scripts/academy-store';
+  const s = getState();
+  const items = [...document.querySelectorAll<HTMLElement>('.sessions li')];
+  let n = 0;
+  items.forEach((li) => { if (s.completed[li.dataset.id!]) { n++; li.classList.add('is-done'); li.querySelector('.state')!.textContent = '✓ Hecha'; } });
+  (document.getElementById('cz-bar') as HTMLElement).style.width = `${(n / items.length) * 100}%`;
+  document.getElementById('cz-txt')!.textContent = n ? `Llevas ${n} de ${items.length} sesiones. Se guarda solo en este dispositivo.` : `0 de ${items.length} sesiones. Tu progreso se guardará solo en este dispositivo.`;
+</script>

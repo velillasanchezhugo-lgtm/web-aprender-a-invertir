@@ -36,7 +36,7 @@ No se han implementado. Exigirían autenticación segura, almacenamiento cifrado
 
 ## Identidad visual (provisional)
 
-- **Nombre**: *Criterio*, porque el objetivo es que el usuario adquiera criterio propio. Lema: «Aprende a invertir con criterio propio».
+- **Nombre**: *umotion Academy*, producto de umotion. Lema: «Aprende a invertir en 5 minutos al día». (Versión 1: el prototipo se llamó provisionalmente «Criterio»; la identidad visual de abajo es la de esa versión y ha sido sustituida por la de umotion, ver `PLAN-DE-ENSENANZA.md` y el README).
 - **Marca**: una «C» abierta con un nivel horizontal ocre (medir antes de actuar).
 - **Tipografía**: Source Serif 4 para titulares y lectura larga (19 px, interlineado 1,7 y una medida de 68 caracteres); Inter para la interfaz.
 - **Color**: papel cálido `#fbf9f4`, tinta `#1b1f23`, azul petróleo `#0f4c5c` para la navegación y las acciones, ocre `#c8892b` para el aprendizaje y el progreso, y un rojo teja sobrio para pérdidas y advertencias. Sin verdes y rojos de casino. Tiene modo oscuro.

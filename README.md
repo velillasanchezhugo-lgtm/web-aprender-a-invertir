@@ -1,8 +1,15 @@
-# Criterio · Aprende a invertir con criterio propio
+# umotion Academy · Aprende a invertir en 5 minutos al día
 
-> Nombre provisional. No se ha comprobado la disponibilidad de la marca ni del dominio.
+Academia digital de inversión de **umotion**, en español y para residentes en España. Se centra en quien empieza de cero, con un recorrido de Cero a Experto:
 
-Plataforma educativa en español para aprender a invertir desde cero y profundizar después. Está pensada para adultos residentes en España: contenido con fuentes oficiales, herramientas interactivas verificables, un comparador de brókeres con datos fechados y una estructura preparada para monetizar con Google AdSense **sin** comprometer la experiencia educativa.
+- **Camino Cero**: 14 sesiones de 5 minutos. Cada una tiene una idea, un ejemplo con números, un test interactivo y una acción útil para ese mismo día.
+- **Planificador** según objetivo, tiempo y días, con prueba de nivel y recordatorios en el calendario.
+- **Repaso espaciado**, rachas, logros por comprender (nunca por invertir) y exámenes por nivel.
+- Biblioteca con lecturas, estrategias e historias documentadas con fuentes oficiales, herramientas verificables y un comparador de brókeres con datos fechados.
+
+Está preparada para monetizar con Google AdSense **sin** comprometer la experiencia educativa. El plan pedagógico está en [docs/PLAN-DE-ENSENANZA.md](docs/PLAN-DE-ENSENANZA.md).
+
+**Modo prototipo**: mientras no haya dominio, todas las páginas llevan `noindex` y `robots.txt` bloquea el rastreo. Para publicar de verdad: `PUBLIC_INDEXABLE=true`.
 
 No ofrece asesoramiento, no vende productos, no ejecuta operaciones y no tiene afiliación.
 
@@ -21,14 +28,19 @@ npm run check:content  # control editorial (estructura, fuentes, enlaces)
 npm run build        # compila en dist/ y comprueba SEO, enlaces y scripts
 npm run preview      # sirve dist/
 npm run verify       # pruebas + control editorial + compilación
-npm run audit:browser  # accesibilidad (axe), errores y móvil; requiere `npm run preview -- --port 4322`
+npm run audit:browser  # accesibilidad (axe), recorrido de la academia y progreso; requiere `npm run preview -- --port 4322`
 ```
+
+### Publicar un prototipo en Vercel
+
+Importa el repositorio en Vercel: `vercel.json` ya define la compilación, la redirección de `/` a `/es/` y unas cabeceras de seguridad básicas. La URL de Vercel se usa como dominio del sitio, y la web sigue sin indexarse hasta que pongas `PUBLIC_INDEXABLE=true`.
 
 ### Variables de entorno (publicación)
 
 | Variable | Para qué | Por defecto |
 |---|---|---|
-| `SITE_URL` | URL pública definitiva (canonical, sitemap, Open Graph) | `https://criterio.example` |
+| `SITE_URL` | URL pública definitiva (canonical, sitemap, Open Graph). En Vercel se toma sola | `https://umotion-academy.example` |
+| `PUBLIC_INDEXABLE` | `true` para permitir la indexación (quitar el modo prototipo) | `false` |
 | `PUBLIC_ADS_ENABLED` | `true` para activar anuncios | `false` |
 | `PUBLIC_ADSENSE_CLIENT` | Identificador `ca-pub-…` de AdSense | vacío |
 | `PUBLIC_AD_SLOT_ARTICLE`, `PUBLIC_AD_SLOT_LISTING`, `PUBLIC_AD_SLOT_SIDEBAR` | Identificadores de los bloques de anuncios | vacío |
@@ -42,18 +54,21 @@ Con la publicidad desactivada, el sitio no carga **ningún** script de terceros;
 ```
 src/
   config/site.ts           Nombre, datos del titular (vacíos), publicidad, afiliación, idiomas
-  content/lessons/         Lecciones (Markdown + frontmatter validado)
+  content/sessions/        Sesiones de 5 minutos del Camino Cero (gancho, idea, números, test, acción)
+  content/lessons/         Lecturas de los niveles Básico a Experto (Markdown + frontmatter validado)
   content/strategies/      Estrategias (estructura obligatoria de 10 apartados)
   content/investors/       Historias de inversores, casos y conceptos
   content.config.ts        Esquemas de contenido (fuentes, fechas, estado editorial…)
   data/sources.json        Registro de fuentes con fecha de consulta
   data/brokers.json        Intermediarios: cada dato con estado de verificación y fuente
-  data/quiz.json           Reglas públicas y editables del test de aprendizaje
+  data/academy.json        Objetivos, niveles y prueba de nivel inicial
+  data/quiz.json           Reglas públicas y editables del test detallado de aprendizaje
   data/glossary.json       Glosario
   data/ipc-spain.json      IPC de España (INE), datos estáticos
   data/corrections.json    Historial público de correcciones
   lib/calc/                Cálculos puros (con pruebas en tests/)
-  lib/quiz.ts              Motor del test (con pruebas)
+  lib/academy.ts           Motor de la academia: preguntas, repaso espaciado, rachas, plan, logros (con pruebas)
+  lib/quiz.ts              Motor del test detallado (con pruebas)
   components/              Componentes visuales, AdSlot (publicidad), Consent (consentimiento)
   pages/es/                Páginas en español
   pages/en/                Marcador de la versión inglesa (no indexado)
@@ -64,6 +79,7 @@ docs/                      Documentación de entrega, pendientes y planes
 
 ## Documentación
 
+- [docs/PLAN-DE-ENSENANZA.md](docs/PLAN-DE-ENSENANZA.md): formato de sesión, Camino Cero, planificación, retención y niveles.
 - [docs/ENTREGA.md](docs/ENTREGA.md): qué se ha construido y comprobado, y qué falta.
 - [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md): decisiones técnicas, identidad visual y recorridos.
 - [docs/ACTUALIZAR.md](docs/ACTUALIZAR.md): cómo actualizar contenido, tarifas, fiscalidad e IPC.

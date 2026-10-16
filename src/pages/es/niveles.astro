@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import academy from '../../data/academy.json';
+import { sessions, lessons } from '../../lib/content';
+import { getCollection } from 'astro:content';
+const ss = await sessions();
+const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l]));
+const st = Object.fromEntries((await getCollection('strategies')).map((s) => [s.id, s]));
+---
+<Base title="Niveles: de cero a experto" description="Cinco niveles de umotion Academy, de Cero a Experto. Subir de nivel significa comprender más, no operar más ni asumir más riesgo." allowAds={false}>
+  <div class="container">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Niveles' }]} />
+    <p class="eyebrow">Academia de inversión</p>
+    <h1>De cero a experto</h1>
+    <p class="lede">Empieza por el nivel Cero aunque creas saber algo: son 14 sesiones de 5 minutos. Cada nivel termina con un examen. Subir de nivel significa <strong>comprender más</strong>, nunca operar más ni asumir más riesgo.</p>
+    <ol class="ladder">
+      {academy.levels.map((l) => (
+        <li id={`nivel-${l.id}`} class="reveal">
+          <div class="rung">
+            <span class="n mono">{l.n}</span>
+            <div class="info">
+              <h2>{l.title} <span class="small muted tag-line">{l.tagline}</span></h2>
+              <p>{l.desc}</p>
+              <details>
+                <summary>Ver contenido ({l.kind === 'sessions' ? ss.length : l.items.length + ((l as any).strategies?.length ?? 0)})</summary>
+                <ul>
+                  {l.kind === 'sessions'
+                    ? ss.map((s) => <li><a href={`/es/sesion/${s.id}/`}>{s.data.title}</a> <span class="small muted">5 min</span></li>)
+                    : l.items.map((id) => ls[id] && <li><a href={`/es/lecciones/${id}/`}>{ls[id].data.title}</a> <span class="small muted">{ls[id].data.minutes} min</span></li>)}
+                  {((l as any).strategies ?? []).map((id: string) => st[id] && <li><a href={`/es/estrategias/${id}/`}>Estrategia: {st[id].data.title}</a></li>)}
+                  {l.id === 'basico' && <li><a href="/es/empieza-desde-cero/ejercicio-final/">Ejercicio final con dinero ficticio</a></li>}
+                  {l.id === 'experto' && <li><a href="/es/inversores/">Historias, fracasos y fraudes documentados</a></li>}
+                </ul>
+              </details>
+              <p class="links">
+                {l.kind === 'sessions' ? <a class="btn small brand" href="/es/camino-cero/">Empezar el Camino Cero</a> : <a class="btn small secondary" href={l.id === 'basico' ? '/es/empieza-desde-cero/' : `/es/lecciones/${l.items[0]}/`}>Empezar el nivel</a>}
+                <a class="btn small ghost" href={`/es/examen/${l.id}/`}>Examen</a>
+              </p>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <div class="callout note"><p class="callout-title">¿Por qué «experto» no significa «trader»?</p><p>En el nivel Experto estudiarás el apalancamiento, los derivados y el trading de corto plazo con números y casos reales, precisamente para entender por qué la mayoría de particulares pierden con ellos. Todos los ejercicios son simulaciones.</p></div>
+  </div>
+</Base>
+<style>
+  .ladder { list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 1rem; position: relative; }
+  .ladder::before { content: ''; position: absolute; left: 27px; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(var(--u-blue), var(--u-cyan)); opacity: .35; }
+  .rung { display: grid; grid-template-columns: 56px 1fr; gap: 1rem; }
+  .n { position: relative; width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); font-size: 1.4rem; }
+  .info { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.2rem 1.3rem; box-shadow: var(--shadow); }
+  .info h2 { margin: 0 0 0.4rem; font-size: 1.6rem; }
+  .tag-line { font-weight: 400; letter-spacing: 0; display: block; font-size: 0.95rem; margin-top: 0.2rem; }
+  .info details { margin: 0.6rem 0; }
+  .info summary { cursor: pointer; font-weight: 600; }
+  .links { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.8rem 0 0; }
+  #nivel-cero .n { background: var(--u-grad); color: #fff; }
+</style>

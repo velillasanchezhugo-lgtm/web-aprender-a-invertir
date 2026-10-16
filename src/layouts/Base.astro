@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import BottomBar from '../components/BottomBar.astro';
 import Consent from '../components/Consent.astro';
 import { SITE } from '../config/site';
 
@@ -18,26 +19,34 @@ interface Props {
   ogType?: 'website' | 'article';
   /** Permite anuncios en esta página (se exige contenido suficiente). */
   allowAds?: boolean;
+  /** Oculta la barra inferior móvil (por ejemplo, durante una sesión). */
+  focusMode?: boolean;
 }
 
 const {
   title, description, canonical, noindex = false, lang = 'es', alternates = [], jsonLd,
-  ogType = 'website', allowAds = false,
+  ogType = 'website', allowAds = false, focusMode = false,
 } = Astro.props;
 
 const site = Astro.site!;
 const canonicalURL = new URL(canonical ?? Astro.url.pathname, site);
 const fullTitle = title.includes(SITE.name) ? title : `${title} · ${SITE.name}`;
 const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const prototype = !SITE.indexable;
 ---
 <!doctype html>
 <html lang={lang}>
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
-  {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonicalURL.href} />}
+  {noindex
+    ? <meta name="robots" content="noindex, follow" />
+    : <>
+        {prototype && <meta name="robots" content="noindex, nofollow" data-prototype="true" />}
+        <link rel="canonical" href={canonicalURL.href} />
+      </>}
   {!noindex && alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={new URL(a.href, site).href} />)}
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
@@ -47,27 +56,33 @@ const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_GB'} />
   <meta property="og:image" content={new URL('/og-default.png', site).href} />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="theme-color" content="#0f4c5c" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#080a14" />
+  <link rel="icon" href="/brand/icon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/brand/icon-180.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
   <script is:inline>
-    try { const t = localStorage.getItem('criterio:theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+    document.documentElement.classList.add('js');
+    try { const t = localStorage.getItem('uacademy:theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
   {ld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
   <Consent allowAds={allowAds} />
 </head>
-<body data-ads={allowAds ? 'allowed' : 'blocked'}>
+<body data-ads={allowAds ? 'allowed' : 'blocked'} class={focusMode ? 'focus-mode' : undefined}>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <Header />
   <main id="contenido" tabindex="-1">
     <slot />
   </main>
   <Footer />
+  {!focusMode && <BottomBar />}
   <script>
     import { initGlossaryPopovers } from '../scripts/glossary';
     import { initThemeToggle } from '../scripts/theme';
     initThemeToggle();
     initGlossaryPopovers();
     document.querySelectorAll<HTMLElement>('.table-wrap:not([tabindex])').forEach((el) => { el.tabIndex = 0; el.setAttribute('role', 'region'); el.setAttribute('aria-label', 'Tabla (desplazable)'); });
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io?.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' }) : null;
+    document.querySelectorAll('.reveal').forEach((el) => (io ? io.observe(el) : el.classList.add('is-in')));
   </script>
 </body>
 </html>

@@ -1,0 +1,285 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { sessions, lessons, TOOLS, sourceById, isoDate, type Session } from '../../../lib/content';
+export async function getStaticPaths() {
+  const all = await sessions();
+  return all.map((s, i) => ({ params: { slug: s.id }, props: { s, index: i, total: all.length, next: all[i + 1] ?? null } }));
+}
+const { s, index, total, next } = Astro.props as { s: Session; index: number; total: number; next: Session | null };
+const d = s.data;
+const { Content } = await render(s);
+const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l.data.title]));
+const nQ = d.questions.length;
+const steps = ['Pregunta', 'La idea', 'Con números', ...d.questions.map((_, i) => `Test ${i + 1}`), 'Acción de hoy', 'Hecho'];
+const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', name: d.title, description: d.description, inLanguage: 'es-ES', timeRequired: `PT${d.minutes}M`, educationalLevel: 'Principiante', learningResourceType: 'Microlección', isAccessibleForFree: true, datePublished: isoDate(d.published), provider: { '@type': 'Organization', name: 'umotion Academy' } };
+---
+<Base title={`${d.title} · Sesión ${index + 1}`} description={d.description} jsonLd={jsonLd} allowAds={false} focusMode={true}>
+  <div class="player" data-id={s.id} data-next={next ? `/es/sesion/${next.id}/` : ''} data-next-title={next?.data.title ?? ''} data-index={index + 1} data-total={total}>
+    <div class="topbar">
+      <div class="container tb-inner">
+        <a href="/es/mi-plan/" class="close" aria-label="Salir de la sesión">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </a>
+        <div class="segments" aria-hidden="true">{steps.map(() => <span></span>)}</div>
+        <span class="count mono small" aria-live="polite"><span id="step-label">{steps[0]}</span></span>
+      </div>
+    </div>
+
+    <div class="stage narrow">
+      <p class="eyebrow">Camino Cero · Sesión {index + 1} de {total} · {d.minutes} min</p>
+
+      <section class="step" data-step="0" aria-labelledby="h-hook">
+        <h1 id="h-hook" class="title">{d.title}</h1>
+        <div class="hook panel-dark">
+          <span class="chip">Para empezar</span>
+          <p class="hook-q">{d.hook}</p>
+          <p class="small hook-hint">Piensa tu respuesta unos segundos. La verás clara en un minuto.</p>
+        </div>
+      </section>
+
+      <div class="body prose" id="session-body"><Content /></div>
+
+      {d.questions.map((q, i) => (
+        <section class="step q" data-step={3 + i} data-qid={q.id} data-type={q.type} aria-labelledby={`h-${q.id}`}>
+          <span class="chip">Test {i + 1} de {nQ}</span>
+          <h2 id={`h-${q.id}`} class="q-text">{q.q}</h2>
+          {q.type === 'choice' && (
+            <div class="opts" role="group" aria-labelledby={`h-${q.id}`}>
+              {q.options.map((o, j) => <button type="button" class="opt" data-v={j} data-correct={j === q.answer ? '1' : undefined}>{o}</button>)}
+            </div>
+          )}
+          {q.type === 'truefalse' && (
+            <div class="opts tf" role="group" aria-labelledby={`h-${q.id}`}>
+              <button type="button" class="opt" data-v="true" data-correct={q.answer ? '1' : undefined}>Verdadero</button>
+              <button type="button" class="opt" data-v="false" data-correct={!q.answer ? '1' : undefined}>Falso</button>
+            </div>
+          )}
+          {q.type === 'estimate' && (
+            <div class="estimate" data-answer={q.answer} data-tol={q.tolerance} data-unit={q.unit} data-min={q.min} data-max={q.max}>
+              <label for={`r-${q.id}`} class="sr-only">Tu estimación</label>
+              <output class="est-val" id={`o-${q.id}`} for={`r-${q.id}`}>{Math.round((q.min + q.max) / 2 / q.step) * q.step} {q.unit}</output>
+              <input type="range" id={`r-${q.id}`} min={q.min} max={q.max} step={q.step} value={Math.round((q.min + q.max) / 2 / q.step) * q.step} />
+              <div class="est-scale mono small"><span>{q.min} {q.unit}</span><span>{q.max} {q.unit}</span></div>
+              <button type="button" class="btn check">Comprobar</button>
+            </div>
+          )}
+          <div class="feedback" role="status" aria-live="polite" hidden>
+            <p class="verdict"></p>
+            <p class="explain">{q.explain}</p>
+          </div>
+          <noscript><details><summary>Ver la respuesta</summary><p>{q.type === 'choice' ? q.options[q.answer] : q.type === 'truefalse' ? (q.answer ? 'Verdadero' : 'Falso') : `${q.answer} ${q.unit}`}. {q.explain}</p></details></noscript>
+        </section>
+      ))}
+
+      <section class="step action" data-step={3 + nQ} aria-labelledby="h-action">
+        <span class="chip">Acción de hoy · 2 minutos</span>
+        <h2 id="h-action">{d.action.title}</h2>
+        <ol class="action-steps">{d.action.steps.map((st) => <li>{st}</li>)}</ol>
+        {d.tool && <p><a class="btn small secondary" href={`/es/herramientas/${d.tool}/`} target="_blank" rel="noopener">Abrir: {TOOLS[d.tool]?.title} ↗</a></p>}
+        <label class="choice done-check"><input type="checkbox" id="action-done" /> <span>{d.action.check}</span></label>
+        <div class="field"><label for="note">Tu nota (opcional, se queda en tu dispositivo)</label><textarea id="note" rows="2" maxlength="400"></textarea></div>
+        <p class="small muted">Puedes hacerla ahora o más tarde: la encontrarás en «Mi plan».</p>
+      </section>
+
+      <section class="step finish" data-step={4 + nQ} aria-labelledby="h-finish">
+        <div class="panel-dark finish-card">
+          <span class="chip">Sesión completada</span>
+          <h2 id="h-finish">Hoy te llevas esto:</h2>
+          <p class="takeaway">{d.takeaway}</p>
+          <div class="stats">
+            <div><span class="k mono">Aciertos</span><span class="v" id="f-score">—</span></div>
+            <div><span class="k mono">Racha</span><span class="v" id="f-streak">—</span></div>
+            <div><span class="k mono">Camino Cero</span><span class="v" id="f-progress">—</span></div>
+          </div>
+        </div>
+        <div class="finish-actions">
+          {next ? <a class="btn brand" href={`/es/sesion/${next.id}/`} id="next-btn">Siguiente: {next.data.title} <span class="arrow" aria-hidden="true">→</span></a>
+                : <a class="btn brand" href="/es/examen/cero/">Hacer el examen del nivel Cero <span class="arrow" aria-hidden="true">→</span></a>}
+          <a class="btn secondary" href="/es/mi-plan/">Volver a mi plan</a>
+        </div>
+        <p class="small">Mañana repasarás lo que has fallado hoy en <a href="/es/repaso/">Repaso</a>. {d.deeper && <>¿Quieres más? Lee <a href={`/es/lecciones/${d.deeper}/`}>{ls[d.deeper]}</a>.</>}</p>
+        <details class="sources small">
+          <summary>Fuentes y revisión</summary>
+          <ul>{d.sources.map((id) => { const src = sourceById(id); return src && <li>{src.url ? <a href={src.url} rel="noopener" target="_blank">{src.title}</a> : src.title}</li>; })}</ul>
+          <p class="muted">{d.author}. Estado: pendiente de revisión humana. Revisado el {d.reviewed.toLocaleDateString('es-ES', { timeZone: 'UTC' })}. Jurisdicción: {d.jurisdiction}. Contenido educativo, no asesoramiento.</p>
+        </details>
+      </section>
+
+      <nav class="controls no-print" aria-label="Navegación de la sesión">
+        <button type="button" class="btn ghost small" id="prev">← Atrás</button>
+        <button type="button" class="btn" id="next">Continuar <span class="arrow" aria-hidden="true">→</span></button>
+      </nav>
+    </div>
+  </div>
+  <script type="application/json" id="session-data" set:html={JSON.stringify({ questions: d.questions.map((q) => q.id), zero: total })} />
+</Base>
+
+<style>
+  .player { min-height: 100dvh; }
+  .topbar { position: sticky; top: var(--header); z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
+  .tb-inner { display: flex; align-items: center; gap: 0.8rem; min-height: 52px; }
+  .close { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 999px; color: var(--ink-2); }
+  .close:hover { background: var(--paper-2); }
+  .segments { flex: 1; display: flex; gap: 4px; }
+  .segments span { flex: 1; height: 5px; border-radius: 999px; background: var(--rule); transition: background .4s var(--ease-seda); }
+  .segments span.on { background: var(--u-grad); }
+  .count { color: var(--ink-3); min-width: 6.5rem; text-align: right; }
+  .stage { padding-top: 1.5rem; padding-bottom: 7rem; }
+  .title { font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem); margin: 0.2rem 0 1.2rem; }
+  .hook { padding: 1.6rem; }
+  .hook-q { font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.7rem); line-height: 1.35; font-weight: 600; letter-spacing: -0.015em; margin: 1rem 0 0.6rem; }
+  .hook-hint { color: #a3acc4; margin: 0; }
+  .step { margin-bottom: 2.5rem; }
+  .q-text { font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem); margin: 0.9rem 0 1.2rem; line-height: 1.25; }
+  .opts { display: grid; gap: 0.6rem; }
+  .opts.tf { grid-template-columns: 1fr 1fr; }
+  .opt { text-align: left; font: 500 1.05rem/1.4 var(--sans); padding: 1rem 1.1rem; border: 1.5px solid var(--rule-strong); border-radius: 16px; background: var(--card); color: var(--ink); cursor: pointer; transition: border-color .15s, transform .15s var(--ease-seda), background .15s; min-height: 56px; }
+  .opts.tf .opt { text-align: center; font-weight: 600; }
+  .opt:hover:not(:disabled) { border-color: var(--u-blue); transform: translateY(-1px); }
+  .opt.is-correct { border-color: var(--gain); background: color-mix(in srgb, var(--gain) 12%, var(--card)); }
+  .opt.is-wrong { border-color: var(--loss); background: var(--loss-soft); }
+  .opt:disabled { cursor: default; }
+  .estimate { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.2rem; }
+  .est-val { display: block; font: 600 2.4rem/1.1 var(--display); letter-spacing: -0.03em; margin-bottom: 0.6rem; }
+  .est-ans { display: block; font: 600 1rem/1.3 var(--sans); color: var(--gain); margin: -0.2rem 0 0.6rem; }
+  .est-scale { display: flex; justify-content: space-between; color: var(--ink-3); margin: 0.2rem 0 1rem; }
+  .feedback { margin-top: 1rem; padding: 1rem 1.1rem; border-radius: 16px; background: var(--paper-2); border-left: 4px solid var(--ink-3); }
+  .feedback.ok { border-left-color: var(--gain); background: color-mix(in srgb, var(--gain) 10%, var(--card)); }
+  .feedback.ko { border-left-color: var(--loss); background: var(--loss-soft); }
+  .verdict { font-weight: 700; margin-bottom: 0.3rem; }
+  .explain { margin: 0; }
+  .action h2 { margin-top: 0.9rem; }
+  .action-steps { padding-left: 1.3rem; font-size: 1.08rem; }
+  .action-steps li { margin-bottom: 0.6rem; }
+  .done-check { margin: 1.2rem 0; }
+  .finish-card { padding: 1.6rem; }
+  .finish-card h2 { margin: 0.9rem 0 0.4rem; color: #a3acc4; font-size: 1.1rem; font-weight: 500; letter-spacing: 0; }
+  .takeaway { font-size: clamp(1.35rem, 1.1rem + 1vw, 1.8rem); font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; margin: 0 0 1.4rem; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; border-top: 1px solid #232a42; padding-top: 1rem; }
+  .stats .k { display: block; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #a3acc4; }
+  .stats .v { font: 600 1.5rem/1.2 var(--display); }
+  .finish-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.4rem 0 1rem; }
+  .sources { margin-top: 1.5rem; }
+  .controls { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; justify-content: space-between; gap: 0.6rem; padding: 0.8rem var(--gutter) calc(0.8rem + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--rule); }
+  .controls #next { flex: 1; max-width: 420px; margin-left: auto; }
+  :global(.js .player .step), :global(.js .player .body > *) { display: none; }
+  :global(.js .player .step.active) { display: block; animation: rise .5s var(--ease-seda) both; }
+  :global(.js .player .body > .shown) { display: block; animation: rise .5s var(--ease-seda) both; }
+  :global(.js .player .body > ol.shown), :global(.js .player .body > ul.shown) { display: block; }
+  :global(html:not(.js)) .controls { display: none; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+</style>
+
+<script>
+  import { getState, saveState, answer, completeSession } from '../../../scripts/academy-store';
+  import { grade, streak, type Question } from '../../../lib/academy';
+  const root = document.querySelector<HTMLElement>('.player')!;
+  const id = root.dataset.id!;
+  const body = document.getElementById('session-body')!;
+  const labels = ['Pregunta', 'La idea', 'Con números'];
+  // Divide el cuerpo Markdown en los pasos «La idea» y «Con números» según sus h2.
+  const parts: HTMLElement[][] = [[], []];
+  let part = -1;
+  [...body.children].forEach((el) => { if (el.tagName === 'H2') part++; if (part >= 0 && part < 2) parts[part].push(el as HTMLElement); });
+  const steps = [...root.querySelectorAll<HTMLElement>('.step')];
+  // Pasos virtuales 1 y 2 = partes del cuerpo
+  const total = steps.length + 2;
+  const qSteps = steps.filter((s) => s.classList.contains('q'));
+  qSteps.forEach((_, i) => labels.push(`Test ${i + 1}`));
+  labels.push('Acción de hoy', 'Hecho');
+  const segs = [...root.querySelectorAll<HTMLElement>('.segments span')];
+  const prevBtn = document.getElementById('prev') as HTMLButtonElement;
+  const nextBtn = document.getElementById('next') as HTMLButtonElement;
+  const label = document.getElementById('step-label')!;
+  const answered = new Map<string, boolean>();
+  let cur = 0;
+
+  function show(i: number) {
+    cur = Math.max(0, Math.min(total - 1, i));
+    steps.forEach((s) => s.classList.remove('active'));
+    body.querySelectorAll('.shown').forEach((e) => e.classList.remove('shown'));
+    if (cur === 0) steps[0].classList.add('active');
+    else if (cur <= 2) parts[cur - 1].forEach((e) => e.classList.add('shown'));
+    else steps.find((s) => Number(s.dataset.step) === cur)?.classList.add('active');
+    segs.forEach((s, k) => s.classList.toggle('on', k <= cur));
+    label.textContent = labels[cur];
+    prevBtn.style.visibility = cur === 0 || cur === total - 1 ? 'hidden' : 'visible';
+    const active = steps.find((s) => Number(s.dataset.step) === cur);
+    const isQ = active?.classList.contains('q');
+    nextBtn.hidden = cur === total - 1;
+    nextBtn.disabled = !!isQ && !answered.has(active!.dataset.qid!);
+    nextBtn.innerHTML = cur === total - 2 ? 'Terminar sesión <span class="arrow" aria-hidden="true">→</span>' : 'Continuar <span class="arrow" aria-hidden="true">→</span>';
+    if (cur === total - 1) finish();
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    const h = cur === 0 ? steps[0].querySelector('h1') : cur <= 2 ? parts[cur - 1][0] : active?.querySelector('h2');
+    (h as HTMLElement | null)?.setAttribute('tabindex', '-1');
+    (h as HTMLElement | null)?.focus({ preventScroll: true });
+  }
+
+  function record(step: HTMLElement, ok: boolean, given: string) {
+    const qid = step.dataset.qid!;
+    if (answered.has(qid)) return;
+    answered.set(qid, ok);
+    let st = getState(); st = answer(st, qid, ok); saveState(st);
+    const fb = step.querySelector<HTMLElement>('.feedback')!;
+    fb.hidden = false; fb.classList.add(ok ? 'ok' : 'ko');
+    fb.querySelector('.verdict')!.textContent = ok ? '¡Correcto!' : `No exactamente. ${given}`;
+    nextBtn.disabled = false;
+    nextBtn.focus();
+  }
+
+  qSteps.forEach((step) => {
+    step.querySelectorAll<HTMLButtonElement>('.opt').forEach((b) => b.addEventListener('click', () => {
+      if (answered.has(step.dataset.qid!)) return;
+      const ok = b.dataset.correct === '1';
+      step.querySelectorAll<HTMLButtonElement>('.opt').forEach((o) => { o.disabled = true; if (o.dataset.correct === '1') o.classList.add('is-correct'); });
+      if (!ok) b.classList.add('is-wrong');
+      b.setAttribute('aria-pressed', 'true');
+      const right = step.querySelector<HTMLElement>('.opt[data-correct="1"]')!.textContent;
+      record(step, ok, `La respuesta correcta es: «${right}».`);
+    }));
+    const est = step.querySelector<HTMLElement>('.estimate');
+    if (est) {
+      const range = est.querySelector<HTMLInputElement>('input[type=range]')!;
+      const out = est.querySelector('output')!;
+      const unit = est.dataset.unit!;
+      const fmt = (v: number) => `${v.toLocaleString('es-ES')} ${unit}`;
+      range.addEventListener('input', () => (out.textContent = fmt(Number(range.value))));
+      est.querySelector('.check')!.addEventListener('click', (e) => {
+        const v = Number(range.value);
+        const q = { type: 'estimate', answer: Number(est.dataset.answer), tolerance: Number(est.dataset.tol) } as Extract<Question, { type: 'estimate' }>;
+        const ok = grade(q, v);
+        range.disabled = true; (e.target as HTMLButtonElement).disabled = true;
+        const ans = document.createElement('span'); ans.className = 'est-ans'; ans.textContent = `Respuesta: ${fmt(q.answer)}`; out.after(ans);
+        record(step, ok, `Dijiste ${fmt(v)}; la respuesta es ${fmt(q.answer)}.`);
+      });
+    }
+  });
+
+  const st0 = getState();
+  const done = document.getElementById('action-done') as HTMLInputElement;
+  const note = document.getElementById('note') as HTMLTextAreaElement;
+  done.checked = !!st0.actions[id];
+  note.value = st0.notes[id] ?? '';
+  done.addEventListener('change', () => { const s = getState(); if (done.checked) s.actions[id] = new Date().toISOString(); else delete s.actions[id]; saveState(s); });
+  note.addEventListener('input', () => { const s = getState(); s.notes[id] = note.value; saveState(s); });
+
+  function finish() {
+    let s = getState(); s = completeSession(s, id); saveState(s);
+    const correct = [...answered.values()].filter(Boolean).length;
+    document.getElementById('f-score')!.textContent = `${correct}/${qSteps.length}`;
+    const k = streak(s.activity, s.activity[s.activity.length - 1]);
+    document.getElementById('f-streak')!.textContent = `${k.current} ${k.current === 1 ? 'día' : 'días'}`;
+    const zero = Object.keys(s.completed).filter((x) => /^\d\d-/.test(x)).length;
+    document.getElementById('f-progress')!.textContent = `${zero}/${root.dataset.total}`;
+  }
+
+  prevBtn.addEventListener('click', () => show(cur - 1));
+  nextBtn.addEventListener('click', () => show(cur + 1));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' && !nextBtn.disabled && !nextBtn.hidden && !(e.target as HTMLElement).matches('input, textarea')) show(cur + 1);
+    if (e.key === 'ArrowLeft' && !(e.target as HTMLElement).matches('input, textarea') && cur > 0 && cur < total - 1) show(cur - 1);
+  });
+  show(0);
+</script>

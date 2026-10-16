@@ -7,7 +7,7 @@ description: Un fondo dirigido por operadores de prestigio y premios Nobel, con 
 approach: Arbitraje de diferenciales en renta fija y otros mercados, con mucho apalancamiento y derivados.
 order: 10
 related: [archegos, warren-buffett]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

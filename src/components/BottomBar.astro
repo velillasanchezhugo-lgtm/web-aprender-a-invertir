@@ -1,0 +1,27 @@
+---
+/** Barra de acceso rápido en móvil, como una app: hoy, aprender, repasar, herramientas. */
+const path = Astro.url.pathname;
+const items = [
+  { href: '/es/mi-plan/', label: 'Hoy', icon: 'M12 3v3M12 18v3M3 12h3M18 12h3M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8z' },
+  { href: '/es/camino-cero/', label: 'Aprender', icon: 'M4 6.5 12 3l8 3.5-8 3.5-8-3.5zM6 9v5c0 1.7 2.7 3 6 3s6-1.3 6-3V9' },
+  { href: '/es/repaso/', label: 'Repaso', icon: 'M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4' },
+  { href: '/es/herramientas/', label: 'Herramientas', icon: 'M4 20h16M7 16V9M12 16V5M17 16v-4' },
+];
+---
+<nav class="bottom-bar" aria-label="Accesos rápidos">
+  {items.map((i) => (
+    <a href={i.href} aria-current={path.startsWith(i.href) ? 'page' : undefined}>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d={i.icon} fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      <span>{i.label}</span>
+    </a>
+  ))}
+</nav>
+<style>
+  .bottom-bar { display: none; }
+  @media (max-width: 760px) {
+    .bottom-bar { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; background: var(--u-ink); padding: 6px 4px calc(6px + env(safe-area-inset-bottom)); border-top: 1px solid #1c2238; }
+    .bottom-bar a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #a3acc4; text-decoration: none; font: 500 0.72rem/1.2 var(--sans); padding: 6px 0; border-radius: 12px; }
+    .bottom-bar a[aria-current='page'] { color: var(--u-cyan); }
+    :global(body:not(.focus-mode)) { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+  }
+</style>

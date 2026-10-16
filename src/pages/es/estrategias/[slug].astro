@@ -14,7 +14,7 @@ const d = s.data;
 const { Content } = await render(s);
 const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l]));
 const ev = { favorable: 'Favorable', mixta: 'Mixta', desfavorable: 'Desfavorable' } as const;
-const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description, inLanguage: 'es-ES', datePublished: isoDate(d.published), dateModified: isoDate(d.reviewed), author: { '@type': 'Organization', name: 'Redacción de Criterio' } };
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description, inLanguage: 'es-ES', datePublished: isoDate(d.published), dateModified: isoDate(d.reviewed), author: { '@type': 'Organization', name: 'Equipo de umotion Academy' } };
 ---
 <Base title={`${d.title}: cómo funciona, costes y evidencia`} description={d.description} ogType="article" jsonLd={jsonLd} allowAds={true}>
   <div class="narrow">

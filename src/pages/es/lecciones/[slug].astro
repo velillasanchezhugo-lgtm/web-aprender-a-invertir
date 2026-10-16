@@ -27,8 +27,8 @@ const path = `/es/lecciones/${lesson.id}/`;
 const jsonLd = {
   '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description,
   inLanguage: 'es-ES', datePublished: isoDate(d.published), dateModified: isoDate(d.reviewed),
-  author: { '@type': 'Organization', name: 'Redacción de Criterio' },
-  publisher: { '@type': 'Organization', name: 'Criterio' },
+  author: { '@type': 'Organization', name: 'Equipo de umotion Academy' },
+  publisher: { '@type': 'Organization', name: 'umotion Academy' },
   mainEntityOfPage: new URL(path, Astro.site).href, educationalLevel: LEVELS[d.level], timeRequired: `PT${d.minutes}M`,
   isAccessibleForFree: true,
 };
@@ -36,13 +36,13 @@ const jsonLd = {
 <Base title={d.title} description={d.description} ogType="article" jsonLd={jsonLd} allowAds={true}>
   <div class="narrow">
     <Breadcrumbs items={d.route
-      ? [{ href: '/es/', label: 'Inicio' }, { href: '/es/empieza-desde-cero/', label: 'Empieza desde cero' }, { label: d.title }]
+      ? [{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/', label: 'Niveles' }, { href: '/es/empieza-desde-cero/', label: 'Nivel Básico' }, { label: d.title }]
       : [{ href: '/es/', label: 'Inicio' }, { href: '/es/biblioteca/', label: 'Biblioteca' }, { href: `/es/temas/${d.topic}/`, label: topic }, { label: d.title }]} />
 
     <header class="lesson-head">
       {d.route ? (
         <div class="route-step">
-          <p class="eyebrow">Ruta «Empieza desde cero» · Paso {step} de {route.length}</p>
+          <p class="eyebrow">Nivel Básico · Lectura {step} de {route.length}</p>
           <div class="progress-bar" aria-hidden="true"><span style={`width:${(step / route.length) * 100}%`}></span></div>
         </div>
       ) : <p class="eyebrow">{topic}</p>}

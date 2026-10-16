@@ -1,0 +1,52 @@
+---
+import Base from '../../../layouts/Base.astro';
+import academy from '../../../data/academy.json';
+import { examQuestions } from '../../../lib/content';
+export async function getStaticPaths() {
+  return Promise.all(academy.levels.map(async (l) => ({ params: { level: l.id }, props: { level: l, questions: await examQuestions(l.id) } })));
+}
+const { level, questions } = Astro.props as { level: (typeof academy.levels)[number]; questions: any[] };
+---
+<Base title={`Examen del nivel ${level.title}`} description={`Comprueba si dominas el nivel ${level.title}: ${questions.length} preguntas con explicación. Se aprueba con el 80 %.`} noindex={true} allowAds={false} focusMode={true}>
+  <div class="narrow ex" data-level={level.id}>
+    <p class="eyebrow">Nivel {level.n} · {level.title}</p>
+    <h1>Examen del nivel {level.title}</h1>
+    <p class="lede" id="ex-intro">{questions.length} preguntas. Se aprueba con el 80 %. Puedes repetirlo cuando quieras: lo que importa es aprender, no la nota.</p>
+    <p><button class="btn brand" id="ex-start" type="button">Empezar el examen <span class="arrow" aria-hidden="true">→</span></button></p>
+    <div class="progress-bar" aria-hidden="true" hidden id="ex-pb"><span id="ex-bar"></span></div>
+    <p class="small muted mono" id="ex-count" aria-live="polite"></p>
+    <div class="rq" id="ex-q" hidden></div>
+    <div class="ex-ctrl"><button class="btn" id="ex-next" type="button" hidden>Siguiente <span class="arrow" aria-hidden="true">→</span></button></div>
+    <div id="ex-result" hidden tabindex="-1"></div>
+  </div>
+  <script type="application/json" id="ex-data" set:html={JSON.stringify(questions)} />
+</Base>
+<style>.ex { padding-top: 1.5rem; padding-bottom: 3rem; } .ex-ctrl { margin: 1rem 0; display: flex; justify-content: flex-end; } #ex-q { margin-top: 1rem; }</style>
+<script>
+  import { getState, saveState, answer, logActivity } from '../../../scripts/academy-store';
+  import { examPassed, type LevelId } from '../../../lib/academy';
+  import { ask } from '../../../scripts/quiz-runner';
+  const qs = JSON.parse(document.getElementById('ex-data')!.textContent!);
+  const level = (document.querySelector('.ex') as HTMLElement).dataset.level as LevelId;
+  const $ = (id: string) => document.getElementById(id)!;
+  $('ex-start').addEventListener('click', async () => {
+    $('ex-start').hidden = true; $('ex-q').hidden = false; $('ex-pb').hidden = false;
+    let ok = 0; const failed: string[] = [];
+    for (let i = 0; i < qs.length; i++) {
+      $('ex-count').textContent = `Pregunta ${i + 1} de ${qs.length}`;
+      ($('ex-bar') as HTMLElement).style.width = `${(i / qs.length) * 100}%`;
+      const r = await ask($('ex-q'), qs[i]);
+      if (r) ok++; else failed.push(qs[i].q);
+      let st = getState(); st = answer(st, qs[i].id, r); saveState(st);
+      const nx = $('ex-next') as HTMLButtonElement; nx.hidden = false; nx.focus();
+      await new Promise((res) => nx.addEventListener('click', res, { once: true })); nx.hidden = true;
+    }
+    const passed = examPassed(ok, qs.length);
+    let st = getState(); const prev = st.exams[level];
+    st.exams[level] = { correct: ok, total: qs.length, at: new Date().toISOString(), passed: passed || !!prev?.passed }; st = logActivity(st); saveState(st);
+    $('ex-q').hidden = true; $('ex-count').textContent = ''; ($('ex-bar') as HTMLElement).style.width = '100%';
+    const res = $('ex-result'); res.hidden = false;
+    res.innerHTML = `<div class="panel-dark" style="padding:1.6rem"><span class="chip">${passed ? 'Nivel superado' : 'Casi'}</span><h2 style="color:#f8f9fc;margin:.8rem 0 .4rem">${ok} de ${qs.length} correctas</h2><p style="color:#c4cada">${passed ? '¡Enhorabuena! Ya puedes pasar al siguiente nivel.' : 'Necesitas el 80 %. Las preguntas falladas vuelven en tu repaso de mañana; repásalas y vuelve a intentarlo.'}</p></div><p style="margin-top:1rem"><a class="btn brand" href="${passed ? '/es/niveles/' : '/es/repaso/'}">${passed ? 'Ver los niveles' : 'Ir al repaso'}</a> <a class="btn secondary" href="/es/mi-plan/">Mi plan</a></p>`;
+    res.focus();
+  });
+</script>

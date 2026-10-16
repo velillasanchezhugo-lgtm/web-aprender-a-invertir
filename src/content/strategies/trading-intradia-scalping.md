@@ -13,7 +13,7 @@ quiz:
     options: ["Que la mayoría ganaba más que un salario mínimo", "Que la gran mayoría perdía dinero y muy pocos ganaban más que un salario modesto", "Que no había diferencias con la inversión a largo plazo"]
     answer: 1
     explain: "Los autores encontraron que alrededor del 97 % de quienes persistieron perdió dinero, y que solo alrededor del 1 % ganó más que el salario mínimo brasileño."
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

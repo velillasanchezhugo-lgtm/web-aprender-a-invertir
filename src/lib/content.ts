@@ -49,3 +49,21 @@ export const TOOLS: Record<string, { title: string; blurb: string }> = {
 
 export const fmtDate = (d: Date) => d.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 export const isoDate = (d: Date) => d.toISOString().slice(0, 10);
+
+export type Session = CollectionEntry<'sessions'>;
+export async function sessions(): Promise<Session[]> {
+  return (await getCollection('sessions', ({ data }) => !data.draft)).sort((a, b) => a.data.order - b.data.order);
+}
+export const sessionMeta = (s: Session) => ({ id: s.id, order: s.data.order, level: s.data.level, goals: s.data.goals, prereqs: s.data.prereqs, minutes: s.data.minutes });
+
+import academyData from '../data/academy.json';
+/** Banco de preguntas por nivel para los exámenes. */
+export async function examQuestions(level: string) {
+  const lv = academyData.levels.find((l) => l.id === level)!;
+  if (lv.kind === 'sessions') return (await sessions()).map((s) => s.data.questions[0]);
+  const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l]));
+  const strat = Object.fromEntries((await getCollection('strategies')).map((s) => [s.id, s]));
+  const qs = lv.items.flatMap((id) => (ls[id]?.data.quiz ?? []).slice(0, lv.items.length >= 8 ? 1 : 3).map((q, i) => ({ type: 'choice' as const, id: `ex-${id}-${i}`, q: q.q, options: q.options, answer: q.answer, explain: q.explain })));
+  const sq = ((lv as any).strategies ?? []).flatMap((id: string) => (strat[id]?.data.quiz ?? []).map((q: any, i: number) => ({ type: 'choice' as const, id: `ex-${id}-${i}`, q: q.q, options: q.options, answer: q.answer, explain: q.explain })));
+  return [...qs, ...sq];
+}

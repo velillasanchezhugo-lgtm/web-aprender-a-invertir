@@ -13,7 +13,7 @@ quiz:
     options: ["El riesgo de elegir mal una empresa concreta", "El riesgo de que todo el mercado caiga un 40 %", "El riesgo de pagar comisiones de gestión altas"]
     answer: 1
     explain: "La indexación diversifica el riesgo específico y reduce costes, pero conserva todo el riesgo de mercado."
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

@@ -27,7 +27,7 @@ quiz:
 next: psicologia-y-sesgos
 related: [diversificacion, renta-fija-duracion-credito]
 tools: [diversificacion-rebalanceo]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

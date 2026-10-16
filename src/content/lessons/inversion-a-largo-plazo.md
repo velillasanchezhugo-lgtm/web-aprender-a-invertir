@@ -23,7 +23,7 @@ quiz:
 next: gestion-indexada-y-activa
 related: [aportaciones-periodicas-vs-inicial, psicologia-y-sesgos]
 tools: [interes-compuesto, simulador-caidas]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

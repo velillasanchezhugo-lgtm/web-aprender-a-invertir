@@ -1,4 +1,30 @@
-# Entrega de la primera versión funcional
+# Entrega
+
+## Versión 2 · umotion Academy (16 de octubre de 2026)
+
+La web pasa a ser **umotion Academy**, la academia de inversión de umotion, centrada en quien empieza de cero.
+
+**Nuevo:**
+- Identidad visual de umotion: Instrument Sans y Geist Mono, paleta tinta y crema con degradado azul-cian, logotipos de umotion, tarjetas oscuras, botones en píldora, fondo de puntos, modo oscuro y barra de navegación inferior en móvil.
+- **Camino Cero**: 14 sesiones de 5 minutos (`src/content/sessions/`) con gancho, idea, ejemplo con números, 2 o 3 preguntas interactivas (opción múltiple, verdadero o falso y estimación con deslizador) y una acción práctica para ese día.
+- **Reproductor de sesión** paso a paso (`/es/sesion/…`), accesible por teclado; sin JavaScript se lee como un artículo.
+- **Planificador** (`/es/empezar/`): objetivo, minutos al día, días, hora y prueba de nivel. Genera un plan ordenado por objetivo y prerrequisitos y un calendario `.ics` con recordatorios.
+- **Mi plan** (`/es/mi-plan/`): sesión de hoy, racha, repasos pendientes, semana, acciones pendientes, término e idea del día, niveles y logros.
+- **Repaso espaciado** (`/es/repaso/`) y **exámenes por nivel** (`/es/examen/…`, aprobado con el 80 %).
+- **Niveles** de Cero a Experto (`/es/niveles/`), reutilizando las 25 lecturas y 6 estrategias como niveles 1 a 4.
+- Portada nueva con una pregunta interactiva real.
+- Autoría en letra pequeña al final de cada página.
+- **Modo prototipo**: sin indexar hasta tener dominio.
+- `vercel.json` para publicar prototipos.
+
+**Comprobado**: 43 pruebas unitarias; control editorial de sesiones (fuentes, prerrequisitos, deslizadores que permiten la respuesta exacta); recorrido completo en navegador (plan → sesión → mi plan → repaso → examen); 0 infracciones de accesibilidad en 41 páginas, en modo claro y oscuro, a 375 px; sin peticiones a terceros.
+
+Plan pedagógico completo: [PLAN-DE-ENSENANZA.md](PLAN-DE-ENSENANZA.md).
+
+---
+
+## Versión 1 · primera versión funcional
+
 
 Fecha: 15 de octubre de 2026.
 
@@ -53,7 +79,7 @@ Verificado en fuente oficial el 15/10/2026:
 
 Escrito a partir de conocimiento general y referencias bibliográficas no consultadas en línea en esta revisión, y señalado así en la web: parte de las historias de inversores (Munger, Lynch, Graham), resultados de estudios académicos (Barber y Odean, Fama y French, Chague y otros, SPIVA, Vanguard 2012) y datos de índices (S&P 500, Nikkei).
 
-**Estado editorial**: todas las páginas figuran como «Pendiente de revisión humana», con autoría honesta («Redacción de Criterio, borrador elaborado con asistencia de IA») y sin revisor inventado.
+**Estado editorial**: todas las páginas figuran como «Pendiente de revisión humana», con autoría honesta («Equipo de umotion Academy; antes, Redacción de Criterio, borrador elaborado con asistencia de IA») y sin revisor inventado.
 
 ## 4. Qué falta por revisar
 

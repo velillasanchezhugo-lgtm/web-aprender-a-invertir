@@ -74,4 +74,31 @@ const investors = defineCollection({
   }),
 });
 
-export const collections = { lessons, strategies, investors };
+const sessionQuestion = z.discriminatedUnion('type', [
+  z.object({ type: z.literal('choice'), id: z.string(), q: z.string(), options: z.array(z.string()).min(2), answer: z.number().int().nonnegative(), explain: z.string() }),
+  z.object({ type: z.literal('truefalse'), id: z.string(), q: z.string(), answer: z.boolean(), explain: z.string() }),
+  z.object({ type: z.literal('estimate'), id: z.string(), q: z.string(), answer: z.number(), tolerance: z.number().nonnegative(), min: z.number(), max: z.number(), step: z.number().positive(), unit: z.string(), explain: z.string() }),
+]);
+
+/** Sesiones de 5 minutos: gancho, idea, ejemplo, test y una acción aplicable hoy. */
+const sessions = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/sessions' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().max(170),
+    level: z.enum(['cero', 'basico', 'intermedio', 'avanzado', 'experto']),
+    order: z.number().int(),
+    minutes: z.number().int().default(5),
+    goals: z.array(z.enum(['entender', 'objetivo', 'jubilacion', 'miedo', 'ordenar'])).default([]),
+    prereqs: z.array(z.string()).default([]),
+    hook: z.string(),
+    takeaway: z.string(),
+    questions: z.array(sessionQuestion).min(2).max(4),
+    action: z.object({ title: z.string(), steps: z.array(z.string()).min(1), check: z.string() }),
+    deeper: z.string().nullable().default(null),
+    tool: z.string().nullable().default(null),
+    ...editorial,
+  }),
+});
+
+export const collections = { lessons, strategies, investors, sessions };

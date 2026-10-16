@@ -1,0 +1,198 @@
+---
+import Base from '../../layouts/Base.astro';
+import academy from '../../data/academy.json';
+import { sessions, sessionMeta } from '../../lib/content';
+const all = await sessions();
+const meta = all.map(sessionMeta);
+const titles = Object.fromEntries(all.map((s) => [s.id, s.data.title]));
+const days = [['1', 'L', 'Lunes'], ['2', 'M', 'Martes'], ['3', 'X', 'Miércoles'], ['4', 'J', 'Jueves'], ['5', 'V', 'Viernes'], ['6', 'S', 'Sábado'], ['0', 'D', 'Domingo']];
+---
+<Base title="Crea tu plan de aprendizaje en 2 minutos" description="Elige tu objetivo y tu tiempo, haz una prueba de nivel opcional y recibe un plan de sesiones de 5 minutos con recordatorios en tu calendario." allowAds={false} focusMode={true}>
+  <div class="wizard narrow">
+    <div class="wz-progress" aria-hidden="true"><span id="wz-bar"></span></div>
+    <form id="wz" novalidate>
+      <section class="wz-step" data-step="0" aria-labelledby="w0">
+        <p class="eyebrow">Paso 1 de 4</p>
+        <h1 id="w0">¿Qué quieres conseguir?</h1>
+        <p class="lede">Ordenaremos las sesiones para que lo más útil para ti llegue antes.</p>
+        <div class="goals" role="radiogroup" aria-labelledby="w0">
+          {academy.goals.map((g, i) => (
+            <label class="goal">
+              <input type="radio" name="goal" value={g.id} checked={i === 0} />
+              <span class="g-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24"><path d={g.icon} fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+              <span class="g-text"><strong>{g.label}</strong><span class="small">{g.desc}</span></span>
+            </label>
+          ))}
+        </div>
+      </section>
+
+      <section class="wz-step" data-step="1" aria-labelledby="w1">
+        <p class="eyebrow">Paso 2 de 4</p>
+        <h2 class="h1" id="w1">¿Cuánto tiempo al día?</h2>
+        <p class="lede">Con 5 minutos basta. Lo que funciona es la constancia, no las maratones.</p>
+        <div class="minutes" role="radiogroup" aria-labelledby="w1">
+          {[[5, '1 sesión', 'Recomendado para empezar'], [10, '2 sesiones', 'Avanzas el doble de rápido'], [15, '3 sesiones', 'Terminas el Camino Cero en una semana']].map(([m, a, b], i) => (
+            <label class="min-card"><input type="radio" name="minutes" value={m} checked={i === 0} /><span class="m-num">{m}<small>min</small></span><span class="small"><strong>{a}</strong><br />{b}</span></label>
+          ))}
+        </div>
+        <fieldset class="days"><legend>¿Qué días?</legend>
+          <div class="day-row">{days.map(([v, s, l]) => <label class="day"><input type="checkbox" name="days" value={v} checked={v !== '0' && v !== '6'} /><span aria-hidden="true">{s}</span><span class="sr-only">{l}</span></label>)}</div>
+        </fieldset>
+        <div class="field time"><label for="time">¿A qué hora te viene bien?</label><input id="time" name="time" type="time" value="08:30" /><span class="hint">La usaremos para los recordatorios de tu calendario.</span></div>
+      </section>
+
+      <section class="wz-step" data-step="2" aria-labelledby="w2">
+        <p class="eyebrow">Paso 3 de 4 · opcional</p>
+        <h2 class="h1" id="w2">¿Qué sabes ya?</h2>
+        <p class="lede">Seis preguntas rápidas. Lo que ya domines lo pasaremos al final de tu plan, no lo borramos. Si no sabes algo, marca «No lo sé»: no pasa nada.</p>
+        <div class="placement">
+          {academy.placement.map((q, i) => (
+            <fieldset class="pq" data-qid={q.id}>
+              <legend>{i + 1}. {q.q}</legend>
+              {q.type === 'choice' ? q.options!.map((o, j) => <label class="choice"><input type="radio" name={q.id} value={String(j)} /> <span>{o}</span></label>)
+                : <><label class="choice"><input type="radio" name={q.id} value="true" /> <span>Verdadero</span></label><label class="choice"><input type="radio" name={q.id} value="false" /> <span>Falso</span></label></>}
+              <label class="choice"><input type="radio" name={q.id} value="dk" /> <span>No lo sé</span></label>
+            </fieldset>
+          ))}
+        </div>
+      </section>
+
+      <section class="wz-step result" data-step="3" aria-labelledby="w3" tabindex="-1">
+        <p class="eyebrow">Paso 4 de 4</p>
+        <h2 class="h1" id="w3">Tu plan está listo</h2>
+        <p class="lede" id="plan-summary"></p>
+        <div class="panel-dark plan-card">
+          <span class="chip">Tus próximas sesiones</span>
+          <ol class="plan-list" id="plan-list"></ol>
+        </div>
+        <p id="placement-msg" class="callout learn" hidden></p>
+        <div class="wz-final">
+          <a class="btn brand" id="start-btn" href="#">Empezar la primera sesión <span class="arrow" aria-hidden="true">→</span></a>
+          <button type="button" class="btn secondary" id="ics">Añadir recordatorios al calendario</button>
+          <a class="btn ghost" href="/es/mi-plan/">Ver mi plan completo</a>
+        </div>
+        <p class="small muted">Tu plan se guarda solo en este dispositivo. No te pedimos correo ni datos financieros. Puedes cambiarlo o borrarlo cuando quieras.</p>
+      </section>
+
+      <nav class="wz-controls" aria-label="Pasos del asistente">
+        <button type="button" class="btn ghost small" id="back">← Atrás</button>
+        <button type="button" class="btn" id="fwd">Continuar <span class="arrow" aria-hidden="true">→</span></button>
+      </nav>
+    </form>
+  </div>
+  <script type="application/json" id="wz-data" set:html={JSON.stringify({ meta, titles, placement: academy.placement })} />
+</Base>
+<style>
+  .wizard { padding-top: 1.2rem; padding-bottom: 7rem; }
+  .wz-progress { height: 5px; background: var(--rule); border-radius: 999px; overflow: hidden; margin: 0.5rem 0 1.5rem; }
+  .wz-progress span { display: block; height: 100%; width: 25%; background: var(--u-grad); transition: width .5s var(--ease-seda); }
+  .wizard h1, .wizard .h1 { font-size: clamp(2rem, 1.5rem + 2vw, 2.8rem); margin: 0.3rem 0 0.6rem; }
+  .goals, .minutes { display: grid; gap: 0.7rem; margin: 1.5rem 0; }
+  .goal, .min-card { display: flex; gap: 0.9rem; align-items: center; padding: 1rem 1.1rem; border: 1.5px solid var(--rule); border-radius: 18px; background: var(--card); cursor: pointer; font-weight: 400; transition: border-color .15s, transform .15s var(--ease-seda); }
+  .goal:hover, .min-card:hover { border-color: var(--u-blue); }
+  .goal:has(input:checked), .min-card:has(input:checked) { border-color: var(--u-blue); background: var(--teal-soft); }
+  .goal input, .min-card input, .day input { position: absolute; opacity: 0; pointer-events: none; }
+  .goal:has(input:focus-visible), .min-card:has(input:focus-visible), .day:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .g-icon { flex: none; width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); }
+  .g-text { display: flex; flex-direction: column; gap: 0.15rem; }
+  .g-text strong { font-size: 1.05rem; }
+  .g-text .small { color: var(--ink-3); }
+  @media (min-width: 640px) { .minutes { grid-template-columns: repeat(3, 1fr); } .min-card { flex-direction: column; align-items: flex-start; } }
+  .m-num { font: 600 2.2rem/1 var(--display); letter-spacing: -0.03em; }
+  .m-num small { font-size: 0.9rem; margin-left: 0.2rem; color: var(--ink-3); }
+  .days { border: 0; padding: 0; }
+  .day-row { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+  .day { position: relative; margin: 0; }
+  .day span[aria-hidden] { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 999px; border: 1.5px solid var(--rule-strong); font-weight: 600; cursor: pointer; background: var(--card); }
+  .day:has(input:checked) span[aria-hidden] { background: var(--u-ink); color: var(--u-cream); border-color: var(--u-ink); }
+  .time { max-width: 260px; }
+  .pq legend { font-size: 1.02rem; }
+  .plan-card { margin: 1.2rem 0; padding: 1.4rem; }
+  .plan-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.5rem; }
+  .plan-list :global(li) { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.6rem; padding: 0.6rem 0; border-bottom: 1px solid #232a42; }
+  .plan-list :global(.d) { font: 500 0.78rem/1.4 var(--mono); color: var(--u-cyan); text-transform: uppercase; }
+  .wz-final { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.4rem 0 1rem; }
+  .wz-controls { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: flex; justify-content: space-between; padding: 0.8rem var(--gutter) calc(0.8rem + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--rule); }
+  .wz-controls #fwd { flex: 1; max-width: 420px; margin-left: auto; }
+  :global(.js) .wz-step { display: none; }
+  :global(.js) .wz-step.active { display: block; animation: rise .5s var(--ease-seda) both; }
+  :global(html:not(.js)) .wz-controls { display: none; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+</style>
+<script>
+  import { schedule, planOrder, placement, planToIcs, type SessionMeta, type Goal } from '../../lib/academy';
+  import { getState, saveState, today } from '../../scripts/academy-store';
+  const data = JSON.parse(document.getElementById('wz-data')!.textContent!) as { meta: SessionMeta[]; titles: Record<string, string>; placement: { id: string; session: string; type: string; answer: number | boolean }[] };
+  const form = document.getElementById('wz') as HTMLFormElement;
+  const steps = [...form.querySelectorAll<HTMLElement>('.wz-step')];
+  const back = document.getElementById('back') as HTMLButtonElement;
+  const fwd = document.getElementById('fwd') as HTMLButtonElement;
+  const bar = document.getElementById('wz-bar') as HTMLElement;
+  let cur = 0;
+  const DOW = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+  const val = (n: string) => (form.querySelector<HTMLInputElement>(`input[name="${n}"]:checked`)?.value ?? '');
+  const chosenDays = () => [...form.querySelectorAll<HTMLInputElement>('input[name=days]:checked')].map((i) => Number(i.value));
+
+  function compute() {
+    const results: Record<string, boolean> = {};
+    data.placement.forEach((q) => { const v = val(q.id); results[q.id] = v !== '' && v !== 'dk' && (q.type === 'choice' ? Number(v) === q.answer : (v === 'true') === q.answer); });
+    const conceptBySession: Record<string, string[]> = {};
+    data.placement.forEach((q) => (conceptBySession[q.session] = [...(conceptBySession[q.session] ?? []), q.id]));
+    const pl = placement(results, conceptBySession);
+    const goal = val('goal') as Goal;
+    const minutesPerDay = Number(val('minutes')) as 5 | 10 | 15;
+    const days = chosenDays();
+    const time = (form.elements.namedItem('time') as HTMLInputElement).value || '08:30';
+    // Lo que ya sabes pasa al final del plan como repaso, no se elimina.
+    const order = planOrder(data.meta, goal, pl.known);
+    const pendingOrder = order.filter((id) => !getState().completed[id]);
+    const plan = days.length ? schedule(pendingOrder, { minutesPerDay, days, start: today() }) : [];
+    return { pl, goal, minutesPerDay, days, time, order, plan };
+  }
+
+  function renderResult() {
+    const r = compute();
+    const s = getState();
+    s.plan = { goal: r.goal, minutesPerDay: r.minutesPerDay, days: r.days, time: r.time, start: today(), order: r.order, skip: r.pl.known, createdAt: new Date().toISOString() };
+    s.placement = { score: r.pl.score, known: r.pl.known, at: new Date().toISOString() };
+    saveState(s);
+    const lastDay = r.plan[r.plan.length - 1]?.date;
+    const fmt = (d: string) => { const [y, m, dd] = d.split('-').map(Number); const dt = new Date(y, m - 1, dd); return `${DOW[dt.getDay()]} ${dd}/${m}`; };
+    document.getElementById('plan-summary')!.textContent = `${r.minutesPerDay} minutos, ${r.days.length} ${r.days.length === 1 ? 'día' : 'días'} a la semana a las ${r.time}. Terminarás el Camino Cero hacia el ${lastDay ? fmt(lastDay) : '—'}.`;
+    const pending = r.order.filter((id) => !s.completed[id]);
+    document.getElementById('plan-list')!.innerHTML = r.plan.slice(0, 5).map((p) => `<li><span class="d">${fmt(p.date)}</span><span>${p.sessions.map((x) => data.titles[x]).join(' · ')}</span></li>`).join('');
+    const msg = document.getElementById('placement-msg')!;
+    if (r.pl.known.length) { msg.hidden = false; msg.textContent = `Has acertado ${r.pl.score} de 6. Hemos movido ${r.pl.known.length} ${r.pl.known.length === 1 ? 'sesión' : 'sesiones'} que ya dominas al final del plan, como repaso.`; }
+    else msg.hidden = true;
+    (document.getElementById('start-btn') as HTMLAnchorElement).href = `/es/sesion/${pending[0] ?? r.order[0]}/`;
+    (document.getElementById('ics') as HTMLButtonElement).onclick = () => {
+      const ics = planToIcs(r.plan, r.time, data.titles, `${location.origin}/es/mi-plan/`);
+      const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'umotion-academy-plan.ics'; a.click(); URL.revokeObjectURL(a.href);
+    };
+  }
+
+  function show(i: number) {
+    if (i === 2 && cur === 1 && chosenDays().length === 0) { alert('Elige al menos un día.'); return; }
+    cur = Math.max(0, Math.min(steps.length - 1, i));
+    steps.forEach((s, k) => s.classList.toggle('active', k === cur));
+    bar.style.width = `${((cur + 1) / steps.length) * 100}%`;
+    back.style.visibility = cur === 0 ? 'hidden' : 'visible';
+    fwd.hidden = cur === steps.length - 1;
+    fwd.innerHTML = cur === 2 ? 'Ver mi plan <span class="arrow" aria-hidden="true">→</span>' : 'Continuar <span class="arrow" aria-hidden="true">→</span>';
+    if (cur === steps.length - 1) renderResult();
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    const h = steps[cur].querySelector('h1, h2.h1') as HTMLElement; h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true });
+  }
+  back.addEventListener('click', () => show(cur - 1));
+  fwd.addEventListener('click', () => show(cur + 1));
+  form.addEventListener('submit', (e) => e.preventDefault());
+  // Si ya hay un plan, preselecciona sus opciones.
+  const prev = getState().plan;
+  if (prev) {
+    form.querySelector<HTMLInputElement>(`input[name=goal][value="${prev.goal}"]`)!.checked = true;
+    form.querySelector<HTMLInputElement>(`input[name=minutes][value="${prev.minutesPerDay}"]`)!.checked = true;
+    form.querySelectorAll<HTMLInputElement>('input[name=days]').forEach((i) => (i.checked = prev.days.includes(Number(i.value))));
+    (form.elements.namedItem('time') as HTMLInputElement).value = prev.time;
+  }
+  show(0);
+</script>

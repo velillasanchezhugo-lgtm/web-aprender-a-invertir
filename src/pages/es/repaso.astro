@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+import { sessions } from '../../lib/content';
+const all = await sessions();
+const bank = Object.fromEntries(all.flatMap((s) => s.data.questions.map((q) => [q.id, { ...q, session: s.id, sessionTitle: s.data.title }])));
+---
+<Base title="Repaso diario" description="Un minuto al día: vuelven las preguntas que fallaste y las que toca reforzar, con repaso espaciado." noindex={true} allowAds={false}>
+  <div class="narrow rv">
+    <p class="eyebrow">Repaso espaciado · 1 minuto</p>
+    <h1>Repaso de hoy</h1>
+    <p class="lede" id="rv-intro">Lo que fallas vuelve mañana; lo que aciertas, cada vez más tarde (a los 3, 7, 14 y 30 días). Así se fija lo aprendido.</p>
+    <div class="progress-bar" aria-hidden="true"><span id="rv-bar"></span></div>
+    <p class="small muted mono" id="rv-count" aria-live="polite"></p>
+    <div class="rq" id="rv-q"></div>
+    <div class="rv-ctrl"><button class="btn" id="rv-next" type="button" hidden>Siguiente <span class="arrow" aria-hidden="true">→</span></button></div>
+    <div class="callout learn" id="rv-done" hidden></div>
+  </div>
+  <script type="application/json" id="bank" set:html={JSON.stringify(bank)} />
+</Base>
+<style>.rv { padding-top: 1.5rem; } .rv h1 { margin: 0.2rem 0 0.5rem; } #rv-q { margin-top: 1rem; } .rv-ctrl { margin: 1rem 0; display: flex; justify-content: flex-end; }</style>
+<script>
+  import { getState, saveState, answer, today } from '../../scripts/academy-store';
+  import { dueToday } from '../../lib/academy';
+  import { ask } from '../../scripts/quiz-runner';
+  const bank = JSON.parse(document.getElementById('bank')!.textContent!);
+  const $ = (id: string) => document.getElementById(id)!;
+  let st = getState();
+  let queue = dueToday(st.deck, today(), 10).filter((id) => bank[id]);
+  let practice = false;
+  if (!queue.length) {
+    const seen = Object.keys(bank).filter((id) => st.completed[bank[id].session]);
+    queue = seen.sort(() => Math.random() - 0.5).slice(0, 5);
+    practice = true;
+  }
+  const total = queue.length; let i = 0, ok = 0;
+  async function run() {
+    if (!total) {
+      $('rv-q').hidden = true;
+      $('rv-done').hidden = false;
+      $('rv-done').innerHTML = '<p class="callout-title">Aún no hay nada que repasar</p><p>Haz tu primera sesión de 5 minutos y sus preguntas aparecerán aquí cuando toque repasarlas.</p><p><a class="btn small brand" href="/es/mi-plan/">Ir a mi plan</a></p>';
+      return;
+    }
+    if (practice) $('rv-intro').textContent = 'Estás al día con tus repasos. Aquí tienes una práctica libre con preguntas de las sesiones que ya hiciste (no cambia tu calendario de repaso).';
+    while (i < total) {
+      $('rv-count').textContent = `Pregunta ${i + 1} de ${total}`;
+      ($('rv-bar') as HTMLElement).style.width = `${(i / total) * 100}%`;
+      const q = bank[queue[i]];
+      const res = await ask($('rv-q'), q, `De: ${q.sessionTitle}`);
+      if (res) ok++;
+      if (!practice) { st = getState(); st = answer(st, q.id, res); saveState(st); }
+      const nx = $('rv-next') as HTMLButtonElement;
+      nx.hidden = false; nx.focus();
+      await new Promise((r) => nx.addEventListener('click', r, { once: true }));
+      nx.hidden = true; i++;
+    }
+    ($('rv-bar') as HTMLElement).style.width = '100%';
+    $('rv-q').hidden = true; $('rv-count').textContent = '';
+    $('rv-done').hidden = false;
+    $('rv-done').innerHTML = `<p class="callout-title">Repaso terminado: ${ok} de ${total}</p><p>${practice ? 'Buena práctica.' : 'Las que fallaste volverán mañana; las acertadas, más adelante.'}</p><p><a class="btn small brand" href="/es/mi-plan/">Volver a mi plan</a></p>`;
+  }
+  run();
+</script>

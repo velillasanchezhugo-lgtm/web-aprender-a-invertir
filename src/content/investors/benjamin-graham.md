@@ -7,7 +7,7 @@ description: El padre del análisis de valores. Sus grandes pérdidas en la Gran
 approach: Comprar con un margen de seguridad amplio sobre el valor estimado, diversificar y distinguir entre inversión y especulación.
 order: 5
 related: [warren-buffett, charlie-munger]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

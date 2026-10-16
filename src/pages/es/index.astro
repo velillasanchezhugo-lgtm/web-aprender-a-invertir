@@ -1,136 +1,257 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { routeLessons, lessons, TOPICS } from '../../lib/content';
-import { getCollection } from 'astro:content';
-const route = await routeLessons();
-const all = await lessons();
-const total = route.reduce((a, l) => a + l.data.minutes, 0);
-const academy = all.filter((l) => !l.data.route);
-const strategies = await getCollection('strategies');
-const investors = await getCollection('investors');
-const usedTopics = [...new Set(all.map((l) => l.data.topic))];
+import academy from '../../data/academy.json';
+import { sessions, TOOLS, glossaryList } from '../../lib/content';
+const all = await sessions();
+const blocks = [
+  { t: 'Tu base', r: [1, 4] }, { t: 'Cómo se mueve el dinero', r: [5, 8] }, { t: 'Productos y costes', r: [9, 11] }, { t: 'Protegerte', r: [12, 14] },
+];
+const tools = ['interes-compuesto', 'inflacion', 'simulador-caidas', 'comparador-comisiones'];
 const jsonLd = [
-  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Criterio', url: new URL('/es/', Astro.site).href, inLanguage: 'es-ES', potentialAction: { '@type': 'SearchAction', target: new URL('/es/buscar/?q={q}', Astro.site).href, 'query-input': 'required name=q' } },
-  { '@context': 'https://schema.org', '@type': 'Organization', name: 'Criterio', url: new URL('/es/', Astro.site).href, logo: new URL('/favicon.svg', Astro.site).href },
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'umotion Academy', url: new URL('/es/', Astro.site).href, inLanguage: 'es-ES', potentialAction: { '@type': 'SearchAction', target: new URL('/es/buscar/?q={q}', Astro.site).href, 'query-input': 'required name=q' } },
+  { '@context': 'https://schema.org', '@type': 'EducationalOrganization', name: 'umotion Academy', url: new URL('/es/', Astro.site).href, logo: new URL('/brand/icon-512.png', Astro.site).href, parentOrganization: { '@type': 'Organization', name: 'umotion' } },
 ];
 ---
-<Base title="Criterio: aprende a invertir desde cero, con criterio propio" description="Aprende a invertir desde cero en España: ruta para principiantes, herramientas, comparador de brókeres verificado y fuentes oficiales. Sin vender productos." jsonLd={jsonLd} allowAds={false}>
-  <section class="hero">
+<Base title="umotion Academy: aprende a invertir en 5 minutos al día" description="Academia gratuita para aprender a invertir desde cero: sesiones de 5 minutos con test, un plan según tu objetivo y una acción útil cada día. Sin vender productos." jsonLd={jsonLd} allowAds={false}>
+  <section class="hero dots">
     <div class="container hero-grid">
-      <div>
-        <p class="eyebrow">Educación financiera para residentes en España</p>
-        <h1>Aprende a invertir con criterio propio</h1>
-        <p class="lede">Entiende cómo funciona la inversión, cómo evaluar productos e intermediarios y qué riesgos asumes. Sin registro, sin vender productos y con fuentes oficiales.</p>
+      <div class="hero-copy">
+        <p class="eyebrow">umotion Academy · gratis · sin registro</p>
+        <h1>Aprende a invertir en <span class="grad-text">5 minutos</span> al día.</h1>
+        <p class="lede">Sesiones cortas con una idea, un ejemplo con números, un test rápido y <strong>algo útil que hacer hoy</strong> con tu dinero. Empiezas desde cero y avanzas a tu ritmo.</p>
         <div class="cta">
-          <a class="btn" href="/es/empieza-desde-cero/">Empieza desde cero</a>
-          <a class="btn secondary" href="/es/test/">Haz el test de aprendizaje</a>
+          <a class="btn" href="/es/empezar/">Crea tu plan gratis <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn secondary" href={`/es/sesion/${all[0].id}/`}>Prueba la primera sesión</a>
         </div>
-        <p class="small muted">{route.length} lecciones breves · unos {total} minutos en total · la primera sesión, unos 15.</p>
-        <a class="resume card" id="resume" href="#" hidden><span class="small muted">Continuar donde lo dejaste</span><strong id="resume-title"></strong></a>
+        <ul class="facts mono small">
+          <li><strong>{all.length}</strong> sesiones para empezar</li>
+          <li><strong>5</strong> min al día</li>
+          <li><strong>0 €</strong> y sin cuenta</li>
+        </ul>
+        <a class="resume card" id="resume" href="/es/mi-plan/" hidden>
+          <span class="mono small muted">Continuar</span>
+          <strong id="resume-title"></strong>
+          <span class="small muted" id="resume-meta"></span>
+        </a>
       </div>
-      <figure class="hero-fig" aria-labelledby="fig-cap">
-        <svg viewBox="0 0 320 240" role="img" aria-labelledby="fig-t fig-d">
-          <title id="fig-t">Las pérdidas son asimétricas</title>
-          <desc id="fig-d">Una cartera de 100 que cae un 50 % pasa a 50 y necesita subir un 100 % para volver a 100.</desc>
-          <line x1="30" y1="200" x2="300" y2="200" stroke="var(--rule-strong)" />
-          <rect x="45" y="60" width="54" height="140" rx="4" fill="var(--teal)" />
-          <rect x="133" y="130" width="54" height="70" rx="4" fill="var(--loss)" />
-          <rect x="221" y="60" width="54" height="140" rx="4" fill="var(--teal)" opacity="0.35" />
-          <rect x="221" y="130" width="54" height="70" rx="4" fill="var(--teal)" />
-          <text x="72" y="52" text-anchor="middle" font-family="var(--sans)" font-size="13" fill="var(--ink)">100 €</text>
-          <text x="160" y="122" text-anchor="middle" font-family="var(--sans)" font-size="13" fill="var(--loss)">−50 % → 50 €</text>
-          <text x="248" y="52" text-anchor="middle" font-family="var(--sans)" font-size="13" fill="var(--ink)">+100 % → 100 €</text>
-          <text x="72" y="222" text-anchor="middle" font-family="var(--sans)" font-size="12" fill="var(--ink-3)">Inicio</text>
-          <text x="160" y="222" text-anchor="middle" font-family="var(--sans)" font-size="12" fill="var(--ink-3)">Caída</text>
-          <text x="248" y="222" text-anchor="middle" font-family="var(--sans)" font-size="12" fill="var(--ink-3)">Recuperación</text>
-        </svg>
-        <figcaption id="fig-cap" class="small muted">Una idea de la lección 5: perder un 50 % exige ganar un 100 % para volver al punto de partida.</figcaption>
-      </figure>
+
+      <div class="panel-dark demo" aria-labelledby="demo-q">
+        <div class="demo-top">
+          <span class="demo-icon" aria-hidden="true"><img src="/brand/icon-32.png" width="22" height="22" alt="" /></span>
+          <div><strong>Tu sesión de hoy</strong><span class="mono small">Sesión 7 · Las caídas son normales</span></div>
+        </div>
+        <div class="demo-steps mono small" aria-hidden="true"><span class="on">Idea</span><span class="on">Números</span><span class="on cur">Test</span><span>Acción</span></div>
+        <p class="demo-label mono small">Pregunta rápida</p>
+        <p id="demo-q" class="demo-q">Si tu inversión cae un 50 %, ¿cuánto tiene que subir después para volver a donde estabas?</p>
+        <div class="demo-opts" role="group" aria-labelledby="demo-q">
+          <button type="button" data-ok="0">Un 50 %</button>
+          <button type="button" data-ok="0">Un 75 %</button>
+          <button type="button" data-ok="1">Un 100 %</button>
+        </div>
+        <p class="demo-fb" id="demo-fb" role="status" aria-live="polite" hidden></p>
+        <div class="demo-foot">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="small">Mañana repasarás lo que falles hoy.</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="container paths" aria-labelledby="paths-t">
-    <h2 id="paths-t" class="sr-only">Dos formas de aprender</h2>
+  <section class="container how" aria-labelledby="how-t">
+    <p class="eyebrow">Cómo funciona</p>
+    <h2 id="how-t">Tres pasos. Cinco minutos.</h2>
+    <ol class="steps">
+      <li class="card reveal"><span class="sn mono">01</span><h3>Elige objetivo y tiempo</h3><p>Entender lo básico, ordenar tus finanzas, ahorrar para algo o perder el miedo. En 2 minutos tienes un plan con fechas.</p></li>
+      <li class="card reveal"><span class="sn mono">02</span><h3>Haz tu sesión</h3><p>Una idea, un ejemplo con números reales y un test interactivo. Sin teoría de relleno.</p></li>
+      <li class="card reveal"><span class="sn mono">03</span><h3>Aplícalo hoy</h3><p>Cada sesión termina con una acción de 2 minutos: calcular tu colchón, mirar la comisión de un fondo, comprobar un bróker…</p></li>
+    </ol>
+    <p><a class="btn brand" href="/es/empezar/">Empezar ahora <span class="arrow" aria-hidden="true">→</span></a></p>
+  </section>
+
+  <section class="path-sec" aria-labelledby="path-t">
+    <div class="container">
+      <p class="eyebrow">Camino Cero · 2 semanas</p>
+      <h2 id="path-t">Lo que sabrás en 14 sesiones</h2>
+      <div class="path">
+        {blocks.map((b) => (
+          <div class="pblock reveal">
+            <h3 class="mono small">{b.t}</h3>
+            <ul>{all.filter((s) => s.data.order >= b.r[0] && s.data.order <= b.r[1]).map((s) => <li><a href={`/es/sesion/${s.id}/`}><span class="mono">{String(s.data.order).padStart(2, '0')}</span> {s.data.title}</a></li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <p><a class="btn small secondary inv" href="/es/camino-cero/">Ver el Camino Cero</a></p>
+    </div>
+  </section>
+
+  <section class="container daily-sec" aria-labelledby="day-t">
     <div class="grid cols-2">
-      <a class="card path" href="/es/empieza-desde-cero/">
-        <span class="eyebrow">Recorrido A</span>
-        <h3>Empiezo desde cero</h3>
-        <p>Diez pasos en orden, de «ahorrar, invertir y especular» a tu propia lista de comprobación. Termina con un ejercicio con dinero ficticio, sin presión para abrir ninguna cuenta.</p>
-        <span class="more">Ver la ruta →</span>
-      </a>
-      <a class="card path" href="/es/biblioteca/">
-        <span class="eyebrow">Recorrido B</span>
-        <h3>Quiero profundizar</h3>
-        <p>{academy.length} lecciones intermedias y avanzadas, {strategies.length} estrategias analizadas con su evidencia y {investors.length} historias y casos documentados, organizados por temas y niveles.</p>
-        <span class="more">Ir a la biblioteca →</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="container" aria-labelledby="search-t">
-    <form class="search" action="/es/buscar/" method="get" role="search">
-      <label id="search-t" for="q" class="search-label">¿Qué quieres saber?</label>
-      <div class="search-row">
-        <input id="q" name="q" type="search" placeholder="Por ejemplo: traspaso de fondos, inflación, CFD…" autocomplete="off" />
-        <button class="btn" type="submit">Buscar</button>
+      <div>
+        <p class="eyebrow">Cada día, algo útil</p>
+        <h2 id="day-t">No necesitas una hora. Necesitas un hábito.</h2>
+        <p class="lede">Cinco minutos al día con repaso espaciado fijan más que una tarde entera una vez al mes. Lo que fallas vuelve mañana; lo que aciertas, cada vez más tarde.</p>
+        <ul class="checks">
+          <li>Plan con fechas y recordatorios en tu calendario</li>
+          <li>Repaso diario de 1 minuto</li>
+          <li>Rachas y logros por aprender, nunca por invertir</li>
+          <li>Tu progreso se queda en tu dispositivo</li>
+        </ul>
       </div>
-    </form>
-    <nav aria-label="Temas" class="topics">
-      {usedTopics.map((t) => <a class="tag" href={`/es/temas/${t}/`}>{TOPICS[t]?.label ?? t}</a>)}
-    </nav>
-  </section>
-
-  <section class="container" aria-labelledby="explore-t">
-    <h2 id="explore-t">Explora</h2>
-    <div class="grid cols-3">
-      <a class="card" href="/es/brokers/"><h3>Comparador de brókeres</h3><p class="small">Entidad, supervisor, protección y tarifas verificadas en fuentes oficiales, con fecha. Sin clasificaciones universales ni afiliación.</p></a>
-      <a class="card" href="/es/herramientas/"><h3>Herramientas</h3><p class="small">Interés compuesto, inflación con datos del INE, caídas, apalancamiento, objetivos y una cartera de práctica ficticia.</p></a>
-      <a class="card" href="/es/estrategias/"><h3>Estrategias</h3><p class="small">Qué es cada una, qué cuesta, qué dice la evidencia y cómo puede fallar, con ejemplos favorables y desfavorables.</p></a>
-      <a class="card" href="/es/inversores/"><h3>Historias de inversores</h3><p class="small">Buffett, Bogle, Graham y otros: trayectorias, errores y ventajas que no tenías. También fracasos y fraudes.</p></a>
-      <a class="card" href="/es/biblioteca/"><h3>Biblioteca</h3><p class="small">Todas las lecciones por tema y nivel, con fuentes y fecha de revisión.</p></a>
-      <a class="card" href="/es/glosario/"><h3>Glosario</h3><p class="small">Definiciones breves que también aparecen al tocar los términos dentro de las lecciones.</p></a>
+      <div class="card term reveal">
+        <p class="eyebrow">Término del día</p>
+        <h3 id="term"><a href="/es/glosario/" id="term-link">Glosario</a></h3>
+        <p id="term-def">Definiciones breves de los conceptos que más se usan al invertir.</p>
+        <a class="small" href="/es/glosario/">Ver el glosario completo →</a>
+      </div>
     </div>
   </section>
 
-  <section class="container trust" aria-labelledby="trust-t">
-    <h2 id="trust-t">Cómo trabajamos</h2>
-    <ul class="grid cols-4">
-      <li><strong>No vendemos productos</strong><span class="small">Ni asesoramos, ni ejecutamos operaciones, ni tenemos acuerdos de afiliación.</span></li>
-      <li><strong>Fuentes con fecha</strong><span class="small">CNMV, Banco de España, AEAT, INE, documentos oficiales e investigación académica.</span></li>
-      <li><strong>Estado editorial visible</strong><span class="small">Cada página indica quién la escribió, si está revisada y cuándo.</span></li>
-      <li><strong>Tus datos, en tu dispositivo</strong><span class="small">El progreso y el test no salen de tu navegador.</span></li>
-    </ul>
-    <p class="small"><a href="/es/metodologia/">Metodología</a> · <a href="/es/financiacion/">Financiación y conflictos de interés</a> · <a href="/es/alcance-educativo/">Alcance educativo</a></p>
+  <section class="container" aria-labelledby="lv-t">
+    <p class="eyebrow">Niveles</p>
+    <h2 id="lv-t">De cero a experto, sin prisas</h2>
+    <ol class="levels">
+      {academy.levels.map((l) => (
+        <li class="reveal"><a href={l.id === 'cero' ? '/es/camino-cero/' : `/es/niveles/#nivel-${l.id}`} class="card lv"><span class="ln mono">{l.n}</span><strong>{l.title}</strong><span class="small muted">{l.tagline}</span></a></li>
+      ))}
+    </ol>
+    <p class="small muted">Subir de nivel significa comprender más. No operar más ni asumir más riesgo.</p>
   </section>
+
+  <section class="container" aria-labelledby="tl-t">
+    <p class="eyebrow">Herramientas</p>
+    <h2 id="tl-t">Haz las cuentas con tus números</h2>
+    <div class="grid cols-4">
+      {tools.map((t) => <a class="card tool-card reveal" href={`/es/herramientas/${t}/`}><h3>{TOOLS[t].title}</h3><p class="small muted">{TOOLS[t].blurb}</p><span class="small go">Abrir →</span></a>)}
+    </div>
+    <p><a href="/es/herramientas/">Ver las 8 herramientas</a> · <a href="/es/brokers/">Comparador de brókeres</a> · <a href="/es/biblioteca/">Biblioteca</a></p>
+  </section>
+
+  <section class="container trust" aria-labelledby="tr-t">
+    <h2 id="tr-t" class="sr-only">Cómo trabajamos</h2>
+    <ul class="grid cols-4">
+      <li><strong>No vendemos productos</strong><span class="small">Ni asesoramos, ni cobramos de brókeres, ni ejecutamos operaciones.</span></li>
+      <li><strong>Fuentes oficiales</strong><span class="small">CNMV, Banco de España, AEAT, INE e investigación académica, con fecha.</span></li>
+      <li><strong>Para España</strong><span class="small">Impuestos, garantías y normativa explicados para residentes en España.</span></li>
+      <li><strong>Tus datos, contigo</strong><span class="small">Sin registro. Plan, progreso y respuestas, solo en tu dispositivo.</span></li>
+    </ul>
+  </section>
+
+  <section class="final">
+    <div class="container final-inner">
+      <h2>Tu primera sesión dura <span class="grad-text">5 minutos</span>.</h2>
+      <p>Empieza hoy. Mañana sabrás algo útil que la mayoría no sabe.</p>
+      <a class="btn brand" href="/es/empezar/">Crear mi plan gratis <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+  <script type="application/json" id="home-data" set:html={JSON.stringify({ glossary: glossaryList.map((g) => ({ id: g.id, term: g.term, def: g.def })), titles: Object.fromEntries(all.map((s) => [s.id, s.data.title])), order: all.map((s) => s.id) })} />
 </Base>
 <style>
-  .hero { background: linear-gradient(180deg, var(--paper-2), var(--paper)); border-bottom: 1px solid var(--rule); padding: 2.5rem 0 2rem; }
-  .hero-grid { display: grid; gap: 2rem; align-items: center; }
-  @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.3fr 1fr; } }
-  .hero h1 { margin-top: 0.2rem; }
-  .cta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0 0.8rem; }
-  .hero-fig { margin: 0; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem; }
-  .resume { margin-top: 1rem; max-width: 420px; }
-  .resume strong { display: block; color: var(--teal); font-family: var(--serif); font-size: 1.1rem; }
-  .paths { margin-top: 2rem; }
-  .path h3 { font-size: 1.6rem; margin: 0.2rem 0 0.5rem; }
-  .path .more { color: var(--teal); font-weight: 600; }
-  .search { margin: 2.5rem 0 1rem; }
-  .search-label { font-family: var(--serif); font-size: 1.4rem; }
-  .search-row { display: flex; gap: 0.5rem; }
-  .search-row input { flex: 1; }
-  .topics { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .topics a { text-decoration: none; padding: 0.5em 0.8em; }
-  .topics a:hover { border-color: var(--teal); color: var(--teal); }
+  .hero { padding: 2.5rem 0 3.5rem; border-bottom: 1px solid var(--rule); background-color: var(--paper); position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; right: -10%; top: -20%; width: 55%; height: 80%; background: radial-gradient(closest-side, color-mix(in srgb, var(--u-cyan) 22%, transparent), transparent); pointer-events: none; }
+  .hero-grid { display: grid; gap: 2.5rem; align-items: center; position: relative; z-index: 1; }
+  @media (min-width: 980px) { .hero-grid { grid-template-columns: 1.15fr 0.85fr; } }
+  .hero h1 { font-size: clamp(2.7rem, 1.6rem + 5vw, 5.4rem); line-height: 0.98; letter-spacing: -0.05em; margin: 0.3rem 0 1.2rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.8rem 0 1.2rem; }
+  .facts { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; color: var(--ink-3); }
+  .facts strong { color: var(--ink); font-size: 1rem; }
+  .resume { margin-top: 1.4rem; max-width: 440px; }
+  .resume strong { display: block; font-size: 1.1rem; margin: 0.2rem 0; }
+  .demo { padding: 1.3rem; }
+  .demo-top { display: flex; gap: 0.8rem; align-items: center; }
+  .demo-top strong { display: block; color: #f8f9fc; }
+  .demo-top .mono { color: #a3acc4; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; }
+  .demo-icon { width: 40px; height: 40px; border-radius: 12px; background: #161b30; display: grid; place-items: center; }
+  .demo-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin: 1.2rem 0 1.4rem; }
+  .demo-steps span { border-top: 4px solid #232a42; padding-top: 0.4rem; color: #737d9a; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .demo-steps span.on { border-top-color: #2b52f0; color: #c4cada; }
+  .demo-steps span.cur { border-top-color: #35c8ff; color: #35c8ff; }
+  .demo-label { color: #35c8ff; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem; margin: 0; }
+  .demo-q { font-size: 1.3rem; line-height: 1.35; font-weight: 600; color: #f8f9fc; margin: 0.4rem 0 1rem; letter-spacing: -0.01em; }
+  .demo-opts { display: grid; gap: 0.5rem; }
+  .demo-opts button { text-align: left; font: 500 1rem var(--sans); padding: 0.85rem 1rem; border-radius: 14px; border: 1px solid #2a3150; background: #111527; color: #f2f4fa; cursor: pointer; transition: border-color .15s, transform .15s var(--ease-seda); }
+  .demo-opts button:hover:not(:disabled) { border-color: #35c8ff; transform: translateX(3px); }
+  .demo-opts button.ok { border-color: #5fd197; background: #10291d; }
+  .demo-opts button.ko { border-color: #ff8b78; background: #2d1714; }
+  .demo-fb { margin: 0.9rem 0 0; color: #c4cada; font-size: 0.95rem; }
+  .demo-fb a { color: #35c8ff; font-weight: 600; }
+  .demo-foot { display: flex; gap: 0.6rem; align-items: center; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid #232a42; color: #a3acc4; }
+  .dot { width: 8px; height: 8px; border-radius: 999px; background: #35c8ff; box-shadow: 0 0 0 4px rgb(53 200 255 / 18%); animation: pulse 2.4s var(--ease-seda) infinite; }
+  @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgb(53 200 255 / 0%); } }
+  section.how, section.daily-sec, section.trust { margin-top: 4.5rem; }
+  .how h2, .daily-sec h2 { margin-top: 0.2rem; }
+  .steps { list-style: none; padding: 0; display: grid; gap: 1rem; margin: 1.5rem 0; }
+  @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .steps .sn { display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 12px; background: var(--u-ink); color: var(--u-cyan); }
+  .steps h3 { margin: 0.9rem 0 0.4rem; }
+  .steps p { color: var(--ink-2); margin: 0; }
+  .path-sec { background: var(--u-ink); color: #c4cada; padding: 3.5rem 0; margin-top: 4.5rem; }
+  .path-sec h2 { color: #f8f9fc; margin-top: 0.2rem; }
+  .path-sec .eyebrow { color: #a3acc4; }
+  .path { display: grid; gap: 1rem; margin: 1.5rem 0; }
+  @media (min-width: 760px) { .path { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1100px) { .path { grid-template-columns: repeat(4, 1fr); } }
+  .pblock { background: #111527; border: 1px solid #232a42; border-radius: 20px; padding: 1.1rem; }
+  .pblock h3 { color: #35c8ff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 0.6rem; font-size: 0.74rem; }
+  .pblock ul { list-style: none; padding: 0; margin: 0; }
+  .pblock li a { display: block; padding: 0.45rem 0; color: #e1e6f0; text-decoration: none; border-bottom: 1px solid #1c2238; font-size: 0.95rem; }
+  .pblock li a:hover { color: #35c8ff; }
+  .pblock li .mono { color: #737d9a; margin-right: 0.4rem; font-size: 0.8rem; }
+  .btn.inv { color: #f8f9fc; border-color: #333c5a; }
+  .btn.inv:hover { color: #f8f9fc; border-color: #f8f9fc; }
+  .checks { list-style: none; padding: 0; }
+  .checks li { padding: 0.45rem 0 0.45rem 1.8rem; position: relative; }
+  .checks li::before { content: ''; position: absolute; left: 0; top: 0.75rem; width: 1rem; height: 1rem; border-radius: 999px; background: var(--u-grad); }
+  .term h3 { font-size: 1.8rem; margin: 0.2rem 0 0.5rem; }
+  .term h3 a { color: var(--ink); text-decoration: none; }
+  .levels { list-style: none; padding: 0; display: grid; gap: 0.6rem; margin: 1.4rem 0 0.6rem; }
+  @media (min-width: 760px) { .levels { grid-template-columns: repeat(5, 1fr); } }
+  .lv { display: flex; flex-direction: column; gap: 0.3rem; height: 100%; }
+  .ln { width: 2.4rem; height: 2.4rem; border-radius: 12px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); margin-bottom: 0.4rem; }
+  .levels li:first-child .ln { background: var(--u-grad); color: #fff; }
+  section[aria-labelledby='lv-t'], section[aria-labelledby='tl-t'] { margin-top: 4.5rem; }
+  .tool-card h3 { font-size: 1.1rem; margin: 0 0 0.4rem; }
+  .tool-card .go { color: var(--teal); font-weight: 600; }
   .trust ul { list-style: none; padding: 0; }
-  .trust li { display: flex; flex-direction: column; gap: 0.3rem; border-left: 3px solid var(--ochre-bright); padding-left: 0.8rem; }
+  .trust li { display: flex; flex-direction: column; gap: 0.3rem; border-left: 3px solid var(--u-cyan); padding-left: 0.9rem; }
+  .final { margin-top: 4.5rem; background: var(--u-ink); color: #c4cada; padding: 4rem 0; text-align: center; }
+  .final h2 { color: #f8f9fc; font-size: clamp(2rem, 1.4rem + 3vw, 3.6rem); margin: 0 0 0.6rem; letter-spacing: -0.04em; }
+  .final p { margin-bottom: 1.6rem; }
+  :global(.site-footer) { margin-top: 0; }
 </style>
 <script>
+  import { getState } from '../../scripts/academy-store';
   import { getProgress } from '../../scripts/store';
-  const p = getProgress();
-  if (p.last && p.last.path.startsWith('/es/')) {
-    const a = document.getElementById('resume') as HTMLAnchorElement;
-    a.href = p.last.path; a.hidden = false;
-    document.getElementById('resume-title')!.textContent = p.last.title;
+  import { pickOfDay, toDay } from '../../lib/academy';
+  const D = JSON.parse(document.getElementById('home-data')!.textContent!);
+  const s = getState();
+  const order: string[] = s.plan?.order ?? D.order;
+  const done = Object.keys(s.completed).length;
+  if (s.plan || done) {
+    const next = order.find((id) => !s.completed[id]);
+    const r = document.getElementById('resume') as HTMLAnchorElement;
+    r.hidden = false;
+    if (next) { r.href = `/es/sesion/${next}/`; document.getElementById('resume-title')!.textContent = D.titles[next]; }
+    else document.getElementById('resume-title')!.textContent = '¡Camino Cero completado!';
+    document.getElementById('resume-meta')!.textContent = `${done} de ${D.order.length} sesiones hechas`;
+  } else {
+    const last = getProgress().last;
+    if (last && last.path.startsWith('/es/')) {
+      const r = document.getElementById('resume') as HTMLAnchorElement;
+      r.hidden = false; r.href = last.path;
+      document.getElementById('resume-title')!.textContent = last.title;
+      document.getElementById('resume-meta')!.textContent = 'Tu última lectura';
+    }
   }
+  const t = pickOfDay(D.glossary, toDay(new Date())) as any;
+  const link = document.getElementById('term-link') as HTMLAnchorElement;
+  link.textContent = t.term; link.href = `/es/glosario/#${t.id}`;
+  document.getElementById('term-def')!.textContent = t.def;
+  const fb = document.getElementById('demo-fb')!;
+  document.querySelectorAll<HTMLButtonElement>('.demo-opts button').forEach((b) => b.addEventListener('click', () => {
+    const ok = b.dataset.ok === '1';
+    document.querySelectorAll<HTMLButtonElement>('.demo-opts button').forEach((x) => { x.disabled = true; if (x.dataset.ok === '1') x.classList.add('ok'); });
+    if (!ok) b.classList.add('ko');
+    fb.hidden = false;
+    fb.innerHTML = `${ok ? '¡Correcto!' : 'Casi nadie acierta a la primera.'} Tras caer a la mitad, necesitas <strong>duplicar</strong> lo que queda para volver al inicio. <a href="/es/sesion/07-las-caidas-son-normales/">Haz la sesión completa →</a>`;
+  }));
 </script>

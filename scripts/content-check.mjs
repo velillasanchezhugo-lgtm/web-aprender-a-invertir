@@ -17,12 +17,12 @@ const load = (dir) => readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) 
   const [, fm, body] = s.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/) ?? [];
   return { id: f.replace(/\.md$/, ''), file: `${dir}/${f}`, data: yaml.load(fm), body };
 });
-const lessons = load('src/content/lessons'), strategies = load('src/content/strategies'), investors = load('src/content/investors');
+const lessons = load('src/content/lessons'), strategies = load('src/content/strategies'), investors = load('src/content/investors'), sessions = load('src/content/sessions');
 const lessonIds = new Set(lessons.map((l) => l.id));
 const glossIds = new Set(glossary.map((g) => g.id));
 
 const need = (doc, headings) => headings.forEach((h) => { if (!doc.body.includes(`## ${h}`)) errors.push(`${doc.file}: falta la sección «${h}»`); });
-for (const doc of [...lessons, ...strategies, ...investors]) {
+for (const doc of [...lessons, ...strategies, ...investors, ...sessions]) {
   for (const s of doc.data.sources ?? []) if (!sources[s]) errors.push(`${doc.file}: fuente desconocida «${s}»`);
   if (!doc.data.author) errors.push(`${doc.file}: sin autor`);
   if (doc.data.status === 'revisado' && !doc.data.reviewer) errors.push(`${doc.file}: «revisado» sin revisor identificado`);
@@ -51,7 +51,21 @@ for (const g of glossary) if (g.lesson && !lessonIds.has(g.lesson)) warnings.pus
 const route = lessons.filter((l) => l.data.route).map((l) => l.data.route.order).sort((a, b) => a - b);
 if (route.join() !== Array.from({ length: route.length }, (_, i) => i + 1).join()) errors.push(`La ruta inicial no tiene orden consecutivo: ${route}`);
 
-console.log(`Revisados: ${lessons.length} lecciones, ${strategies.length} estrategias, ${investors.length} historias, ${glossary.length} términos.`);
+const sessionIds = new Set(sessions.map((x) => x.id));
+const toolIds = new Set(readdirSync('src/pages/es/herramientas').map((f) => f.replace(/\.astro$/, '')));
+const qids = new Set();
+for (const x of sessions) {
+  need(x, ['La idea', 'Con números']);
+  for (const p of x.data.prereqs ?? []) if (!sessionIds.has(p)) errors.push(`${x.file}: prerrequisito inexistente «${p}»`);
+  if (x.data.deeper && !lessonIds.has(x.data.deeper)) errors.push(`${x.file}: lectura «${x.data.deeper}» inexistente`);
+  if (x.data.tool && !toolIds.has(x.data.tool)) errors.push(`${x.file}: herramienta «${x.data.tool}» inexistente`);
+  for (const q of x.data.questions) {
+    if (qids.has(q.id)) errors.push(`${x.file}: id de pregunta repetido «${q.id}»`); qids.add(q.id);
+    if (q.type === 'choice' && q.answer >= q.options.length) errors.push(`${x.file}: «${q.id}» con respuesta fuera de rango`);
+    if (q.type === 'estimate' && (q.answer < q.min || q.answer > q.max || (q.answer - q.min) % q.step > 1e-9 && Math.abs(((q.answer - q.min) % q.step) - q.step) > 1e-9 && q.tolerance < q.step)) errors.push(`${x.file}: «${q.id}» no se puede responder exactamente con el deslizador`);
+  }
+}
+console.log(`Revisados: ${sessions.length} sesiones, ${lessons.length} lecciones, ${strategies.length} estrategias, ${investors.length} historias, ${glossary.length} términos.`);
 warnings.forEach((w) => console.warn('AVISO: ' + w));
 if (errors.length) { errors.forEach((e) => console.error('ERROR: ' + e)); process.exit(1); }
 console.log('Control editorial superado.');

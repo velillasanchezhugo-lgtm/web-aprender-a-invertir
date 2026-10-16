@@ -1,0 +1,237 @@
+---
+import Base from '../../layouts/Base.astro';
+import academy from '../../data/academy.json';
+import { sessions, sessionMeta, glossaryList, lessons } from '../../lib/content';
+import { BADGES } from '../../lib/academy';
+const all = await sessions();
+const ls = await lessons();
+const data = {
+  sessions: all.map((s) => ({ ...sessionMeta(s), title: s.data.title, desc: s.data.description, action: s.data.action.title, takeaway: s.data.takeaway })),
+  glossary: glossaryList.map((g) => ({ id: g.id, term: g.term, def: g.def })),
+  levels: academy.levels.map((l) => ({ id: l.id, title: l.title, items: l.kind === 'sessions' ? all.map((s) => s.id) : l.items, kind: l.kind })),
+  lessonTitles: Object.fromEntries(ls.map((l) => [l.id, l.data.title])),
+  badges: BADGES.map((b) => ({ id: b.id, title: b.title, desc: b.desc })),
+  goals: Object.fromEntries(academy.goals.map((g) => [g.id, g.label])),
+};
+---
+<Base title="Mi plan" description="Tu sesión de hoy, tus repasos, tu racha y tu progreso por niveles. Todo se guarda solo en tu dispositivo." noindex={true} allowAds={false}>
+  <div class="container dash">
+    <header class="dash-head">
+      <div>
+        <p class="eyebrow" id="today-label">Hoy</p>
+        <h1 id="hello">Tu plan de hoy</h1>
+        <p class="lede small" id="goal-line"></p>
+      </div>
+      <div class="streak-badge" aria-live="polite"><span class="n" id="streak">0</span><span class="mono small">días seguidos</span></div>
+    </header>
+
+    <div class="no-plan callout learn" id="no-plan" hidden>
+      <p class="callout-title">Aún no tienes plan</p>
+      <p>En 2 minutos eliges objetivo y tiempo, y te preparamos sesiones de 5 minutos. Mientras tanto, puedes empezar directamente por la primera sesión.</p>
+      <p><a class="btn brand small" href="/es/empezar/">Crear mi plan <span class="arrow" aria-hidden="true">→</span></a> <a class="btn secondary small" href="/es/sesion/01-invertir-no-es-apostar/">Probar la sesión 1</a></p>
+    </div>
+
+    <div class="grid main-grid">
+      <section class="panel-dark today" aria-labelledby="t-title">
+        <span class="chip" id="t-chip">Sesión de hoy · 5 min</span>
+        <h2 id="t-title">—</h2>
+        <p id="t-desc" class="t-desc"></p>
+        <div class="t-actions"><a class="btn brand" id="t-btn" href="/es/sesion/01-invertir-no-es-apostar/">Empezar <span class="arrow" aria-hidden="true">→</span></a></div>
+        <div class="progress-bar dark" aria-hidden="true"><span id="zero-bar"></span></div>
+        <p class="small t-meta" id="zero-txt"></p>
+      </section>
+
+      <section class="card review" aria-labelledby="r-title">
+        <p class="eyebrow">Repaso · 1 minuto</p>
+        <h2 id="r-title" class="h3"><span id="due-n">0</span> preguntas para hoy</h2>
+        <p class="small muted" id="due-txt">Repasar lo que fallaste es lo que fija lo aprendido.</p>
+        <a class="btn secondary small" href="/es/repaso/">Repasar ahora</a>
+        <dl class="mini">
+          <div><dt class="mono">Dominadas</dt><dd id="k-mastered">0</dd></div>
+          <div><dt class="mono">Acciones hechas</dt><dd id="k-actions">0</dd></div>
+          <div><dt class="mono">Sesiones</dt><dd id="k-sessions">0</dd></div>
+        </dl>
+      </section>
+    </div>
+
+    <section aria-labelledby="w-title">
+      <h2 id="w-title" class="h3 sec">Tu semana</h2>
+      <ol class="week" id="week"></ol>
+      <p class="small"><a href="/es/empezar/">Cambiar objetivo, tiempo o días</a> · <a href="#" id="ics">Añadir recordatorios al calendario</a></p>
+    </section>
+
+    <div class="grid cols-2">
+      <section class="card" aria-labelledby="a-title">
+        <p class="eyebrow">Para aplicar</p>
+        <h2 id="a-title" class="h3">Acciones pendientes</h2>
+        <ul class="actions-list" id="actions"></ul>
+      </section>
+      <section class="card daily" aria-labelledby="d-title">
+        <p class="eyebrow">Término del día</p>
+        <h2 id="d-title" class="h3"><a id="term-link" href="/es/glosario/"></a></h2>
+        <p id="term-def"></p>
+        <hr />
+        <p class="eyebrow">Idea para recordar</p>
+        <p class="idea" id="idea"></p>
+      </section>
+    </div>
+
+    <section aria-labelledby="l-title">
+      <h2 id="l-title" class="h3 sec">Tus niveles</h2>
+      <ol class="levels" id="levels"></ol>
+    </section>
+
+    <section aria-labelledby="b-title">
+      <h2 id="b-title" class="h3 sec">Logros</h2>
+      <p class="small muted">Se ganan por comprender y ser constante. Nunca por invertir, operar ni arriesgar.</p>
+      <ul class="badges" id="badges"></ul>
+    </section>
+
+    <p class="small muted foot">Todo se guarda en este dispositivo. <a href="/es/progreso/">Exportar o borrar mis datos</a> · <a href="/es/test/">Test detallado de aprendizaje</a></p>
+  </div>
+  <script type="application/json" id="dash-data" set:html={JSON.stringify(data)} />
+</Base>
+<style>
+  .dash { padding-top: 1.5rem; }
+  .dash-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .dash-head h1 { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); margin: 0.2rem 0 0.3rem; }
+  .streak-badge { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 110px; padding: 0.8rem 1rem; border-radius: 20px; background: var(--card); border: 1px solid var(--rule); }
+  .streak-badge .n { font: 600 2.4rem/1 var(--display); letter-spacing: -0.04em; background: var(--u-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .main-grid { gap: 1rem; }
+  @media (min-width: 900px) { .main-grid { grid-template-columns: 1.6fr 1fr; } }
+  .today { padding: 1.6rem; display: flex; flex-direction: column; gap: 0.4rem; }
+  .today h2 { font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem); margin: 0.7rem 0 0.2rem; color: #f8f9fc; }
+  .t-desc { color: #c4cada; max-width: 52ch; }
+  .t-actions { margin: 0.6rem 0 1.2rem; }
+  .progress-bar.dark { background: #1c2238; border-color: #232a42; }
+  .t-meta { color: #a3acc4; margin: 0.4rem 0 0; }
+  .review { display: flex; flex-direction: column; align-items: flex-start; }
+  .review h2 { margin: 0.2rem 0 0.3rem; }
+  .h3 { font-size: 1.35rem; }
+  .sec { margin: 2.4rem 0 0.9rem; }
+  .mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; width: 100%; margin: 1.2rem 0 0; padding-top: 1rem; border-top: 1px solid var(--rule); }
+  .mini dt { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+  .mini dd { margin: 0; font: 600 1.4rem/1.2 var(--display); }
+  .week { list-style: none; padding: 0; margin: 0 0 0.6rem; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0.4rem; }
+  .week :global(li) { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 0.55rem 0.4rem; text-align: center; min-height: 92px; display: flex; flex-direction: column; gap: 0.25rem; }
+  .week :global(.wd) { font: 500 0.68rem/1 var(--mono); text-transform: uppercase; color: var(--ink-3); }
+  .week :global(.wn) { font: 600 1.1rem/1 var(--display); }
+  .week :global(.ws) { font-size: 0.72rem; line-height: 1.25; color: var(--ink-2); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+  .week :global(li.today) { border-color: var(--u-blue); box-shadow: 0 0 0 1px var(--u-blue) inset; }
+  .week :global(li.rest) { background: transparent; border-style: dashed; }
+  .week :global(li.done) { background: var(--teal-soft); }
+  @media (max-width: 560px) { .week :global(.ws) { display: none; } .week :global(li) { min-height: 64px; } }
+  .actions-list { list-style: none; padding: 0; margin: 0; }
+  .actions-list :global(li) { padding: 0.5rem 0; border-bottom: 1px solid var(--rule); }
+  .actions-list :global(label) { font-weight: 500; display: flex; gap: 0.6rem; align-items: flex-start; margin: 0; }
+  .daily h2 { margin: 0.1rem 0 0.4rem; }
+  .idea { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+  .levels { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+  .levels :global(li) { display: grid; grid-template-columns: 2.6rem 1fr auto; gap: 0.8rem; align-items: center; background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 0.8rem 1rem; }
+  .levels :global(.ln) { width: 2.4rem; height: 2.4rem; border-radius: 12px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); font: 600 1rem var(--mono); }
+  .levels :global(.lbar) { height: 6px; background: var(--paper-2); border-radius: 999px; overflow: hidden; margin-top: 0.35rem; }
+  .levels :global(.lbar span) { display: block; height: 100%; background: var(--u-grad); }
+  .badges { list-style: none; padding: 0; display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .badges :global(li) { border: 1px solid var(--rule); border-radius: 16px; padding: 0.9rem; background: var(--card); text-align: center; }
+  .badges :global(li.locked) { border-style: dashed; background: transparent; }
+  .badges :global(li.locked .bi) { background: var(--paper-2); color: var(--ink-3); }
+  .badges :global(.bi) { width: 44px; height: 44px; margin: 0 auto 0.4rem; border-radius: 999px; display: grid; place-items: center; background: var(--u-grad); color: #fff; font-weight: 700; }
+  .badges :global(strong) { display: block; font-size: 0.92rem; }
+  .badges :global(span.small) { color: var(--ink-3); }
+  .foot { margin-top: 2rem; }
+</style>
+<script>
+  import { getState } from '../../scripts/academy-store';
+  import { getProgress } from '../../scripts/store';
+  import { streak, dueToday, mastered, earnedBadges, pickOfDay, schedule, planToIcs, toDay, addDays, type LevelId } from '../../lib/academy';
+  const D = JSON.parse(document.getElementById('dash-data')!.textContent!);
+  const $ = (id: string) => document.getElementById(id)!;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  const s = getState();
+  const now = toDay(new Date());
+  const byId = Object.fromEntries(D.sessions.map((x: any) => [x.id, x]));
+  const order: string[] = s.plan?.order ?? D.sessions.map((x: any) => x.id);
+  const pending = order.filter((id) => !s.completed[id]);
+  const doneToday = Object.entries(s.completed).filter(([, t]) => toDay(new Date(t as string)) === now).length;
+  const perDay = (s.plan?.minutesPerDay ?? 5) / 5;
+
+  $('today-label').textContent = new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+  $('no-plan').hidden = !!s.plan;
+  if (s.plan) $('goal-line').textContent = `Objetivo: ${D.goals[s.plan.goal]} · ${s.plan.minutesPerDay} min al día`;
+  const k = streak(s.activity, now);
+  $('streak').textContent = String(k.current);
+
+  // Sesión de hoy
+  const next = pending[0];
+  if (!next) {
+    $('t-chip').textContent = 'Camino Cero completado';
+    $('t-title').textContent = '¡Has terminado las 14 sesiones!';
+    $('t-desc').textContent = 'Siguiente paso: el examen del nivel Cero y después el nivel Básico.';
+    ($('t-btn') as HTMLAnchorElement).href = '/es/examen/cero/'; $('t-btn').innerHTML = 'Hacer el examen <span class="arrow" aria-hidden="true">→</span>';
+  } else {
+    const x = byId[next];
+    const reached = doneToday >= perDay;
+    $('t-chip').textContent = reached ? 'Objetivo de hoy cumplido · sesión extra' : `Sesión de hoy · ${x.minutes} min`;
+    $('t-title').textContent = x.title; $('t-desc').textContent = x.desc;
+    ($('t-btn') as HTMLAnchorElement).href = `/es/sesion/${next}/`;
+    $('t-btn').innerHTML = `${reached ? 'Adelantar la siguiente' : Object.keys(s.completed).length ? 'Continuar' : 'Empezar'} <span class="arrow" aria-hidden="true">→</span>`;
+  }
+  const zeroDone = D.sessions.filter((x: any) => s.completed[x.id]).length;
+  ($('zero-bar') as HTMLElement).style.width = `${(zeroDone / D.sessions.length) * 100}%`;
+  $('zero-txt').textContent = `Camino Cero: ${zeroDone} de ${D.sessions.length} sesiones`;
+
+  // Repaso
+  const due = dueToday(s.deck, now, 50).filter((id) => /^s\d\d-/.test(id));
+  $('due-n').textContent = String(due.length);
+  $('due-txt').textContent = due.length ? 'Lo que fallaste (y lo que toca reforzar) vuelve hoy.' : Object.keys(s.deck).length ? 'Estás al día. Vuelve mañana.' : 'Empieza una sesión y aquí aparecerán tus repasos.';
+  $('k-mastered').textContent = String(mastered(s.deck));
+  $('k-actions').textContent = String(Object.keys(s.actions).length);
+  $('k-sessions').textContent = String(Object.keys(s.completed).length);
+
+  // Semana
+  const plan = s.plan && s.plan.days.length ? schedule(pending, { minutesPerDay: s.plan.minutesPerDay, days: s.plan.days, start: now }) : [];
+  const DOW = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+  $('week').innerHTML = Array.from({ length: 7 }, (_, i) => {
+    const day = addDays(now, i); const [y, m, dd] = day.split('-').map(Number); const dt = new Date(y, m - 1, dd);
+    const p = plan.find((x) => x.date === day);
+    const doneThat = Object.values(s.completed).some((t) => toDay(new Date(t as string)) === day);
+    const cls = [i === 0 ? 'today' : '', !p && !doneThat ? 'rest' : '', doneThat ? 'done' : ''].join(' ');
+    const label = doneThat ? '✓ Hecho' : p ? p.sessions.map((id) => byId[id]?.title).join(' · ') : s.plan ? 'Descanso' : '—';
+    return `<li class="${cls}"><span class="wd">${i === 0 ? 'hoy' : DOW[dt.getDay()]}</span><span class="wn">${dd}</span><span class="ws">${esc(label)}</span></li>`;
+  }).join('');
+  ($('ics') as HTMLAnchorElement).addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!plan.length) { location.href = '/es/empezar/'; return; }
+    const ics = planToIcs(plan, s.plan!.time, Object.fromEntries(D.sessions.map((x: any) => [x.id, x.title])), `${location.origin}/es/mi-plan/`);
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'umotion-academy-plan.ics'; a.click(); URL.revokeObjectURL(a.href);
+  });
+
+  // Acciones pendientes
+  const pendingActions = Object.keys(s.completed).filter((id) => byId[id] && !s.actions[id]);
+  $('actions').innerHTML = pendingActions.length
+    ? pendingActions.map((id) => `<li><label><input type="checkbox" data-id="${esc(id)}" /> <span>${esc(byId[id].action)} <a class="small" href="/es/sesion/${esc(id)}/">(sesión)</a></span></label></li>`).join('')
+    : `<li class="muted small">${Object.keys(s.completed).length ? '¡Todas hechas! Cada sesión trae una acción nueva.' : 'Cada sesión termina con una acción práctica de 2 minutos. Aparecerán aquí.'}</li>`;
+  $('actions').addEventListener('change', async (e) => {
+    const t = e.target as HTMLInputElement; const { getState: g, saveState } = await import('../../scripts/academy-store');
+    const st = g(); if (t.checked) st.actions[t.dataset.id!] = new Date().toISOString(); saveState(st);
+    t.closest('li')!.style.opacity = '0.5';
+  });
+
+  // Término e idea del día
+  const term = pickOfDay(D.glossary, now) as any;
+  ($('term-link') as HTMLAnchorElement).href = `/es/glosario/#${term.id}`; $('term-link').textContent = term.term; $('term-def').textContent = term.def;
+  $('idea').textContent = (pickOfDay(D.sessions, now) as any).takeaway;
+
+  // Niveles
+  const oldDone = getProgress().completed;
+  $('levels').innerHTML = D.levels.map((l: any, i: number) => {
+    const n = l.items.filter((id: string) => (l.kind === 'sessions' ? s.completed[id] : oldDone[id])).length;
+    const exam = s.exams[l.id as LevelId];
+    const href = i === 0 ? '/es/camino-cero/' : `/es/niveles/#nivel-${l.id}`;
+    return `<li><span class="ln">${i}</span><span><a href="${href}"><strong>${esc(l.title)}</strong></a> <span class="small muted">${n}/${l.items.length}${exam?.passed ? ' · examen superado' : ''}</span><div class="lbar"><span style="width:${(n / l.items.length) * 100}%"></span></div></span><a class="small" href="/es/examen/${l.id}/">Examen</a></li>`;
+  }).join('');
+
+  // Logros
+  const earned = earnedBadges({ completed: Object.keys(s.completed), zeroIds: D.sessions.map((x: any) => x.id), streakBest: k.best, examsPassed: (Object.entries(s.exams) as any).filter(([, v]: any) => v?.passed).map(([kk]: any) => kk), masteredCards: mastered(s.deck), actionsDone: Object.keys(s.actions).length });
+  $('badges').innerHTML = D.badges.map((b: any) => `<li class="${earned.includes(b.id) ? '' : 'locked'}"><span class="bi" aria-hidden="true">${earned.includes(b.id) ? '✓' : '·'}</span><strong>${esc(b.title)}</strong><span class="small">${esc(b.desc)}</span><span class="sr-only">${earned.includes(b.id) ? 'Conseguido' : 'Pendiente'}</span></li>`).join('');
+</script>

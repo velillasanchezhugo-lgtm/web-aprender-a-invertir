@@ -7,7 +7,7 @@ description: El mayor esquema piramidal conocido. Cómo funcionaba, qué señale
 approach: Esquema de Ponzi presentado como una estrategia de opciones con rentabilidades estables.
 order: 11
 related: [forum-afinsa, sesgo-de-supervivencia]
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15

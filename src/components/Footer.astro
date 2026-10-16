@@ -1,23 +1,25 @@
 ---
 import Logo from './Logo.astro';
-import { SITE, adsActive } from '../config/site';
+import { SITE, AUTHOR, adsActive } from '../config/site';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="container">
-    <div class="cols">
+    <div class="top">
       <div class="about">
-        <Logo size={26} />
-        <p class="small muted">Plataforma educativa sobre inversión para residentes en España. No prestamos asesoramiento financiero, no comercializamos productos y no ejecutamos operaciones. <a href="/es/alcance-educativo/">Qué somos y qué no</a>.</p>
+        <Logo size={26} inverse />
+        <p>Aprende a invertir en 5 minutos al día. Un producto de <a href={SITE.parentUrl} rel="noopener">umotion</a>.</p>
+        <a class="btn small brand" href="/es/empezar/">Crear mi plan <span class="arrow" aria-hidden="true">→</span></a>
       </div>
       <nav aria-label="Aprender">
         <h2>Aprender</h2>
         <ul>
-          <li><a href="/es/empieza-desde-cero/">Empieza desde cero</a></li>
-          <li><a href="/es/test/">Test de aprendizaje</a></li>
+          <li><a href="/es/camino-cero/">Camino Cero</a></li>
+          <li><a href="/es/niveles/">Niveles</a></li>
+          <li><a href="/es/mi-plan/">Mi plan</a></li>
+          <li><a href="/es/repaso/">Repaso</a></li>
           <li><a href="/es/biblioteca/">Biblioteca</a></li>
           <li><a href="/es/glosario/">Glosario</a></li>
-          <li><a href="/es/progreso/">Mi progreso</a></li>
         </ul>
       </nav>
       <nav aria-label="Explorar">
@@ -33,29 +35,36 @@ const year = new Date().getFullYear();
       <nav aria-label="Transparencia y legal">
         <h2>Transparencia</h2>
         <ul>
-          <li><a href="/es/metodologia/">Metodología editorial</a></li>
-          <li><a href="/es/financiacion/">Financiación y conflictos</a></li>
+          <li><a href="/es/alcance-educativo/">Alcance educativo</a></li>
+          <li><a href="/es/metodologia/">Metodología</a></li>
+          <li><a href="/es/financiacion/">Financiación</a></li>
           <li><a href="/es/correcciones/">Correcciones</a></li>
           <li><a href="/es/aviso-legal/">Aviso legal</a></li>
           <li><a href="/es/privacidad/">Privacidad</a></li>
           <li><a href="/es/cookies/">Cookies</a></li>
-          <li><a href="/es/condiciones/">Condiciones de uso</a></li>
+          <li><a href="/es/condiciones/">Condiciones</a></li>
           <li><a href="/es/contacto/">Contacto</a></li>
           {adsActive && <li><button type="button" class="linklike" id="privacy-settings">Configurar privacidad</button></li>}
         </ul>
       </nav>
     </div>
-    <p class="small muted legal">© {year} {SITE.name} (nombre provisional). Contenido educativo general: no tiene en cuenta tu situación personal. Invertir conlleva riesgo de pérdida, incluida la del capital. Rentabilidades pasadas no garantizan resultados futuros.</p>
+    <p class="disclaimer">Contenido educativo general: no tiene en cuenta tu situación personal y no es asesoramiento financiero. Invertir conlleva riesgo de pérdida, incluida la del capital. Rentabilidades pasadas no garantizan resultados futuros.</p>
+    <p class="fine">© {year} {SITE.name} · {SITE.parent}. Autor y responsable del contenido: {AUTHOR.name} · <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a>{!SITE.indexable && ' · Versión prototipo, no indexada.'}</p>
   </div>
 </footer>
 <style>
-  .site-footer { border-top: 1px solid var(--rule); background: var(--paper-2); padding: 2.5rem 0 2rem; margin-top: 2rem; }
-  .cols { display: grid; gap: 1.5rem; }
-  @media (min-width: 760px) { .cols { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
-  h2 { font: 700 0.8rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin: 0.3rem 0 0.8rem; }
+  .site-footer { background: var(--u-ink); color: #a3acc4; padding: 3rem 0 1.5rem; margin-top: 3rem; }
+  .site-footer a { color: #e1e6f0; }
+  .top { display: grid; gap: 2rem; }
+  @media (min-width: 820px) { .top { grid-template-columns: 1.5fr 1fr 1fr 1fr; } }
+  .about p { margin: 1rem 0; max-width: 36ch; color: #c4cada; }
+  .about :global(.logo) { color: #f8f9fc; }
+  h2 { font: 500 0.72rem/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: #737d9a; margin: 0.3rem 0 0.9rem; }
   ul { list-style: none; padding: 0; margin: 0; }
-  li { margin-bottom: 0.15rem; }
-  li a, .linklike { display: inline-block; padding: 0.3rem 0; color: var(--ink-2); font-size: 0.92rem; }
-  .linklike { background: none; border: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 0.18em; }
-  .legal { margin-top: 2rem; max-width: 80ch; }
+  li a, .linklike { display: inline-block; padding: 0.28rem 0; text-decoration: none; font-size: 0.93rem; }
+  li a:hover { color: #35c8ff; }
+  .linklike { background: none; border: 0; cursor: pointer; color: #e1e6f0; }
+  .disclaimer { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid #1c2238; font-size: 0.84rem; max-width: 90ch; }
+  .fine { font-size: 0.7rem; color: #737d9a; margin: 0.5rem 0 0; }
+  .fine a { color: #737d9a; }
 </style>

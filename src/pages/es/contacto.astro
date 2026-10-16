@@ -2,7 +2,7 @@
 import LegalPage from '../../components/LegalPage.astro';
 import { OWNER } from '../../config/site';
 ---
-<LegalPage title="Contacto" description="Cómo contactar con Criterio para avisar de errores, proponer temas o ejercer tus derechos de privacidad." updated="2026-10-15">
+<LegalPage title="Contacto" description="Cómo contactar con umotion Academy para avisar de errores, proponer temas o ejercer tus derechos de privacidad." updated="2026-10-15">
   {OWNER.email
     ? <p>Escríbenos a <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a>.</p>
     : <p class="callout warn">[Pendiente: el titular debe indicar un correo de contacto en <code>src/config/site.ts</code> antes de publicar.]</p>}

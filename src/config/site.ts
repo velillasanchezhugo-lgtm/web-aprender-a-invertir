@@ -5,21 +5,36 @@
  */
 
 export const SITE = {
-  name: 'Criterio',
-  tagline: 'Aprende a invertir con criterio propio',
-  /** Nombre provisional. No se ha comprobado la disponibilidad de marca ni dominio. */
-  provisionalName: true,
+  name: 'umotion Academy',
+  shortName: 'Academy',
+  parent: 'umotion',
+  parentUrl: 'https://umotion-com.vercel.app/',
+  tagline: 'Aprende a invertir en 5 minutos al día',
+  /**
+   * Modo prototipo: mientras no haya dominio definitivo, todas las páginas llevan «noindex»
+   * y robots.txt bloquea el rastreo. Para publicar: PUBLIC_INDEXABLE=true.
+   */
+  indexable: (import.meta.env.PUBLIC_INDEXABLE ?? 'false') === 'true',
   defaultLocale: 'es' as const,
   /** Fecha de la última revisión general del sitio (AAAA-MM-DD). */
   lastSiteReview: '2026-10-15',
 };
 
-/** Datos del titular. Obligatorios por la LSSI (art. 10) antes de publicar. */
+/**
+ * Autoría del proyecto. Se muestra en letra pequeña al final de cada página.
+ * Revisa que el nombre sea exactamente como quieres que aparezca.
+ */
+export const AUTHOR = {
+  name: 'Hugo Velilla Sánchez',
+  email: 'velillasanchezhugo@gmail.com',
+};
+
+/** Datos del titular. Obligatorios por la LSSI (art. 10) antes de publicar con dominio y publicidad. */
 export const OWNER = {
-  legalName: '', // Nombre o razón social
+  legalName: AUTHOR.name, // Nombre o razón social (confirmar antes de publicar)
   taxId: '', // NIF/CIF
   address: '',
-  email: '', // Correo de contacto
+  email: AUTHOR.email, // Correo de contacto
   registry: '', // Datos registrales si es sociedad
 };
 

@@ -13,7 +13,7 @@ quiz:
     options: ["El color del gráfico", "Los costes por operación y la disciplina en la gestión del riesgo", "La hora a la que se mira el móvil"]
     answer: 1
     explain: "Con decenas o cientos de operaciones al año, comisiones, diferencial e impuestos se acumulan; y una sola pérdida grande sin control puede borrar muchos aciertos."
-author: Redacción de Criterio (borrador elaborado con asistencia de IA)
+author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-15
 reviewed: 2026-10-15
