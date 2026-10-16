@@ -1,6 +1,6 @@
 ---
 title: Aportar cada mes, en automático
-description: "Por qué una aportación mensual fija funciona, cómo compra más participaciones cuando el precio baja y qué dice la evidencia frente a invertir todo de golpe."
+description: "Una cantidad fija cada mes, programada para justo después de cobrar. Por qué funciona, cómo dejarlo en automático y qué hacer si recibes una suma grande."
 level: basico
 track: invertir-ya
 order: 106
@@ -13,36 +13,37 @@ scenario:
   kind: operacion
   label: Caso de ejemplo
   title: "Javier lo deja en piloto automático"
-  body: "Javier cobra la nómina el día 28. Ha programado en su banco una transferencia periódica de 150 € el día 1 a su cuenta de inversión, y allí un plan de aportación mensual a su fondo indexado global el día 3. No tiene que decidir nada cada mes. Solo revisa su plan una vez al año."
+  body: "Javier cobra la nómina el día 28. Ha programado en su banco una transferencia de 150 € el día 1 a su cuenta de inversión, y allí una aportación mensual a su fondo indexado global el día 3. No tiene que decidir nada cada mes. Solo revisa su plan una vez al año."
   note: Ejemplo ficticio con fines educativos.
 questions:
-  - type: estimate
+  - type: choice
     id: ya06-q1
-    q: "Aportas 120 € al mes. El precio de la participación es 12 €, luego 10 € y luego 8 €. ¿Cuántas participaciones tienes al cabo de los tres meses?"
-    answer: 37
-    tolerance: 0
-    min: 0
-    max: 60
-    step: 1
-    unit: "participaciones"
-    explain: "120 / 12 = 10; 120 / 10 = 12; 120 / 8 = 15. Total: 37. Tu coste medio es 360 / 37 ≈ 9,73 €, por debajo del precio medio de esos meses (10 €): el mes barato compraste más."
+    q: "Este mes la bolsa ha bajado y Javier duda si saltarse la aportación. ¿Qué le dirías?"
+    options: ["Que se la salte y espere a que vuelva a subir", "Que siga como siempre: con el precio más bajo, la misma cantidad compra más participaciones", "Que venda lo que tiene y empiece de cero más adelante"]
+    answer: 1
+    explain: "Los meses en que el precio baja son los que más participaciones te dan por el mismo dinero. Saltárselos es justo lo contrario de lo que conviene."
   - type: choice
     id: ya06-q2
-    q: "Recibes 12.000 € de golpe. Según el estudio de Vanguard de 2012 con datos históricos, ¿qué ocurrió con más frecuencia?"
-    options: ["Repartir la entrada en 12 meses fue mejor casi siempre", "Invertir de golpe superó a repartir unas dos de cada tres veces, aunque repartir reduce el arrepentimiento si llega una caída", "Siempre dio exactamente lo mismo"]
+    q: "Recibes una herencia de 12.000 € y no sabes si invertirla de golpe o poco a poco. Según un estudio de Vanguard con datos históricos, ¿qué ocurrió más a menudo?"
+    options: ["Repartirla durante un año fue mejor casi siempre", "Invertir de golpe salió mejor la mayoría de las veces, aunque repartir en pocos meses ayuda a quien teme una caída justo después", "Siempre dio exactamente lo mismo"]
     answer: 1
-    explain: "Como la bolsa ha subido más veces de las que ha bajado, el dinero que entra antes suele crecer más. Pero si invertirlo todo y ver caer un 25 % te haría abandonar, repartir con un calendario fijo es el plan que sí cumplirás."
+    explain: "Como la bolsa ha subido más veces de las que ha bajado, el dinero que entra antes suele crecer más. Pero si invertirlo todo te haría abandonar en la primera caída, repartirlo con fechas fijas es el plan que sí cumplirás."
   - type: truefalse
     id: ya06-q3
     q: "Aportar cada mes elimina el riesgo de las caídas."
     answer: false
     explain: "Solo reparte el momento de compra. Lo que ya tienes invertido sube y baja con el mercado. Lo que sí consigue es que sigas invirtiendo sin pensar en el momento."
+tips:
+  - "Programa la aportación para uno o dos días después de cobrar."
+  - "Elige una cantidad que puedas mantener también en un mes malo."
+  - "Súbela cuando te suban el sueldo, no cuando la bolsa esté de moda."
+  - "No pares las aportaciones porque la bolsa baje."
 action:
   title: Automatiza tu aportación
   steps:
-    - "Mira el día en que cobras y elige uno o dos días después para aportar."
-    - "Programa en tu banco una transferencia periódica por el importe de tu plan."
-    - "Si tu entidad lo permite, activa un plan de aportación periódica al fondo o ETF de tu cartera."
+    - "Mira qué día cobras y elige uno o dos días después para aportar."
+    - "Programa en tu banco una transferencia periódica por la cantidad de tu plan."
+    - "Si tu entidad lo permite, activa una aportación periódica al fondo o ETF de tu cartera."
   check: Mi aportación mensual ocurre sola, sin que tenga que decidirla
 deeper: aportaciones-periodicas-vs-inicial
 tool: interes-compuesto
@@ -57,27 +58,23 @@ sources: [vanguard-lumpsum-2012]
 
 ## La idea
 
-Si inviertes de tu sueldo, aportar cada mes no es una estrategia rebuscada: es **lo natural**. Y funciona por tres motivos:
+Si inviertes de tu sueldo, aportar cada mes es **lo más natural**. Y funciona por tres motivos:
 
-- **Lo automatizas** una vez y no dependes de tu fuerza de voluntad.
-- **No intentas acertar el momento**, que casi nadie consigue de forma repetida.
+- **Lo automatizas una vez** y no dependes de tu fuerza de voluntad.
+- **No intentas acertar el momento**, algo que casi nadie consigue de forma repetida.
 - **Con la misma cantidad compras más participaciones cuando el precio baja** y menos cuando sube.
 
-La duda solo aparece si ya tienes una suma grande. Ahí, invertir de golpe ha ganado más a menudo; repartirla en pocos meses con un calendario fijo es una opción razonable si te ayuda a no abandonar.
+Con los años, lo que vas aportando y lo que eso va ganando se suman, y lo ganado también empieza a ganar. Por eso la constancia importa más que la cantidad del primer mes.
 
-## Con números
+## En la práctica
 
-100 € al mes durante cinco meses con precios que suben y bajan:
+Para dejarlo en automático necesitas dos piezas:
 
-| Mes | Precio | Participaciones |
-|---:|---:|---:|
-| 1 | 10 € | 10 |
-| 2 | 8 € | 12,5 |
-| 3 | 5 € | 20 |
-| 4 | 8 € | 12,5 |
-| 5 | 10 € | 10 |
-| **Total** | | **65** |
+1. **Una transferencia periódica** desde tu banco a tu cuenta de inversión, el día después de cobrar.
+2. **Una aportación periódica** al producto. Muchas entidades lo permiten con fondos, y algunas también con ETF.
 
-Has puesto 500 € y el precio ha vuelto al de partida. Pero tus 65 participaciones valen **650 €**: el mes de 5 € compraste el doble.
+Si te llega una **suma grande** de golpe (una herencia, una paga extra), invertirla de una vez ha salido mejor más a menudo. Si te da miedo, repártela en pocos meses con fechas fijas y no lo dejes a «cuando sea buen momento».
 
-Y el tiempo hace el resto: 150 € al mes durante 30 años son **54.000 €** aportados. Con un 5 % anual **supuesto**, serían unos **122.800 €**. No es una previsión: es lo que hace el interés compuesto si la rentabilidad acompaña.
+## Error frecuente
+
+Parar las aportaciones cuando la bolsa baja y retomarlas cuando ya ha subido. Es comprar caro y dejar de comprar barato.

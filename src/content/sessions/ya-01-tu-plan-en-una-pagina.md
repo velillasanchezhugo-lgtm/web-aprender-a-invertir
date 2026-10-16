@@ -1,49 +1,49 @@
 ---
 title: Tu plan en una página
-description: "Seis líneas que deciden casi todo: objetivo, horizonte, aportación, reparto, qué harás si cae un 30 % y cuándo revisarás. Escríbelas antes de comprar nada."
+description: "Antes de comprar nada, escribe en una página para qué es el dinero, cuándo lo necesitarás, cuánto pondrás cada mes y qué harás si baja."
 level: basico
 track: invertir-ya
 order: 101
 skills: [plan-inversion, objetivo-horizonte]
 goals: [objetivo, jubilacion, ordenar, miedo]
 prereqs: [14-tu-lista-antes-de-invertir]
-hook: "Ya tienes colchón, no tienes deudas caras y sabes qué es un fondo. ¿Qué te falta antes de la primera compra? Una página escrita por ti."
-takeaway: Decide en frío lo que harás en caliente. Si no cabe en una página, todavía no es un plan.
+hook: "Ya tienes colchón y sabes qué es un fondo. Antes de la primera compra te falta algo que no vende ningún banco: una página escrita por ti."
+takeaway: Decide en calma lo que harás con nervios. Si no cabe en una página, todavía no es un plan.
 scenario:
   kind: operacion
   label: Plan de ejemplo
   title: "El plan de Lucía, 32 años"
-  body: "Objetivo: un complemento para la jubilación. Horizonte: 25 años o más. Aportación: 200 € al mes, el día 2, por transferencia automática. Reparto: 80 % en un fondo indexado global de acciones y 20 % en renta fija euro de calidad. Si la cartera cae un 30 %: no vendo, sigo aportando y releo esta página. Revisión: una vez al año, en enero. El colchón de 6 meses de gastos está aparte, en una cuenta remunerada."
+  body: "Lucía ya tiene su colchón para imprevistos en una cuenta aparte. En una nota del móvil escribe su plan: quiere un complemento para la jubilación y no tocará ese dinero en muchos años. Pondrá 200 € al mes, el día después de cobrar, sobre todo en un fondo indexado global y algo en renta fija. Si baja mucho, no venderá. Lo revisará cada enero."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: ya01-q1
-    q: "Un amigo te enseña su plan: «Invertir en bolsa lo que pueda, cuando vea buen momento, y vender si baja mucho». ¿Qué le falta, comparado con el de Lucía?"
-    options: ["Nada: es flexible, y eso es bueno", "Importe y fecha fijos, un reparto concreto y una regla clara para las caídas", "Solo le falta elegir el bróker"]
+    q: "Un amigo te enseña su plan: «Meter en bolsa lo que pueda, cuando vea buen momento, y vender si baja mucho». ¿Qué le falta, comparado con el de Lucía?"
+    options: ["Nada: es flexible, y eso es bueno", "Una cantidad y un día fijos, en qué va a invertir y una regla clara para cuando baje", "Solo le falta elegir el bróker"]
     answer: 1
-    explain: "«Cuando vea buen momento» y «vender si baja mucho» son decisiones que se toman con miedo o euforia. Un plan útil fija cifras y fechas antes de que el mercado se mueva."
-  - type: estimate
+    explain: "«Cuando vea buen momento» y «vender si baja mucho» son decisiones que se toman con miedo o con euforia. Un plan útil lo deja decidido antes de que el mercado se mueva."
+  - type: choice
     id: ya01-q2
-    q: "Lucía aporta 200 € al mes durante 25 años. ¿Cuánto dinero habrá puesto de su bolsillo, sin contar rentabilidad?"
-    answer: 60000
-    tolerance: 0
-    min: 0
-    max: 120000
-    step: 5000
-    unit: "€"
-    explain: "200 € × 12 meses × 25 años = 60.000 €. Lo que añada el mercado es incierto; lo que aportas, no. Por eso el plan empieza por la aportación, que sí controlas."
+    q: "Lucía no sabe todavía qué productos elegir. ¿Qué le aconsejarías?"
+    options: ["Esperar a saberlo todo sobre bolsa antes de escribir nada", "Escribir ya un borrador sencillo, dejar en blanco lo que no sepa y completarlo en las próximas sesiones", "Copiar la cartera de un influencer que dice ganar mucho"]
+    answer: 1
+    explain: "Un borrador imperfecto es mucho más útil que un plan perfecto que nunca llega. El plan se mejora con el tiempo, en cada revisión."
   - type: truefalse
     id: ya01-q3
     q: "Es mejor decidir qué harás en una caída cuando llegue, porque entonces tendrás más información."
     answer: false
     explain: "En plena caída lo que tendrás es más miedo, no más información útil. Escribir la regla antes te permite seguirla cuando cueste."
+tips:
+  - "Escribe tu plan antes de abrir ninguna cuenta."
+  - "Guárdalo donde lo veas a menudo: una nota en el móvil o un papel en la cartera."
+  - "Apunta qué harás si tu inversión baja, no solo lo que esperas ganar."
+  - "Deja fuera del plan el dinero que vayas a necesitar pronto."
 action:
   title: Escribe tu borrador de plan
   steps:
-    - "Copia las seis líneas del plan de Lucía en una nota de tu móvil o en un papel."
-    - "Rellena objetivo, horizonte y aportación con tus datos reales (aunque sean provisionales)."
-    - "Deja el reparto en blanco si aún no lo sabes: lo decidirás en la próxima sesión."
-    - "Escribe una frase para «si cae un 30 %» y pon en el calendario tu fecha de revisión anual."
+    - "Abre una nota en el móvil, titúlala «Mi plan» y copia las seis preguntas de esta sesión."
+    - "Responde con frases cortas para qué es el dinero, cuándo lo necesitarás y cuánto pondrás al mes."
+    - "Escribe una frase para «si baja mucho» y apunta en el calendario tu fecha de revisión anual."
   check: Tengo un borrador de mi plan de inversión por escrito
 deeper: objetivos-horizonte-liquidez
 tool: planificador-objetivos
@@ -58,31 +58,21 @@ sources: [cnmv-inversor]
 
 ## La idea
 
-La mayoría de errores al invertir no son de cálculo, sino de **decisiones tomadas con nervios**. Un plan escrito te protege de ti mismo. Tiene seis líneas:
+La mayoría de errores al invertir no vienen de no saber, sino de **decidir con nervios**. Un plan escrito te protege de ti mismo. Basta con responder seis preguntas:
 
-1. **Objetivo**: para qué es el dinero (jubilación, independencia, estudios de tus hijos).
-2. **Horizonte**: cuándo lo necesitarás. Si es en menos de 3-5 años, no va a bolsa.
-3. **Aportación**: cuánto y qué día de cada mes.
-4. **Reparto**: qué porcentaje en acciones, en renta fija y en liquidez.
-5. **Si cae un 30 %**: qué harás (y qué no harás).
-6. **Revisión**: una fecha al año, no cada vez que leas una noticia.
+1. **¿Para qué es el dinero?** Jubilación, independencia, los estudios de tus hijos…
+2. **¿Cuándo lo necesitarás?** Si es pronto, no va a bolsa.
+3. **¿Cuánto pondrás y qué día?** Mejor una cantidad fija cada mes.
+4. **¿En qué?** El tipo de productos (lo verás en las próximas sesiones).
+5. **¿Qué harás si baja?** Y, sobre todo, qué no harás.
+6. **¿Cuándo lo revisarás?** Una fecha al año, no cada vez que leas una noticia.
 
-Si una línea no la sabes rellenar, esa es la sesión que te toca repasar.
+## En la práctica
 
-## Con números
-
-El plan de Lucía en cifras:
-
-| Línea | Lucía |
-|---|---|
-| Aportación | 200 € al mes |
-| Total aportado en 25 años | 60.000 € |
-| Valor con un 5 % anual **supuesto** | unos 117.000 € |
-| Reparto | 80 % acciones / 20 % renta fija |
-| Revisión | 1 vez al año |
-
-El 5 % es una hipótesis para el ejemplo, no una previsión: el resultado real puede ser mayor o menor, y habrá años con pérdidas.
+- Escríbelo en una nota del móvil o en un papel. Frases cortas, como las de Lucía.
+- Si una respuesta no la sabes aún, déjala en blanco: las siguientes sesiones te ayudan a rellenarla.
+- No hace falta que sea perfecto. Lo importante es que exista antes de la primera compra y que lo releas cuando dudes.
 
 ## Error frecuente
 
-Escribir un plan perfecto y no automatizar la aportación. Lo que no ocurre solo, acaba no ocurriendo.
+Escribir un buen plan y no programar la aportación. Lo que no ocurre solo acaba no ocurriendo.

@@ -1,48 +1,49 @@
 ---
 title: ¿Fondo indexado o ETF?
-description: "Las diferencias que importan en España: traspasos sin tributar, comisiones de compra, mínimos, acumulación o distribución y dónde se compra cada uno."
+description: "Pueden llevar las mismas empresas; cambia el envoltorio. Los fondos se pueden traspasar sin pagar impuestos y los ETF no. Cuándo encaja cada uno."
 level: basico
 track: invertir-ya
 order: 104
 skills: [fondos-etf, fiscalidad-espana, costes-comisiones]
 goals: [jubilacion, objetivo, ordenar]
 prereqs: [ya-03-una-cartera-indexada]
-hook: "Un fondo indexado y un ETF pueden seguir el mismo índice con el mismo coste anual. Entonces, ¿da igual cuál compres? En España, no del todo."
-takeaway: "Mismo índice, distinto envoltorio. El fondo se puede traspasar sin tributar; el ETF, no. Y en cada compra de ETF, mira la comisión."
+hook: "Un fondo indexado y un ETF pueden seguir el mismo índice y costar lo mismo al año. Entonces, ¿da igual cuál compres? En España, no del todo."
+takeaway: "Mismo contenido, distinto envoltorio. Para aportar cada mes en España, el fondo indexado suele ser lo más cómodo."
 scenario:
   kind: producto
-  label: Fichas de ejemplo
-  title: "Mismo índice mundial, dos envoltorios"
-  body: "Fondo indexado X: sigue un índice mundial de acciones, gastos corrientes del 0,20 %, acumulación, sin comisión de suscripción ni de reembolso, se compra en una plataforma de fondos al valor liquidativo del día. ETF Y: sigue el mismo índice, gastos corrientes del 0,20 %, acumulación, cotiza en bolsa a unos 30 € por participación y el bróker cobra 2 € por cada compra. Ana quiere aportar 150 € al mes durante muchos años."
+  label: Caso de ejemplo
+  title: "Pablo duda entre los dos envoltorios"
+  body: "Pablo quiere invertir 150 € al mes en un índice mundial de acciones. Su entidad le ofrece un fondo indexado que no cobra por comprar y un ETF del mismo índice por el que le cobran una pequeña comisión en cada compra. Además, cree que dentro de unos años quizá quiera cambiarse a otro producto más barato."
   note: Ejemplo ficticio con fines educativos. No son productos reales.
 questions:
-  - type: estimate
+  - type: choice
     id: ya04-q1
-    q: "Si Ana compra el ETF Y cada mes, ¿qué porcentaje de cada aportación de 150 € se va en la comisión de 2 €?"
-    answer: 1.3
-    tolerance: 0.1
-    min: 0
-    max: 5
-    step: 0.1
-    unit: "%"
-    explain: "2 / 150 = 1,33 %. Son 24 € al año, más que los gastos anuales del fondo sobre una cartera de 10.000 €. Con aportaciones pequeñas, la comisión por compra pesa mucho; con importes grandes o poco frecuentes, casi nada."
+    q: "Pablo aporta poco cada mes y su entidad cobra una comisión fija por cada compra de ETF. ¿Qué le conviene tener en cuenta?"
+    options: ["Nada: las comisiones de compra son tan pequeñas que no importan", "Que esa comisión, repetida cada mes, pesa mucho en aportaciones pequeñas; un fondo sin comisión de compra puede encajarle mejor", "Que le conviene comprar ETF cada día para repartir mejor"]
+    answer: 1
+    explain: "Una comisión fija pesa más cuanto más pequeña es la compra. Con aportaciones pequeñas y frecuentes, los fondos sin comisión de compra suelen ser más cómodos."
   - type: choice
     id: ya04-q2
-    q: "Tras unos años, Ana gana 5.000 € y quiere pasarse a otro producto más barato. ¿Qué ocurre según el envoltorio?"
-    options: ["Da igual: en los dos casos tributa al cambiar", "Con el fondo puede traspasar sin tributar ahora; con el ETF tiene que vender y tributar por la ganancia", "Con el ETF puede traspasar; con el fondo no"]
+    q: "Tras unos años con ganancias, Pablo quiere pasarse a otro producto más barato. ¿Qué ocurre según el envoltorio?"
+    options: ["Da igual: en los dos casos paga impuestos al cambiar", "Con un fondo puede traspasar a otro fondo sin pagar impuestos ahora; con un ETF tiene que vender y tributar por la ganancia", "Con el ETF puede traspasar; con el fondo no"]
     answer: 1
-    explain: "El régimen de traspasos de la Ley del IRPF se aplica a los fondos, no a los ETF. Vender el ETF supondría unos 950 € de impuesto (5.000 € × 19 %, primer tramo de 2025), dinero que deja de estar invertido."
+    explain: "En España, los fondos de inversión se pueden traspasar a otro fondo sin tributar en ese momento; los ETF no tienen esa ventaja. El impuesto del fondo no desaparece: se paga cuando vendas de verdad."
   - type: truefalse
     id: ya04-q3
     q: "En un fondo o ETF de distribución, los dividendos que te paga tributan en la declaración del año en que los cobras, aunque los vuelvas a invertir."
     answer: true
-    explain: "Con distribución tributas cada año por lo que cobras. Con acumulación, el fondo reinvierte por dentro y solo tributas cuando vendes. Si no necesitas la renta, la acumulación suele ser más sencilla."
+    explain: "Con distribución tributas cada año por lo que cobras. Con acumulación, el fondo reinvierte por dentro y solo tributas cuando vendes. Si no necesitas esa renta, la acumulación suele ser más sencilla."
+tips:
+  - "Si vas a aportar cada mes, mira primero los fondos indexados: muchos no cobran por comprar."
+  - "Antes de elegir un ETF, pregunta cuánto te cobra la entidad por cada compra."
+  - "Si no necesitas cobrar rentas, elige la versión de acumulación."
+  - "Compara el índice y el coste total, no solo el nombre del producto."
 action:
   title: Elige tu envoltorio
   steps:
-    - "Mira cuánto aportarás cada mes según tu plan."
-    - "Busca en las tarifas de una entidad autorizada cuánto cobra por comprar un ETF y si cobra algo por fondos indexados."
-    - "Calcula la comisión como porcentaje de tu aportación y anota en tu plan: fondo, ETF, acumulación o distribución."
+    - "Mira en tu plan cuánto aportarás y cada cuánto."
+    - "Busca en las tarifas de tu entidad si cobra por comprar fondos indexados y cuánto por cada compra de ETF."
+    - "Apunta en tu plan tu elección: fondo o ETF, y acumulación o distribución."
   check: Sé si me encaja más un fondo indexado o un ETF, y por qué
 deeper: comisiones-y-fiscalidad
 tool: comparador-comisiones
@@ -51,37 +52,37 @@ reviewer: null
 published: 2026-10-16
 reviewed: 2026-10-16
 status: revision-pendiente
-jurisdiction: "España, territorio común. Escala del ahorro del ejercicio 2025."
+jurisdiction: "España, territorio común."
 sources: [aeat-traspasos-2025, aeat-ahorro-2025, cnmv-etf-guia-rapida, cnmv-guia-fondos]
 ---
 
 ## La idea
 
-Un **fondo indexado** y un **ETF** pueden llevar exactamente las mismas empresas. Cambia el envoltorio:
+Un **fondo indexado** y un **ETF** (un fondo que cotiza en bolsa como una acción) pueden llevar exactamente las mismas empresas. Lo que cambia es el envoltorio:
 
 | | Fondo indexado | ETF |
 |---|---|---|
-| Cambiar a otro sin tributar (**traspaso**) | Sí | No: vendes y tributas |
-| Precio de compra | Valor liquidativo del día (o del siguiente) | Precio de bolsa en tiempo real |
-| Comisión por compra | A menudo ninguna; mira el folleto | La del bróker, más el diferencial |
-| Mínimo | Según el fondo y su clase | El precio de una participación (salvo fracciones) |
-| Dónde | Banco, plataforma de fondos o bróker que los ofrezca | Bróker con acceso a bolsa |
+| Cambiar a otro sin pagar impuestos (traspaso) | Sí | No: vendes y tributas |
+| Precio | Se fija al final del día; lo sabes después | Cambia durante el día, como una acción |
+| Comisión por comprar | A menudo ninguna | Suele haberla, según la entidad |
+| Dónde se compra | Banco, plataforma de fondos o bróker | Bróker con acceso a bolsa |
 
-Además, cada uno puede ser de **acumulación** (reinvierte los dividendos por dentro) o de **distribución** (te los paga y tributan ese año).
+Los dos pueden ser de **acumulación** (reinvierten los dividendos por dentro) o de **distribución** (te los pagan y tributan ese año).
 
-Para un principiante en España que aporta cada mes, el fondo indexado suele ser más cómodo por los **traspasos**. El ETF puede salir más barato si compras poco a menudo y tu bróker cobra poco.
+## En la práctica
 
-## Con números
+**Suele encajar mejor un fondo indexado si…**
 
-Ana tiene una ganancia de **5.000 €** y quiere cambiar de producto:
+- aportas cada mes cantidades pequeñas;
+- quieres poder cambiar de producto sin pagar impuestos por el camino;
+- prefieres no estar pendiente de precios.
 
-| | Fondo (traspaso) | ETF (venta y compra) |
-|---|---:|---:|
-| Impuesto ahora | 0 € | 950 € |
-| Sigue invertido | 5.000 € de ganancia | 4.050 € de ganancia |
+**Puede encajar un ETF si…**
 
-El traspaso **no elimina** el impuesto: lo aplaza hasta que reembolses de verdad. Pero mientras tanto, esos 950 € siguen trabajando para ti.
+- compras pocas veces y cantidades más grandes;
+- tu entidad cobra poco o nada por comprarlo;
+- en tu entidad no hay fondos indexados que te convenzan.
 
 ## Error frecuente
 
-Comparar solo los gastos corrientes. Suma también la comisión de compra, el diferencial y el cambio de divisa si cotiza en otra moneda.
+Comparar solo el coste anual. Mira también lo que te cobran por cada compra y si el producto cotiza en otra moneda.

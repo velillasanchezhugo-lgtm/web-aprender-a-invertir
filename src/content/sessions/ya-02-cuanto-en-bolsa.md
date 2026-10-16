@@ -1,50 +1,50 @@
 ---
 title: ¿Cuánto en bolsa?
-description: Cómo repartir entre acciones, renta fija y liquidez con una regla sencilla, según cuándo necesitarás el dinero y cuánta caída puedes aguantar sin vender.
+description: "Cuánto arriesgar depende sobre todo de cuándo necesitarás el dinero y de cuánto te asusta verlo bajar. Una guía sencilla, sin fórmulas."
 level: basico
 track: invertir-ya
 order: 102
 skills: [asignacion-activos, riesgo-volatilidad]
 goals: [objetivo, jubilacion, miedo]
 prereqs: [ya-01-tu-plan-en-una-pagina]
-hook: "Tienes 30.000 € para invertir a 20 años. ¿Todo en bolsa, la mitad o casi nada? La respuesta no está en el mercado, está en ti."
-takeaway: "Peso en bolsa × caída de la bolsa ≈ caída de tu cartera. Elige el peso cuya caída podrías mirar sin vender."
+hook: "Tienes unos ahorros y te preguntas si meterlo todo en bolsa, la mitad o casi nada. La respuesta no está en las noticias: está en tu calendario."
+takeaway: "Si lo necesitas en pocos años, menos bolsa. Si no lo vas a tocar en muchos años, puede haber más."
 scenario:
   kind: operacion
   label: Caso de ejemplo
-  title: "Marcos decide su reparto"
-  body: "Marcos tiene 40 años, un colchón aparte y 30.000 € que no necesitará en 20 años. Se pregunta cuánto podría ver caer su cartera sin vender. Su respuesta sincera: un 20 %, es decir, 6.000 €. Para hacer la prueba supone una caída de la bolsa del 50 %, parecida a la del S&P 500 entre 2007 y 2009, y que la renta fija no se mueve."
-  note: Ejemplo ficticio con fines educativos. Las caídas reales pueden ser mayores o menores.
+  title: "Marcos separa su dinero por fechas"
+  body: "Marcos tiene 40 años y dos objetivos: la entrada de un piso dentro de dos años y su jubilación, dentro de más de veinte. Antes de invertir, separa el dinero en dos. El de la entrada lo deja en una cuenta remunerada, porque no puede permitirse que baje justo cuando lo necesite. El de la jubilación lo invierte sobre todo en acciones, con una parte en renta fija para dormir tranquilo."
+  note: Ejemplo ficticio con fines educativos.
 questions:
-  - type: estimate
+  - type: choice
     id: ya02-q1
-    q: "Con la regla del caso: si Marcos aguantara una caída de la cartera del 30 % y la bolsa cae un 50 %, ¿qué peso máximo en acciones le encaja?"
-    answer: 60
-    tolerance: 0
-    min: 0
-    max: 100
-    step: 5
-    unit: "%"
-    explain: "Peso máximo = caída que aguantas / caída de la bolsa = 30 / 50 = 60 %. Con un 60 % en acciones, una caída del 50 % deja la cartera en −30 % si la renta fija aguanta."
+    q: "¿Qué dinero de Marcos no debería ir a bolsa?"
+    options: ["El de la jubilación, porque falta mucho", "El de la entrada del piso, que necesitará dentro de dos años", "El que aporta cada mes para la jubilación"]
+    answer: 1
+    explain: "Si la bolsa cae justo antes de comprar el piso, no habría tiempo para recuperarse y la compra no espera. El dinero de corto plazo no se arriesga."
   - type: choice
     id: ya02-q2
-    q: "Además, Marcos ahorra 15.000 € para la entrada de un piso dentro de dos años. ¿Dónde encaja ese dinero?"
-    options: ["En bolsa, porque es lo que más rinde a largo plazo", "En liquidez o productos de bajo riesgo y plazo corto: cuenta remunerada, depósito o Letras", "Mitad en bolsa y mitad en un fondo sectorial"]
+    q: "Laura, 30 años, invierte para su jubilación, pero reconoce que si viera su dinero bajar mucho vendería por miedo. ¿Qué le encaja más?"
+    options: ["Todo en bolsa: a su edad es lo que más rinde", "Una mezcla con menos bolsa y más renta fija, que pueda mantener sin vender en las caídas", "Nada invertido: todo en la cuenta corriente"]
     answer: 1
-    explain: "A dos años, una caída del 30 % no da tiempo a recuperarse y la compra del piso no espera. El horizonte manda: el dinero de corto plazo no se arriesga."
+    explain: "El mejor reparto no es el que más podría ganar, sino el que vas a mantener cuando baje. Vender asustado convierte una caída pasajera en una pérdida real."
   - type: truefalse
     id: ya02-q3
-    q: "La renta fija nunca cae, así que la parte de bonos de la cartera es tan segura como un depósito."
+    q: "La renta fija nunca baja, así que es tan segura como un depósito."
     answer: false
-    explain: "Los fondos de renta fija también pueden bajar, sobre todo cuando suben los tipos de interés o empeora la solvencia de los emisores. Caen mucho menos que la bolsa, pero no son un depósito."
+    explain: "Los fondos de renta fija también pueden bajar, por ejemplo cuando suben los tipos de interés: los bonos que ya existen valen menos porque los nuevos pagan más. Caen mucho menos que la bolsa, pero no son un depósito."
+tips:
+  - "Separa tu dinero por fechas: lo que necesitarás en pocos años, fuera de la bolsa."
+  - "Elige el reparto pensando en lo que podrías ver bajar sin vender, no en lo que podrías ganar."
+  - "Si dudas, empieza con menos bolsa: subirla con calma es más fácil que recuperarte de vender asustado."
+  - "Apunta tu reparto en el plan y no lo cambies por una noticia."
 action:
   title: Pon tu reparto en el plan
   steps:
-    - "Escribe qué caída de tu cartera, en euros, podrías ver sin vender."
-    - "Divídela entre lo que tienes para invertir: ese porcentaje es tu caída tolerable."
-    - "Divide esa caída entre 50 y tendrás un peso máximo orientativo en acciones. Anótalo en tu plan."
-    - "Separa el dinero que necesitarás en menos de 3-5 años: no entra en este reparto."
-  check: He decidido qué parte de mi cartera irá a acciones y por qué
+    - "Haz dos listas: el dinero que necesitarás en los próximos años y el que no tocarás en mucho tiempo."
+    - "Pregúntate con sinceridad qué harías si tu inversión bajara mucho durante meses."
+    - "Escribe en tu plan si quieres sobre todo bolsa, una mezcla equilibrada o sobre todo renta fija."
+  check: He decidido qué parte de mi dinero irá a bolsa y por qué
 deeper: asignacion-y-rebalanceo
 tool: simulador-caidas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -58,33 +58,27 @@ sources: [sp500-history, markowitz-1952]
 
 ## La idea
 
-Tu cartera tiene tres cajones:
+Tu dinero puede estar en tres cajones:
 
-- **Acciones (renta variable)**: el motor a largo plazo. También lo que más cae.
-- **Renta fija**: amortigua las caídas. Rinde menos y también puede bajar, aunque mucho menos.
-- **Liquidez**: lo que necesitarás pronto. No se arriesga.
+| Cajón | Para qué sirve | Riesgo |
+|---|---|---|
+| Acciones (bolsa) | Hacer crecer el dinero a largo plazo | Alto: sube y baja mucho |
+| Renta fija | Amortiguar las caídas | Bajo-medio |
+| Liquidez (cuenta, depósito, Letras) | Lo que necesitarás pronto | Bajo |
 
-Dos preguntas deciden el reparto:
+Dos preguntas deciden cuánto va a cada cajón:
 
-1. **¿Cuándo necesitas el dinero?** Lo de menos de 3-5 años, fuera de la bolsa.
-2. **¿Cuánta caída aguantas sin vender?** Usa esta regla aproximada: **caída de la cartera ≈ peso en acciones × caída de la bolsa**.
+- **¿Cuándo necesitarás el dinero?** Si es en pocos años, menos bolsa. Si es en muchos años, puede haber más.
+- **¿Cuánto te asusta verlo bajar?** Si sabes que venderías con miedo, menos bolsa, aunque el plazo sea largo.
 
-Un **60 % en acciones** con una **caída de la bolsa del 50 %** deja la cartera en **−30 %**. Por eso el reparto importa más que el fondo concreto que elijas.
+## En la práctica
 
-## Con números
+- **Lo que necesitarás en pocos años**: casi todo en liquidez.
+- **Lo que no tocarás en unos años**: una mezcla, con bastante renta fija.
+- **Lo que no tocarás en muchos años**: la bolsa puede ser la mayor parte, si soportas los vaivenes.
 
-Los 30.000 € de Marcos si la bolsa cae un 50 % y la renta fija no se mueve:
-
-| Peso en acciones | Caída de la cartera | En euros |
-|---:|---:|---:|
-| 20 % | −10 % | −3.000 € |
-| 40 % | −20 % | −6.000 € |
-| 60 % | −30 % | −9.000 € |
-| 80 % | −40 % | −12.000 € |
-| 100 % | −50 % | −15.000 € |
-
-Marcos aguanta −6.000 €, así que su peso máximo orientativo es un **40 %**. Si con los años aprende a soportar más, podrá subirlo con calma. No es una caída imposible: el S&P 500 perdió un **56,8 %** entre 2007 y 2009.
+Haz esta prueba: imagina que la bolsa cae como en 2008, cuando las grandes bolsas perdieron cerca de la mitad de su valor y tardaron años en recuperarse. ¿Venderías? Si la respuesta es sí, baja tu parte en bolsa.
 
 ## Error frecuente
 
-Elegir el reparto pensando en lo que se puede ganar. Elígelo pensando en lo que puedes perder sin vender.
+Elegir el reparto pensando en lo que se puede ganar. Elígelo pensando en lo que puedes ver bajar sin vender.

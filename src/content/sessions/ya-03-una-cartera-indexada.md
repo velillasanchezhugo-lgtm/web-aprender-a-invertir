@@ -1,49 +1,50 @@
 ---
 title: Una cartera de tres piezas
-description: "Cómo montar una cartera global, diversificada y barata con uno a tres productos: acciones mundiales, renta fija euro de calidad y liquidez. Y cuánto cuesta en total."
+description: "Para empezar bastan de una a tres piezas: un fondo indexado global de bajo coste, algo de renta fija y liquidez. Qué hace cada una y cómo elegirlas."
 level: basico
 track: invertir-ya
 order: 103
 skills: [cartera-indexada, diversificacion, fondos-etf]
 goals: [jubilacion, objetivo, entender]
 prereqs: [ya-02-cuanto-en-bolsa]
-hook: "Hay miles de fondos. ¿De verdad hace falta elegir entre todos? Para empezar bien, bastan tres piezas, y a veces una."
-takeaway: Global, indexado y barato. Pocas piezas, muchas empresas dentro, y el coste total calculado.
+hook: "Hay miles de fondos y parece que tienes que elegir entre todos. Para empezar bien bastan tres piezas, y a veces una."
+takeaway: Global, indexado y barato. Pocas piezas, muchas empresas dentro.
 scenario:
   kind: producto
-  label: Fichas de ejemplo
-  title: "Tres productos para una cartera 70/20/10"
-  body: "Fondo A: indexado a un índice mundial de acciones, unas 3.000 empresas de más de 20 países; gastos corrientes del 0,20 %. Fondo B: gestión activa, 40 empresas españolas; gastos corrientes del 1,80 %. Fondo C: indexado a bonos de gobiernos de la zona euro con alta calificación; gastos corrientes del 0,15 %. Cuenta remunerada: sin comisiones. Reparto elegido en el plan: 70 % acciones, 20 % renta fija, 10 % liquidez."
+  label: Caso de ejemplo
+  title: "Ana elige la base de su cartera"
+  body: "Ana tiene 5.000 € para invertir a largo plazo. En su banco le ofrecen un fondo de unas 40 empresas españolas que cobra cerca de un 2 % al año. Buscando por su cuenta encuentra un fondo indexado global, con miles de empresas de todo el mundo, que cobra un 0,2 %. Decide usar el global como base, poner una parte en un fondo de renta fija en euros y dejar algo en su cuenta remunerada."
   note: Ejemplo ficticio con fines educativos. No son productos reales.
 questions:
   - type: choice
     id: ya03-q1
-    q: "Para el 70 % en acciones, ¿qué ficha encaja con una cartera global y barata?"
-    options: ["El fondo B, porque conoces las empresas españolas", "El fondo A: miles de empresas de muchos países y un coste nueve veces menor", "Mitad A y mitad B, para tener de todo"]
+    q: "Para la parte de acciones de Ana, ¿qué encaja mejor con una cartera sencilla y barata?"
+    options: ["El fondo de empresas españolas, porque las conoce", "El fondo indexado global: miles de empresas de muchos países y un coste mucho menor", "Mitad y mitad, para tener de todo"]
     answer: 1
-    explain: "España es una parte muy pequeña de la bolsa mundial. El fondo B concentra el riesgo en un país y cobra 1,6 puntos más al año, algo que pocos fondos activos compensan a largo plazo según los informes SPIVA."
-  - type: estimate
+    explain: "España es una parte muy pequeña de la bolsa mundial. Un fondo de un solo país concentra el riesgo, y una comisión alta cada año es difícil de compensar a largo plazo."
+  - type: choice
     id: ya03-q2
-    q: "Coste total de la cartera: 70 % en el fondo A (0,20 %), 20 % en el C (0,15 %) y 10 % en la cuenta (0 %). ¿Cuál es el coste anual ponderado?"
-    answer: 0.17
-    tolerance: 0.02
-    min: 0
-    max: 1
-    step: 0.01
-    unit: "%"
-    explain: "0,70 × 0,20 + 0,20 × 0,15 + 0,10 × 0 = 0,14 + 0,03 = 0,17 %. Sobre 10.000 €, unos 17 € al año. Multiplica cada coste por su peso y suma."
+    q: "Tienes dos fondos indexados globales delante. ¿Qué miras primero para compararlos?"
+    options: ["Cuál ha subido más el último año", "Qué índice siguen, cuántas empresas llevan dentro y cuánto cobran al año, según su KID", "Cuál tiene la gestora con el nombre más conocido"]
+    answer: 1
+    explain: "Si dos fondos siguen índices parecidos, lo que más los diferencia es el coste. La rentabilidad de un año dice poco de lo que pasará después."
   - type: truefalse
     id: ya03-q3
     q: "Tener tres fondos indexados globales de acciones de gestoras distintas diversifica bastante más que tener uno."
     answer: false
-    explain: "Si siguen índices mundiales parecidos, tienen casi las mismas empresas dentro. Sumas piezas, no diversificación. La diversificación la da lo que hay dentro de cada fondo."
+    explain: "Si siguen índices mundiales parecidos, tienen casi las mismas empresas dentro. Sumas fondos, no diversificación. La diversificación la da lo que hay dentro de cada fondo."
+tips:
+  - "Empieza por una pieza global de acciones: es la base de la cartera."
+  - "Elige productos con costes bajos: la diferencia se nota mucho con los años."
+  - "No colecciones fondos: si llevan las mismas empresas, solo te complican."
+  - "Desconfía si te ofrecen un fondo caro como «el adecuado para ti» sin explicarte por qué."
 action:
   title: Dibuja tu cartera
   steps:
-    - "Escribe tus tres piezas como categorías: acciones globales, renta fija euro de calidad y liquidez, con el porcentaje de tu plan."
-    - "Busca en un comparador público o en la web de tu entidad dos fondos o ETF indexados globales y anota su número de empresas y sus gastos corrientes (del KID)."
-    - "Calcula el coste ponderado de tu cartera con la fórmula de esta sesión."
-  check: Sé qué piezas tendrá mi cartera y cuánto cuesta en total
+    - "Escribe en tu plan tus piezas: acciones globales, renta fija en euros y liquidez (o solo la primera, si es lo que encaja contigo)."
+    - "Busca en la web de tu entidad o en un comparador público dos fondos o ETF indexados globales."
+    - "Abre su KID y apunta qué índice siguen y cuánto cobran al año."
+  check: Sé qué piezas tendrá mi cartera y qué buscar en cada una
 deeper: gestion-indexada-y-activa
 tool: cartera-practica
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -59,27 +60,26 @@ sources: [spiva, fama-french-2010, priips-kid, markowitz-1952]
 
 Una cartera sencilla tiene **una pieza por cajón**:
 
-1. **Acciones globales**: un fondo o ETF **indexado a un índice mundial**, con miles de empresas de muchos países y sectores.
-2. **Renta fija euro de calidad**: bonos de gobiernos o empresas solventes en euros, sin riesgo de divisa.
-3. **Liquidez**: cuenta remunerada, depósito o Letras.
+| Pieza | Para qué sirve | Riesgo | Para quién |
+|---|---|---|---|
+| Fondo indexado global de acciones | Crecer a largo plazo | Alto | Casi todos, con el dinero que no tocarán en años |
+| Renta fija en euros de calidad | Amortiguar las caídas | Bajo-medio | Quien quiere menos sustos o un plazo intermedio |
+| Liquidez (cuenta remunerada, depósito, Letras) | Lo que necesitarás pronto | Bajo | Todos |
 
-Si tu plan es 100 % acciones, te basta **una sola pieza**.
+Si tu plan es casi todo bolsa, te basta **una sola pieza**.
 
-¿Por qué **global**? Porque no sabes qué país o sector irá mejor, y con uno global tienes todos. ¿Por qué **indexado y barato**? Porque los informes **SPIVA** encuentran, año tras año, que la mayoría de fondos de gestión activa quedan por detrás de su índice a largo plazo, en buena parte por lo que cobran.
+- **Global**, porque nadie sabe qué país o sector irá mejor, y así tienes de todos.
+- **Indexado**, es decir, que copia un índice en vez de intentar batirlo. Los informes SPIVA muestran, año tras año, que la mayoría de fondos que intentan batir al índice no lo consiguen a largo plazo.
+- **Barato**, porque lo que pagas cada año se resta de lo que ganas.
 
-## Con números
+## En la práctica
 
-Coste de una cartera de 10.000 € con el reparto 70/20/10:
+Para la mayoría de principiantes, una buena base es un fondo indexado global de bajo coste. Para encontrarlo:
 
-| Pieza | Peso | Gastos | Aporta al coste |
-|---|---:|---:|---:|
-| Fondo A (global indexado) | 70 % | 0,20 % | 0,14 % |
-| Fondo C (renta fija euro) | 20 % | 0,15 % | 0,03 % |
-| Liquidez | 10 % | 0 % | 0 % |
-| **Total** | | | **0,17 %** (17 € al año) |
-
-Si cambias el fondo A por el B (1,80 %), el coste sube a **1,29 %**: 129 € al año sobre la misma cartera, y creciendo con ella.
+- Busca «indexado» y «mundial» o «global» en tu entidad.
+- En su KID (documento de datos fundamentales), mira el índice, el riesgo y los costes. Un 2 % al año es mucho; los hay por debajo del 0,3 %.
+- Para la renta fija, busca fondos en euros de gobiernos o empresas solventes.
 
 ## Error frecuente
 
-Coleccionar fondos. Diez fondos que tienen las mismas empresas no reparten el riesgo: solo complican el seguimiento.
+Coleccionar fondos. Diez fondos con las mismas empresas no reparten el riesgo: solo complican el seguimiento.

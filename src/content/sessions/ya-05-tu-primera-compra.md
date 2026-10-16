@@ -1,48 +1,49 @@
 ---
 title: Tu primera compra, paso a paso
-description: "De abrir la cuenta a guardar el justificante: entidad autorizada, test de conveniencia, ISIN, KID, tipo de orden y qué revisar antes de pulsar «confirmar»."
+description: "De elegir una entidad autorizada a confirmar la orden: abrir la cuenta, test de conveniencia, buscar el producto, leer el KID y guardar el justificante."
 level: basico
 track: invertir-ya
 order: 105
 skills: [ejecutar-compra, ordenes-mercado, comprobar-broker]
 goals: [objetivo, miedo, ordenar]
 prereqs: [ya-04-fondo-o-etf]
-hook: "Tienes el plan, el reparto y sabes qué buscas. Llega la pantalla de compra con diez campos y un botón verde. ¿Qué miras antes de pulsarlo?"
-takeaway: "Entidad comprobada, ISIN correcto, KID leído, orden limitada en horario de mercado. Y guarda el justificante."
+hook: "Tienes el plan y sabes qué buscas. Llega la pantalla de compra con diez campos y un botón verde. ¿Qué miras antes de pulsarlo?"
+takeaway: "Entidad comprobada, producto correcto, KID leído. Después confirmas y guardas el justificante."
 scenario:
   kind: operacion
-  label: Pantalla de ejemplo
-  title: "Orden de compra pendiente de confirmar"
-  body: "Producto: ETF Global Ficticio, acumulación, en euros; el ISIN coincide con el del KID. Mercado: abre a las 9:00. Hora actual: 8:40. Último precio: 25,40 €. Mejor precio de compra: 25,90 €. Mejor precio de venta: 24,90 €. Tipo de orden: a mercado. Cantidad: 40 participaciones. Importe estimado: 1.036 €. Comisión: 2 €."
-  note: Ejemplo ficticio con fines educativos. Precios y producto inventados.
+  label: Caso de ejemplo
+  title: "La primera compra de Sara"
+  body: "Sara ha abierto su cuenta en una entidad que antes buscó en los registros de la CNMV. Escribe «fondo indexado mundial» en el buscador y le salen cinco productos casi iguales. Pega el código ISIN que había apuntado en su plan y le aparece uno solo. Abre su documento de datos fundamentales, comprueba el índice, los costes y el riesgo, escribe 300 € y confirma."
+  note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: ya05-q1
-    q: "Mirando la pantalla, ¿qué cambiarías antes de confirmar?"
-    options: ["Nada: una orden a mercado siempre da el mejor precio", "Esperar al horario de mercado y usar una orden limitada a un precio cercano al último cruzado", "Comprar el doble, ya que la comisión es fija"]
+    q: "En el buscador te salen cinco productos con nombres casi iguales. ¿Qué haces?"
+    options: ["Elegir el primero, que será el más popular", "Buscar por el ISIN, el código que identifica a cada producto, y comprobar en su KID que es el que querías", "Elegir el que más ha subido este año"]
     answer: 1
-    explain: "Antes de la apertura el diferencial es amplio: a mercado pagarías hasta 25,90 €. Con una orden limitada en horario normal fijas el precio máximo y evitas sorpresas."
-  - type: estimate
+    explain: "Dos productos con nombres casi iguales pueden tener costes, moneda o reparto de dividendos distintos. El ISIN es como el DNI del producto: no hay dos iguales."
+  - type: choice
     id: ya05-q2
-    q: "¿Qué tamaño tiene el diferencial de la pantalla, en porcentaje del último precio? (25,90 − 24,90) / 25,40"
-    answer: 3.9
-    tolerance: 0.2
-    min: 0
-    max: 10
-    step: 0.1
-    unit: "%"
-    explain: "1 / 25,40 ≈ 3,9 %. En un ETF grande en pleno horario de mercado el diferencial suele ser una fracción de eso. Si lo ves tan abierto, espera."
+    q: "Al abrir la cuenta, la entidad te hace un test sobre tu experiencia y conocimientos. ¿Cómo lo respondes?"
+    options: ["Exagerando lo que sé, para que no me ponga pegas", "Con sinceridad: sirve para que la entidad me avise si un producto no encaja con lo que conozco", "Al azar, porque no sirve para nada"]
+    answer: 1
+    explain: "Es el test de conveniencia que exige la normativa europea (MiFID). Si lo falseas, pierdes un aviso que existe para protegerte."
   - type: truefalse
     id: ya05-q3
     q: "Al comprar un fondo indexado (no cotizado) sabes el precio exacto de la participación en el momento de dar la orden."
     answer: false
-    explain: "Los fondos se compran al valor liquidativo del día de la solicitud o del siguiente, según el folleto y su hora de corte, y se publica después. Por eso en un fondo no eliges precio: indicas el importe."
+    explain: "Los fondos se compran al valor liquidativo del día o del siguiente, que se publica después. Por eso en un fondo no eliges precio: indicas cuánto dinero quieres invertir."
+tips:
+  - "Comprueba siempre en la CNMV o en el Banco de España que la entidad está autorizada."
+  - "Busca el producto por su ISIN, no por el nombre."
+  - "Lee el KID antes de confirmar: qué es, cuánto cuesta y cuánto riesgo tiene."
+  - "Desconfía si alguien te llama o te escribe para meterte prisa en la compra."
 action:
   title: Prepara tu primera compra
   steps:
-    - "Comprueba en el registro de la CNMV (o del supervisor de su país) la entidad donde vas a abrir la cuenta."
-    - "Busca el KID del producto que encaja con tu plan y anota su ISIN, sus costes y su indicador de riesgo."
-    - "Escribe la orden que darás: importe, tipo de orden (limitada si es un ETF) y el horario en que la lanzarás."
+    - "Busca en los registros de la CNMV la entidad donde quieres abrir la cuenta."
+    - "Localiza el KID del producto que encaja con tu plan y apunta su ISIN."
+    - "Escribe la cantidad que invertirás en esta primera compra."
   check: Tengo preparada mi primera compra y sé qué revisar antes de confirmar
 deeper: ordenes-liquidez-ejecucion
 tool: comparador-comisiones
@@ -57,30 +58,26 @@ sources: [cnmv-entidades, cnmv-mifid-infografia, priips-kid, cnmv-etf-guia-rapid
 
 ## La idea
 
-Ocho pasos, en este orden:
+Siete pasos, en este orden:
 
-1. **Elige una entidad autorizada** y compruébala en el registro oficial.
-2. **Abre la cuenta**: DNI, datos fiscales y, a veces, una videollamada.
-3. **Responde el test de conveniencia (MiFID)** con sinceridad: sirve para que la entidad te avise si un producto no encaja con tus conocimientos.
-4. **Transfiere el dinero** desde tu banco a la cuenta de la entidad.
-5. **Busca el producto por su ISIN**, no por el nombre: hay muchos parecidos.
-6. **Lee el KID**: costes, riesgo y qué índice sigue.
-7. **Da la orden**:
-   - **ETF**: orden **limitada**, en **horario de mercado** y lejos de la apertura y el cierre, cuando el diferencial suele ser menor.
-   - **Fondo**: indicas el **importe**; se aplica un valor liquidativo que aún no conoces.
-8. **Revisa la pantalla, confirma y guarda el justificante** de la operación.
+1. **Elige una entidad autorizada**: un banco, una plataforma de fondos o un bróker que aparezca en los registros de la CNMV o del Banco de España.
+2. **Abre la cuenta**: DNI, datos personales y fiscales y, a veces, una videollamada.
+3. **Responde el test de conveniencia** con sinceridad.
+4. **Pasa el dinero** desde tu banco a tu cuenta en la entidad.
+5. **Busca el producto por su ISIN**, el código de doce caracteres que lo identifica.
+6. **Lee el KID** (documento de datos fundamentales): qué índice sigue, sus costes y su nivel de riesgo.
+7. **Confirma y guarda el justificante.**
 
-## Con números
+## En la práctica
 
-La orden de la pantalla, comprando 40 participaciones:
+Antes de pulsar «confirmar», repasa:
 
-| Cómo compras | Precio | Pagas de más frente al último precio |
-|---|---:|---:|
-| A mercado, antes de la apertura | 25,90 € | 20,00 € |
-| Limitada a 25,42 €, en horario normal | 25,42 € como máximo | 0,80 € como máximo |
-
-Son unos **19 € de diferencia** en una compra de unos 1.000 €: lo mismo que unos diez años de gastos de una cartera indexada al 0,17 % de ese tamaño, perdido en un clic.
+- **¿Es el producto correcto?** El ISIN de la pantalla coincide con el de tu plan.
+- **¿Es la cantidad correcta?** Un cero de más pasa más a menudo de lo que crees.
+- **¿Qué te cobran?** La pantalla suele mostrar la comisión antes de confirmar.
+- **Si es un fondo**, indicas cuánto dinero; el precio lo sabrás después.
+- **Si es un ETF**, compra con el mercado abierto y usa una orden limitada, que fija el precio máximo que estás dispuesto a pagar.
 
 ## Error frecuente
 
-Comprar por el nombre comercial que salió primero en el buscador. Dos productos con nombres casi iguales pueden tener costes, divisa o reparto de dividendos distintos: el ISIN los distingue.
+Comprar lo primero que sale en el buscador. Unos minutos con el ISIN y el KID te ahorran años con el producto equivocado.
