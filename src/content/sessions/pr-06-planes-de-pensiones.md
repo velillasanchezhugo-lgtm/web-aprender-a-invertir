@@ -1,51 +1,52 @@
 ---
-title: "Planes de pensiones: la rebaja de hoy y la factura de mañana"
-description: "Cuánto puedes reducir en la renta, cuándo puedes sacar el dinero (incluida la regla de los 10 años) y cómo tributa el rescate. Para decidir si te encaja."
+title: "Planes de pensiones: rebaja hoy, impuestos mañana"
+description: "Qué es un plan de pensiones, cuándo puedes sacar el dinero, qué ventaja fiscal tiene (y qué factura llega al rescatar) y para quién encaja."
 level: basico
 track: productos
 order: 206
 skills: [planes-pensiones, fiscalidad-espana]
 goals: [jubilacion, objetivo]
 prereqs: [11-impuestos-lo-justo]
-hook: "Cada diciembre oyes «aporta a tu plan y desgrava». ¿Te ahorras impuestos de verdad o solo los aplazas?"
-takeaway: "Un plan de pensiones no elimina impuestos: los aplaza. Compensa sobre todo si hoy tu tipo marginal es alto y al jubilarte será más bajo."
+hook: "Cada diciembre oyes «aporta a tu plan y desgrava». ¿Te ahorras impuestos de verdad o solo los dejas para más adelante?"
+takeaway: "Un plan de pensiones no elimina impuestos: los aplaza. Compensa sobre todo si hoy pagas bastante IRPF, esperas pagar menos al jubilarte y no vas a necesitar ese dinero."
 scenario:
   kind: producto
   label: "Caso de ejemplo"
-  title: "Lucía, 42 años, y su plan de pensiones individual"
-  body: "Lucía gana 40.000 € brutos al año y su tipo marginal en el IRPF es del 30 % (depende de tu comunidad autónoma). Aporta 1.500 € al año a un plan individual que invierte en acciones globales, con unos gastos totales del 0,8 %. Su empresa no tiene plan de empleo. Prevé que, ya jubilada, su tipo marginal será del 24 %."
-  note: "Ejemplo ficticio con fines educativos. Los tipos marginales son supuestos."
+  title: "Lucía, 42 años, y la campaña de diciembre"
+  body: "Lucía tiene un buen sueldo y su banco le insiste en que aporte a un plan de pensiones antes de fin de año para pagar menos en la renta. También está ahorrando para cambiar de piso dentro de 3 años. Duda si meter en el plan el dinero del piso para aprovechar la rebaja."
+  note: "Ejemplo ficticio con fines educativos."
 questions:
-  - type: estimate
+  - type: choice
     id: pr06-q1
-    q: "Lucía aporta 1.500 € en el año y su tipo marginal es del 30 %. ¿Cuánto paga de menos en la declaración de la renta de ese año?"
-    answer: 450
-    tolerance: 0
-    min: 0
-    max: 1500
-    step: 10
-    unit: "€"
-    explain: "1.500 € × 30 % = 450 €. La aportación reduce la base imponible general, así que el ahorro es tu tipo marginal. No es un regalo: pagarás impuestos cuando rescates."
+    q: "Lucía quiere meter en el plan el dinero que necesitará para el piso dentro de 3 años. ¿Qué le dirías?"
+    options: ["Buena idea: así paga menos impuestos", "Mala idea: el dinero de un plan, por regla general, no se puede sacar hasta la jubilación o pasados 10 años desde cada aportación, salvo casos excepcionales", "Da igual, se puede sacar cuando quiera pagando una pequeña comisión"]
+    answer: 1
+    explain: "Un plan de pensiones es dinero bloqueado para el largo plazo. Para objetivos de pocos años, mejor productos que puedas recuperar."
   - type: choice
     id: pr06-q2
-    q: "Lucía se jubila y rescata el plan. ¿Cómo tributa ese dinero?"
-    options: ["Solo la ganancia, en la base del ahorro, como un fondo", "Todo lo que cobra (aportaciones y rentabilidad) como rendimiento del trabajo, en la base general", "No tributa porque ya tributó al aportar"]
+    q: "Lucía se jubila y saca el dinero del plan. ¿Cómo tributa?"
+    options: ["Solo la ganancia, como un fondo", "Todo lo que cobra (lo aportado y lo ganado) como si fuera sueldo, en la parte general de la renta", "No paga nada porque ya tributó al aportar"]
     answer: 1
-    explain: "Lo que cobras de un plan de pensiones es rendimiento del trabajo: se suma a tu pensión pública y tributa a tu tipo marginal. Si lo sacas todo en un año, puedes saltar a un tramo más alto; repartir el rescate en varios años suele pagar menos."
+    explain: "Lo que cobras de un plan se suma a tus otros ingresos del año, como un rendimiento del trabajo. Sacarlo todo de golpe en un solo año suele salir más caro que repartirlo en varios."
   - type: truefalse
     id: pr06-q3
-    q: "Desde 2025, en un plan individual puedes sacar el dinero correspondiente a aportaciones con al menos 10 años de antigüedad, sin estar jubilado."
+    q: "Desde 2025 puedes sacar el dinero de las aportaciones que tengan al menos 10 años de antigüedad, sin estar jubilado."
     answer: true
-    explain: "La ley lo permite desde el 1 de enero de 2025 (en 2025, para lo aportado hasta 2015). El resto solo se puede rescatar por jubilación, incapacidad, dependencia o fallecimiento, o en casos excepcionales como enfermedad grave o desempleo de larga duración."
+    explain: "La ley lo permite desde el 1 de enero de 2025. El resto solo se puede rescatar por jubilación, incapacidad, dependencia o fallecimiento, o en casos excepcionales como enfermedad grave o desempleo de larga duración."
+tips:
+  - "No metas en un plan de pensiones dinero que puedas necesitar antes de jubilarte."
+  - "Compara los gastos del plan: si cobra mucho más que un fondo barato, la ventaja fiscal puede desaparecer."
+  - "Si tu empresa aporta a un plan de empleo, infórmate bien: suele ser lo primero que conviene aprovechar."
+  - "Cuando llegue el momento de rescatar, planifica cómo hacerlo en lugar de sacarlo todo de golpe."
 action:
-  title: "Haz tu número del plan"
+  title: "Decide si un plan te encaja"
   steps:
-    - "Busca en tu última declaración (o en el simulador de la AEAT) tu base liquidable general y tu tipo marginal aproximado."
-    - "Multiplica lo que aportarías al año por ese tipo: es lo que te ahorrarías hoy."
-    - "Si tienes plan, mira en tu extracto los gastos totales (gestión y depósito) y desde qué año tienes aportaciones."
-  check: "Sé cuánto me ahorra hoy un plan y cómo pagaré al rescatarlo"
+    - "Mira en tu última declaración de la renta cuánto IRPF pagas: cuanto más alto, más te rebaja el plan hoy."
+    - "Pregúntate si podrías necesitar ese dinero antes de jubilarte."
+    - "Si ya tienes un plan, busca en tu extracto cuánto te cobra al año y en qué invierte."
+  check: "Sé qué ventaja me da un plan, cuándo podré sacar el dinero y cómo pagaré al rescatarlo"
 deeper: objetivos-horizonte-liquidez
-tool: interes-compuesto
+tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-16
@@ -57,23 +58,24 @@ sources: [boe-irpf, aeat-pensiones-2025, boe-planes-pensiones, aeat-ahorro-2025]
 
 ## La idea
 
-Tres cosas que tienes que saber:
+Un **plan de pensiones** es un producto para ahorrar para la jubilación. Por dentro invierte en acciones, bonos o ambos, como un fondo. Lo especial son dos cosas:
 
-1. **Reducción hoy.** Lo que aportas se resta de tu base imponible general. Límite: el menor entre **1.500 € al año** y el **30 %** de tus rendimientos netos del trabajo y actividades. Con un plan de empleo de tu empresa, el límite sube hasta **8.500 € más**, si viene de contribuciones de la empresa o de tus aportaciones a ese mismo plan dentro de una escala.
-2. **Iliquidez.** Solo puedes sacarlo al jubilarte, por incapacidad, dependencia o fallecimiento, en casos excepcionales (enfermedad grave, desempleo de larga duración) o si las aportaciones tienen **más de 10 años**.
-3. **Factura al rescatar.** Todo lo que cobras tributa como **rendimiento del trabajo**, en la base general.
+- **Ventaja fiscal hoy**: lo que aportas se resta de tu base imponible en la renta, así que pagas menos IRPF ese año. En un plan individual el límite general es de 1.500 € al año (y nunca más del 30 % de tus ingresos del trabajo); con un plan de empleo de tu empresa puede ser mayor.
+- **Dinero bloqueado**: solo lo puedes sacar al jubilarte, por incapacidad, dependencia o fallecimiento, en casos excepcionales (enfermedad grave, desempleo de larga duración) o para aportaciones con más de 10 años.
 
-Encaja mejor si tu tipo marginal hoy es alto, esperas uno más bajo al jubilarte y no vas a necesitar ese dinero. Si ganas poco o tienes deudas caras, suele haber prioridades antes.
-
-## Con números
-
-Una aportación de 1.500 € frente a invertir lo que te quedaría tras impuestos en un fondo. Suponemos que ambos crecen un 5 % anual ya descontados sus gastos, durante 25 años:
+Al rescatarlo, **todo** lo que cobras paga impuestos como si fuera sueldo.
 
 | | Plan de pensiones | Fondo de inversión |
-|---|---:|---:|
-| Lo que inviertes de tu sueldo | 1.500 € (450 € los pone la rebaja fiscal) | 1.050 € (lo que queda tras el 30 %) |
-| Valor a los 25 años | 5.080 € | 3.556 € |
-| Impuestos al sacarlo | 24 % sobre todo: 1.219 € | 19 % sobre la ganancia: 476 € |
-| **Te queda** | **3.860 €** | **3.080 €** |
+|---|---|---|
+| Riesgo | Según lo que tenga dentro | Igual |
+| Sacar el dinero | Muy limitado | En pocos días |
+| Ventaja fiscal | Rebaja hoy, pagas al rescatar | Pagas solo por la ganancia, al vender |
+| Para quién | Quien paga bastante IRPF y no necesitará el dinero | Casi cualquiera con horizonte largo |
 
-Si al jubilarte tu tipo fuera también del 30 %, te quedarían 3.556 €: la ventaja se reduce. Y si el plan cobra mucho más que un fondo barato, puede desaparecer.
+## En la práctica
+
+Se contratan en bancos, aseguradoras y gestoras. Puedes cambiar de plan sin coste fiscal mediante un traspaso. Encaja peor si ganas poco, tienes deudas caras o aún no tienes tu colchón.
+
+## Error frecuente
+
+Aportar solo «para desgravar» sin mirar los gastos del plan ni cuándo podrás sacar el dinero.

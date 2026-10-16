@@ -7,42 +7,43 @@ order: 209
 skills: [cripto-critico, productos-complejos, detectar-fraude]
 goals: [miedo, entender]
 prereqs: [pr-01-acciones-por-dentro]
-hook: "En la misma semana te ofrecen un token que «paga un 2 % semanal», un bono que «da un 8 % si el mercado no se hunde» y operar con oro «con solo 1.000 €». ¿Por dónde empiezas?"
+hook: "En la misma semana te ofrecen una criptomoneda que «paga un 2 % semanal», un producto que «da un 8 % si el mercado no se hunde» y operar con oro «con solo 1.000 €». ¿Por dónde empiezas?"
 takeaway: "Si no puedes explicar en dos frases cómo gana dinero un producto y cómo puede perderlo, no lo compres."
 scenario:
   kind: producto
-  label: "Tres ofertas de ejemplo"
-  title: "EbroCoin, Bono Autocancelable Ribera y un CFD sobre oro"
-  body: "EbroCoin: un token nuevo; una web promete un 2 % semanal si lo dejas «en staking» con ellos. Bono Autocancelable Ribera: paga un 8 % al año mientras tres acciones bancarias no caigan más de un 40 %; si al vencimiento alguna ha caído más, recuperas tu dinero menos la caída de la peor. CFD sobre oro: con 1.000 € de garantía controlas 20.000 € de oro (apalancamiento 20:1, el máximo para minoristas)."
+  label: "Caso de ejemplo"
+  title: "Diego y tres ofertas en una semana"
+  body: "A Diego le escribe por redes un desconocido que le ofrece una criptomoneda nueva con un 2 % de interés cada semana. En su banco le proponen un producto que paga un 8 % al año mientras tres acciones no caigan mucho. Y un anuncio le invita a operar con oro con poco dinero gracias al apalancamiento. Todo suena bien, pero no sabe explicar ninguno."
   note: "Ejemplo ficticio con fines educativos. No es una recomendación ni una invitación a operar."
 questions:
-  - type: estimate
+  - type: choice
     id: pr09-q1
-    q: "En el CFD controlas 20.000 € de oro con 1.000 € de garantía. ¿Qué caída del oro te hace perder la mitad de la garantía, el punto en que la entidad debe cerrarte la posición?"
-    answer: 2.5
-    tolerance: 0.2
-    min: 0
-    max: 20
-    step: 0.1
-    unit: "%"
-    explain: "La mitad de la garantía son 500 €; 500 / 20.000 = 2,5 %. Un movimiento normal de pocos días del oro basta para perder la mitad de lo aportado. Según las autoridades europeas, entre el 74 % y el 89 % de las cuentas minoristas de CFD pierden dinero."
+    q: "¿Cuál es la mayor señal de alarma en las ofertas que recibe Diego?"
+    options: ["Que la criptomoneda sea nueva", "Una rentabilidad fija y altísima prometida por un desconocido que contacta por redes: es la señal típica de un fraude", "Que el banco le ofrezca un producto"]
+    answer: 1
+    explain: "Un 2 % semanal es más del doble del dinero en un año. Nadie serio lo garantiza. Busca siempre a la entidad en los registros y en las advertencias de la CNMV."
   - type: choice
     id: pr09-q2
-    q: "Tienes el Bono Autocancelable Ribera y al vencimiento una de las tres acciones ha caído un 50 %. ¿Qué te devuelven por cada 10.000 €?"
-    options: ["10.000 €, porque es un bono", "Unos 5.000 €: asumes la caída de la peor de las tres acciones", "10.800 €, el capital más el cupón"]
+    q: "En el producto del banco que paga un 8 % mientras tres acciones no caigan mucho, ¿qué pasa si una de ellas se hunde?"
+    options: ["Nada, recupera su dinero porque lo vende un banco", "Puede perder una parte grande de su dinero, porque asume la caída de la peor de las tres", "Cobra el doble como compensación"]
     answer: 1
-    explain: "El 8 % compensa un riesgo que vendes sin verlo: si cualquiera de las tres se hunde, te comes su caída. Para estructurados así, la CNMV obliga a la entidad a advertir por escrito y a que escribas a mano: «Producto difícil de entender»."
+    explain: "Ese 8 % compensa un riesgo escondido. Para productos así, la entidad debe avisarte por escrito de que es difícil de entender y pedirte que lo escribas a mano."
   - type: truefalse
     id: pr09-q3
-    q: "Si compras EbroCoin a través de un proveedor autorizado bajo MiCA, tu inversión está protegida frente a caídas de precio, como un depósito por el FGD."
+    q: "Si compras criptomonedas a través de una empresa autorizada bajo MiCA, tu inversión está protegida frente a caídas de precio, como un depósito por el FGD."
     answer: false
-    explain: "MiCA exige autorización, información y normas de conducta a emisores y proveedores, pero no protege del riesgo de mercado ni hay un fondo de garantía. Y un 2 % semanal (más del 180 % al año) es la promesa típica de un fraude."
+    explain: "MiCA obliga a emisores y proveedores a estar autorizados e informar bien, pero no te protege de las caídas ni hay un fondo que te devuelva el dinero."
+tips:
+  - "Aplica la regla de las dos frases: si no sabes explicar cómo gana y cómo pierde, no compres."
+  - "Desconfía si te prometen rentabilidades fijas altas, te meten prisa o te contacta un desconocido."
+  - "Busca siempre la entidad en los registros y en las advertencias de la CNMV antes de dar ningún dato."
+  - "Si aun así quieres probar cripto, pon solo una cantidad pequeña que puedas perder entera."
 action:
   title: "Aplica la regla de las dos frases"
   steps:
     - "Piensa en un producto que te hayan ofrecido o que hayas visto anunciado."
     - "Escribe en una frase cómo gana dinero y en otra cómo puede perderlo. Si no puedes, descártalo por ahora."
-    - "Si es una entidad o plataforma, búscala en los registros y en las advertencias de la CNMV antes de nada."
+    - "Si es una entidad o plataforma, búscala en los registros y en las advertencias de la CNMV."
   check: "Puedo explicar en dos frases cómo gana y cómo pierde lo que tengo"
 deeper: criptoactivos-introduccion-critica
 tool: apalancamiento
@@ -57,20 +58,20 @@ sources: [mica, esma-crypto-warning, bde-cripto-2025, cnmv-circular-1-2018, cnmv
 
 ## La idea
 
-**Criptoactivos.** No generan beneficios ni pagan cupones: su precio depende de lo que otros paguen. Los supervisores europeos y españoles (ESMA, CNMV, Banco de España) avisan de que son de alto riesgo y muy volátiles, y de que su protección es limitada. Además:
+**[Criptoactivos](/es/glosario/#criptoactivo).** No generan beneficios ni pagan intereses por sí mismos: su precio depende de lo que otros paguen. ESMA, la CNMV y el Banco de España avisan de que son de alto riesgo, muy volátiles y con protección limitada. El reglamento europeo **MiCA** regula a las empresas que los emiten y venden, pero no te protege de las caídas. Si pierdes tus claves o la plataforma quiebra o te estafa, puedes perderlo todo.
 
-- **MiCA** regula a emisores y proveedores en la UE, pero no te protege de las caídas.
-- **Custodia**: si pierdes tus claves o la plataforma quiebra o te estafa, puedes perderlo todo.
-- **Estafas**: rentabilidades fijas altas, prisas y famosos falsos son señales clásicas.
+**Productos complejos.** Estructurados, warrants y **[CFD](/es/glosario/#cfd)** combinan derivados, plazos y condiciones. Para los más complejos, la entidad debe avisarte de que no los considera adecuados para minoristas y pedirte que escribas a mano «Producto difícil de entender». En los CFD, la mayoría de las cuentas minoristas pierden dinero, y en España su publicidad a minoristas está prohibida desde 2023.
 
-**Productos complejos.** Estructurados, warrants, [CFD](/es/glosario/#cfd): combinan derivados, plazos y condiciones. Para los más complejos, la CNMV exige que la entidad te advierta que **no los considera adecuados para minoristas** y que escribas a mano «Producto difícil de entender». En los CFD, la publicidad a minoristas está prohibida en España desde 2023.
+| | Riesgo | Sacar el dinero | Para quién |
+|---|---|---|---|
+| **Cripto** | Muy alto | Depende de la plataforma | Como mucho, una parte muy pequeña |
+| **Estructurados** | Alto y difícil de ver | A menudo, solo al vencer | Casi nunca para principiantes |
+| **CFD y apalancados** | Muy alto | En el momento, pero pierdes rápido | No para principiantes |
 
-La regla: **dos frases**. Una para cómo gana, otra para cómo pierde. Si no te salen, no compres. Si quieres aprender, practica en simulación, nunca con dinero real.
+## En la práctica
 
-## Con números
+Antes de comprar nada, aplica la regla de las **dos frases**: una para cómo gana, otra para cómo pierde. Si no te salen, no compres. Si quieres aprender, practica en simulación, nunca con dinero real.
 
-| | Cómo gana | Cómo pierde |
-|---|---|---|
-| EbroCoin | Si otro paga más por él | Caídas, estafa, quiebra de la plataforma: hasta el 100 % |
-| Bono Autocancelable | Cupón del 8 % mientras las tres acciones aguanten | Si una cae más del 40 %: su caída entera |
-| CFD sobre oro (20:1) | Un 1 % de subida del oro = +20 % de tu garantía | Un 2,5 % de caída = −50 % y cierre forzoso |
+## Error frecuente
+
+Creer que si lo vende un banco o lo anuncia un famoso, es seguro. Muchos anuncios con famosos son falsos.

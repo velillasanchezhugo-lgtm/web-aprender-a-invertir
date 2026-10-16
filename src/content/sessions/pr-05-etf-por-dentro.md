@@ -1,49 +1,50 @@
 ---
-title: "ETF por dentro: lo que dice (y esconde) su nombre"
-description: "Réplica física o sintética, acumulación o distribución, domicilio, TER, diferencial y error de seguimiento. Y por qué los ETF apalancados no son para mantener."
+title: "ETF: fondos que se compran como una acción"
+description: "Qué es un ETF, en qué se parece y se diferencia de un fondo, qué significan Acc y Dist, por qué evitar los apalancados y cómo tributa en España."
 level: basico
 track: productos
 order: 205
 skills: [fondos-etf, diversificacion]
 goals: [entender, jubilacion, ordenar]
 prereqs: [pr-04-fondos-activos-e-indexados]
-hook: "Buscas un ETF y aparecen nombres como «Índice Mundial UCITS ETF (Acc)» o «Tecnología 2x Diario». ¿Qué te dice cada palabra?"
-takeaway: "Un ETF se elige por su índice, su coste total y su estructura, no por su nombre llamativo. Y en España, venderlo con ganancias siempre tributa."
+hook: "Buscas un ETF en tu bróker y aparecen nombres como «Índice Mundial UCITS ETF (Acc)» o «Tecnología 2x Diario». ¿Qué te dice cada palabra?"
+takeaway: "Un ETF es un fondo que se compra y vende en bolsa. Elige uno amplio y barato; evita los apalancados y no olvides que en España no admite traspasos sin impuestos."
 scenario:
   kind: producto
-  label: "Fichas de ejemplo"
-  title: "Dos ETF que cotizan en la misma bolsa"
-  body: "ETF Índice Mundial UCITS (Acc): domicilio en Irlanda, réplica física, acumula dividendos, TER 0,20 %, error de seguimiento anual 0,10 %, diferencial habitual entre compra y venta 0,05 %. ETF Tecnología 2x Diario: réplica sintética con permutas financieras (swaps), busca el doble de la variación diaria de un índice tecnológico, TER 0,95 %."
+  label: "Caso de ejemplo"
+  title: "Sara elige su primer ETF"
+  body: "Sara abre una cuenta en un bróker y quiere invertir cada mes. Duda entre un ETF que sigue a las mayores empresas del mundo y otro que promete el doble de lo que haga cada día un índice tecnológico. El segundo ha subido mucho este año y lo ve en todas las redes."
   note: "Ejemplo ficticio con fines educativos."
 questions:
-  - type: estimate
+  - type: choice
     id: pr05-q1
-    q: "El índice tecnológico sube un 10 % un día y baja un 10 % al siguiente: acaba un 1 % abajo. ¿Cuánto ha variado el ETF Tecnología 2x Diario en esos dos días?"
-    answer: -4
-    tolerance: 0.5
-    min: -20
-    max: 10
-    step: 0.5
-    unit: "%"
-    explain: "Día 1: +20 % (de 100 a 120). Día 2: −20 % (de 120 a 96). Resultado: −4 %, no −2 %. El efecto de reajustarse cada día hace que, con altibajos, el ETF apalancado pierda más de lo esperado. La guía de la CNMV sobre ETF lo explica así: replican la evolución diaria, no la de todo el periodo, y entrañan más riesgo."
+    q: "Sara quiere mantener su inversión muchos años. ¿Qué opción encaja peor?"
+    options: ["Un ETF amplio de acciones de todo el mundo", "Un ETF apalancado «2x diario», porque está pensado para movimientos de un día y con altibajos puede perder aunque el índice no caiga mucho", "Un ETF de bonos para la parte tranquila"]
+    answer: 1
+    explain: "Los ETF apalancados e inversos multiplican la variación de cada día, no la de todo el periodo. La CNMV avisa de que conllevan más riesgo y no están pensados para mantenerse a largo plazo."
   - type: truefalse
     id: pr05-q2
-    q: "Si eres residente en España, puedes pasar tu dinero del ETF Índice Mundial a un fondo indexado sin tributar, mediante un traspaso."
+    q: "Si vives en España, puedes pasar tu dinero de un ETF a otro sin pagar impuestos, mediante un traspaso, como con los fondos."
     answer: false
-    explain: "El régimen de traspasos sin tributar no se aplica a los ETF para personas físicas residentes. Al vender con ganancias, tributas en la base del ahorro, aunque reinviertas al día siguiente."
+    explain: "Para personas físicas residentes, los ETF no tienen la ventaja de los traspasos. Si vendes con ganancias, pagas impuestos aunque reinviertas al día siguiente."
   - type: choice
     id: pr05-q3
-    q: "¿Qué diferencia fiscal práctica hay en España entre un ETF de acumulación (Acc) y uno de distribución?"
-    options: ["Ninguna", "El de distribución te paga dividendos que tributan cada año; el de acumulación los reinvierte y solo tributas al vender", "El de acumulación no tributa nunca"]
+    q: "¿Qué diferencia práctica hay entre un ETF de acumulación (Acc) y uno de distribución (Dist)?"
+    options: ["Ninguna", "El Dist te paga los dividendos y tributan cada año; el Acc los reinvierte y solo pagas impuestos al vender", "El Acc no paga impuestos nunca"]
     answer: 1
-    explain: "Con acumulación, los dividendos se quedan dentro y siguen creciendo hasta que vendas. Con distribución, cada pago va a tu cuenta y tributa ese año en la base del ahorro. Elige según si necesitas esas rentas o no."
+    explain: "Si no necesitas cobrar rentas, el Acc deja que los dividendos sigan creciendo dentro hasta que vendas. Si quieres ingresos periódicos, el Dist te los paga."
+tips:
+  - "Elige ETF amplios y baratos antes que temáticos de moda."
+  - "Evita los ETF apalancados e inversos si vas a invertir a largo plazo."
+  - "Si no necesitas rentas, prefiere la versión de acumulación (Acc)."
+  - "Mira lo que te cobra el bróker por cada compra: si inviertes poco cada mes, puede pesar más que el propio ETF."
 action:
   title: "Lee el nombre y la ficha de un ETF"
   steps:
-    - "Busca un ETF que tengas o que te interese y anota su domicilio (Irlanda, Luxemburgo…) y si es UCITS."
-    - "Mira si es de réplica física o sintética, y si es Acc (acumulación) o Dist (distribución)."
-    - "Anota su TER y, en la ficha del emisor, el error de seguimiento si lo publica."
-  check: "Sé leer la estructura y el coste de un ETF"
+    - "Busca un ETF que tengas o que te interese y mira si pone UCITS (cumple las normas europeas de protección)."
+    - "Mira si es Acc o Dist y qué índice sigue."
+    - "Anota su gasto anual (TER) y la comisión que te cobra tu bróker por comprarlo."
+  check: "Sé leer lo básico de un ETF antes de comprarlo"
 deeper: comisiones-y-fiscalidad
 tool: comparador-comisiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -57,28 +58,28 @@ sources: [cnmv-guia-etf, aeat-traspasos-2025, priips-kid, aeat-ahorro-2025]
 
 ## La idea
 
-Un **[ETF](/es/glosario/#etf)** es un fondo que cotiza en bolsa. Su ficha te dice:
+Un **[ETF](/es/glosario/#etf)** es un fondo que cotiza en bolsa: lo compras y vendes como una acción, a cualquier hora del mercado. La mayoría copian un índice, así que suelen ser baratos.
 
-- **Réplica física**: compra las acciones del índice (todas o una muestra). **Sintética**: obtiene la rentabilidad mediante derivados con una contraparte, lo que añade riesgo de contraparte.
-- **Acc / Dist**: acumula o reparte los dividendos.
-- **Domicilio y UCITS**: la mayoría de los que se venden a minoristas en Europa están en Irlanda o Luxemburgo y cumplen la directiva UCITS (reglas de diversificación y custodia).
-- **[TER](/es/glosario/#ter)**: gastos anuales.
-- **[Diferencial](/es/glosario/#diferencial)**: lo que pierdes entre el precio de compra y el de venta.
-- **Error de seguimiento**: cuánto se separa del índice.
+Palabras de su nombre que conviene entender:
 
-Cuidado con dos familias:
+- **UCITS**: cumple las normas europeas de diversificación y custodia.
+- **Acc** (acumulación): reinvierte los dividendos. **Dist** (distribución): te los paga.
+- **2x, 3x, inverso**: apalancado. Multiplica o invierte lo que hace el índice cada día. Riesgo muy alto.
 
-- **Temáticos**: un sector de moda (robótica, hidrógeno…). Poca diversificación y, a menudo, comprados tarde.
-- **Apalancados e inversos**: multiplican o invierten la variación **diaria**. A más de un día, el resultado no es el que esperas.
+| | Fondo indexado | ETF |
+|---|---|---|
+| Riesgo | Según lo que tenga dentro | Igual |
+| Sacar el dinero | En pocos días | Vendes en bolsa en el momento |
+| Coste | Bajo, gasto anual | Bajo, gasto anual más comisión del bróker por operación |
+| Traspaso sin impuestos en España | Sí | No |
+| Para quién | Quien quiere aportar cada mes y poder cambiar sin tributar | Quien prefiere un bróker y comprar en bolsa |
 
-## Con números
+## En la práctica
 
-Compras 5.000 € del ETF Índice Mundial:
+Los ETF se compran en un bróker registrado en la CNMV o supervisado en la UE. Usa **órdenes limitadas** (pones el precio máximo que aceptas pagar) para no llevarte sorpresas.
 
-| Coste | Cálculo | Importe |
-|---|---|---:|
-| Diferencial (pagas la mitad al comprar) | 5.000 × 0,05 % / 2 | 1,25 € |
-| TER del primer año | 5.000 × 0,20 % | 10 € |
-| Comisión del bróker | Según tarifa | Mírala en el comparador |
+Al vender con ganancias, pagas impuestos en la parte del ahorro de la renta.
 
-El ETF 2x cobra 0,95 % al año: 47,50 € por los mismos 5.000 €, además del efecto del reajuste diario.
+## Error frecuente
+
+Comprar un ETF temático o apalancado porque ha subido mucho últimamente. Suele ser cuando más riesgo tiene.

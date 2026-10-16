@@ -1,49 +1,50 @@
 ---
 title: "Fondos activos e indexados: quién gestiona y cuánto cobra"
-description: "Cómo funciona un fondo por dentro (gestora, depositaria, valor liquidativo), activa frente a indexada, qué dicen los SPIVA y qué comisiones mirar."
+description: "Qué es un fondo de inversión, la diferencia entre gestión activa e indexada, por qué las comisiones importan tanto y cómo se compra un fondo en España."
 level: basico
 track: productos
 order: 204
 skills: [fondos-etf, costes-comisiones]
 goals: [jubilacion, entender, ordenar]
 prereqs: [10-el-uno-por-ciento]
-hook: "En tu banco te ofrecen un fondo «gestionado por expertos» que cobra un 1,5 %. En una app, uno indexado al 0,2 %. ¿Qué compras exactamente con esa diferencia?"
-takeaway: "En un fondo, la rentabilidad del mercado no la controlas; la comisión, sí. Compara siempre la misma clase y los gastos corrientes del KID."
+hook: "En tu banco te ofrecen un fondo «gestionado por expertos». En una app, uno indexado mucho más barato. ¿Qué te llevas con cada uno?"
+takeaway: "Lo que hará el mercado no lo controlas; lo que pagas en comisiones, sí. Para la mayoría de principiantes, un fondo indexado global de bajo coste es una buena base."
 scenario:
   kind: producto
-  label: "Fichas de ejemplo"
-  title: "Fondo Bolsa Global Selección frente a Fondo Índice Mundial"
-  body: "Bolsa Global Selección (gestión activa): comisión de gestión 1,5 % y de depósito 0,1 %; gastos corrientes en el KID: 1,6 %. Tiene una clase A para minoristas y una clase I, desde 500.000 €, con gestión al 0,6 %. Fondo Índice Mundial (indexado): replica un índice global de acciones; gastos corrientes 0,2 %. Ninguno cobra suscripción ni reembolso."
+  label: "Caso de ejemplo"
+  title: "Pablo y el fondo que le ofrece su banco"
+  body: "Pablo, de 35 años, quiere invertir cada mes para dentro de 20 años. En su oficina le recomiendan un fondo de gestión activa que cobra bastante más que la media. En internet lee que hay fondos indexados que cuestan una fracción. Le dicen que los expertos lo harán mejor, pero no le enseñan cuánto le costará con los años."
   note: "Ejemplo ficticio con fines educativos."
 questions:
-  - type: estimate
+  - type: choice
     id: pr04-q1
-    q: "Inviertes 20.000 € durante 20 años y ambos fondos obtienen un 6 % anual antes de costes. Con el indexado (0,2 %) acabas con unos 61.765 €; con el activo (1,6 %), con unos 47.319 €. ¿Cuántos euros te cuesta la diferencia de comisiones?"
-    answer: 14446
-    tolerance: 500
-    min: 0
-    max: 30000
-    step: 100
-    unit: "€"
-    explain: "61.765 − 47.319 = 14.446 €, más de dos tercios de lo que invertiste. El fondo activo tendría que batir al mercado un 1,4 % cada año, después de su sueldo, solo para empatar."
+    q: "Pablo invertirá 20 años. Dos fondos invierten en acciones de todo el mundo; uno cobra mucho más que el otro cada año. ¿Qué es lo más probable?"
+    options: ["Que el caro le deje más, porque lo gestionan expertos", "Que el barato le deje más, porque la comisión se resta cada año y con el tiempo esa diferencia se hace muy grande", "Que acaben igual, porque invierten en lo mismo"]
+    answer: 1
+    explain: "La comisión se descuenta todos los años, ganes o pierdas. A 20 años, una diferencia que parece pequeña se come una parte grande de tus ganancias."
   - type: choice
     id: pr04-q2
     q: "¿Qué suelen encontrar los informes SPIVA sobre los fondos de gestión activa a 10 o más años?"
-    options: ["Que la mayoría bate a su índice de referencia", "Que la mayoría no consigue batir a su índice de referencia después de costes", "Que activos e indexados empatan siempre"]
+    options: ["Que la mayoría bate a su índice", "Que la mayoría no consigue batir a su índice después de costes", "Que activos e indexados empatan siempre"]
     answer: 1
-    explain: "En casi todas las categorías y regiones, la mayoría de fondos activos queda por detrás de su índice a largo plazo. Algunos lo baten, pero es difícil saber de antemano cuáles."
+    explain: "En casi todas las regiones y categorías, la mayoría de fondos activos queda por detrás del índice a largo plazo. Algunos lo baten, pero es difícil saber de antemano cuáles."
   - type: truefalse
     id: pr04-q3
-    q: "La clase A y la clase I de Bolsa Global Selección invierten en las mismas acciones, pero la A te dejará menos rentabilidad cada año."
+    q: "En España puedes pasar tu dinero de un fondo de inversión a otro sin pagar impuestos en ese momento (traspaso)."
     answer: true
-    explain: "Las clases de un mismo fondo comparten cartera y solo se diferencian en comisiones y condiciones de acceso. Comprueba siempre qué clase te ofrecen."
+    explain: "Es una ventaja de los fondos para residentes en España: solo tributas cuando reembolsas el dinero de verdad. Pide el traspaso desde la entidad del fondo de destino."
+tips:
+  - "Para la mayoría de principiantes, empieza por un fondo indexado global de bajo coste."
+  - "Pregunta siempre cuánto cobra el fondo al año en total: es el dato de gastos corrientes del documento de datos fundamentales (KID)."
+  - "Desconfía si te enseñan la rentabilidad pasada pero no los costes."
+  - "Usa el traspaso para cambiar de fondo sin pagar impuestos por el camino."
 action:
-  title: "Desmonta las comisiones de un fondo"
+  title: "Mira cuánto te cobra tu fondo"
   steps:
-    - "Abre el KID o el folleto de un fondo que tengas o que te ofrezcan."
-    - "Anota la comisión de gestión, la de depósito, las de suscripción y reembolso, y los gastos corrientes."
-    - "Mira si tiene otras clases y si es de gestión activa o replica un índice."
-  check: "Sé cuánto me cobra un fondo al año y por qué concepto"
+    - "Abre el KID (documento de datos fundamentales) de un fondo que tengas o que te ofrezcan."
+    - "Busca los gastos corrientes y si cobra por entrar o salir."
+    - "Mira si es de gestión activa o si copia un índice."
+  check: "Sé cuánto me cobra un fondo al año y si es activo o indexado"
 deeper: gestion-indexada-y-activa
 tool: interes-compuesto
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -52,39 +53,31 @@ published: 2026-10-16
 reviewed: 2026-10-16
 status: revision-pendiente
 jurisdiction: España
-sources: [cnmv-guia-fondos, boe-rd-iic, spiva, priips-kid]
+sources: [cnmv-guia-fondos, boe-rd-iic, spiva, priips-kid, aeat-traspasos-2025]
 ---
 
 ## La idea
 
-Un fondo junta el dinero de muchos partícipes. Dentro hay tres piezas:
+Un **fondo de inversión** junta el dinero de muchas personas y lo invierte en una cesta de acciones, bonos o ambos. Una **gestora** decide qué comprar y una **depositaria** guarda los activos y la vigila: tu dinero no se mezcla con el de la gestora.
 
-- **Gestora**: decide qué comprar y calcula el valor del fondo.
-- **Depositaria**: custodia los activos y vigila a la gestora. Tu dinero no está en el balance de la gestora.
-- **[Valor liquidativo](/es/glosario/#valor-liquidativo)**: patrimonio del fondo dividido entre participaciones. Se calcula una vez al día, ya descontadas las comisiones.
+Hay dos formas de gestionarlo:
 
-Dos formas de gestionar:
+| | Fondo activo | Fondo **[indexado](/es/glosario/#fondo-indexado)** |
+|---|---|---|
+| Qué hace | Un gestor elige valores para intentar batir al mercado | Copia un **[índice](/es/glosario/#indice)** (una lista de empresas, como «las mayores del mundo») |
+| Coste | Medio a alto | Bajo |
+| Riesgo | Según lo que tenga dentro | Según lo que tenga dentro |
+| Sacar el dinero | En pocos días | En pocos días |
+| Para quién | Quien confía en un gestor concreto y acepta pagar más | La mayoría de principiantes con horizonte largo |
 
-- **Activa**: el gestor elige valores para intentar batir al mercado.
-- **[Indexada](/es/glosario/#fondo-indexado)**: copia un índice, sin intentar batirlo. Suele ser mucho más barata.
+## En la práctica
 
-Comisiones que puede cobrar un fondo en España, con sus máximos legales generales:
+Los fondos se compran en bancos, plataformas de fondos y algunos brókeres. Antes de elegir, mira el **KID**: te dice el riesgo (del 1 al 7) y los **gastos corrientes**, lo que te cobran cada año.
 
-| Comisión | Sobre qué | Máximo |
-|---|---|---:|
-| Gestión | Patrimonio, cada año | 2,25 % |
-| Depósito | Patrimonio, cada año | 0,2 % |
-| Suscripción y reembolso | Lo que entras o sacas | 5 % |
+Como referencia: una comisión del 2 % al año es mucho; hay fondos indexados por debajo del 0,2 %.
 
-Los **gastos corrientes** del KID suman las anuales: es la cifra que debes comparar.
+Encaja para invertir a largo plazo con poco esfuerzo. Un fondo de bolsa no encaja para dinero que necesitas pronto.
 
-## Con números
+## Error frecuente
 
-20.000 € durante 20 años, con un 6 % anual antes de costes:
-
-| Gastos corrientes | Valor final |
-|---:|---:|
-| 0,2 % | 61.765 € |
-| 1,6 % | 47.319 € |
-
-El primer año, la diferencia son solo 280 € (320 € frente a 40 €). Pero ese dinero deja de crecer cada año durante 20 años.
+Comprar el fondo que te ofrece el banco sin comparar costes con otras opciones parecidas.

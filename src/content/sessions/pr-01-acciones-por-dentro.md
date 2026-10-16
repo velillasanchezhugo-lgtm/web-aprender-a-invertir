@@ -1,49 +1,50 @@
 ---
-title: "Acciones por dentro: qué compras de verdad"
-description: "Propiedad, dividendos y revalorización: de dónde sale lo que ganas con una acción, cómo puedes perderlo todo y qué es la dilución."
+title: "Acciones: qué compras de verdad"
+description: "Qué es una acción, cómo ganas dinero con ella, por qué su riesgo es alto si vas a pocas empresas y cómo se compran desde España."
 level: basico
 track: productos
 order: 201
 skills: [acciones, riesgo-volatilidad]
 goals: [entender, objetivo]
 prereqs: [09-los-cuatro-productos]
-hook: "Una empresa que conoces anuncia que emitirá millones de acciones nuevas. Tú no haces nada. ¿Ha cambiado lo que tienes?"
-takeaway: "Una acción es un trozo de los beneficios futuros de una empresa. Si los beneficios no llegan, el precio tampoco aguanta."
+hook: "Un compañero de trabajo te cuenta que ha comprado acciones de la marca de zapatillas que lleva. ¿Qué tiene exactamente? ¿Un trozo de la empresa o una apuesta?"
+takeaway: "Una acción es un trozo pequeño de una empresa. Ganas si la empresa gana más con los años; pierdes si le va mal. Por eso conviene tener muchas, no pocas."
 scenario:
   kind: producto
-  label: "Ficha de ejemplo"
-  title: "Panaderías Norte S.A. (acción)"
-  body: "Cotiza a 20 €. Tiene 10 millones de acciones, así que la bolsa la valora en 200 millones. El año pasado ganó 16 millones (1,60 € por acción) y repartió la mitad como dividendo: 0,80 € por acción. Ahora anuncia una ampliación de capital: 2,5 millones de acciones nuevas a 16 € para abrir 40 obradores. Tú tienes 10.000 acciones."
+  label: "Caso de ejemplo"
+  title: "Marta y las acciones de su supermercado favorito"
+  body: "Marta tiene 2.000 € ahorrados y un colchón aparte. Le encanta el supermercado de su barrio, que cotiza en bolsa, y quiere meter ahí todo el dinero porque «siempre está lleno». Su hermano le dice que una sola empresa es mucho riesgo y que mire otras opciones."
   note: "Ejemplo ficticio con fines educativos."
 questions:
-  - type: estimate
+  - type: choice
     id: pr01-q1
-    q: "Tienes 10.000 de los 10 millones de acciones de Panaderías Norte (un 0,10 %). Si no acudes a la ampliación de 2,5 millones de acciones nuevas, ¿qué porcentaje de la empresa tendrás después?"
-    answer: 0.08
-    tolerance: 0
-    min: 0
-    max: 0.2
-    step: 0.01
-    unit: "%"
-    explain: "10.000 / 12.500.000 = 0,08 %. Eso es la dilución: tu trozo se hace más pequeño. Para no diluirte puedes ejercer tu derecho de preferencia (comprar acciones nuevas en proporción a las que tienes) o vender ese derecho si cotiza, aunque en sociedades cotizadas la junta puede excluirlo."
+    q: "Marta quiere poner sus 2.000 € en las acciones de una sola empresa que le gusta. ¿Cuál es el mayor problema?"
+    options: ["Ninguno: si la empresa es conocida, no puede ir mal", "Que todo depende de una empresa: si le va mal, Marta puede perder gran parte o todo", "Que las acciones solo se pueden vender una vez al año"]
+    answer: 1
+    explain: "Hasta empresas muy conocidas han caído mucho o quebrado. Repartir el dinero entre muchas empresas, por ejemplo con un fondo indexado, reduce mucho ese riesgo."
   - type: choice
     id: pr01-q2
-    q: "A largo plazo, ¿de dónde sale sobre todo la rentabilidad de tener acciones de Panaderías Norte?"
-    options: ["De que otros inversores quieran pagar más, pase lo que pase con el negocio", "De los beneficios que genera la empresa: los que reparte como dividendo y los que reinvierte para crecer", "Del dividendo, que la empresa está obligada a pagar cada año"]
+    q: "A largo plazo, ¿de dónde sale sobre todo lo que ganas con una acción?"
+    options: ["De que otros quieran pagar más, pase lo que pase con el negocio", "De los beneficios de la empresa: los que reparte como dividendo y los que reinvierte para crecer", "Del dividendo, que la empresa está obligada a pagar cada año"]
     answer: 1
-    explain: "El precio puede moverse mucho por expectativas, pero a largo plazo sigue a los beneficios. El dividendo no es obligatorio: la empresa puede recortarlo o suprimirlo si gana menos."
+    explain: "El precio sube y baja por expectativas, pero con los años sigue a los beneficios. El dividendo no es obligatorio: la empresa puede recortarlo si gana menos."
   - type: truefalse
     id: pr01-q3
-    q: "Si Panaderías Norte quiebra, los accionistas cobran antes que los bancos que le prestaron dinero."
+    q: "Si una empresa quiebra, los accionistas cobran antes que los bancos que le prestaron dinero."
     answer: false
-    explain: "Los accionistas son los últimos de la fila: primero se paga a acreedores (bancos, bonistas, proveedores, Hacienda). Por eso una acción puede llegar a valer 0 y por eso no conviene concentrar tu dinero en pocas empresas."
+    explain: "Los accionistas son los últimos de la fila: primero cobran bancos, proveedores y Hacienda. Por eso una acción puede llegar a valer 0."
+tips:
+  - "Empieza por un fondo o ETF indexado que tenga cientos de empresas antes de comprar acciones sueltas."
+  - "Si compras acciones sueltas, que sean una parte pequeña de lo que inviertes."
+  - "No elijas una acción solo porque paga mucho dividendo: a veces es señal de que se va a recortar."
+  - "Invierte en bolsa solo el dinero que no vayas a necesitar en al menos 5 años."
 action:
   title: "Mira una empresa como propietario"
   steps:
-    - "Elige una empresa cotizada que conozcas y busca en su web de relación con inversores (o en la CNMV) cuántas acciones tiene y su beneficio del último año."
-    - "Divide el beneficio entre el número de acciones: es su beneficio por acción."
-    - "Comprueba si ha hecho ampliaciones de capital en los últimos años: si el número de acciones crece mucho, cada acción representa menos."
-  check: "Sé qué parte de los beneficios de una empresa corresponde a cada acción"
+    - "Piensa en una empresa cotizada que conozcas y escribe en una frase cómo gana dinero."
+    - "Pregúntate qué podría hacer que ganara menos (competencia, deudas, cambios de moda)."
+    - "Comprueba si tu banco o bróker está registrado en la CNMV antes de comprar nada."
+  check: "Sé explicar qué tengo cuando tengo una acción y cómo puedo perder"
 deeper: productos-basicos
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -57,34 +58,30 @@ sources: [boe-lsc, cnmv-inversor, aeat-ahorro-2025, boe-rirpf]
 
 ## La idea
 
-Comprar una **[acción](/es/glosario/#accion)** es comprar un trozo de una empresa. La ley te da, como mínimo, derecho a una parte de los beneficios que reparta, a votar en la junta, a información y a suscribir acciones nuevas antes que otros (derecho de preferencia).
+Una **[acción](/es/glosario/#accion)** es un trozo de una empresa. Si tienes acciones, eres socio: te toca una parte de los beneficios y puedes votar en la junta.
 
-Ganas por dos vías:
+Ganas de dos formas:
 
 - **Dividendos**: la parte del beneficio que la empresa reparte. No están garantizados.
-- **Revalorización**: si la empresa gana más con los años, cada acción tiende a valer más.
+- **Subida de precio**: si la empresa gana más con los años, la acción suele valer más.
 
-Y puedes perder por dos:
+Y puedes perder porque el precio baja (a veces mucho y en pocos meses) o porque la empresa quiebra.
 
-- **Caídas de precio**: aunque el negocio vaya bien, la bolsa puede bajar un 30 % en meses ([volatilidad](/es/glosario/#volatilidad)).
-- **Quiebra**: el accionista cobra el último. La acción puede valer **0**.
+| | Acción suelta | Fondo o ETF de muchas acciones |
+|---|---|---|
+| Riesgo | Alto | Medio-alto, pero repartido |
+| Sacar el dinero | Vendes en bolsa cualquier día | Igual de fácil |
+| Coste | Comisión del bróker al comprar y vender | Un pequeño gasto anual |
+| Para quién | Quien ya tiene una base y quiere aprender | La mayoría de principiantes |
 
-Ojo con la **dilución**: si la empresa emite acciones nuevas, tu porcentaje baja, aunque tengas las mismas acciones.
+## En la práctica
 
-## Con números
+En España compras acciones a través de un banco o un **[bróker](/es/glosario/#broker)** (una empresa que compra y vende en bolsa por ti) registrado en la CNMV. Antes de comprar, mira qué comisiones cobra por cada operación y por guardarte las acciones.
 
-Panaderías Norte gana 16 millones. Con 10 millones de acciones, son **1,60 € por acción**. Tras la ampliación, con 12,5 millones:
+Los dividendos y las ganancias al vender pagan impuestos en la parte «del ahorro» de la declaración de la renta.
 
-| | Antes | Después (mismo beneficio) |
-|---|---:|---:|
-| Acciones | 10.000.000 | 12.500.000 |
-| Beneficio por acción | 1,60 € | 1,28 € |
-| Tu parte (10.000 acciones) | 0,10 % | 0,08 % |
-
-Si los 40 millones nuevos generan beneficios, el beneficio por acción puede recuperarse. Si no, has perdido un 20 % de beneficio por acción.
-
-El dividendo de 0,80 € a 20 € es un **4 %** bruto. En España tributa en la base del ahorro y te retienen un 19 % al cobrarlo.
+Encaja si tienes tu colchón hecho y un plazo largo. No encaja para dinero que necesitarás pronto.
 
 ## Error frecuente
 
-Elegir una acción solo porque «paga buen dividendo». Un dividendo alto puede ser la señal de que el mercado espera que se recorte.
+Comprar una sola empresa «porque la conozco». Conocer la marca no te dice si el precio es razonable ni si irá bien.

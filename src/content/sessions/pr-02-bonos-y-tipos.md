@@ -1,49 +1,50 @@
 ---
-title: "Bonos: cupón, TIR y por qué bajan cuando suben los tipos"
-description: "Qué cobras con un bono, qué es la TIR, cómo la duración te dice cuánto puede caer su precio y qué es el riesgo de crédito."
+title: "Bonos: prestar tu dinero a cambio de intereses"
+description: "Qué es un bono, cómo cobras con él, por qué su precio baja cuando suben los tipos de interés y para quién encaja la renta fija."
 level: basico
 track: productos
 order: 202
 skills: [renta-fija, tipos-interes-bce]
 goals: [entender, miedo]
 prereqs: [09-los-cuatro-productos]
-hook: "Tu fondo de renta fija cae un 10 % en un año en el que los tipos suben con fuerza. ¿Cómo puede perder dinero algo que paga intereses fijos?"
-takeaway: "Duración = sensibilidad. Si los tipos suben un punto, el precio cae más o menos tantos puntos porcentuales como años de duración."
+hook: "Tu fondo de renta fija ha bajado en un año en el que los tipos de interés subieron. ¿Cómo puede perder dinero algo que paga intereses fijos?"
+takeaway: "Con un bono prestas dinero y cobras intereses. Lo fijo son los intereses, no el precio: si suben los tipos, el bono que ya tienes vale menos hasta que vence."
 scenario:
   kind: producto
-  label: "Ficha de ejemplo"
-  title: "Bono Autopistas del Cierzo 4 % (vence en 5 años)"
-  body: "Valor nominal: 1.000 €. Cupón: 4 % anual (40 € al año). Vencimiento: dentro de 5 años, cuando devuelve los 1.000 €. Precio hoy: 100 % del nominal. Duración modificada: 4,5. Calificación crediticia media (BBB). Un bono del Estado al mismo plazo ofrece un 2,8 %."
+  label: "Caso de ejemplo"
+  title: "Javier elige entre un bono del Estado y uno de empresa"
+  body: "Javier quiere una parte de sus ahorros en algo más tranquilo que la bolsa. Ve un bono del Estado español que paga unos intereses moderados y otro de una empresa que paga bastante más. Se pregunta por qué uno paga más que el otro y si alguno le puede hacer perder dinero."
   note: "Ejemplo ficticio con fines educativos."
 questions:
-  - type: estimate
+  - type: choice
     id: pr02-q1
-    q: "El bono de Autopistas del Cierzo tiene una duración modificada de 4,5. Si los tipos de mercado a 5 años suben 1 punto, ¿cuánto caerá su precio, aproximadamente?"
-    answer: 4.5
-    tolerance: 0.5
-    min: 0
-    max: 15
-    step: 0.5
-    unit: "%"
-    explain: "Regla rápida: caída ≈ duración modificada × subida de tipos = 4,5 × 1 % ≈ 4,5 %. El cálculo exacto da un 4,3 %, de 1.000 € a unos 957 €. Un bono a 10 años caería casi el doble."
+    q: "Javier tiene un bono a 10 años y el BCE sube los tipos de interés. ¿Qué le pasa al precio de su bono?"
+    options: ["Sube, porque ahora los intereses son más altos", "Baja, porque los bonos nuevos pagan más y el suyo resulta menos atractivo", "No cambia, porque es renta fija"]
+    answer: 1
+    explain: "Nadie pagará lo mismo por un bono que paga menos que los nuevos. Cuanto más largo es el plazo del bono, más se mueve su precio cuando cambian los tipos."
   - type: choice
     id: pr02-q2
-    q: "¿Por qué este bono paga un 4 % y uno del Estado al mismo plazo solo un 2,8 %?"
-    options: ["Porque la empresa tiene más probabilidad de no pagar y el inversor exige una prima por ese riesgo de crédito", "Porque el Estado cobra comisiones más altas", "Porque el bono de la empresa es más fácil de vender"]
+    q: "¿Por qué el bono de la empresa paga más intereses que el del Estado al mismo plazo?"
+    options: ["Porque la empresa tiene más probabilidad de no devolver el dinero y debe compensar ese riesgo", "Porque el Estado cobra comisiones", "Porque el bono de empresa es más fácil de vender"]
     answer: 0
-    explain: "Ese 1,2 % extra es la prima por riesgo de crédito. Si la empresa empeora, su bono cae aunque los tipos no se muevan; si quiebra, puedes recuperar solo una parte."
+    explain: "Es el riesgo de crédito: la posibilidad de que el emisor no pague. Más intereses casi siempre significa más riesgo."
   - type: truefalse
     id: pr02-q3
-    q: "Si el BCE baja los tipos de interés, los bonos ya emitidos tienden a subir de precio."
+    q: "Si mantienes un bono hasta que vence y el emisor paga, cobras lo pactado aunque su precio haya bajado por el camino."
     answer: true
-    explain: "Los nuevos bonos pagarán menos, así que los antiguos, con cupones más altos, valen más. Es el mismo mecanismo que en la subida, al revés."
+    explain: "La caída intermedia solo se convierte en pérdida si vendes antes. Un fondo de renta fija, en cambio, no tiene fecha de vencimiento fija y su valor sí refleja esas subidas y bajadas."
+tips:
+  - "Desconfía de un bono que paga muchos más intereses que el resto: suele ser porque el emisor es más arriesgado."
+  - "Para el dinero que necesitarás en una fecha concreta, elige plazos que terminen antes de esa fecha."
+  - "Si prefieres no elegir bonos uno a uno, usa un fondo de renta fija con muchos emisores y gastos bajos."
+  - "Recuerda que renta fija no significa precio fijo."
 action:
-  title: "Lee la sensibilidad de tu renta fija"
+  title: "Mira tu renta fija con otros ojos"
   steps:
-    - "Busca la ficha mensual de un fondo o ETF de renta fija (el que tengas o uno cualquiera)."
-    - "Localiza su duración y su TIR (a veces «rentabilidad a vencimiento»)."
-    - "Multiplica la duración por 1 %: es, más o menos, lo que caería si los tipos subieran un punto."
-  check: "Sé cuánto podría caer mi renta fija si suben los tipos"
+    - "Si tienes un fondo de renta fija, abre su ficha y mira si invierte en bonos de Estados, de empresas o de ambos."
+    - "Mira si es de plazo corto (se mueve poco) o largo (se mueve más)."
+    - "Pregúntate si tu plazo para ese dinero encaja con el del fondo."
+  check: "Sé por qué mi renta fija puede subir o bajar"
 deeper: renta-fija-duracion-credito
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -57,31 +58,25 @@ sources: [cnmv-renta-fija-publica, cnmv-inversor]
 
 ## La idea
 
-Un **[bono](/es/glosario/#bono)** es un préstamo que haces a un Estado o a una empresa. Tiene tres datos:
-
-- **Cupón**: el interés que paga cada año sobre el nominal.
-- **Vencimiento**: cuándo te devuelven el nominal.
-- **TIR**: lo que ganas al año si lo compras al precio de hoy, lo mantienes hasta el final y te pagan todo.
+Un **[bono](/es/glosario/#bono)** es un préstamo que haces a un Estado o a una empresa. A cambio te pagan intereses cada año y, al final del plazo (el vencimiento), te devuelven lo prestado.
 
 Su precio se mueve por dos motivos:
 
-1. **Tipos de interés.** Si suben, los bonos nuevos pagan más y el tuyo vale menos. La **[duración](/es/glosario/#duracion)** mide esa sensibilidad: cuanto más larga, más se mueve.
-2. **[Riesgo de crédito](/es/glosario/#credito).** Si el emisor empeora o deja de pagar, su bono cae.
+- **Tipos de interés**: si suben, los bonos nuevos pagan más y el tuyo vale menos. Si bajan, al revés.
+- **Confianza en quien pide prestado**: si la empresa va mal, su bono cae. Si quiebra, puedes recuperar solo una parte.
 
-Si lo mantienes hasta el vencimiento y el emisor paga, cobras lo pactado: la caída intermedia solo es pérdida si vendes.
+| | Bono del Estado | Bono de empresa | Fondo de renta fija |
+|---|---|---|---|
+| Riesgo | Bajo (plazo corto) a medio (plazo largo) | Medio | Bajo a medio, según plazo y emisores |
+| Sacar el dinero | Al vencer, o vendiéndolo antes | Igual, a veces con pocos compradores | En pocos días |
+| Coste | Bajo | Bajo a medio | Gasto anual, de bajo a alto |
 
-## Con números
+## En la práctica
 
-Bono con cupón del 4 % que se compra al 100 %. Los tipos suben del 4 % al 5 %:
+En España puedes comprar deuda del Estado directamente al Tesoro Público o a través de tu banco o bróker. Los bonos de empresa y los fondos de renta fija se compran en tu banco o bróker. Los intereses pagan impuestos en la parte del ahorro de la renta.
 
-| Plazo | Caída de precio |
-|---:|---:|
-| 2 años | −1,9 % |
-| 5 años | −4,3 % |
-| 10 años | −7,7 % |
-
-Y al revés: si compras el bono de 5 años a **95 %** (950 €), cobras 40 € al año más 1.000 € al final. Tu TIR sube a un **5,2 %**, más que el cupón, porque además ganas 50 € al vencimiento.
+Encaja para la parte tranquila de tu dinero y para plazos de pocos años. No esperes que crezca tanto como la bolsa a largo plazo.
 
 ## Error frecuente
 
-Pensar que «renta fija» significa «precio fijo». Lo fijo es el cupón, no el valor del bono antes del vencimiento.
+Pensar que un fondo de renta fija no puede bajar. Puede, sobre todo si invierte en bonos a muchos años y suben los tipos.
