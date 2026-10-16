@@ -1,49 +1,50 @@
 ---
-title: "Scalping, intradía, swing: el reloj decide los costes"
-description: "Los cinco estilos de trading más comunes, cuánto dura cada operación, qué exigen y cuánto suman los costes cuando operas muchas veces."
+title: "Scalping, intradía, swing y más: los estilos de trading"
+description: "Los estilos de trading más comunes, cuánto dura cada operación, qué exigen y por qué los más rápidos lo tienen más difícil."
 level: basico
 track: trading
 order: 502
 skills: [tipos-trading]
 goals: [entender, miedo]
 prereqs: [tr-01-invertir-o-hacer-trading]
-hook: "Un vídeo dice que con el scalping «solo necesitas sacar unos euros por operación». Si pagas un poco en cada una, ¿cuántas veces lo pagas al mes?"
-takeaway: "Cuanto más corto el plazo, más operaciones; cuantas más operaciones, más costes. El estilo que eliges decide cuánto tienes que ganar solo para empatar."
+hook: "Un vídeo dice que con el scalping «solo necesitas sacar unos euros por operación». Si pagas algo en cada una, ¿cuántas veces lo pagas al mes?"
+takeaway: "Cuanto más corto el plazo, más operaciones; cuantas más operaciones, más costes y más difícil ganar. El estilo decide cuánto tienes que acertar solo para empatar."
 scenario:
   kind: operacion
-  label: "Operación de ejemplo"
-  title: "Sara prueba el intradía con 5.000 €"
-  body: "Sara abre y cierra cada día 20 operaciones de 5.000 € sobre un futuro ficticio. El diferencial entre compra y venta le cuesta un 0,05 % por operación (2,50 €). Su bróker cobra 1 € por orden: 2 € por operación completa (entrar y salir). No mantiene nada abierto de un día para otro."
+  label: "Caso de ejemplo"
+  title: "Sara quiere probar el trading"
+  body: "Sara ha visto un vídeo que dice que con el intradía «basta sacar unos euros al día». Se da cuenta de que tendría que estar delante de la pantalla toda la mañana y hacer muchas operaciones. Cada una le cobra una comisión y el diferencial entre el precio de compra y el de venta. Antes de empezar, quiere entender qué estilos existen."
   note: "Ejemplo ficticio con fines educativos."
 questions:
-  - type: estimate
+  - type: choice
     id: tr02-q1
-    q: "¿Cuánto paga Sara en costes cada día, sumando diferencial y comisiones de sus 20 operaciones?"
-    answer: 90
-    tolerance: 0
-    min: 0
-    max: 300
-    step: 5
-    unit: "€"
-    explain: "Cada operación cuesta 2,50 € de diferencial + 2 € de comisiones = 4,50 €. Por 20 operaciones, 90 € al día. En 21 días de mercado son 1.890 €: casi un 38 % de su cuenta en un mes, gane o pierda."
+    q: "¿Por qué los estilos más rápidos, como el scalping o el intradía, lo tienen más difícil?"
+    options: ["Porque solo se puede operar unas horas", "Porque hacen muchas operaciones y cada una paga costes: hay que ganar mucho solo para empatar", "Porque pagan más impuestos por operación", "Porque están prohibidos para particulares"]
+    answer: 1
+    explain: "Cada operación paga comisión y diferencial. Si la ganancia media por operación es pequeña, los costes se la comen."
   - type: choice
     id: tr02-q2
-    q: "¿Qué estilo asume el riesgo de que el precio salte con el mercado cerrado (por ejemplo, tras una noticia de madrugada)?"
-    options: ["El swing trading, porque mantiene posiciones varios días", "El scalping, porque opera en segundos", "Ninguno: los mercados nunca saltan de un día a otro"]
+    q: "¿Qué estilo asume el riesgo de que el precio salte con el mercado cerrado, por ejemplo tras una noticia de madrugada?"
+    options: ["El swing, porque mantiene posiciones varios días", "El scalping, porque opera en segundos", "Ninguno: los mercados nunca saltan de un día a otro"]
     answer: 0
-    explain: "Quien mantiene posiciones abiertas por la noche o el fin de semana puede encontrarse un hueco en la apertura. El intradía y el scalping lo evitan, pero a cambio acumulan muchos más costes."
+    explain: "Quien mantiene posiciones por la noche o el fin de semana puede encontrarse un salto de precio en la apertura. El intradía lo evita, pero acumula muchos más costes."
   - type: truefalse
     id: tr02-q3
-    q: "Un sistema algorítmico elimina las emociones, así que si funcionó en el pasado seguirá ganando."
+    q: "Un sistema automático elimina las emociones, así que si funcionó en el pasado seguirá ganando."
     answer: false
-    explain: "Un algoritmo solo aplica reglas. Si esas reglas se ajustaron demasiado a datos pasados (sobreajuste) o ignoran costes reales, perderá igual, y más rápido."
+    explain: "Un algoritmo solo aplica reglas. Si esas reglas se ajustaron demasiado al pasado o ignoran los costes reales, perderá igual, y más rápido."
+tips:
+  - "Si un estilo te exige estar pegado a la pantalla, piensa si encaja con tu vida."
+  - "Mira cuánto te cuesta cada operación antes de empezar."
+  - "Practica cualquier estilo primero con dinero ficticio."
+  - "Desconfía de sistemas automáticos o de copy trading que solo enseñan sus mejores meses."
 action:
-  title: "Calcula tu peaje"
+  title: "Mira el peaje de cada operación"
   steps:
-    - "Busca en la web de tu bróker (o de uno que conozcas) la comisión por orden en acciones o ETF."
-    - "Multiplícala por 2 (entrar y salir) y por las operaciones que harías al mes con cada estilo: 1, 10 y 100."
-    - "Divide el resultado por el dinero que usarías: es el porcentaje que tendrías que ganar solo para empatar."
-  check: "Sé cuánto me costaría operar con cada estilo"
+    - "Busca en la web de tu bróker (o de uno que conozcas) la comisión por operación."
+    - "Piensa cuántas veces la pagarías al mes con cada estilo de la tabla."
+    - "Escribe en una frase qué estilo entiendes mejor y por qué es arriesgado."
+  check: "Sé en qué se diferencia cada estilo de trading y qué exige"
 deeper: analisis-tecnico-y-limites
 tool: comparador-comisiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -52,31 +53,28 @@ published: 2026-10-16
 reviewed: 2026-10-16
 status: revision-pendiente
 jurisdiction: General
-sources: [barber-odean-2000, barber-taiwan-2014, cnmv-guia-ordenes]
+sources: [barber-odean-2000, barber-taiwan-2014, cnmv-guia-ordenes, esma-copy-trading-2023]
 ---
 
 ## La idea
 
 Los estilos de trading se distinguen, sobre todo, por **cuánto dura cada operación**:
 
-| Estilo | Duración típica | Operaciones | Qué exige |
+| Estilo | Cuánto dura | Qué exige | Dificultad para un principiante |
 |---|---|---|---|
-| **[Scalping](/es/glosario/#scalping)** | Segundos o minutos | Decenas o cientos al día | Ejecución muy rápida, costes mínimos, pantalla constante |
-| **Intradía** | Minutos u horas; cierra antes del final de la sesión | Varias al día | Horario de mercado libre, disciplina estricta |
-| **[Swing](/es/glosario/#swing-trading)** | De días a pocas semanas | Unas pocas a la semana | Aceptar huecos de precio por la noche |
-| **Posicional** | Semanas o meses | Pocas al mes | Paciencia con tendencias largas y caídas intermedias |
-| **Sistemático o algorítmico** | Cualquiera | Las que marque la regla | Programar, probar sin engañarse y vigilar el sistema |
+| **[Scalping](/es/glosario/#scalping)** | Segundos o minutos | Pantalla constante y costes mínimos | Muy alta |
+| **Intradía** | Minutos u horas; cierra antes de acabar el día | Tiempo libre en horario de mercado y mucha disciplina | Muy alta |
+| **[Swing](/es/glosario/#swing-trading)** | De días a pocas semanas | Aceptar saltos de precio por la noche | Alta |
+| **Posicional** | Semanas o meses | Paciencia con tendencias largas | Media-alta |
+| **Automático** | Lo que marque el programa | Saber programar y vigilar el sistema | Alta |
+| **Copy trading** | Lo que haga a quien copias | Elegir bien a quién copias y vigilarlo | Alta |
 
-La regla de oro: **cada operación paga peaje** (comisión, diferencial y, a veces, deslizamiento). Si tu ganancia media por operación es pequeña, el peaje se la come.
+## En la práctica
 
-## Con números
+- **Cada operación paga peaje**: comisión, diferencial y, a veces, un precio peor del previsto. Cuantas más operaciones, más peaje.
+- En el **copy trading** copias de forma automática las operaciones de otra persona. Su historial puede ser corto o estar elegido a dedo, y a veces cobra de la plataforma por atraer seguidores.
+- Los estudios con datos reales, como uno con operadores intradía de Taiwán, encuentran que solo una minoría muy pequeña gana de forma estable.
 
-Mismo peaje de **4,50 €** por operación completa, con una cuenta de 5.000 €:
+## Error frecuente
 
-| Estilo | Operaciones al mes | Costes al mes | Sobre la cuenta |
-|---|---:|---:|---:|
-| Intradía (20 al día) | 420 | 1.890 € | 37,8 % |
-| Swing (3 a la semana) | 12 | 54 € | 1,1 % |
-| Posicional | 2 | 9 € | 0,2 % |
-
-Los estudios con datos reales lo confirman: en Taiwán, Barber y otros (2014) hallaron que **menos del 1 %** de los operadores intradía ganaba de forma predecible después de comisiones.
+Pensar que un estilo más rápido da más oportunidades. Da más operaciones, y con ellas más costes.

@@ -1,49 +1,50 @@
 ---
 title: "Mercado, limitada y stop: cómo das la orden"
-description: "Qué hace cada tipo de orden, cuánto cuesta el diferencial, por qué un stop no garantiza el precio y qué pasa en las subastas de apertura y cierre."
+description: "Qué hace cada tipo de orden, cuándo conviene cada una y por qué un stop no es un seguro."
 level: basico
 track: trading
 order: 503
 skills: [ordenes-mercado]
 goals: [entender, miedo]
 prereqs: [tr-01-invertir-o-hacer-trading]
-hook: "Pones un stop a 9,50 € para no perder más de 500 €. Al día siguiente la acción abre a 8,90 € tras unos malos resultados. ¿Cuánto has perdido?"
-takeaway: "La orden limitada protege el precio; la de mercado, la ejecución. Un stop se convierte en orden de mercado: limita el riesgo en mercado tranquilo, no en un hueco."
+hook: "Pones un stop para vender si tu acción baja de cierto precio. Una mañana abre mucho más abajo tras malas noticias. ¿A qué precio vendes?"
+takeaway: "La orden limitada protege el precio; la de mercado, la rapidez. Un stop vende cuando toca tu precio, pero si el precio salta, vende a lo que haya: no es un seguro."
 scenario:
   kind: operacion
-  label: "Libro de órdenes de ejemplo"
-  title: "Hostelería Levante S.A., a media sesión"
-  body: "Mejores precios de compra (lo que ofrecen los compradores): 10,00 € para 500 acciones, 9,98 € para 800 y 9,95 € para 1.000. Mejores precios de venta (lo que piden los vendedores): 10,04 € para 300 acciones, 10,06 € para 400 y 10,10 € para 1.000. Quieres comprar 600 acciones."
+  label: "Caso de ejemplo"
+  title: "Marta quiere comprar acciones de Hostelería Levante"
+  body: "Marta quiere comprar acciones de una empresa ficticia, Hostelería Levante. En la pantalla ve dos precios: uno al que puede comprar ya y otro, algo más bajo, al que podría vender. Su bróker le ofrece orden a mercado, limitada y stop. No sabe cuál elegir."
   note: "Empresa y datos ficticios con fines educativos."
 questions:
-  - type: estimate
+  - type: choice
     id: tr03-q1
-    q: "Lanzas una orden a mercado para comprar 600 acciones. ¿Cuánto pagas en total, sin comisiones?"
-    answer: 6030
-    tolerance: 0
-    min: 5800
-    max: 6200
-    step: 10
-    unit: "€"
-    explain: "Se ejecutan 300 a 10,04 € (3.012 €) y las otras 300 a 10,06 € (3.018 €): 6.030 €, un precio medio de 10,05 €. La orden a mercado «barre» el libro hasta completarse."
+    q: "Marta quiere controlar cuánto paga como máximo, aunque tarde más en comprar. ¿Qué orden usa?"
+    options: ["A mercado", "Limitada", "Stop", "Da igual cuál"]
+    answer: 1
+    explain: "En la limitada fijas el precio máximo. Si nadie te vende a ese precio o mejor, la orden espera. Controlas el precio, no el momento."
   - type: choice
     id: tr03-q2
-    q: "Con el mismo libro, ¿qué pasa si lanzas una orden limitada de compra de 600 acciones a 10,04 €?"
-    options: ["Compras 300 a 10,04 € y las otras 300 quedan esperando en el libro a ese precio", "Compras las 600 a 10,04 € al instante", "La orden se rechaza porque no hay suficientes acciones"]
-    answer: 0
-    explain: "La limitada nunca paga más de tu precio. Se ejecuta lo que hay a 10,04 € o mejor, y el resto espera. Controlas el precio, no la ejecución."
+    q: "¿Qué riesgo tiene una orden a mercado en una acción que se negocia poco?"
+    options: ["Ninguno: siempre compras al precio que ves", "Que se ejecute a un precio peor del que veías, porque compra a lo que haya disponible", "Que no se ejecute nunca", "Que te cobren la comisión dos veces"]
+    answer: 1
+    explain: "La orden a mercado compra ya, al precio que haya. Si hay pocas acciones a la venta, puede ir subiendo de precio hasta completarse."
   - type: choice
     id: tr03-q3
-    q: "Tienes un stop limitado de venta: se activa a 9,50 € con límite 9,40 €. La acción abre directamente a 8,90 €. ¿Qué ocurre?"
-    options: ["La orden se activa pero no se ejecuta, porque nadie compra a 9,40 € o más: sigues con las acciones", "Vendes a 9,50 €", "Vendes a 8,90 €"]
-    answer: 0
-    explain: "El stop limitado evita vender en el hueco, pero puede dejarte dentro mientras sigue cayendo. Un stop normal (que pasa a ser de mercado) sí vendería, cerca de 8,90 €."
+    q: "Tienes un stop para vender si la acción baja hasta cierto precio. Una mañana, tras una mala noticia, abre muy por debajo. ¿Qué pasa?"
+    options: ["Vendes justo a tu precio de stop", "Vendes al precio que haya, que puede ser bastante peor: un stop no es un seguro", "La orden se anula sola", "El bróker te compensa la diferencia"]
+    answer: 1
+    explain: "Un stop normal se convierte en orden a mercado al activarse. Si el precio salta, vende al que haya. Un stop limitado no vende por debajo de tu límite, pero puede dejarte dentro mientras sigue cayendo."
+tips:
+  - "Usa órdenes limitadas cuando quieras controlar el precio."
+  - "Evita las órdenes a mercado en acciones que se negocian poco o justo en la apertura."
+  - "No trates el stop como un seguro: es una instrucción automática."
+  - "Lee la ayuda de tu bróker sobre órdenes antes de usar dinero real."
 action:
   title: "Mira qué órdenes te deja usar tu bróker"
   steps:
-    - "Abre la pantalla de compra de tu bróker (sin enviar nada) o su página de ayuda sobre órdenes."
-    - "Anota qué tipos ofrece: mercado, limitada, stop, stop limitada, y qué validez puedes poner."
-    - "Busca si los stops los gestiona el propio bróker: la CNMV recuerda que no son órdenes del mercado español, sino de la entidad."
+    - "Abre la pantalla de compra de tu bróker, sin enviar nada, o su página de ayuda sobre órdenes."
+    - "Apunta qué tipos ofrece: mercado, limitada, stop, stop limitada."
+    - "Comprueba si los stops los gestiona el propio bróker: la CNMV recuerda que en el mercado español no son órdenes de la bolsa, sino de la entidad."
   check: "Sé qué tipos de órdenes tengo y cuál usaría para no pagar de más"
 deeper: ordenes-liquidez-ejecucion
 tool: null
@@ -58,27 +59,21 @@ sources: [cnmv-guia-ordenes, cnmv-inversor]
 
 ## La idea
 
-Cuatro órdenes que debes conocer:
+Una orden es la instrucción que das a tu bróker. Las más comunes:
 
-- **[A mercado](/es/glosario/#orden-de-mercado)**: compra o vende ya, al mejor precio disponible. Si no hay bastantes acciones a ese precio, sigue con los siguientes.
-- **[Limitada](/es/glosario/#orden-limitada)**: fijas un precio máximo de compra o mínimo de venta. Puede no ejecutarse.
-- **Stop (stop loss)**: cuando el precio toca tu nivel, se convierte en **orden a mercado**. Si el precio salta (un **hueco**), se ejecuta peor de lo previsto: es el **deslizamiento**.
-- **Stop limitada**: al tocar tu nivel, se convierte en **limitada**. Controla el precio, pero en una caída rápida puede no venderse nada.
+| Orden | Qué hace | Ventaja | Riesgo |
+|---|---|---|---|
+| **[A mercado](/es/glosario/#orden-de-mercado)** | Compra o vende ya, al mejor precio disponible | Se ejecuta casi seguro | Puedes pagar más de lo que pensabas |
+| **[Limitada](/es/glosario/#orden-limitada)** | Compra o vende solo a tu precio o mejor | Controlas el precio | Puede no ejecutarse |
+| **Stop** | Cuando el precio toca tu nivel, lanza una orden a mercado | Corta pérdidas sin estar mirando | Si el precio salta, vende peor |
+| **Stop limitada** | Cuando toca tu nivel, lanza una orden limitada | No vende por debajo de tu límite | En una caída rápida puede no vender |
 
-El **[diferencial](/es/glosario/#diferencial)** entre el mejor precio de venta y el de compra es un coste en cada operación. En el caso, 10,04 − 10,00 = 0,04 €, un **0,4 %**.
+## En la práctica
 
-En la bolsa española hay **subasta de apertura** (8:30 a 9:00) y **de cierre** (17:30 a 17:35). Durante la subasta se acumulan órdenes y se cruzan todas a un único precio al final. Una orden a mercado en la apertura puede ejecutarse lejos del cierre de ayer.
-
-## Con números
-
-Compras 1.000 acciones a 10 € y pones un stop a 9,50 €, pensando en perder como mucho **500 €**.
-
-| Qué pasa | Venta | Pérdida |
-|---|---:|---:|
-| Baja poco a poco y toca 9,50 € | ≈ 9,50 € | ≈ 500 € |
-| Abre a 8,90 € tras malos resultados (stop normal) | ≈ 8,90 € | ≈ 1.100 € |
-| Abre a 8,90 € (stop limitado a 9,40 €) | No se vende | Sigues expuesto |
+- El **[diferencial](/es/glosario/#diferencial)** es la distancia entre el precio al que puedes comprar y el precio al que puedes vender. Lo pagas en cada operación, aunque no aparezca en la factura.
+- Al abrir y al cerrar la bolsa española hay una **subasta**: se juntan las órdenes y se cruzan a un único precio. Una orden a mercado en ese momento puede ejecutarse lejos del precio de ayer.
+- Para comprar un fondo indexado o un ETF a largo plazo, una orden limitada cerca del precio actual suele ser suficiente.
 
 ## Error frecuente
 
-Creer que el stop es un seguro. Es una instrucción automática, y en un hueco se ejecuta al precio que haya.
+Creer que el stop es un seguro. En un salto de precio se ejecuta al que haya.

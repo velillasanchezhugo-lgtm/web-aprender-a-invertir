@@ -7,42 +7,43 @@ order: 506
 skills: [analisis-tecnico-limites, psicologia-sesgos]
 goals: [entender, miedo]
 prereqs: [tr-02-estilos-de-trading]
-hook: "Un curso te enseña una regla con medias móviles que «ganó un 38 % al año en los últimos cinco años». ¿Qué preguntas antes de creértelo?"
-takeaway: "Un gráfico resume lo que ya pasó. Un backtest bonito no demuestra nada si se probaron muchas reglas, si faltan costes o si no se ha comprobado con datos nuevos."
+hook: "Un curso te enseña una regla con gráficos que «ganó muchísimo en los últimos cinco años». ¿Qué preguntas antes de creértelo?"
+takeaway: "Un gráfico resume lo que ya pasó. Un resultado pasado espectacular no demuestra nada si se probaron muchas reglas, si faltan los costes o si no se ha comprobado con datos nuevos."
 scenario:
   kind: operacion
-  label: "Backtest de ejemplo"
-  title: "La regla «Cruce Dorado 13/47» de un curso online"
-  body: "Un curso vende una regla para la acción ficticia Conservas Atlántico: comprar cuando la media móvil de 13 sesiones cruza hacia arriba la de 47 y vender al cruce contrario. Su backtest de 2020 a 2024 muestra un 38 % anual. En letra pequeña: se probaron 200 combinaciones de medias y se eligió la mejor; no incluye comisiones ni diferencial; la regla hizo 120 operaciones al año."
+  label: "Anuncio de ejemplo"
+  title: "La regla «Cruce Dorado» de un curso online"
+  body: "Un curso vende una regla basada en medias móviles para comprar y vender una acción ficticia. Su gráfico de resultados de los últimos años es espectacular. En la letra pequeña: probaron cientos de reglas parecidas y enseñan la que mejor salió, los resultados no incluyen comisiones y la regla compra y vende muchísimas veces al año."
   note: "Ejemplo ficticio con fines educativos."
 questions:
-  - type: estimate
+  - type: choice
     id: tr06-q1
-    q: "Si ninguna de las 200 combinaciones tuviera capacidad real de predecir, ¿cuántas parecerían «funcionar» por puro azar con un criterio estadístico habitual del 5 %?"
-    answer: 10
-    tolerance: 1
-    min: 0
-    max: 100
-    step: 1
-    unit: "reglas"
-    explain: "200 × 5 % = 10. Si pruebas muchas reglas y te quedas con la mejor, casi seguro encuentras alguna que brilla en el pasado por suerte. Es el sobreajuste."
+    q: "¿Qué es lo más sospechoso del resultado del curso?"
+    options: ["Que use medias móviles", "Que probaran cientos de reglas y enseñen solo la que mejor salió en el pasado", "Que el gráfico abarque varios años", "Que el curso sea online"]
+    answer: 1
+    explain: "Si pruebas muchas reglas, alguna brillará en el pasado por pura suerte. Es el sobreajuste: encaja con lo que ya pasó, pero no sirve para lo que viene."
   - type: choice
     id: tr06-q2
-    q: "La regla hace 120 operaciones al año y cada una cuesta, sumando comisiones y diferencial, un 0,15 % del capital. ¿Cuánto restan los costes al año?"
-    options: ["Un 18 % del capital, casi la mitad del 38 % anunciado", "Un 0,15 %, porque se cobra una sola vez", "Nada, porque el backtest ya los tiene en cuenta"]
-    answer: 0
-    explain: "120 × 0,15 % = 18 % al año. Y eso sin contar impuestos ni deslizamiento. El 38 % se queda, como mucho, en un 20 %, antes de descontar la parte que es suerte."
+    q: "La regla opera muchísimas veces al año y el resultado no incluye costes. ¿Qué pasa al añadirlos?"
+    options: ["Nada, los costes son mínimos", "El resultado baja mucho, porque cada operación paga comisión y diferencial", "El resultado mejora", "Solo cambian los impuestos"]
+    answer: 1
+    explain: "Un coste pequeño repetido muchas veces se convierte en uno grande. Una regla que opera mucho necesita una ventaja enorme para cubrirlo."
   - type: truefalse
     id: tr06-q3
-    q: "Si el precio ha rebotado tres veces en 12 €, ese soporte garantiza que volverá a rebotar."
+    q: "Si el precio ha rebotado tres veces en el mismo nivel, ese soporte garantiza que volverá a rebotar."
     answer: false
-    explain: "Un soporte solo describe dónde hubo compradores antes. Puede romperse con una mala noticia. Además, tendemos a recordar los rebotes y olvidar las rupturas: es el sesgo de confirmación."
+    explain: "Un soporte solo describe dónde hubo compradores antes. Puede romperse con una mala noticia. Además, tendemos a recordar los rebotes y olvidar las rupturas."
+tips:
+  - "Usa los gráficos para entender lo que ha pasado, no como bola de cristal."
+  - "Desconfía de resultados pasados espectaculares sin costes ni pruebas con datos nuevos."
+  - "Pregunta siempre cuántas reglas se probaron antes de enseñar la ganadora."
+  - "Si quieres aprender a leerlos, practica con dinero ficticio."
 action:
   title: "Mira un gráfico con otros ojos"
   steps:
     - "Abre el gráfico de un índice amplio en cualquier web financiera gratuita y ponlo en velas diarias."
-    - "Señala una vela verde y una roja e identifica su apertura, cierre, máximo y mínimo."
-    - "Añade una media móvil de 200 sesiones y pregúntate: ¿cuántas veces la cruzó el precio y luego se dio la vuelta?"
+    - "Señala una vela verde y una roja y localiza su apertura, cierre, máximo y mínimo."
+    - "Añade una media móvil de 200 sesiones y fíjate en cuántas veces la cruzó el precio y luego se dio la vuelta."
   check: "Sé leer una vela y sé por qué un gráfico no predice solo"
 deeper: analisis-tecnico-y-limites
 tool: null
@@ -57,30 +58,23 @@ sources: [barber-taiwan-2014, chague-daytrade-2019, cnmv-finfluencers-infografia
 
 ## La idea
 
-Las herramientas básicas del análisis técnico:
+El **análisis técnico** intenta adivinar el precio mirando gráficos. Sus herramientas básicas:
 
-- **Velas**: cada una resume un periodo (un día, una hora) con cuatro precios: apertura, cierre, máximo y mínimo. Verde si cerró por encima de la apertura; roja si cerró por debajo.
+- **Velas**: cada una resume un periodo (un día, una hora) con cuatro precios: apertura, cierre, máximo y mínimo. Verde si cerró por encima de donde abrió; roja si cerró por debajo.
 - **Soportes y resistencias**: niveles donde antes el precio dejó de caer o de subir.
-- **Medias móviles**: el precio medio de las últimas N sesiones. Suaviza el ruido, pero siempre va **por detrás** del precio.
-- **Volumen**: cuántas acciones se negociaron. Un movimiento con poco volumen dice poco.
+- **Medias móviles**: el precio medio de los últimos días. Suaviza los saltos, pero siempre va por detrás del precio.
+- **Volumen**: cuántas acciones se compraron y vendieron. Un movimiento con poco volumen dice poco.
 
-Son útiles para **describir** lo que pasó y para planificar dónde poner un stop. No predicen solas, por tres motivos:
+## En la práctica
 
-1. **Sesgo de confirmación**: ves las figuras que confirman lo que ya creías.
-2. **Sobreajuste**: ajustar una regla al pasado hasta que encaje.
-3. **Costes**: una regla que opera mucho necesita una ventaja enorme para cubrirlos.
+Los gráficos sirven para **ver lo que ha pasado** y para planificar dónde cortar una pérdida. No predicen solos, por tres motivos:
 
-## Con números
+1. **Ves lo que quieres ver**: encuentras las figuras que confirman lo que ya creías.
+2. **Sobreajuste**: con suficientes pruebas, cualquier regla parece funcionar en el pasado.
+3. **Costes**: una regla que opera mucho necesita ganar mucho para cubrirlos.
 
-Una vela diaria ficticia: apertura **12,40 €**, máximo **12,55 €**, mínimo **11,95 €**, cierre **12,10 €**. Es **roja**: cerró 0,30 € por debajo de la apertura, tras moverse 0,60 € en el día.
+Los estudios con operadores reales, en Taiwán y en Brasil, encuentran que solo una minoría muy pequeña gana de forma estable.
 
-Y el backtest del caso, con números honestos:
+## Error frecuente
 
-| Concepto | Al año |
-|---|---:|
-| Resultado anunciado (sin costes) | +38 % |
-| Costes: 120 operaciones × 0,15 % | −18 % |
-| Antes de impuestos y deslizamiento | +20 % |
-| Parte que puede ser suerte (1 de 200 reglas) | Desconocida |
-
-Los estudios con operadores reales (Taiwán, Brasil) encuentran que solo una pequeña minoría gana de forma estable después de costes. Y la CNMV recuerda el sesgo de confirmación: tiendes a seguir a quien dice lo que ya piensas.
+Comprar un curso porque su gráfico de resultados pasados es precioso. El pasado elegido a dedo siempre sale bonito.

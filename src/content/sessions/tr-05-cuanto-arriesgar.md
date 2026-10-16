@@ -1,54 +1,50 @@
 ---
-title: "Cuánto arriesgar: el tamaño lo decide el stop"
-description: "Cómo calcular el tamaño de una posición con un riesgo fijo, qué tasa de acierto necesitas para no perder con costes y por qué las rachas malas son seguras."
+title: "Por qué conviene arriesgar poco"
+description: "Por qué quien opera debe arriesgar solo una parte pequeña en cada operación, qué pasa con las rachas malas y por qué recuperar una pérdida cuesta más."
 level: basico
 track: trading
 order: 505
 skills: [gestion-riesgo-trading, caidas-recuperacion]
 goals: [miedo, entender]
 prereqs: [tr-03-tipos-de-ordenes]
-hook: "Aciertas 4 de cada 10 operaciones. ¿Estás perdiendo dinero? Depende de una cuenta que casi nadie hace antes de entrar."
-takeaway: "Decide primero cuánto puedes perder (un % pequeño de tu capital); el tamaño de la posición sale de dividir ese riesgo entre la distancia al stop."
+hook: "Llevas tres operaciones ganadoras y te sientes imparable. ¿Y si en la próxima lo pones casi todo?"
+takeaway: "Las rachas de pérdidas llegan siempre. Si arriesgas poco en cada operación, puedes aguantarlas; si arriesgas mucho, una mala racha te saca del juego."
 scenario:
   kind: operacion
-  label: "Operación de ejemplo (en simulación)"
-  title: "Elena planifica una operación en su cuenta de práctica"
-  body: "Elena tiene una cuenta de práctica de 10.000 € y decide arriesgar como mucho el 1 % por operación: 100 €. Quiere comprar la acción ficticia Conservas Atlántico a 25,00 € con un stop en 23,75 € (1,25 € por debajo) y un objetivo en 27,50 € (2,50 € por encima). Cada operación completa le cuesta 6 € en comisiones y diferencial."
+  label: "Caso de ejemplo (en simulación)"
+  title: "Elena aprende con una cuenta ficticia"
+  body: "Elena practica con una cuenta de dinero ficticio. Las primeras semanas arriesga mucho en cada operación y una mala racha le deja la cuenta a la mitad. Vuelve a empezar y decide arriesgar solo una parte pequeña en cada operación. Las rachas malas siguen llegando, pero ya no la hunden."
   note: "Ejemplo ficticio con fines educativos."
 questions:
-  - type: estimate
+  - type: choice
     id: tr05-q1
-    q: "¿Cuántas acciones debe comprar Elena para que, si salta el stop, pierda 100 € (sin contar costes)?"
-    answer: 80
-    tolerance: 0
-    min: 0
-    max: 400
-    step: 10
-    unit: "acciones"
-    explain: "Tamaño = riesgo / distancia al stop = 100 € / 1,25 € = 80 acciones (2.000 € invertidos). Fíjate: no arriesga 2.000 €, arriesga 100 €. Recuerda que en un hueco el stop puede ejecutarse peor."
-  - type: estimate
+    q: "¿Por qué conviene arriesgar poco en cada operación?"
+    options: ["Porque así se gana más rápido", "Porque las rachas de pérdidas llegan siempre y, si arriesgas poco, puedes aguantarlas", "Porque el bróker lo exige", "No conviene: hay que ir a por todas cuando lo ves claro"]
+    answer: 1
+    explain: "Incluso con un buen método, encadenar varias pérdidas seguidas es casi seguro con el tiempo. Arriesgar poco te deja seguir en el juego."
+  - type: truefalse
     id: tr05-q2
-    q: "Con un beneficio/riesgo de 2 a 1 y sin costes, ¿qué porcentaje mínimo de aciertos necesita Elena para no perder?"
-    answer: 33
-    tolerance: 1
-    min: 0
-    max: 100
-    step: 1
-    unit: "%"
-    explain: "Si gana 2 cuando acierta y pierde 1 cuando falla, empata con 1 acierto de cada 3: 1 / (1 + 2) ≈ 33 %. Con los 6 € de costes, gana 194 € y pierde 106 €: necesita un 106 / 300 ≈ 35 %."
+    q: "Si pierdes la mitad de tu dinero, basta con ganar la mitad de lo que te queda para recuperarlo."
+    answer: false
+    explain: "Si pierdes la mitad, te queda menos dinero para recuperarte: tendrías que duplicar lo que te queda. Por eso las pérdidas grandes cuestan tanto de recuperar."
   - type: choice
     id: tr05-q3
-    q: "Elena sufre 10 pérdidas seguidas. ¿Cómo queda su cuenta si arriesgó un 1 % cada vez, y si arriesgó un 5 %?"
-    options: ["Con el 1 %, unos 9.044 € (−9,6 %); con el 5 %, unos 5.987 € (−40 %)", "Con el 1 %, 9.000 €; con el 5 %, 5.000 €", "Igual en los dos casos: el stop la protege"]
-    answer: 0
-    explain: "Cada pérdida es un % de lo que queda: 10.000 × 0,99^10 ≈ 9.044 € y 10.000 × 0,95^10 ≈ 5.987 €. Para recuperar un −40 % hace falta subir un +67 %. Para recuperar un −9,6 %, un +10,6 %."
+    q: "Tu operación va en contra y se acerca al límite de pérdida que habías decidido. ¿Qué haces?"
+    options: ["Mover el límite más lejos «para darle aire»", "Respetar el plan: si llega, aceptas una pérdida pequeña", "Meter más dinero para compensar", "Quitar el límite y esperar a que se recupere"]
+    answer: 1
+    explain: "Mover el límite convierte una pérdida pequeña y prevista en una grande. El plan se hace antes de entrar, con la cabeza fría."
+tips:
+  - "Decide antes de entrar cuánto estás dispuesto a perder."
+  - "Arriesga solo una parte pequeña de tu dinero en cada operación."
+  - "Nunca operes con tu colchón ni con dinero que vayas a necesitar."
+  - "Si encadenas pérdidas, para y revisa en lugar de doblar la apuesta."
 action:
-  title: "Calcula una operación en papel"
+  title: "Pon tus límites por escrito"
   steps:
-    - "Elige una cifra de capital ficticio (por ejemplo, 5.000 €) y un riesgo del 1 %."
-    - "Mira el precio actual de cualquier acción o ETF y elige dónde pondrías el stop."
-    - "Calcula el tamaño: riesgo en € / (precio de entrada − stop). Anótalo sin enviar ninguna orden."
-  check: "Sé calcular el tamaño de una posición a partir del stop"
+    - "Escribe qué cantidad podrías perder en total sin que te afecte a la vida diaria."
+    - "Si quieres practicar, hazlo solo con una cuenta de dinero ficticio."
+    - "Apunta una regla sencilla: cuándo paras si las cosas van mal."
+  check: "Sé por qué conviene arriesgar poco y tengo mis límites por escrito"
 deeper: gestion-del-riesgo
 tool: simulador-caidas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -62,32 +58,20 @@ sources: [cnmv-guia-ordenes]
 
 ## La idea
 
-Quien opera sin plan decide primero cuánto comprar. Quien gestiona el riesgo lo hace al revés:
+Quien opera sin plan decide primero cuánto comprar. Quien gestiona el riesgo lo hace al revés: decide primero **cuánto está dispuesto a perder** si se equivoca, y solo entonces cuánto compra.
 
-1. **Riesgo por operación**: una parte pequeña del capital. Una regla prudente habitual es no pasar del **1 %**.
-2. **Stop**: dónde reconoces que te has equivocado.
-3. **Tamaño** = riesgo en € / distancia al stop.
+Tres ideas para entenderlo:
 
-Después, dos números que deciden si ganas a la larga:
+- **Las rachas malas llegan.** Incluso alguien que acierta a menudo encadena pérdidas de vez en cuando.
+- **Recuperar cuesta más que perder.** Si pierdes la mitad, necesitas duplicar lo que te queda para volver al principio.
+- **Arriesgar poco te mantiene en el juego.** Muchos operadores con experiencia arriesgan solo una parte pequeña de su dinero en cada operación.
 
-- **Beneficio/riesgo**: cuánto ganas cuando aciertas frente a cuánto pierdes cuando fallas.
-- **Tasa de acierto necesaria** = 1 / (1 + beneficio/riesgo), y algo más con costes.
+## En la práctica
 
-Y una certeza: **las rachas de pérdidas llegan**. Con un 40 % de aciertos, en 100 operaciones la probabilidad de encadenar al menos 6 pérdidas seguidas es de un **87 %**, y la de 8 seguidas, de un **49 %**.
-
-## Con números
-
-Tasa de acierto mínima para empatar, sin costes:
-
-| Beneficio/riesgo | Aciertos necesarios |
-|---:|---:|
-| 1 a 1 | 50 % |
-| 1,5 a 1 | 40 % |
-| 2 a 1 | 33 % |
-| 3 a 1 | 25 % |
-
-Parece fácil, pero cuanto más lejos pones el objetivo, menos veces se alcanza. Y los costes suben la barrera en cada operación.
+- Antes de cada operación, decide dónde reconocerás que te has equivocado y respeta esa decisión.
+- No uses nunca dinero que necesites: ni tu colchón, ni el dinero de la entrada de una casa.
+- Si estás aprendiendo, hazlo con dinero ficticio. Equivocarte gratis es la mejor escuela.
 
 ## Error frecuente
 
-Mover el stop más lejos «para darle aire» cuando el precio se acerca. Así conviertes una pérdida pequeña y planificada en una grande.
+Subir la apuesta tras unas ganancias o para recuperar unas pérdidas. Las dos cosas hacen que una mala racha duela mucho más.
