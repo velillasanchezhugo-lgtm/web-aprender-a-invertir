@@ -62,20 +62,23 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --paper: #06070e; --paper-2: #0d1120; --card: #111527; --ink: #f2f4fa; --ink-2: #c4cada; --ink-3: #a3acc4;
-    --rule: #20263b; --rule-strong: #323a55; --teal: #7d95ff; --teal-2: #9aadff; --teal-soft: #172048;
-    --ochre: #5fd4ff; --ochre-bright: #35c8ff; --ochre-soft: #0c2838; --gain: #5fd197; --loss: #ff8b78; --loss-soft: #3a1d1a;
-    --ad-bg: #0d1120; --dot: rgb(255 255 255 / 7%); --btn-bg: var(--u-cream); --btn-fg: var(--u-ink); color-scheme: dark;
-  }
-}
+/* Modo oscuro (se elige con el selector «Claro | Oscuro»; por defecto, claro).
+   Fondo negro de umotion, texto crema y acentos cian/azul claro, con contraste AA. */
 :root[data-theme='dark'] {
-  --paper: #06070e; --paper-2: #0d1120; --card: #111527; --ink: #f2f4fa; --ink-2: #c4cada; --ink-3: #a3acc4;
-  --rule: #20263b; --rule-strong: #323a55; --teal: #7d95ff; --teal-2: #9aadff; --teal-soft: #172048;
-  --ochre: #5fd4ff; --ochre-bright: #35c8ff; --ochre-soft: #0c2838; --gain: #5fd197; --loss: #ff8b78; --loss-soft: #3a1d1a;
-  --ad-bg: #0d1120; --dot: rgb(255 255 255 / 7%); --btn-bg: var(--u-cream); --btn-fg: var(--u-ink); color-scheme: dark;
+  --paper: #05060b; --paper-2: #0b0e19; --card: #0e1220;
+  --ink: #f4f6fb; --ink-2: #c9d0e2; --ink-3: #9ba5c0;
+  --rule: #1b2133; --rule-strong: #2c3550;
+  --teal: #6fd3ff; --teal-2: #9be2ff; --teal-soft: #0f2335;
+  --ochre: #6fd3ff; --ochre-bright: #35c8ff; --ochre-soft: #0b2230;
+  --gain: #62d49a; --loss: #ff8f7d; --loss-soft: #2a1512;
+  --focus: #35c8ff; --ad-bg: #0b0e19; --dot: rgb(255 255 255 / 6%);
+  --btn-bg: #f4f6fb; --btn-fg: #05060b;
+  --shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 12px 32px -14px rgb(0 0 0 / 70%);
+  color-scheme: dark;
 }
+:root[data-theme='dark'] .panel-dark { background: #0b0e19; border-color: #1f2740; }
+:root[data-theme='dark'] h1, :root[data-theme='dark'] h2 { color: #f8f9fc; }
+:root[data-theme='dark'] ::selection { background: #2b52f0; color: #fff; }
 
 *, *::before, *::after { box-sizing: border-box; }
 [hidden] { display: none !important; }
@@ -244,6 +247,5 @@ output { font-variant-numeric: tabular-nums; }
 
 /* Logotipos según tema */
 .only-dark { display: none !important; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme='light']) .only-dark { display: block !important; } :root:not([data-theme='light']) .only-light { display: none !important; } }
 :root[data-theme='dark'] .only-dark { display: block !important; }
 :root[data-theme='dark'] .only-light { display: none !important; }

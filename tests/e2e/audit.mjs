@@ -14,6 +14,7 @@ const b = await chromium.launch();
 let fails = 0;
 for (const scheme of ['light', 'dark']) {
   const ctx = await b.newContext({ viewport: { width: 375, height: 800 }, colorScheme: scheme });
+  await ctx.addInitScript((t) => { try { localStorage.setItem('uacademy:theme', t); } catch (e) {} }, scheme);
   for (const path of pages) {
     const p = await ctx.newPage();
     const errs = []; const external = [];
