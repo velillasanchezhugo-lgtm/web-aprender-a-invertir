@@ -116,3 +116,11 @@ Ver `docs/CRECIMIENTO-90-DIAS.md` y `docs/CALENDARIO-EDITORIAL.md`. En resumen: 
 - Empresas, noticias y trading pasan a «Para saber más».
 
 **Comprobado**: 63 pruebas unitarias, control editorial (70 sesiones), compilación (182 páginas), auditoría de accesibilidad en modo claro y oscuro y recorridos en navegador.
+
+## Versión 5: vocabulario, cuentas opcionales y recordatorio diario (2026-10-19)
+
+- Cartulinas de vocabulario (141 términos con definición corta) en cada sesión y módulo.
+- Cuenta opcional con Supabase (enlace mágico, sincronización automática sin perder progreso, borrado de cuenta). Las clases siguen sin registro.
+- Recordatorio diario a las 16:00 (hora de España): notificaciones push solo si ese día no se ha estudiado, con mensaje según la racha; y recordatorio de calendario que funciona ya.
+
+**Comprobado**: 72 pruebas unitarias (mezcla, horario de verano/invierno, mensajes, bucle de envío), recorridos en navegador de la cuenta con Supabase simulado (entrada, mezcla, subida automática) y del recordatorio.

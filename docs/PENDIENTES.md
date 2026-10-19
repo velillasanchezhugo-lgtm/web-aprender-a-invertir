@@ -21,6 +21,10 @@ No hace falta ninguna credencial para ejecutar ni compilar la web.
 2. **Fiscal**: lección de comisiones y fiscalidad (escala del ahorro 2025, traspasos, regla de los dos meses), criptoactivos y fiscalidad de dividendos. Confirmar la escala de 2026 cuando esté disponible.
 3. **Financiera / editorial**: todas las lecciones, estrategias e historias están en estado «Pendiente de revisión humana».
 
+## Cuentas y recordatorio diario
+
+Construidos y probados con Supabase simulado; desactivados hasta configurarlos (ver `docs/CUENTAS-Y-AVISOS.md`): proyecto de Supabase en la UE, claves VAPID, `CRON_SECRET`, correo del enlace mágico en español con SMTP propio y revisión de privacidad. Con el plan Hobby de Vercel el aviso llega entre las 16:00 y las 16:59; para la hora exacta, plan Pro o `pg_cron` de Supabase.
+
 ## Recomendación de Trade Republic
 
 - **Confirmar si hay remuneración** (referidos, afiliación o acuerdo). Si la hay, definir `PUBLIC_BROKER_PAID=true`: la web lo mostrará como «Colaboración pagada» en todas las páginas donde aparece. Hoy figura como recomendación editorial sin remuneración.

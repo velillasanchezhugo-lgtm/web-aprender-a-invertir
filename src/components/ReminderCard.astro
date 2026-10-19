@@ -1,0 +1,60 @@
+---
+/** Tarjeta del recordatorio diario a las 16:00: notificaciones (si están configuradas) y calendario (siempre). */
+import { PUSH } from '../config/site';
+const { compact = false } = Astro.props as { compact?: boolean };
+---
+<section class:list={['card', 'reminder', { compact }]} id="recordatorio" aria-labelledby="rem-t" data-push={PUSH.enabled ? '1' : '0'}>
+  <p class="eyebrow">Recordatorio diario · {PUSH.hour}</p>
+  <h2 id="rem-t" class="h3">Que no se te pase la racha</h2>
+  <p class="small muted">Cada día a las {PUSH.hour} (hora de España), solo si aún no has hecho tu sesión. Sin correo y sin registro.</p>
+  <div class="rem-actions">
+    {PUSH.enabled && <button type="button" class="btn brand small" data-push-on>Activar notificaciones</button>}
+    {PUSH.enabled && <button type="button" class="btn secondary small" data-push-off hidden>Desactivar notificaciones</button>}
+    <button type="button" class="btn secondary small" data-ics-daily>Añadir al calendario</button>
+  </div>
+  <p class="small rem-status" data-push-status role="status" aria-live="polite"></p>
+  {!compact && <p class="small muted">El recordatorio de calendario funciona en cualquier móvil (también iPhone), sin permisos. Las notificaciones llegan aunque tengas la web cerrada; en iPhone, antes hay que añadir la web a la pantalla de inicio.</p>}
+</section>
+<style>
+  .reminder { border-left: 4px solid var(--u-cyan); }
+  .reminder .h3 { font-size: 1.3rem; margin: 0.2rem 0 0.3rem; }
+  .reminder .eyebrow { margin: 0; }
+  .rem-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.8rem 0 0.4rem; }
+  .rem-status:empty { display: none; }
+  .rem-status { color: var(--teal); font-weight: 600; }
+</style>
+<script>
+  import { dailyReminderIcs, toDay } from '../lib/academy';
+  document.querySelectorAll<HTMLElement>('.reminder').forEach((card) => {
+    const status = card.querySelector<HTMLElement>('[data-push-status]')!;
+    const on = card.querySelector<HTMLButtonElement>('[data-push-on]');
+    const off = card.querySelector<HTMLButtonElement>('[data-push-off]');
+    card.querySelector<HTMLButtonElement>('[data-ics-daily]')!.addEventListener('click', () => {
+      const ics = dailyReminderIcs(toDay(new Date()), `${location.origin}/es/mi-plan/`);
+      const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'umotion-academy-recordatorio-diario.ics'; a.click(); URL.revokeObjectURL(a.href);
+      status.textContent = 'Abre el archivo descargado para añadir el recordatorio diario a tu calendario.';
+    });
+    if (!on || !off) return;
+    const paint = async () => {
+      const { pushActive } = await import('../scripts/push');
+      const active = pushActive();
+      on.hidden = active; off.hidden = !active;
+      if (active) status.textContent = 'Notificaciones activadas: te avisaremos a las 16:00 si aún no has estudiado.';
+    };
+    paint();
+    on.addEventListener('click', async () => {
+      on.disabled = true; status.textContent = 'Activando…';
+      const { enablePush } = await import('../scripts/push');
+      const r = await enablePush();
+      on.disabled = false;
+      status.textContent = r.ok ? 'Notificaciones activadas: te avisaremos a las 16:00 si aún no has estudiado.' : r.message ?? '';
+      paint();
+    });
+    off.addEventListener('click', async () => {
+      const { disablePush } = await import('../scripts/push');
+      await disablePush();
+      status.textContent = 'Notificaciones desactivadas.';
+      paint();
+    });
+  });
+</script>

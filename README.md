@@ -50,6 +50,9 @@ Importa el repositorio en Vercel: `vercel.json` ya define la compilación, la re
 | `PUBLIC_CMP` | `google` (Privacidad y mensajes de AdSense) o `external` | `google` |
 | `PUBLIC_AD_PLACEHOLDERS` | `true` para ver los huecos reservados en desarrollo | `false` |
 | `PUBLIC_AI_TUTOR` | `true` para mostrar el tutor con IA | `false` |
+| `PUBLIC_SUPABASE_URL`, `PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` | Cuentas opcionales (ver [docs/CUENTAS-Y-AVISOS.md](docs/CUENTAS-Y-AVISOS.md)) | desactivado |
+| `PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `CRON_SECRET` | Recordatorio diario a las 16:00 por notificación | desactivado (se ofrece el calendario) |
+| `PUBLIC_BROKER_PAID` | `true` si hay remuneración de Trade Republic | `false` |
 | `AI_TUTOR_ENABLED`, `ANTHROPIC_API_KEY`, `AI_TUTOR_MODEL` | Función del servidor del tutor (solo en Vercel, nunca en el repositorio) | desactivado; modelo `claude-opus-5-5` |
 
 Con la publicidad desactivada, el sitio no carga **ningún** script de terceros; la compilación falla si alguna página lo intentara. El tutor con IA llama a una función del propio sitio (`/api/tutor`), nunca directamente a terceros desde el navegador.
@@ -91,6 +94,7 @@ docs/                      Documentación de entrega, pendientes y planes
 - [docs/PLAN-DE-ENSENANZA.md](docs/PLAN-DE-ENSENANZA.md): formato de sesión, Camino Cero, planificación, retención y niveles.
 - [docs/ANALISIS-CURSOS.md](docs/ANALISIS-CURSOS.md): análisis de 15 cursos y patrones de habilidades más útiles.
 - [docs/TUTOR-IA.md](docs/TUTOR-IA.md): personalización, tutor y cómo activar la IA.
+- [docs/CUENTAS-Y-AVISOS.md](docs/CUENTAS-Y-AVISOS.md): cuentas opcionales, sincronización y recordatorio diario a las 16:00.
 - [docs/ENTREGA.md](docs/ENTREGA.md): qué se ha construido y comprobado, y qué falta.
 - [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md): decisiones técnicas, identidad visual y recorridos.
 - [docs/ACTUALIZAR.md](docs/ACTUALIZAR.md): cómo actualizar contenido, tarifas, fiscalidad e IPC.

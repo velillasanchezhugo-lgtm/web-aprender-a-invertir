@@ -22,6 +22,8 @@ export function read<T>(key: string, fallback: T): T {
 }
 export function write(key: string, value: unknown) {
   try { localStorage.setItem(PREFIX + key, JSON.stringify(value)); } catch { /* lleno o bloqueado */ }
+  // Aviso para la sincronización opcional con la cuenta y para el recordatorio diario.
+  try { window.dispatchEvent(new CustomEvent('uacademy:write', { detail: key })); } catch { /* sin ventana */ }
 }
 export function remove(key: string) {
   try { localStorage.removeItem(PREFIX + key); } catch { /* */ }

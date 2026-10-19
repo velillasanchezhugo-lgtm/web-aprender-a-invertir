@@ -177,3 +177,23 @@ export function planToIcs(plan: PlanDay[], time: string, titles: Record<string, 
   lines.push('END:VCALENDAR');
   return lines.join('\r\n');
 }
+
+/**
+ * Recordatorio diario recurrente a las 16:00 (hora de España) para el calendario del móvil.
+ * Funciona sin cuenta ni servidor y en cualquier dispositivo, también en iPhone.
+ */
+export function dailyReminderIcs(startDay: string, url: string): string {
+  const d = startDay.replace(/-/g, '');
+  return [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//umotion Academy//Recordatorio//ES', 'CALSCALE:GREGORIAN',
+    'BEGIN:VTIMEZONE', 'TZID:Europe/Madrid',
+    'BEGIN:DAYLIGHT', 'TZOFFSETFROM:+0100', 'TZOFFSETTO:+0200', 'TZNAME:CEST', 'DTSTART:19700329T020000', 'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU', 'END:DAYLIGHT',
+    'BEGIN:STANDARD', 'TZOFFSETFROM:+0200', 'TZOFFSETTO:+0100', 'TZNAME:CET', 'DTSTART:19701025T030000', 'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU', 'END:STANDARD',
+    'END:VTIMEZONE',
+    'BEGIN:VEVENT', `UID:recordatorio-diario-${d}@umotion-academy`, `DTSTAMP:${d}T000000Z`,
+    `DTSTART;TZID=Europe/Madrid:${d}T160000`, `DTEND;TZID=Europe/Madrid:${d}T160500`, 'RRULE:FREQ=DAILY',
+    'SUMMARY:umotion Academy · 5 minutos para no perder tu racha', `DESCRIPTION:Tu sesión de hoy: ${url}`, `URL:${url}`,
+    'BEGIN:VALARM', 'TRIGGER:PT0M', 'ACTION:DISPLAY', 'DESCRIPTION:No pierdas tu racha: 5 minutos hoy', 'END:VALARM',
+    'END:VEVENT', 'END:VCALENDAR',
+  ].join('\r\n');
+}

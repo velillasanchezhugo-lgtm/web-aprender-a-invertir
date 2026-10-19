@@ -90,3 +90,16 @@ export const RECOMMENDED_BROKER = {
   paid: (import.meta.env.PUBLIC_BROKER_PAID ?? 'false') === 'true',
   module: '/es/modulos/trade-republic/',
 };
+
+/**
+ * Cuentas opcionales (Supabase) y recordatorio diario (notificaciones push).
+ * Sin estas variables la web funciona igual, sin registro, y el recordatorio se ofrece para el calendario.
+ * Ver docs/CUENTAS-Y-AVISOS.md.
+ */
+export const ACCOUNTS = {
+  enabled: !!(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env.PUBLIC_SUPABASE_ANON_KEY),
+};
+export const PUSH = {
+  enabled: !!import.meta.env.PUBLIC_VAPID_PUBLIC_KEY,
+  hour: '16:00',
+};

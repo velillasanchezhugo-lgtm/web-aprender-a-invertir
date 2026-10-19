@@ -1,0 +1,107 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ReminderCard from '../../components/ReminderCard.astro';
+import { ACCOUNTS } from '../../config/site';
+---
+<Base title="Mi cuenta" description="Crea una cuenta opcional para guardar tu progreso en todos tus dispositivos y activa el recordatorio diario para no perder la racha." noindex={true} allowAds={false}>
+  <div class="narrow acc" data-accounts={ACCOUNTS.enabled ? '1' : '0'}>
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Mi cuenta' }]} />
+    <p class="eyebrow">Opcional · gratis</p>
+    <h1>Mi cuenta</h1>
+    <p class="lede">No hace falta registrarse para hacer las clases: tu progreso se guarda en este dispositivo. Si creas una cuenta, lo guardamos también en la nube para que no lo pierdas y lo tengas en el móvil y en el ordenador.</p>
+
+    <section class="card box" aria-labelledby="sv-t">
+      <h2 id="sv-t" class="h3">Guarda tu progreso</h2>
+      {ACCOUNTS.enabled ? (
+        <>
+          <div data-state="out" hidden>
+            <p>Te enviamos un enlace a tu correo para entrar: sin contraseñas. Al entrar, sumamos lo que ya hayas hecho en este dispositivo, sin perder nada.</p>
+            <form id="signin" class="signin">
+              <label for="email">Tu correo</label>
+              <div class="row"><input id="email" name="email" type="email" required autocomplete="email" placeholder="tu@correo.com" /><button class="btn brand" type="submit">Enviarme el enlace</button></div>
+              <label class="choice small"><input type="checkbox" id="consent" required /> <span>Acepto que se guarden mi correo y mi progreso para este fin (<a href="/es/privacidad/">privacidad</a>).</span></label>
+            </form>
+          </div>
+          <div data-state="in" hidden>
+            <p>Has entrado como <strong id="who"></strong>.</p>
+            <p class="small muted" id="synced"></p>
+            <div class="row-btns">
+              <button class="btn secondary small" type="button" id="sync-now">Sincronizar ahora</button>
+              <button class="btn ghost small" type="button" id="sign-out">Cerrar sesión</button>
+            </div>
+            <details class="danger small"><summary>Borrar mi cuenta</summary><p>Se borrarán tu cuenta, el progreso guardado en la nube y tus avisos. Lo que hay en este dispositivo se queda (puedes borrarlo en <a href="/es/progreso/">Mi progreso</a>).</p><button class="btn small" type="button" id="delete">Borrar mi cuenta definitivamente</button></details>
+          </div>
+          <p class="small status" id="acc-status" role="status" aria-live="polite"></p>
+        </>
+      ) : (
+        <p class="muted">Las cuentas aún no están activadas en esta versión de prueba. Mientras tanto, tu progreso se guarda en este dispositivo y puedes <a href="/es/progreso/">exportarlo</a> cuando quieras.</p>
+      )}
+    </section>
+
+    <ReminderCard />
+
+    <section class="small muted what">
+      <h2 class="h4">Qué guardamos</h2>
+      <ul>
+        <li><strong>Sin cuenta</strong>: todo se queda en tu navegador.</li>
+        <li><strong>Con cuenta</strong>: tu correo y tu progreso (sesiones, repasos, racha, plan, exámenes y notas). Nunca datos financieros.</li>
+        <li><strong>Con notificaciones</strong>: la dirección técnica de tu navegador para enviarte el aviso y el último día que estudiaste.</li>
+      </ul>
+    </section>
+  </div>
+</Base>
+<style>
+  .acc { padding-bottom: 4rem; display: grid; gap: 1.2rem; }
+  .acc > * { margin: 0; }
+  .box .h3 { font-size: 1.35rem; margin: 0 0 0.6rem; }
+  .signin label[for] { font-weight: 600; display: block; margin-bottom: 0.3rem; }
+  .row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+  .row input { flex: 1 1 220px; }
+  .row-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.6rem 0; }
+  .danger { margin-top: 0.8rem; }
+  .danger summary { cursor: pointer; color: var(--loss); font-weight: 600; }
+  .status:empty { display: none; }
+  .status { font-weight: 600; color: var(--teal); }
+  .what ul { padding-left: 1.1rem; }
+  .h4 { font-size: 1.05rem; margin: 0 0 0.3rem; }
+</style>
+<script>
+  const root = document.querySelector<HTMLElement>('.acc')!;
+  if (root.dataset.accounts === '1') {
+    const $ = (id: string) => document.getElementById(id)!;
+    const status = $('acc-status');
+    const out = root.querySelector<HTMLElement>('[data-state=out]')!;
+    const inn = root.querySelector<HTMLElement>('[data-state=in]')!;
+    import('../../scripts/account').then(async (A) => {
+      const paint = async () => {
+        const s = await A.session();
+        out.hidden = !!s; inn.hidden = !s;
+        if (s) {
+          $('who').textContent = s.user.email ?? '';
+          const t = A.lastSync();
+          $('synced').textContent = t ? `Última sincronización: ${new Date(t).toLocaleString('es-ES')}` : 'Sincronizando…';
+        }
+        document.querySelectorAll('[data-account-link]').forEach((a) => a.classList.toggle('signed-in', !!s));
+      };
+      window.addEventListener('uacademy:synced', paint);
+      await A.startSync();
+      await paint();
+      ($('signin') as HTMLFormElement).addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = ($('email') as HTMLInputElement).value.trim();
+        if (!($('consent') as HTMLInputElement).checked) return;
+        status.textContent = 'Enviando…';
+        const { error } = await A.signIn(email);
+        status.textContent = error ? 'No hemos podido enviar el enlace. Revisa el correo e inténtalo de nuevo.' : `Te hemos enviado un enlace a ${email}. Ábrelo en este dispositivo para entrar.`;
+      });
+      $('sync-now').addEventListener('click', async () => { status.textContent = (await A.pull()) ? 'Progreso sincronizado.' : 'No se pudo sincronizar.'; paint(); });
+      $('sign-out').addEventListener('click', async () => { await A.signOut(); status.textContent = 'Has cerrado sesión. Tu progreso sigue en este dispositivo.'; paint(); });
+      $('delete').addEventListener('click', async () => {
+        if (!confirm('¿Seguro que quieres borrar tu cuenta y el progreso guardado en la nube?')) return;
+        status.textContent = (await A.deleteAccount()) ? 'Cuenta borrada.' : 'No se pudo borrar la cuenta. Inténtalo más tarde.';
+        paint();
+      });
+    }).catch(() => { status.textContent = 'No se pudo cargar la cuenta.'; });
+  }
+</script>

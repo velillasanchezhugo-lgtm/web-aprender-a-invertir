@@ -1,14 +1,14 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
 import OwnerData from '../../components/OwnerData.astro';
-import { adsActive, AUTHOR, AI_TUTOR } from '../../config/site';
+import { adsActive, AUTHOR, AI_TUTOR, ACCOUNTS, PUSH } from '../../config/site';
 ---
 <LegalPage title="Política de privacidad" description="Qué datos se tratan en este sitio, con qué finalidad y cómo ejercer tus derechos. El progreso y el test se guardan solo en tu dispositivo." updated="2026-10-15" legal>
   <h2>Responsable</h2>
   <OwnerData />
   <h2>Resumen</h2>
   <ul>
-    <li>No hay registro de usuarios ni cuentas.</li>
+    <li>No hace falta registrarse. {ACCOUNTS.enabled ? 'Puedes crear una cuenta opcional para guardar tu progreso en la nube.' : 'Las cuentas opcionales aún no están activas.'}</li>
     <li>Tu progreso, marcadores, repasos, notas y (si lo pides) las respuestas del test se guardan <strong>solo en tu navegador</strong> (almacenamiento local), no en nuestros servidores. Puedes verlos, exportarlos y borrarlos en <a href="/es/progreso/">Mi progreso</a>.</li>
     <li>Las respuestas del test, tu situación financiera o tus objetivos <strong>nunca</strong> se envían a sistemas publicitarios, de analítica ni a URL de seguimiento.</li>
     <li>{adsActive ? 'Este sitio muestra publicidad de Google AdSense. Google y sus socios pueden tratar datos (por ejemplo, identificadores de cookies y dirección IP) según tus elecciones en el mensaje de consentimiento.' : 'Actualmente el sitio no carga publicidad, analítica ni otros servicios de terceros.'}</li>
@@ -24,6 +24,10 @@ import { adsActive, AUTHOR, AI_TUTOR } from '../../config/site';
   <p>La personalización (tu perfil, el diagnóstico y la estimación de lo que dominas) se calcula y se guarda solo en tu navegador. {AI_TUTOR.enabled
     ? `Si usas el tutor con inteligencia artificial, el texto que escribes y un resumen de tu nivel (sin nombre, correo ni datos financieros) se envían a nuestro servidor y a ${AI_TUTOR.provider} para generar la respuesta. No guardamos las conversaciones. Te pedimos que no incluyas datos personales. [Pendiente de revisión: base jurídica, encargado del tratamiento y transferencias internacionales.]`
     : 'Hoy el tutor funciona en modo guiado dentro de tu navegador y no envía nada a terceros. Si se activa el tutor con inteligencia artificial, se informará aquí antes de usarlo.'}</p>
+  <h3>5. Cuenta opcional</h3>
+  <p>Si creas una cuenta, tratamos tu correo electrónico (para enviarte el enlace de acceso) y tu progreso en la academia (sesiones, repasos, racha, plan, exámenes y notas), para guardarlo y sincronizarlo entre tus dispositivos. Base jurídica: tu consentimiento y la prestación del servicio que solicitas. Se conservan mientras tengas la cuenta; puedes borrarla en cualquier momento desde «Mi cuenta», lo que elimina la cuenta y el progreso guardado en la nube. Proveedor: Supabase (servidores en la UE). [Pendiente de revisión: contrato de encargado del tratamiento y transferencias internacionales.]</p>
+  <h3>6. Recordatorio diario</h3>
+  <p>Si activas las notificaciones, guardamos la dirección técnica que te asigna tu navegador para enviarte avisos (la suscripción), el último día que estudiaste y tu racha, solo para decidir si recordarte a las {PUSH.hour}. Base jurídica: tu consentimiento, que das al aceptar el permiso del navegador y puedes retirar desactivándolas en «Mi cuenta» o en los ajustes del navegador. El aviso lo entrega el servicio de notificaciones de tu navegador (Google, Apple o Mozilla). El recordatorio de calendario no envía ningún dato: es un archivo que guardas tú.</p>
   <h2>Tus derechos</h2>
   <p>Puedes ejercer los derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo al correo del responsable. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es). Como el progreso se guarda en tu dispositivo, puedes borrarlo directamente en <a href="/es/progreso/">Mi progreso</a>.</p>
   <p class="author-fine">Autor y responsable del contenido: {AUTHOR.name} · {AUTHOR.email}</p>

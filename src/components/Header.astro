@@ -20,6 +20,10 @@ const isCurrent = (href: string) => path.startsWith(href);
       </ul>
     </nav>
     <div class="actions">
+      <a href="/es/cuenta/" class="icon-btn account-btn" data-account-link aria-label="Mi cuenta y recordatorios">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="acc-dot" aria-hidden="true"></span>
+      </a>
       <a href="/es/buscar/" class="icon-btn" aria-label="Buscar">
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </a>
@@ -46,6 +50,9 @@ const isCurrent = (href: string) => path.startsWith(href);
   .bar { display: flex; align-items: center; gap: 1rem; min-height: var(--header); }
   .brand { color: var(--ink); text-decoration: none; display: inline-flex; flex: none; }
   .main-nav { margin-left: auto; }
+  .account-btn { position: relative; }
+  .acc-dot { display: none; position: absolute; top: 7px; right: 7px; width: 8px; height: 8px; border-radius: 999px; background: var(--gain); box-shadow: 0 0 0 2px var(--paper); }
+  .account-btn.signed-in .acc-dot { display: block; }
   .main-nav ul { list-style: none; display: flex; gap: 0.1rem; margin: 0; padding: 0; }
   .main-nav a { display: block; white-space: nowrap; padding: 0.5rem 0.7rem; border-radius: 999px; color: var(--ink-2); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
   .main-nav a:hover { background: var(--paper-2); color: var(--ink); }

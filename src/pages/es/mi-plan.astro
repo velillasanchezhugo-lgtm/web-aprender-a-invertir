@@ -3,6 +3,8 @@ import Base from '../../layouts/Base.astro';
 import academy from '../../data/academy.json';
 import { sessions, sessionMeta, glossaryList, lessons, academyIndex, SKILLS, DOMAINS, TRACKS } from '../../lib/content';
 import { BADGES } from '../../lib/academy';
+import ReminderCard from '../../components/ReminderCard.astro';
+import { ACCOUNTS } from '../../config/site';
 const all = await sessions();
 const ls = await lessons();
 const { catalog, qmeta } = await academyIndex();
@@ -54,6 +56,16 @@ const data = {
           <div><dt class="mono">Acciones hechas</dt><dd id="k-actions">0</dd></div>
           <div><dt class="mono">Sesiones</dt><dd id="k-sessions">0</dd></div>
         </dl>
+      </section>
+    </div>
+
+    <div class="grid cols-2 extras">
+      <ReminderCard compact />
+      <section class="card save" aria-labelledby="sv-t">
+        <p class="eyebrow">Opcional</p>
+        <h2 id="sv-t" class="h3">Guarda tu progreso</h2>
+        <p class="small muted">{ACCOUNTS.enabled ? 'Crea una cuenta gratis (solo con tu correo) para no perder nada y tenerlo en todos tus dispositivos. No es obligatoria.' : 'Tu progreso se guarda en este dispositivo. Pronto podrás crear una cuenta opcional para tenerlo en todos tus dispositivos.'}</p>
+        <a class="btn secondary small" href="/es/cuenta/">{ACCOUNTS.enabled ? 'Crear cuenta o entrar' : 'Ver opciones'}</a>
       </section>
     </div>
 
@@ -130,6 +142,9 @@ const data = {
   .review { display: flex; flex-direction: column; align-items: flex-start; }
   .t-why { margin: 0.2rem 0 0.4rem; padding-left: 1.1rem; color: #9be2ff; }
   .t-why:empty { display: none; }
+  .extras { gap: 1rem; margin-top: 1rem; }
+  .save .h3 { font-size: 1.3rem; margin: 0.2rem 0 0.3rem; }
+  .save .eyebrow { margin: 0; }
   .refuerzo { margin-top: 1rem; border-left: 4px solid var(--ochre); }
   .refuerzo h2 { margin: 0.2rem 0 0.3rem; }
   .map-grid { gap: 1rem; }
