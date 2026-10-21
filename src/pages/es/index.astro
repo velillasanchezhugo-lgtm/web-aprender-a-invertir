@@ -135,7 +135,7 @@ const jsonLd = [
     <h2 id="lv-t">Tres niveles, sin prisas</h2>
     <ol class="levels">
       {curriculum.tiers.map((t) => (
-        <li class="reveal"><a href={t.n === 1 ? '/es/niveles/#nivel-1' : t.href} class="card lv"><span class="ln mono">{t.n}</span><strong>{t.title}</strong><span class="small muted">{t.n === 1 ? 'Gratis · invertir por tu cuenta' : t.subtitle}</span></a></li>
+        <li class="reveal"><a href={t.href} class="card lv"><span class="ln mono">{t.n}</span><strong>{t.title}</strong><span class="small muted">{t.n === 1 ? 'Gratis · invertir por tu cuenta' : t.subtitle}</span></a></li>
       ))}
     </ol>
     <p class="small muted">Subir de nivel significa comprender más. No operar más ni asumir más riesgo.</p>

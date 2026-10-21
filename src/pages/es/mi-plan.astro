@@ -15,7 +15,7 @@ const data = {
   // Tres niveles (docs/CURRICULO.md): el Nivel 1 se mide por sus sesiones del núcleo; el 2 y el 3 aún no están abiertos.
   levels: [
     { id: 'cero', n: 0, title: 'Camino Cero', items: all.filter((s) => s.data.track === 'camino-cero').map((s) => s.id), href: '/es/camino-cero/', exam: '/es/examen/cero/' },
-    { id: 'n1', n: 1, title: 'Nivel 1 · Invertir por tu cuenta', items: all.filter((s) => ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener'].includes(s.data.track)).map((s) => s.id), href: '/es/niveles/#nivel-1', exam: '/es/examen/n1/' },
+    { id: 'n1', n: 1, title: 'Nivel 1 · Invertir por tu cuenta', items: all.filter((s) => ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener'].includes(s.data.track)).map((s) => s.id), href: '/es/nivel-1/', exam: '/es/examen/n1/' },
     { id: 'n2', n: 2, title: 'Nivel 2 · Avanzado', items: [], href: '/es/nivel-2/', locked: true },
     { id: 'n3', n: 3, title: 'Nivel 3 · Profesional', items: [], href: '/es/nivel-3/', locked: true },
   ],

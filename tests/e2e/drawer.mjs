@@ -21,11 +21,9 @@ for (const [w, h, name] of [[390, 844, 'móvil'], [1366, 900, 'escritorio']]) {
   const dr = await p.locator('.drawer').boundingBox();
   ok(dr && dr.x <= 1, `${name}: el panel se abre desde la izquierda`);
   ok(await btn.getAttribute('aria-expanded') === 'true', `${name}: aria-expanded se actualiza`);
-  const levels = p.locator('details.course > .levels > li > details');
+  const levels = p.locator('details.course > .levels > li > a.lv');
   ok(await levels.count() === 3, `${name}: Inversión muestra 3 niveles`);
-  ok(!(await levels.nth(1).evaluate((d) => d.open)), `${name}: los niveles empiezan plegados`);
-  await levels.nth(1).locator('summary').click();
-  ok(await levels.nth(1).locator('.items a').count() >= 12, `${name}: al abrir el Nivel 2 salen sus módulos`);
+  ok(JSON.stringify(await levels.evaluateAll((as) => as.map((x) => x.getAttribute('href')))) === JSON.stringify(['/es/nivel-1/', '/es/nivel-2/', '/es/nivel-3/']), `${name}: cada nivel lleva a su página de presentación`);
   ok(await p.locator('.drawer').getByText('99 €').count() > 0, `${name}: el Nivel 3 indica la certificación a 99 €`);
   ok(await p.locator('.drawer .price-off s').count() === 2, `${name}: los precios de pago salen tachados mientras no se cobra`);
   if (SHOTS) await p.screenshot({ path: `${SHOTS}/drawer-${w}.png` });
@@ -34,9 +32,15 @@ for (const [w, h, name] of [[390, 844, 'móvil'], [1366, 900, 'escritorio']]) {
   ok(await p.evaluate(() => document.activeElement?.hasAttribute('data-drawer-open')), `${name}: Escape cierra y devuelve el foco`);
   await ctx.close();
 }
-// En una página del Nivel 2, ese nivel viene desplegado
+// Pulsar un nivel abre su presentación, y ese nivel queda marcado
 const ctx = await b.newContext({ viewport: { width: 390, height: 844 } }); const p = await ctx.newPage();
-await p.goto(BASE + '/es/nivel-2/'); await p.click('[data-drawer-open]'); await p.waitForSelector('#drawer.open');
-ok(await p.locator('details.course > .levels > li > details').nth(1).evaluate((d) => d.open), 'en el Nivel 2, su nivel aparece desplegado');
+p.on('pageerror', (e) => errs.push(e.message));
+await p.goto(BASE + '/es/'); await p.click('[data-drawer-open]'); await p.waitForSelector('#drawer.open');
+await Promise.all([p.waitForURL('**/es/nivel-1/'), p.click('a.lv[href="/es/nivel-1/"]')]);
+ok(await p.locator('h1').textContent() === 'Invertir por tu cuenta', 'el Nivel 1 tiene su página de presentación');
+ok(await p.locator('.stages .tracks a').count() === 9, 'la presentación del Nivel 1 enlaza sus 9 módulos');
+await p.click('[data-drawer-open]'); await p.waitForSelector('#drawer.open');
+ok(await p.locator('a.lv[href="/es/nivel-1/"]').getAttribute('aria-current') === 'page', 'en el Nivel 1, su nivel aparece marcado');
+if (SHOTS) { await p.keyboard.press('Escape'); await p.screenshot({ path: `${SHOTS}/nivel-1.png`, fullPage: true }); }
 ok(errs.length === 0, 'sin errores de JavaScript' + (errs.length ? ': ' + errs.join('; ') : ''));
 await b.close();

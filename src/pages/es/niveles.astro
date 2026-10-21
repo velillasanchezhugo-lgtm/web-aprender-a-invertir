@@ -67,7 +67,7 @@ const n3n = curriculum.n3.modules.reduce((a, m) => a + m.items.length, 0);
           )}
           <p class="links">
             {t.n === 1 ? <a class="btn small brand" href="/es/empezar/">Empezar gratis</a> : <a class="btn small brand" href={t.href}>Ver el temario</a>}
-            {t.n === 1 && <a class="btn small ghost" href="/es/examen/n1/">Examen del Nivel 1</a>}
+            {t.n === 1 && <a class="btn small ghost" href={t.href}>Ver el nivel</a>}
           </p>
         </li>
       ))}

@@ -1,23 +1,17 @@
 ---
 /**
- * Panel lateral de formaciones (se abre desde la izquierda). Árbol desplegable:
- * Formación → niveles → módulos, como los proyectos y sus conversaciones en una barra lateral.
+ * Panel lateral de formaciones (se abre desde la izquierda). Cada formación se despliega en sus
+ * niveles, y cada nivel lleva a su página de presentación.
  * De momento solo existe la formación «Inversión».
  */
-import curriculum from '../data/curriculum.json';
-import { TRACKS } from '../lib/adaptive';
 import { PRICING } from '../config/site';
 import Price from './Price.astro';
 const path = Astro.url.pathname;
-const N1_CORE = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener'] as const;
-const N1_EXTRA = ['empresas', 'noticias', 'trading'] as const;
-const trackHref = (t: string) => (t === 'camino-cero' ? '/es/camino-cero/' : `/es/modulos/${t}/`);
-const n1Paths = ['/es/camino-cero', '/es/modulos', '/es/sesion', '/es/examen/n1', '/es/examen/cero', '/es/insignia', '/es/plan-en-una-pagina', '/es/niveles'];
-const inN1 = n1Paths.some((p) => path.startsWith(p));
-const inN2 = path.startsWith('/es/nivel-2');
-const inN3 = path.startsWith('/es/nivel-3');
-const n2 = [...curriculum.n2.modules].sort((a, b) => curriculum.n2.order.indexOf(a.code) - curriculum.n2.order.indexOf(b.code));
-const n3 = curriculum.n3.modules;
+const LEVELS = [
+  { n: 1, title: 'Invertir por tu cuenta', href: '/es/nivel-1/', free: true },
+  { n: 2, title: 'Avanzado', href: '/es/nivel-2/', price: PRICING.n2.monthly },
+  { n: 3, title: 'Profesional', href: '/es/nivel-3/', price: `curso ${PRICING.n3.course} · certificación ${PRICING.n3.certification}` },
+];
 const nav = [
   { href: '/es/mi-plan/', label: 'Mi plan' },
   { href: '/es/repaso/', label: 'Repaso' },
@@ -28,7 +22,6 @@ const nav = [
   { href: '/es/cuenta/', label: 'Mi cuenta' },
 ];
 const cur = (href: string) => (path === href || (href !== '/es/' && path.startsWith(href)) ? 'page' : undefined);
-const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
 ---
 <div class="drawer-root" id="drawer" inert>
   <div class="drawer-overlay" data-drawer-close></div>
@@ -49,39 +42,15 @@ const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
               <span class="chev" aria-hidden="true"></span>
             </summary>
             <ul class="levels">
-              <li>
-                <details open={inN1}>
-                  <summary><span class="lvn">1</span><span class="lbl"><span>Invertir por tu cuenta</span><span class="meta">Gratis</span></span><span class="chev" aria-hidden="true"></span></summary>
-                  <ul class="items">
-                    <li><a href="/es/niveles/#nivel-1" aria-current={cur('/es/niveles/')}>Visión general del nivel</a></li>
-                    {N1_CORE.map((t) => <li><a href={trackHref(t)} aria-current={cur(trackHref(t))}>{TRACKS[t].label}</a></li>)}
-                    <li class="sub">Ampliación</li>
-                    {N1_EXTRA.map((t) => <li><a href={trackHref(t)} aria-current={cur(trackHref(t))}>{TRACKS[t].label}</a></li>)}
-                    <li class="sub">Cierre</li>
-                    <li><a href="/es/plan-en-una-pagina/" aria-current={cur('/es/plan-en-una-pagina/')}>Mi plan en una página</a></li>
-                    <li><a href="/es/examen/n1/" aria-current={cur('/es/examen/n1/')}>Examen del Nivel 1</a></li>
-                    <li><a href="/es/insignia/" aria-current={cur('/es/insignia/')}>Mi insignia</a></li>
-                  </ul>
-                </details>
-              </li>
-              <li>
-                <details open={inN2}>
-                  <summary><span class="lvn">2</span><span class="lbl"><span>Avanzado</span><span class="meta"><Price text={PRICING.n2.monthly} /></span></span><span class="chev" aria-hidden="true"></span></summary>
-                  <ul class="items">
-                    <li><a href="/es/nivel-2/" aria-current={path === '/es/nivel-2/' ? 'page' : undefined}>Visión general y temario</a></li>
-                    {n2.map((m) => <li><a href={`/es/nivel-2/#mod-${m.code}`}><svg class="lk" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d={lock} fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" /></svg>{m.title}</a></li>)}
-                  </ul>
-                </details>
-              </li>
-              <li>
-                <details open={inN3}>
-                  <summary><span class="lvn">3</span><span class="lbl"><span>Profesional</span><span class="meta"><Price text={`curso ${PRICING.n3.course} · certificación ${PRICING.n3.certification}`} /></span></span><span class="chev" aria-hidden="true"></span></summary>
-                  <ul class="items">
-                    <li><a href="/es/nivel-3/" aria-current={path === '/es/nivel-3/' ? 'page' : undefined}>Visión general y temario</a></li>
-                    {n3.map((m) => <li><a href={`/es/nivel-3/#mod-${m.code}`}><svg class="lk" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d={lock} fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" /></svg>{m.title}</a></li>)}
-                  </ul>
-                </details>
-              </li>
+              {LEVELS.map((l) => (
+                <li>
+                  <a class="lv" href={l.href} aria-current={path.startsWith(l.href) ? 'page' : undefined}>
+                    <span class="lvn">{l.n}</span>
+                    <span class="lbl"><span>{l.title}</span><span class="meta">{l.free ? 'Gratis' : <Price text={l.price!} />}</span></span>
+                    <span class="chev" aria-hidden="true"></span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </details>
         </li>
@@ -113,7 +82,7 @@ const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
   summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.6rem; border-radius: 10px; color: var(--ink); }
   summary::-webkit-details-marker { display: none; }
   summary:hover { background: var(--paper-2); }
-  summary:focus-visible, .items a:focus-visible, .quick a:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+  summary:focus-visible, .lv:focus-visible, .quick a:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
   .lbl { display: flex; flex-direction: column; gap: 0.05rem; flex: 1; min-width: 0; font-size: 0.95rem; }
   .meta { font: 500 0.72rem/1.3 var(--mono); color: var(--ink-3); }
   .ico { display: inline-flex; width: 30px; height: 30px; align-items: center; justify-content: center; border-radius: 9px; background: var(--u-ink); color: var(--u-cyan); flex: none; }
@@ -121,12 +90,10 @@ const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
   details[open] > summary > .chev { transform: rotate(45deg); }
   .levels { margin: 0.1rem 0 0.3rem 1.1rem; padding-left: 0.6rem; border-left: 1px solid var(--rule); }
   .lvn { width: 22px; height: 22px; border-radius: 7px; display: inline-grid; place-items: center; font: 600 0.75rem/1 var(--mono); background: var(--paper-2); color: var(--ink-2); border: 1px solid var(--rule-strong); flex: none; }
-  .items { margin: 0.1rem 0 0.4rem 0.95rem; padding-left: 0.6rem; border-left: 1px solid var(--rule); }
-  .items a { display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.6rem; border-radius: 8px; color: var(--ink-2); text-decoration: none; font-size: 0.9rem; line-height: 1.3; }
-  .items a:hover { background: var(--paper-2); color: var(--ink); }
-  .items a[aria-current='page'], .quick a[aria-current='page'] { background: var(--teal-soft); color: var(--ink); font-weight: 600; }
-  .lk { color: var(--ink-3); flex: none; }
-  .sub { font: 500 0.68rem/1 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); padding: 0.7rem 0.6rem 0.3rem; }
+  .lv { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.6rem; border-radius: 10px; color: var(--ink); text-decoration: none; }
+  .lv:hover { background: var(--paper-2); }
+  .lv .chev { transform: rotate(-45deg); }
+  .lv[aria-current='page'], .quick a[aria-current='page'] { background: var(--teal-soft); color: var(--ink); font-weight: 600; }
   .soon { display: flex; align-items: center; gap: 0.6rem; padding: 0.55rem 0.6rem; opacity: 0.7; }
   .soon .ico { background: var(--paper-2); color: var(--ink-3); }
   .dr-sec { margin: 1.2rem 0.6rem 0.3rem; font: 600 0.7rem/1 var(--mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); }

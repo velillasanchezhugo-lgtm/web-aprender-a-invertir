@@ -989,7 +989,7 @@ Cada fase debe estar terminada y aprobada por los socios antes de empezar la sig
 - Nivel 2 presentado como «Avanzado», con «Clase del mes» para que la suscripción tenga contenido nuevo.
 - Plan anual (49 €) y 7 días de prueba del Plan Avanzado.
 - Certificación del Nivel 3 separada del curso: curso 50 €, certificación 99 € (D-08, decidido).
-- Menú «Formaciones» arriba a la izquierda (tres líneas): panel lateral que se despliega en Inversión → Nivel 1, 2 y 3 → módulos. Preparado para añadir más formaciones.
+- Menú «Formaciones» arriba a la izquierda (tres líneas): panel lateral; Inversión se despliega en Nivel 1, 2 y 3, y cada nivel lleva a su página de presentación (`/es/nivel-1/`, `/es/nivel-2/`, `/es/nivel-3/`). Preparado para añadir más formaciones.
 - Lo que ya era gratis sigue gratis; los exámenes antiguos redirigen al nuevo.
 - Tabla de capacidades y competencias del examen N1 (sección 9.1).
 - Insignia y certificados verificables solo con corrección en el servidor; consentimiento para mostrar el nombre.
