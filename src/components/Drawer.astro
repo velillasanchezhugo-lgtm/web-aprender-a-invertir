@@ -7,6 +7,7 @@
 import curriculum from '../data/curriculum.json';
 import { TRACKS } from '../lib/adaptive';
 import { PRICING } from '../config/site';
+import Price from './Price.astro';
 const path = Astro.url.pathname;
 const N1_CORE = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener'] as const;
 const N1_EXTRA = ['empresas', 'noticias', 'trading'] as const;
@@ -65,7 +66,7 @@ const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
               </li>
               <li>
                 <details open={inN2}>
-                  <summary><span class="lvn">2</span><span class="lbl"><span>Avanzado</span><span class="meta">{PRICING.n2.monthly}</span></span><span class="chev" aria-hidden="true"></span></summary>
+                  <summary><span class="lvn">2</span><span class="lbl"><span>Avanzado</span><span class="meta"><Price text={PRICING.n2.monthly} /></span></span><span class="chev" aria-hidden="true"></span></summary>
                   <ul class="items">
                     <li><a href="/es/nivel-2/" aria-current={path === '/es/nivel-2/' ? 'page' : undefined}>Visión general y temario</a></li>
                     {n2.map((m) => <li><a href={`/es/nivel-2/#mod-${m.code}`}><svg class="lk" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d={lock} fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" /></svg>{m.title}</a></li>)}
@@ -74,7 +75,7 @@ const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
               </li>
               <li>
                 <details open={inN3}>
-                  <summary><span class="lvn">3</span><span class="lbl"><span>Profesional</span><span class="meta">curso {PRICING.n3.course} · certificación {PRICING.n3.certification}</span></span><span class="chev" aria-hidden="true"></span></summary>
+                  <summary><span class="lvn">3</span><span class="lbl"><span>Profesional</span><span class="meta"><Price text={`curso ${PRICING.n3.course} · certificación ${PRICING.n3.certification}`} /></span></span><span class="chev" aria-hidden="true"></span></summary>
                   <ul class="items">
                     <li><a href="/es/nivel-3/" aria-current={path === '/es/nivel-3/' ? 'page' : undefined}>Visión general y temario</a></li>
                     {n3.map((m) => <li><a href={`/es/nivel-3/#mod-${m.code}`}><svg class="lk" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d={lock} fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" /></svg>{m.title}</a></li>)}

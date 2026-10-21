@@ -273,3 +273,6 @@ output { font-variant-numeric: tabular-nums; }
 .rq-fb p { margin: 0 0 0.4rem; }
 .rq-fb p:last-child { margin: 0; }
 .rq-verdict { font-weight: 700; }
+
+/* Precios previstos mientras no se cobra: tachados (componente Price.astro). */
+.price-off s { text-decoration-thickness: 1.5px; color: var(--ink-3); }

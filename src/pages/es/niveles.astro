@@ -4,6 +4,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import curriculum from '../../data/curriculum.json';
 import { sessions, lessons, TRACKS } from '../../lib/content';
 import { PRICING } from '../../config/site';
+import Price from '../../components/Price.astro';
 /** Tres niveles (docs/CURRICULO.md, sección 2). */
 const all = await sessions();
 const count = (t: string) => all.filter((s) => s.data.track === t).length;
@@ -32,7 +33,7 @@ const n3n = curriculum.n3.modules.reduce((a, m) => a + m.items.length, 0);
               <h2>Nivel {t.n} · {t.title}</h2>
               {t.subtitle && <p class="small muted sub">{t.subtitle}</p>}
             </div>
-            <span class="price mono small">{price[t.id as keyof typeof price]}</span>
+            <span class="price mono small">{t.id === 'n1' ? price.n1 : <Price text={price[t.id as keyof typeof price]} />}</span>
           </div>
           <p>{t.promise}</p>
           <dl class="facts">

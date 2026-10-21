@@ -1,0 +1,7 @@
+---
+/** Precio de un nivel de pago. Mientras no se pueda cobrar (PRICING.paymentsEnabled) sale tachado. */
+import { PRICING } from '../config/site';
+interface Props { text: string }
+const { text } = Astro.props;
+---
+{PRICING.paymentsEnabled ? <span>{text}</span> : <span class="price-off"><s>{text}</s><span class="sr-only"> (precio previsto, aún no a la venta)</span></span>}

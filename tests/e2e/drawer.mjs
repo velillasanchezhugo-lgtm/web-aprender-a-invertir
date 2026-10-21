@@ -27,6 +27,7 @@ for (const [w, h, name] of [[390, 844, 'móvil'], [1366, 900, 'escritorio']]) {
   await levels.nth(1).locator('summary').click();
   ok(await levels.nth(1).locator('.items a').count() >= 12, `${name}: al abrir el Nivel 2 salen sus módulos`);
   ok(await p.locator('.drawer').getByText('99 €').count() > 0, `${name}: el Nivel 3 indica la certificación a 99 €`);
+  ok(await p.locator('.drawer .price-off s').count() === 2, `${name}: los precios de pago salen tachados mientras no se cobra`);
   if (SHOTS) await p.screenshot({ path: `${SHOTS}/drawer-${w}.png` });
   await p.keyboard.press('Escape');
   await p.waitForFunction(() => !document.getElementById('drawer').classList.contains('open'));

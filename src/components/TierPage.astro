@@ -5,6 +5,7 @@ import TierSyllabus from './TierSyllabus.astro';
 import InterestButton from './InterestButton.astro';
 import curriculum from '../data/curriculum.json';
 import { PRICING } from '../config/site';
+import Price from './Price.astro';
 import { getCollection } from 'astro:content';
 interface Props { tier: 2 | 3 }
 const { tier } = Astro.props;
@@ -18,7 +19,7 @@ const hours = Math.round(data.modules.reduce((a, m) => a + m.minutes, 0) / 60);
   <section class="tp-hero dots">
     <div class="container">
       <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/', label: 'Niveles' }, { label: `Nivel ${tier}` }]} />
-      <p class="eyebrow">Nivel {tier} · {tier === 2 ? `Plan Avanzado · ${PRICING.n2.monthly} o ${PRICING.n2.annual}` : `Curso Profesional · ${PRICING.n3.course}, pago único · certificación aparte ${PRICING.n3.certification}`} · próximamente</p>
+      <p class="eyebrow"><span class="eb-text">Nivel {tier} · {tier === 2 ? <>Plan Avanzado · <Price text={`${PRICING.n2.monthly} o ${PRICING.n2.annual}`} /></> : <>Curso Profesional · <Price text={`${PRICING.n3.course}, pago único · certificación aparte ${PRICING.n3.certification}`} /></>} · próximamente</span></p>
       <h1>{t.title}</h1>
       {t.subtitle && <p class="sub">{t.subtitle}</p>}
       <p class="lede">{t.promise}</p>
@@ -54,6 +55,7 @@ const hours = Math.round(data.modules.reduce((a, m) => a + m.minutes, 0) / 60);
 </Base>
 <style>
   .tp-hero { border-bottom: 1px solid var(--rule); padding: 0.5rem 0 2rem; margin-bottom: 1.5rem; }
+  .tp-hero .eyebrow { line-height: 1.5; }
   .tp-hero h1 { font-size: clamp(2.4rem, 1.7rem + 3.4vw, 4.4rem); margin: 0.2rem 0 0.2rem; }
   .sub { font-size: 1.2rem; color: var(--teal); font-weight: 600; margin: 0 0 0.6rem; }
   .facts { list-style: none; padding: 0; margin: 1.2rem 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
