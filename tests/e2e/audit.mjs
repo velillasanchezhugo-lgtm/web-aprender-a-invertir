@@ -19,7 +19,8 @@ for (const scheme of ['light', 'dark']) {
     const p = await ctx.newPage();
     const errs = []; const external = [];
     p.on('pageerror', (e) => errs.push(e.message));
-    p.on('console', (m) => { if (m.type() === 'error') errs.push(m.text()); });
+    // El script de Vercel Analytics (/_vercel/insights/) solo existe al desplegar en Vercel: su 404 en local no es un fallo.
+    p.on('console', (m) => { if (m.type() === 'error' && !(m.location()?.url ?? '').includes('/_vercel/')) errs.push(m.text()); });
     p.on('request', (r) => { const u = new URL(r.url()); if (!['localhost', '127.0.0.1'].includes(u.hostname)) external.push(u.hostname); });
     await p.goto(BASE + path, { waitUntil: 'networkidle' });
     await p.addScriptTag({ content: axe });

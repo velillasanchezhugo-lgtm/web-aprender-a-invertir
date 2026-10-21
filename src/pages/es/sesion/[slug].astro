@@ -235,6 +235,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
   import { getState, saveState, answer, completeSession, type QMeta } from '../../../scripts/academy-store';
   import { grade, streak, type Question } from '../../../lib/academy';
   import { showRecommendation } from '../../../scripts/recommend-ui';
+  import { track } from '@vercel/analytics';
   const SD = JSON.parse(document.getElementById('session-data')!.textContent!) as { questions: string[]; qmeta: Record<string, QMeta>; skills: string[] };
   const root = document.querySelector<HTMLElement>('.player')!;
   const id = root.dataset.id!;
@@ -334,6 +335,8 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
     let s = getState();
     const first = !s.completed[id];
     s = completeSession(s, id, first ? SD.skills : []); saveState(s);
+    // Evento anónimo (solo módulo y aciertos) para medir la fidelización; sin datos personales.
+    if (first) try { track('sesion_completada', { modulo: root.dataset.track ?? '', aciertos: [...answered.values()].filter(Boolean).length }); } catch { /* */ }
     const correct = [...answered.values()].filter(Boolean).length;
     document.getElementById('f-score')!.textContent = `${correct}/${qSteps.length}`;
     const k = streak(s.activity, s.activity[s.activity.length - 1]);

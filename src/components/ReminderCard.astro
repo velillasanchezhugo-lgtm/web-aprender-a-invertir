@@ -32,6 +32,7 @@ const { compact = false } = Astro.props as { compact?: boolean };
     card.querySelector<HTMLButtonElement>('[data-ics-daily]')!.addEventListener('click', () => {
       const ics = dailyReminderIcs(toDay(new Date()), `${location.origin}/es/mi-plan/`);
       const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' })); a.download = 'umotion-academy-recordatorio-diario.ics'; a.click(); URL.revokeObjectURL(a.href);
+      import('@vercel/analytics').then(({ track }) => track('recordatorio_activado', { tipo: 'calendario' })).catch(() => {});
       status.textContent = 'Abre el archivo descargado para añadir el recordatorio diario a tu calendario.';
     });
     if (!on || !off) return;
@@ -47,6 +48,7 @@ const { compact = false } = Astro.props as { compact?: boolean };
       const { enablePush } = await import('../scripts/push');
       const r = await enablePush();
       on.disabled = false;
+      if (r.ok) import('@vercel/analytics').then(({ track }) => track('recordatorio_activado', { tipo: 'push' })).catch(() => {});
       status.textContent = r.ok ? 'Notificaciones activadas: te avisaremos a las 16:00 si aún no has estudiado.' : r.message ?? '';
       paint();
     });

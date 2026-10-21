@@ -59,7 +59,7 @@ Escrito con asistencia de IA y en estado «Pendiente de revisión humana». Prio
 
 - **Cuentas de usuario**: no existe un backend seguro; el progreso es local, exportable y borrable.
 - **Recordatorios por correo o notificaciones**: no hay integración real. Se ofrece un archivo de calendario `.ics` generado en el navegador.
-- **Analítica**: no se ha instalado. Si se añade, debe respetar el consentimiento (o ser una analítica sin cookies, revisada jurídicamente) y nunca recibir respuestas del test.
+- **Analítica**: Vercel Web Analytics, sin cookies. Se activa en el panel de Vercel (Analytics → Enable). Solo envía la ruta (sin parámetros) y el evento anónimo «sesion_completada» (módulo y aciertos) y «recordatorio_activado»; los eventos personalizados solo se ven en el plan Pro de Vercel. Pendiente: revisión jurídica de la base de interés legítimo.
 - **Tutor con IA**: construido pero desactivado. Para activarlo hace falta una clave de la API de Anthropic, revisión jurídica y de privacidad, y un límite de gasto (ver `docs/TUTOR-IA.md`). Mientras tanto funciona en modo guiado sin conexión.
 - **Cotizaciones en tiempo real**: no se usan; no se simulan.
 - **Módulos de materias primas, inmobiliario, planes de pensiones**: anunciados como «En preparación», sin páginas vacías.

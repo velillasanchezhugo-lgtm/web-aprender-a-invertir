@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BottomBar from '../components/BottomBar.astro';
 import Consent from '../components/Consent.astro';
+import Analytics from '@vercel/analytics/astro';
 import { SITE } from '../config/site';
 
 export interface Alternate { lang: string; href: string }
@@ -68,6 +69,11 @@ const prototype = !SITE.indexable;
   </script>
   {ld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
   <Consent allowAds={allowAds} />
+  <script is:inline>
+    // Analítica de Vercel sin cookies: se envía solo la ruta, nunca los parámetros (búsquedas, preguntas del tutor…).
+    window.webAnalyticsBeforeSend = function (e) { try { var u = new URL(e.url); u.search = ''; u.hash = ''; return Object.assign({}, e, { url: u.toString() }); } catch (err) { return e; } };
+  </script>
+  <Analytics />
 </head>
 <body data-ads={allowAds ? 'allowed' : 'blocked'} class={focusMode ? 'focus-mode' : undefined}>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
