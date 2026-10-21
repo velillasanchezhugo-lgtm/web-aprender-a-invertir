@@ -110,6 +110,6 @@ export const PUSH = {
  */
 export const PRICING = {
   n2: { monthly: '5 €/mes', annual: '49 €/año', trialDays: 7 },
-  n3: { course: '50 €', certification: 'precio por confirmar' },
+  n3: { course: '50 €', certification: '99 €' },
   paymentsEnabled: false,
 };

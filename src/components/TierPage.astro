@@ -18,7 +18,7 @@ const hours = Math.round(data.modules.reduce((a, m) => a + m.minutes, 0) / 60);
   <section class="tp-hero dots">
     <div class="container">
       <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/', label: 'Niveles' }, { label: `Nivel ${tier}` }]} />
-      <p class="eyebrow">Nivel {tier} · {tier === 2 ? `Plan Avanzado · ${PRICING.n2.monthly} o ${PRICING.n2.annual}` : `Curso Profesional · ${PRICING.n3.course}, pago único`} · próximamente</p>
+      <p class="eyebrow">Nivel {tier} · {tier === 2 ? `Plan Avanzado · ${PRICING.n2.monthly} o ${PRICING.n2.annual}` : `Curso Profesional · ${PRICING.n3.course}, pago único · certificación aparte ${PRICING.n3.certification}`} · próximamente</p>
       <h1>{t.title}</h1>
       {t.subtitle && <p class="sub">{t.subtitle}</p>}
       <p class="lede">{t.promise}</p>

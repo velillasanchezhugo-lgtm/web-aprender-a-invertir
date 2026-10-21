@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import Drawer from './Drawer.astro';
 const path = Astro.url.pathname;
 const nav = [
   { href: '/es/mi-plan/', label: 'Mi plan' },
@@ -13,6 +14,9 @@ const isCurrent = (href: string) => path.startsWith(href);
 ---
 <header class="site-header">
   <div class="container bar">
+    <button type="button" class="icon-btn drawer-btn" data-drawer-open aria-controls="drawer" aria-expanded="false" aria-label="Abrir formaciones">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
     <a href="/es/" class="brand" aria-label="umotion Academy, inicio"><Logo /></a>
     <nav aria-label="Principal" class="main-nav" id="main-nav">
       <ul>
@@ -38,12 +42,10 @@ const isCurrent = (href: string) => path.startsWith(href);
         </button>
       </div>
       <a class="btn small cta" href="/es/empezar/">Empieza gratis</a>
-      <button type="button" class="icon-btn menu-btn" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
-        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
     </div>
   </div>
 </header>
+<Drawer />
 
 <style>
   .site-header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); border-bottom: 1px solid var(--rule); }
@@ -66,27 +68,10 @@ const isCurrent = (href: string) => path.startsWith(href);
   .theme-switch button:hover { color: var(--ink); }
   .theme-switch button[aria-pressed='true'] { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgb(0 0 0 / 15%); }
   @media (max-width: 1240px) { .theme-switch .t-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } .theme-switch button { padding: 0.45rem 0.55rem; } }
-  .menu-btn { display: none; }
+  .drawer-btn { margin-left: -0.6rem; flex: none; }
   @media (max-width: 1180px) {
-    .menu-btn { display: inline-flex; }
+    .main-nav { display: none; }
     .actions { margin-left: auto; }
-    .main-nav { position: absolute; top: var(--header); left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--rule); display: none; margin: 0; box-shadow: var(--shadow); }
-    .main-nav.open { display: block; }
-    .main-nav ul { flex-direction: column; padding: 0.5rem var(--gutter) 1rem; }
-    .main-nav a { padding: 0.85rem 0.75rem; font-size: 1.05rem; border-radius: 12px; }
   }
   @media (max-width: 480px) { .cta { display: none; } .brand :global(.word) { display: none; } }
 </style>
-
-<script>
-  const btn = document.getElementById('menu-toggle');
-  const nav = document.getElementById('main-nav');
-  btn?.addEventListener('click', () => {
-    const open = nav?.classList.toggle('open') ?? false;
-    btn.setAttribute('aria-expanded', String(open));
-    btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && nav?.classList.contains('open')) { nav.classList.remove('open'); btn?.setAttribute('aria-expanded', 'false'); btn?.focus(); }
-  });
-</script>

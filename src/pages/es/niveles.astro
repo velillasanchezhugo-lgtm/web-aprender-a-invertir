@@ -13,7 +13,7 @@ const N1 = [
   { stage: 'Etapa B · núcleo', title: 'Lo esencial para invertir', tracks: ['productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener'] },
   { stage: 'Ampliación (opcional)', title: 'Para saber más', tracks: ['empresas', 'noticias', 'trading'] },
 ] as const;
-const price = { n1: 'Gratis', n2: `${PRICING.n2.monthly} o ${PRICING.n2.annual}`, n3: `${PRICING.n3.course}, pago único` };
+const price = { n1: 'Gratis', n2: `${PRICING.n2.monthly} o ${PRICING.n2.annual}`, n3: `${PRICING.n3.course} el curso · certificación aparte ${PRICING.n3.certification}` };
 const n2min = curriculum.n2.modules.reduce((a, m) => a + m.minutes, 0);
 const n3n = curriculum.n3.modules.reduce((a, m) => a + m.items.length, 0);
 ---
@@ -82,7 +82,7 @@ const n3n = curriculum.n3.modules.reduce((a, m) => a + m.items.length, 0);
   .t1 .tn { background: var(--u-grad); color: #fff; }
   .tier h2 { margin: 0; font-size: 1.6rem; }
   .sub { margin: 0.2rem 0 0; }
-  .price { white-space: nowrap; padding: 0.3rem 0.7rem; border-radius: 999px; border: 1px solid var(--rule-strong); }
+  .price { padding: 0.3rem 0.7rem; border-radius: 14px; text-wrap: balance; max-width: 100%; border: 1px solid var(--rule-strong); }
   @media (max-width: 560px) { .t-head { grid-template-columns: 56px 1fr; } .price { grid-column: 2; justify-self: start; } }
   .facts { display: grid; gap: 0.5rem; margin: 0.8rem 0; }
   @media (min-width: 760px) { .facts { grid-template-columns: repeat(5, 1fr); } }

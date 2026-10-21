@@ -84,7 +84,7 @@
 |---|---|---|---|
 | **Promesa** | Al terminar puedes montar, comprar, mantener y revisar tu propia cartera sin depender de nadie, y detectar productos y propuestas que no te convienen. | Al terminar dominas la inversión lo bastante como para explicársela con rigor a otra persona y responder sus dudas habituales sin recomendarle productos. | Al terminar tienes una base conceptual de calibre comparable a las áreas que cubren formaciones como EFA (EFPA España) o CFA Investment Foundations, y obtienes el certificado umotion verificable. |
 | **Para quién** | Cualquiera, desde cero. | Quien ya invierte y quiere entender a fondo. | Quien quiere un nivel profesional o trabajar en el sector. |
-| **Precio** | Gratis | Plan Avanzado (5 €/mes o 49 €/año, 7 días de prueba) | Curso Profesional (50 €, pago único). La certificación, aparte: ver D-08 |
+| **Precio** | Gratis | Plan Avanzado (5 €/mes o 49 €/año, 7 días de prueba) | Curso Profesional (50 €, pago único) + certificación aparte (99 €, D-08) |
 | **Formato** | Sesión de 5 min | Clase de 15–30 min | Lección de 30–45 min |
 | **Volumen** | 77 sesiones (54 del núcleo + 23 de ampliación), unas 6,5 h | 66 clases, unas 22 h, **más una «Clase del mes»** | 56 lecciones + proyecto, unas 40 h |
 | **Cierre** | Examen N1 + ejercicio con dinero ficticio + «Mi plan en una página» | Examen N2 + proyecto «Tu primera clase» | Examen final + proyecto profesional (supervisión e identidad: D-09) |
@@ -971,7 +971,7 @@ Cada fase debe estar terminada y aprobada por los socios antes de empezar la sig
 | D-05 | Nombre definitivo del certificado — **propuesta aceptada** | Debe ser claro y no confundirse con un título oficial. | «Certificado umotion en Inversión — Nivel Profesional». |
 | D-06 | Validez del certificado | ¿Caduca? La normativa y la fiscalidad cambian. | Sin caducidad, pero indicando la versión del temario y la fecha. |
 | D-07 | Límite de uso del tutor | El coste por usuario muy activo puede superar los ingresos del plan. | Tope mensual de consultas por plan. |
-| D-08 | Precio y modelo del Nivel 3 | A 50 € no cabe pagar a una persona cualificada que corrija cada proyecto de 2.500 a 4.000 palabras. | Curso Profesional a 50 € (lecciones, test y examen de práctica) y **certificación aparte** (examen final + proyecto con revisión humana), con un precio que cubra la revisión (propuesta: 99 €). Alternativa: curso con certificado incluido entre 149 € y 249 €. |
+| D-08 | Precio y modelo del Nivel 3 — **DECIDIDO (21/10/2026)** | A 50 € no cabe pagar a una persona cualificada que corrija cada proyecto de 2.500 a 4.000 palabras. | Curso Profesional a **50 €** (lecciones, test y examen de práctica) y **certificación aparte a 99 €** (examen final + proyecto con revisión humana). |
 | D-09 | Supervisión del examen e identidad | El certificado pierde valor si no se sabe quién hizo el examen. | Lanzar con «nombre declarado por el titular» y examen con tiempo y preguntas aleatorias; valorar verificación de identidad o vigilancia por cámara cuando haya volumen. |
 | D-10 | Orden por defecto del Nivel 1 — **DECIDIDO (21/10/2026)** | Productos o Formas de invertir primero. | Productos primero (sección 5.3). |
 
@@ -988,7 +988,8 @@ Cada fase debe estar terminada y aprobada por los socios antes de empezar la sig
 **Mejoras añadidas**
 - Nivel 2 presentado como «Avanzado», con «Clase del mes» para que la suscripción tenga contenido nuevo.
 - Plan anual (49 €) y 7 días de prueba del Plan Avanzado.
-- Certificación del Nivel 3 separada del curso (D-08).
+- Certificación del Nivel 3 separada del curso: curso 50 €, certificación 99 € (D-08, decidido).
+- Menú «Formaciones» arriba a la izquierda (tres líneas): panel lateral que se despliega en Inversión → Nivel 1, 2 y 3 → módulos. Preparado para añadir más formaciones.
 - Lo que ya era gratis sigue gratis; los exámenes antiguos redirigen al nuevo.
 - Tabla de capacidades y competencias del examen N1 (sección 9.1).
 - Insignia y certificados verificables solo con corrección en el servidor; consentimiento para mostrar el nombre.
