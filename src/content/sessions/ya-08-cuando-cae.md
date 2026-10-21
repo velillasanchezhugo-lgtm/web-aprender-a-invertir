@@ -74,6 +74,8 @@ Cuatro cosas que sí:
 
 Y una que no: **salir para volver «cuando pase»**. Nadie avisa de cuándo pasa, y los mejores días suelen llegar cuando todavía da miedo.
 
+Para seguir: [Tu cabeza contra tu cartera](/es/sesion/mr-01-tu-cabeza-contra-tu-cartera/) y [Cuándo vender](/es/sesion/mr-04-cuando-vender/).
+
 ## Error frecuente
 
 Tener en bolsa dinero que necesitarás pronto. Si una caída te obliga a vender, el problema estaba en el plan: corrígelo con calma, no con prisas.

@@ -173,10 +173,9 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
   .hook-hint { color: #a3acc4; margin: 0; }
   .step { margin-bottom: 2.5rem; }
   .q-text { font-size: clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem); margin: 0.9rem 0 1.2rem; line-height: 1.25; }
-  .opts { display: grid; gap: 0.6rem; }
-  .opts.tf { grid-template-columns: 1fr 1fr; }
-  .opt { text-align: left; font: 500 1.05rem/1.4 var(--sans); padding: 1rem 1.1rem; border: 1.5px solid var(--rule-strong); border-radius: 16px; background: var(--card); color: var(--ink); cursor: pointer; transition: border-color .15s, transform .15s var(--ease-seda), background .15s; min-height: 56px; }
-  .opts.tf .opt { text-align: center; font-weight: 600; }
+  .opts { display: flex; flex-direction: column; gap: 0.75rem; }
+  .opt { text-align: left; font: 500 1.05rem/1.5 var(--sans); padding: 1rem 1.1rem; border: 1.5px solid var(--rule-strong); border-radius: 16px; background: var(--card); color: var(--ink); cursor: pointer; transition: border-color .15s, transform .15s var(--ease-seda), background .15s; min-height: 56px; }
+  .opts.tf .opt { font-weight: 600; }
   .opt:hover:not(:disabled) { border-color: var(--u-blue); transform: translateY(-1px); }
   .opt.is-correct { border-color: var(--gain); background: color-mix(in srgb, var(--gain) 12%, var(--card)); }
   .opt.is-wrong { border-color: var(--loss); background: var(--loss-soft); }

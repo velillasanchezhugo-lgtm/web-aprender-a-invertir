@@ -6,7 +6,7 @@
  * - Ejemplos marcados como ficticios donde se usa la palabra «escenario».
  * - Palabras prohibidas que sugieren promesas («garantizado», «sin riesgo»…) fuera de contexto negativo.
  */
-import { readdirSync, readFileSync } from 'node:fs';
+import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import yaml from 'js-yaml';
 
 const sources = JSON.parse(readFileSync('src/data/sources.json', 'utf8'));
@@ -63,7 +63,7 @@ const qids = new Set();
 const skillMap = JSON.parse(readFileSync('src/data/skills.json', 'utf8'));
 const skillIds = new Set(skillMap.skills.map((k) => k.id));
 const taught = new Set();
-const TRACKS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'empresas', 'noticias', 'trading'];
+const TRACKS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener', 'empresas', 'noticias', 'trading'];
 const orders = new Map();
 for (const x of sessions) {
   const track = x.data.track ?? 'camino-cero';
@@ -86,7 +86,20 @@ for (const x of sessions) {
     if (q.type === 'estimate' && (q.answer < q.min || q.answer > q.max || (q.answer - q.min) % q.step > 1e-9 && Math.abs(((q.answer - q.min) % q.step) - q.step) > 1e-9 && q.tolerance < q.step)) errors.push(`${x.file}: «${q.id}» no se puede responder exactamente con el deslizador`);
   }
 }
-for (const k of skillIds) if (!taught.has(k)) warnings.push(`competencia «${k}» sin ninguna sesión que la enseñe`);
+// Clases de los niveles 2 y 3 (muestras y, en el futuro, contenido de pago)
+const clases = existsSync('src/content/clases') ? load('src/content/clases') : [];
+const curriculum = JSON.parse(readFileSync('src/data/curriculum.json', 'utf8'));
+const plannedIds = new Set([...curriculum.n2.modules, ...curriculum.n3.modules].flatMap((m) => m.items.map((i) => i.id)));
+for (const id of plannedIds) for (const k of [...curriculum.n2.modules, ...curriculum.n3.modules].flatMap((m) => m.items).find((i) => i.id === id).skills) if (!skillIds.has(k)) errors.push(`temario: «${id}» usa la competencia desconocida «${k}»`);
+for (const x of clases) {
+  if (!plannedIds.has(x.id)) errors.push(`${x.file}: no está en el temario (src/data/curriculum.json)`);
+  for (const k of x.data.skills ?? []) if (!skillIds.has(k)) errors.push(`${x.file}: competencia desconocida «${k}»`);
+  for (const t of x.data.terms ?? []) if (!glossary.some((g) => g.id === t)) errors.push(`${x.file}: término «${t}» no está en el glosario`);
+  for (const q of x.data.questions ?? []) { if (qids.has(q.id)) errors.push(`${x.file}: id de pregunta repetido «${q.id}»`); qids.add(q.id); if (q.type === 'choice' && q.answer >= q.options.length) errors.push(`${x.file}: «${q.id}» con respuesta fuera de rango`); }
+  for (const src of x.data.sources ?? []) if (!sources[src]) errors.push(`${x.file}: fuente desconocida «${src}»`);
+  if (x.data.access === 'paid' && x.data.status !== 'revisado') warnings.push(`${x.file}: contenido de pago sin revisión humana (no se puede publicar, sección 11.3)`);
+}
+for (const k of skillMap.skills) if ((k.level ?? 1) === 1 && !taught.has(k.id)) warnings.push(`competencia «${k.id}» sin ninguna sesión que la enseñe`);
 console.log(`Revisados: ${sessions.length} sesiones, ${lessons.length} lecciones, ${strategies.length} estrategias, ${investors.length} historias, ${glossary.length} términos.`);
 warnings.forEach((w) => console.warn('AVISO: ' + w));
 if (errors.length) { errors.forEach((e) => console.error('ERROR: ' + e)); process.exit(1); }

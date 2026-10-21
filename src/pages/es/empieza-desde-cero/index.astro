@@ -4,13 +4,13 @@ import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import { routeLessons } from '../../../lib/content';
 const route = await routeLessons();
 const total = route.reduce((a, l) => a + l.data.minutes, 0);
-const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Nivel Básico: diez lecturas para entender la inversión', description: 'Diez lecturas con ejemplos y ejercicios que amplían el Camino Cero.', inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' }, hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: `PT${total}M` }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', category: 'Free' } };
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Biblioteca del Nivel 1: diez lecturas para entender la inversión', description: 'Diez lecturas con ejemplos y ejercicios que amplían el Camino Cero.', inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' }, hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: `PT${total}M` }, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR', category: 'Free' } };
 ---
-<Base title="Nivel Básico: 10 lecturas para entender la inversión" description={`Diez lecturas (unos ${total} minutos en total) que amplían el Camino Cero: ahorro, riesgo, costes, fiscalidad y fraudes, con ejercicios y un caso práctico.`} jsonLd={jsonLd} allowAds={false}>
+<Base title="Biblioteca del Nivel 1: 10 lecturas" description={`Diez lecturas (unos ${total} minutos en total) que amplían el Camino Cero: ahorro, riesgo, costes, fiscalidad y fraudes, con ejercicios y un caso práctico.`} jsonLd={jsonLd} allowAds={false}>
   <div class="narrow">
-    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/', label: 'Niveles' }, { label: 'Nivel Básico' }]} />
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/', label: 'Niveles' }, { label: 'Lecturas del Nivel 1' }]} />
     <p class="eyebrow">Nivel 1 · Básico</p>
-    <h1>Nivel Básico</h1>
+    <h1>Lecturas del Nivel 1</h1>
     <p class="lede">Diez lecturas en orden y un ejercicio final con dinero ficticio. Amplían, con más ejemplos y matices, lo que viste en el Camino Cero. En total, unos {total} minutos.</p>
     <div class="callout learn">
       <p class="callout-title">¿Empiezas de cero de verdad?</p>
@@ -40,7 +40,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Niv
         </a>
       </li>
     </ol>
-    <p>Al terminar, haz el <a href="/es/examen/basico/">examen del nivel Básico</a>. ¿Quieres ir más allá? Mira los <a href="/es/niveles/">niveles</a> o la <a href="/es/biblioteca/">biblioteca</a>.</p>
+    <p>Al terminar, haz el <a href="/es/examen/n1/">examen del Nivel 1</a>. ¿Quieres ir más allá? Mira los <a href="/es/niveles/">niveles</a> o la <a href="/es/biblioteca/">biblioteca</a>.</p>
   </div>
 </Base>
 <style>

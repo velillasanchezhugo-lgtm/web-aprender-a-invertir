@@ -1,0 +1,24 @@
+---
+/** «Avisadme cuando abra»: mide el interés sin pedir datos (evento anónimo y marca en el dispositivo). */
+const { tier } = Astro.props as { tier: 2 | 3 };
+---
+<div class="interest" data-tier={tier}>
+  <button type="button" class="btn brand" data-interest>Avisadme cuando abra</button>
+  <p class="small muted" data-interest-msg role="status" aria-live="polite">Sin correo: lo apuntamos de forma anónima para saber cuánta gente lo espera. Si creas una <a href="/es/cuenta/">cuenta</a>, te avisaremos allí.</p>
+</div>
+<style>.interest { display: grid; gap: 0.4rem; justify-items: start; } .interest p { margin: 0; }</style>
+<script>
+  import { read, write } from '../scripts/store';
+  document.querySelectorAll<HTMLElement>('.interest').forEach((box) => {
+    const tier = box.dataset.tier!;
+    const btn = box.querySelector<HTMLButtonElement>('[data-interest]')!;
+    const msg = box.querySelector<HTMLElement>('[data-interest-msg]')!;
+    const done = () => { btn.disabled = true; btn.textContent = 'Apuntado ✓'; msg.textContent = 'Gracias. Cuando abra, lo verás en tu plan y, si tienes cuenta, te avisaremos.'; };
+    if (read<Record<string, string>>('interest', {})[tier]) done();
+    btn.addEventListener('click', async () => {
+      const cur = read<Record<string, string>>('interest', {}); cur[tier] = new Date().toISOString(); write('interest', cur);
+      try { const { track } = await import('@vercel/analytics'); track('interes_nivel', { nivel: Number(tier) }); } catch { /* */ }
+      done();
+    });
+  });
+</script>

@@ -103,3 +103,13 @@ export const PUSH = {
   enabled: !!import.meta.env.PUBLIC_VAPID_PUBLIC_KEY,
   hour: '16:00',
 };
+
+/**
+ * Precios que se muestran en la web (no se escriben dentro del contenido). Ver docs/CURRICULO.md, sección 12 y D-08.
+ * Los pagos aún no están activos: las páginas de los niveles 2 y 3 muestran el temario y una lista de interés.
+ */
+export const PRICING = {
+  n2: { monthly: '5 €/mes', annual: '49 €/año', trialDays: 7 },
+  n3: { course: '50 €', certification: 'precio por confirmar' },
+  paymentsEnabled: false,
+};

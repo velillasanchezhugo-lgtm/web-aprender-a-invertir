@@ -9,6 +9,7 @@ const errs = []; p.on('pageerror', (e) => errs.push(e.message));
 const ok = (c, m) => { if (!c) { console.error('✗ ' + m); process.exitCode = 1; } else console.log('✓ ' + m); };
 // 1. Asistente
 await p.goto(BASE + '/es/empezar/');
+await p.click('label.goal:has(input[value=entender])'); // quitar el marcado por defecto (ahora se pueden elegir varios)
 await p.click('label.goal:has(input[value=objetivo])');
 if (SHOTS) await p.screenshot({ path: SHOTS + '/wz1.png' });
 await p.click('#fwd');

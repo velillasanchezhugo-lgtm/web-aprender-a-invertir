@@ -249,3 +249,27 @@ output { font-variant-numeric: tabular-nums; }
 .only-dark { display: none !important; }
 :root[data-theme='dark'] .only-dark { display: block !important; }
 :root[data-theme='dark'] .only-light { display: none !important; }
+
+/* Preguntas del diagnóstico, el repaso y los exámenes (scripts/quiz-runner.ts).
+   Opciones una debajo de otra, con aire entre líneas, igual que en las sesiones. */
+.rq-text { font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.7rem); line-height: 1.3; margin: 0.8rem 0 1.1rem; }
+.rq-text:focus { outline: none; }
+.rq-opts { display: flex; flex-direction: column; gap: 0.75rem; margin: 0 0 1rem; }
+.rq-opt { display: block; width: 100%; text-align: left; font: 500 1.05rem/1.5 var(--sans); padding: 1rem 1.1rem; min-height: 56px; border: 1.5px solid var(--rule-strong); border-radius: 16px; background: var(--card); color: var(--ink); cursor: pointer; transition: border-color .15s, transform .15s var(--ease-seda), background .15s; }
+.rq-opt:hover:not(:disabled) { border-color: var(--u-blue); transform: translateY(-1px); }
+.rq-opt:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.rq-opt:disabled { cursor: default; }
+.rq-opt.is-correct { border-color: var(--gain); background: color-mix(in srgb, var(--gain) 12%, var(--card)); }
+.rq-opt.is-wrong { border-color: var(--loss); background: var(--loss-soft); }
+.rq-opts.tf .rq-opt { font-weight: 600; }
+.rq-est { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.2rem; margin-bottom: 1rem; }
+.rq-val { display: block; font: 600 2.2rem/1.1 var(--display); letter-spacing: -0.03em; margin-bottom: 0.6rem; }
+.rq-ans { display: block; font-weight: 600; color: var(--gain); margin: -0.2rem 0 0.6rem; }
+.rq-est input[type=range] { width: 100%; }
+.rq-scale { display: flex; justify-content: space-between; color: var(--ink-3); font: 500 0.8rem/1.4 var(--mono); margin: 0.2rem 0 1rem; }
+.rq-fb { margin-top: 0.4rem; padding: 1rem 1.1rem; border-radius: 16px; background: var(--paper-2); border-left: 4px solid var(--ink-3); line-height: 1.55; }
+.rq-fb.ok { border-left-color: var(--gain); background: color-mix(in srgb, var(--gain) 10%, var(--card)); }
+.rq-fb.ko { border-left-color: var(--loss); background: var(--loss-soft); }
+.rq-fb p { margin: 0 0 0.4rem; }
+.rq-fb p:last-child { margin: 0; }
+.rq-verdict { font-weight: 700; }

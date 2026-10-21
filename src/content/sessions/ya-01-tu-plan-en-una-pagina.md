@@ -73,6 +73,7 @@ La mayoría de errores al invertir no vienen de no saber, sino de **decidir con 
 - Escríbelo en una nota del móvil o en un papel. Frases cortas, como las de Lucía.
 - Si una respuesta no la sabes aún, déjala en blanco: las siguientes sesiones te ayudan a rellenarla.
 - No hace falta que sea perfecto. Lo importante es que exista antes de la primera compra y que lo releas cuando dudes.
+- En [Mi plan en una página](/es/plan-en-una-pagina/) puedes rellenar y guardar tu plan; lo completarás en la sesión «Tu plan definitivo».
 
 ## Error frecuente
 

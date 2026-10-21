@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import academy from '../../data/academy.json';
+import curriculum from '../../data/curriculum.json';
 import { RECOMMENDED_BROKER } from '../../config/site';
 import { sessions, zeroSessions, TOOLS, glossaryList, TRACKS, SKILLS } from '../../lib/content';
 const all = await zeroSessions();
@@ -102,7 +103,7 @@ const jsonLd = [
         <p><a class="btn brand" href="/es/empezar/">Crear mi ruta <span class="arrow" aria-hidden="true">→</span></a> <a class="btn secondary" href="/es/tutor/">Probar el tutor</a></p>
       </div>
       <ol class="mods reveal">
-        {modTracks.map((t, i) => <li><a class="card mod" href={t.id === 'camino-cero' ? '/es/camino-cero/' : `/es/modulos/${t.id}/`}><span class="mono small muted">{i === 0 ? 'Nivel Cero' : ['empresas', 'noticias', 'trading'].includes(t.id) ? 'Para saber más' : 'Nivel Básico'} · {t.n} sesiones</span><strong>{t.label}</strong><span class="small muted">{t.short}</span></a></li>)}
+        {modTracks.map((t, i) => <li><a class="card mod" href={t.id === 'camino-cero' ? '/es/camino-cero/' : `/es/modulos/${t.id}/`}><span class="mono small muted">{i === 0 ? 'Nivel 1 · Etapa A' : ['empresas', 'noticias', 'trading'].includes(t.id) ? 'Nivel 1 · Ampliación' : 'Nivel 1 · Núcleo'} · {t.n} sesiones</span><strong>{t.label}</strong><span class="small muted">{t.short}</span></a></li>)}
       </ol>
     </div>
   </section>
@@ -131,10 +132,10 @@ const jsonLd = [
 
   <section class="container" aria-labelledby="lv-t">
     <p class="eyebrow">Niveles</p>
-    <h2 id="lv-t">De cero a experto, sin prisas</h2>
+    <h2 id="lv-t">Tres niveles, sin prisas</h2>
     <ol class="levels">
-      {academy.levels.map((l) => (
-        <li class="reveal"><a href={l.id === 'cero' ? '/es/camino-cero/' : `/es/niveles/#nivel-${l.id}`} class="card lv"><span class="ln mono">{l.n}</span><strong>{l.title}</strong><span class="small muted">{l.tagline}</span></a></li>
+      {curriculum.tiers.map((t) => (
+        <li class="reveal"><a href={t.n === 1 ? '/es/niveles/#nivel-1' : t.href} class="card lv"><span class="ln mono">{t.n}</span><strong>{t.title}</strong><span class="small muted">{t.n === 1 ? 'Gratis · invertir por tu cuenta' : t.subtitle}</span></a></li>
       ))}
     </ol>
     <p class="small muted">Subir de nivel significa comprender más. No operar más ni asumir más riesgo.</p>
@@ -238,7 +239,7 @@ const jsonLd = [
   .term h3 { font-size: 1.8rem; margin: 0.2rem 0 0.5rem; }
   .term h3 a { color: var(--ink); text-decoration: none; }
   .levels { list-style: none; padding: 0; display: grid; gap: 0.6rem; margin: 1.4rem 0 0.6rem; }
-  @media (min-width: 760px) { .levels { grid-template-columns: repeat(5, 1fr); } }
+  @media (min-width: 760px) { .levels { grid-template-columns: repeat(3, 1fr); } }
   .lv { display: flex; flex-direction: column; gap: 0.3rem; height: 100%; }
   .ln { width: 2.4rem; height: 2.4rem; border-radius: 12px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); margin-bottom: 0.4rem; }
   .levels li:first-child .ln { background: var(--u-grad); color: #fff; }

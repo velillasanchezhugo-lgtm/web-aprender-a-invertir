@@ -1,0 +1,67 @@
+---
+/** Temario de un nivel de pago: módulos, clases con candado y muestras abiertas. */
+import curriculum from '../data/curriculum.json';
+import { skillById } from '../lib/content';
+interface Props { tier: 2 | 3; published: string[] }
+const { tier, published } = Astro.props;
+const data = tier === 2 ? curriculum.n2 : curriculum.n3;
+const order: string[] = (data as any).order ?? data.modules.map((m) => m.code);
+const mods = [...data.modules].sort((a, b) => order.indexOf(a.code) - order.indexOf(b.code));
+const base = tier === 2 ? '/es/nivel-2/' : '/es/nivel-3/';
+const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
+---
+<ol class="mods">
+  {mods.map((m, i) => (
+    <li class="mod card" id={`mod-${m.code}`}>
+      <details open={i < 2}>
+        <summary>
+          <span class="mc mono">{tier === 2 ? 'N2' : 'N3'}-{m.code.toUpperCase()}</span>
+          <span class="mt"><strong>{m.title}</strong><span class="small muted">{m.desc}</span></span>
+          <span class="mm mono small muted">{m.items.length ? `${m.items.length} ${tier === 2 ? 'clases' : 'lecciones'} · ${Math.round(m.minutes / 6) / 10} h` : `≈ ${Math.round(m.minutes / 60)} h`}</span>
+        </summary>
+        {m.items.length > 0 && (
+          <ul class="items">
+            {m.items.map((it) => {
+              const open = it.access === 'sample' && published.includes(it.id);
+              return (
+                <li class:list={['it', { open }]}>
+                  <span class="ic" aria-hidden="true">{open ? '▶' : <svg width="16" height="16" viewBox="0 0 24 24"><path d={lock} fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /></svg>}</span>
+                  <span class="ib">
+                    {open ? <a href={`${base}${it.id}/`}><strong>{it.title}</strong></a> : <strong>{it.title}</strong>}
+                    {open && <span class="tag small">Muestra gratis</span>}
+                    {!open && <span class="sr-only"> (contenido de pago, próximamente)</span>}
+                    <span class="small muted">{it.content}</span>
+                    <span class="small prac">Caso: {it.practice}</span>
+                    <span class="skills">{it.skills.map((k) => <span class="sk small">{skillById[k]?.label ?? k}</span>)}</span>
+                  </span>
+                  <span class="im mono small muted">{it.minutes} min</span>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </details>
+    </li>
+  ))}
+</ol>
+<style>
+  .mods { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: 0.8rem; }
+  .mod { padding: 0; overflow: hidden; }
+  .mod summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: auto 1fr auto; gap: 0.9rem; align-items: center; padding: 1rem 1.1rem; }
+  .mod summary::-webkit-details-marker { display: none; }
+  .mc { padding: 0.3rem 0.55rem; border-radius: 10px; background: var(--u-ink); color: var(--u-cyan); font-size: 0.8rem; }
+  .mt { display: flex; flex-direction: column; gap: 0.15rem; }
+  .mt strong { font-size: 1.1rem; }
+  @media (max-width: 560px) { .mod summary { grid-template-columns: auto 1fr; } .mm { grid-column: 2; } }
+  .items { list-style: none; margin: 0; padding: 0 1.1rem 1rem; display: grid; gap: 0.5rem; }
+  .it { display: grid; grid-template-columns: 1.6rem 1fr auto; gap: 0.6rem; padding: 0.75rem 0.8rem; border: 1px solid var(--rule); border-radius: 14px; background: var(--paper); }
+  .it.open { border-color: var(--u-blue); background: var(--teal-soft); }
+  .ic { color: var(--ink-3); padding-top: 0.15rem; }
+  .it.open .ic { color: var(--u-blue); }
+  .ib { display: flex; flex-direction: column; gap: 0.25rem; }
+  .prac { color: var(--ink-2); }
+  .tag { align-self: flex-start; padding: 0.05rem 0.5rem; border-radius: 999px; background: var(--u-blue); color: #fff; font-weight: 600; }
+  .skills { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .sk { border: 1px solid var(--rule-strong); border-radius: 999px; padding: 0.05rem 0.5rem; color: var(--ink-2); }
+  @media (max-width: 560px) { .it { grid-template-columns: 1.4rem 1fr; } .im { grid-column: 2; } }
+</style>

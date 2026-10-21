@@ -235,6 +235,41 @@
   "track": "trade-republic"
  },
  {
+  "id": "mr-01-tu-cabeza-contra-tu-cartera",
+  "title": "Tu cabeza contra tu cartera",
+  "track": "mantener"
+ },
+ {
+  "id": "mr-02-el-ruido-y-las-redes",
+  "title": "El ruido y las redes",
+  "track": "mantener"
+ },
+ {
+  "id": "mr-03-la-revision-anual",
+  "title": "La revisión anual en 15 minutos",
+  "track": "mantener"
+ },
+ {
+  "id": "mr-04-cuando-vender",
+  "title": "Cuándo vender (y cuándo no)",
+  "track": "mantener"
+ },
+ {
+  "id": "mr-05-tus-inversiones-en-la-renta",
+  "title": "Tus inversiones en la declaración",
+  "track": "mantener"
+ },
+ {
+  "id": "mr-06-cuando-cambia-tu-vida",
+  "title": "Cuando cambia tu vida",
+  "track": "mantener"
+ },
+ {
+  "id": "mr-07-tu-plan-definitivo",
+  "title": "Tu plan definitivo",
+  "track": "mantener"
+ },
+ {
   "id": "em-01-como-gana-dinero",
   "title": "Cómo gana dinero una empresa",
   "track": "empresas"

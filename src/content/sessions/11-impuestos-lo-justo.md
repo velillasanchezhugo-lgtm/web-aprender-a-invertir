@@ -72,3 +72,5 @@ Lo básico para residentes en territorio común (no País Vasco ni Navarra, que 
 - Si vendes con pérdidas y vuelves a comprar lo mismo en los dos meses siguientes, esa pérdida no la puedes restar todavía.
 
 Esto es información general, no asesoramiento fiscal: comprueba siempre las normas del año en la web de la AEAT.
+
+Cuando llegue la campaña, en [Tus inversiones en la declaración](/es/sesion/mr-05-tus-inversiones-en-la-renta/) verás cómo revisar el borrador paso a paso.

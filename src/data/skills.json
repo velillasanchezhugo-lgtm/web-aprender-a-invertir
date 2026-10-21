@@ -4,47 +4,152 @@
     {
       "id": "base",
       "label": "Tu base",
-      "desc": "Objetivos, ahorro, colchón, deudas, inflación e interés compuesto."
+      "desc": "Objetivos, ahorro, colchón, deudas, inflación e interés compuesto.",
+      "level": 1
     },
     {
       "id": "riesgo",
       "label": "Riesgo y cabeza fría",
-      "desc": "Volatilidad, caídas, diversificación y sesgos."
+      "desc": "Volatilidad, caídas, diversificación y sesgos.",
+      "level": 1
     },
     {
       "id": "cartera",
       "label": "Invertir ya",
-      "desc": "Montar, comprar, aportar y mantener tu primera cartera."
+      "desc": "Montar, comprar, aportar y mantener tu primera cartera.",
+      "level": 1
     },
     {
       "id": "productos",
       "label": "Productos de inversión",
-      "desc": "Qué es cada producto, cómo gana o pierde y para quién encaja."
+      "desc": "Qué es cada producto, cómo gana o pierde y para quién encaja.",
+      "level": 1
     },
     {
       "id": "costes",
       "label": "Costes e impuestos",
-      "desc": "Comisiones, gastos corrientes y fiscalidad en España."
+      "desc": "Comisiones, gastos corrientes y fiscalidad en España.",
+      "level": 1
     },
     {
       "id": "empresas",
       "label": "Conocer empresas",
-      "desc": "Modelo de negocio, cuentas, caja, deuda, ventajas y valoración."
+      "desc": "Modelo de negocio, cuentas, caja, deuda, ventajas y valoración.",
+      "level": 1
     },
     {
       "id": "noticias",
       "label": "Entender noticias",
-      "desc": "Separar hechos de opiniones, macro, resultados y si te afecta."
+      "desc": "Separar hechos de opiniones, macro, resultados y si te afecta.",
+      "level": 1
     },
     {
       "id": "trading",
       "label": "Tipos de trading",
-      "desc": "Cómo funciona cada estilo, sus costes, su riesgo y sus datos reales."
+      "desc": "Cómo funciona cada estilo, sus costes, su riesgo y sus datos reales.",
+      "level": 1
     },
     {
       "id": "proteccion",
       "label": "Protegerte",
-      "desc": "Comprobar entidades y detectar fraudes."
+      "desc": "Comprobar entidades y detectar fraudes.",
+      "level": 1
+    },
+    {
+      "id": "mercados",
+      "label": "Mercados y protección",
+      "desc": "Cómo funcionan los mercados, los índices y los derechos del inversor.",
+      "level": 2
+    },
+    {
+      "id": "renta-fija",
+      "label": "Renta fija",
+      "desc": "Bonos, tipos, duración, crédito y su papel en una cartera.",
+      "level": 2
+    },
+    {
+      "id": "renta-variable",
+      "label": "Renta variable",
+      "desc": "Estilos, factores, dividendos, sectores y países.",
+      "level": 2
+    },
+    {
+      "id": "vehiculos",
+      "label": "Fondos y vehículos",
+      "desc": "Estructura, costes reales, divisa y documentación de fondos y ETF.",
+      "level": 2
+    },
+    {
+      "id": "fiscalidad",
+      "label": "Fiscalidad",
+      "desc": "Cómo tributa el inversor en España y sus casos habituales.",
+      "level": 2
+    },
+    {
+      "id": "planificacion",
+      "label": "Planificación personal",
+      "desc": "Objetivos, vivienda, jubilación, seguros y finanzas familiares.",
+      "level": 2
+    },
+    {
+      "id": "analisis",
+      "label": "Análisis de empresas",
+      "desc": "Estados financieros, calidad del beneficio, valoración y gobierno corporativo.",
+      "level": 2
+    },
+    {
+      "id": "macro",
+      "label": "Macroeconomía",
+      "desc": "Ciclo, bancos centrales, inflación y crisis históricas.",
+      "level": 2
+    },
+    {
+      "id": "conducta",
+      "label": "Conducta del inversor",
+      "desc": "Sesgos, brecha del inversor, burbujas y reglas que protegen.",
+      "level": 2
+    },
+    {
+      "id": "alternativos",
+      "label": "Complejos y alternativos",
+      "desc": "Derivados, estructurados, cripto y otras inversiones alternativas.",
+      "level": 2
+    },
+    {
+      "id": "docencia",
+      "label": "Enseñar inversión",
+      "desc": "Explicar con rigor, sin recomendar y divulgando con ética.",
+      "level": 2
+    },
+    {
+      "id": "regulacion",
+      "label": "Regulación",
+      "desc": "Supervisión, MiFID II, transparencia, abuso de mercado y reclamaciones.",
+      "level": 3
+    },
+    {
+      "id": "etica",
+      "label": "Ética profesional",
+      "desc": "Deber con el cliente, conflictos de interés y comunicación honesta.",
+      "level": 3
+    },
+    {
+      "id": "economia",
+      "label": "Economía y mercados",
+      "desc": "Política económica, divisas, eficiencia de mercados y ciclo.",
+      "level": 3
+    },
+    {
+      "id": "derivados",
+      "label": "Derivados y alternativos",
+      "desc": "Futuros, opciones, swaps, estructurados y activos alternativos.",
+      "level": 3
+    },
+    {
+      "id": "gestion-carteras",
+      "label": "Gestión de carteras",
+      "desc": "Teoría de carteras, política de inversión y medición de riesgo y rentabilidad.",
+      "level": 3
     }
   ],
   "skills": [
@@ -52,313 +157,883 @@
       "id": "objetivo-horizonte",
       "domain": "base",
       "label": "Objetivo y horizonte",
-      "can": "Defines para qué inviertes, cuándo necesitarás el dinero y cuánto riesgo te encaja."
+      "can": "Defines para qué inviertes, cuándo necesitarás el dinero y cuánto riesgo te encaja.",
+      "level": 1
     },
     {
       "id": "presupuesto-ahorro",
       "domain": "base",
       "label": "Presupuesto y ahorro",
-      "can": "Sabes cuánto puedes apartar cada mes sin descuadrar tu vida."
+      "can": "Sabes cuánto puedes apartar cada mes sin descuadrar tu vida.",
+      "level": 1
     },
     {
       "id": "colchon-emergencia",
       "domain": "base",
       "label": "Fondo de emergencia",
-      "can": "Calculas tu colchón y sabes dónde tenerlo."
+      "can": "Calculas tu colchón y sabes dónde tenerlo.",
+      "level": 1
     },
     {
       "id": "deudas-caras",
       "domain": "base",
       "label": "Deudas caras",
-      "can": "Ordenas tus deudas por coste y sabes cuándo amortizar antes de invertir."
+      "can": "Ordenas tus deudas por coste y sabes cuándo amortizar antes de invertir.",
+      "level": 1
     },
     {
       "id": "inflacion-real",
       "domain": "base",
       "label": "Inflación y rentabilidad real",
-      "can": "Calculas si tu dinero gana o pierde poder de compra."
+      "can": "Calculas si tu dinero gana o pierde poder de compra.",
+      "level": 1
     },
     {
       "id": "interes-compuesto",
       "domain": "base",
       "label": "Interés compuesto",
-      "can": "Estimas cuánto puede crecer un ahorro y por qué importa el tiempo."
+      "can": "Estimas cuánto puede crecer un ahorro y por qué importa el tiempo.",
+      "level": 1
     },
     {
       "id": "riesgo-volatilidad",
       "domain": "riesgo",
       "label": "Riesgo y volatilidad",
-      "can": "Relacionas rentabilidad esperada con riesgo y sabes qué significa la volatilidad."
+      "can": "Relacionas rentabilidad esperada con riesgo y sabes qué significa la volatilidad.",
+      "level": 1
     },
     {
       "id": "caidas-recuperacion",
       "domain": "riesgo",
       "label": "Caídas y recuperación",
-      "can": "Sabes cuánto hay que subir para recuperar una caída y cuánto suelen durar."
+      "can": "Sabes cuánto hay que subir para recuperar una caída y cuánto suelen durar.",
+      "level": 1
     },
     {
       "id": "diversificacion",
       "domain": "riesgo",
       "label": "Diversificación",
-      "can": "Repartes el riesgo entre empresas, países y tipos de activo."
+      "can": "Repartes el riesgo entre empresas, países y tipos de activo.",
+      "level": 1
     },
     {
       "id": "psicologia-sesgos",
       "domain": "riesgo",
       "label": "Psicología y sesgos",
-      "can": "Reconoces el miedo, la euforia y los sesgos que hacen perder dinero."
+      "can": "Reconoces el miedo, la euforia y los sesgos que hacen perder dinero.",
+      "level": 1
     },
     {
       "id": "plan-inversion",
       "domain": "cartera",
       "label": "Tu plan por escrito",
-      "can": "Escribes en una página qué harás, cuánto, cada cuánto y qué harás si cae."
+      "can": "Escribes en una página qué harás, cuánto, cada cuánto y qué harás si cae.",
+      "level": 1
     },
     {
       "id": "asignacion-activos",
       "domain": "cartera",
       "label": "Asignación de activos",
-      "can": "Decides qué parte va a acciones, a renta fija y a liquidez según tu horizonte."
+      "can": "Decides qué parte va a acciones, a renta fija y a liquidez según tu horizonte.",
+      "level": 1
     },
     {
       "id": "formas-invertir",
       "domain": "cartera",
       "label": "Formas de invertir",
-      "can": "Conoces las distintas formas de invertir (por tu cuenta, gestionada, automatizada) y cuál encaja contigo."
+      "can": "Conoces las distintas formas de invertir (por tu cuenta, gestionada, automatizada) y cuál encaja contigo.",
+      "level": 1
     },
     {
       "id": "gestion-delegada",
       "domain": "cartera",
       "label": "Delegar la gestión",
-      "can": "Sabes qué hacen un gestor automatizado, un fondo gestionado o un asesor, y qué preguntar antes de contratarlos."
+      "can": "Sabes qué hacen un gestor automatizado, un fondo gestionado o un asesor, y qué preguntar antes de contratarlos.",
+      "level": 1
     },
     {
       "id": "cartera-indexada",
       "domain": "cartera",
       "label": "Cartera indexada",
-      "can": "Montas una cartera sencilla, global y barata con uno a tres fondos o ETF."
+      "can": "Montas una cartera sencilla, global y barata con uno a tres fondos o ETF.",
+      "level": 1
     },
     {
       "id": "ejecutar-compra",
       "domain": "cartera",
       "label": "Hacer tu primera compra",
-      "can": "Sabes, paso a paso, cómo comprar un fondo o un ETF y qué revisar antes de confirmar."
+      "can": "Sabes, paso a paso, cómo comprar un fondo o un ETF y qué revisar antes de confirmar.",
+      "level": 1
     },
     {
       "id": "usar-app-broker",
       "domain": "cartera",
       "label": "Usar la app de tu bróker",
-      "can": "Abres la cuenta, ingresas dinero, buscas un producto, compras y encuentras tus documentos en la app."
+      "can": "Abres la cuenta, ingresas dinero, buscas un producto, compras y encuentras tus documentos en la app.",
+      "level": 1
     },
     {
       "id": "comparar-productos",
       "domain": "cartera",
       "label": "Comparar ETF y acciones",
-      "can": "Comparas dos ETF o dos acciones con unas pocas preguntas sencillas antes de comprar."
+      "can": "Comparas dos ETF o dos acciones con unas pocas preguntas sencillas antes de comprar.",
+      "level": 1
     },
     {
       "id": "aportaciones-periodicas",
       "domain": "cartera",
       "label": "Aportaciones periódicas",
-      "can": "Automatizas una aportación mensual y sabes por qué funciona."
+      "can": "Automatizas una aportación mensual y sabes por qué funciona.",
+      "level": 1
     },
     {
       "id": "rebalanceo",
       "domain": "cartera",
       "label": "Rebalanceo",
-      "can": "Devuelves la cartera a su reparto objetivo con una regla sencilla."
+      "can": "Devuelves la cartera a su reparto objetivo con una regla sencilla.",
+      "level": 1
+    },
+    {
+      "id": "revision-anual",
+      "domain": "cartera",
+      "label": "Revisión anual",
+      "can": "Revisas tu plan una vez al año con cinco preguntas y sabes qué no hace falta tocar.",
+      "level": 1
+    },
+    {
+      "id": "decidir-venta",
+      "domain": "cartera",
+      "label": "Cuándo vender",
+      "can": "Distingues las razones válidas para vender de las que vienen del miedo o del ruido.",
+      "level": 1
     },
     {
       "id": "acciones",
       "domain": "productos",
       "label": "Acciones",
-      "can": "Sabes qué compras al comprar una acción y de dónde sale su rentabilidad."
+      "can": "Sabes qué compras al comprar una acción y de dónde sale su rentabilidad.",
+      "level": 1
     },
     {
       "id": "renta-fija",
       "domain": "productos",
       "label": "Bonos y renta fija",
-      "can": "Entiendes cupón, vencimiento, tipos de interés y riesgo de crédito."
+      "can": "Entiendes cupón, vencimiento, tipos de interés y riesgo de crédito.",
+      "level": 1
     },
     {
       "id": "depositos-letras",
       "domain": "productos",
       "label": "Depósitos, cuentas y Letras",
-      "can": "Comparas cuentas remuneradas, depósitos, Letras del Tesoro y fondos monetarios."
+      "can": "Comparas cuentas remuneradas, depósitos, Letras del Tesoro y fondos monetarios.",
+      "level": 1
     },
     {
       "id": "fondos-etf",
       "domain": "productos",
       "label": "Fondos y ETF",
-      "can": "Distingues fondo indexado, fondo activo y ETF, y lees su ficha y su KID."
+      "can": "Distingues fondo indexado, fondo activo y ETF, y lees su ficha y su KID.",
+      "level": 1
     },
     {
       "id": "planes-pensiones",
       "domain": "productos",
       "label": "Planes de pensiones",
-      "can": "Conoces su ventaja fiscal, su iliquidez y cuándo encajan."
+      "can": "Conoces su ventaja fiscal, su iliquidez y cuándo encajan.",
+      "level": 1
     },
     {
       "id": "inmobiliario",
       "domain": "productos",
       "label": "Inmobiliario cotizado",
-      "can": "Sabes qué es una SOCIMI o un REIT frente a comprar un piso."
+      "can": "Sabes qué es una SOCIMI o un REIT frente a comprar un piso.",
+      "level": 1
     },
     {
       "id": "materias-primas",
       "domain": "productos",
       "label": "Oro y materias primas",
-      "can": "Entiendes cómo se invierte en oro y materias primas y sus límites."
+      "can": "Entiendes cómo se invierte en oro y materias primas y sus límites.",
+      "level": 1
     },
     {
       "id": "cripto-critico",
       "domain": "productos",
       "label": "Criptoactivos",
-      "can": "Conoces sus riesgos, su regulación (MiCA) y cómo no perderlo todo."
+      "can": "Conoces sus riesgos, su regulación (MiCA) y cómo no perderlo todo.",
+      "level": 1
     },
     {
       "id": "productos-complejos",
       "domain": "productos",
       "label": "Productos complejos",
-      "can": "Identificas estructurados, warrants y otros productos que no conviene comprar sin entenderlos."
+      "can": "Identificas estructurados, warrants y otros productos que no conviene comprar sin entenderlos.",
+      "level": 1
     },
     {
       "id": "costes-comisiones",
       "domain": "costes",
       "label": "Costes y comisiones",
-      "can": "Encuentras y comparas todos los costes de un producto y de un bróker."
+      "can": "Encuentras y comparas todos los costes de un producto y de un bróker.",
+      "level": 1
     },
     {
       "id": "fiscalidad-espana",
       "domain": "costes",
       "label": "Fiscalidad en España",
-      "can": "Sabes cuándo tributas, cuánto y qué son los traspasos y la regla de los dos meses."
+      "can": "Sabes cuándo tributas, cuánto y qué son los traspasos y la regla de los dos meses.",
+      "level": 1
     },
     {
       "id": "modelo-negocio",
       "domain": "empresas",
       "label": "Modelo de negocio",
-      "can": "Explicas cómo gana dinero una empresa, quién le paga y por qué."
+      "can": "Explicas cómo gana dinero una empresa, quién le paga y por qué.",
+      "level": 1
     },
     {
       "id": "cuenta-resultados",
       "domain": "empresas",
       "label": "Cuenta de resultados",
-      "can": "Lees ventas, márgenes y beneficio, y ves si crecen."
+      "can": "Lees ventas, márgenes y beneficio, y ves si crecen.",
+      "level": 1
     },
     {
       "id": "balance-deuda",
       "domain": "empresas",
       "label": "Balance y deuda",
-      "can": "Ves qué tiene y qué debe una empresa, y si su deuda es peligrosa."
+      "can": "Ves qué tiene y qué debe una empresa, y si su deuda es peligrosa.",
+      "level": 1
     },
     {
       "id": "flujo-caja",
       "domain": "empresas",
       "label": "Flujo de caja",
-      "can": "Distingues beneficio contable de dinero que entra de verdad."
+      "can": "Distingues beneficio contable de dinero que entra de verdad.",
+      "level": 1
     },
     {
       "id": "ventaja-competitiva",
       "domain": "empresas",
       "label": "Ventaja competitiva",
-      "can": "Reconoces qué protege a una empresa de sus competidores."
+      "can": "Reconoces qué protege a una empresa de sus competidores.",
+      "level": 1
     },
     {
       "id": "valoracion-basica",
       "domain": "empresas",
       "label": "Valoración básica",
-      "can": "Usas PER, rentabilidad por flujo de caja y expectativas para saber si algo parece caro."
+      "can": "Usas PER, rentabilidad por flujo de caja y expectativas para saber si algo parece caro.",
+      "level": 1
     },
     {
       "id": "informacion-empresas",
       "domain": "empresas",
       "label": "Fuentes de información",
-      "can": "Encuentras informes oficiales (CNMV, relación con inversores) y sabes qué mirar."
+      "can": "Encuentras informes oficiales (CNMV, relación con inversores) y sabes qué mirar.",
+      "level": 1
     },
     {
       "id": "hecho-opinion",
       "domain": "noticias",
       "label": "Hecho, dato u opinión",
-      "can": "Separas lo que ha pasado de lo que alguien cree que pasará."
+      "can": "Separas lo que ha pasado de lo que alguien cree que pasará.",
+      "level": 1
     },
     {
       "id": "tipos-interes-bce",
       "domain": "noticias",
       "label": "Bancos centrales y tipos",
-      "can": "Entiendes qué hace el BCE y cómo afectan los tipos a hipotecas, bonos y bolsa."
+      "can": "Entiendes qué hace el BCE y cómo afectan los tipos a hipotecas, bonos y bolsa.",
+      "level": 1
     },
     {
       "id": "macro-indicadores",
       "domain": "noticias",
       "label": "Indicadores económicos",
-      "can": "Interpretas IPC, PIB, paro y su efecto real en tu plan."
+      "can": "Interpretas IPC, PIB, paro y su efecto real en tu plan.",
+      "level": 1
     },
     {
       "id": "resultados-expectativas",
       "domain": "noticias",
       "label": "Resultados y expectativas",
-      "can": "Entiendes por qué una acción cae con buenos resultados o sube con pérdidas."
+      "can": "Entiendes por qué una acción cae con buenos resultados o sube con pérdidas.",
+      "level": 1
     },
     {
       "id": "eventos-corporativos",
       "domain": "noticias",
       "label": "Noticias de empresas",
-      "can": "Sabes qué significan dividendos, ampliaciones, recompras, OPA o splits."
+      "can": "Sabes qué significan dividendos, ampliaciones, recompras, OPA o splits.",
+      "level": 1
     },
     {
       "id": "filtro-noticias",
       "domain": "noticias",
       "label": "¿Me afecta?",
-      "can": "Aplicas un filtro de tres preguntas para decidir si una noticia cambia tu plan."
+      "can": "Aplicas un filtro de tres preguntas para decidir si una noticia cambia tu plan.",
+      "level": 1
     },
     {
       "id": "tipos-trading",
       "domain": "trading",
       "label": "Estilos de trading",
-      "can": "Distingues scalping, intradía, swing, posicional y sistemático, y lo que exige cada uno."
+      "can": "Distingues scalping, intradía, swing, posicional y sistemático, y lo que exige cada uno.",
+      "level": 1
     },
     {
       "id": "ordenes-mercado",
       "domain": "trading",
       "label": "Tipos de órdenes",
-      "can": "Usas órdenes de mercado, limitadas y stop, y conoces el diferencial."
+      "can": "Usas órdenes de mercado, limitadas y stop, y conoces el diferencial.",
+      "level": 1
     },
     {
       "id": "apalancamiento-cfd",
       "domain": "trading",
       "label": "Apalancamiento y CFD",
-      "can": "Calculas cómo el apalancamiento multiplica las pérdidas y qué es un margen."
+      "can": "Calculas cómo el apalancamiento multiplica las pérdidas y qué es un margen.",
+      "level": 1
     },
     {
       "id": "gestion-riesgo-trading",
       "domain": "trading",
       "label": "Tamaño de posición y stop",
-      "can": "Calculas cuánto arriesgar por operación y por qué un stop no garantiza el precio."
+      "can": "Calculas cuánto arriesgar por operación y por qué un stop no garantiza el precio.",
+      "level": 1
     },
     {
       "id": "analisis-tecnico-limites",
       "domain": "trading",
       "label": "Análisis técnico y sus límites",
-      "can": "Sabes qué es un gráfico de velas, una media móvil o un soporte, y por qué no predicen solos."
+      "can": "Sabes qué es un gráfico de velas, una media móvil o un soporte, y por qué no predicen solos.",
+      "level": 1
     },
     {
       "id": "evidencia-trading",
       "domain": "trading",
       "label": "Lo que dicen los datos",
-      "can": "Conoces las estadísticas reales de pérdidas en trading y las trampas de señales y copy trading."
+      "can": "Conoces las estadísticas reales de pérdidas en trading y las trampas de señales y copy trading.",
+      "level": 1
     },
     {
       "id": "comprobar-broker",
       "domain": "proteccion",
       "label": "Comprobar una entidad",
-      "can": "Verificas autorización, supervisor y garantías de un intermediario."
+      "can": "Verificas autorización, supervisor y garantías de un intermediario.",
+      "level": 1
     },
     {
       "id": "detectar-fraude",
       "domain": "proteccion",
       "label": "Detectar fraudes",
-      "can": "Reconoces las señales de chiringuitos, esquemas Ponzi y suplantaciones."
+      "can": "Reconoces las señales de chiringuitos, esquemas Ponzi y suplantaciones.",
+      "level": 1
+    },
+    {
+      "id": "mercados-funcionamiento",
+      "domain": "mercados",
+      "label": "Cómo funcionan los mercados",
+      "can": "Explicas quién participa en los mercados y cómo pasa el dinero del ahorrador a la empresa.",
+      "level": 2
+    },
+    {
+      "id": "indices-construccion",
+      "domain": "mercados",
+      "label": "Construcción de índices",
+      "can": "Explicas cómo se construye un índice y detectas su concentración por país, sector o empresa.",
+      "level": 2
+    },
+    {
+      "id": "proteccion-inversor",
+      "domain": "mercados",
+      "label": "Derechos del inversor",
+      "can": "Conoces los supervisores, los fondos de garantía, la segregación de activos y cómo se reclama.",
+      "level": 2
+    },
+    {
+      "id": "rf-precio-tipos",
+      "domain": "renta-fija",
+      "label": "Precio y tipos",
+      "can": "Explicas por qué el precio de un bono se mueve al contrario que los tipos de interés.",
+      "level": 2
+    },
+    {
+      "id": "duracion-intuitiva",
+      "domain": "renta-fija",
+      "label": "Duración",
+      "can": "Interpretas la duración de un fondo de renta fija y lo que implica ante un cambio de tipos.",
+      "level": 2
+    },
+    {
+      "id": "curva-tipos",
+      "domain": "renta-fija",
+      "label": "Curva de tipos",
+      "can": "Lees la forma de una curva de tipos sin usarla para predecir.",
+      "level": 2
+    },
+    {
+      "id": "credito-rating",
+      "domain": "renta-fija",
+      "label": "Riesgo de crédito",
+      "can": "Explicas el rating, el diferencial y la prelación ante un impago.",
+      "level": 2
+    },
+    {
+      "id": "carteras-rf",
+      "domain": "renta-fija",
+      "label": "Renta fija en la cartera",
+      "can": "Explicas qué papel cumple la renta fija según el objetivo y el horizonte.",
+      "level": 2
+    },
+    {
+      "id": "estilos-inversion",
+      "domain": "renta-variable",
+      "label": "Estilos de inversión",
+      "can": "Distingues valor, crecimiento, calidad y dividendos, y explicas por qué ninguno gana siempre.",
+      "level": 2
+    },
+    {
+      "id": "factores",
+      "domain": "renta-variable",
+      "label": "Factores",
+      "can": "Explicas qué es un factor, la evidencia que lo apoya y sus periodos de decepción.",
+      "level": 2
+    },
+    {
+      "id": "dividendos-recompras",
+      "domain": "renta-variable",
+      "label": "Dividendos y recompras",
+      "can": "Desmontas los mitos del dividendo y explicas qué es una recompra.",
+      "level": 2
+    },
+    {
+      "id": "sectores-ciclo",
+      "domain": "renta-variable",
+      "label": "Sectores y ciclo",
+      "can": "Distingues sectores cíclicos y defensivos y valoras con criterio los productos temáticos.",
+      "level": 2
+    },
+    {
+      "id": "diversificacion-internacional",
+      "domain": "renta-variable",
+      "label": "Diversificación internacional",
+      "can": "Explicas el riesgo país, los emergentes y el sesgo de invertir solo en casa.",
+      "level": 2
+    },
+    {
+      "id": "estructura-fondos",
+      "domain": "vehiculos",
+      "label": "Estructura de un fondo",
+      "can": "Explicas gestora, depositario, UCITS, tipos de réplica y riesgo de contraparte.",
+      "level": 2
+    },
+    {
+      "id": "tracking-difference",
+      "domain": "vehiculos",
+      "label": "Coste real de un fondo",
+      "can": "Diferencias gastos corrientes, costes totales y diferencia de seguimiento.",
+      "level": 2
+    },
+    {
+      "id": "divisa-cobertura",
+      "domain": "vehiculos",
+      "label": "Divisa y cobertura",
+      "can": "Distingues la divisa de cotización de la exposición real y sabes cuándo se cubre.",
+      "level": 2
+    },
+    {
+      "id": "documentacion-producto",
+      "domain": "vehiculos",
+      "label": "Documentación de producto",
+      "can": "Sabes qué responde el KID, el folleto y el informe periódico, y dónde buscar cada dato.",
+      "level": 2
+    },
+    {
+      "id": "asignacion-por-etapas",
+      "domain": "cartera",
+      "label": "Asignación por etapas",
+      "can": "Razonas un reparto por objetivos y etapa vital, y cómo bajar el riesgo al acercarse la meta.",
+      "level": 2
+    },
+    {
+      "id": "nucleo-satelite",
+      "domain": "cartera",
+      "label": "Núcleo y satélite",
+      "can": "Explicas reglas para una parte experimental sin poner en peligro el plan.",
+      "level": 2
+    },
+    {
+      "id": "riesgo-cartera",
+      "domain": "cartera",
+      "label": "Riesgo de una cartera",
+      "can": "Interpretas la volatilidad, la caída máxima, la recuperación y la correlación de una cartera.",
+      "level": 2
+    },
+    {
+      "id": "frontera-asesoramiento",
+      "domain": "docencia",
+      "label": "Educar sin asesorar",
+      "can": "Sabes dónde acaba la educación y empieza el asesoramiento, y respondes sin recomendar.",
+      "level": 2
+    },
+    {
+      "id": "irpf-ahorro",
+      "domain": "fiscalidad",
+      "label": "IRPF del ahorro",
+      "can": "Clasificas los ingresos del inversor y explicas cómo tributan, con fuentes oficiales.",
+      "level": 2
+    },
+    {
+      "id": "fiscalidad-fondos-etf",
+      "domain": "fiscalidad",
+      "label": "Fiscalidad de fondos y ETF",
+      "can": "Explicas el traspaso, el orden de venta FIFO y la diferencia con los ETF.",
+      "level": 2
+    },
+    {
+      "id": "perdidas-compensacion",
+      "domain": "fiscalidad",
+      "label": "Compensar pérdidas",
+      "can": "Explicas la compensación de pérdidas y la regla de recompra de valores homogéneos.",
+      "level": 2
+    },
+    {
+      "id": "fiscalidad-internacional",
+      "domain": "fiscalidad",
+      "label": "Fiscalidad internacional",
+      "can": "Explicas las retenciones en origen, la doble imposición y las obligaciones informativas.",
+      "level": 2
+    },
+    {
+      "id": "planificacion-personal",
+      "domain": "planificacion",
+      "label": "Planificación personal",
+      "can": "Ordenas el mapa financiero de un hogar y priorizas varios objetivos a la vez.",
+      "level": 2
+    },
+    {
+      "id": "vivienda-decision",
+      "domain": "planificacion",
+      "label": "Comprar o alquilar",
+      "can": "Razonas la decisión de vivienda con factores económicos y de vida.",
+      "level": 2
+    },
+    {
+      "id": "jubilacion",
+      "domain": "planificacion",
+      "label": "Jubilación",
+      "can": "Explicas la pensión pública, la brecha y cómo pensar el ahorro complementario.",
+      "level": 2
+    },
+    {
+      "id": "seguros-proteccion",
+      "domain": "planificacion",
+      "label": "Seguros de protección",
+      "can": "Explicas qué seguros protegen un plan y miras con criterio los seguros de ahorro.",
+      "level": 2
+    },
+    {
+      "id": "estados-financieros",
+      "domain": "analisis",
+      "label": "Estados financieros",
+      "can": "Conectas la cuenta de resultados, el balance y el flujo de caja de una empresa.",
+      "level": 2
+    },
+    {
+      "id": "calidad-beneficio",
+      "domain": "analisis",
+      "label": "Calidad del beneficio",
+      "can": "Detectas diferencias entre beneficio y caja y las señales de alarma contables.",
+      "level": 2
+    },
+    {
+      "id": "valoracion-multiplos",
+      "domain": "analisis",
+      "label": "Valoración por múltiplos",
+      "can": "Interpretas PER, EV/EBITDA y rentabilidad por flujo de caja, y sus trampas.",
+      "level": 2
+    },
+    {
+      "id": "gobierno-corporativo",
+      "domain": "analisis",
+      "label": "Gobierno corporativo",
+      "can": "Valoras incentivos, control, dilución y criterios ESG con espíritu crítico.",
+      "level": 2
+    },
+    {
+      "id": "ciclo-economico",
+      "domain": "macro",
+      "label": "Ciclo económico",
+      "can": "Explicas las fases del ciclo y por qué la bolsa se adelanta a la economía.",
+      "level": 2
+    },
+    {
+      "id": "politica-monetaria",
+      "domain": "macro",
+      "label": "Bancos centrales",
+      "can": "Explicas cómo deciden los bancos centrales y cómo afecta a hipotecas, bonos y bolsa.",
+      "level": 2
+    },
+    {
+      "id": "historia-crisis",
+      "domain": "macro",
+      "label": "Crisis históricas",
+      "can": "Explicas cinco grandes crisis, su recuperación y su lección.",
+      "level": 2
+    },
+    {
+      "id": "finanzas-conductuales",
+      "domain": "conducta",
+      "label": "Finanzas conductuales",
+      "can": "Reconoces los sesgos, la brecha del inversor y los patrones de burbuja, y diseñas reglas contra ellos.",
+      "level": 2
+    },
+    {
+      "id": "derivados-concepto",
+      "domain": "alternativos",
+      "label": "Derivados",
+      "can": "Explicas futuros, opciones y CFD a nivel conceptual y por qué suelen perjudicar al particular.",
+      "level": 2
+    },
+    {
+      "id": "estructurados",
+      "domain": "alternativos",
+      "label": "Productos estructurados",
+      "can": "Explicas cómo se fabrica un estructurado, sus costes ocultos y el riesgo de emisor.",
+      "level": 2
+    },
+    {
+      "id": "alternativos-criterio",
+      "domain": "alternativos",
+      "label": "Inversiones alternativas",
+      "can": "Valoras con criterio el inmobiliario cotizado, las materias primas, las plataformas y el capital riesgo.",
+      "level": 2
+    },
+    {
+      "id": "explicar-con-rigor",
+      "domain": "docencia",
+      "label": "Explicar con rigor",
+      "can": "Preparas e impartes una explicación clara, correcta y adaptada a quien escucha.",
+      "level": 2
+    },
+    {
+      "id": "etica-divulgacion",
+      "domain": "docencia",
+      "label": "Divulgar con ética",
+      "can": "Divulgas declarando conflictos de interés y respetando las normas de publicidad.",
+      "level": 2
+    },
+    {
+      "id": "marco-supervision",
+      "domain": "regulacion",
+      "label": "Marco de supervisión",
+      "can": "Describes la arquitectura de supervisión española y europea y qué puede hacer cada entidad.",
+      "level": 3
+    },
+    {
+      "id": "mifid-ii",
+      "domain": "regulacion",
+      "label": "MiFID II",
+      "can": "Explicas los servicios de inversión, la clasificación de clientes, la conveniencia, la idoneidad, los incentivos y la gobernanza de producto.",
+      "level": 3
+    },
+    {
+      "id": "priips-transparencia",
+      "domain": "regulacion",
+      "label": "Transparencia",
+      "can": "Interpretas un KID, la información de costes y los escenarios con sus límites.",
+      "level": 3
+    },
+    {
+      "id": "abuso-mercado",
+      "domain": "regulacion",
+      "label": "Abuso de mercado y blanqueo",
+      "can": "Reconoces la información privilegiada, la manipulación y las obligaciones contra el blanqueo.",
+      "level": 3
+    },
+    {
+      "id": "etica-profesional",
+      "domain": "etica",
+      "label": "Ética profesional",
+      "can": "Aplicas lealtad, diligencia y honestidad a dilemas reales del sector.",
+      "level": 3
+    },
+    {
+      "id": "conflictos-interes",
+      "domain": "etica",
+      "label": "Conflictos de interés",
+      "can": "Detectas, gestionas y comunicas conflictos de interés.",
+      "level": 3
+    },
+    {
+      "id": "politica-economica",
+      "domain": "economia",
+      "label": "Política económica",
+      "can": "Explicas la interacción entre política monetaria y fiscal y su efecto en los activos.",
+      "level": 3
+    },
+    {
+      "id": "mercados-divisas",
+      "domain": "economia",
+      "label": "Divisas",
+      "can": "Explicas qué mueve las divisas y su efecto en carteras y empresas.",
+      "level": 3
+    },
+    {
+      "id": "eficiencia-mercados",
+      "domain": "economia",
+      "label": "Eficiencia de mercados",
+      "can": "Razonas la eficiencia de los mercados y sus anomalías, y lo que implica para la gestión.",
+      "level": 3
+    },
+    {
+      "id": "valoracion-intrinseca",
+      "domain": "analisis",
+      "label": "Valoración intrínseca",
+      "can": "Explicas el descuento de flujos, sus supuestos clave y su sensibilidad, sin calcularlo a mano.",
+      "level": 3
+    },
+    {
+      "id": "analisis-sectorial",
+      "domain": "analisis",
+      "label": "Análisis sectorial",
+      "can": "Analizas un sector y la posición competitiva de una empresa.",
+      "level": 3
+    },
+    {
+      "id": "rf-avanzada",
+      "domain": "renta-fija",
+      "label": "Renta fija avanzada",
+      "can": "Interpretas la convexidad, los diferenciales, las titulizaciones y el funcionamiento del mercado.",
+      "level": 3
+    },
+    {
+      "id": "deuda-subordinada",
+      "domain": "renta-fija",
+      "label": "Deuda subordinada",
+      "can": "Explicas la prelación, el bail-in y los instrumentos híbridos bancarios.",
+      "level": 3
+    },
+    {
+      "id": "gestion-carteras-rf",
+      "domain": "renta-fija",
+      "label": "Carteras de renta fija",
+      "can": "Razonas escaleras de vencimientos, inmunización y renta fija para la jubilación.",
+      "level": 3
+    },
+    {
+      "id": "tipos-iic",
+      "domain": "vehiculos",
+      "label": "Tipos de IIC",
+      "can": "Clasificas fondos, SICAV, UCITS, AIF, garantizados y ELTIF, y las funciones de cada entidad.",
+      "level": 3
+    },
+    {
+      "id": "metricas-fondos",
+      "domain": "vehiculos",
+      "label": "Métricas de fondos",
+      "can": "Interpretas el ratio de Sharpe, el error de seguimiento, el ratio de información y la caída máxima.",
+      "level": 3
+    },
+    {
+      "id": "seleccion-fondos",
+      "domain": "vehiculos",
+      "label": "Selección de fondos",
+      "can": "Aplicas un proceso de selección de fondos con criterio y sin conflictos.",
+      "level": 3
+    },
+    {
+      "id": "productos-seguro",
+      "domain": "vehiculos",
+      "label": "Pensiones y seguros de ahorro",
+      "can": "Comparas planes de pensiones y seguros de ahorro e inversión.",
+      "level": 3
+    },
+    {
+      "id": "derivados-profesional",
+      "domain": "derivados",
+      "label": "Derivados",
+      "can": "Explicas futuros, forwards y opciones, sus perfiles de resultado y sus garantías.",
+      "level": 3
+    },
+    {
+      "id": "cobertura",
+      "domain": "derivados",
+      "label": "Cobertura",
+      "can": "Distingues cobertura de especulación y descompones un producto estructurado.",
+      "level": 3
+    },
+    {
+      "id": "activos-alternativos",
+      "domain": "derivados",
+      "label": "Activos alternativos",
+      "can": "Valoras la iliquidez, los costes y el acceso de los activos alternativos.",
+      "level": 3
+    },
+    {
+      "id": "teoria-carteras",
+      "domain": "gestion-carteras",
+      "label": "Teoría de carteras",
+      "can": "Explicas la diversificación, la frontera eficiente, la beta, los factores y el alfa por su significado.",
+      "level": 3
+    },
+    {
+      "id": "asignacion-estrategica-tactica",
+      "domain": "gestion-carteras",
+      "label": "Asignación y política de inversión",
+      "can": "Redactas una política de inversión y distingues la asignación estratégica de la táctica.",
+      "level": 3
+    },
+    {
+      "id": "medicion-riesgo",
+      "domain": "gestion-carteras",
+      "label": "Medición del riesgo",
+      "can": "Interpretas el VaR, las pruebas de estrés y los riesgos de liquidez y concentración.",
+      "level": 3
+    },
+    {
+      "id": "medicion-rentabilidad",
+      "domain": "gestion-carteras",
+      "label": "Medición de la rentabilidad",
+      "can": "Distingues la rentabilidad ponderada por tiempo y por dinero, y usas índices de referencia.",
+      "level": 3
+    },
+    {
+      "id": "fiscalidad-avanzada",
+      "domain": "fiscalidad",
+      "label": "Fiscalidad avanzada",
+      "can": "Comparas el tratamiento fiscal de vehículos y planificas dentro de la ley.",
+      "level": 3
+    },
+    {
+      "id": "patrimonio-sucesiones",
+      "domain": "fiscalidad",
+      "label": "Patrimonio y sucesiones",
+      "can": "Explicas los impuestos sobre patrimonio, sucesiones y donaciones y sus diferencias autonómicas.",
+      "level": 3
+    },
+    {
+      "id": "proceso-planificacion",
+      "domain": "planificacion",
+      "label": "Proceso de planificación",
+      "can": "Aplicas el proceso completo de planificación: datos, diagnóstico, propuesta y seguimiento.",
+      "level": 3
+    },
+    {
+      "id": "planificacion-jubilacion",
+      "domain": "planificacion",
+      "label": "Planificación de la jubilación",
+      "can": "Planificas la acumulación y la desacumulación y el riesgo de longevidad.",
+      "level": 3
+    },
+    {
+      "id": "planificacion-sucesoria",
+      "domain": "planificacion",
+      "label": "Planificación sucesoria",
+      "can": "Identificas las necesidades sucesorias y sabes cuándo derivar a un jurista.",
+      "level": 3
     }
   ]
 }

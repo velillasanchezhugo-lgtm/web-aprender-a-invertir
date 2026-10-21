@@ -77,7 +77,7 @@ export function streak(days: string[], today: string): { current: number; best: 
 }
 
 // ---------- Prueba de nivel ----------
-export type LevelId = 'cero' | 'basico' | 'intermedio' | 'avanzado' | 'experto';
+export type LevelId = 'cero' | 'basico' | 'intermedio' | 'avanzado' | 'experto' | 'n1';
 export const LEVEL_ORDER: LevelId[] = ['cero', 'basico', 'intermedio', 'avanzado', 'experto'];
 
 /** Con la prueba inicial (6 preguntas) decide desde dónde empezar y qué sesiones puede saltarse. */
@@ -144,7 +144,7 @@ export function nextSession(order: string[], completed: Record<string, unknown>)
 }
 
 // ---------- Logros (solo por comprender y ser constante) ----------
-export interface BadgeInput { completed: string[]; zeroIds: string[]; streakBest: number; examsPassed: LevelId[]; masteredCards: number; actionsDone: number }
+export interface BadgeInput { completed: string[]; zeroIds: string[]; streakBest: number; examsPassed: LevelId[]; masteredCards: number; actionsDone: number; finalExercise?: boolean; onePagePlan?: boolean }
 export const BADGES = [
   { id: 'primer-paso', title: 'Primer paso', desc: 'Completaste tu primera sesión.', test: (b: BadgeInput) => b.completed.length >= 1 },
   { id: 'tres-dias', title: 'Tres días seguidos', desc: 'Aprendiste tres días seguidos.', test: (b: BadgeInput) => b.streakBest >= 3 },
@@ -153,6 +153,8 @@ export const BADGES = [
   { id: 'memoria', title: 'Lo tienes claro', desc: 'Dominas diez conceptos en el repaso.', test: (b: BadgeInput) => b.masteredCards >= 10 },
   { id: 'camino-cero', title: 'Camino Cero completado', desc: 'Terminaste las 14 sesiones del nivel Cero.', test: (b: BadgeInput) => b.zeroIds.length > 0 && b.zeroIds.every((id) => b.completed.includes(id)) },
   { id: 'examen-cero', title: 'Nivel Cero superado', desc: 'Aprobaste el examen del nivel Cero.', test: (b: BadgeInput) => b.examsPassed.includes('cero') },
+  { id: 'fundamentos', title: 'Fundamentos de inversión', desc: 'Aprobaste el examen del Nivel 1.', test: (b: BadgeInput) => b.examsPassed.includes('n1') },
+  { id: 'nivel-1', title: 'Nivel 1 completo', desc: 'Examen, ejercicio con dinero ficticio y tu plan en una página.', test: (b: BadgeInput) => b.examsPassed.includes('n1') && !!b.finalExercise && !!b.onePagePlan },
 ] as const;
 export const earnedBadges = (b: BadgeInput) => BADGES.filter((x) => x.test(b)).map((x) => x.id);
 
@@ -196,4 +198,46 @@ export function dailyReminderIcs(startDay: string, url: string): string {
     'BEGIN:VALARM', 'TRIGGER:PT0M', 'ACTION:DISPLAY', 'DESCRIPTION:No pierdas tu racha: 5 minutos hoy', 'END:VALARM',
     'END:VEVENT', 'END:VCALENDAR',
   ].join('\r\n');
+}
+
+// ---------- Examen del Nivel 1 (docs/CURRICULO.md, sección 9.1) ----------
+export interface ExamBankItem { qid: string; skills: string[]; session: string }
+export interface Capacity { id: string; text: string; skills: string[] }
+
+/** Generador pseudoaleatorio con semilla (mulberry32), para exámenes reproducibles y probables. */
+export function seeded(seed: number) {
+  let t = seed >>> 0;
+  return () => { t += 0x6d2b79f5; let r = Math.imul(t ^ (t >>> 15), 1 | t); r ^= r + Math.imul(r ^ (r >>> 7), 61 | r); return ((r ^ (r >>> 14)) >>> 0) / 4294967296; };
+}
+const shuffle = <T>(xs: T[], rnd: () => number) => { const a = [...xs]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+/**
+ * 30 preguntas: al menos `perCapacity` de cada capacidad (sin repetir pregunta ni, si se puede, sesión),
+ * y el resto al azar del banco. Devuelve también a qué capacidad cuenta cada pregunta.
+ */
+export function buildN1Exam(bank: ExamBankItem[], caps: Capacity[], seed: number, total = 30, perCapacity = 2): { qids: string[]; capOf: Record<string, string> } {
+  const rnd = seeded(seed);
+  const pool = shuffle(bank, rnd);
+  const chosen: string[] = [];
+  const capOf: Record<string, string> = {};
+  const usedSessions = new Set<string>();
+  for (const c of caps) {
+    const matches = pool.filter((b) => !chosen.includes(b.qid) && b.skills.some((s) => c.skills.includes(s)));
+    const fresh = matches.filter((b) => !usedSessions.has(b.session));
+    for (const b of [...fresh, ...matches.filter((m) => !fresh.includes(m))].slice(0, perCapacity)) { chosen.push(b.qid); capOf[b.qid] = c.id; usedSessions.add(b.session); }
+  }
+  for (const b of pool) {
+    if (chosen.length >= total) break;
+    if (chosen.includes(b.qid)) continue;
+    chosen.push(b.qid);
+    capOf[b.qid] = caps.find((c) => b.skills.some((s) => c.skills.includes(s)))?.id ?? '';
+  }
+  return { qids: shuffle(chosen, rnd), capOf };
+}
+
+/** Tras suspender, hay que esperar 24 horas para repetir. */
+export function examWait(last: { at: string; passed: boolean } | undefined, now = new Date()): number {
+  if (!last || last.passed) return 0;
+  const ms = new Date(last.at).getTime() + 24 * 3600 * 1000 - now.getTime();
+  return Math.max(0, ms);
 }

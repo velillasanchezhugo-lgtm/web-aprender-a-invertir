@@ -14,11 +14,11 @@ const days = [['1', 'L', 'Lunes'], ['2', 'M', 'Martes'], ['3', 'X', 'Miércoles'
       <section class="wz-step" data-step="0" aria-labelledby="w0">
         <p class="eyebrow">Paso 1 de 5</p>
         <h1 id="w0">¿Qué quieres conseguir?</h1>
-        <p class="lede">Lo usaremos para que lo más útil para ti llegue antes.</p>
-        <div class="goals" role="radiogroup" aria-labelledby="w0">
+        <p class="lede">Elige todo lo que te interese: lo usaremos para que lo más útil para ti llegue antes.</p>
+        <div class="goals" role="group" aria-labelledby="w0">
           {academy.goals.map((g, i) => (
             <label class="goal">
-              <input type="radio" name="goal" value={g.id} checked={i === 0} />
+              <input type="checkbox" name="goal" value={g.id} checked={i === 0} />
               <span class="g-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24"><path d={g.icon} fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
               <span class="g-text"><strong>{g.label}</strong><span class="small">{g.desc}</span></span>
             </label>
@@ -108,6 +108,9 @@ const days = [['1', 'L', 'Lunes'], ['2', 'M', 'Martes'], ['3', 'X', 'Miércoles'
   .goal, .min-card { display: flex; gap: 0.9rem; align-items: center; padding: 1rem 1.1rem; border: 1.5px solid var(--rule); border-radius: 18px; background: var(--card); cursor: pointer; font-weight: 400; transition: border-color .15s, transform .15s var(--ease-seda); }
   .goal:hover, .min-card:hover { border-color: var(--u-blue); }
   .goal:has(input:checked), .min-card:has(input:checked) { border-color: var(--u-blue); background: var(--teal-soft); }
+  .goals:not(.exp) .goal { position: relative; padding-right: 3rem; }
+  .goals:not(.exp) .goal::after { content: ''; position: absolute; right: 1rem; top: 50%; width: 22px; height: 22px; margin-top: -11px; border-radius: 7px; border: 2px solid var(--rule-strong); background: var(--card); }
+  .goals:not(.exp) .goal:has(input:checked)::after { border-color: var(--u-blue); background: var(--u-blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12l5 5 9-10' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; }
   .goal input, .min-card input, .day input { position: absolute; opacity: 0; pointer-events: none; }
   .goal:has(input:focus-visible), .min-card:has(input:focus-visible), .day:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
   .g-icon { flex: none; width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); }
@@ -176,7 +179,8 @@ const days = [['1', 'L', 'Lunes'], ['2', 'M', 'Martes'], ['3', 'X', 'Miércoles'
   const DOW = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
   const val = (n: string) => (form.querySelector<HTMLInputElement>(`input[name="${n}"]:checked`)?.value ?? '');
   const chosenDays = () => [...form.querySelectorAll<HTMLInputElement>('input[name=days]:checked')].map((i) => Number(i.value));
-  const profile = (): Profile => ({ goal: val('goal') as Goal, experience: val('exp') as Experience, interests: [...form.querySelectorAll<HTMLInputElement>('input[name=interest]:checked')].map((i) => i.value as TrackId), createdAt: new Date().toISOString() });
+  const chosenGoals = () => [...form.querySelectorAll<HTMLInputElement>('input[name=goal]:checked')].map((i) => i.value as Goal);
+  const profile = (): Profile => ({ goal: chosenGoals()[0] ?? 'entender', goals: chosenGoals(), experience: val('exp') as Experience, interests: [...form.querySelectorAll<HTMLInputElement>('input[name=interest]:checked')].map((i) => i.value as TrackId), createdAt: new Date().toISOString() });
 
   // ---------- Diagnóstico adaptativo ----------
   const MAXQ = 10;
@@ -257,6 +261,7 @@ const days = [['1', 'L', 'Lunes'], ['2', 'M', 'Martes'], ['3', 'X', 'Miércoles'
   }
 
   function show(i: number) {
+    if (i === 1 && cur === 0 && chosenGoals().length === 0) { alert('Elige al menos un objetivo.'); return; }
     if (i === 3 && cur === 2 && chosenDays().length === 0) { alert('Elige al menos un día.'); return; }
     cur = Math.max(0, Math.min(steps.length - 1, i));
     steps.forEach((s, k) => s.classList.toggle('active', k === cur));
@@ -277,7 +282,8 @@ const days = [['1', 'L', 'Lunes'], ['2', 'M', 'Martes'], ['3', 'X', 'Miércoles'
   const st0 = getState();
   const prev = st0.plan;
   if (prev) {
-    form.querySelector<HTMLInputElement>(`input[name=goal][value="${prev.goal}"]`)!.checked = true;
+    const g0 = st0.profile?.goals?.length ? st0.profile.goals : [prev.goal];
+    form.querySelectorAll<HTMLInputElement>('input[name=goal]').forEach((i) => (i.checked = g0.includes(i.value as Goal)));
     form.querySelector<HTMLInputElement>(`input[name=minutes][value="${prev.minutesPerDay}"]`)!.checked = true;
     form.querySelectorAll<HTMLInputElement>('input[name=days]').forEach((i) => (i.checked = prev.days.includes(Number(i.value))));
     (form.elements.namedItem('time') as HTMLInputElement).value = prev.time;

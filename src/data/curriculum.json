@@ -1,0 +1,1756 @@
+{
+ "_doc": "Temario planificado de los niveles 2 y 3 (metadatos). Fuente: docs/CURRICULO.md, secciones 6 y 7. Solo las clases con access «sample» tienen contenido publicado; el resto se servirá desde el servidor a quien tenga acceso.",
+ "tiers": [
+  {
+   "n": 1,
+   "id": "n1",
+   "title": "Invertir por tu cuenta",
+   "access": "free",
+   "promise": "Al terminar puedes montar, comprar, mantener y revisar tu propia cartera sin depender de nadie, y detectar productos y propuestas que no te convienen.",
+   "forWho": "Cualquiera, desde cero.",
+   "format": "Sesiones de 5 minutos",
+   "volume": "77 sesiones (54 del núcleo y 23 de ampliación), unas 6,5 h",
+   "closing": "Examen del Nivel 1, ejercicio con dinero ficticio y «Mi plan en una página»",
+   "recognition": "Insignia gratuita «Fundamentos de inversión — umotion»",
+   "href": "/es/niveles/#nivel-1"
+  },
+  {
+   "n": 2,
+   "id": "n2",
+   "title": "Avanzado",
+   "subtitle": "Dominarlo tan bien que podrías explicarlo",
+   "access": "plan-avanzado",
+   "promise": "Al terminar dominas la inversión lo bastante como para explicársela con rigor a otra persona y responder sus dudas habituales sin recomendarle productos.",
+   "forWho": "Quien ya invierte y quiere entender a fondo.",
+   "format": "Clases de 15 a 30 minutos",
+   "volume": "66 clases, unas 22 h, más una clase nueva cada mes",
+   "closing": "Examen del Nivel 2 y proyecto «Tu primera clase»",
+   "recognition": "Insignia «Nivel 2 — umotion»",
+   "href": "/es/nivel-2/"
+  },
+  {
+   "n": 3,
+   "id": "n3",
+   "title": "Profesional",
+   "subtitle": "Con certificado umotion verificable",
+   "access": "curso-profesional",
+   "promise": "Al terminar tienes una base conceptual que cubre áreas de conocimiento comparables a las de formaciones como EFA (EFPA España) o CFA Investment Foundations, y puedes obtener el certificado umotion verificable.",
+   "forWho": "Quien quiere un nivel profesional o trabajar en el sector.",
+   "format": "Lecciones de 30 a 45 minutos",
+   "volume": "56 lecciones y un proyecto, unas 40 h",
+   "closing": "Examen final y proyecto profesional con revisión humana",
+   "recognition": "«Certificado umotion en Inversión — Nivel Profesional», verificable",
+   "href": "/es/nivel-3/"
+  }
+ ],
+ "n2": {
+  "order": [
+   "ens",
+   "mer",
+   "veh",
+   "rf",
+   "rv",
+   "car",
+   "fis",
+   "pla",
+   "emp",
+   "mac",
+   "con",
+   "alt"
+  ],
+  "monthly": "Clase del mes: una clase nueva cada mes sobre un tema de actualidad, con fines educativos y sin recomendaciones.",
+  "modules": [
+   {
+    "code": "mer",
+    "title": "Mercados y protección del inversor",
+    "items": [
+     {
+      "id": "n2-mer-01-del-ahorro-a-la-bolsa",
+      "title": "Del ahorro a la bolsa",
+      "minutes": 20,
+      "content": "Para qué sirve el sistema financiero, quién participa, mercado primario y secundario, una salida a bolsa por dentro.",
+      "practice": "Salida a bolsa de una empresa ficticia, paso a paso",
+      "skills": [
+       "mercados-funcionamiento"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-mer-02-que-hay-detras-de-un-indice",
+      "title": "Qué hay detrás de un índice",
+      "minutes": 20,
+      "content": "Índices ponderados por capitalización, por igual y sectoriales; diferencias entre índice mundial, solo desarrollados y solo EE. UU.; concentración en pocas empresas.",
+      "practice": "Comparar la composición por país y sector de dos índices con la herramienta",
+      "skills": [
+       "indices-construccion"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-mer-03-como-se-ejecuta-una-orden",
+      "title": "Cómo se ejecuta una orden",
+      "minutes": 20,
+      "content": "Horquilla, liquidez, horarios, centros de ejecución, mejor ejecución, pago por flujo de órdenes (concepto).",
+      "practice": "Dos órdenes del mismo ETF a distinta hora",
+      "skills": [
+       "ordenes-mercado",
+       "mercados-funcionamiento"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-mer-04-quien-vigila-a-quien",
+      "title": "Quién vigila a quién",
+      "minutes": 20,
+      "content": "CNMV, Banco de España, DGSFP, ESMA y BCE; pasaporte europeo; fondos de garantía; segregación de activos del cliente.",
+      "practice": "¿Qué pasa con tus ETF si quiebra tu bróker?",
+      "skills": [
+       "proteccion-inversor",
+       "comprobar-broker"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-mer-05-tus-derechos-como-inversor",
+      "title": "Tus derechos como inversor",
+      "minutes": 20,
+      "content": "MiFID II desde el lado del cliente: clasificación, tests de conveniencia e idoneidad, información de costes, cómo reclamar (servicio de atención al cliente → CNMV).",
+      "practice": "Reclamación ficticia, de principio a fin",
+      "skills": [
+       "proteccion-inversor"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Cómo funciona el sistema financiero, los índices, la ejecución de órdenes y quién protege al inversor.",
+    "minutes": 100
+   },
+   {
+    "code": "rf",
+    "title": "Renta fija a fondo",
+    "items": [
+     {
+      "id": "n2-rf-01-precio-y-tipos",
+      "title": "El balancín entre precio y tipos",
+      "minutes": 20,
+      "content": "Cupón, vencimiento, rentabilidad a vencimiento explicada con palabras, por qué el precio cae cuando suben los tipos.",
+      "practice": "Un bono comprado antes y después de una subida de tipos",
+      "skills": [
+       "rf-precio-tipos"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-rf-02-duracion-sin-formulas",
+      "title": "Duración sin fórmulas",
+      "minutes": 20,
+      "content": "La duración como sensibilidad a los tipos; corto frente a largo plazo; leer la duración en la ficha de un fondo.",
+      "practice": "Caso histórico de 2022 en fondos de renta fija larga",
+      "skills": [
+       "duracion-intuitiva"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-rf-03-la-curva-de-tipos",
+      "title": "La curva de tipos",
+      "minutes": 20,
+      "content": "Curva normal, plana e invertida; qué expectativas refleja y por qué no sirve para adivinar el futuro.",
+      "practice": "Leer una curva de deuda española publicada por el Tesoro o el BCE",
+      "skills": [
+       "curva-tipos"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-rf-04-riesgo-de-credito",
+      "title": "Riesgo de crédito",
+      "minutes": 20,
+      "content": "Rating, grado de inversión y alto rendimiento, diferencial, prelación en caso de impago.",
+      "practice": "Bono corporativo ficticio que pierde calificación",
+      "skills": [
+       "credito-rating"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-rf-05-inflacion-flotantes-y-vencimiento",
+      "title": "Contra la inflación y a vencimiento",
+      "minutes": 20,
+      "content": "Bonos ligados a la inflación, bonos flotantes y fondos de renta fija con vencimiento; Letras, monetarios y fondos de renta fija para objetivos cercanos.",
+      "practice": "Elegir instrumento para un objetivo a 18 meses (educativo, por tipo)",
+      "skills": [
+       "carteras-rf"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-rf-06-renta-fija-en-tu-cartera",
+      "title": "La renta fija en una cartera",
+      "minutes": 20,
+      "content": "Papel de la renta fija: estabilizar, dar liquidez y servir a objetivos cercanos; renta fija directa o fondo; cuándo deja de compensar a la bolsa (2022).",
+      "practice": "Dos carteras ficticias en una caída",
+      "skills": [
+       "carteras-rf",
+       "asignacion-activos"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Bonos, tipos, duración, curva, crédito y el papel de la renta fija en una cartera.",
+    "minutes": 120
+   },
+   {
+    "code": "rv",
+    "title": "Renta variable y estilos",
+    "items": [
+     {
+      "id": "n2-rv-01-de-donde-sale-la-rentabilidad",
+      "title": "De dónde sale la rentabilidad de una acción",
+      "minutes": 20,
+      "content": "Beneficios, dividendos, crecimiento y cambio de lo que el mercado paga por ellos; prima de riesgo explicada con palabras.",
+      "practice": "Misma empresa, dos décadas distintas",
+      "skills": [
+       "acciones",
+       "estilos-inversion"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-rv-02-valor-crecimiento-y-calidad",
+      "title": "Valor, crecimiento y calidad",
+      "minutes": 20,
+      "content": "Qué define cada estilo, en qué entornos ha ido mejor cada uno y por qué ninguno gana siempre.",
+      "practice": "Fichas de estilo de dos fondos ficticios",
+      "skills": [
+       "estilos-inversion"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-rv-03-factores",
+      "title": "Factores: tamaño, momento, baja volatilidad",
+      "minutes": 20,
+      "content": "Qué es un factor, evidencia académica, ETF factoriales y periodos largos en los que decepcionan.",
+      "practice": "Leer la metodología de un índice factorial",
+      "skills": [
+       "factores"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-rv-04-dividendos-y-recompras",
+      "title": "Dividendos y recompras",
+      "minutes": 20,
+      "content": "Mitos del dividendo, recompras de acciones, la idea de «vivir de dividendos» y su fiscalidad.",
+      "practice": "Dos empresas que reparten igual por vías distintas",
+      "skills": [
+       "dividendos-recompras"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-rv-05-sectores-ciclo-y-temas",
+      "title": "Sectores, ciclo y temáticas",
+      "minutes": 20,
+      "content": "Sectores cíclicos y defensivos, concentración sectorial de los índices y el historial de los ETF temáticos.",
+      "practice": "Un ETF temático ficticio tras el entusiasmo",
+      "skills": [
+       "sectores-ciclo"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-rv-06-paises-y-emergentes",
+      "title": "Países y emergentes",
+      "minutes": 20,
+      "content": "Desarrollados y emergentes, riesgo país, divisa y gobierno corporativo; el sesgo de invertir en casa.",
+      "practice": "Cartera de un inversor «solo España»",
+      "skills": [
+       "diversificacion-internacional"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "De dónde sale la rentabilidad de una acción, estilos, factores, dividendos, sectores y países.",
+    "minutes": 120
+   },
+   {
+    "code": "veh",
+    "title": "Fondos, ETF y vehículos",
+    "items": [
+     {
+      "id": "n2-veh-01-como-esta-hecho-un-fondo",
+      "title": "Cómo está hecho un fondo",
+      "minutes": 20,
+      "content": "Gestora, depositario y auditor; UCITS; patrimonio separado; IIC españolas.",
+      "practice": "¿Qué pasa si quiebra la gestora?",
+      "skills": [
+       "estructura-fondos"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-veh-02-replica-fisica-y-sintetica",
+      "title": "Réplica física y sintética",
+      "minutes": 20,
+      "content": "Réplica completa, muestreo y swaps; préstamo de valores; riesgo de contraparte.",
+      "practice": "Dos ETF del mismo índice con réplicas distintas",
+      "skills": [
+       "estructura-fondos"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-veh-03-lo-que-de-verdad-cuesta",
+      "title": "Lo que de verdad cuesta un fondo",
+      "minutes": 20,
+      "content": "Gastos corrientes frente a costes totales, diferencia de seguimiento, costes de transacción y comisión de éxito.",
+      "practice": "Comparar la diferencia de seguimiento de dos ETF con la herramienta",
+      "skills": [
+       "tracking-difference",
+       "costes-comisiones"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-veh-04-domicilio-clases-y-divisa",
+      "title": "Domicilio, clases y divisa",
+      "minutes": 20,
+      "content": "Domicilio en Irlanda o Luxemburgo, clases Acc/Dist y cubiertas, divisa de cotización frente a exposición real.",
+      "practice": "Mismo ETF en tres bolsas y dos divisas",
+      "skills": [
+       "divisa-cobertura"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-veh-05-folleto-kid-e-informes",
+      "title": "Folleto, KID e informes",
+      "minutes": 20,
+      "content": "Qué documento responde a qué pregunta; qué buscar en un informe semestral.",
+      "practice": "Búsqueda guiada en documentos reales de un fondo",
+      "skills": [
+       "documentacion-producto"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-veh-06-gestion-activa-sicav-y-carteras-modelo",
+      "title": "Gestión activa, SICAV y carteras modelo",
+      "minutes": 20,
+      "content": "Qué dice la evidencia sobre la gestión activa (informes SPIVA), fondos de fondos, gestores automatizados por dentro y SICAV.",
+      "practice": "Tres maneras de delegar, comparadas",
+      "skills": [
+       "gestion-delegada",
+       "estructura-fondos"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Cómo están hechos los fondos y ETF, lo que de verdad cuestan, su divisa y su documentación.",
+    "minutes": 120
+   },
+   {
+    "code": "car",
+    "title": "Construcción de carteras",
+    "items": [
+     {
+      "id": "n2-car-01-del-objetivo-al-reparto",
+      "title": "Del objetivo al reparto",
+      "minutes": 20,
+      "content": "Asignación estratégica según objetivo y horizonte; varias metas a la vez con «cubos».",
+      "practice": "Tres objetivos de una misma persona",
+      "skills": [
+       "asignacion-por-etapas"
+      ],
+      "access": "sample"
+     },
+     {
+      "id": "n2-car-02-carteras-para-cada-etapa",
+      "title": "Carteras para cada etapa de la vida",
+      "minutes": 25,
+      "content": "Ejemplos conceptuales por etapa (20, 40 y 60 años), carteras de ciclo de vida y cómo bajar el riesgo al acercarse el objetivo.",
+      "practice": "Seguir a un personaje ficticio durante 40 años",
+      "skills": [
+       "asignacion-por-etapas"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-car-03-nucleo-y-satelite",
+      "title": "Núcleo y satélite",
+      "minutes": 20,
+      "content": "Reglas para tener una parte «experimental» sin romper el plan: límite, revisión y salida.",
+      "practice": "Satélite que crece demasiado",
+      "skills": [
+       "nucleo-satelite"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-car-04-el-riesgo-de-una-cartera",
+      "title": "El riesgo de una cartera",
+      "minutes": 25,
+      "content": "Volatilidad, caída máxima, tiempo de recuperación y correlación, todo leído en gráficos de la herramienta.",
+      "practice": "Dos carteras con la misma rentabilidad y distinto camino",
+      "skills": [
+       "riesgo-cartera"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-car-05-divisas-en-la-cartera",
+      "title": "Las divisas en la cartera",
+      "minutes": 20,
+      "content": "Riesgo de divisa en bolsa y en renta fija, cuándo tiene sentido cubrirlo y cuándo no.",
+      "practice": "Renta fija global cubierta y sin cubrir",
+      "skills": [
+       "divisa-cobertura",
+       "diversificacion-internacional"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-car-06-reglas-de-rebalanceo",
+      "title": "Reglas de rebalanceo",
+      "minutes": 20,
+      "content": "Rebalanceo por calendario o por bandas, usando aportaciones y teniendo en cuenta la fiscalidad de ETF y fondos.",
+      "practice": "Un año agitado con dos reglas distintas",
+      "skills": [
+       "rebalanceo"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-car-07-analizar-una-cartera-ajena",
+      "title": "Analizar una cartera ajena",
+      "minutes": 20,
+      "content": "Lista educativa para analizar una cartera: concentración, solapamientos, costes, divisa y coherencia con el objetivo. Cómo comentarla sin recomendar.",
+      "practice": "Cartera ficticia de Pablo, con 9 fondos que se solapan",
+      "skills": [
+       "riesgo-cartera",
+       "frontera-asesoramiento"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Del objetivo al reparto: carteras por etapas, núcleo y satélite, riesgo, divisa y rebalanceo.",
+    "minutes": 150
+   },
+   {
+    "code": "fis",
+    "title": "Fiscalidad práctica en España",
+    "items": [
+     {
+      "id": "n2-fis-01-como-tributa-el-ahorro",
+      "title": "Cómo tributa el ahorro",
+      "minutes": 20,
+      "content": "Base del ahorro y base general; rendimientos del capital mobiliario y ganancias patrimoniales.",
+      "practice": "Clasificar 6 ingresos de un inversor ficticio",
+      "skills": [
+       "irpf-ahorro"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-fis-02-fondos-etf-y-traspasos",
+      "title": "Fondos, ETF y traspasos",
+      "minutes": 20,
+      "content": "Diferimiento por traspaso, orden de venta FIFO, por qué los ETF no se traspasan y sus excepciones.",
+      "practice": "Cambiar de fondo con y sin traspaso",
+      "skills": [
+       "fiscalidad-fondos-etf"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-fis-03-perdidas-que-ayudan",
+      "title": "Pérdidas que ayudan",
+      "minutes": 20,
+      "content": "Compensación de ganancias y pérdidas, arrastre a años siguientes y regla de recompra de valores homogéneos.",
+      "practice": "Vender en pérdidas y recomprar demasiado pronto",
+      "skills": [
+       "perdidas-compensacion"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-fis-04-dividendos-y-retenciones-extranjeras",
+      "title": "Dividendos y retenciones extranjeras",
+      "minutes": 20,
+      "content": "Doble imposición internacional, deducción en la renta, recuperación de retenciones en origen y formularios (concepto).",
+      "practice": "Dividendo de una empresa estadounidense",
+      "skills": [
+       "fiscalidad-internacional"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-fis-05-brokers-extranjeros",
+      "title": "Brókeres extranjeros y obligaciones",
+      "minutes": 20,
+      "content": "Brókeres sin retención en España, qué declara uno mismo, obligaciones informativas (modelos 720 y 721, a verificar en cada ejercicio).",
+      "practice": "Inversor con cuenta en un bróker de otro país de la UE",
+      "skills": [
+       "fiscalidad-internacional"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-fis-06-pensiones-y-productos-con-ventaja",
+      "title": "Pensiones y productos con ventaja fiscal",
+      "minutes": 20,
+      "content": "Planes individuales y de empleo, reducción en la base, formas de rescate; otros productos con ventaja fiscal a nivel conceptual.",
+      "practice": "Rescatar en capital o en renta",
+      "skills": [
+       "planes-pensiones"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Cómo tributa el ahorro en España: fondos, ETF y traspasos, pérdidas, dividendos extranjeros y pensiones.",
+    "minutes": 120
+   },
+   {
+    "code": "pla",
+    "title": "Planificación financiera personal",
+    "items": [
+     {
+      "id": "n2-pla-01-tu-mapa-financiero",
+      "title": "Tu mapa financiero",
+      "minutes": 20,
+      "content": "Patrimonio neto y flujo mensual con la herramienta, sin cálculos a mano.",
+      "practice": "Mapa de un hogar ficticio",
+      "skills": [
+       "planificacion-personal"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-pla-02-varios-objetivos-a-la-vez",
+      "title": "Varios objetivos a la vez",
+      "minutes": 20,
+      "content": "Priorizar colchón, deudas, vivienda, jubilación y ocio; resolver conflictos entre metas.",
+      "practice": "Pareja con tres metas incompatibles",
+      "skills": [
+       "planificacion-personal"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-pla-03-comprar-o-alquilar",
+      "title": "¿Comprar o alquilar?",
+      "minutes": 20,
+      "content": "Factores económicos y de vida, hipoteca fija o variable (concepto), entrada frente a inversión.",
+      "practice": "Dos decisiones razonables con resultados distintos",
+      "skills": [
+       "vivienda-decision"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-pla-04-la-jubilacion-sin-miedo",
+      "title": "La jubilación sin miedo",
+      "minutes": 25,
+      "content": "Cómo consultar la estimación oficial de la pensión pública, la brecha, ahorro complementario y la «regla del 4 %» con sus críticas.",
+      "practice": "Estimar una brecha con la herramienta",
+      "skills": [
+       "jubilacion"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-pla-05-seguros-que-protegen-tu-plan",
+      "title": "Seguros que protegen tu plan",
+      "minutes": 20,
+      "content": "Vida riesgo, incapacidad, salud y hogar; seguros de ahorro con mirada crítica.",
+      "practice": "Familia sin seguro de vida",
+      "skills": [
+       "seguros-proteccion"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-pla-06-dinero-en-pareja-y-en-familia",
+      "title": "Dinero en pareja y en familia",
+      "minutes": 15,
+      "content": "Cuentas conjuntas, régimen económico (concepto), hijos y educación financiera de menores.",
+      "practice": "Pareja que empieza a invertir",
+      "skills": [
+       "planificacion-personal"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Tu mapa financiero, varios objetivos, vivienda, jubilación, seguros y dinero en familia.",
+    "minutes": 120
+   },
+   {
+    "code": "emp",
+    "title": "Análisis de empresas",
+    "items": [
+     {
+      "id": "n2-emp-01-los-tres-estados-juntos",
+      "title": "Los tres estados financieros juntos",
+      "minutes": 25,
+      "content": "Cuenta de resultados, balance y flujo de caja, y cómo se conectan.",
+      "practice": "Seguir un euro de venta por los tres estados",
+      "skills": [
+       "estados-financieros"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-emp-02-calidad-del-beneficio",
+      "title": "La calidad del beneficio",
+      "minutes": 25,
+      "content": "Beneficio frente a caja, ajustes, señales de alarma contables.",
+      "practice": "Caso Wirecard, con fuentes",
+      "skills": [
+       "calidad-beneficio"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-emp-03-rentabilidad-del-negocio",
+      "title": "¿Es un buen negocio?",
+      "minutes": 20,
+      "content": "Rentabilidad sobre el capital explicada con palabras; crecer con o sin rentabilidad.",
+      "practice": "Dos empresas que crecen igual",
+      "skills": [
+       "estados-financieros"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-emp-04-valoracion-por-multiplos",
+      "title": "Valoración por múltiplos",
+      "minutes": 25,
+      "content": "PER, EV/EBITDA y rentabilidad por flujo de caja; comparar con competidores y con la propia historia; trampas de valor.",
+      "practice": "La acción «barata» que lo era por algo",
+      "skills": [
+       "valoracion-multiplos"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-emp-05-quien-manda-en-la-empresa",
+      "title": "Quién manda en la empresa",
+      "minutes": 20,
+      "content": "Gobierno corporativo, incentivos de la dirección, accionistas de control, dilución y criterios ESG con espíritu crítico.",
+      "practice": "Ampliación de capital que diluye",
+      "skills": [
+       "gobierno-corporativo"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-emp-06-tu-informe-de-una-empresa",
+      "title": "Tu informe de una empresa",
+      "minutes": 20,
+      "content": "Plantilla de una página con datos de fuentes oficiales (CNMV, informes anuales). Describe y no concluye «comprar» ni «vender».",
+      "practice": "Completar la plantilla con una empresa real",
+      "skills": [
+       "informacion-empresas"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Los tres estados financieros, la calidad del beneficio, la valoración por múltiplos y el gobierno corporativo.",
+    "minutes": 135
+   },
+   {
+    "code": "mac",
+    "title": "Macroeconomía e historia de los mercados",
+    "items": [
+     {
+      "id": "n2-mac-01-el-ciclo-economico",
+      "title": "El ciclo económico",
+      "minutes": 20,
+      "content": "Fases del ciclo, indicadores adelantados y por qué la bolsa se adelanta a la economía.",
+      "practice": "Bolsa y PIB en una misma recesión",
+      "skills": [
+       "ciclo-economico"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-mac-02-como-deciden-los-bancos-centrales",
+      "title": "Cómo deciden los bancos centrales",
+      "minutes": 20,
+      "content": "Mandatos del BCE y la Fed, tipos y balance, transmisión a hipotecas, bonos y bolsa.",
+      "practice": "Leer un comunicado del BCE",
+      "skills": [
+       "politica-monetaria"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-mac-03-inflacion-y-activos",
+      "title": "Inflación y activos",
+      "minutes": 20,
+      "content": "Cómo se han comportado históricamente los distintos activos con inflación alta, con matices.",
+      "practice": "Los años 70 y 2022",
+      "skills": [
+       "ciclo-economico",
+       "inflacion-real"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-mac-04-cinco-crisis-que-ensenan",
+      "title": "Cinco crisis que enseñan",
+      "minutes": 25,
+      "content": "1929, 2000, 2008, 2020 y 2022: qué pasó, cuánto cayó, cuánto tardó en recuperarse y qué lección deja.",
+      "practice": "Línea temporal comparada",
+      "skills": [
+       "historia-crisis"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-mac-05-de-la-noticia-a-la-cartera",
+      "title": "De la noticia a la cartera",
+      "minutes": 15,
+      "content": "Marco de 4 preguntas para analizar una noticia macro sin reaccionar.",
+      "practice": "Analizar un titular de esta semana",
+      "skills": [
+       "filtro-noticias",
+       "hecho-opinion"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Ciclo económico, bancos centrales, inflación y cinco crisis que enseñan.",
+    "minutes": 100
+   },
+   {
+    "code": "con",
+    "title": "Conducta del inversor",
+    "items": [
+     {
+      "id": "n2-con-01-finanzas-conductuales",
+      "title": "Finanzas conductuales",
+      "minutes": 20,
+      "content": "Pensamiento rápido y lento, aversión a las pérdidas, anclaje, disponibilidad y efecto rebaño.",
+      "practice": "Detectar 5 sesgos en una conversación",
+      "skills": [
+       "finanzas-conductuales"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-con-02-la-brecha-del-inversor",
+      "title": "La brecha del inversor",
+      "minutes": 20,
+      "content": "Diferencia entre la rentabilidad del fondo y la que obtienen sus inversores, con estudios publicados.",
+      "practice": "El fondo que ganó y sus partícipes que perdieron",
+      "skills": [
+       "finanzas-conductuales"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-con-03-burbujas-y-manias",
+      "title": "Burbujas y manías",
+      "minutes": 20,
+      "content": "Tulipanes, puntocom, cripto en 2021 y acciones de moda: patrones comunes.",
+      "practice": "Lista de señales de euforia",
+      "skills": [
+       "finanzas-conductuales",
+       "historia-crisis"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-con-04-reglas-que-protegen",
+      "title": "Reglas que protegen",
+      "minutes": 15,
+      "content": "Automatizar, listas, periodos de espera y cómo ayudar a otros a aplicarlas.",
+      "practice": "Diseñar las reglas de un amigo ficticio",
+      "skills": [
+       "finanzas-conductuales"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Finanzas conductuales, la brecha del inversor, burbujas y reglas que protegen.",
+    "minutes": 75
+   },
+   {
+    "code": "alt",
+    "title": "Productos complejos y alternativos",
+    "items": [
+     {
+      "id": "n2-alt-01-derivados-para-entenderlos",
+      "title": "Derivados para entenderlos",
+      "minutes": 25,
+      "content": "Futuros, opciones y CFD a nivel conceptual; para qué los usan las empresas y por qué la mayoría de particulares pierden con ellos (avisos obligatorios de la ESMA).",
+      "practice": "Una empresa que cubre el precio del combustible",
+      "skills": [
+       "derivados-concepto",
+       "apalancamiento-cfd"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-alt-02-estructurados-y-garantizados",
+      "title": "Estructurados y garantizados",
+      "minutes": 20,
+      "content": "Cómo se fabrican, costes ocultos y riesgo de emisor.",
+      "practice": "Caso de las participaciones preferentes en España",
+      "skills": [
+       "estructurados"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-alt-03-criptoactivos-a-fondo",
+      "title": "Criptoactivos a fondo",
+      "minutes": 25,
+      "content": "Blockchain, monedas estables, MiCA, custodia, fiscalidad y fraudes habituales.",
+      "practice": "Quiebra de una plataforma y qué protegía al cliente",
+      "skills": [
+       "cripto-critico"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-alt-04-inmobiliario-oro-y-materias-primas",
+      "title": "Inmobiliario, oro y materias primas",
+      "minutes": 20,
+      "content": "SOCIMI y REIT, ETC de oro, cómo se invierte en materias primas mediante futuros (concepto) y su papel en una cartera.",
+      "practice": "El ETC que no sigue al precio que esperabas",
+      "skills": [
+       "alternativos-criterio"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-alt-05-plataformas-y-promesas",
+      "title": "Plataformas, capital riesgo y otras promesas",
+      "minutes": 20,
+      "content": "Plataformas de financiación participativa supervisadas por la CNMV, ELTIF, iliquidez y sesgo de supervivencia.",
+      "practice": "Folleto ficticio con rentabilidad «objetivo»",
+      "skills": [
+       "alternativos-criterio"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Derivados, estructurados, criptoactivos, inmobiliario, oro y plataformas, para entenderlos.",
+    "minutes": 110
+   },
+   {
+    "code": "ens",
+    "title": "Enseñar inversión con responsabilidad",
+    "items": [
+     {
+      "id": "n2-ens-01-explicar-sin-recomendar",
+      "title": "Explicar sin recomendar",
+      "minutes": 20,
+      "content": "Diferencia entre educar, informar y asesorar; cómo responder a «¿qué compro?» sin recomendar.",
+      "practice": "5 preguntas de amigos y cómo contestarlas",
+      "skills": [
+       "frontera-asesoramiento"
+      ],
+      "access": "sample"
+     },
+     {
+      "id": "n2-ens-02-como-se-aprende-el-dinero",
+      "title": "Cómo se aprende el dinero",
+      "minutes": 25,
+      "content": "Una idea por vez, ejemplo, práctica, repaso espaciado y adaptar el mensaje al nivel de quien escucha.",
+      "practice": "Reescribir una explicación confusa",
+      "skills": [
+       "explicar-con-rigor"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-ens-03-divulgar-con-etica",
+      "title": "Divulgar con ética",
+      "minutes": 25,
+      "content": "Publicidad, conflictos de interés, normas sobre finfluencers (CNMV, Ley 6/2023 de los Mercados de Valores: verificar el texto vigente) y transparencia si cobras.",
+      "practice": "Revisar 3 publicaciones ficticias de redes",
+      "skills": [
+       "etica-divulgacion"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n2-ens-04-prepara-tu-primera-clase",
+      "title": "Prepara tu primera clase",
+      "minutes": 20,
+      "content": "Estructura de una clase de 10 minutos y preparación del proyecto final (sección 9.2).",
+      "practice": "Esquema de la clase del proyecto",
+      "skills": [
+       "explicar-con-rigor"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Explicar sin recomendar, cómo se aprende el dinero, divulgar con ética y preparar tu primera clase.",
+    "minutes": 90
+   }
+  ]
+ },
+ "n3": {
+  "modules": [
+   {
+    "code": "reg",
+    "title": "Regulación y protección del inversor",
+    "items": [
+     {
+      "id": "n3-reg-01-el-mapa-regulatorio",
+      "title": "El mapa regulatorio",
+      "minutes": 35,
+      "content": "Arquitectura de supervisión en España y la UE: CNMV, Banco de España, DGSFP, ESMA, EBA, EIOPA y BCE. Tipos de entidades y qué puede hacer cada una.",
+      "practice": "Identificar el supervisor de 8 entidades",
+      "skills": [
+       "marco-supervision"
+      ],
+      "access": "sample"
+     },
+     {
+      "id": "n3-reg-02-mifid-ii-por-dentro",
+      "title": "MiFID II por dentro",
+      "minutes": 40,
+      "content": "Servicios de inversión, clasificación de clientes, conveniencia e idoneidad, asesoramiento independiente y no independiente, incentivos y gobernanza de producto.",
+      "practice": "`antonio`: ¿le vendieron lo adecuado?",
+      "skills": [
+       "mifid-ii"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-reg-03-transparencia-y-documentos",
+      "title": "Transparencia y documentos",
+      "minutes": 35,
+      "content": "PRIIPs y KID, información de costes antes y después de contratar, indicador de riesgo y escenarios de rentabilidad y sus límites.",
+      "practice": "Leer el KID de un producto estructurado",
+      "skills": [
+       "priips-transparencia"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-reg-04-abuso-de-mercado-y-blanqueo",
+      "title": "Abuso de mercado y blanqueo",
+      "minutes": 40,
+      "content": "Información privilegiada, manipulación de mercado y prevención del blanqueo de capitales a nivel conceptual.",
+      "practice": "Casos sancionados publicados por la CNMV",
+      "skills": [
+       "abuso-mercado"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-reg-05-cripto-y-nuevas-normas",
+      "title": "Cripto y nuevas normas",
+      "minutes": 35,
+      "content": "MiCA, proveedores de servicios de criptoactivos, plataformas de financiación participativa y régimen de publicidad.",
+      "practice": "¿Está autorizada esta plataforma?",
+      "skills": [
+       "marco-supervision",
+       "cripto-critico"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-reg-06-reclamaciones-y-proteccion",
+      "title": "Reclamaciones y sistemas de protección",
+      "minutes": 40,
+      "content": "Servicio de atención al cliente, reclamaciones ante la CNMV y el Banco de España, fondos de garantía y sus límites, y qué no está protegido.",
+      "practice": "`antonio` reclama por un producto que no entendía",
+      "skills": [
+       "proteccion-inversor"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Supervisión en España y la UE, MiFID II, transparencia, abuso de mercado, cripto y reclamaciones.",
+    "minutes": 225
+   },
+   {
+    "code": "eti",
+    "title": "Ética y conducta profesional",
+    "items": [
+     {
+      "id": "n3-eti-01-el-deber-con-el-cliente",
+      "title": "El deber con el cliente",
+      "minutes": 35,
+      "content": "Lealtad, diligencia, confidencialidad y actuar en el mejor interés del cliente.",
+      "practice": "Dilemas breves con decisión razonada",
+      "skills": [
+       "etica-profesional"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-eti-02-conflictos-de-interes",
+      "title": "Conflictos de interés",
+      "minutes": 40,
+      "content": "Comisiones, productos de la casa, objetivos comerciales: cómo se detectan, gestionan y comunican.",
+      "practice": "El banco y la cartera de `antonio`",
+      "skills": [
+       "conflictos-interes"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-eti-03-casos-que-cambiaron-las-normas",
+      "title": "Casos que cambiaron las normas",
+      "minutes": 40,
+      "content": "Participaciones preferentes en España, Madoff, Fórum Filatélico, Wirecard y FTX: qué falló y qué se cambió después.",
+      "practice": "Línea temporal de cada caso con fuentes",
+      "skills": [
+       "etica-profesional",
+       "detectar-fraude"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-eti-04-comunicar-con-honestidad",
+      "title": "Comunicar con honestidad",
+      "minutes": 35,
+      "content": "Rentabilidades pasadas, simulaciones, publicidad y redes; cómo se presenta un resultado sin engañar.",
+      "practice": "Corregir 3 anuncios ficticios",
+      "skills": [
+       "etica-profesional",
+       "etica-divulgacion"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "El deber con el cliente, los conflictos de interés, casos que cambiaron las normas y comunicar con honestidad.",
+    "minutes": 150
+   },
+   {
+    "code": "eco",
+    "title": "Economía y mercados financieros",
+    "items": [
+     {
+      "id": "n3-eco-01-politica-monetaria-y-fiscal",
+      "title": "Política monetaria y fiscal",
+      "minutes": 40,
+      "content": "Herramientas del BCE, expansión y reducción del balance, política fiscal y deuda pública, y cómo interactúan.",
+      "practice": "Respuestas de 2008 y de 2020 comparadas",
+      "skills": [
+       "politica-economica"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-eco-02-tipos-inflacion-y-valoracion",
+      "title": "Tipos, inflación y valoración de activos",
+      "minutes": 35,
+      "content": "Por qué los tipos de interés afectan al precio de todos los activos, con ejemplos ya calculados.",
+      "practice": "Bolsa y bonos en 2022",
+      "skills": [
+       "politica-economica",
+       "valoracion-intrinseca"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-eco-03-mercados-de-divisas",
+      "title": "Mercados de divisas",
+      "minutes": 35,
+      "content": "Qué mueve las divisas, régimen de tipos de cambio y efectos en carteras y empresas.",
+      "practice": "Empresa exportadora con un euro fuerte",
+      "skills": [
+       "mercados-divisas"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-eco-04-eficiencia-de-mercados",
+      "title": "¿Son eficientes los mercados?",
+      "minutes": 40,
+      "content": "Hipótesis de eficiencia, sus formas, anomalías documentadas y qué implica para la gestión activa y pasiva.",
+      "practice": "Debate guiado con evidencia de ambos lados",
+      "skills": [
+       "eficiencia-mercados"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-eco-05-ciclos-y-asignacion",
+      "title": "Ciclos económicos y asignación",
+      "minutes": 35,
+      "content": "Indicadores del ciclo, por qué el «timing» del ciclo falla tan a menudo y qué se puede hacer con criterio.",
+      "practice": "Recesión ficticia y tres reacciones de carteras",
+      "skills": [
+       "ciclo-economico",
+       "asignacion-estrategica-tactica"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Política monetaria y fiscal, tipos e inflación, divisas, eficiencia de mercados y ciclos.",
+    "minutes": 185
+   },
+   {
+    "code": "rf",
+    "title": "Renta fija profesional",
+    "items": [
+     {
+      "id": "n3-rf-01-el-mercado-de-renta-fija",
+      "title": "El mercado de renta fija",
+      "minutes": 35,
+      "content": "Emisores, mercados primario y secundario, subastas del Tesoro y liquidez de la renta fija corporativa.",
+      "practice": "Una subasta del Tesoro explicada",
+      "skills": [
+       "rf-avanzada"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-rf-02-duracion-y-convexidad",
+      "title": "Duración y convexidad",
+      "minutes": 40,
+      "content": "Duración modificada y convexidad explicadas por su significado; leerlas en la ficha de un fondo.",
+      "practice": "Dos fondos con igual duración y distinto comportamiento",
+      "skills": [
+       "rf-avanzada"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-rf-03-credito-y-diferenciales",
+      "title": "Crédito y diferenciales",
+      "minutes": 40,
+      "content": "Agencias de calificación y sus límites, diferenciales de crédito, probabilidad de impago y recuperación (concepto).",
+      "practice": "Un emisor que pierde el grado de inversión",
+      "skills": [
+       "rf-avanzada",
+       "credito-rating"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-rf-04-deuda-subordinada-y-bancaria",
+      "title": "Deuda subordinada y bancaria",
+      "minutes": 40,
+      "content": "Prelación, bail-in, bonos convertibles contingentes y cédulas hipotecarias.",
+      "practice": "Resolución de un banco europeo y qué perdió cada acreedor",
+      "skills": [
+       "deuda-subordinada"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-rf-05-titulizaciones-y-otros",
+      "title": "Titulizaciones, ligados a inflación y otros",
+      "minutes": 35,
+      "content": "Titulizaciones, bonos ligados a la inflación y bonos verdes, con espíritu crítico.",
+      "practice": "Lección de 2008 sobre titulizaciones",
+      "skills": [
+       "rf-avanzada"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-rf-06-gestionar-una-cartera-de-renta-fija",
+      "title": "Gestionar una cartera de renta fija",
+      "minutes": 40,
+      "content": "Escalera de vencimientos, inmunización (concepto), fondos a vencimiento y renta fija en la jubilación.",
+      "practice": "Cartera de renta fija para `antonio` (educativa)",
+      "skills": [
+       "gestion-carteras-rf"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Mercado de renta fija, duración y convexidad, crédito, deuda bancaria, titulizaciones y gestión de carteras de renta fija.",
+    "minutes": 230
+   },
+   {
+    "code": "rv",
+    "title": "Renta variable y valoración",
+    "items": [
+     {
+      "id": "n3-rv-01-analisis-fundamental-completo",
+      "title": "Análisis fundamental completo",
+      "minutes": 45,
+      "content": "Proceso de análisis: negocio, sector, estados financieros, gestión y riesgos.",
+      "practice": "Empresa real con fuentes oficiales",
+      "skills": [
+       "estados-financieros",
+       "analisis-sectorial"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-rv-02-analisis-sectorial-y-competitivo",
+      "title": "Análisis sectorial y competitivo",
+      "minutes": 40,
+      "content": "Las cinco fuerzas de Porter, ciclo del sector, regulación y ventajas competitivas duraderas.",
+      "practice": "Comparar dos sectores",
+      "skills": [
+       "analisis-sectorial"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-rv-03-valoracion-por-descuento-de-flujos",
+      "title": "Valoración por descuento de flujos",
+      "minutes": 40,
+      "content": "Idea del descuento de flujos explicada sin fórmulas; supuestos clave y sensibilidad usando la herramienta.",
+      "practice": "Cómo cambia el valor al tocar un supuesto",
+      "skills": [
+       "valoracion-intrinseca"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-rv-04-multiplos-y-comparables",
+      "title": "Múltiplos y comparables",
+      "minutes": 35,
+      "content": "Selección de comparables, múltiplos por sector y errores habituales.",
+      "practice": "Valoración relativa de una empresa ficticia",
+      "skills": [
+       "valoracion-multiplos"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-rv-05-gobierno-corporativo-y-esg",
+      "title": "Gobierno corporativo y ESG",
+      "minutes": 35,
+      "content": "Estructura de consejos, remuneración, derechos del accionista, ESG, SFDR y riesgo de «lavado verde».",
+      "practice": "Fondo «sostenible» bajo la lupa",
+      "skills": [
+       "gobierno-corporativo"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-rv-06-el-informe-profesional",
+      "title": "El informe profesional",
+      "minutes": 40,
+      "content": "Estructura de un informe de análisis, separando datos, opiniones y riesgos.",
+      "practice": "Preparar el proyecto final B",
+      "skills": [
+       "informacion-empresas",
+       "valoracion-intrinseca"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Análisis fundamental, sectorial y competitivo, descuento de flujos, múltiplos, ESG y el informe profesional.",
+    "minutes": 235
+   },
+   {
+    "code": "iic",
+    "title": "Instituciones de inversión colectiva y selección de fondos",
+    "items": [
+     {
+      "id": "n3-iic-01-tipos-de-iic",
+      "title": "Tipos de IIC",
+      "minutes": 40,
+      "content": "Fondos, SICAV, UCITS y alternativos (AIF), fondos garantizados y de rentabilidad objetivo, ELTIF.",
+      "practice": "Clasificar 10 vehículos",
+      "skills": [
+       "tipos-iic"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-iic-02-gestoras-y-depositarios",
+      "title": "Gestoras, depositarios y controles",
+      "minutes": 35,
+      "content": "Funciones de cada entidad, controles y qué pasa en caso de problemas.",
+      "practice": "Cambio de gestora de un fondo",
+      "skills": [
+       "tipos-iic"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-iic-03-metricas-de-un-fondo",
+      "title": "Las métricas de un fondo",
+      "minutes": 40,
+      "content": "Volatilidad, ratio de Sharpe, error de seguimiento, ratio de información y caída máxima: qué mide cada una y qué no dice.",
+      "practice": "Leer las métricas de 3 fondos en la herramienta",
+      "skills": [
+       "metricas-fondos"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-iic-04-seleccion-de-fondos",
+      "title": "Selección de fondos",
+      "minutes": 40,
+      "content": "Proceso de selección: costes, consistencia, equipo gestor, tamaño, estilo, y las ventajas y límites de las calificaciones de fondos.",
+      "practice": "Lista corta educativa para `lucia`",
+      "skills": [
+       "seleccion-fondos"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-iic-05-indexacion-profesional",
+      "title": "Indexación profesional",
+      "minutes": 35,
+      "content": "Construcción de índices, réplica, diferencia de seguimiento y costes totales a escala.",
+      "practice": "Comparar 3 vehículos del mismo índice",
+      "skills": [
+       "seleccion-fondos",
+       "tracking-difference"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-iic-06-fondos-de-pensiones-y-seguros",
+      "title": "Fondos de pensiones y productos de seguro",
+      "minutes": 35,
+      "content": "Planes individuales, de empleo y simplificados; seguros de ahorro y unit linked.",
+      "practice": "Los planes de empleo de la familia `ortega`",
+      "skills": [
+       "productos-seguro"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Tipos de IIC, gestoras y depositarios, métricas de fondos, selección de fondos, indexación y pensiones.",
+    "minutes": 225
+   },
+   {
+    "code": "der",
+    "title": "Derivados y activos alternativos",
+    "items": [
+     {
+      "id": "n3-der-01-futuros-y-forwards",
+      "title": "Futuros y forwards",
+      "minutes": 40,
+      "content": "Funcionamiento, garantías, liquidación y su uso para cubrir riesgos.",
+      "practice": "Exportador que cubre el tipo de cambio",
+      "skills": [
+       "derivados-profesional"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-der-02-opciones",
+      "title": "Opciones",
+      "minutes": 45,
+      "content": "Compra y venta de opciones de compra y de venta, qué determina su precio (concepto) y perfiles de resultado mostrados con gráficos.",
+      "practice": "Seguro de cartera con una opción de venta",
+      "skills": [
+       "derivados-profesional"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-der-03-swaps-y-cobertura",
+      "title": "Swaps y cobertura",
+      "minutes": 35,
+      "content": "Swaps de tipos y de divisas; cobertura frente a especulación.",
+      "practice": "Empresa que fija el tipo de su préstamo",
+      "skills": [
+       "cobertura"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-der-04-estructurados-por-dentro",
+      "title": "Estructurados por dentro",
+      "minutes": 40,
+      "content": "Descomponer un estructurado en sus piezas, coste implícito y riesgo de emisor.",
+      "practice": "El estructurado de `antonio`",
+      "skills": [
+       "cobertura",
+       "estructurados"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-der-05-alternativos",
+      "title": "Inversión alternativa",
+      "minutes": 35,
+      "content": "Capital riesgo, deuda privada, fondos de cobertura, inmobiliario e infraestructuras: iliquidez, costes y acceso.",
+      "practice": "ELTIF ofrecido a un particular",
+      "skills": [
+       "activos-alternativos"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-der-06-materias-primas-y-criptoactivos",
+      "title": "Materias primas y criptoactivos",
+      "minutes": 35,
+      "content": "Curva de futuros y su efecto en el inversor, custodia y riesgos de los criptoactivos.",
+      "practice": "El ETC de petróleo de 2020",
+      "skills": [
+       "activos-alternativos",
+       "cripto-critico"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Futuros, opciones, swaps, estructurados por dentro, alternativos, materias primas y criptoactivos.",
+    "minutes": 230
+   },
+   {
+    "code": "gcr",
+    "title": "Gestión de carteras y del riesgo",
+    "items": [
+     {
+      "id": "n3-gcr-01-teoria-de-carteras",
+      "title": "Teoría de carteras sin fórmulas",
+      "minutes": 40,
+      "content": "Diversificación, correlación, frontera eficiente y sus límites, explicados con gráficos.",
+      "practice": "Combinar dos activos en la herramienta",
+      "skills": [
+       "teoria-carteras"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-gcr-02-riesgo-sistematico-y-factores",
+      "title": "Riesgo de mercado y factores",
+      "minutes": 40,
+      "content": "Beta, CAPM (idea), modelos de factores y qué significa el «alfa».",
+      "practice": "Fondo con alfa que era riesgo escondido",
+      "skills": [
+       "teoria-carteras"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-gcr-03-politica-de-inversion",
+      "title": "La política de inversión",
+      "minutes": 40,
+      "content": "Objetivos, restricciones, horizonte, liquidez, fiscalidad y preferencias del cliente en un documento de política de inversión.",
+      "practice": "Borrador de la política de `lucia`",
+      "skills": [
+       "asignacion-estrategica-tactica"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-gcr-04-asignacion-estrategica-y-tactica",
+      "title": "Asignación estratégica y táctica",
+      "minutes": 40,
+      "content": "Diferencias, evidencia y riesgos de la asignación táctica.",
+      "practice": "Cartera de la familia `ortega`",
+      "skills": [
+       "asignacion-estrategica-tactica"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-gcr-05-medir-el-riesgo",
+      "title": "Medir el riesgo",
+      "minutes": 40,
+      "content": "Volatilidad, caída máxima, VaR y pruebas de estrés por su significado; riesgo de liquidez y de concentración.",
+      "practice": "Prueba de estrés educativa de una cartera",
+      "skills": [
+       "medicion-riesgo"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-gcr-06-medir-la-rentabilidad",
+      "title": "Medir la rentabilidad",
+      "minutes": 40,
+      "content": "Rentabilidad ponderada por tiempo y por dinero, índices de referencia y atribución (idea).",
+      "practice": "Por qué el cliente ganó menos que su fondo",
+      "skills": [
+       "medicion-rentabilidad"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-gcr-07-seguimiento-y-rebalanceo",
+      "title": "Seguimiento y rebalanceo profesional",
+      "minutes": 35,
+      "content": "Revisiones periódicas, informes al cliente y rebalanceo eficiente fiscalmente.",
+      "practice": "Informe anual de `lucia`",
+      "skills": [
+       "medicion-rentabilidad",
+       "rebalanceo"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "Teoría de carteras, factores, política de inversión, asignación, medición del riesgo y de la rentabilidad.",
+    "minutes": 275
+   },
+   {
+    "code": "fis",
+    "title": "Fiscalidad del inversor en España",
+    "items": [
+     {
+      "id": "n3-fis-01-irpf-del-inversor",
+      "title": "El IRPF del inversor",
+      "minutes": 40,
+      "content": "Integración y compensación de rentas, productos y casos especiales.",
+      "practice": "Declaración de `elena`",
+      "skills": [
+       "fiscalidad-avanzada"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-fis-02-iic-seguros-y-pensiones",
+      "title": "IIC, seguros y pensiones",
+      "minutes": 40,
+      "content": "Tratamiento fiscal comparado de fondos, ETF, SICAV, seguros de ahorro y planes de pensiones.",
+      "practice": "Comparar vehículos para la familia `ortega`",
+      "skills": [
+       "fiscalidad-avanzada",
+       "productos-seguro"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-fis-03-patrimonio-y-sucesiones",
+      "title": "Patrimonio, sucesiones y donaciones",
+      "minutes": 40,
+      "content": "Impuesto sobre el Patrimonio, solidaridad de grandes fortunas, sucesiones y donaciones, y diferencias autonómicas (verificar en cada ejercicio).",
+      "practice": "La herencia de `antonio`",
+      "skills": [
+       "patrimonio-sucesiones"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-fis-04-fiscalidad-internacional",
+      "title": "Fiscalidad internacional del inversor",
+      "minutes": 35,
+      "content": "Residencia fiscal, convenios de doble imposición, retenciones y obligaciones informativas.",
+      "practice": "Inversor con activos en tres países",
+      "skills": [
+       "fiscalidad-internacional"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-fis-05-planificacion-fiscal-legal",
+      "title": "Planificación fiscal legal",
+      "minutes": 35,
+      "content": "Diferir, compensar, elegir vehículo y la frontera con la elusión abusiva.",
+      "practice": "Revisión fiscal anual de `lucia`",
+      "skills": [
+       "fiscalidad-avanzada"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "IRPF del inversor, vehículos comparados, patrimonio y sucesiones, fiscalidad internacional y planificación legal.",
+    "minutes": 190
+   },
+   {
+    "code": "pla",
+    "title": "Planificación financiera integral",
+    "items": [
+     {
+      "id": "n3-pla-01-el-proceso-de-planificacion",
+      "title": "El proceso de planificación",
+      "minutes": 40,
+      "content": "Recogida de datos, diagnóstico, propuesta, implementación y seguimiento; la entrevista con el cliente.",
+      "practice": "Ficha de datos de `elena`",
+      "skills": [
+       "proceso-planificacion"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-pla-02-proteccion-y-seguros",
+      "title": "Protección y seguros",
+      "minutes": 35,
+      "content": "Análisis de necesidades de protección: vida, incapacidad, dependencia y responsabilidad civil.",
+      "practice": "Necesidades de protección de la familia `ortega`",
+      "skills": [
+       "seguros-proteccion",
+       "proceso-planificacion"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-pla-03-planificacion-de-la-jubilacion",
+      "title": "Planificación de la jubilación",
+      "minutes": 40,
+      "content": "Pensión pública, complementos, fase de desacumulación, orden de rescate y riesgo de longevidad.",
+      "practice": "Plan de jubilación de `antonio`",
+      "skills": [
+       "planificacion-jubilacion"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-pla-04-planificacion-sucesoria",
+      "title": "Planificación sucesoria",
+      "minutes": 35,
+      "content": "Testamento, beneficiarios de seguros y planes, y la frontera con el asesoramiento jurídico.",
+      "practice": "Qué preguntas hacer a la familia `ortega`",
+      "skills": [
+       "planificacion-sucesoria"
+      ],
+      "access": "paid"
+     },
+     {
+      "id": "n3-pla-05-el-plan-integral",
+      "title": "El plan integral",
+      "minutes": 40,
+      "content": "Unir todas las piezas en un plan coherente y presentarlo al cliente.",
+      "practice": "Preparación del proyecto final A",
+      "skills": [
+       "proceso-planificacion"
+      ],
+      "access": "paid"
+     }
+    ],
+    "desc": "El proceso de planificación, protección, jubilación, sucesión y el plan integral.",
+    "minutes": 190
+   },
+   {
+    "code": "pry",
+    "title": "Proyecto profesional",
+    "items": [],
+    "desc": "Proyecto final: plan financiero integral para un cliente ficticio o informe de análisis de una empresa real.",
+    "minutes": 360
+   }
+  ],
+  "clients": [
+   {
+    "id": "lucia",
+    "name": "Lucía, 27 años",
+    "situation": "Ingeniera en su primer empleo fijo, sin deudas, ahorra cada mes y nunca ha invertido.",
+    "topics": "Perfil de riesgo, primera cartera, horizonte largo, sesgos"
+   },
+   {
+    "id": "ortega",
+    "name": "Familia Ortega, 41 y 39 años",
+    "situation": "Dos hijos, hipoteca, quieren ahorrar para estudios y jubilación.",
+    "topics": "Varios objetivos, seguros, fiscalidad familiar, planes de empleo"
+   },
+   {
+    "id": "antonio",
+    "name": "Antonio, 58 años",
+    "situation": "Prejubilado con indemnización, perfil conservador, cartera bancaria cara con productos que no entiende.",
+    "topics": "Renta fija, productos complejos, costes, jubilación, sucesión"
+   },
+   {
+    "id": "elena",
+    "name": "Elena, 35 años",
+    "situation": "Autónoma con ingresos irregulares.",
+    "topics": "Colchón ampliado, fiscalidad, previsión sin pensión de empleo"
+   }
+  ],
+  "certificateNotice": "Certificado privado emitido por umotion. No es una titulación oficial, no habilita para prestar asesoramiento financiero ni sustituye las cualificaciones exigidas por la CNMV al personal que informa o asesora sobre inversiones."
+ },
+ "n1Capacities": [
+  {
+   "id": "c1",
+   "text": "Explica para qué invierte, cuándo necesitará el dinero y qué riesgo acepta.",
+   "skills": [
+    "objetivo-horizonte",
+    "riesgo-volatilidad",
+    "inflacion-real",
+    "interes-compuesto"
+   ]
+  },
+  {
+   "id": "c2",
+   "text": "Tiene presupuesto, colchón y deudas caras resueltas antes de invertir.",
+   "skills": [
+    "presupuesto-ahorro",
+    "colchon-emergencia",
+    "deudas-caras"
+   ]
+  },
+  {
+   "id": "c3",
+   "text": "Distingue invertir, ahorrar y especular, y reconoce las señales de un fraude.",
+   "skills": [
+    "detectar-fraude"
+   ]
+  },
+  {
+   "id": "c4",
+   "text": "Conoce qué es cada producto principal, cómo gana y cómo pierde.",
+   "skills": [
+    "acciones",
+    "renta-fija",
+    "depositos-letras",
+    "fondos-etf",
+    "planes-pensiones",
+    "inmobiliario",
+    "materias-primas",
+    "cripto-critico",
+    "productos-complejos"
+   ]
+  },
+  {
+   "id": "c5",
+   "text": "Elige una forma de invertir que encaja con él.",
+   "skills": [
+    "formas-invertir",
+    "gestion-delegada"
+   ]
+  },
+  {
+   "id": "c6",
+   "text": "Comprueba que una entidad está autorizada y entiende qué le protege si quiebra.",
+   "skills": [
+    "comprobar-broker"
+   ]
+  },
+  {
+   "id": "c7",
+   "text": "Lee lo esencial de un KID o una ficha: coste, riesgo, réplica y divisa.",
+   "skills": [
+    "costes-comisiones",
+    "comparar-productos"
+   ]
+  },
+  {
+   "id": "c8",
+   "text": "Monta una cartera indexada sencilla y hace su primera compra.",
+   "skills": [
+    "cartera-indexada",
+    "ejecutar-compra",
+    "usar-app-broker",
+    "diversificacion",
+    "asignacion-activos"
+   ]
+  },
+  {
+   "id": "c9",
+   "text": "Automatiza una aportación mensual y sabe rebalancear con una regla simple.",
+   "skills": [
+    "aportaciones-periodicas",
+    "rebalanceo"
+   ]
+  },
+  {
+   "id": "c10",
+   "text": "Sabe qué hacer cuando la bolsa cae y cuándo tiene sentido vender.",
+   "skills": [
+    "caidas-recuperacion",
+    "psicologia-sesgos",
+    "decidir-venta"
+   ]
+  },
+  {
+   "id": "c11",
+   "text": "Sabe cuándo tributa, qué es un traspaso y qué documentos necesita para la renta.",
+   "skills": [
+    "fiscalidad-espana"
+   ]
+  },
+  {
+   "id": "c12",
+   "text": "Tiene su plan de inversión escrito en una página.",
+   "skills": [
+    "plan-inversion",
+    "revision-anual"
+   ]
+  }
+ ]
+}

@@ -15,15 +15,17 @@
  */
 import type { Goal, LevelId } from './academy';
 
-export type TrackId = 'camino-cero' | 'productos' | 'formas' | 'invertir-ya' | 'trade-republic' | 'empresas' | 'noticias' | 'trading';
+export type TrackId = 'camino-cero' | 'productos' | 'formas' | 'invertir-ya' | 'trade-republic' | 'mantener' | 'empresas' | 'noticias' | 'trading';
 export type Experience = 'nada' | 'algo' | 'invierto';
 export type QType = 'choice' | 'truefalse' | 'estimate';
 
-export interface SkillDef { id: string; domain: string; label: string; can: string }
-export interface DomainDef { id: string; label: string; desc: string }
+export interface SkillDef { id: string; domain: string; label: string; can: string; level?: number }
+export interface DomainDef { id: string; label: string; desc: string; level?: number }
 export interface Mastery { p: number; n: number; ok: number; last: string }
 export type Model = Record<string, Mastery>;
-export interface Profile { goal: Goal; experience: Experience; interests: TrackId[]; createdAt?: string }
+/** goal: objetivo principal (el primero elegido); goals: todos los elegidos. */
+export interface Profile { goal: Goal; goals?: Goal[]; experience: Experience; interests: TrackId[]; createdAt?: string }
+export const goalsOf = (p: Profile | null | undefined): Goal[] => (p ? (p.goals?.length ? p.goals : [p.goal]) : []);
 export interface CatalogItem { id: string; track: TrackId; order: number; level: LevelId; goals: Goal[]; prereqs: string[]; skills: string[]; title?: string }
 
 export const TRACKS: Record<TrackId, { label: string; short: string }> = {
@@ -32,6 +34,7 @@ export const TRACKS: Record<TrackId, { label: string; short: string }> = {
   formas: { label: 'Formas de invertir', short: 'Por tu cuenta, gestionada o automatizada' },
   'invertir-ya': { label: 'Invertir ya', short: 'Cómo empezar, paso a paso' },
   'trade-republic': { label: 'Empieza con Trade Republic', short: 'Abrir la cuenta, usar la app y comparar productos' },
+  mantener: { label: 'Mantener el rumbo', short: 'Revisar, aguantar, saber cuándo vender y declarar' },
   empresas: { label: 'Conocer empresas', short: 'Para saber más: cómo ver si una empresa va bien' },
   noticias: { label: 'Entender noticias', short: 'Para saber más: qué te afecta y qué no' },
   trading: { label: 'Tipos de trading', short: 'Para saber más: entenderlo sin jugarte el dinero' },
@@ -101,7 +104,7 @@ function prereqOk(id: string, catalog: Map<string, CatalogItem>, model: Model, c
 }
 
 /** Prioridad pedagógica: qué es invertir → productos → formas de invertir → empezar. El resto, para saber más. */
-const BOOST: Partial<Record<TrackId, number>> = { productos: 0.9, formas: 0.85, 'invertir-ya': 0.8, 'trade-republic': 0.75 };
+const BOOST: Partial<Record<TrackId, number>> = { productos: 0.9, formas: 0.85, 'invertir-ya': 0.8, 'trade-republic': 0.75, mantener: 0.7 };
 function trackBoost(track: TrackId, profile: Profile | null): number {
   const e = profile?.experience ?? 'nada';
   if (track === 'camino-cero') return e === 'invierto' ? 0.2 : 1.2;
@@ -127,7 +130,7 @@ export function recommend(catalog: CatalogItem[], model: Model, profile: Profile
     if (!it.prereqs.every((p) => prereqOk(p, byId, model, completed, o, profile))) continue;
     const gap = gapOf(it, model, o, profile);
     const interest = profile?.interests.includes(it.track) ?? false;
-    const goal = profile ? it.goals.includes(profile.goal) : false;
+    const goal = goalsOf(profile).some((g) => it.goals.includes(g));
     const known = gap < 1 - MASTERED;
     let score = 3 * gap + (interest ? 1.2 : 0) + (goal ? 0.8 : 0) + trackBoost(it.track, profile) + (o.lastTrack === it.track ? 0.3 : 0) - it.order * 0.002;
     if (known) score -= 3;

@@ -1,25 +1,116 @@
 {
-  "_doc": "Estructura de niveles y prueba de nivel inicial de umotion Academy. Subir de nivel significa comprender más, no operar más ni asumir más riesgo.",
+  "_doc": "Estructura de niveles y prueba de nivel inicial de umotion Academy. Subir de nivel significa comprender más, no operar más ni asumir más riesgo. Desde la versión 1.2 del currículo hay tres niveles (src/data/curriculum.json); aquí solo queda el examen del Camino Cero. El examen del Nivel 1 está en /es/examen/n1/.",
   "goals": [
-    { "id": "entender", "label": "Entender lo básico", "desc": "Quiero saber cómo funciona invertir antes de decidir nada.", "icon": "M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zm0 5v5m0 3h.01" },
-    { "id": "ordenar", "label": "Ordenar mis finanzas", "desc": "Presupuesto, colchón y deudas antes de pensar en invertir.", "icon": "M4 6h16M4 12h10M4 18h7" },
-    { "id": "objetivo", "label": "Ahorrar para algo concreto", "desc": "Vivienda, estudios, un proyecto con fecha.", "icon": "M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z" },
-    { "id": "jubilacion", "label": "Construir patrimonio a largo plazo", "desc": "Jubilación, independencia financiera, años por delante.", "icon": "M3 20h18M6 16l4-5 3 3 5-7" },
-    { "id": "miedo", "label": "Perder el miedo (y evitar estafas)", "desc": "Entender los riesgos reales y protegerme de fraudes.", "icon": "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" }
+    {
+      "id": "entender",
+      "label": "Entender lo básico",
+      "desc": "Quiero saber cómo funciona invertir antes de decidir nada.",
+      "icon": "M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zm0 5v5m0 3h.01"
+    },
+    {
+      "id": "ordenar",
+      "label": "Ordenar mis finanzas",
+      "desc": "Presupuesto, colchón y deudas antes de pensar en invertir.",
+      "icon": "M4 6h16M4 12h10M4 18h7"
+    },
+    {
+      "id": "objetivo",
+      "label": "Ahorrar para algo concreto",
+      "desc": "Vivienda, estudios, un proyecto con fecha.",
+      "icon": "M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"
+    },
+    {
+      "id": "jubilacion",
+      "label": "Construir patrimonio a largo plazo",
+      "desc": "Jubilación, independencia financiera, años por delante.",
+      "icon": "M3 20h18M6 16l4-5 3 3 5-7"
+    },
+    {
+      "id": "miedo",
+      "label": "Perder el miedo (y evitar estafas)",
+      "desc": "Entender los riesgos reales y protegerme de fraudes.",
+      "icon": "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"
+    }
   ],
   "levels": [
-    { "id": "cero", "n": 0, "title": "Cero", "tagline": "De no saber nada a tener la base", "desc": "14 sesiones de 5 minutos: ahorro, colchón, deudas, inflación, interés compuesto, caídas, diversificación, productos, costes, impuestos, brókeres y fraudes.", "kind": "sessions", "items": [] },
-    { "id": "basico", "n": 1, "title": "Básico", "tagline": "Saber invertir de verdad", "desc": "Productos de inversión, formas de invertir y cómo empezar paso a paso, en sesiones de 5 minutos sin fórmulas. Para saber más: empresas, noticias y tipos de trading. Con lecturas para profundizar y un ejercicio final con dinero ficticio.", "kind": "mixed", "tracks": ["productos", "formas", "invertir-ya", "trade-republic", "empresas", "noticias", "trading"], "items": ["ahorrar-invertir-especular", "objetivos-horizonte-liquidez", "deuda-presupuesto-emergencia", "inflacion-e-interes-compuesto", "riesgo-volatilidad-perdidas", "diversificacion", "productos-basicos", "comisiones-y-fiscalidad", "investigar-broker-y-fraudes", "checklist-antes-de-invertir"] },
-    { "id": "intermedio", "n": 2, "title": "Intermedio", "tagline": "Construir y mantener una cartera", "desc": "Largo plazo, indexación, aportaciones, asignación de activos, renta fija, divisas, psicología, riesgo y órdenes.", "kind": "lessons", "items": ["inversion-a-largo-plazo", "gestion-indexada-y-activa", "aportaciones-periodicas-vs-inicial", "asignacion-y-rebalanceo", "renta-fija-duracion-credito", "diversificacion-internacional-divisas", "psicologia-y-sesgos", "gestion-del-riesgo", "ordenes-liquidez-ejecucion"], "strategies": ["inversion-indexada-pasiva", "inversion-por-dividendos"] },
-    { "id": "avanzado", "n": 3, "title": "Avanzado", "tagline": "Analizar empresas y productos", "desc": "Estados financieros, valoración, análisis técnico y sus límites, y criptoactivos con espíritu crítico.", "kind": "lessons", "items": ["estados-financieros", "analisis-fundamental-valoracion", "analisis-tecnico-y-limites", "criptoactivos-introduccion-critica"], "strategies": ["inversion-en-valor", "inversion-en-crecimiento"] },
-    { "id": "experto", "n": 4, "title": "Experto", "tagline": "Entender lo complejo para no caer en ello", "desc": "Apalancamiento, derivados y estrategias de corto plazo explicadas con números, más casos de fracaso y fraude. Siempre en simulación.", "kind": "lessons", "items": ["apalancamiento-margen-liquidacion", "derivados-y-cfd"], "strategies": ["swing-trading", "trading-intradia-scalping"] }
+    {
+      "id": "cero",
+      "n": 0,
+      "title": "Cero",
+      "tagline": "De no saber nada a tener la base",
+      "desc": "14 sesiones de 5 minutos: ahorro, colchón, deudas, inflación, interés compuesto, caídas, diversificación, productos, costes, impuestos, brókeres y fraudes.",
+      "kind": "sessions",
+      "items": []
+    }
   ],
   "placement": [
-    { "type": "choice", "id": "p1", "session": "01-invertir-no-es-apostar", "q": "Comprar algo porque «esta semana va a subir» es…", "options": ["Invertir", "Especular", "Ahorrar"], "answer": 1, "explain": "Buscar ganar con un movimiento de precio a corto plazo es especular." },
-    { "type": "truefalse", "id": "p2", "session": "03-el-colchon-primero", "q": "El fondo de emergencia conviene tenerlo invertido en bolsa para que rinda.", "answer": false, "explain": "El colchón debe estar disponible y no fluctuar." },
-    { "type": "choice", "id": "p3", "session": "05-la-inflacion-te-cobra", "q": "Tu cuenta paga un 2 % y la inflación es del 3 %. Tu poder de compra…", "options": ["Sube", "Baja", "Se mantiene"], "answer": 1, "explain": "La rentabilidad real es negativa: (1,02 / 1,03) − 1 ≈ −1 %." },
-    { "type": "choice", "id": "p4", "session": "07-las-caidas-son-normales", "q": "Tras una caída del 50 %, ¿cuánto hay que subir para recuperar?", "options": ["50 %", "75 %", "100 %"], "answer": 2, "explain": "Subida necesaria = 0,5 / 0,5 = 100 %." },
-    { "type": "truefalse", "id": "p5", "session": "08-no-todos-los-huevos", "q": "Tener muchas acciones distintas elimina el riesgo de que caiga todo el mercado.", "answer": false, "explain": "Diversificar reduce el riesgo de cada empresa, no el de mercado." },
-    { "type": "choice", "id": "p6", "session": "12-comprueba-un-broker", "q": "¿Te protege el Fondo de Garantía de Depósitos si tus acciones caen de precio?", "options": ["Sí, hasta 100.000 €", "No, solo si la entidad no puede devolverlas", "Solo los fines de semana"], "answer": 1, "explain": "Las garantías cubren el fallo de la entidad, nunca las caídas de mercado." }
+    {
+      "type": "choice",
+      "id": "p1",
+      "session": "01-invertir-no-es-apostar",
+      "q": "Comprar algo porque «esta semana va a subir» es…",
+      "options": [
+        "Invertir",
+        "Especular",
+        "Ahorrar"
+      ],
+      "answer": 1,
+      "explain": "Buscar ganar con un movimiento de precio a corto plazo es especular."
+    },
+    {
+      "type": "truefalse",
+      "id": "p2",
+      "session": "03-el-colchon-primero",
+      "q": "El fondo de emergencia conviene tenerlo invertido en bolsa para que rinda.",
+      "answer": false,
+      "explain": "El colchón debe estar disponible y no fluctuar."
+    },
+    {
+      "type": "choice",
+      "id": "p3",
+      "session": "05-la-inflacion-te-cobra",
+      "q": "Tu cuenta paga un 2 % y la inflación es del 3 %. Tu poder de compra…",
+      "options": [
+        "Sube",
+        "Baja",
+        "Se mantiene"
+      ],
+      "answer": 1,
+      "explain": "La rentabilidad real es negativa: (1,02 / 1,03) − 1 ≈ −1 %."
+    },
+    {
+      "type": "choice",
+      "id": "p4",
+      "session": "07-las-caidas-son-normales",
+      "q": "Tras una caída del 50 %, ¿cuánto hay que subir para recuperar?",
+      "options": [
+        "50 %",
+        "75 %",
+        "100 %"
+      ],
+      "answer": 2,
+      "explain": "Subida necesaria = 0,5 / 0,5 = 100 %."
+    },
+    {
+      "type": "truefalse",
+      "id": "p5",
+      "session": "08-no-todos-los-huevos",
+      "q": "Tener muchas acciones distintas elimina el riesgo de que caiga todo el mercado.",
+      "answer": false,
+      "explain": "Diversificar reduce el riesgo de cada empresa, no el de mercado."
+    },
+    {
+      "type": "choice",
+      "id": "p6",
+      "session": "12-comprueba-un-broker",
+      "q": "¿Te protege el Fondo de Garantía de Depósitos si tus acciones caen de precio?",
+      "options": [
+        "Sí, hasta 100.000 €",
+        "No, solo si la entidad no puede devolverlas",
+        "Solo los fines de semana"
+      ],
+      "answer": 1,
+      "explain": "Las garantías cubren el fallo de la entidad, nunca las caídas de mercado."
+    }
   ]
 }

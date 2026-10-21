@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import TierSyllabus from './TierSyllabus.astro';
+import InterestButton from './InterestButton.astro';
+import curriculum from '../data/curriculum.json';
+import { PRICING } from '../config/site';
+import { getCollection } from 'astro:content';
+interface Props { tier: 2 | 3 }
+const { tier } = Astro.props;
+const t = curriculum.tiers.find((x) => x.n === tier)!;
+const samples = (await getCollection('clases', ({ data }) => data.tier === tier && data.access === 'sample' && !data.draft)).map((c) => c.id);
+const data = tier === 2 ? curriculum.n2 : curriculum.n3;
+const nItems = data.modules.reduce((a, m) => a + m.items.length, 0);
+const hours = Math.round(data.modules.reduce((a, m) => a + m.minutes, 0) / 60);
+---
+<Base title={`Nivel ${tier} · ${t.title}`} description={`${t.promise.slice(0, 150)}…`} allowAds={false}>
+  <section class="tp-hero dots">
+    <div class="container">
+      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/', label: 'Niveles' }, { label: `Nivel ${tier}` }]} />
+      <p class="eyebrow">Nivel {tier} · {tier === 2 ? `Plan Avanzado · ${PRICING.n2.monthly} o ${PRICING.n2.annual}` : `Curso Profesional · ${PRICING.n3.course}, pago único`} · próximamente</p>
+      <h1>{t.title}</h1>
+      {t.subtitle && <p class="sub">{t.subtitle}</p>}
+      <p class="lede">{t.promise}</p>
+      <ul class="facts">
+        <li><strong>{nItems}</strong> {tier === 2 ? 'clases' : 'lecciones'}</li>
+        <li><strong>≈ {hours} h</strong> de contenido</li>
+        <li><strong>{t.format}</strong></li>
+        <li><strong>{t.recognition}</strong></li>
+      </ul>
+      <InterestButton tier={tier} />
+      {samples.length > 0 && <p class="small samples">Pruébalo gratis: {samples.map((id, i) => <>{i > 0 && ' · '}<a href={`/es/nivel-${tier}/${id}/`}>muestra {i + 1}</a></>)}</p>}
+    </div>
+  </section>
+  <div class="container tp">
+    {tier === 3 && <div class="callout note legal"><p class="callout-title">Sobre el certificado</p><p>{curriculum.n3.certificateNotice}</p><p class="small">«Comparable» se refiere a las áreas de conocimiento tratadas, no a la equivalencia del título.</p></div>}
+    {tier === 2 && <div class="callout learn"><p class="callout-title">Siempre algo nuevo</p><p>{curriculum.n2.monthly}</p></div>}
+    <h2 class="h3">Temario</h2>
+    <p class="small muted">Las clases con candado se abrirán con el {tier === 2 ? 'Plan Avanzado' : 'Curso Profesional'}. Todo el contenido de pago se publicará revisado por una persona cualificada.</p>
+    <TierSyllabus tier={tier} published={samples} />
+    {tier === 3 && (
+      <section aria-labelledby="cl-t">
+        <h2 id="cl-t" class="h3">Los cuatro clientes del curso</h2>
+        <p class="small muted">Clientes ficticios con fines educativos. Aparecen en los expedientes de las lecciones y en el proyecto final.</p>
+        <ul class="clients">{curriculum.n3.clients.map((c) => <li class="card"><strong>{c.name}</strong><span class="small">{c.situation}</span><span class="small muted">Temas: {c.topics}</span></li>)}</ul>
+      </section>
+    )}
+    <section class="card closing">
+      <h2 class="h3">Cómo se termina</h2>
+      <p>{t.closing}. Reconocimiento: {t.recognition}.</p>
+      <p class="small muted">Requisito recomendado: {tier === 2 ? 'haber terminado el Nivel 1 o aprobar su examen.' : 'haber terminado el Nivel 2 o aprobar el examen de acceso.'}</p>
+    </section>
+  </div>
+</Base>
+<style>
+  .tp-hero { border-bottom: 1px solid var(--rule); padding: 0.5rem 0 2rem; margin-bottom: 1.5rem; }
+  .tp-hero h1 { font-size: clamp(2.4rem, 1.7rem + 3.4vw, 4.4rem); margin: 0.2rem 0 0.2rem; }
+  .sub { font-size: 1.2rem; color: var(--teal); font-weight: 600; margin: 0 0 0.6rem; }
+  .facts { list-style: none; padding: 0; margin: 1.2rem 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .facts li { padding: 0.45rem 0.8rem; border-radius: 999px; background: var(--card); border: 1px solid var(--rule); font-size: 0.92rem; }
+  .samples { margin-top: 0.8rem; }
+  .tp { padding-bottom: 3rem; }
+  .h3 { font-size: 1.4rem; margin: 1.6rem 0 0.4rem; }
+  .legal p { margin: 0 0 0.4rem; }
+  .clients { list-style: none; padding: 0; display: grid; gap: 0.6rem; }
+  @media (min-width: 760px) { .clients { grid-template-columns: 1fr 1fr; } }
+  .clients li { display: flex; flex-direction: column; gap: 0.2rem; }
+  .closing { margin-top: 1.5rem; }
+  .closing .h3 { margin-top: 0; }
+</style>

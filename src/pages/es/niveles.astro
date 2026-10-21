@@ -1,64 +1,100 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import academy from '../../data/academy.json';
-import { sessions, zeroSessions, lessons, TRACKS } from '../../lib/content';
-import { getCollection } from 'astro:content';
-const ss = await zeroSessions();
-const allS = await sessions();
-const ls = Object.fromEntries((await lessons()).map((l) => [l.id, l]));
-const st = Object.fromEntries((await getCollection('strategies')).map((s) => [s.id, s]));
+import curriculum from '../../data/curriculum.json';
+import { sessions, lessons, TRACKS } from '../../lib/content';
+import { PRICING } from '../../config/site';
+/** Tres niveles (docs/CURRICULO.md, sección 2). */
+const all = await sessions();
+const count = (t: string) => all.filter((s) => s.data.track === t).length;
+const ls = await lessons();
+const N1 = [
+  { stage: 'Etapa A', title: 'Camino Cero', tracks: ['camino-cero'], href: '/es/camino-cero/' },
+  { stage: 'Etapa B · núcleo', title: 'Lo esencial para invertir', tracks: ['productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener'] },
+  { stage: 'Ampliación (opcional)', title: 'Para saber más', tracks: ['empresas', 'noticias', 'trading'] },
+] as const;
+const price = { n1: 'Gratis', n2: `${PRICING.n2.monthly} o ${PRICING.n2.annual}`, n3: `${PRICING.n3.course}, pago único` };
+const n2min = curriculum.n2.modules.reduce((a, m) => a + m.minutes, 0);
+const n3n = curriculum.n3.modules.reduce((a, m) => a + m.items.length, 0);
 ---
-<Base title="Niveles: de cero a experto" description="Cinco niveles de umotion Academy, de Cero a Experto. Subir de nivel significa comprender más, no operar más ni asumir más riesgo." allowAds={false}>
+<Base title="Niveles: de cero a profesional" description="Tres niveles: Nivel 1 gratis para invertir por tu cuenta, Nivel 2 Avanzado y Nivel 3 Profesional con certificado umotion verificable." allowAds={false}>
   <div class="container">
     <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Niveles' }]} />
     <p class="eyebrow">Academia de inversión</p>
-    <h1>De cero a experto</h1>
-    <p class="lede">Empieza por el nivel Cero aunque creas saber algo: son 14 sesiones de 5 minutos. Cada nivel termina con un examen. Subir de nivel significa <strong>comprender más</strong>, nunca operar más ni asumir más riesgo.</p>
-    <ol class="ladder">
-      {academy.levels.map((l) => (
-        <li id={`nivel-${l.id}`} class="reveal">
-          <div class="rung">
-            <span class="n mono">{l.n}</span>
-            <div class="info">
-              <h2>{l.title} <span class="small muted tag-line">{l.tagline}</span></h2>
-              <p>{l.desc}</p>
-              <details>
-                <summary>Ver contenido ({l.kind === 'sessions' ? ss.length : l.items.length + ((l as any).strategies?.length ?? 0) + allS.filter((s) => ((l as any).tracks ?? []).includes(s.data.track)).length})</summary>
-                <ul>
-                  {l.kind === 'sessions'
-                    ? ss.map((s) => <li><a href={`/es/sesion/${s.id}/`}>{s.data.title}</a> <span class="small muted">5 min</span></li>)
-                    : <>
-                        {((l as any).tracks ?? []).map((t: keyof typeof TRACKS) => <li><a href={`/es/modulos/${t}/`}><strong>Módulo: {TRACKS[t].label}</strong></a> <span class="small muted">{allS.filter((s) => s.data.track === t).length} sesiones de 5 min</span></li>)}
-                        {l.items.map((id) => ls[id] && <li><a href={`/es/lecciones/${id}/`}>Lectura: {ls[id].data.title}</a> <span class="small muted">{ls[id].data.minutes} min</span></li>)}
-                      </>}
-                  {((l as any).strategies ?? []).map((id: string) => st[id] && <li><a href={`/es/estrategias/${id}/`}>Estrategia: {st[id].data.title}</a></li>)}
-                  {l.id === 'basico' && <li><a href="/es/empieza-desde-cero/ejercicio-final/">Ejercicio final con dinero ficticio</a></li>}
-                  {l.id === 'experto' && <li><a href="/es/inversores/">Historias, fracasos y fraudes documentados</a></li>}
-                </ul>
-              </details>
-              <p class="links">
-                {l.kind === 'sessions' ? <a class="btn small brand" href="/es/camino-cero/">Empezar el Camino Cero</a> : <a class="btn small secondary" href={l.id === 'basico' ? '/es/modulos/' : `/es/lecciones/${l.items[0]}/`}>{l.id === 'basico' ? 'Ver los módulos' : 'Empezar el nivel'}</a>}
-                <a class="btn small ghost" href={`/es/examen/${l.id}/`}>Examen</a>
-              </p>
+    <h1>Tres niveles</h1>
+    <p class="lede">Empieza gratis y aprende a invertir por tu cuenta. Si quieres más, sigue al nivel Avanzado y, después, al Profesional. Subir de nivel significa <strong>comprender más</strong>, nunca operar más ni asumir más riesgo.</p>
+    <ol class="tiers">
+      {curriculum.tiers.map((t) => (
+        <li id={`nivel-${t.n}`} class:list={['tier', `t${t.n}`]}>
+          <div class="t-head">
+            <span class="tn mono">{t.n}</span>
+            <div>
+              <h2>Nivel {t.n} · {t.title}</h2>
+              {t.subtitle && <p class="small muted sub">{t.subtitle}</p>}
             </div>
+            <span class="price mono small">{price[t.id as keyof typeof price]}</span>
           </div>
+          <p>{t.promise}</p>
+          <dl class="facts">
+            <div><dt>Para quién</dt><dd>{t.forWho}</dd></div>
+            <div><dt>Formato</dt><dd>{t.format}</dd></div>
+            <div><dt>Volumen</dt><dd>{t.n === 2 ? `${t.volume} (≈ ${Math.round(n2min / 60)} h)` : t.n === 3 ? `${n3n} lecciones y un proyecto, unas 40 h` : t.volume}</dd></div>
+            <div><dt>Cierre</dt><dd>{t.closing}</dd></div>
+            <div><dt>Reconocimiento</dt><dd>{t.recognition}</dd></div>
+          </dl>
+          {t.n === 1 && (
+            <div class="n1">
+              {N1.map((st) => (
+                <div class="stage">
+                  <p class="mono small muted">{st.stage}</p>
+                  <h3>{st.title}</h3>
+                  <ul>{st.tracks.map((tr) => <li><a href={tr === 'camino-cero' ? '/es/camino-cero/' : `/es/modulos/${tr}/`}>{TRACKS[tr as keyof typeof TRACKS].label}</a> <span class="small muted">{count(tr)} sesiones</span></li>)}</ul>
+                </div>
+              ))}
+              <div class="stage">
+                <p class="mono small muted">Cierre</p>
+                <h3>Termina el Nivel 1</h3>
+                <ul>
+                  <li><a href="/es/empieza-desde-cero/ejercicio-final/">Ejercicio con dinero ficticio</a></li>
+                  <li><a href="/es/plan-en-una-pagina/">Mi plan en una página</a></li>
+                  <li><a href="/es/examen/n1/">Examen del Nivel 1</a> <span class="small muted">30 preguntas · 80 %</span></li>
+                  <li><a href="/es/insignia/">Insignia «Fundamentos de inversión»</a></li>
+                </ul>
+              </div>
+              <details class="small lib"><summary>Biblioteca del Nivel 1: {ls.length} lecturas para profundizar, gratis</summary><ul>{ls.map((l) => <li><a href={`/es/lecciones/${l.id}/`}>{l.data.title}</a> <span class="muted">{l.data.minutes} min</span></li>)}</ul></details>
+            </div>
+          )}
+          <p class="links">
+            {t.n === 1 ? <a class="btn small brand" href="/es/empezar/">Empezar gratis</a> : <a class="btn small brand" href={t.href}>Ver el temario</a>}
+            {t.n === 1 && <a class="btn small ghost" href="/es/examen/n1/">Examen del Nivel 1</a>}
+          </p>
         </li>
       ))}
     </ol>
-    <div class="callout note"><p class="callout-title">¿Por qué «experto» no significa «trader»?</p><p>En el nivel Experto estudiarás el apalancamiento, los derivados y el trading de corto plazo con números y casos reales, precisamente para entender por qué la mayoría de particulares pierden con ellos. Todos los ejercicios son simulaciones.</p></div>
+    <div class="callout note"><p class="callout-title">¿Por qué «profesional» no significa «trader»?</p><p>En los niveles 2 y 3 estudiarás derivados, productos complejos y trading con detalle, precisamente para entender por qué la mayoría de particulares pierden con ellos. Nada se practica con dinero real.</p></div>
   </div>
 </Base>
 <style>
-  .ladder { list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 1rem; position: relative; }
-  .ladder::before { content: ''; position: absolute; left: 27px; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(var(--u-blue), var(--u-cyan)); opacity: .35; }
-  .rung { display: grid; grid-template-columns: 56px 1fr; gap: 1rem; }
-  .n { position: relative; width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); font-size: 1.4rem; }
-  .info { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.2rem 1.3rem; box-shadow: var(--shadow); }
-  .info h2 { margin: 0 0 0.4rem; font-size: 1.6rem; }
-  .tag-line { font-weight: 400; letter-spacing: 0; display: block; font-size: 0.95rem; margin-top: 0.2rem; }
-  .info details { margin: 0.6rem 0; }
-  .info summary { cursor: pointer; font-weight: 600; }
-  .links { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.8rem 0 0; }
-  #nivel-cero .n { background: var(--u-grad); color: #fff; }
+  .tiers { list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 1.2rem; }
+  .tier { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1.3rem 1.4rem; box-shadow: var(--shadow); }
+  .t-head { display: grid; grid-template-columns: 56px 1fr auto; gap: 1rem; align-items: center; margin-bottom: 0.6rem; }
+  .tn { width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); font-size: 1.4rem; }
+  .t1 .tn { background: var(--u-grad); color: #fff; }
+  .tier h2 { margin: 0; font-size: 1.6rem; }
+  .sub { margin: 0.2rem 0 0; }
+  .price { white-space: nowrap; padding: 0.3rem 0.7rem; border-radius: 999px; border: 1px solid var(--rule-strong); }
+  @media (max-width: 560px) { .t-head { grid-template-columns: 56px 1fr; } .price { grid-column: 2; justify-self: start; } }
+  .facts { display: grid; gap: 0.5rem; margin: 0.8rem 0; }
+  @media (min-width: 760px) { .facts { grid-template-columns: repeat(5, 1fr); } }
+  .facts dt { font: 500 0.68rem/1.3 var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+  .facts dd { margin: 0.15rem 0 0; font-size: 0.92rem; }
+  .n1 { display: grid; gap: 0.8rem; margin: 1rem 0; }
+  @media (min-width: 860px) { .n1 { grid-template-columns: repeat(2, 1fr); } }
+  .stage { border: 1px solid var(--rule); border-radius: 16px; padding: 0.9rem 1rem; background: var(--paper); }
+  .stage h3 { margin: 0.1rem 0 0.4rem; font-size: 1.1rem; }
+  .stage p { margin: 0; }
+  .stage ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.3rem; }
+  .lib { grid-column: 1 / -1; }
+  .lib summary { cursor: pointer; font-weight: 600; }
+  .links { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.6rem 0 0; }
 </style>

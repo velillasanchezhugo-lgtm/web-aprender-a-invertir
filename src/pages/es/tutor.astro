@@ -103,7 +103,7 @@ const EXAMPLES = ['¿Qué diferencia hay entre un fondo indexado y un ETF?', '¿
   let mode: 'pregunta' | 'noticia' | 'explicar' = 'pregunta';
   const history: { role: 'user' | 'assistant'; content: string }[] = [];
   const st = getState();
-  const brief = learnerBrief(st.profile, D.skills, st.model, Object.keys(st.completed).length, st.profile ? D.goals[st.profile.goal] : undefined);
+  const brief = learnerBrief(st.profile, D.skills, st.model, Object.keys(st.completed).length, st.profile ? (st.profile.goals?.length ? st.profile.goals : [st.profile.goal]).map((g) => D.goals[g]).join(', ') : undefined);
 
   // Contexto: vienes de una pregunta fallada en una sesión.
   const params = new URLSearchParams(location.search);

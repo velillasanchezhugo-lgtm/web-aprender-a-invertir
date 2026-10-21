@@ -91,6 +91,7 @@ docs/                      Documentación de entrega, pendientes y planes
 
 ## Documentación
 
+- [docs/CURRICULO.md](docs/CURRICULO.md): **documento maestro del curso**: tres niveles, temarios, competencias, exámenes y certificado.
 - [docs/PLAN-DE-ENSENANZA.md](docs/PLAN-DE-ENSENANZA.md): formato de sesión, Camino Cero, planificación, retención y niveles.
 - [docs/ANALISIS-CURSOS.md](docs/ANALISIS-CURSOS.md): análisis de 15 cursos y patrones de habilidades más útiles.
 - [docs/TUTOR-IA.md](docs/TUTOR-IA.md): personalización, tutor y cómo activar la IA.

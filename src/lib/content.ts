@@ -79,9 +79,12 @@ export async function examQuestions(level: string) {
 import skillsData from '../data/skills.json';
 import { guessRate, TRACKS, type CatalogItem, type TrackId, type SkillDef, type DomainDef } from './adaptive';
 export { TRACKS };
-export const SKILLS = skillsData.skills as SkillDef[];
-export const DOMAINS = skillsData.domains as DomainDef[];
-export const skillById = Object.fromEntries(SKILLS.map((s) => [s.id, s])) as Record<string, SkillDef>;
+/** Todas las competencias (niveles 1 a 3) y las del Nivel 1, que son las que mide hoy el alumno en la web gratuita. */
+export const SKILLS_ALL = skillsData.skills as SkillDef[];
+export const DOMAINS_ALL = skillsData.domains as DomainDef[];
+export const SKILLS = SKILLS_ALL.filter((s) => (s.level ?? 1) === 1);
+export const DOMAINS = DOMAINS_ALL.filter((d) => (d.level ?? 1) === 1);
+export const skillById = Object.fromEntries(SKILLS_ALL.map((s) => [s.id, s])) as Record<string, SkillDef>;
 
 /** Sesiones de un módulo, en orden. */
 export async function trackSessions(track: TrackId): Promise<Session[]> {

@@ -9,6 +9,26 @@
       "source": "/",
       "destination": "/es/",
       "permanent": false
+    },
+    {
+      "source": "/es/examen/basico/",
+      "destination": "/es/examen/n1/",
+      "permanent": true
+    },
+    {
+      "source": "/es/examen/intermedio/",
+      "destination": "/es/nivel-2/",
+      "permanent": true
+    },
+    {
+      "source": "/es/examen/avanzado/",
+      "destination": "/es/nivel-2/",
+      "permanent": true
+    },
+    {
+      "source": "/es/examen/experto/",
+      "destination": "/es/nivel-3/",
+      "permanent": true
     }
   ],
   "headers": [

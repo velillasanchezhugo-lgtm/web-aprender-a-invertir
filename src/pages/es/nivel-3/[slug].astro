@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import ClasePage from '../../../components/ClasePage.astro';
+/** Solo las muestras abiertas se generan en la web estática; el contenido de pago se servirá desde el servidor. */
+export async function getStaticPaths() {
+  return (await getCollection('clases', ({ data }) => data.tier === 3 && data.access === 'sample' && !data.draft)).map((c) => ({ params: { slug: c.id }, props: { c } }));
+}
+const { c } = Astro.props;
+---
+<ClasePage c={c} />

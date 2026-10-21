@@ -12,7 +12,13 @@ const data = {
   sessions: all.map((s) => ({ ...sessionMeta(s), track: s.data.track, title: s.data.title, desc: s.data.description, action: s.data.action.title, takeaway: s.data.takeaway })),
   catalog, qids: Object.keys(qmeta), skills: SKILLS, domains: DOMAINS, tracks: TRACKS,
   glossary: glossaryList.map((g) => ({ id: g.id, term: g.term, def: g.def })),
-  levels: academy.levels.map((l) => ({ id: l.id, title: l.title, kind: l.kind, items: l.kind === 'sessions' ? all.filter((s) => s.data.track === 'camino-cero').map((s) => s.id) : l.items, sessions: all.filter((s) => ((l as any).tracks ?? []).includes(s.data.track)).map((s) => s.id) })),
+  // Tres niveles (docs/CURRICULO.md): el Nivel 1 se mide por sus sesiones del núcleo; el 2 y el 3 aún no están abiertos.
+  levels: [
+    { id: 'cero', n: 0, title: 'Camino Cero', items: all.filter((s) => s.data.track === 'camino-cero').map((s) => s.id), href: '/es/camino-cero/', exam: '/es/examen/cero/' },
+    { id: 'n1', n: 1, title: 'Nivel 1 · Invertir por tu cuenta', items: all.filter((s) => ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener'].includes(s.data.track)).map((s) => s.id), href: '/es/niveles/#nivel-1', exam: '/es/examen/n1/' },
+    { id: 'n2', n: 2, title: 'Nivel 2 · Avanzado', items: [], href: '/es/nivel-2/', locked: true },
+    { id: 'n3', n: 3, title: 'Nivel 3 · Profesional', items: [], href: '/es/nivel-3/', locked: true },
+  ],
   lessonTitles: Object.fromEntries(ls.map((l) => [l.id, l.data.title])),
   badges: BADGES.map((b) => ({ id: b.id, title: b.title, desc: b.desc })),
   goals: Object.fromEntries(academy.goals.map((g) => [g.id, g.label])),
@@ -214,7 +220,7 @@ const data = {
 
   $('today-label').textContent = new Date().toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
   $('no-plan').hidden = !!s.plan;
-  if (s.plan) $('goal-line').textContent = `Objetivo: ${D.goals[s.plan.goal]} · ${s.plan.minutesPerDay} min al día`;
+  if (s.plan) { const gs = s.profile?.goals?.length ? s.profile.goals : [s.plan.goal]; $('goal-line').textContent = `${gs.length > 1 ? 'Objetivos' : 'Objetivo'}: ${gs.map((g: string) => D.goals[g]).join(' · ')} · ${s.plan.minutesPerDay} min al día`; }
   const k = streak(s.activity, now);
   $('streak').textContent = String(k.current);
 
@@ -294,16 +300,15 @@ const data = {
   $('idea').textContent = (pickOfDay(D.sessions, now) as any).takeaway;
 
   // Niveles
-  const oldDone = getProgress().completed;
-  $('levels').innerHTML = D.levels.map((l: any, i: number) => {
-    const items = [...l.sessions, ...l.items];
-    const n = items.filter((id: string) => s.completed[id] || oldDone[id]).length;
+  $('levels').innerHTML = D.levels.map((l: any) => {
+    const n = l.items.filter((id: string) => s.completed[id]).length;
     const exam = s.exams[l.id as LevelId];
-    const href = i === 0 ? '/es/camino-cero/' : `/es/niveles/#nivel-${l.id}`;
-    return `<li><span class="ln">${i}</span><span><a href="${href}"><strong>${esc(l.title)}</strong></a> <span class="small muted">${n}/${items.length}${exam?.passed ? ' · examen superado' : ''}</span><div class="lbar"><span style="width:${(n / Math.max(items.length, 1)) * 100}%"></span></div></span><a class="small" href="/es/examen/${l.id}/">Examen</a></li>`;
+    const right = l.locked ? `<a class="small" href="${l.href}">Ver temario</a>` : `<a class="small" href="${l.exam}">Examen</a>`;
+    const meta = l.locked ? 'Próximamente' : `${n}/${l.items.length}${exam?.passed ? ' · examen superado' : ''}`;
+    return `<li><span class="ln">${l.n}</span><span><a href="${l.href}"><strong>${esc(l.title)}</strong></a> <span class="small muted">${meta}</span><div class="lbar"><span style="width:${l.items.length ? (n / l.items.length) * 100 : 0}%"></span></div></span>${right}</li>`;
   }).join('');
 
   // Logros
-  const earned = earnedBadges({ completed: Object.keys(s.completed), zeroIds: D.sessions.filter((x: any) => x.track === 'camino-cero').map((x: any) => x.id), streakBest: k.best, examsPassed: (Object.entries(s.exams) as any).filter(([, v]: any) => v?.passed).map(([kk]: any) => kk), masteredCards: mastered(s.deck), actionsDone: Object.keys(s.actions).length });
+  const earned = earnedBadges({ completed: Object.keys(s.completed), zeroIds: D.sessions.filter((x: any) => x.track === 'camino-cero').map((x: any) => x.id), streakBest: k.best, examsPassed: (Object.entries(s.exams) as any).filter(([, v]: any) => v?.passed).map(([kk]: any) => kk), masteredCards: mastered(s.deck), actionsDone: Object.keys(s.actions).length, finalExercise: !!localStorage.getItem('uacademy:final-exercise'), onePagePlan: (() => { try { return !!JSON.parse(localStorage.getItem('uacademy:one-page-plan') || 'null')?.complete; } catch { return false; } })() });
   $('badges').innerHTML = D.badges.map((b: any) => `<li class="${earned.includes(b.id) ? '' : 'locked'}"><span class="bi" aria-hidden="true">${earned.includes(b.id) ? '✓' : '·'}</span><strong>${esc(b.title)}</strong><span class="small">${esc(b.desc)}</span><span class="sr-only">${earned.includes(b.id) ? 'Conseguido' : 'Pendiente'}</span></li>`).join('');
 </script>

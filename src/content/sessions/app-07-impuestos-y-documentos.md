@@ -77,3 +77,5 @@ Si sigues con una cuenta antigua de **IBAN alemán**, estas retenciones no se ap
 - **Modelo 721 (cripto en el extranjero):** sus servicios de cripto no los presta la sucursal española, sino la sede en Alemania. No está claro si tienes que presentarlo: consúltalo.
 
 La declaración siempre es responsabilidad tuya. **Consulta con la AEAT o un asesor si tienes dudas.**
+
+Para revisar el borrador con el informe fiscal delante, sigue [Tus inversiones en la declaración](/es/sesion/mr-05-tus-inversiones-en-la-renta/).

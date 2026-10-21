@@ -83,7 +83,7 @@ const sessionQuestion = z.discriminatedUnion('type', [
 ]);
 
 /** Módulos de sesiones. 'camino-cero' es el nivel Cero; el resto forman el nivel Básico. */
-export const TRACK_IDS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'empresas', 'noticias', 'trading'] as const;
+export const TRACK_IDS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener', 'empresas', 'noticias', 'trading'] as const;
 
 /** Sesiones de 5 minutos: gancho, idea, ejemplo, test y una acción aplicable hoy. */
 const sessions = defineCollection({
@@ -114,4 +114,36 @@ const sessions = defineCollection({
   }),
 });
 
-export const collections = { lessons, strategies, investors, sessions };
+/**
+ * Clases del Nivel 2 (15-30 min) y lecciones del Nivel 3 (30-45 min). Ver docs/CURRICULO.md, secciones 4.2 y 4.3.
+ * Solo se publican en la web estática las de acceso «sample» (muestras abiertas); el resto se servirá desde el servidor.
+ */
+const clases = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/clases' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().max(170),
+    tier: z.union([z.literal(2), z.literal(3)]),
+    format: z.enum(['clase', 'leccion']),
+    module: z.string(),
+    order: z.number().int(),
+    minutes: z.number().int(),
+    access: z.enum(['sample', 'paid']),
+    skills: z.array(z.string()).min(1),
+    terms: z.array(z.string()).max(8).optional(),
+    hook: z.string(),
+    objectives: z.array(z.string()).min(3).max(5),
+    /** N2 · «Cómo explicarlo». */
+    teach: z.object({ tresFrases: z.array(z.string()).length(3), analogia: z.string(), dudas: z.array(z.object({ q: z.string(), a: z.string() })).length(3), errorPrincipiante: z.string(), frontera: z.string() }).optional(),
+    explainPrompt: z.string().optional(),
+    /** N3 · «Criterio profesional», expediente y ejercicio. */
+    profesional: z.string().optional(),
+    caseFile: z.enum(['lucia', 'ortega', 'antonio', 'elena']).optional(),
+    exercise: z.string().optional(),
+    summary: z.array(z.string()).min(3).max(8),
+    questions: z.array(sessionQuestion).min(5).max(12),
+    ...editorial,
+  }),
+});
+
+export const collections = { lessons, strategies, investors, sessions, clases };

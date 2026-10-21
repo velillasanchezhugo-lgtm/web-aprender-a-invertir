@@ -1,0 +1,159 @@
+---
+/** Clase del Nivel 2 o lección del Nivel 3 (docs/CURRICULO.md, secciones 4.2 y 4.3). Solo se publican las muestras abiertas. */
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import TermCards from './TermCards.astro';
+import curriculum from '../data/curriculum.json';
+import { sourceById, guessFor, skillById } from '../lib/content';
+interface Props { c: CollectionEntry<'clases'> }
+const { c } = Astro.props;
+const d = c.data;
+const { Content } = await render(c);
+const mod = (d.tier === 2 ? curriculum.n2 : curriculum.n3).modules.find((m) => m.code === d.module);
+const client = d.caseFile ? curriculum.n3.clients.find((x) => x.id === d.caseFile) : null;
+const tierHref = `/es/nivel-${d.tier}/`;
+const qs = d.questions.map((q) => ({ ...q, meta: { skills: q.skills ?? d.skills, guess: guessFor(q) } }));
+---
+<Base title={`${d.title} · Nivel ${d.tier}`} description={d.description} allowAds={false}>
+  <article class="narrow clase" data-id={c.id}>
+    <Breadcrumbs items={[{ href: '/es/niveles/', label: 'Niveles' }, { href: tierHref, label: `Nivel ${d.tier}` }, { label: d.title }]} />
+    <p class="eyebrow">Nivel {d.tier} · {mod?.title} · {d.minutes} min · <span class="free">Muestra gratis</span></p>
+    <h1>{d.title}</h1>
+    <div class="hook panel-dark"><span class="chip">Para empezar</span><p class="hook-q">{d.hook}</p></div>
+
+    <section class="card obj" aria-labelledby="obj-t">
+      <h2 id="obj-t" class="h3">{d.tier === 2 ? 'Al terminar sabrás…' : 'Objetivos de aprendizaje'}</h2>
+      <ul>{d.objectives.map((o) => <li>{o}</li>)}</ul>
+    </section>
+
+    {d.terms && <TermCards ids={d.terms} title="Palabras clave" headingId="kw-t" />}
+
+    <div class="prose body"><Content /></div>
+
+    {client && <aside class="callout note"><p class="callout-title">Expediente: {client.name}</p><p>{client.situation}</p><p class="small muted">Cliente ficticio con fines educativos.</p></aside>}
+
+    {d.teach && (
+      <section class="card teach" aria-labelledby="teach-t">
+        <p class="eyebrow">Bloque docente</p>
+        <h2 id="teach-t" class="h3">Cómo explicarlo</h2>
+        <h3 class="h4">La idea en tres frases</h3>
+        <ol>{d.teach.tresFrases.map((f) => <li>{f}</li>)}</ol>
+        <h3 class="h4">Una analogía</h3>
+        <p>{d.teach.analogia}</p>
+        <h3 class="h4">Las tres dudas más habituales</h3>
+        <dl class="dudas">{d.teach.dudas.map((x) => <div><dt>{x.q}</dt><dd>{x.a}</dd></div>)}</dl>
+        <h3 class="h4">El error que más cometen los principiantes</h3>
+        <p>{d.teach.errorPrincipiante}</p>
+        <h3 class="h4">La frontera entre explicar y recomendar</h3>
+        <p>{d.teach.frontera}</p>
+      </section>
+    )}
+
+    {d.profesional && (
+      <section class="card teach" aria-labelledby="pro-t">
+        <p class="eyebrow">Criterio profesional</p>
+        <h2 id="pro-t" class="h3">Cómo decide un buen profesional</h2>
+        <p>{d.profesional}</p>
+      </section>
+    )}
+
+    <section aria-labelledby="test-t">
+      <h2 id="test-t" class="h3">Test · {qs.length} preguntas</h2>
+      <div class="qs">{qs.map((_, i) => <div class="rq card" data-i={i}></div>)}</div>
+      <p class="small score" id="score" role="status" aria-live="polite"></p>
+    </section>
+
+    {d.explainPrompt && (
+      <section class="card explain" aria-labelledby="ex-t">
+        <h2 id="ex-t" class="h3">Explícalo tú</h2>
+        <p>{d.explainPrompt}</p>
+        <label for="ex-txt" class="sr-only">Tu explicación</label>
+        <textarea id="ex-txt" rows="5" maxlength="1200" placeholder="Escribe tu explicación en 3 a 5 frases…"></textarea>
+        <fieldset class="rubric"><legend>Revísala con esta lista</legend>
+          <label class="choice"><input type="checkbox" /> <span><strong>Exacta:</strong> no hay ningún error ni afirmación dudosa.</span></label>
+          <label class="choice"><input type="checkbox" /> <span><strong>Clara:</strong> la entendería alguien del Nivel 1, sin jerga sin explicar.</span></label>
+          <label class="choice"><input type="checkbox" /> <span><strong>Sin recomendar:</strong> no dice a nadie qué comprar ni cuándo.</span></label>
+        </fieldset>
+        <p class="small muted">Con el Plan Avanzado, el tutor te dará su opinión con esta misma rúbrica. Tu texto se guarda solo en este dispositivo.</p>
+      </section>
+    )}
+
+    {d.exercise && (
+      <section class="card explain" aria-labelledby="exr-t">
+        <h2 id="exr-t" class="h3">Ejercicio aplicado</h2>
+        <p>{d.exercise}</p>
+        <label for="ex-txt" class="sr-only">Tu respuesta</label>
+        <textarea id="ex-txt" rows="6" maxlength="3000" placeholder="Tu respuesta…"></textarea>
+        <p class="small muted">En el curso, este ejercicio alimenta tu proyecto final. Se guarda solo en este dispositivo.</p>
+      </section>
+    )}
+
+    <section class="card obj" aria-labelledby="sum-t">
+      <h2 id="sum-t" class="h3">Resumen para repasar</h2>
+      <ul>{d.summary.map((s) => <li>{s}</li>)}</ul>
+    </section>
+
+    {d.tier === 3 && <p class="small muted legal">{curriculum.n3.certificateNotice}</p>}
+
+    <section class="card cta">
+      <h2 class="h3">¿Te ha gustado?</h2>
+      <p>Esta es una de las muestras gratuitas del Nivel {d.tier}. <a href={tierHref}>Ver el temario completo</a>.</p>
+      <p class="small skills">Competencias: {d.skills.map((k) => skillById[k]?.label ?? k).join(' · ')}</p>
+    </section>
+
+    <details class="sources small">
+      <summary>Fuentes y revisión</summary>
+      <ul>{d.sources.map((id) => { const s = sourceById(id); return s && <li>{s.url ? <a href={s.url} rel="noopener" target="_blank">{s.title}</a> : s.title}{s.checked && <span class="muted"> · consultada el {s.checked}</span>}</li>; })}</ul>
+      <p class="muted">{d.author}. Estado: {d.status === 'revisado' ? 'revisado' : 'pendiente de revisión humana'}. Contenido educativo, no asesoramiento.</p>
+    </details>
+  </article>
+  <script type="application/json" id="clase-data" set:html={JSON.stringify({ qs })} />
+</Base>
+<style>
+  .clase { padding-bottom: 4rem; display: grid; gap: 1.4rem; }
+  .clase > * { margin: 0; }
+  .clase h1 { font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem); }
+  .free { color: var(--teal); font-weight: 700; }
+  .hook { padding: 1.4rem; }
+  .hook-q { font-size: clamp(1.2rem, 1rem + 0.8vw, 1.55rem); font-weight: 600; line-height: 1.35; margin: 0.8rem 0 0; }
+  .h3 { font-size: 1.35rem; margin: 0 0 0.6rem; }
+  .h4 { font-size: 1.02rem; margin: 1rem 0 0.3rem; }
+  .obj ul, .teach ol { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+  .teach { border-left: 4px solid var(--u-cyan); }
+  .teach .eyebrow { margin: 0; }
+  .dudas { margin: 0; display: grid; gap: 0.6rem; }
+  .dudas dt { font-weight: 600; }
+  .dudas dd { margin: 0.15rem 0 0; color: var(--ink-2); }
+  .qs { display: grid; gap: 1rem; }
+  .qs :global(.rq-text) { font-size: 1.2rem; }
+  .score:empty { display: none; }
+  .score { font-weight: 700; color: var(--teal); }
+  .explain textarea { width: 100%; margin: 0.6rem 0; }
+  .rubric { border: 0; padding: 0; margin: 0.4rem 0; }
+  .rubric legend { font-weight: 600; margin-bottom: 0.4rem; }
+  .legal { border-top: 1px solid var(--rule); padding-top: 0.8rem; }
+  .cta { border: 1px solid var(--u-blue); }
+</style>
+<script>
+  import { ask } from '../scripts/quiz-runner';
+  import { getState, saveState, answer } from '../scripts/academy-store';
+  import { read, write } from '../scripts/store';
+  const id = document.querySelector<HTMLElement>('.clase')!.dataset.id!;
+  const D = JSON.parse(document.getElementById('clase-data')!.textContent!);
+  let done = 0, ok = 0;
+  document.querySelectorAll<HTMLElement>('.qs .rq').forEach((el) => {
+    const q = D.qs[Number(el.dataset.i)];
+    ask(el, q, `Pregunta ${Number(el.dataset.i) + 1}`).then((r) => {
+      done++; if (r) ok++;
+      let st = getState(); st = answer(st, q.id, r, q.meta); saveState(st);
+      if (done === D.qs.length) document.getElementById('score')!.textContent = `Has acertado ${ok} de ${D.qs.length}.`;
+    });
+  });
+  const ta = document.getElementById('ex-txt') as HTMLTextAreaElement | null;
+  if (ta) {
+    const notes = read<Record<string, string>>('class-notes', {});
+    ta.value = notes[id] ?? '';
+    ta.addEventListener('input', () => { const n = read<Record<string, string>>('class-notes', {}); n[id] = ta.value; write('class-notes', n); });
+  }
+</script>

@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { guessRate, updateMastery, observe, prior, recommend, personalRoute, domainSummary, strengthsAndGaps, nextDiagnostic, learnerBrief, exposeSession, MASTERED, type CatalogItem, type Profile, type SkillDef, type Model } from '../src/lib/adaptive.ts';
 
-const map = JSON.parse(readFileSync('src/data/skills.json', 'utf8')) as { domains: { id: string; label: string; desc: string }[]; skills: SkillDef[] };
+const raw = JSON.parse(readFileSync('src/data/skills.json', 'utf8')) as { domains: { id: string; label: string; desc: string; level?: number }[]; skills: SkillDef[] };
+const map = { all: raw, domains: raw.domains.filter((d) => (d.level ?? 1) === 1), skills: raw.skills.filter((s) => (s.level ?? 1) === 1) };
 const defs = Object.fromEntries(map.skills.map((s) => [s.id, s]));
 const T = '2026-10-16';
 
@@ -16,9 +17,11 @@ const cat: CatalogItem[] = [
 ];
 
 test('el mapa de competencias es coherente', () => {
-  const domains = new Set(map.domains.map((d) => d.id));
+  const domains = new Set(raw.domains.map((d) => d.id));
   const ids = new Set<string>();
-  for (const s of map.skills) {
+  assert.equal(raw.skills.length, 126, '126 competencias en tres niveles (docs/CURRICULO.md)');
+  for (const s of raw.skills) {
+    assert.ok([1, 2, 3].includes(s.level ?? 0), `nivel válido en ${s.id}`);
     assert.ok(domains.has(s.domain), `dominio desconocido en ${s.id}`);
     assert.ok(!ids.has(s.id), `competencia repetida ${s.id}`);
     ids.add(s.id);

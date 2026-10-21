@@ -1,5 +1,7 @@
 # Plan de enseñanza de umotion Academy
 
+> **Documento maestro:** desde octubre de 2026 la estructura oficial del curso (tres niveles, temarios, competencias, exámenes y certificado) está en [CURRICULO.md](CURRICULO.md). Este archivo describe el método de las sesiones de 5 minutos del Nivel 1.
+
 > **Enfoque (octubre de 2026)**: menos teoría y sin matemáticas. Cada sesión explica qué es un producto o una forma de invertir con palabras sencillas, cómo se usa en la práctica y qué te recomendamos hacer. El recorrido principal es: qué es invertir (Camino Cero) → productos de inversión → formas de invertir → invertir ya. Empresas, noticias y trading quedan como módulos opcionales para saber más.
 
 **Idea clave**: enseñar de verdad a quien quiere aprender, con cosas útiles para invertir que pueda aplicar ese mismo día, sin quitarle mucho tiempo.

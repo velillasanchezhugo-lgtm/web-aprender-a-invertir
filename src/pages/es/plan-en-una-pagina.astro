@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+/** Plantilla única de «Mi plan en una página» (docs/CURRICULO.md, sección 5.6). Se empieza en ya-01 y se cierra en mr-07. */
+const fields: { id: string; label: string; hint: string; kind?: 'yesno' | 'text' | 'area' }[] = [
+  { id: 'para', label: 'Para qué invierto', hint: 'Por ejemplo: jubilación, entrada de una casa, independencia.', kind: 'area' },
+  { id: 'cuando', label: 'Cuándo necesitaré el dinero', hint: 'Año aproximado o «dentro de X años».' },
+  { id: 'colchon', label: 'Tengo colchón de emergencia', hint: 'Sí o no, y cuántos meses de gastos.', kind: 'yesno' },
+  { id: 'deudas', label: 'Tengo las deudas caras resueltas', hint: 'Tarjetas revolving, préstamos al consumo…', kind: 'yesno' },
+  { id: 'forma', label: 'Forma de invertir elegida', hint: 'Por mi cuenta, gestor automatizado, fondos del banco…' },
+  { id: 'reparto', label: 'Reparto entre bolsa, renta fija y liquidez', hint: 'Por ejemplo: 70 / 20 / 10.' },
+  { id: 'producto', label: 'Tipo de producto', hint: 'Por ejemplo: fondo indexado global. No hace falta el nombre comercial.' },
+  { id: 'aportacion', label: 'Aportación mensual y fecha', hint: 'Por ejemplo: 100 € el día 2 de cada mes.' },
+  { id: 'rebalanceo', label: 'Mi regla de rebalanceo', hint: 'Por ejemplo: una vez al año, usando las aportaciones.' },
+  { id: 'caida', label: 'Qué haré si cae un 30 %', hint: 'Escríbelo ahora, con la cabeza fría.', kind: 'area' },
+  { id: 'vender', label: 'Mis razones para vender', hint: 'Objetivo cumplido, cambio de vida, rebalanceo…', kind: 'area' },
+  { id: 'revision', label: 'Fecha de mi revisión anual', hint: 'Ponla también en tu calendario.' },
+];
+---
+<Base title="Mi plan en una página" description="La plantilla para escribir tu plan de inversión en una página: objetivo, plazo, colchón, reparto, aportación, rebalanceo, qué harás si cae y cuándo vender." allowAds={false}>
+  <div class="narrow opp">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/#nivel-1', label: 'Nivel 1' }, { label: 'Mi plan en una página' }]} />
+    <p class="eyebrow">Nivel 1 · cierre</p>
+    <h1>Mi plan en una página</h1>
+    <p class="lede">Doce respuestas cortas que te sacan de dudas cuando el mercado se mueve. Lo empiezas en la sesión «<a href="/es/sesion/ya-01-tu-plan-en-una-pagina/">Tu plan en una página</a>» y lo cierras en «<a href="/es/sesion/mr-07-tu-plan-definitivo/">Tu plan definitivo</a>». Se guarda solo en tu dispositivo (y en tu cuenta, si la usas).</p>
+    <form id="opp" class="card opp-form">
+      {fields.map((f) => (
+        <div class="field">
+          <label for={`f-${f.id}`}>{f.label}</label>
+          {f.kind === 'area' ? <textarea id={`f-${f.id}`} name={f.id} rows="2" maxlength="400"></textarea>
+            : f.kind === 'yesno' ? <select id={`f-${f.id}`} name={f.id}><option value="">Elige</option><option value="si">Sí</option><option value="no">Todavía no</option></select>
+            : <input id={`f-${f.id}`} name={f.id} type="text" maxlength="160" />}
+          <span class="hint">{f.hint}</span>
+        </div>
+      ))}
+      <p class="small status" id="opp-status" role="status" aria-live="polite"></p>
+      <div class="opp-actions no-print">
+        <button class="btn brand" type="button" id="opp-print">Imprimir o guardar en PDF</button>
+        <button class="btn secondary" type="button" id="opp-dl">Descargar en texto</button>
+        <button class="btn ghost" type="button" id="opp-clear">Borrar</button>
+      </div>
+    </form>
+    <p class="small muted">Es tu plan, no una recomendación: umotion Academy no conoce tu situación completa ni te dice qué comprar. Si dudas, vuelve a las sesiones del Nivel 1.</p>
+  </div>
+  <script type="application/json" id="opp-fields" set:html={JSON.stringify(fields.map((f) => ({ id: f.id, label: f.label })))} />
+</Base>
+<style>
+  .opp { padding-bottom: 4rem; }
+  .opp-form { display: grid; gap: 0.9rem; margin: 1.2rem 0; }
+  .opp-form .field { margin: 0; }
+  .opp-form label { font-weight: 600; display: block; margin-bottom: 0.3rem; }
+  .opp-form input, .opp-form textarea, .opp-form select { width: 100%; }
+  .opp-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .status:empty { display: none; }
+  .status { color: var(--teal); font-weight: 600; }
+  @media print { :global(header), :global(footer), :global(.bottom-bar), .no-print, .lede, :global(.breadcrumbs) { display: none !important; } .opp-form { box-shadow: none; border: 0; } }
+</style>
+<script>
+  import { read, write, remove } from '../../scripts/store';
+  const F = JSON.parse(document.getElementById('opp-fields')!.textContent!) as { id: string; label: string }[];
+  const form = document.getElementById('opp') as HTMLFormElement;
+  const status = document.getElementById('opp-status')!;
+  const saved = read<Record<string, string>>('one-page-plan', {});
+  F.forEach((f) => { const el = form.elements.namedItem(f.id) as HTMLInputElement | null; if (el && saved[f.id]) el.value = saved[f.id]; });
+  let t: ReturnType<typeof setTimeout> | undefined;
+  form.addEventListener('input', () => {
+    clearTimeout(t);
+    t = setTimeout(() => {
+      const data: Record<string, string> = {};
+      F.forEach((f) => { data[f.id] = ((form.elements.namedItem(f.id) as HTMLInputElement).value ?? '').trim(); });
+      const filled = Object.values(data).filter(Boolean).length;
+      write('one-page-plan', { ...data, updatedAt: new Date().toISOString(), complete: filled === F.length });
+      status.textContent = filled === F.length ? 'Plan completo y guardado.' : `Guardado (${filled} de ${F.length} respuestas).`;
+    }, 400);
+  });
+  document.getElementById('opp-print')!.addEventListener('click', () => window.print());
+  document.getElementById('opp-dl')!.addEventListener('click', () => {
+    const txt = ['Mi plan en una página · umotion Academy', '', ...F.map((f) => `${f.label}: ${(form.elements.namedItem(f.id) as HTMLInputElement).value || '—'}`)].join('\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], { type: 'text/plain' })); a.download = 'mi-plan-en-una-pagina.txt'; a.click(); URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('opp-clear')!.addEventListener('click', () => { if (confirm('¿Borrar tu plan?')) { remove('one-page-plan'); form.reset(); status.textContent = 'Plan borrado.'; } });
+</script>

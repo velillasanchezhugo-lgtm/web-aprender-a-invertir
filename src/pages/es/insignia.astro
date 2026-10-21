@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+---
+<Base title="Mi insignia: Fundamentos de inversión" description="Tu insignia gratuita del Nivel 1 de umotion Academy y lo que te falta para completar el nivel." noindex={true} allowAds={false}>
+  <div class="narrow ins">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/#nivel-1', label: 'Nivel 1' }, { label: 'Mi insignia' }]} />
+    <h1>Mi insignia</h1>
+    <div id="locked" class="callout note" hidden><p class="callout-title">Aún no la tienes</p><p>Se consigue al aprobar el <a href="/es/examen/n1/">examen del Nivel 1</a> con el 80 %.</p></div>
+    <article class="badge-card dots" id="badge" hidden>
+      <div class="bc-seal" aria-hidden="true"><svg width="54" height="54" viewBox="0 0 24 24"><path d="M12 2l2.6 2.2 3.4-.4.9 3.3 3 1.7-1.3 3.2 1.3 3.2-3 1.7-.9 3.3-3.4-.4L12 22l-2.6-2.2-3.4.4-.9-3.3-3-1.7 1.3-3.2L2.1 8.8l3-1.7.9-3.3 3.4.4z" fill="url(#g)"/><path d="M8 12.5l2.6 2.5L16 9.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#2b52f0"/><stop offset="1" stop-color="#35c8ff"/></linearGradient></defs></svg></div>
+      <p class="mono small bc-kicker">umotion Academy · Nivel 1</p>
+      <h2 class="bc-title">Fundamentos de inversión</h2>
+      <p class="bc-name" id="bc-name">Tu nombre</p>
+      <p class="small bc-meta" id="bc-meta"></p>
+      <p class="small bc-note">Insignia de aprendizaje gratuita. No es un título oficial ni habilita para asesorar.</p>
+    </article>
+    <div id="badge-tools" hidden class="no-print">
+      <div class="field"><label for="name">Nombre que aparece en la insignia</label><input id="name" type="text" maxlength="60" placeholder="Tu nombre" /></div>
+      <p><button class="btn secondary" type="button" id="print">Imprimir o guardar en PDF</button></p>
+      <p class="small muted">Esta versión se guarda en tu dispositivo. La versión <strong>verificable</strong> (con código y página pública de verificación) requerirá una cuenta y hacer el examen con la sesión iniciada; llegará con las cuentas.</p>
+    </div>
+    <section class="card checklist" aria-labelledby="cl-t">
+      <h2 id="cl-t" class="h3">Nivel 1 completo</h2>
+      <ul>
+        <li id="ck-exam">Examen del Nivel 1 aprobado · <a href="/es/examen/n1/">hacer el examen</a></li>
+        <li id="ck-ex">Ejercicio con dinero ficticio · <a href="/es/empieza-desde-cero/ejercicio-final/">hacerlo</a></li>
+        <li id="ck-plan">«Mi plan en una página» completo · <a href="/es/plan-en-una-pagina/">rellenarlo</a></li>
+      </ul>
+    </section>
+  </div>
+</Base>
+<style>
+  .ins { padding-bottom: 4rem; display: grid; gap: 1.2rem; }
+  .ins > * { margin: 0; }
+  .badge-card { text-align: center; padding: 2.2rem 1.4rem; border-radius: 24px; border: 1px solid var(--rule); background-color: var(--card); box-shadow: var(--shadow); }
+  .bc-kicker { text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-3); margin: 0.8rem 0 0.3rem; }
+  .bc-title { font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem); margin: 0; }
+  .bc-name { font: 600 1.4rem/1.3 var(--display); margin: 1rem 0 0.2rem; }
+  .bc-meta { color: var(--ink-2); margin: 0; }
+  .bc-note { color: var(--ink-3); margin: 1rem 0 0; }
+  .checklist ul { list-style: none; padding: 0; margin: 0.6rem 0 0; display: grid; gap: 0.4rem; }
+  .checklist li::before { content: '○ '; color: var(--ink-3); }
+  .checklist li.done::before { content: '✓ '; color: var(--gain); font-weight: 700; }
+  .h3 { font-size: 1.3rem; margin: 0; }
+  @media print { :global(header), :global(footer), :global(.bottom-bar), .no-print, .checklist, :global(.breadcrumbs), h1 { display: none !important; } }
+</style>
+<script>
+  import { getState } from '../../scripts/academy-store';
+  import { read, write } from '../../scripts/store';
+  const s = getState();
+  const ex = s.exams.n1;
+  const $ = (id: string) => document.getElementById(id)!;
+  const badge = read<{ name?: string }>('badge', {});
+  if (ex?.passed) {
+    $('badge').hidden = false; $('badge-tools').hidden = false;
+    ($('bc-name')).textContent = badge.name || 'Tu nombre';
+    $('bc-meta').textContent = `Examen aprobado el ${new Date(ex.at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })} · ${ex.correct} de ${ex.total} correctas`;
+    const input = $('name') as HTMLInputElement; input.value = badge.name ?? '';
+    input.addEventListener('input', () => { $('bc-name').textContent = input.value || 'Tu nombre'; write('badge', { name: input.value.trim() }); });
+    $('print').addEventListener('click', () => window.print());
+  } else $('locked').hidden = false;
+  const fe = read<Record<string, unknown> | null>('final-exercise', null);
+  const opp = read<{ complete?: boolean } | null>('one-page-plan', null);
+  if (ex?.passed) $('ck-exam').classList.add('done');
+  if (fe && Object.keys(fe).length) $('ck-ex').classList.add('done');
+  if (opp?.complete) $('ck-plan').classList.add('done');
+</script>

@@ -92,3 +92,26 @@ test('lo que ya sabes va al final del plan como repaso', async () => {
   const p = buildPlan(cat, { goal: 'entender', minutesPerDay: 15, days: [0, 1, 2, 3, 4, 5, 6], start: '2026-10-16', skip: ['a'] });
   assert.deepEqual(p.flatMap((x) => x.sessions), ['b', 'c', 'd', 'e', 'a']);
 });
+
+test('examen del Nivel 1: 30 preguntas, al menos 2 por capacidad, sin repetir y reproducible', async () => {
+  const { buildN1Exam, examWait } = await import('../src/lib/academy.ts');
+  const caps = Array.from({ length: 12 }, (_, i) => ({ id: `c${i + 1}`, text: '', skills: [`k${i + 1}`] }));
+  const bank = Array.from({ length: 120 }, (_, i) => ({ qid: `q${i}`, skills: [`k${(i % 12) + 1}`], session: `s${Math.floor(i / 3)}` }));
+  const a = buildN1Exam(bank, caps, 42);
+  assert.equal(a.qids.length, 30);
+  assert.equal(new Set(a.qids).size, 30);
+  for (const c of caps) assert.ok(a.qids.filter((q) => a.capOf[q] === c.id).length >= 2, `capacidad ${c.id}`);
+  assert.deepEqual(buildN1Exam(bank, caps, 42).qids, a.qids, 'misma semilla, mismo examen');
+  assert.notDeepEqual(buildN1Exam(bank, caps, 7).qids, a.qids);
+  const now = new Date('2026-10-21T12:00:00Z');
+  assert.ok(examWait({ at: '2026-10-21T10:00:00Z', passed: false }, now) > 20 * 3600 * 1000);
+  assert.equal(examWait({ at: '2026-10-20T10:00:00Z', passed: false }, now), 0);
+  assert.equal(examWait({ at: '2026-10-21T10:00:00Z', passed: true }, now), 0);
+});
+
+test('insignias del Nivel 1', () => {
+  const base = { completed: [], zeroIds: ['a'], streakBest: 0, masteredCards: 0, actionsDone: 0 };
+  assert.ok(earnedBadges({ ...base, examsPassed: ['n1'] } as any).includes('fundamentos'));
+  assert.ok(!earnedBadges({ ...base, examsPassed: ['n1'] } as any).includes('nivel-1'));
+  assert.ok(earnedBadges({ ...base, examsPassed: ['n1'], finalExercise: true, onePagePlan: true } as any).includes('nivel-1'));
+});

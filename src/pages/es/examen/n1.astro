@@ -1,0 +1,92 @@
+---
+import Base from '../../../layouts/Base.astro';
+import curriculum from '../../../data/curriculum.json';
+import { sessions, guessFor } from '../../../lib/content';
+/** Examen del Nivel 1 «Fundamentos de inversión» (docs/CURRICULO.md, sección 9.1). */
+const CORE = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener'];
+const all = (await sessions()).filter((s) => CORE.includes(s.data.track));
+const bank = all.flatMap((s) => s.data.questions.map((q) => ({ ...q, skills: q.skills ?? s.data.skills, session: s.id, sessionTitle: s.data.title, meta: { skills: q.skills ?? s.data.skills, guess: guessFor(q) } })));
+const zero = all.filter((s) => s.data.track === 'camino-cero').map((s) => s.id);
+---
+<Base title="Examen del Nivel 1: Fundamentos de inversión" description="30 preguntas sobre todo lo que necesitas para invertir por tu cuenta. Se aprueba con el 80 % y da la insignia gratuita «Fundamentos de inversión»." noindex={true} allowAds={false} focusMode={true}>
+  <div class="narrow ex">
+    <p class="eyebrow">Nivel 1 · examen final</p>
+    <h1>Fundamentos de inversión</h1>
+    <p class="lede" id="ex-intro">30 preguntas sobre las 12 capacidades del Nivel 1, al menos 2 de cada una. Sin límite de tiempo. Se aprueba con el 80 % y te da la insignia gratuita «Fundamentos de inversión — umotion». Si no apruebas, podrás repetirlo pasadas 24 horas.</p>
+    <div id="ex-gate" class="callout note" hidden></div>
+    <p><button class="btn brand" id="ex-start" type="button">Empezar el examen <span class="arrow" aria-hidden="true">→</span></button></p>
+    <div class="progress-bar" aria-hidden="true" hidden id="ex-pb"><span id="ex-bar"></span></div>
+    <p class="small muted mono" id="ex-count" aria-live="polite"></p>
+    <div class="rq" id="ex-q" hidden></div>
+    <div class="ex-ctrl"><button class="btn" id="ex-next" type="button" hidden>Siguiente <span class="arrow" aria-hidden="true">→</span></button></div>
+    <div id="ex-result" hidden tabindex="-1"></div>
+  </div>
+  <script type="application/json" id="ex-data" set:html={JSON.stringify({ bank, caps: curriculum.n1Capacities, zero })} />
+</Base>
+<style>
+  .ex { padding-top: 1.5rem; padding-bottom: 3rem; }
+  .ex-ctrl { margin: 1rem 0; display: flex; justify-content: flex-end; }
+  #ex-q { margin-top: 1rem; }
+  :global(.caps) { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.5rem; }
+  :global(.caps li) { display: grid; grid-template-columns: 1fr auto; gap: 0.8rem; padding: 0.6rem 0.8rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--card); font-size: 0.95rem; }
+  :global(.caps .ok) { color: var(--gain); font-weight: 700; }
+  :global(.caps .ko) { color: var(--loss); font-weight: 700; }
+  :global(.fails) { padding-left: 1.1rem; }
+  :global(.fails li) { margin-bottom: 0.5rem; }
+</style>
+<script>
+  import { getState, saveState, answer, logActivity } from '../../../scripts/academy-store';
+  import { buildN1Exam, examWait, examPassed } from '../../../lib/academy';
+  import { ask } from '../../../scripts/quiz-runner';
+  const D = JSON.parse(document.getElementById('ex-data')!.textContent!);
+  const $ = (id: string) => document.getElementById(id)!;
+  const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  const st0 = getState();
+  const zeroDone = D.zero.every((id: string) => st0.completed[id]) || st0.exams.cero?.passed;
+  const wait = examWait(st0.exams.n1 as any);
+  const gate = $('ex-gate');
+  const start = $('ex-start') as HTMLButtonElement;
+  if (!zeroDone) {
+    gate.hidden = false;
+    gate.innerHTML = '<p class="callout-title">Antes, el Camino Cero</p><p>Para hacer este examen hay que terminar las 14 sesiones del Camino Cero o aprobar su examen. <a href="/es/camino-cero/">Ir al Camino Cero</a> · <a href="/es/examen/cero/">Examen del nivel Cero</a></p>';
+    start.disabled = true;
+  } else if (wait > 0) {
+    gate.hidden = false;
+    const h = Math.ceil(wait / 3600000);
+    gate.innerHTML = `<p class="callout-title">Podrás repetirlo en ${h} ${h === 1 ? 'hora' : 'horas'}</p><p>Mientras tanto, repasa lo que fallaste en <a href="/es/repaso/">Repaso</a>.</p>`;
+    start.disabled = true;
+  } else if (st0.exams.n1?.passed) {
+    gate.hidden = false;
+    gate.innerHTML = '<p class="callout-title">Ya lo aprobaste</p><p>Puedes repetirlo para practicar. Tu insignia está en <a href="/es/insignia/">Mi insignia</a>.</p>';
+  }
+  start.addEventListener('click', async () => {
+    start.hidden = true; gate.hidden = true; $('ex-q').hidden = false; $('ex-pb').hidden = false;
+    const byId = Object.fromEntries(D.bank.map((q: any) => [q.id, q]));
+    const { qids, capOf } = buildN1Exam(D.bank.map((q: any) => ({ qid: q.id, skills: q.skills, session: q.session })), D.caps, Date.now());
+    let ok = 0; const capOk: Record<string, [number, number]> = {}; const failed: any[] = [];
+    for (let i = 0; i < qids.length; i++) {
+      const q = byId[qids[i]];
+      $('ex-count').textContent = `Pregunta ${i + 1} de ${qids.length}`;
+      ($('ex-bar') as HTMLElement).style.width = `${(i / qids.length) * 100}%`;
+      const r = await ask($('ex-q'), q);
+      const c = capOf[q.id]; capOk[c] ??= [0, 0]; capOk[c][1]++;
+      if (r) { ok++; capOk[c][0]++; } else failed.push(q);
+      let st = getState(); st = answer(st, q.id, r, q.meta); saveState(st);
+      const nx = $('ex-next') as HTMLButtonElement; nx.hidden = false; nx.focus();
+      await new Promise((res) => nx.addEventListener('click', res, { once: true })); nx.hidden = true;
+    }
+    const passed = examPassed(ok, qids.length);
+    let st = getState(); const prev = st.exams.n1;
+    st.exams.n1 = { correct: ok, total: qids.length, at: new Date().toISOString(), passed: passed || !!prev?.passed }; st = logActivity(st); saveState(st);
+    try { const { track } = await import('@vercel/analytics'); track('examen_n1', { aprobado: passed, aciertos: ok }); } catch { /* */ }
+    $('ex-q').hidden = true; $('ex-count').textContent = ''; ($('ex-bar') as HTMLElement).style.width = '100%';
+    const caps = D.caps.map((c: any) => { const [a, t] = capOk[c.id] ?? [0, 0]; return `<li><span>${esc(c.text)}</span><span class="${t && a === t ? 'ok' : 'ko'}">${a}/${t}</span></li>`; }).join('');
+    const fails = [...new Map(failed.map((q) => [q.session, q])).values()].map((q: any) => `<li>${esc(q.q)}<br /><a class="small" href="/es/sesion/${q.session}/">Repasa: ${esc(q.sessionTitle)}</a></li>`).join('');
+    const res = $('ex-result'); res.hidden = false;
+    res.innerHTML = `<div class="panel-dark" style="padding:1.6rem"><span class="chip">${passed ? 'Nivel 1 superado' : 'Casi'}</span><h2 style="color:#f8f9fc;margin:.8rem 0 .4rem">${ok} de ${qids.length} correctas</h2><p style="color:#c4cada">${passed ? '¡Enhorabuena! Has ganado la insignia «Fundamentos de inversión — umotion».' : 'Necesitas el 80 %. Repasa lo que fallaste y vuelve a intentarlo dentro de 24 horas.'}</p></div>
+      <h2 class="h3" style="margin-top:1.6rem">Tus 12 capacidades</h2><ul class="caps">${caps}</ul>
+      ${fails ? `<h2 class="h3">Para repasar</h2><ul class="fails">${fails}</ul>` : ''}
+      <p style="margin-top:1rem">${passed ? '<a class="btn brand" href="/es/insignia/">Ver mi insignia</a> ' : '<a class="btn brand" href="/es/repaso/">Ir al repaso</a> '}<a class="btn secondary" href="/es/mi-plan/">Mi plan</a></p>`;
+    res.focus();
+  });
+</script>
