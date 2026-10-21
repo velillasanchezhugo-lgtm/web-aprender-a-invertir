@@ -21,6 +21,20 @@ No hace falta ninguna credencial para ejecutar ni compilar la web.
 2. **Fiscal**: lección de comisiones y fiscalidad (escala del ahorro 2025, traspasos, regla de los dos meses), criptoactivos y fiscalidad de dividendos. Confirmar la escala de 2026 cuando esté disponible.
 3. **Financiera / editorial**: todas las lecciones, estrategias e historias están en estado «Pendiente de revisión humana».
 
+## Currículo v1.2 (docs/CURRICULO.md)
+
+- **Decisiones de los socios:** D-01, D-03, D-04, D-06, D-07, D-08 (precio y modelo del Nivel 3: propuesta de curso a 50 € y certificación aparte) y D-09 (supervisión e identidad del examen).
+- **Revisión fiscal** de `mr-05-tus-inversiones-en-la-renta`: qué llega precargado al borrador, ventas de acciones y ETF y brókeres extranjeros, y orden de venta FIFO.
+- **Muestra `n3-reg-01`:** contrastar con fuente primaria:
+  - fecha de inicio del MUS (4/11/2014);
+  - competencias del BCE en autorizaciones y participaciones significativas;
+  - sede de la EBA;
+  - mediadores de seguros supervisados por las comunidades autónomas;
+  - reparto entre país de origen y de acogida en el pasaporte europeo.
+
+  Añadir como fuentes los Reglamentos (UE) 1024/2013 y 1093, 1094 y 1095/2010.
+- **Muestra `n2-car-01`:** valorar sustituir la fuente `markowitz-1952` por una guía de la CNMV.
+
 ## Cuentas y recordatorio diario
 
 Construidos y probados con Supabase simulado; desactivados hasta configurarlos (ver `docs/CUENTAS-Y-AVISOS.md`): proyecto de Supabase en la UE, claves VAPID, `CRON_SECRET`, correo del enlace mágico en español con SMTP propio y revisión de privacidad. Con el plan Hobby de Vercel el aviso llega entre las 16:00 y las 16:59; para la hora exacta, plan Pro o `pg_cron` de Supabase.

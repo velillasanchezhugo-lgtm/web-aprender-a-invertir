@@ -17,8 +17,8 @@ const { tier } = Astro.props as { tier: 2 | 3 };
     if (read<Record<string, string>>('interest', {})[tier]) done();
     btn.addEventListener('click', async () => {
       const cur = read<Record<string, string>>('interest', {}); cur[tier] = new Date().toISOString(); write('interest', cur);
-      try { const { track } = await import('@vercel/analytics'); track('interes_nivel', { nivel: Number(tier) }); } catch { /* */ }
       done();
+      try { const { track } = await import('@vercel/analytics'); track('interes_nivel', { nivel: Number(tier) }); } catch { /* */ }
     });
   });
 </script>

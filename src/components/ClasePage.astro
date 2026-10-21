@@ -111,7 +111,7 @@ const qs = d.questions.map((q) => ({ ...q, meta: { skills: q.skills ?? d.skills,
   <script type="application/json" id="clase-data" set:html={JSON.stringify({ qs })} />
 </Base>
 <style>
-  .clase { padding-bottom: 4rem; display: grid; gap: 1.4rem; }
+  .clase { padding-bottom: 4rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.4rem; }
   .clase > * { margin: 0; }
   .clase h1 { font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem); }
   .free { color: var(--teal); font-weight: 700; }

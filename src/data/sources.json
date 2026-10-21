@@ -790,5 +790,89 @@
   "url": "https://sede.agenciatributaria.gob.es/Sede/todas-gestiones/impuestos-tasas/declaraciones-informativas/modelo-721-decla-sobre-monedas-extranjero/preguntas-frecuentes-sobre-modelo-721.html",
   "type": "fiscal",
   "checked": "2026-10-16"
+ },
+ "boe-lmv": {
+  "title": "Ley 6/2023, de 17 de marzo, de los Mercados de Valores y de los Servicios de Inversión (texto consolidado; art. 125: servicios de inversión y asesoramiento; art. 128: clases de ESI; art. 129: reserva de actividad; arts. 142-145: pasaporte europeo; art. 232: ámbito de supervisión de la CNMV; art. 251: CNMV y Banco de España en MiCA)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2023-7053",
+  "type": "normativa",
+  "checked": "2026-10-21"
+ },
+ "boe-ley-10-2014": {
+  "title": "Ley 10/2014, de 26 de junio, de ordenación, supervisión y solvencia de entidades de crédito (texto consolidado; art. 4: el Banco de España como supervisor, en cooperación con el BCE)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-6726",
+  "type": "normativa",
+  "checked": "2026-10-21"
+ },
+ "boe-lossear": {
+  "title": "Ley 20/2015, de 14 de julio, de ordenación, supervisión y solvencia de las entidades aseguradoras y reaseguradoras (texto consolidado; art. 7: la DGSFP como autoridad de supervisión)",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-7897",
+  "type": "normativa",
+  "checked": "2026-10-21"
+ },
+ "dgsfp-funciones": {
+  "title": "Estructura y funciones de la Dirección General de Seguros y Fondos de Pensiones (supervisión de aseguradoras, distribuidores de seguros y planes y fondos de pensiones y sus gestoras)",
+  "publisher": "Dirección General de Seguros y Fondos de Pensiones (Ministerio de Economía, Comercio y Empresa)",
+  "url": "https://dgsfp.mineco.gob.es/es/DireccionGeneral/Paginas/Estructura.aspx",
+  "type": "supervisor",
+  "checked": "2026-10-21"
+ },
+ "cnmv-funciones": {
+  "title": "Funciones de la CNMV (supervisión de los mercados de valores, emisores, ESI e IIC)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/portal/quees/funciones/funciones",
+  "type": "supervisor",
+  "checked": "2026-10-21"
+ },
+ "bde-memoria-supervision-2025": {
+  "title": "Memoria de Supervisión 2025, capítulo 1: La supervisión y la vigilancia en el Banco de España (reparto con el BCE en el MUS, otras entidades supervisadas, conducta, EMT y ART)",
+  "publisher": "Banco de España",
+  "url": "https://www.bde.es/f/webbe/Secciones/Publicaciones/PublicacionesAnuales/MemoriaSupervisionBancaria/25/MemoriaSupervision2025_Cap1.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-21"
+ },
+ "bde-que-es-mus": {
+  "title": "Qué es el MUS (Mecanismo Único de Supervisión) (7 de enero de 2025)",
+  "publisher": "Banco de España, Portal del Cliente Bancario",
+  "url": "https://clientebancario.bde.es/pcb/es/blog/que-es-el-mus.html",
+  "type": "supervisor",
+  "checked": "2026-10-21"
+ },
+ "bce-criterios-significatividad": {
+  "title": "Criteria for determining significance (criterios para que un banco sea supervisado directamente por el BCE)",
+  "publisher": "Banco Central Europeo, Supervisión Bancaria",
+  "url": "https://www.bankingsupervision.europa.eu/banking/list/criteria/html/index.en.html",
+  "type": "supervisor",
+  "checked": "2026-10-21"
+ },
+ "esma-about": {
+  "title": "About ESMA (misión, creación el 1 de enero de 2011 y Sistema Europeo de Supervisión Financiera)",
+  "publisher": "ESMA (Autoridad Europea de Valores y Mercados)",
+  "url": "https://www.esma.europa.eu/about-esma",
+  "type": "supervisor",
+  "checked": "2026-10-21"
+ },
+ "esma-supervision": {
+  "title": "Supervision: entidades bajo supervisión directa de ESMA (agencias de calificación crediticia, registros de operaciones, entre otras)",
+  "publisher": "ESMA (Autoridad Europea de Valores y Mercados)",
+  "url": "https://www.esma.europa.eu/esmas-activities/supervision",
+  "type": "supervisor",
+  "checked": "2026-10-21"
+ },
+ "eiopa-about": {
+  "title": "About EIOPA (Autoridad Europea de Seguros y Pensiones de Jubilación)",
+  "publisher": "EIOPA",
+  "url": "https://www.eiopa.europa.eu/about_en",
+  "type": "supervisor",
+  "checked": "2026-10-21"
+ },
+ "cnmv-guia-tecnica-4-2017": {
+  "title": "Guía Técnica 4/2017 para la evaluación de los conocimientos y competencias del personal que informa y que asesora (texto consolidado, última modificación 3 de diciembre de 2020)",
+  "publisher": "CNMV",
+  "url": "https://www.cnmv.es/DocPortal/Legislacion/Guias-Tecnicas/GuiaTecnica_2017_4.pdf",
+  "type": "supervisor",
+  "checked": "2026-10-21"
  }
 }
