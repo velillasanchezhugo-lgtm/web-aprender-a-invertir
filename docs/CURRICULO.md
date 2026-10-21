@@ -35,6 +35,8 @@
 
 ## 0. Cómo usar este documento
 
+> El sistema común a todas las formaciones (niveles, partes, formatos, exámenes, precios y cómo crear una formación nueva) está en `docs/ESTANDAR-FORMACIONES.pdf` (se genera con `node scripts/estandar-formaciones.mjs`). Este documento es el currículo concreto de la formación Inversión.
+
 1. **Lo que ya existe se conserva.** Las 70 sesiones actuales, sus `slug`, sus identificadores de pregunta (`no07-q1`…) y las 52 competencias actuales no se renombran ni se borran. El progreso de los usuarios está guardado en su dispositivo con esos identificadores; cambiarlos rompe su progreso.
 2. **Lo nuevo sigue las mismas convenciones** (sección 0.1).
 3. **Mismo esquema de datos.** Las sesiones nuevas usan el esquema de contenido de las sesiones actuales. Si un nivel necesita campos extra, se añaden como **opcionales** (sección 4.4) para no romper las sesiones existentes.
@@ -208,21 +210,6 @@ La versión 1.1 proponía añadir campos al esquema de las sesiones. Dos de ello
 **Temario planificado** (metadatos de las 122 clases y lecciones, clientes ficticios y capacidades del examen N1): `src/data/curriculum.json`, generado a partir de las tablas de las secciones 6.3 y 7.3.
 
 **Competencias y glosario:** cada competencia y cada término llevan `level` (1, 2 o 3). En la web gratuita, el mapa de competencias del alumno solo muestra las de nivel 1.
-
----|---|---|
-| `level` | 1, 2 o 3 | Nivel al que pertenece la sesión |
-| `format` | `sesion`, `clase` o `leccion` | Plantilla de renderizado |
-| `minutes` | número | Duración estimada |
-| `access` | `free`, `sample` o `paid` | `sample` = muestra abierta de un nivel de pago |
-| `objectives` | lista | Objetivos (N2 y N3) |
-| `teach` | objeto `{tresFrases, analogia, dudas[], errorPrincipiante, frontera}` | Bloque «Cómo explicarlo» (N2) |
-| `explainPrompt` | texto | Consigna de «Explícalo tú» (N2) |
-| `profesional` | texto | Bloque «Criterio profesional» (N3) |
-| `caseFile` | id de cliente ficticio | Expediente (N3) |
-| `exercise` | texto | Ejercicio aplicado (N3) |
-| `editorialState` | `borrador`, `pendiente` o `revisado` | Ya existe en la web; obligatorio |
-| `reviewer` | nombre y fecha | Solo si lo ha revisado una persona real |
-
 
 ---
 
