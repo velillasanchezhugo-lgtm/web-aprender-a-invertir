@@ -43,6 +43,17 @@ action:
     - "Pide a Claude los argumentos en contra y las preguntas que deberías hacerte."
     - "Apunta la mejor objeción y guarda la petición en «Mi kit de Claude»."
   check: He pedido a Claude los argumentos en contra de una decisión mía
+practice:
+  task: "El lunes presentas en tu empresa una propuesta de teletrabajo que a ti te encanta. Escribe la petición para que Claude te dé varias perspectivas y no solo te dé la razón."
+  require: [contexto, formato]
+  extra:
+    - label: Pedir varias miradas
+      any: [como lo verian, como lo veria, perspectiva, puntos de vista, punto de vista, haz de]
+      hint: "Pide cómo lo verían otras personas: «Dime cómo lo vería la directora, un cliente…»."
+    - label: Pedir que no te dé la razón
+      any: [no me des la razon, en contra, objeciones, critica]
+      hint: "Dilo claro: «No me des la razón: dame los argumentos en contra»."
+  sample: "Trabajo en una consultora de 20 personas y el lunes presento a la dirección la propuesta de teletrabajar dos días por semana. A mí me encanta la idea, así que no me des la razón. Dime cómo lo verían cuatro personas distintas: la directora, un compañero recién llegado, una compañera con hijos pequeños y un cliente. Ponlo en una tabla con sus dos mejores argumentos a favor y en contra. Al final, dime qué información mía te falta para opinar mejor."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

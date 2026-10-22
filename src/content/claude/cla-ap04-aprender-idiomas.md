@@ -42,8 +42,19 @@ action:
     - "Pega la petición de esta sesión, cambiando el idioma, el nivel y la situación."
     - "Al acabar, pide tus tres errores más repetidos y guárdalos en «Mi kit de Claude»."
   check: He practicado una conversación en otro idioma y he anotado mis errores
+practice:
+  task: "Este verano trabajas de camarero en un chiringuito y muchos clientes hablan alemán. Escribe la petición para practicar una conversación a tu nivel, con correcciones explicadas."
+  require: [contexto]
+  extra:
+    - label: "Idioma y nivel"
+      any: ["a1", "a2", "b1", "b2", "c1", "mi nivel", "principiante", "nivel basico", "nivel intermedio"]
+      hint: "Di el idioma y tu nivel: «Mi nivel de alemán es A2»."
+    - label: "Correcciones con el porqué"
+      any: ["corrige", "corrigeme", "errores", "explicacion", "explicame", "explica"]
+      hint: "Pide pocas correcciones y explicadas: «corrige como mucho dos errores y explícalos»."
+  sample: "Tengo trabajo de camarero este verano en un chiringuito de Mallorca y muchos clientes hablan alemán. Mi nivel es A2. Haz de cliente alemán que pide comida, pregunta por los platos y pide la cuenta. Hazme una pregunta cada vez y espera mi respuesta. Después de cada respuesta mía, corrige como mucho dos errores, con la forma correcta y una explicación breve en español. Al final, dame diez palabras útiles para la barra."
 deeper: null
-tool: null
+tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

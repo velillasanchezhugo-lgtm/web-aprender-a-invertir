@@ -43,8 +43,16 @@ action:
     - "Responde a sus preguntas, guarda la habilidad y actívala en la sección de habilidades."
     - "Pruébala con un caso real y anota en «Mi kit de Claude» para qué sirve."
   check: He creado o activado una habilidad y la he probado
+practice:
+  task: "Cada trimestre escribes el boletín de tu club de senderismo con la misma estructura. Escribe la petición para que Claude te ayude a crear una habilidad con tu forma de hacerlo."
+  require: [ejemplos, preguntas, formato]
+  extra:
+    - label: "Pedir que cree una habilidad"
+      any: ["habilidad", "skill"]
+      hint: "Di que quieres crear una habilidad, no solo un texto."
+  sample: "Quiero crear una habilidad para redactar el boletín trimestral de mi club de senderismo. Te adjunto dos boletines antiguos como ejemplo de lo que busco. Siempre lleva tres apartados: próximas rutas, crónica de la última salida y avisos de seguridad, en menos de 400 palabras y con tono cercano. Antes de empezar, hazme las preguntas que necesites sobre el formato y lo que nunca debe faltar. Después prepara la habilidad y dime cómo probarla."
 deeper: null
-tool: null
+tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

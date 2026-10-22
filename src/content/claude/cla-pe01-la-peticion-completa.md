@@ -42,8 +42,12 @@ action:
     - "Reescríbela con la lista de las cinco piezas y envíala en un chat nuevo."
     - "Compara las dos respuestas. Si la nueva es mejor, copia la petición en tu nota «Mi kit de Claude»."
   check: He rehecho una petición con las cinco piezas y he comparado el resultado
+practice:
+  task: "Tienes un bar de tapas y en noviembre vas a cerrar los lunes. Escribe una petición completa para que Claude redacte el cartel de la puerta y una publicación para redes."
+  require: [contexto, limites, formato, tono]
+  sample: "Tengo un bar de tapas en Logroño y desde el 3 de noviembre cerraremos los lunes para que el equipo descanse. Escribe el texto de un cartel para la puerta y una publicación para Instagram que lo anuncien. Tienen que decir desde qué fecha cambia y que el resto de la semana abrimos como siempre. Formato: cartel de máximo 25 palabras y publicación de tres frases. Tono cercano y alegre, sin pedir perdón ni usar más de un emoji."
 deeper: null
-tool: null
+tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

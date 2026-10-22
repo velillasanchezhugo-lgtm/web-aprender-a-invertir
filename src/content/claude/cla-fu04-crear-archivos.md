@@ -42,6 +42,17 @@ action:
     - "Pide un Excel pequeño y útil: tus gastos fijos del mes o un horario de estudio, con un total."
     - "Descárgalo, ábrelo y comprueba a mano un total."
   check: He pedido a Claude un archivo, lo he abierto y he comprobado un resultado
+practice:
+  task: "Llevas las cuentas de la peña de fiestas de tu pueblo y tienes los gastos apuntados en notas sueltas. Escribe la petición para que Claude te dé un archivo de Excel listo para presentar en la asamblea."
+  require: [formato, publico]
+  extra:
+    - label: "Nombrar el tipo de archivo"
+      any: ["excel", "xlsx", "word", "docx", "powerpoint", "pptx", "pdf"]
+      hint: "Di qué archivo quieres: «un Excel (.xlsx)», «un PDF de una página»…"
+    - label: "Pedir totales que puedas comprobar"
+      any: ["total", "suma", "formula", "subtotal"]
+      hint: "Pide los totales con fórmulas: así podrás comprobar dos a mano."
+  sample: "Llevo las cuentas de la peña de fiestas de mi pueblo y te pego abajo los gastos de este año. Crea un archivo de Excel (.xlsx) con columnas de fecha, concepto, categoría (carpa, música, comida, otros) e importe en euros, con formato de número español y coma decimal. Añade una pestaña con el total por categoría usando fórmulas y un gráfico de barras. Es para presentar en la asamblea de socios, así que debe leerse bien impreso en una página. Si algún apunte no se entiende, márcalo en amarillo y dime si falta algún dato."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

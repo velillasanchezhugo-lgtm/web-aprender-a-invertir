@@ -42,6 +42,17 @@ action:
     - "Abre el primer enlace que cite y busca la frase o el número en la página."
     - "Anota en «Mi kit de Claude» si la fuente era oficial y si coincidía."
   check: He pedido a Claude una búsqueda y he comprobado una de sus fuentes
+practice:
+  task: "Vas a pedir una partida de nacimiento en el registro civil y no sabes si han cambiado el horario ni los papeles. Escribe la petición para que Claude lo busque en la web y puedas comprobarlo."
+  require: [verificar, limites]
+  extra:
+    - label: "Pedir que busque en la web"
+      any: ["busca", "buscar", "en la web", "internet"]
+      hint: "Di «busca en la web» para que no conteste de memoria."
+    - label: "Pedir la fecha de cada fuente"
+      any: ["fecha", "actualiz", "reciente"]
+      hint: "Pide la fecha de cada página: un horario de hace dos años no te sirve."
+  sample: "Busca en la web el horario de atención y los documentos que hacen falta para pedir una partida de nacimiento en el Registro Civil de Valencia. Usa solo fuentes oficiales, como la web del Ministerio de Justicia o del ayuntamiento. Cita el enlace de cada dato y dime la fecha de cada página. Si dos fuentes no coinciden o no encuentras algo, dime si hay dudas en lugar de suponerlo."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

@@ -43,8 +43,16 @@ action:
     - "Sube un archivo de referencia y abre un chat dentro para probarlo."
     - "Copia tus instrucciones en «Mi kit de Claude»."
   check: He creado un proyecto con instrucciones y al menos un archivo
+practice:
+  task: "Empiezas a llevar el Instagram de la panadería de tu familia y vas a usar Claude cada semana. Escribe las instrucciones del proyecto para no tener que repetir siempre lo mismo."
+  require: [contexto, tono, formato, limites]
+  extra:
+    - label: "Decir qué archivos debe usar"
+      any: ["archivo", "documento", "he subido", "adjunt", "conocimiento"]
+      hint: "Di qué archivos del proyecto debe consultar: «usa la carta de productos que he subido»."
+  sample: "Tengo una panadería familiar en Teruel y llevo su Instagram. En este proyecto, prepara cada semana tres publicaciones. Usa los documentos que he subido: la carta de productos y tres publicaciones que funcionaron bien. Tono cercano y alegre, frases cortas y español de España. Cada publicación, como máximo 80 palabras y con una propuesta de foto. No inventes precios ni ofertas: si te falta un dato, pregúntame."
 deeper: null
-tool: null
+tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

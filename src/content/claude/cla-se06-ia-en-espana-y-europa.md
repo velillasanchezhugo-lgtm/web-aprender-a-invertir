@@ -42,6 +42,17 @@ action:
     - "Revisa que incluya: comprobar lo importante, no subir datos personales y avisar del contenido generado."
     - "Guarda la versión final en «Mi kit de Claude»."
   check: He escrito mis reglas de uso de IA y las he guardado en mi kit
+practice:
+  task: "Tu clínica de fisioterapia va a publicar en redes vídeos de ejercicios con una voz artificial que parece real. Escribe la petición para que Claude redacte el aviso de que se ha usado IA."
+  require: [contexto, formato, tono]
+  extra:
+    - label: Decir qué parte está hecha con IA
+      any: [voz artificial, generada con ia, generado con ia, hecho con ia, hecha con ia, creado con ia, avatar]
+      hint: "Di qué se ha hecho con IA (la voz, la imagen, el texto) para que el aviso sea concreto."
+    - label: Pedir qué comprobar en la norma
+      any: [reglamento, normativa, que deberia comprobar, comprobar]
+      hint: "Pide qué deberías comprobar tú en la norma oficial: Claude no sustituye esa lectura."
+  sample: "Tengo una clínica de fisioterapia en Zaragoza y vamos a publicar en redes vídeos de ejercicios con una voz artificial generada con IA que suena como una persona real. Redacta dos avisos de transparencia: uno de máximo 15 palabras para poner al principio de cada vídeo y otro de 2 frases para la descripción. Tono claro y cercano, para pacientes de todas las edades. Que digan qué parte está hecha con IA y que una fisioterapeuta ha revisado los ejercicios. Dime también qué debería comprobar en el Reglamento europeo de IA."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

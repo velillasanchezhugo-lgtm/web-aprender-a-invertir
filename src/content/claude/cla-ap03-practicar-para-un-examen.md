@@ -42,8 +42,19 @@ action:
     - "Pide un test de cinco preguntas usando solo ese documento y respóndelo sin mirar."
     - "Pide la explicación de los fallos y apunta cuándo repetirás el test."
   check: He hecho un test con Claude a partir de mis apuntes
+practice:
+  task: "Vas a examinarte del curso de manipulador de alimentos y tienes los apuntes en PDF. Escribe la petición para que Claude te haga un test usando solo ese documento."
+  require: [limites, formato]
+  extra:
+    - label: "Basarse en tu documento"
+      any: ["documento", "apuntes", "pdf", "adjunto", "este texto", "temario"]
+      hint: "Di de dónde deben salir las preguntas: «usando solo lo que pone en el documento»."
+    - label: "De una en una y con corrección"
+      any: ["de una en una", "una a una", "espera a que responda", "cada fallo", "mis fallos", "mis errores", "corrige"]
+      hint: "Pide que pregunte de una en una y te explique cada fallo."
+  sample: "Te adjunto el PDF de apuntes del curso de manipulador de alimentos que hago para trabajar en un comedor escolar. Hazme un test de 10 preguntas de opción múltiple, de una en una, usando solo lo que pone en el documento. Si algo no aparece, no lo preguntes. Espera a que responda antes de pasar a la siguiente y explícame cada fallo en dos frases. Al final, dime qué tres puntos debo repasar."
 deeper: null
-tool: null
+tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: Lo que Claude sabía de Carmen
-  body: "Carmen abre los ajustes de memoria y ve varios temas guardados: su trabajo de enfermera, que prepara un viaje a Lisboa y un problema de salud que comentó una vez. Borra ese último tema. Después, en sus instrucciones para Claude, escribe: «Respóndeme corto, sin listas largas, y en español de España»."
+  body: "Carmen abre los ajustes de memoria y ve varios temas guardados: su trabajo de enfermera, que prepara un viaje a Lisboa y una discusión con su casero que comentó una vez. Borra ese último tema. Después, en sus instrucciones para Claude, escribe: «Respóndeme corto, sin listas largas, y en español de España»."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -33,7 +33,7 @@ questions:
     answer: 1
     explain: "Las instrucciones de tu cuenta se aplican a todas las conversaciones, así no lo repites. Pedirlo en cada mensaje funciona, pero se olvida; cambiar de modelo no cambia tus preferencias."
 tips:
-  - "Una vez al mes, abre los ajustes de memoria y borra lo que ya no quieras que recuerde."
+  - "Borrar un chat no borra lo que Claude recordó de él: si no quieres que lo recuerde, bórralo también en los ajustes de memoria."
   - "Puedes decírselo en el chat: «recuerda que soy vegetariana» u «olvida lo de mi mudanza»."
   - "Si un proyecto es delicado, desactiva en él el uso de la memoria de tu cuenta para que vaya por separado."
 action:
@@ -44,6 +44,17 @@ action:
     - "Escribe en tus instrucciones para Claude dos líneas sobre cómo quieres las respuestas."
     - "Copia esas dos líneas en «Mi kit de Claude»."
   check: He revisado lo que Claude recuerda de mí y he escrito mis instrucciones
+practice:
+  task: "Una vez le contaste a Claude que estás en un juicio por un despido y no quieres que lo recuerde. Escribe la petición para que lo olvide y guarde, en su lugar, cómo quieres que te responda."
+  require: [tono, formato, limites]
+  extra:
+    - label: "Pedir que olvide algo concreto"
+      any: ["olvida", "no recuerdes", "borra", "deja de recordar", "no guardes"]
+      hint: "Di qué tiene que olvidar: «olvida lo que te conté sobre…»."
+    - label: "Pedir que te diga qué ha guardado"
+      any: ["que has guardado", "que recuerdas", "que tienes guardado", "que sabes de mi"]
+      hint: "Pide que te diga qué ha guardado y compruébalo en los ajustes de memoria."
+  sample: "Olvida lo que te conté sobre mi despido y no lo guardes en la memoria. En su lugar, recuerda cómo quiero que me respondas: en español de España, con tono cercano y frases cortas. Usa listas solo si hay más de tres puntos y como máximo 200 palabras, salvo que te pida más. Sin tecnicismos. Al terminar, dime qué has guardado sobre mí para comprobarlo."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -68,6 +79,7 @@ Hay tres ajustes que hacen que Claude «te conozca»:
   - **Restablecer**: lo borra todo, también la memoria de tus proyectos. **No se puede deshacer.**
 - **Cada proyecto tiene su propia memoria**, que no se mezcla con la de otros proyectos.
 - **Los chats de incógnito** no se guardan en la memoria ni en el historial.
+- **Los temas delicados** (como la salud) no se guardan por defecto, y algunos datos, como el número del DNI o de una cuenta, no se guardan nunca.
 
 **2. Las instrucciones para Claude.** Un texto en los ajustes de tu cuenta que se aplica a **todas** tus conversaciones: tu idioma, tu nivel, lo que no quieres.
 

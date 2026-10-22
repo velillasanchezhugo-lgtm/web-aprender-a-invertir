@@ -28,7 +28,7 @@ questions:
     explain: "El papel cambia el enfoque y el tono, no da formación ni conoce tu historial. Para salud, derecho o dinero, Claude puede ayudarte a preparar preguntas, pero la decisión se toma con un profesional."
   - type: choice
     id: cla-pe04-q3
-    q: "Hugo ha escrito una propuesta para su jefe y quiere detectar puntos débiles antes de enviarla. ¿Qué papel le pide a Claude?"
+    q: "Raúl ha escrito una propuesta para su jefe y quiere detectar puntos débiles antes de enviarla. ¿Qué papel le pide a Claude?"
     options: ["Un revisor exigente que busque los fallos y las objeciones que pondría su jefe", "Un amigo que le diga que está muy bien", "Ninguno: que la corrija sin más"]
     answer: 0
     explain: "Un papel crítico y concreto saca objeciones reales. Pedir ánimo tienta porque sienta bien, pero no te prepara para la reunión."
@@ -42,8 +42,16 @@ action:
     - "Pide a Claude que lo lea con un papel crítico y un público concreto, como en la petición de esta sesión."
     - "Apunta las dos críticas que te parezcan más útiles y decide tú si las aplicas."
   check: He pedido a Claude una crítica con un papel y un público concretos
+practice:
+  task: "Vas a presentar en la reunión del AMPA un plan de huerto escolar y quieres prever las objeciones. Escribe la petición dándole a Claude un papel concreto y diciendo a qué público te diriges."
+  require: [publico, contexto]
+  extra:
+    - label: "Darle un papel"
+      any: ["actua como", "haz de", "haz el papel", "ponte en el lugar", "como si fueras", "en el papel de", "eres un", "eres una"]
+      hint: "Dale un papel concreto al principio: «Actúa como la directora de un colegio con poco presupuesto…»."
+  sample: "Actúa como la directora de un colegio público con poco presupuesto y poco tiempo. Soy madre de dos alumnas y el jueves voy a presentar en la reunión del AMPA un plan de huerto escolar para primaria. Te pego el plan abajo. Dime las cinco objeciones más probables de la dirección y de las familias, de la más fuerte a la más débil, y cómo responder a cada una en una frase. Es para preparar una intervención de cinco minutos ante unas 30 familias."
 deeper: null
-tool: null
+tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

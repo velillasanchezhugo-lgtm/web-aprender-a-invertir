@@ -42,6 +42,17 @@ action:
     - "Pégalas con la primera petición de ejemplo."
     - "Corrige lo que no sea exacto y guarda la petición en «Mi kit de Claude»."
   check: He convertido unas notas en una lista de tareas revisada con Claude
+practice:
+  task: "Eres maestra de 3.º de primaria y mañana tienes la primera reunión del curso con las familias, de 45 minutos. Escribe la petición para que Claude te ayude a prepararla."
+  require: [contexto, formato]
+  extra:
+    - label: Pedir el tiempo de cada punto
+      any: [minutos, tiempos, tiempo de cada, duracion]
+      hint: "Di cuánto dura la reunión y pide los minutos de cada tema."
+    - label: Prepararte para las preguntas difíciles
+      any: [preguntas dificiles, preguntas que me haran, objeciones, pegas, ensayar]
+      hint: "Pide las preguntas o pegas más probables, con una respuesta breve para cada una."
+  sample: "Soy maestra de 3.º de primaria y mañana tengo la primera reunión del curso con las familias, de 45 minutos. Quiero que salgan sabiendo cómo funcionan los deberes, las salidas y la comunicación con el colegio. Prepárame un orden del día en una lista, con los minutos de cada tema. Después dame las 5 preguntas difíciles que más probablemente me harán, con una respuesta breve y amable para cada una. No incluyas nombres de alumnos."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

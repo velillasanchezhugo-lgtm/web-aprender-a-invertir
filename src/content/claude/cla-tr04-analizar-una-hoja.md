@@ -42,8 +42,19 @@ action:
     - "Súbela con la primera petición de ejemplo."
     - "Comprueba a mano una de las cifras que te dé."
   check: He analizado una hoja sin datos personales y he comprobado una cifra a mano
+practice:
+  task: "Tienes un bar y has exportado a CSV las ventas diarias de un año. Escribe la petición para que Claude te diga qué días y franjas flojean, con un gráfico y una cifra que puedas comprobar."
+  require: [contexto, formato]
+  extra:
+    - label: Avisar de que va sin datos personales
+      any: [sin datos, he quitado, he borrado, anonimiz, sin nombres]
+      hint: "Quita antes los datos de clientes y dilo: «He quitado los datos de las tarjetas»."
+    - label: Pedir una cifra o las filas para comprobar
+      any: [compruebe, comprobar, comprobarlo, filas, verificar]
+      hint: "Pide el total de un mes o las filas que ha sumado, para comprobarlo tú."
+  sample: "Tengo un bar de barrio y te adjunto un CSV con las ventas de 2025 por día y por franja (mañana, mediodía y tarde). He quitado los datos de las tarjetas de los clientes. Primero dime qué columnas ves y qué significa cada una. Después dime qué días de la semana y qué franjas venden menos, con un gráfico de barras por día. Dame también el total de marzo y las filas que has sumado, para que lo compruebe con mi caja."
 deeper: null
-tool: null
+tool: anonimizador
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

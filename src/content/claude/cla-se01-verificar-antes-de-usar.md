@@ -43,6 +43,17 @@ action:
     - "Comprueba en una fuente oficial el dato más importante."
     - "Guarda la petición en «Mi kit de Claude»."
   check: He pedido a Claude que señale lo dudoso y he comprobado el dato más importante
+practice:
+  task: "Vas a comprar un coche de segunda mano a un particular y quieres hacer tú el cambio de titular. Escribe la petición para que Claude te lo explique y te diga qué datos comprobar y dónde."
+  require: [verificar, formato]
+  extra:
+    - label: Pedir que señale lo dudoso
+      any: [seguridad, seguro, dudoso, dudas, podria ser incorrecto, puede haber cambiado]
+      hint: "Pide que diga cuánta seguridad tiene en cada dato o qué puede haber cambiado."
+    - label: Pedir dónde comprobarlo
+      any: [oficial, fuente original, donde comprobar, donde puedo comprobar, comprobarlo]
+      hint: "Pide en qué web oficial puedes comprobar cada dato."
+  sample: "Voy a comprar un coche de segunda mano a un particular y quiero hacer yo el cambio de titular. Explícame los pasos, los documentos y los plazos en una lista numerada. Al final, haz una tabla con cada dato concreto (plazos, tasas, documentos), cita la fuente de cada uno, dime cuánta seguridad tienes y en qué web oficial puedo comprobarlo. Si algo puede haber cambiado este año, avísame en lugar de darlo por seguro."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

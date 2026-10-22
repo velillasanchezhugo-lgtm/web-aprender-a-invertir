@@ -43,8 +43,19 @@ action:
     - "Si tienes plan de pago, lánzala y revisa tres cifras del informe en sus fuentes. Si no, pruébala con la búsqueda web normal."
     - "Guarda la pregunta en «Mi kit de Claude»."
   check: He preparado una pregunta de investigación y he revisado al menos una fuente del resultado
+practice:
+  task: "Tu comunidad de vecinos quiere montar un huerto en la azotea y nadie sabe qué permisos ni ayudas hay. Escribe una petición de investigación bien acotada: lugar, fechas, fuentes y formato del informe."
+  require: [formato, verificar, limites]
+  extra:
+    - label: "Acotar lugar y fechas"
+      any: ["espana", "202", "ultimos", "anos", "comunidad autonoma", "ciudad"]
+      hint: "Acota el alcance: país o ciudad y de qué años quieres los datos."
+    - label: "Pedir lo que no ha podido confirmar"
+      any: ["no has podido", "no hayas podido", "sin confirmar", "no puedas confirmar", "no confirmad"]
+      hint: "Pide al final una lista de lo que no ha podido confirmar: es lo primero que revisarás."
+  sample: "Investiga y prepárame un informe sobre qué hace falta para montar un huerto urbano en la azotea de una comunidad de vecinos en España. Céntrate en los últimos tres años y en Madrid, Barcelona y Valencia. Quiero saber qué permisos piden los ayuntamientos, si hay ayudas públicas y qué problemas han tenido otras comunidades. Usa fuentes oficiales y medios conocidos, cita cada dato y no incluyas blogs comerciales. Pon una tabla por ciudad y termina con una lista de lo que no has podido confirmar."
 deeper: null
-tool: null
+tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

@@ -44,8 +44,16 @@ action:
     - "Fotografía algo sin datos personales, como un cartel o una etiqueta, y pide que te lo explique o lo traduzca."
     - "Apunta en «Mi kit de Claude» qué datos no fotografiarás nunca."
   check: He usado Claude en el móvil con la voz y con una foto sin datos personales
+practice:
+  task: "Te llega una multa de aparcamiento de otra ciudad y vas a mandar a Claude una foto desde el móvil. Escribe el mensaje que acompaña la foto: qué datos has tapado y qué quieres saber."
+  require: [limites, verificar]
+  extra:
+    - label: "Decir qué datos has tapado"
+      any: ["tapado", "tape", "he quitado", "recortado", "oculto", "borrado"]
+      hint: "Antes de la foto, tapa nombre, dirección y matrícula, y dilo en el mensaje."
+  sample: "Te mando la foto de una multa de aparcamiento que me ha llegado del Ayuntamiento de Santander. He tapado mi nombre, mi dirección y la matrícula. Explícame en lenguaje sencillo qué dice: de qué me acusan, cuánto pago si lo hago pronto y hasta qué fecha puedo recurrir. Dime si alguna parte no se lee bien, en lugar de adivinarla. Solo explícame las opciones: la decisión de recurrir la tomo yo."
 deeper: null
-tool: null
+tool: anonimizador
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

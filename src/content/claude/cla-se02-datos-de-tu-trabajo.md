@@ -42,8 +42,16 @@ action:
     - "Si no la tiene, escribe en «Mi kit de Claude» tu regla: «Datos de clientes y de la empresa, solo anonimizados»."
     - "En tu cuenta personal, revisa en Ajustes la opción de privacidad que decide si tus chats ayudan a mejorar los modelos."
   check: He comprobado qué permite mi empresa y he escrito mi regla sobre datos del trabajo
+practice:
+  task: "Trabajas en recursos humanos y tienes las respuestas de la encuesta interna de tu oficina, con nombres y departamentos. Escribe la petición para que Claude las agrupe, sin datos que identifiquen a nadie."
+  require: [contexto, formato, limites]
+  extra:
+    - label: Decir que los datos van anonimizados
+      any: [anonimiz, he quitado, sin nombres, he cambiado, empleado 1, persona 1, persona a, empleado a]
+      hint: "Quita nombres y detalles que delaten a alguien, ponlos como «Empleado 1» y dilo en la petición."
+  sample: "Trabajo en recursos humanos en una empresa de 30 personas y mi responsable me ha confirmado que puedo usar IA con datos anonimizados. Te paso las respuestas de la encuesta interna de satisfacción: he quitado nombres, departamentos y cualquier detalle que delate a alguien, y cada persona aparece como «Empleado 1», «Empleado 2»… Agrúpalas por tema en una tabla con el número de respuestas de cada uno y propón tres mejoras. No intentes adivinar quién ha escrito cada respuesta, no repitas ningún dato personal y, si ves alguno, avísame."
 deeper: null
-tool: null
+tool: anonimizador
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

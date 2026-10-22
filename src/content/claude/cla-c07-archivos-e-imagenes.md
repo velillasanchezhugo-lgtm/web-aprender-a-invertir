@@ -34,6 +34,7 @@ questions:
     explain: "Para explicar un párrafo no hace falta tu IBAN ni tu DNI. Subirlo todo tienta por rapidez, pero compartes datos que no aportan nada. Prohibírtelo todo también es exagerado: el truco es subir solo lo necesario."
 tips:
   - "Si una foto sale torcida o borrosa, repítela con buena luz: Claude lee mucho mejor una imagen nítida."
+  - "En documentos largos, pregunta por lo que te importa («¿qué dice sobre la permanencia?») en vez de pedir un resumen de todo."
 action:
   title: Resume un documento citando páginas
   steps:
@@ -41,6 +42,14 @@ action:
     - "Súbelo a Claude con el botón de adjuntar o arrastrándolo al chat."
     - "Pide los cinco puntos clave con la página de cada uno y comprueba dos en el documento."
   check: He subido un documento y he comprobado dos datos en sus páginas
+practice:
+  task: "Vas a subir el manual en PDF de tu lavadora nueva. Escribe la petición para saber cómo limpiar el filtro y qué significa el aviso E21, con la página de cada dato."
+  require: [formato, verificar]
+  extra:
+    - label: Pedir la página de cada dato
+      any: [página, pagina, copia la frase, frase exacta]
+      hint: "Pide que indique la página o copie la frase de cada dato para comprobarlo."
+  sample: "Te adjunto el manual de instrucciones de mi lavadora nueva. Explícame en una lista de pasos cortos cómo se limpia el filtro y qué significa el aviso E21 que sale en la pantalla. Para cada dato, indica la página del manual. Si algo no aparece en el documento, dímelo y no lo inventes. Si no estás seguro de un dato, avísame."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

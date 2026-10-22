@@ -43,6 +43,17 @@ action:
     - "Pídele el plan primero y luego déjale trabajar."
     - "Revisa el resultado y apunta en «Mi kit de Claude» qué cambiarías en el encargo."
   check: He encargado una tarea de varios pasos y he revisado el resultado
+practice:
+  task: "Tienes una carpeta con las actas de dos años de tu asociación de vecinos. Escribe el encargo para que Claude saque los acuerdos pendientes: materiales, resultado, dónde dejarlo, qué no tocar y su plan primero."
+  require: [formato, limites]
+  extra:
+    - label: Pedir el plan antes de empezar
+      any: [plan]
+      hint: "Pide que te enseñe su plan antes de empezar: «Antes de empezar, enséñame tu plan»."
+    - label: Decir dónde dejar el resultado
+      any: [archivo nuevo, documento nuevo, carpeta nueva, hoja nueva, guárdalo en, déjalo en]
+      hint: "Di dónde quieres el resultado: «en un documento nuevo dentro de la carpeta…»."
+  sample: "Lee las actas de la carpeta Juntas 2024-2025 de la asociación de vecinos y prepara una tabla con los acuerdos que siguen pendientes: acuerdo, fecha del acta, responsable y qué falta. Guárdala en un documento nuevo dentro de esa carpeta. No modifiques, muevas ni borres las actas originales. Antes de empezar, enséñame tu plan y dime si hay actas que no puedas leer."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

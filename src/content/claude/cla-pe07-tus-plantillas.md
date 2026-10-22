@@ -42,8 +42,16 @@ action:
     - "Guárdala en tu nota «Mi kit de Claude»."
     - "Abre los ajustes de Claude, busca las instrucciones para Claude y escribe dos o tres preferencias generales."
   check: He guardado una plantilla y he escrito mis instrucciones en los ajustes
+practice:
+  task: "Cada viernes preparas el cuadrante de turnos de tu tienda para la semana siguiente. Escribe una plantilla de petición con huecos entre corchetes para lo que cambia cada semana."
+  require: [contexto, formato]
+  extra:
+    - label: "Huecos entre corchetes"
+      any: ["["]
+      hint: "Marca lo que cambia con huecos entre corchetes: [FECHA], [AUSENCIAS]…"
+  sample: "Llevo una tienda de ropa con cinco dependientas. Prepara el cuadrante de turnos de la semana del [FECHA]. Abrimos de 10:00 a 21:00, de lunes a sábado. Estas personas tienen vacaciones o libran: [AUSENCIAS]. Nadie debe pasar de [HORAS] horas a la semana ni cerrar dos días seguidos. Formato: una tabla con los días en columnas y, debajo, un mensaje corto y cercano para el grupo del equipo."
 deeper: null
-tool: null
+tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

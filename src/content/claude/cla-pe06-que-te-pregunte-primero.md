@@ -42,8 +42,16 @@ action:
     - "Úsalas hoy con una decisión o idea que tengas pendiente, por pequeña que sea."
     - "Responde a sus preguntas y lee la crítica antes de decidir."
   check: He pedido a Claude que me pregunte primero y que critique mi idea
+practice:
+  task: "Estás pensando en cambiar tu coche de gasolina por un eléctrico de segunda mano. Escribe la petición para que Claude te pregunte primero, marque sus dudas y te dé los argumentos en contra."
+  require: [preguntas, verificar, contexto]
+  extra:
+    - label: "Pedir la crítica"
+      any: ["en contra", "contras", "critica", "abogado del diablo", "riesgos", "salir mal", "desventajas", "pegas", "pasando por alto"]
+      hint: "Pide expresamente lo negativo: «Dame los argumentos más fuertes en contra»."
+  sample: "Estoy pensando en cambiar mi coche de gasolina de 2012 por un eléctrico de segunda mano. Vivo en un piso sin garaje en Valladolid y hago unos 60 km al día. Antes de responder, hazme las preguntas que necesites, cinco como máximo y de una en una. Después, dame los tres argumentos más fuertes en contra y lo que podría estar pasando por alto. Si no estás seguro de un dato o es una suposición, márcalo."
 deeper: null
-tool: null
+tool: evaluador-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

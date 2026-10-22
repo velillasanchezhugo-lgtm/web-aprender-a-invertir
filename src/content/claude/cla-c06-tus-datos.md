@@ -34,6 +34,7 @@ questions:
     explain: "Un texto tuyo sin datos sensibles es el uso ideal. Comprobar una contraseña tienta porque parece útil, pero una contraseña no se escribe en ningún sitio que no sea donde se usa."
 tips:
   - "Para pedir ayuda con un caso real, cambia nombres por «persona A» o «cliente 1» y quita DNI, direcciones y cuentas: el resultado sale igual de bueno."
+  - "Si pegas por error un dato que no debías, borra esa conversación: no lo deshace del todo, pero deja de estar en tu historial."
 action:
   title: Revisa tus ajustes de privacidad
   steps:
@@ -42,8 +43,16 @@ action:
     - "Borra alguna conversación antigua que ya no necesites."
     - "Apunta en tu nota de «Mi kit de Claude» qué has decidido y la fecha."
   check: He revisado mi ajuste de privacidad y he decidido qué quiero
+practice:
+  task: "Te han cobrado dos veces la factura de la luz y quieres reclamar. Escribe la petición sin tu nombre, DNI, dirección, número de contrato ni IBAN: pon huecos como [NOMBRE] donde hagan falta."
+  require: [contexto, limites]
+  extra:
+    - label: Huecos en lugar de datos reales
+      any: ["[", cliente a, persona a]
+      hint: "Cambia cada dato personal por un hueco entre corchetes, como [NOMBRE] o [IBAN], y rellénalo tú después."
+  sample: "Soy cliente de una compañía eléctrica y este mes me han cobrado dos veces la misma factura. Escribe una reclamación formal y breve para enviar desde su web, pidiendo que me devuelvan el cargo duplicado. Deja huecos como [NOMBRE], [NÚMERO DE CONTRATO] y [IBAN] para rellenarlos yo después, sin inventar ningún dato."
 deeper: null
-tool: null
+tool: anonimizador
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22
@@ -74,7 +83,7 @@ Lo que escribes en Claude viaja a los servidores de **Anthropic** y se guarda en
 
 Antes de pegar algo, pregúntate: **¿hay aquí datos de alguien o algo que no debería salir de casa o de la oficina?** Si es así, quítalo o cámbialo por algo genérico.
 
-> Prueba: «Te pego un correo de un cliente en el que he cambiado su nombre por "Cliente A" y he quitado sus datos. Ayúdame a contestarle con amabilidad, explicando que el pedido llegará con una semana de retraso».
+> Prueba: «Te pego un correo de un cliente en el que he cambiado su nombre por “Cliente A” y he quitado sus datos. Ayúdame a contestarle con amabilidad, explicando que el pedido llegará con una semana de retraso».
 
 ## Error frecuente
 

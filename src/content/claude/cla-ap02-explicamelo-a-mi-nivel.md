@@ -43,8 +43,19 @@ action:
     - "Pide una explicación a tu nivel con una analogía."
     - "Explícaselo tú en cinco frases y pide que te corrija."
   check: He explicado un concepto con mis palabras y Claude me ha corregido
+practice:
+  task: "En tu nuevo trabajo todos hablan de «margen bruto» y «KPI» y tú asientes sin entender. Escribe la petición para que Claude te lo explique a tu nivel y compruebe luego que lo has entendido."
+  require: [contexto]
+  extra:
+    - label: "Decir tu nivel"
+      any: ["mi nivel", "no se nada", "se poco", "nunca he", "nociones", "ni idea", "sin conocimientos", "principiante", "no tengo formacion"]
+      hint: "Di qué sabes ya: «Mi nivel: no sé nada de…, pero…»."
+    - label: "Explicárselo tú"
+      any: ["te lo explique", "te lo explico", "explicartelo", "con mis palabras", "mis propias palabras", "corrigeme"]
+      hint: "Cierra con la técnica Feynman: «Después, pídeme que te lo explique con mis palabras y corrígeme»."
+  sample: "Acabo de entrar a trabajar en una empresa de reparto y en las reuniones hablan de «margen bruto» y «KPI». Mi nivel: no sé nada de economía de empresa, pero me manejo con números sencillos. Explícame los dos términos con una analogía de la vida diaria y dime en qué falla esa analogía. Explica cada palabra nueva en una frase. Después, pídeme que te lo explique yo con mis palabras y corrígeme. No me digas que está perfecto si no lo está."
 deeper: null
-tool: null
+tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

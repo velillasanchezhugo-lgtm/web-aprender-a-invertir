@@ -42,6 +42,14 @@ action:
     - "Súbelo a Claude con la primera petición de ejemplo, cambiando el «para qué»."
     - "Comprueba en el original dos de las páginas que te indique."
   check: He resumido un documento con Claude y he comprobado dos datos en el original
+practice:
+  task: "Tu ayuntamiento ha publicado unas bases de 30 páginas con ayudas para pequeños comercios. Escribe la petición para que Claude te diga qué piden y dónde lo dice, antes de decidir si las solicitas."
+  require: [contexto, formato, verificar]
+  extra:
+    - label: Pedir la página de cada dato
+      any: [pagina, apartado, cita literal, texto exacto, articulo]
+      hint: "Pide que indique la página o el apartado de cada dato para comprobarlo."
+  sample: "Tengo una tienda de ropa en un pueblo de Teruel, con dos empleadas, y quiero saber si puedo pedir estas ayudas del ayuntamiento para comercios. Te adjunto las bases. Resume en 5 puntos los requisitos, el importe, el plazo y los documentos que piden, e indica la página de cada uno. Después dime si algún requisito no queda claro con lo que te he contado. Si algo no aparece en las bases, dilo en lugar de suponerlo."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

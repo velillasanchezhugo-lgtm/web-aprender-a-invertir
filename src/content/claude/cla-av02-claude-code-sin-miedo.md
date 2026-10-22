@@ -42,6 +42,17 @@ action:
     - "Crea una carpeta vacía llamada «Prueba Claude Code»."
     - "Pídele una página web sencilla sobre una afición tuya y revisa cada cambio antes de aprobarlo."
   check: Sé qué es Claude Code y cómo probarlo sin riesgo
+practice:
+  task: "Tienes en el ordenador una copia de 2.000 fotos del móvil, todas mezcladas. Escribe la petición a Claude Code para ordenarlas por año y mes, en una carpeta de prueba y explicando antes su plan."
+  require: [contexto, limites]
+  extra:
+    - label: Pedir el plan antes de tocar nada
+      any: [plan, explícame primero, antes de tocar, antes de crear, antes de cambiar]
+      hint: "Pide que te explique en sencillo qué va a hacer antes de tocar nada."
+    - label: Trabajar sobre una copia o carpeta de prueba
+      any: [copia, carpeta de prueba]
+      hint: "Di que trabaje solo en una carpeta de prueba o sobre una copia, nunca con los originales."
+  sample: "No sé programar. Tengo en esta carpeta una copia de unas 2.000 fotos de mi móvil, todas mezcladas. Crea un pequeño programa que las ordene en carpetas por año y mes según la fecha de cada foto. Trabaja solo dentro de esta carpeta de prueba y no borres ninguna foto. Antes de tocar nada, explícame en palabras sencillas tu plan y cómo lo pondré en marcha."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

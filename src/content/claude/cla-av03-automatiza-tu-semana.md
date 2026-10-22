@@ -42,8 +42,19 @@ action:
     - "Decide qué la resuelve: plantilla, proyecto, habilidad o tarea programada."
     - "Crea la más simple de las cuatro y guárdala en «Mi kit de Claude»."
   check: He convertido una tarea repetida en una plantilla, un proyecto, una habilidad o una tarea programada
+practice:
+  task: "Cada domingo pides a Claude el menú de la semana y la lista de la compra. Escribe la petición para convertirlo en una tarea programada que solo prepare, y que te enseñe antes cómo quedaría."
+  require: [formato, limites]
+  extra:
+    - label: Decir cuándo se repite
+      any: [cada, semanal, todos los, a las]
+      hint: "Di la frecuencia y la hora: «cada domingo a las 10:00»."
+    - label: Pedir ver la tarea antes de programarla
+      any: [enséñame, ensename, muéstrame, muestrame, antes de programar]
+      hint: "Pide que te enseñe cómo quedaría la tarea antes de programarla."
+  sample: "Cada domingo a las 10:00, prepárame el menú de cenas de la semana para dos adultos y un niño, con platos sencillos y sin marisco, y la lista de la compra agrupada por secciones del súper en una tabla. Solo prepáralo: no compres ni envíes nada. Antes de programarlo, enséñame cómo quedaría la tarea para revisarla."
 deeper: null
-tool: null
+tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

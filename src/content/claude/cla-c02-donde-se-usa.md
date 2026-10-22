@@ -34,6 +34,7 @@ questions:
     explain: "Tus conversaciones están en tu cuenta, no en el aparato. Por eso puedes empezar en el ordenador y seguir en el móvil. Tienta pensar que cada aplicación es independiente, como pasa con algunos programas."
 tips:
   - "Descarga la aplicación solo desde la tienda oficial de tu móvil o desde claude.com: hay copias falsas que se hacen pasar por asistentes de IA."
+  - "Si en el plan gratuito llegas al límite de uso, no pierdes nada: tus conversaciones siguen ahí y puedes continuar cuando se renueve."
 action:
   title: Crea tu cuenta y ábrela en dos sitios
   steps:
@@ -41,6 +42,11 @@ action:
     - "Instala la aplicación en tu móvil desde la tienda oficial e inicia sesión con la misma cuenta."
     - "Escribe un saludo en la web y comprueba que la conversación aparece también en el móvil."
   check: He creado mi cuenta y la uso en el ordenador y en el móvil
+practice:
+  task: "Acabas de crear tu cuenta. Escribe tu primera petición para algo de tu semana, como las cenas, un regalo o una mudanza, contando en una o dos frases tu situación."
+  require: [contexto]
+  extra: []
+  sample: "Es la primera vez que uso Claude. Tengo dos hijos pequeños y poco tiempo entre semana. Propón cinco cenas sencillas para de lunes a viernes que se hagan en menos de media hora, sin pescado porque no les gusta. Dámelo en una lista con los ingredientes de cada cena."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

@@ -43,6 +43,17 @@ action:
     - "Comprueba dos datos de la respuesta en tu calendario o en tu correo."
     - "Guarda la petición que mejor te funcione en «Mi kit de Claude»."
   check: He preparado mi semana con un conector y he comprobado lo que me dio
+practice:
+  task: "Estás en la junta del AMPA y tienes un hilo de 30 correos sobre la fiesta de fin de curso. Escribe la petición para que Claude lo resuma y prepare una respuesta, sin enviar nada sin tu permiso."
+  require: [formato, verificar, limites]
+  extra:
+    - label: "Decir dónde buscar"
+      any: ["correo", "bandeja", "calendario", "drive", "carpeta", "hilo"]
+      hint: "Di dónde tiene que buscar: «en mi correo, el hilo sobre…»."
+    - label: "Pedir un borrador, no un envío"
+      any: ["borrador", "no envies", "antes de enviar", "aprobacion"]
+      hint: "Pide un borrador y que no envíe nada hasta que lo revises."
+  sample: "Busca en mi correo el hilo sobre la fiesta de fin de curso del colegio de las últimas dos semanas. Resume en cinco puntos qué se ha decidido y qué preguntas siguen sin respuesta, y cita el correo de donde sale cada punto. Después prepara un borrador de respuesta para las familias, con tono cordial. No envíes nada sin mi aprobación: lo revisaré antes."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

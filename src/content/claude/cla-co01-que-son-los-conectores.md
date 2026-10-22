@@ -42,6 +42,17 @@ action:
     - "Busca uno que uses a diario, como tu correo o tu calendario, y lee qué puede leer y qué puede hacer."
     - "Si lo conectas, prueba una pregunta de solo lectura y apunta en «Mi kit de Claude» qué tienes conectado."
   check: He revisado qué conectores hay y sé cómo desconectar uno
+practice:
+  task: "Has conectado a Claude tu app de notas, donde está la lista de tareas de tu mudanza. Escribe la petición para que la ordene por fechas, diciendo qué puede hacer y qué debe consultarte antes."
+  require: [limites, verificar]
+  extra:
+    - label: "Decir qué puede hacer"
+      any: ["puedes leer", "puedes consultar", "solo lee", "solo consulta", "solo leer", "solo mirar"]
+      hint: "Di qué le permites: «puedes leer las notas…»."
+    - label: "Pedir que te consulte antes de cambiar"
+      any: ["preguntame", "consultame", "antes de cambiar", "antes de modificar", "pide permiso", "aprobacion"]
+      hint: "Di qué debe consultarte antes: «pregúntame antes de cambiar o borrar algo»."
+  sample: "Con la app de notas conectada, busca mi lista de tareas de la mudanza. Puedes leerla y consultar las notas relacionadas, pero no cambies ni borres nada. Ordena las tareas por fecha límite en una lista y dime de qué nota sale cada una. Indícame si alguna tarea no tiene fecha. Si quieres marcar algo como hecho o mover una tarea, pregúntame antes y espera mi aprobación."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

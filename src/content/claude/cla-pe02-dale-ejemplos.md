@@ -42,8 +42,19 @@ action:
     - "Pega tres ejemplos tuyos con la petición de esta sesión y pide uno nuevo."
     - "Si te sirve, guarda la petición con los ejemplos en «Mi kit de Claude»."
   check: He pedido a Claude un texto con tres ejemplos míos
+practice:
+  task: "Respondes tú las reseñas de Google de tu academia de inglés. Escribe la petición pegando dos respuestas tuyas como ejemplo y diciendo qué tienen en común."
+  require: [ejemplos, contexto]
+  extra:
+    - label: "Más de un ejemplo"
+      any: ["ejemplo 2", "ejemplo dos", "segundo ejemplo", "dos ejemplos", "tres ejemplos", "varios ejemplos", "otro ejemplo", "respuesta 2"]
+      hint: "Pega al menos dos ejemplos distintos y numéralos: «Ejemplo 1: …», «Ejemplo 2: …»."
+    - label: "Decir qué tienen en común"
+      any: ["en comun", "fijate", "comparten", "se repite", "se parecen", "mismo estilo", "ese estilo"]
+      hint: "Explica en una frase qué tienen en común: «Fíjate en que son cortas y…»."
+  sample: "Llevo una academia de inglés en Getafe y respondo yo las reseñas de Google. Ejemplo 1: «Gracias por contarlo, nos alegra mucho que tu hijo haya aprobado el B1». Ejemplo 2: «Qué bien leer esto. Gracias por confiar en nosotros un curso más». Fíjate en que son cortas, dan las gracias al principio y no llevan emojis. Escribe con ese estilo una respuesta a una reseña de tres estrellas que se queja de que no hay aparcamiento. Evita sonar a anuncio y no prometas cosas que no dependen de nosotros."
 deeper: null
-tool: null
+tool: evaluador-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

@@ -43,8 +43,16 @@ action:
     - "Añade una línea con tus ajustes revisados: cómo has dejado el ajuste de privacidad y la fecha."
     - "Escribe tus 3 reglas: qué compruebo siempre, qué no comparto y cuándo consulto a una persona."
   check: He creado «Mi kit de Claude» con 5 plantillas, mis ajustes y 3 reglas
+practice:
+  task: "Elige algo que vas a pedir a menudo (contestar a clientes, planificar la compra, preparar apuntes) y escribe tu primera petición-plantilla para el kit, con huecos entre corchetes para lo que cambia."
+  require: [contexto, formato]
+  extra:
+    - label: Huecos entre corchetes
+      any: ["["]
+      hint: "Deja huecos entre corchetes para lo que cambia cada vez: [destinatario], [tono], [texto]."
+  sample: "Soy [tu papel, por ejemplo: dueña de una frutería]. Escribe una respuesta a este mensaje de un cliente: [pega el mensaje]. Es para enviar por WhatsApp. Tono [cercano o formal], máximo [N] líneas. No prometas plazos ni descuentos que yo no haya dicho. Si te falta algún dato, pregúntame antes de escribir."
 deeper: null
-tool: null
+tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

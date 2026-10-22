@@ -43,6 +43,17 @@ action:
     - "Mira en los ajustes de la app qué extensiones hay en el directorio."
     - "Apunta en «Mi kit de Claude» qué carpetas nunca vas a compartir."
   check: He creado mi carpeta de trabajo y sé qué no compartir
+practice:
+  task: "Tienes 60 fotos de un viaje con nombres como IMG_2034 y quieres que Claude, desde la app de escritorio, les ponga nombres claros. Escribe la petición: qué carpeta, qué puede cambiar y qué no."
+  require: [limites, ejemplos]
+  extra:
+    - label: "Nombrar una carpeta concreta"
+      any: ["carpeta"]
+      hint: "Di en qué carpeta trabaja, y que sea una copia creada para la tarea."
+    - label: "Pedir una prueba antes de cambiar"
+      any: ["antes de cambiar", "antes de renombrar", "preguntame", "confirmacion", "primero"]
+      hint: "Pide que te enseñe primero unos cambios de prueba y espere tu confirmación."
+  sample: "En la carpeta «Viaje Asturias copia» hay 60 fotos con nombres como IMG_2034. Ordena y renombra las fotos con la fecha en que se hicieron y un número, por ejemplo 2026-07-14_01. Trabaja solo en esa carpeta y no borres ni muevas ninguna foto. Antes de cambiar nada, enséñame una lista con el nombre actual y el nuevo de las diez primeras y espera mi confirmación. Dime si alguna foto no tiene fecha."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

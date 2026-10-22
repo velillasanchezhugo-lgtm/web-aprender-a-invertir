@@ -42,6 +42,14 @@ action:
     - "Pídele un cambio concreto: más corto, otro tono o en lista."
     - "Guarda en tu nota de «Mi kit de Claude» la frase de corrección que mejor te ha funcionado."
   check: He mejorado una respuesta pidiendo cambios en lugar de empezar de cero
+practice:
+  task: "Claude te ha escrito la felicitación de jubilación para una compañera, pero es larga y muy solemne. Escribe el mensaje de seguimiento: qué cambiar, cómo y qué mantener."
+  require: [formato, tono]
+  extra:
+    - label: Decir qué mantener
+      any: [mantén, manten, conserva, deja igual, no cambies, no toques, quédate con]
+      hint: "Di qué parte te gusta y quieres conservar: «Mantén la frase del café»."
+  sample: "Está bien, pero es demasiado largo y solemne para una tarjeta. Déjalo en cuatro líneas con un tono cercano y un poco divertido: es para una compañera con la que he trabajado doce años. Mantén la frase sobre el café de las mañanas, que me encanta. Dame dos versiones para elegir."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -72,7 +80,7 @@ Regla sencilla: **un tema, un chat**.
 
 Las opciones para editar tu mensaje o regenerar la respuesta aparecen junto a cada mensaje, normalmente al pasar el ratón o al mantenerlo pulsado en el móvil. El botón para un chat nuevo está siempre visible en la pantalla principal.
 
-Frases que funcionan: «Mantén el contenido en la mitad de palabras», «Esto no es correcto: [por qué]. Corrígelo».
+Frases que funcionan: «Mantén el contenido, pero en la mitad de palabras», «Esto no es correcto: [por qué]. Corrígelo».
 
 > Prueba: «El texto está bien, pero es demasiado largo y suena muy serio. Déjalo en cinco líneas, con un tono cercano, y dame dos versiones para elegir».
 

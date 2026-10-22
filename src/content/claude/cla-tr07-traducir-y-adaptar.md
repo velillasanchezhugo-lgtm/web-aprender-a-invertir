@@ -42,6 +42,14 @@ action:
     - "Pide con la primera petición de ejemplo una versión para otro público o canal."
     - "Revisa las cifras y los términos marcados, y guarda la petición en «Mi kit de Claude»."
   check: He adaptado un texto a otro público con Claude y he revisado los datos clave
+practice:
+  task: "Tienes una tienda online de cerámica y empiezas a vender en Francia. Escribe la petición para que Claude traduzca y adapte una ficha de producto a esos clientes."
+  require: [publico, tono, limites]
+  extra:
+    - label: Pedir que marque lo dudoso
+      any: [marca, senala, dudas, suene raro, suenen raras, puedan sonar]
+      hint: "Pide que marque las frases que le generen dudas o que puedan sonar raras en el otro idioma."
+  sample: "Tengo una tienda online de cerámica hecha a mano en Talavera y empiezo a vender en Francia. Traduce al francés esta ficha de producto para clientes franceses que compran por internet. Tono cercano y cuidado, con el trato habitual en las tiendas francesas. No traduzcas el nombre de la marca ni el de las colecciones, y no cambies medidas, precios ni instrucciones de lavado. Marca las frases que te generen dudas o que en francés puedan sonar raras. Ficha: [pega aquí]"
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

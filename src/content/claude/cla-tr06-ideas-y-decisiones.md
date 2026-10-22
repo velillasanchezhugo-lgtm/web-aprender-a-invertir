@@ -42,6 +42,17 @@ action:
     - "Usa la primera petición de ejemplo con tus opciones y tus criterios, sin datos personales de nadie."
     - "Apunta qué información te falta y qué vas a decidir tú."
   check: He usado Claude para ordenar una decisión y he decidido yo
+practice:
+  task: "Tienes un taller de bicicletas y dudas entre tres formas de ganar algo más. Escribe la petición para que Claude te ayude a pensar la decisión sin tomarla por ti."
+  require: [contexto, formato]
+  extra:
+    - label: Dar tus criterios y cuál pesa más
+      any: [criterios, me importa, lo mas importante, por orden, prioridad]
+      hint: "Di qué te importa y en qué orden: «Mis criterios, por orden: inversión, horas y riesgo»."
+    - label: Pedir la crítica de cada opción
+      any: [abogado del diablo, en contra, puede salir mal, fallos, riesgos de cada]
+      hint: "Pide que critique cada opción: «Haz de abogado del diablo: qué puede salir mal»."
+  sample: "Tengo un taller de bicicletas en Vitoria y quiero ganar unos 800 € más al mes. Dudo entre tres opciones: abrir los sábados por la tarde, alquilar bicis eléctricas o dar cursos de mecánica básica. Mis criterios, por orden: lo que tengo que invertir, las horas extra que me exige y el riesgo. Haz de abogado del diablo con cada opción: qué puede salir mal. Después hazme una tabla con las opciones y mis criterios, dime qué información me falta y no elijas por mí."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

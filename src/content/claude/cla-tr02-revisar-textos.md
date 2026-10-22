@@ -42,6 +42,14 @@ action:
     - "Pega la primera petición de ejemplo de esta sesión con tu texto."
     - "Acepta o rechaza cada cambio de la tabla y monta tú la versión final."
   check: He revisado un texto mío con Claude decidiendo cada cambio
+practice:
+  task: "Eres enfermera y has escrito una hoja para pacientes sobre cómo prepararse para un análisis de sangre. Escribe la petición para que Claude la revise sin tocar las indicaciones."
+  require: [publico, formato, limites]
+  extra:
+    - label: Pedir cada cambio con su motivo
+      any: [motivo, explica cada, explicacion, por que, original, cambios marcados, marca cada]
+      hint: "Pide los cambios a la vista: «Dame el texto original, la propuesta y el motivo de cada cambio»."
+  sample: "Soy enfermera en un centro de salud y he escrito una hoja informativa sobre cómo prepararse para un análisis de sangre. Es para personas mayores, muchas con poca costumbre de leer. Revisa la ortografía y las frases confusas, pero no cambies las indicaciones (horas de ayuno, medicación, horario). Dame una tabla con tres columnas: texto original, propuesta y motivo. Separa los errores claros de las sugerencias de estilo. Texto: [pega aquí]"
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

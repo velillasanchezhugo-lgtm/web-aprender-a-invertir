@@ -34,6 +34,7 @@ questions:
     explain: "Ante un posible problema de salud urgente, la decisión es de un profesional, y ya. Claude puede servir después para entender un informe o preparar preguntas para el médico. Pedirle un diagnóstico tienta por rapidez, pero puede equivocarse y retrasar algo grave."
 tips:
   - "Para trámites, impuestos o ayudas, la única fuente válida es la web del organismo (por ejemplo, la sede de la Agencia Tributaria o la de tu comunidad)."
+  - "Pide que separe lo seguro de lo dudoso: «Marca lo que no puedas confirmar». No sustituye a comprobar, pero te dice por dónde empezar."
 action:
   title: Caza una fuente
   steps:
@@ -41,6 +42,14 @@ action:
     - "Abre el enlace que te da y comprueba si dice exactamente lo mismo."
     - "Apunta en tu nota de «Mi kit de Claude» la regla: «Lo que voy a usar, lo compruebo en la fuente»."
   check: He comprobado en la fuente original un dato que me dio Claude
+practice:
+  task: "Tienes que renovar el título de familia numerosa y no sabes qué papeles piden en tu comunidad. Escribe la petición para que Claude lo busque en la web y te dé la fuente oficial."
+  require: [verificar]
+  extra:
+    - label: Pedir que busque en la web
+      any: [busca, buscar, búsqueda, internet, en la web]
+      hint: "Para datos que cambian, pide que lo busque en la web: «Busca en la web…»."
+  sample: "Busca en la web qué documentos hacen falta para renovar el título de familia numerosa en la Comunidad de Madrid. Dame una lista corta con cada documento y el enlace a la página oficial de donde lo sacas. Si no estás seguro de algo o puede estar desactualizado, dímelo y no lo rellenes."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

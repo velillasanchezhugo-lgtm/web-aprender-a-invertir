@@ -42,8 +42,13 @@ action:
     - "Escríbele a Claude las cuatro piezas: quién eres, qué necesitas, para qué o para quién es y cómo lo quieres."
     - "Si el resultado te sirve, copia tu petición en una nota: será la primera de «Mi kit de Claude»."
   check: He hecho una petición con las cuatro piezas y la he guardado
+practice:
+  task: "Tu hijo entrena en un club de fútbol y los martes llegará un cuarto de hora tarde. Escribe la petición del mensaje al entrenador con las cuatro piezas: quién eres, qué necesitas, para quién y cómo."
+  require: [contexto, publico, formato]
+  extra: []
+  sample: "Soy la madre de un niño de 10 años que entrena en un club de fútbol los martes y los jueves. Escribe un mensaje de WhatsApp para el entrenador avisando de que los martes llegará unos 15 minutos tarde porque sale más tarde de inglés. Tono amable y breve, máximo cuatro líneas. Pregúntame lo que necesites antes de escribirlo."
 deeper: null
-tool: null
+tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

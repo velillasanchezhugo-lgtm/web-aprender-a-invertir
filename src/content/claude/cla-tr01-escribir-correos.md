@@ -43,8 +43,16 @@ action:
     - "Pide un cambio concreto («más corto», «menos formal») y retoca tú la versión final."
     - "Guarda la petición que mejor te funcionó en «Mi kit de Claude»."
   check: He preparado con Claude un correo que tenía pendiente y lo he revisado antes de enviarlo
+practice:
+  task: "Eres electricista autónomo y el material ha subido: el presupuesto que diste hace dos meses ya no te sale. Escribe la petición para que Claude te prepare el correo al cliente."
+  require: [contexto, tono, formato]
+  extra:
+    - label: Decir qué quieres conseguir
+      any: [quiero que, quiero conseguir, objetivo, que acepte, que confirme, que me conteste, sin perder]
+      hint: "Di qué quieres que haga el cliente después de leerlo: «Quiero que acepte el nuevo precio sin perderlo»."
+  sample: "Soy electricista autónomo. Hace dos meses di a un cliente un presupuesto de 2.400 € para renovar la instalación de su piso, pero el cable y los cuadros han subido un 15 %. Quiero que acepte el nuevo precio, 2.750 €, sin perderlo como cliente. Escribe un correo de máximo 120 palabras, tono cercano y profesional, que explique la subida con sencillez, ofrezca empezar la obra la semana que viene y no suene a excusa. Tutéale."
 deeper: null
-tool: null
+tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

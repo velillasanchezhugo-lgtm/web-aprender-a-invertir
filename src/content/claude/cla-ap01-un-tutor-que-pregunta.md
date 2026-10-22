@@ -42,8 +42,19 @@ action:
     - "Pega la petición de esta sesión en Claude y responde a sus preguntas durante cinco minutos."
     - "Si te gusta, guárdala en tu nota «Mi kit de Claude» o añádela a tus instrucciones."
   check: He estudiado un tema con Claude haciéndome preguntas
+practice:
+  task: "Estás haciendo un curso de contabilidad y no entiendes los asientos del libro diario. Escribe la petición para que Claude te enseñe con preguntas y pistas, sin darte la respuesta."
+  require: [contexto]
+  extra:
+    - label: "Que no te dé la respuesta"
+      any: ["no me des", "sin darme", "no me digas la solucion", "no me resuelvas", "sin decirme", "sin resolver", "no me lo resuelvas"]
+      hint: "Dilo claro: «No me des la respuesta»."
+    - label: "Preguntas y pistas"
+      any: ["hazme preguntas", "preguntame", "de una en una", "una pregunta", "pista", "pistas"]
+      hint: "Pide que te guíe: «Hazme preguntas de una en una y dame una pista si me atasco»."
+  sample: "Estoy haciendo un curso de contabilidad para llevar las cuentas de la tienda de muebles donde trabajo y no entiendo los asientos del libro diario. Quiero aprenderlo, no copiarlo. Actúa como un tutor paciente: no me des la respuesta, hazme preguntas de una en una y dame una pista solo si me atasco. Empieza preguntándome qué sé ya. Cuando creas que lo entiendo, ponme un ejercicio sencillo sin ayuda."
 deeper: null
-tool: null
+tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22
@@ -64,7 +75,7 @@ Puedes pedirle que funcione como un **tutor que pregunta**, al estilo del **mét
 - te da **pistas**, no soluciones, cuando te atascas;
 - te dice si vas bien y por qué.
 
-**¿Existe un modo especial?** Claude ha ofrecido una forma de responder llamada «Aprendizaje» (Learning) pensada justo para esto. Estas opciones han cambiado de nombre y de sitio hace poco (el centro de ayuda ya no habla de «estilos», sino de «habilidades»), así que puede que la encuentres con otro nombre o que no la veas. Mira el menú de herramientas del chat o los ajustes, y consulta el centro de ayuda.
+**¿Existe un modo especial?** Claude ha ofrecido una forma de responder llamada «Aprendizaje» (Learning) pensada justo para esto. Estas opciones cambian de nombre y de sitio a menudo, así que puede que la encuentres con otro nombre o que no la veas. Mira el menú de herramientas del chat o los ajustes, y consulta el centro de ayuda.
 
 Lo importante: **no la necesitas**. Funciona igual pidiéndolo con palabras, en cualquier plan.
 

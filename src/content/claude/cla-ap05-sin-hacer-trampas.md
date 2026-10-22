@@ -42,6 +42,17 @@ action:
     - "Escribe en una frase tu norma personal, por ejemplo: «Claude me explica y me corrige; lo que entrego lo escribo yo»."
     - "Guárdala en «Mi kit de Claude» junto a la frase que usarás para declarar el uso de IA."
   check: He escrito mi norma personal para usar Claude al estudiar
+practice:
+  task: "Tienes que entregar un comentario de texto en tu curso de acceso a la universidad. Escribe la petición que fija las reglas: Claude te ayuda a pensar y a revisar, pero el texto lo escribes tú."
+  require: [contexto, limites]
+  extra:
+    - label: "El texto lo escribes tú"
+      any: ["no me lo escribas", "no quiero que me lo escribas", "sin escribir", "lo escribo yo", "lo escribire yo", "mi borrador", "sin reescribir", "no lo reescribas"]
+      hint: "Déjalo claro: «No quiero que me lo escribas; el borrador es mío»."
+    - label: "Pedir preguntas o revisión"
+      any: ["señala", "senala", "revisa", "fallos", "preguntas", "critica"]
+      hint: "Pide lo que sí quieres: preguntas que te hagan pensar o que señale los fallos de tu borrador."
+  sample: "Estoy en el curso de acceso a la universidad para mayores de 25 y tengo que entregar un comentario de texto sobre un artículo de opinión. Mi profesora permite usar IA para entender y revisar, no para redactar. No quiero que me lo escribas. Primero hazme preguntas que me ayuden a encontrar la tesis y los argumentos del autor. Cuando te pegue mi borrador, señala los fallos de estructura y de argumento sin reescribirlo."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

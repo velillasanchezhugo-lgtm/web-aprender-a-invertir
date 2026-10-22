@@ -42,8 +42,16 @@ action:
     - "Pide a Claude una tabla con las columnas que te importan y una línea final de resumen."
     - "Si la vas a pegar en otro sitio, di cuál y comprueba que se ve bien al pegarla."
   check: He pedido una respuesta en tabla y la he usado
+practice:
+  task: "Has apuntado precios y horarios de tres escuelas infantiles de tu barrio y quieres decidir con tu pareja. Escribe la petición con el formato exacto y dónde vas a usar el resultado."
+  require: [formato]
+  extra:
+    - label: "Decir dónde lo vas a usar"
+      any: ["pegar", "pegarlo", "lo copio", "whatsapp", "correo", "excel", "hoja de calculo", "diapositiva", "documento", "imprimir", "word", "movil"]
+      hint: "Di dónde irá el resultado: «lo pego en una hoja de cálculo», «va en un WhatsApp»…"
+  sample: "Estoy eligiendo escuela infantil para mi hija. Te pego abajo los precios y horarios de tres de mi barrio. Compara las tres en una tabla con columnas para cuota al mes, comedor, horario de entrada y salida, y plazas libres. Debajo, dos frases con la diferencia más importante. Sin introducción. Lo voy a pegar en una hoja de cálculo que comparto con mi pareja, así que no uses negritas ni emojis dentro de la tabla."
 deeper: null
-tool: null
+tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

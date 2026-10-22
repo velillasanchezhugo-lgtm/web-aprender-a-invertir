@@ -43,6 +43,14 @@ action:
     - "Pide un cambio concreto sobre el resultado."
     - "Busca dónde se guarda en la aplicación para encontrarlo otro día."
   check: He creado un artefacto y le he pedido al menos un cambio
+practice:
+  task: "Entrenas a un equipo de fútbol infantil y cada sábado apuntas en un papel quién juega y cuántos minutos. Escribe la petición para que Claude te cree una pequeña app (un artefacto) que puedas reutilizar."
+  require: [contexto, publico, formato]
+  extra:
+    - label: "Decir qué debe poder hacer"
+      any: ["que se pueda", "que permita", "poder ", "boton", "marcar", "sumar"]
+      hint: "Di qué debe poder hacer la app: «un botón para…», «que se pueda marcar…»."
+  sample: "Soy entrenador voluntario de un equipo de fútbol infantil de doce niños. Crea una pequeña app en un artefacto para apuntar cada sábado quién juega y cuántos minutos. Es para la otra entrenadora y para mí, y la usaremos en el móvil desde la banda. Que tenga un botón por jugador para sumar minutos, una tabla con el total de la temporada y que se pueda reiniciar en cada partido. Usa nombres de ejemplo, sin datos reales de los niños."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

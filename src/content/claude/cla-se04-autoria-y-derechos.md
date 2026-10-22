@@ -44,6 +44,17 @@ action:
     - "Escribe una frase corta para avisar, por ejemplo: «Texto revisado con ayuda de un asistente de IA»."
     - "Guárdala en «Mi kit de Claude»."
   check: He escrito mi frase para declarar el uso de IA y la he guardado
+practice:
+  task: "Has escrito un artículo para el blog de la inmobiliaria donde trabajas, con datos de un informe ajeno. Escribe la petición para que Claude te ayude a pulirlo sin que deje de ser tuyo."
+  require: [contexto, limites]
+  extra:
+    - label: Pedir qué hay que citar
+      any: [citar, cita, fuente, autor]
+      hint: "Pregunta qué datos o ideas necesitan citar su fuente y cómo hacerlo."
+    - label: Pedir la frase para declarar el uso de IA
+      any: [declarar, aviso, uso de ia, he usado, asistente de ia]
+      hint: "Pide una frase corta para declarar que has usado IA, si tu empresa o el lector lo esperan."
+  sample: "Trabajo en una inmobiliaria de Málaga y he escrito un artículo para nuestro blog sobre cómo preparar un piso antes de venderlo. Uso dos datos de un informe del sector que no es nuestro. No lo reescribas entero: señala las frases poco claras y sugiere mejoras concretas, para que el texto siga siendo mío. Dime qué datos necesitan citar la fuente y cómo citarla. Al final, propón una frase corta para declarar que he usado un asistente de IA para revisar la redacción."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

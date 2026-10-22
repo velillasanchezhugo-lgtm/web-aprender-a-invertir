@@ -43,6 +43,17 @@ action:
     - "Escríbelo de nuevo diciendo quién eres, para qué es y qué no necesitas."
     - "Si es legítimo, guarda esa forma de pedir en «Mi kit de Claude»."
   check: He reformulado una petición explicando para qué la quiero
+practice:
+  task: "Preparas una charla para adolescentes sobre seguridad en redes. Pediste a Claude «cómo hackear una cuenta» y se negó. Escribe una petición legítima que te dé lo que de verdad necesitas."
+  require: [contexto, limites]
+  extra:
+    - label: Decir para qué lo quieres
+      any: [para una charla, para un taller, para ensenar, es para, el objetivo, para que aprendan, preparo]
+      hint: "Explica el propósito: «Preparo una charla para…»."
+    - label: Pedir una versión que no pueda hacer daño
+      any: [sin instrucciones, no necesito instrucciones, nada de pasos, sin pasos, como protegerse, como reconocer]
+      hint: "Di qué no necesitas y pide la parte útil: «Sin pasos reales, solo cómo reconocerlo y protegerse»."
+  sample: "Soy monitor en un centro juvenil y preparo una charla de 30 minutos para chavales de 14 a 16 años sobre cómo proteger sus redes sociales. Antes te pedí cómo hackear una cuenta y entiendo que no lo hicieras: no necesito instrucciones reales. Explica en lenguaje sencillo las tres formas de engaño más comunes para robar una cuenta y cómo reconocerlas. Termina con una lista de 5 consejos para protegerse. Nada de pasos técnicos para entrar en cuentas ajenas."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

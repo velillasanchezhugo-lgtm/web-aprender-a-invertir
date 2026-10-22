@@ -38,13 +38,21 @@ tips:
 action:
   title: Escribe tu flujo y cierra tu kit
   steps:
-    - "Pega la petición de ejemplo en Claude y respóndele con tu semana real."
+    - "Copia la petición de ejemplo en Claude, completa el final con tu semana real (sin datos de otras personas) y envíala."
     - "Copia la tabla resultante en «Mi kit de Claude», junto a tus mejores peticiones."
     - "Añade tus reglas: qué conectores usas, qué nunca compartes y qué revisas siempre."
     - "Pon una fecha en tu calendario para revisarlo dentro de un mes."
   check: He escrito mi flujo semanal con Claude y he actualizado mi kit
+practice:
+  task: "Llevas las redes, los correos y los cobros de la academia de baile familiar. Escribe la petición para que Claude te ayude a repartir la semana: qué prepara él, qué haces tú y qué revisas."
+  require: [contexto, formato, limites]
+  extra:
+    - label: Pedir qué revisar siempre
+      any: [revisar, reviso, revisa, comprobar, compruebo]
+      hint: "Pide una columna con lo que tienes que revisar siempre antes de usarlo."
+  sample: "Llevo las redes sociales, los correos y los cobros de la academia de baile de mi familia. Cada semana publico tres veces, contesto unos 20 correos de familias y apunto los pagos en una hoja. Haz una tabla con cuatro columnas: tarea, qué puede preparar Claude, qué decido yo y qué tengo que revisar siempre. Marca las tareas en las que no conviene usarte y por qué. Te lo cuento sin datos de alumnos."
 deeper: null
-tool: null
+tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22

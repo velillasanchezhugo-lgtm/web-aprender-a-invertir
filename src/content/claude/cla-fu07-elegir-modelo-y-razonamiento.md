@@ -43,6 +43,17 @@ action:
     - "Pídela con el esfuerzo por defecto y luego con uno más alto."
     - "Compara: ¿cumplen todas las condiciones?, ¿cuál tardó más? Anota en «Mi kit de Claude» cuándo te compensa subirlo."
   check: He comparado la misma petición con dos niveles de esfuerzo
+practice:
+  task: "Organizas la excursión de fin de curso de tu grupo con muchas condiciones: horario, presupuesto y accesibilidad. Escribe la petición para que Claude piense con calma y compruebe que cumple todo."
+  require: [contexto, formato, limites]
+  extra:
+    - label: "Pedir que piense con calma"
+      any: ["piensa", "paso a paso", "con calma", "razona"]
+      hint: "Pide que piense con calma o paso a paso: es una tarea con muchas condiciones."
+    - label: "Pedir que compruebe las condiciones"
+      any: ["comprueba", "verifica", "revisa que", "se cumplen"]
+      hint: "Pide que compruebe al final, una por una, que se cumplen todas las condiciones."
+  sample: "Soy tutora de un grupo de 25 alumnos de 4.º de ESO y organizo la excursión de fin de curso a Toledo desde Madrid. Condiciones: salir después de las 8:30, volver antes de las 19:00, máximo 30 € por alumno y que todo sea accesible, porque un alumno va en silla de ruedas. Piensa con calma y dame un plan por horas en una tabla. No incluyas actividades sin precio aproximado. Al final, comprueba una por una que se cumplen todas las condiciones y dime cuál es la más dudosa."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

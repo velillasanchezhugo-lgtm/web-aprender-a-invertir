@@ -34,6 +34,7 @@ questions:
     explain: "Un modelo de lenguaje genera texto a partir de patrones aprendidos. Por eso redacta tan bien y por eso puede fallar. La base de datos tienta porque así funcionan otros programas, pero un modelo de lenguaje no consulta verdades: compone respuestas."
 tips:
   - "Úsalo primero para algo que puedas comprobar tú mismo, como reescribir un texto tuyo: así ves cómo trabaja sin arriesgar nada."
+  - "Si no entiendes una respuesta, díselo tal cual: «No lo entiendo, explícamelo con un ejemplo de la vida diaria». Es lo normal, no molesta."
 action:
   title: Pon a prueba lo que hace bien
   steps:
@@ -41,6 +42,11 @@ action:
     - "Pega un texto tuyo corto: un correo, una nota o un mensaje largo de WhatsApp."
     - "Pídele que lo resuma en tres frases y que te explique una palabra difícil."
   check: He probado Claude con un texto mío y he visto qué hace bien
+practice:
+  task: "Te llega un mensaje larguísimo del grupo de familias del colegio sobre la excursión. Escribe tu primera petición a Claude para que te lo resuma y no se te escape nada importante."
+  require: [formato]
+  extra: []
+  sample: "Te pego un mensaje largo del grupo de familias del colegio sobre la excursión de mi hija. Resume lo importante en tres puntos cortos: qué día es, qué tiene que llevar y cuánto hay que pagar. Si algo no aparece en el mensaje, dímelo en vez de suponerlo. Mensaje: [pega aquí el mensaje]"
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

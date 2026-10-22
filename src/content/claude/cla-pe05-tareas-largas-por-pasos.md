@@ -42,8 +42,19 @@ action:
     - "Pide a Claude solo el esquema y corrígelo con lo que tú sabes."
     - "Desarrolla hoy solo la primera parte."
   check: He dividido un encargo grande y he hecho la primera parte con Claude
+practice:
+  task: "Quieres organizar la fiesta de jubilación de una compañera, con unas 40 personas, dentro de seis semanas. Escribe la primera petición: solo el esquema, sin desarrollar nada todavía."
+  require: [contexto, formato]
+  extra:
+    - label: "Pedir solo el esquema"
+      any: ["esquema", "solo la estructura", "solo los apartados", "solo las grandes tareas", "indice"]
+      hint: "Pide primero solo el esquema: «Antes de nada, dame solo un esquema de…»."
+    - label: "Parar para revisarlo"
+      any: ["no desarrolles", "todavia", "revisarlo", "lo reviso", "antes de seguir", "corregirlo", "espera"]
+      hint: "Dile que pare ahí: «No desarrolles nada todavía: primero quiero revisarlo»."
+  sample: "Trabajo en una gestoría y quiero organizar la fiesta de jubilación de una compañera dentro de seis semanas. Seremos unas 40 personas y tenemos unos 600 € entre todos. Antes de nada, dame solo un esquema de las grandes tareas ordenadas por semanas, en una lista de 8 puntos como máximo. No desarrolles nada todavía: primero quiero revisarlo y corregirlo con lo que ya sé."
 deeper: null
-tool: null
+tool: evaluador-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22
@@ -69,7 +80,7 @@ La alternativa es trabajar **por pasos**:
 4. **Revisa cada parte** antes de pasar a la siguiente.
 5. **Repaso final** del conjunto.
 
-Además, las conversaciones tienen un límite de lo que Claude puede tener en cuenta a la vez. En chats muy largos puede olvidar detalles del principio. Si pasa, pide un resumen de lo decidido y continúa en un chat nuevo.
+Además, cada conversación tiene un límite de lo que Claude puede tener en cuenta a la vez: es la **ventana de contexto**. En chats muy largos puede olvidar detalles del principio. Si pasa, pide un resumen de lo decidido y continúa en un chat nuevo.
 
 ## En la práctica
 
