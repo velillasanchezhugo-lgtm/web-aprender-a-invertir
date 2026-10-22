@@ -11,13 +11,13 @@ takeaway: Si tu organización usa IA, tiene que tomar medidas para que su gente 
 scenario:
   kind: empresa
   label: Caso práctico
-  title: La academia de Inés
-  body: "Inés tiene una academia de idiomas con seis profesores que usan Claude. Organiza una sesión de una hora sobre qué hacer y qué no, y lo resume en una norma de una página: comprobar, no subir datos de alumnos y avisar del uso de IA."
+  title: La academia de Lidia
+  body: "Lidia tiene una academia de idiomas con seis profesores que usan Claude. Organiza una sesión de una hora sobre qué hacer y qué no, y lo resume en una norma de una página: comprobar, no subir datos de alumnos y avisar del uso de IA."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-se06-q1
-    q: "Óscar tiene una gestoría de cuatro personas y todos usan IA en el trabajo. ¿Qué le pide el Reglamento europeo de IA en primer lugar?"
+    q: "Gonzalo tiene una gestoría de cuatro personas y todos usan IA en el trabajo. ¿Qué le pide el Reglamento europeo de IA en primer lugar?"
     options: ["Nada: solo afecta a las empresas que fabrican IA", "Tomar medidas para que su equipo sepa usar la IA con criterio", "Pedir permiso a la AESIA antes de usar un asistente"]
     answer: 1
     explain: "La alfabetización en IA también afecta a quien la usa en su organización. Pensar que solo afecta a los fabricantes tienta, pero no es así. Y no hace falta pedir permiso para usar un asistente."

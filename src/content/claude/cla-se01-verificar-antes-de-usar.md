@@ -11,8 +11,8 @@ takeaway: Cuanto más te juegas, más compruebas. Las cifras, las fechas, las ci
 scenario:
   kind: operacion
   label: Caso práctico
-  title: La reclamación de Marta
-  body: "Marta pide a Claude un correo para reclamar a su casero la fianza. El borrador es bueno, pero cita un artículo concreto de la ley y un plazo. Marta le pide que marque lo que no tiene claro, busca el artículo en el BOE y descubre que el número no coincide. Corrige esa línea y envía el resto."
+  title: La reclamación de Teresa
+  body: "Teresa pide a Claude un correo para reclamar a su casero la fianza. El borrador es bueno, pero cita un artículo concreto de la ley y un plazo. Teresa le pide que marque lo que no tiene claro, busca el artículo en el BOE y descubre que el número no coincide. Corrige esa línea y envía el resto."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice

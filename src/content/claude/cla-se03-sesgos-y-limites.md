@@ -11,8 +11,8 @@ takeaway: Claude puede inclinarse hacia lo que ya piensas o hacia estereotipos, 
 scenario:
   kind: producto
   label: Caso práctico
-  title: La cafetería de Samuel
-  body: "Samuel explica a Claude su plan con mucho entusiasmo y recibe ánimos y una lista de pasos. Luego abre un chat nuevo y le pide: «Haz de inversor escéptico y dime las tres razones por las que este plan podría fracasar». Aparecen el alquiler del local, la competencia de la zona y que no ha contado sus gastos de los primeros meses."
+  title: La cafetería de Andrés
+  body: "Andrés explica a Claude su plan con mucho entusiasmo y recibe ánimos y una lista de pasos. Luego abre un chat nuevo y le pide: «Haz de inversor escéptico y dime las tres razones por las que este plan podría fracasar». Aparecen el alquiler del local, la competencia de la zona y que no ha contado sus gastos de los primeros meses."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
