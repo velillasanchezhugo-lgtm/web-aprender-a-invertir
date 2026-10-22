@@ -35,7 +35,6 @@ questions:
 tips:
   - "Pide las cifras y las fuentes en una tabla aparte: así las revisas de un vistazo."
   - "Si el tema cambia a menudo (precios, normas, plazos), pídele que busque en la web o compruébalo tú en la página oficial."
-  - "Los cálculos que importan, hazlos con una calculadora o una hoja de cálculo, no de cabeza ni a ojo."
 action:
   title: Prueba la petición «señala lo dudoso»
   steps:

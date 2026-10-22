@@ -35,7 +35,6 @@ questions:
 tips:
   - "Pide la revisión por capas: primero ortografía, luego claridad y al final tono. Es más fácil decidir."
   - "Pregunta por qué cuando no entiendas una corrección: así aprendes y no repites el error."
-  - "Pide que respete tus palabras favoritas y tu forma de tratar al lector."
 action:
   title: Revisa un texto tuyo con cambios marcados
   steps:

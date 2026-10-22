@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: Javier y su sobrina
-  body: "Javier, de 52 años, quiere usar Claude para preparar los correos de su taller. Su sobrina Marta, de 15, también quiere una cuenta para los deberes. Javier no sabe si pagar desde el principio ni si Marta puede registrarse."
+  body: "Javier quiere usar Claude para los correos de su taller. Su sobrina Marta, de 15 años, también quiere una cuenta. Javier no sabe si pagar ni si Marta puede registrarse."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -34,14 +34,12 @@ questions:
     explain: "Tus conversaciones están en tu cuenta, no en el aparato. Por eso puedes empezar en el ordenador y seguir en el móvil. Tienta pensar que cada aplicación es independiente, como pasa con algunos programas."
 tips:
   - "Descarga la aplicación solo desde la tienda oficial de tu móvil o desde claude.com: hay copias falsas que se hacen pasar por asistentes de IA."
-  - "Antes de pagar, apunta durante una semana para qué lo usas y si te has quedado sin uso alguna vez. Así decides con datos."
 action:
   title: Crea tu cuenta y ábrela en dos sitios
   steps:
     - "Entra en claude.ai desde el ordenador y crea tu cuenta con tu correo."
     - "Instala la aplicación en tu móvil desde la tienda oficial e inicia sesión con la misma cuenta."
     - "Escribe un saludo en la web y comprueba que la conversación aparece también en el móvil."
-    - "Abre la página de planes y lee qué incluye el plan gratuito."
   check: He creado mi cuenta y la uso en el ordenador y en el móvil
 deeper: null
 tool: null
@@ -70,20 +68,17 @@ Tus conversaciones se guardan en la cuenta, así que puedes empezar en un sitio 
 
 - **Cuánto lo puedes usar.** El gratuito tiene límites más bajos; si los alcanzas, toca esperar un rato.
 - **Qué modelos tienes.** Claude tiene varias versiones; algunas, las más potentes, solo están en los planes de pago.
-- **Algunas funciones** extra, que irás conociendo en este curso.
+- **Algunas funciones** extra.
 
 Los precios y los límites cambian a menudo. No los apuntes de memoria: consúltalos en la **página de planes** de Claude cuando vayas a decidir.
 
 ## En la práctica
 
 1. Entra en **claude.ai** y regístrate con tu correo.
-2. Confirma el correo con el código o enlace que te llega.
-3. Si quieres, instala la aplicación del móvil o del escritorio **desde la tienda oficial** o desde claude.com.
-4. Empieza con el **plan gratuito**. Si durante unos días te quedas sin uso a menudo, entonces compara planes.
+2. Si quieres, instala la aplicación del móvil o del escritorio **desde la tienda oficial** o desde claude.com.
+3. Empieza con el **plan gratuito**. Si durante unos días te quedas sin uso a menudo, entonces compara planes.
 
 > Prueba: «Es la primera vez que uso un asistente de IA. Explícame en cinco puntos cortos qué tipo de cosas te puedo pedir para mi trabajo en un taller mecánico».
-
-Cambia «taller mecánico» por tu trabajo o tus estudios.
 
 ## Error frecuente
 

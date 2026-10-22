@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: El primer día de Rosa con Claude
-  body: "Rosa trabaja en una gestoría y su hija le ha instalado Claude. Le pide «el horario de la farmacia de mi calle» y la respuesta no le sirve. Luego le pide que le ayude a redactar un correo para pedir unos días de vacaciones y le sale un borrador que solo tiene que retocar. Ha descubierto la diferencia entre un asistente de escritura y un buscador."
+  body: "Rosa trabaja en una gestoría. Pide a Claude «el horario de la farmacia de mi calle» y la respuesta no le sirve. Luego le pide un correo para pedir vacaciones y obtiene un borrador que solo tiene que retocar."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -29,12 +29,11 @@ questions:
   - type: choice
     id: cla-c01-q3
     q: "¿Qué describe mejor cómo genera Claude una respuesta?"
-    options: ["Busca la respuesta exacta en una base de datos de verdades", "Escribe el texto que mejor encaja con tu petición, según lo que aprendió de muchísimos textos", "Una persona de Anthropic lee tu mensaje y contesta"]
-    answer: 1
+    options: ["Escribe el texto que mejor encaja con tu petición, según lo que aprendió de muchísimos textos", "Busca la respuesta exacta en una base de datos de verdades", "Una persona de Anthropic lee tu mensaje y contesta"]
+    answer: 0
     explain: "Un modelo de lenguaje genera texto a partir de patrones aprendidos. Por eso redacta tan bien y por eso puede fallar. La base de datos tienta porque así funcionan otros programas, pero un modelo de lenguaje no consulta verdades: compone respuestas."
 tips:
   - "Úsalo primero para algo que puedas comprobar tú mismo, como reescribir un texto tuyo: así ves cómo trabaja sin arriesgar nada."
-  - "Hay otros asistentes de IA; lo que aprendas aquí sobre cómo pedir y cómo comprobar te sirve también con ellos."
 action:
   title: Pon a prueba lo que hace bien
   steps:
@@ -64,16 +63,13 @@ Por dentro, Claude funciona con un **modelo de lenguaje**: un programa que apren
 - Escribir y corregir: correos, cartas, resúmenes, textos para el trabajo.
 - Explicar con otras palabras algo que no entiendes.
 - Analizar documentos e imágenes que le subes.
-- Ordenar ideas, preparar listas y planes.
-- Ayudar a programar, aunque aquí no lo necesitarás.
+- Ordenar ideas y ayudar a programar.
 
 **Lo que no es:**
 
-- **No es una persona.** No tiene opiniones propias ni te conoce, salvo lo que le cuentes.
+- **No es una persona.** No te conoce, salvo por lo que le cuentes.
 - **No es un buscador.** No consulta internet por defecto. Lo reciente no lo sabe, salvo que use la **búsqueda web**, una función que existe también en el plan gratuito.
 - **No es infalible.** Puede equivocarse con total seguridad. Escribe igual de bien cuando acierta que cuando falla.
-
-Piensa en Claude como un **ayudante muy rápido con el lenguaje**, al que siempre conviene revisar.
 
 ## En la práctica
 
@@ -85,8 +81,6 @@ Cuando dudes de si usar Claude, hazte una pregunta: **¿le doy yo el material o 
 
 > Prueba: «Te pego un correo que he escrito para pedir unos días de vacaciones. Hazlo más claro y educado, sin cambiar las fechas ni alargarlo: [pega aquí tu correo]».
 
-Fíjate en que le das el texto y le dices qué no debe cambiar. Eso es lo que mejor funciona.
-
 ## Error frecuente
 
-Usarlo como Google para datos del día (horarios, precios, resultados) y fiarse de la respuesta. Para eso está la web oficial o, como mínimo, la búsqueda web con la fuente comprobada.
+Usarlo como buscador para datos del día (horarios, precios) y fiarse. Para eso está la web oficial.

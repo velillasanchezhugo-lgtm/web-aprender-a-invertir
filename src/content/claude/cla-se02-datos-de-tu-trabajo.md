@@ -12,7 +12,7 @@ scenario:
   kind: empresa
   label: Caso práctico
   title: Las reclamaciones de Javier
-  body: "Javier trabaja en atención al cliente de una tienda online. Quiere que Claude agrupe las quejas del mes por temas. Antes, pregunta a su responsable: la empresa no tiene un plan de empresa ni normas sobre IA. Javier exporta las quejas sin nombres, correos ni números de pedido, y solo entonces las pega en su cuenta."
+  body: "Javier, de atención al cliente de una tienda online, quiere que Claude agrupe las quejas del mes. Pregunta a su responsable: no hay plan de empresa, pero se permite con datos anonimizados. Javier quita nombres, correos y números de pedido antes de pegarlas."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -34,7 +34,6 @@ questions:
     explain: "En los planes de empresa manda la organización, con un contrato propio. En los personales, tú decides en Ajustes si tus chats ayudan a mejorar los modelos. Que no se guarde nada es falso en ambos casos."
 tips:
   - "Si tu empresa tiene una cuenta de Claude, usa esa para el trabajo y tu cuenta personal para lo tuyo."
-  - "Pide a Claude que te ayude a anonimizar un ejemplo inventado: así aprendes qué datos quitar sin pegar los reales."
   - "Lo más delicado nunca va: contraseñas, datos de salud, nóminas, cuentas bancarias, contratos confidenciales."
 action:
   title: Pregunta la norma de tu empresa
@@ -56,7 +55,7 @@ sources: [claude-privacidad, aepd, claude-planes]
 
 ## La idea
 
-Lo que pegas en una conversación sale de tu ordenador y llega al servicio de Claude. Con tus cosas decides tú. Con las del trabajo, **no**: la información de la empresa y de sus clientes la controla la empresa.
+Lo que pegas en un chat sale de tu ordenador y llega al servicio de Claude. Con tus cosas decides tú. Con las del trabajo, **no**: la información de la empresa y de sus clientes la controla la empresa.
 
 **Qué no subir a una cuenta personal** sin permiso:
 
@@ -79,7 +78,7 @@ En España y en la UE manda el **RGPD**, la ley europea que protege los datos pe
 
 > Prueba: «Te paso unas quejas de clientes ya anonimizadas. Agrúpalas por tema, dime cuántas hay de cada uno y propón una respuesta tipo para el tema más repetido. Si ves algún dato que identifique a alguien, avísame y no lo repitas.»
 
-Para dudas sobre datos personales, la Agencia Española de Protección de Datos (AEPD) tiene guías sencillas en su web.
+Si tienes dudas, la Agencia Española de Protección de Datos (AEPD) tiene guías sencillas.
 
 ## Error frecuente
 

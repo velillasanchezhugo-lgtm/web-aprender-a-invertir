@@ -12,14 +12,14 @@ scenario:
   kind: operacion
   label: Caso práctico
   title: El anuncio de Ahmed
-  body: "Ahmed quiere vender su bicicleta en una web de segunda mano. Claude le escribe un anuncio largo y muy formal. En vez de rendirse, Ahmed le pide «más corto, más cercano y con el precio al principio». Después pide dos alternativas de título y elige una. Cuando termina, quiere ayuda con la carta de presentación de un trabajo y abre un chat nuevo."
+  body: "Ahmed vende su bicicleta. Claude le escribe un anuncio largo y formal. Ahmed pide «más corto, más cercano y con el precio al principio» y luego dos títulos para elegir. Para su carta de presentación de un trabajo, abre un chat nuevo."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-c04-q1
     q: "La respuesta de Claude está bien de contenido pero es el doble de larga de lo que quieres. ¿Qué haces?"
-    options: ["Borrar el chat y volver a escribir la petición desde cero", "Responder en el mismo chat: «Déjalo en la mitad, quita la introducción y mantén los tres datos clave»", "Aceptarlo así: la IA sabe mejor qué extensión conviene"]
-    answer: 1
+    options: ["Borrar el chat y volver a escribir la petición desde cero", "Aceptarlo así: la IA sabe mejor qué extensión conviene", "Responder en el mismo chat: «Déjalo en la mitad, quita la introducción y mantén los tres datos clave»"]
+    answer: 2
     explain: "Pedir un cambio concreto en la misma conversación aprovecha lo que ya está bien. Empezar de cero tienta cuando algo no convence, pero pierdes el trabajo hecho y el contexto que ya le diste."
   - type: choice
     id: cla-c04-q2
@@ -40,7 +40,6 @@ action:
   steps:
     - "Pide a Claude un texto corto que necesites, por ejemplo un mensaje para el grupo de vecinos."
     - "Pídele un cambio concreto: más corto, otro tono o en lista."
-    - "Pídele dos alternativas y elige la que más te guste."
     - "Guarda en tu nota de «Mi kit de Claude» la frase de corrección que mejor te ha funcionado."
   check: He mejorado una respuesta pidiendo cambios en lugar de empezar de cero
 deeper: null
@@ -65,7 +64,7 @@ Tienes cuatro formas de mejorar un resultado:
 - **Editar tu mensaje.** Si te expresaste mal, corrige tu petición en lugar de añadir otra. Claude contesta de nuevo a la versión corregida.
 - **Regenerar la respuesta.** Pides otra respuesta a la misma petición. Sirve cuando el planteamiento era bueno pero el resultado no te convence.
 
-**Cuándo empezar un chat nuevo.** Claude tiene en cuenta **todo lo que hay en la conversación**: tus mensajes, sus respuestas y los archivos. A eso se le llama el **contexto**. Es muy útil mientras hablas de lo mismo. Pero si cambias de tema, lo anterior puede colarse en la respuesta. Además, en conversaciones muy largas la calidad puede bajar y gastas antes tu límite de uso.
+**Cuándo empezar un chat nuevo.** Claude tiene en cuenta **todo lo que hay en la conversación**: tus mensajes, sus respuestas y los archivos. A eso se le llama el **contexto**. Es muy útil mientras hablas de lo mismo. Pero si cambias de tema, lo anterior puede colarse en la respuesta. Además, las conversaciones muy largas gastan antes tu límite de uso.
 
 Regla sencilla: **un tema, un chat**.
 
@@ -73,11 +72,7 @@ Regla sencilla: **un tema, un chat**.
 
 Las opciones para editar tu mensaje o regenerar la respuesta aparecen junto a cada mensaje, normalmente al pasar el ratón o al mantenerlo pulsado en el móvil. El botón para un chat nuevo está siempre visible en la pantalla principal.
 
-Frases que funcionan para corregir:
-
-- «Mantén el contenido, pero en la mitad de palabras».
-- «Más cercano, como si se lo dijera a un compañero».
-- «Esto no es correcto: [explica por qué]. Corrígelo».
+Frases que funcionan: «Mantén el contenido en la mitad de palabras», «Esto no es correcto: [por qué]. Corrígelo».
 
 > Prueba: «El texto está bien, pero es demasiado largo y suena muy serio. Déjalo en cinco líneas, con un tono cercano, y dame dos versiones para elegir».
 

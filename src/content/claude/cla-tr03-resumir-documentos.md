@@ -35,7 +35,6 @@ questions:
 tips:
   - "Pide primero un resumen ejecutivo de cinco líneas y, después, solo los apartados que te importen."
   - "Pregunta qué no aparece: «¿El documento dice algo de penalizaciones? Si no, dilo»."
-  - "Antes de subir un documento, tacha o quita DNI, firmas, cuentas y datos de terceros."
 action:
   title: Un resumen con páginas
   steps:
@@ -56,7 +55,7 @@ sources: [claude-ayuda, aepd-guias]
 
 ## La idea
 
-Puedes subir a Claude un PDF, un documento de Word o pegar un texto largo y pedirle un resumen. Es una de sus funciones más útiles, en el plan gratuito y en los de pago. Pero **no existe un resumen bueno en general**: depende de para qué lo quieres.
+Puedes subir a Claude un PDF o un Word, o pegar un texto largo, y pedirle un resumen, en el plan gratuito y en los de pago. Pero **no existe un resumen bueno en general**: depende de para qué lo quieres.
 
 - Para **decidir**: lo que influye en la decisión, los riesgos y lo que falta.
 - Para **contar a otros**: un **resumen ejecutivo**, es decir, unas líneas con lo esencial y lo que hay que decidir.
@@ -64,8 +63,8 @@ Puedes subir a Claude un PDF, un documento de Word o pegar un texto largo y pedi
 
 Dos hábitos te protegen de los errores:
 
-1. **Pide la página o el apartado** de cada dato, o una **cita literal** (las palabras exactas del documento). Así compruebas lo importante en el original en un minuto.
-2. **Pregunta por lo que no sale**. Un resumen omite cosas por definición. Pregunta directamente por penalizaciones, plazos o excepciones.
+1. **Pide la página o el apartado** de cada dato, o una **cita literal** (las palabras exactas del documento). Así lo compruebas en un minuto.
+2. **Pregunta por lo que no sale**: penalizaciones, plazos, excepciones. Un resumen siempre omite cosas.
 
 Claude puede equivocarse: saltarse un matiz o, a veces, afirmar algo que el documento no dice (una **alucinación**). En documentos muy largos o escaneados puede leer peor las tablas y las imágenes.
 
@@ -73,10 +72,9 @@ Y una línea roja: **lo que vas a firmar lo lees tú entero** (contratos, hipote
 
 ## En la práctica
 
-1. Sube el documento, sin DNI, firmas ni datos de terceros.
-2. Explica **para qué** es el resumen y para quién.
-3. Pide el formato: puntos, tabla, cinco líneas.
-4. Pide páginas o citas y **comprueba las cifras clave**.
+1. Sube el documento **sin DNI, firmas, cuentas ni datos de terceros**.
+2. Explica **para qué** es el resumen y pide el formato.
+3. Pide páginas o citas y **comprueba las cifras clave**.
 
 > Prueba: «Te adjunto el acta de la última junta de mi comunidad de vecinos. No pude ir. Hazme un resumen de 5 líneas y después una tabla con cada acuerdo, la derrama o el coste si lo hay, el plazo y la página del acta donde aparece. Si algo no está claro en el texto, dilo en lugar de suponerlo.»
 

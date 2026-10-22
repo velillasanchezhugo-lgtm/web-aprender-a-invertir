@@ -12,7 +12,7 @@ scenario:
   kind: noticia
   label: Caso práctico
   title: El trabajo de clase de Pablo
-  body: "Pablo estudia un ciclo de Administración y pide a Claude datos sobre una ayuda pública para jóvenes. La respuesta incluye una cuantía, un plazo y el número de un artículo de una ley. Antes de entregar el trabajo, entra en la web oficial: la cuantía es de una convocatoria antigua y el artículo no dice eso."
+  body: "Pablo pide a Claude datos sobre una ayuda pública para jóvenes. Recibe una cuantía, un plazo y un artículo de una ley. En la web oficial ve que la cuantía es de una convocatoria antigua y que el artículo no dice eso."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -33,7 +33,6 @@ questions:
     answer: 0
     explain: "Ante un posible problema de salud urgente, la decisión es de un profesional, y ya. Claude puede servir después para entender un informe o preparar preguntas para el médico. Pedirle un diagnóstico tienta por rapidez, pero puede equivocarse y retrasar algo grave."
 tips:
-  - "Pide «separa lo que es seguro de lo que no estás seguro»: no elimina los errores, pero te dice por dónde empezar a comprobar."
   - "Para trámites, impuestos o ayudas, la única fuente válida es la web del organismo (por ejemplo, la sede de la Agencia Tributaria o la de tu comunidad)."
 action:
   title: Caza una fuente
@@ -57,7 +56,7 @@ sources: [claude-ayuda, anthropic-condiciones]
 
 Claude escribe con la misma seguridad cuando acierta que cuando se equivoca. Hay dos motivos principales de error.
 
-**1. Las alucinaciones.** Una **alucinación** es cuando la IA se inventa algo y lo dice como si fuera cierto: una cifra, una fecha, una cita, el artículo de una ley o incluso una fuente con su enlace. Pasa porque Claude genera el texto que **parece** correcto, no consulta una lista de verdades. Son más probables con **datos muy concretos**: números, nombres, fechas y referencias.
+**1. Las alucinaciones.** Una **alucinación** es cuando la IA se inventa algo y lo dice como si fuera cierto: una cifra, una fecha, una cita, el artículo de una ley o incluso una fuente con su enlace. Pasa porque Claude genera el texto que **parece** correcto, no consulta una lista de verdades.
 
 **2. La fecha de corte.** Claude aprendió de textos que llegan hasta una fecha: su **fecha de corte del conocimiento**. Lo que pasó después no lo sabe. Puede darte como actual un precio, una norma o una ayuda que ya cambió.
 
@@ -74,10 +73,6 @@ Claude escribe con la misma seguridad cuando acierta que cuando se equivoca. Hay
 La búsqueda web se activa o desactiva desde el menú de herramientas del chat. Compruébalo antes de pedir un dato reciente y pide las fuentes de forma explícita.
 
 > Prueba: «Busca en la web el plazo para presentar la declaración de la renta este año en España. Dame solo la respuesta corta y el enlace a la página oficial de la Agencia Tributaria de donde lo sacas».
-
-Y cuando Claude te dé un dato sin fuente:
-
-> Prueba: «¿De dónde sale ese dato? Si no puedes darme una fuente que yo pueda abrir, dímelo claramente».
 
 ## Error frecuente
 

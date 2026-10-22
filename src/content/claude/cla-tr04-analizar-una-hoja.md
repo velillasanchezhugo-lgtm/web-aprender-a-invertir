@@ -12,7 +12,7 @@ scenario:
   kind: empresa
   label: Caso práctico
   title: Las ventas de la tienda de Inés
-  body: "Inés tiene una tienda de ropa infantil con venta en línea. Exporta las ventas del año en un CSV, borra las columnas de nombre, correo y dirección de los clientes, y lo sube a Claude. Pregunta qué productos bajan en verano y pide un gráfico por meses. Antes de decidir el pedido de temporada, comprueba en su programa de ventas el total de julio: coincide."
+  body: "Inés tiene una tienda de ropa infantil. Exporta las ventas del año en un CSV, borra nombre, correo y dirección de los clientes, y lo sube a Claude. Pregunta qué productos bajan en verano y pide un gráfico por meses. Antes de hacer el pedido, comprueba el total de julio en su programa: coincide."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -35,7 +35,6 @@ questions:
 tips:
   - "Pon nombres claros a las columnas («Fecha», «Importe sin IVA»): Claude las entenderá mejor."
   - "Empieza preguntando «¿Qué columnas ves y qué crees que significa cada una?» para detectar malentendidos."
-  - "Pide el resultado como archivo de Excel si quieres seguir trabajando con él."
 action:
   title: Hazle una pregunta a tus datos
   steps:
@@ -60,11 +59,10 @@ Puedes subir a Claude una **hoja de cálculo** (un Excel, por ejemplo) o un **CS
 
 Para responder, Claude puede **escribir y ejecutar un pequeño programa** que hace las cuentas, y crear **gráficos** o un archivo de Excel nuevo. Esta función está en el plan gratuito y en los de pago. Si no te deja trabajar con un Excel, mira en Ajustes que esté activada la opción de ejecutar código y crear archivos.
 
-Tres reglas, por orden de importancia:
+Dos reglas, por orden de importancia:
 
 1. **Quita los datos personales antes.** Nombres, DNI, teléfonos, correos, direcciones, datos de salud. **Anonimizar** es quitarlos o cambiarlos para que no se sepa de quién se habla. Si los datos son de clientes o empleados, sigue además las normas de tu empresa.
 2. **Comprueba las cifras clave.** Puede leer mal una columna o contar una fila dos veces. Antes de decidir, verifica dos o tres números con tu programa o con una suma rápida.
-3. **Pregunta de una en una.** Las preguntas concretas dan respuestas más fiables que «analízalo todo».
 
 ## En la práctica
 

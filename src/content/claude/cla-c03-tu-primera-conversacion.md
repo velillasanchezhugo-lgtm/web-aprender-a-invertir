@@ -12,7 +12,7 @@ scenario:
   kind: operacion
   label: Caso práctico
   title: La caldera de Lucía
-  body: "Lucía vive de alquiler en Valencia. La caldera lleva cinco días sin funcionar y el casero no contesta al teléfono. Primero escribe «hazme un correo para mi casero» y recibe un texto genérico. Después le da los detalles, el tono que quiere y la extensión, y obtiene un correo que envía casi sin cambios."
+  body: "Lucía vive de alquiler. La caldera lleva cinco días rota y el casero no contesta. Su «hazme un correo para mi casero» da un texto genérico. Con los detalles, el tono y la extensión, obtiene un correo que envía casi sin cambios."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -70,23 +70,17 @@ No hace falta escribir mucho. Hace falta **lo que Claude no puede adivinar**.
 
 «Hazme un correo para mi casero».
 
-Saldrá un texto correcto y vacío, que tendrás que reescribir casi entero.
+Saldrá un texto correcto y vacío.
 
 **Ejemplo bueno:**
 
 «Vivo de alquiler. La caldera lleva cinco días sin funcionar y mi casero no contesta al teléfono. Escríbele un correo educado pero firme pidiéndole que envíe a un técnico esta semana. Máximo diez líneas».
-
-Aquí Claude ya sabe el problema, el objetivo, el destinatario y la forma.
 
 ## En la práctica
 
 Antes de enviar, repasa tu mensaje con las cuatro piezas. Si falta alguna, añádela en una frase.
 
 > Prueba: «Soy [quién eres]. Necesito [qué]. Es para [quién o para qué]. Lo quiero [tono, extensión, formato]. Si te falta algún dato, pregúntamelo antes de escribir».
-
-Un ejemplo relleno:
-
-> Prueba: «Soy auxiliar administrativo y empiezo en un trabajo nuevo el lunes. Necesito un mensaje corto para presentarme al equipo por correo. Que suene cercano y profesional, en cinco líneas como mucho».
 
 Cuando la respuesta llegue, **léela entera** y cambia lo que no sea verdad o no suene a ti. El texto final es tuyo.
 
