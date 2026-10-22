@@ -311,8 +311,13 @@ ${table(['Nivel', 'Modelo', 'Inversión (hoy)', 'Qué incluye'], [
 │   ├── 1  Invertir por tu cuenta      Gratis            → /es/nivel-1/
 │   ├── 2  Avanzado                    <s>${esc(P.monthly)}</s>          → /es/nivel-2/
 │   └── 3  Profesional                 <s>curso ${esc(P.course)} · cert. ${esc(P.cert)}</s> → /es/nivel-3/
+├── Emprendimiento                3 niveles
+│   ├── 1  Emprender desde cero        Gratis            → /es/emprendimiento/nivel-1/
+│   ├── 2  Avanzado                    <s>${esc(P.monthly)}</s>          → /es/emprendimiento/nivel-2/
+│   └── 3  Profesional                 <s>curso ${esc(P.course)} · cert. ${esc(P.cert)}</s> → /es/emprendimiento/nivel-3/
 ├── (nueva formación)             3 niveles
 └── + Más formaciones             Próximamente</div>
+<p>En la portada, debajo del párrafo de bienvenida, cada formación tiene un pósit (un cuadrado de color) que lleva a su página. Al añadir una formación se añade su pósit (<span class="mono">FORMATIONS</span> en <span class="mono">src/pages/es/index.astro</span>) y su entrada del panel (<span class="mono">FORMATIONS</span> en <span class="mono">src/components/Drawer.astro</span>).</p>
 <h3>Página de presentación de un nivel</h3>
 ${blocks([
   ['Cabecera', 'nivel, precio (o «Gratis») y estado; título; subtítulo; promesa.'],
@@ -343,7 +348,7 @@ ${table(['Elemento', 'Convención', 'Ejemplo'], [
   ['Competencia', 'kebab-case en español, sin prefijo de nivel', '<span class="mono">curva-tipos</span>'],
   ['Módulo', 'código de 2 a 4 letras', '<span class="mono">rf</span>, <span class="mono">reg</span>'],
 ])}
-<div class="box"><h4>Propuesta para formaciones nuevas</h4><p>Cada formación nueva tendrá un identificador corto (por ejemplo <span class="mono">ahorro</span>) que se antepone a sus rutas y a sus módulos para que no choquen con Inversión: <span class="mono">/es/ahorro/nivel-1/</span>, módulos <span class="mono">ah-…</span>. Inversión conserva sus rutas actuales (<span class="mono">/es/nivel-1/</span>…) porque cambiarlas rompería enlaces y progreso guardado.</p></div>
+<div class="box rule"><h4>Formaciones nuevas (aplicado en Emprendimiento)</h4><p>Cada formación nueva tiene un identificador corto que se antepone a sus rutas, módulos, piezas y competencias para que no choquen con Inversión. Emprendimiento: rutas <span class="mono">/es/emprendimiento/…</span>, módulos <span class="mono">em-…</span>, sesiones <span class="mono">em-im02-…</span>, preguntas <span class="mono">em-im02-q1</span>, competencias <span class="mono">em-…</span> (N2 <span class="mono">em2-…</span>, N3 <span class="mono">em3-…</span>). Su progreso se guarda aparte (<span class="mono">academy-emprendimiento</span>). Inversión conserva sus rutas actuales porque cambiarlas rompería enlaces y progreso guardado.</p></div>
 <div class="box rule"><h4>Regla fija</h4><p>Los identificadores publicados no se renombran ni se borran: el progreso de los alumnos se guarda con ellos.</p></div>
 <h3>Dónde vive cada cosa</h3>
 ${table(['Dato', 'Archivo'], [
@@ -354,6 +359,9 @@ ${table(['Dato', 'Archivo'], [
   ['Glosario (con nivel)', '<span class="mono">src/data/glossary.json</span>'],
   ['Precios', '<span class="mono">src/config/site.ts</span> → <span class="mono">PRICING</span>'],
   ['Panel de formaciones', '<span class="mono">src/components/Drawer.astro</span>'],
+  ['Emprendimiento: niveles, módulos, competencias y temario N2/N3', '<span class="mono">src/data/emprendimiento.json</span>'],
+  ['Emprendimiento: sesiones de N1 y glosario', '<span class="mono">src/content/emprendimiento/</span> y <span class="mono">src/data/glossary-emprendimiento/</span> (un archivo por módulo)'],
+  ['Reproductor de sesiones (común)', '<span class="mono">src/components/SessionPlayer.astro</span>'],
 ])}
 </section>
 

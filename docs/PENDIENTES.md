@@ -95,6 +95,10 @@ Revisión del temario como experto: que se aprenda de verdad, sin relleno. Datos
 
 Siguiente paso propuesto: sesión piloto `ya-08-cuando-cae` con todo aplicado, para comparar el antes y el después.
 
+## Formación Emprendimiento
+
+Ver `docs/EMPRENDIMIENTO.md`. Las 69 sesiones del Nivel 1 son un borrador: necesitan revisión de una gestoría o asesor (impuestos, Seguridad Social y laboral) y de un abogado mercantil (forma jurídica y cierre). Allí están las cifras que faltan por confirmar en fuente oficial y los siguientes pasos (herramientas, muestras de los niveles 2 y 3, diagnóstico y repaso).
+
 ## Funcionalidades no incluidas a propósito
 
 - **Cuentas de usuario**: no existe un backend seguro; el progreso es local, exportable y borrable.

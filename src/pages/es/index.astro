@@ -12,8 +12,8 @@ const blocks = [
 ];
 /** Pósits de la portada: una por formación. */
 const FORMATIONS = [
-  { cls: 'p-inv', kicker: 'Formación · 3 niveles', title: 'Inversión', text: 'Ordena tu dinero e invierte por tu cuenta, desde cero.', href: '/es/niveles/' },
-  { cls: 'p-em', kicker: 'Formación · 3 niveles', title: 'Emprendimiento', text: 'Monta tu negocio: trámites, impuestos, cuotas y clientes.', href: '/es/emprendimiento/' },
+  { cls: 'p-inv', kicker: '3 niveles', title: 'Inversión', text: 'Ordena tu dinero e invierte por tu cuenta, desde cero.', href: '/es/niveles/' },
+  { cls: 'p-em', kicker: '3 niveles', title: 'Emprendimiento', text: 'Monta tu negocio: trámites, impuestos, cuotas y clientes.', href: '/es/emprendimiento/' },
 ];
 const tools = ['interes-compuesto', 'inflacion', 'simulador-caidas', 'comparador-comisiones'];
 const jsonLd = [
@@ -216,10 +216,11 @@ const jsonLd = [
   .pi-title { font: 700 clamp(1.2rem, 1rem + 1vw, 1.55rem)/1.05 var(--display, var(--sans)); letter-spacing: -0.02em; }
   .pi-text { font-size: 0.88rem; line-height: 1.35; }
   .pi-go { margin-top: auto; font-weight: 700; font-size: 0.9rem; }
-  @media (max-width: 420px) { .postit { padding: 1.3rem 0.8rem 0.8rem; } .pi-text { font-size: 0.82rem; } }
+  @media (max-width: 420px) { .postits { gap: 0.9rem; } .postit { gap: 0.25rem; padding: 1.1rem 0.75rem 0.7rem; } .pi-text { font-size: 0.8rem; line-height: 1.3; } }
   :global(:root[data-theme='dark']) .postit { --pi: #f2d566; }
   :global(:root[data-theme='dark']) .p-em { --pi: #92d3f2; }
   @media (prefers-color-scheme: dark) { :global(:root:not([data-theme='light'])) .postit { --pi: #f2d566; } :global(:root:not([data-theme='light'])) .p-em { --pi: #92d3f2; } }
+  @media (max-width: 359px) { .pi-kicker { display: none; } .pi-title { font-size: 1.1rem; } .pi-text { font-size: 0.76rem; line-height: 1.2; } .postit { padding-top: 0.95rem; } }
   @media (prefers-reduced-motion: reduce) { .postit { transition: none; } }
   .facts { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; color: var(--ink-3); }
   .facts strong { color: var(--ink); font-size: 1rem; }

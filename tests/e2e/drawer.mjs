@@ -35,7 +35,7 @@ for (const [w, h, name] of [[390, 844, 'móvil'], [1366, 900, 'escritorio']]) {
   const pits = p.locator('.hero .postits a.postit');
   ok(await pits.count() === 2, `${name}: la portada muestra dos pósits de formación`);
   ok(await p.evaluate(() => document.querySelector('.hero .lede')?.nextElementSibling?.classList.contains('postits-nav')), `${name}: los pósits van debajo del párrafo`);
-  const pb = await pits.evaluateAll((as) => as.map((a) => { const r = a.getBoundingClientRect(); return { w: r.width, h: r.height, href: a.getAttribute('href') }; }));
+  const pb = await pits.evaluateAll((as) => as.map((a) => ({ w: a.offsetWidth, h: a.offsetHeight, href: a.getAttribute("href") })));
   ok(pb.every((r) => r.w > 120 && Math.abs(r.w - r.h) < 2), `${name}: los pósits son cuadrados (${pb.map((r) => Math.round(r.w) + 'x' + Math.round(r.h)).join(', ')})`);
   ok(pb.map((r) => r.href).join() === '/es/niveles/,/es/emprendimiento/', `${name}: cada pósit lleva a su formación`);
   if (SHOTS) await p.locator('.hero').screenshot({ path: `${SHOTS}/postits-${w}.png` });

@@ -74,7 +74,7 @@ La regla: **no crezcas más rápido de lo que puedes financiar**.
 
 ## En la práctica
 
-- El **coste de empresa** de un empleado es su sueldo bruto más las cotizaciones que paga la empresa a la Seguridad Social, que suponen en torno a un 30 % más según el contrato. Súmale prevención de riesgos y formación.
+- El **coste de empresa** de un empleado es su sueldo bruto más las cotizaciones que paga la empresa a la Seguridad Social, que suponen alrededor de un 32 % más en un contrato indefinido (es una aproximación). Súmale prevención de riesgos y formación.
 - Para contratar necesitas inscribirte como empresa en la **Seguridad Social** y dar de alta al trabajador antes de que empiece.
 - Si subcontratas a un autónomo, que trabaje con sus medios y su organización: si no, puede considerarse una relación laboral.
 
