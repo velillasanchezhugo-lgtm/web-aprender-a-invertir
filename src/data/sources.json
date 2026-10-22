@@ -874,5 +874,292 @@
   "url": "https://www.cnmv.es/DocPortal/Legislacion/Guias-Tecnicas/GuiaTecnica_2017_4.pdf",
   "type": "supervisor",
   "checked": "2026-10-21"
+ },
+ "aeat-empresarios": {
+  "title": "Empresarios individuales y profesionales",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/empresarios-individuales-profesionales.html",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "aeat-censos": {
+  "title": "Censos, NIF y domicilio fiscal",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/censos-nif-domicilio-fiscal.html",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "aeat-iva": {
+  "title": "IVA",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/iva.html",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "aeat-sociedades": {
+  "title": "Impuesto sobre Sociedades",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/impuesto-sobre-sociedades.html",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "aeat-irpf-sede": {
+  "title": "IRPF",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/irpf.html",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "aeat-calendario": {
+  "title": "Calendario del contribuyente",
+  "publisher": "Agencia Tributaria",
+  "url": "https://sede.agenciatributaria.gob.es/Sede/calendario-contribuyente.html",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "seg-social-autonomos": {
+  "title": "Trabajadores autónomos: afiliación y cotización",
+  "publisher": "Seguridad Social",
+  "url": "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/Afiliacion/32247",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "seg-social": {
+  "title": "Portal de la Seguridad Social",
+  "publisher": "Seguridad Social",
+  "url": "https://www.seg-social.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "plataforma-pyme": {
+  "title": "Plataforma PYME y CIRCE (Puntos de Atención al Emprendedor)",
+  "publisher": "Ministerio de Economía",
+  "url": "https://plataformapyme.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "enisa": {
+  "title": "ENISA: préstamos participativos",
+  "publisher": "ENISA",
+  "url": "https://www.enisa.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "ico": {
+  "title": "Líneas ICO para empresas y autónomos",
+  "publisher": "Instituto de Crédito Oficial",
+  "url": "https://www.ico.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "cdti": {
+  "title": "CDTI: financiación de la innovación",
+  "publisher": "CDTI",
+  "url": "https://www.cdti.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "oepm": {
+  "title": "Oficina Española de Patentes y Marcas",
+  "publisher": "OEPM",
+  "url": "https://www.oepm.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "aepd": {
+  "title": "Agencia Española de Protección de Datos",
+  "publisher": "AEPD",
+  "url": "https://www.aepd.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "rmc": {
+  "title": "Registro Mercantil Central",
+  "publisher": "Registro Mercantil Central",
+  "url": "https://www.rmc.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "sepe": {
+  "title": "Servicio Público de Empleo Estatal: pago único",
+  "publisher": "SEPE",
+  "url": "https://www.sepe.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "dehu": {
+  "title": "Dirección Electrónica Habilitada única (DEHú)",
+  "publisher": "Gobierno de España",
+  "url": "https://dehu.redsara.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "fnmt": {
+  "title": "Certificado digital de la FNMT",
+  "publisher": "FNMT-RCM",
+  "url": "https://www.sede.fnmt.gob.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "camaras": {
+  "title": "Cámaras de Comercio de España",
+  "publisher": "Cámara de España",
+  "url": "https://www.camara.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "bdns": {
+  "title": "Base de Datos Nacional de Subvenciones",
+  "publisher": "Ministerio de Hacienda",
+  "url": "https://www.infosubvenciones.es/bdnstrans/GE/es/index",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "insst": {
+  "title": "Instituto Nacional de Seguridad y Salud en el Trabajo",
+  "publisher": "INSST",
+  "url": "https://www.insst.es/",
+  "type": "supervisor",
+  "checked": "2026-10-22"
+ },
+ "ley-sociedades-capital": {
+  "title": "Real Decreto Legislativo 1/2010, texto refundido de la Ley de Sociedades de Capital",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2010-10544",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-autonomo": {
+  "title": "Ley 20/2007, del Estatuto del trabajo autónomo",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-13409",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-crea-crece": {
+  "title": "Ley 18/2022, de creación y crecimiento de empresas",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-15818",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-startups": {
+  "title": "Ley 28/2022, de fomento del ecosistema de las empresas emergentes",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-21739",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-is": {
+  "title": "Ley 27/2014, del Impuesto sobre Sociedades",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-iva": {
+  "title": "Ley 37/1992, del Impuesto sobre el Valor Añadido",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-28740",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-irpf": {
+  "title": "Ley 35/2006, del Impuesto sobre la Renta de las Personas Físicas",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "reglamento-facturacion": {
+  "title": "Real Decreto 1619/2012, Reglamento de facturación",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2012-14696",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-concursal": {
+  "title": "Real Decreto Legislativo 1/2020, texto refundido de la Ley Concursal",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2020-4859",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-marcas": {
+  "title": "Ley 17/2001, de Marcas",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2001-23093",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "lopdgdd": {
+  "title": "Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "estatuto-trabajadores": {
+  "title": "Real Decreto Legislativo 2/2015, texto refundido de la Ley del Estatuto de los Trabajadores",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "lgss": {
+  "title": "Real Decreto Legislativo 8/2015, texto refundido de la Ley General de la Seguridad Social",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "rdl-cotizacion-autonomos": {
+  "title": "Real Decreto-ley 13/2022, nuevo sistema de cotización de los autónomos por ingresos reales",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-12482",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-prl": {
+  "title": "Ley 31/1995, de Prevención de Riesgos Laborales",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-24292",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-cooperativas": {
+  "title": "Ley 27/1999, de Cooperativas",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1999-15681",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-sociedades-laborales": {
+  "title": "Ley 44/2015, de Sociedades Laborales y Participadas",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11071",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-emprendedores": {
+  "title": "Ley 14/2013, de apoyo a los emprendedores y su internacionalización",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2013-10074",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-consumidores": {
+  "title": "Real Decreto Legislativo 1/2007, texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios",
+  "publisher": "BOE",
+  "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555",
+  "type": "ley",
+  "checked": "2026-10-22"
+ },
+ "ley-morosidad": {
+  "title": "Ley 3/2004, por la que se establecen medidas de lucha contra la morosidad en las operaciones comerciales",
+  "publisher": "BOE",
+  "url": null,
+  "type": "ley",
+  "checked": null
  }
 }

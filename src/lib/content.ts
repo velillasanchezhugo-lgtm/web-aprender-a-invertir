@@ -26,7 +26,14 @@ export const LEVELS = { inicial: 'Inicial', intermedio: 'Intermedio', avanzado: 
 export const STATUS = { borrador: 'Borrador', 'revision-pendiente': 'Pendiente de revisión humana', revisado: 'Revisado' } as const;
 
 export const sourceById = (id: string): Source | undefined => (sources as Record<string, Source>)[id];
-export const glossaryList = glossary as { id: string; term: string; def: string; short?: string; abbr?: string; lesson: string | null }[];
+export type GlossaryEntry = { id: string; term: string; def: string; short?: string; abbr?: string; lesson: string | null };
+/** Glosario de Inversión (página /es/glosario/). */
+export const glossaryList = glossary as GlossaryEntry[];
+/** Glosario de Emprendimiento: un archivo por módulo en src/data/glossary-emprendimiento/. */
+export const glossaryEm = Object.values(import.meta.glob<GlossaryEntry[]>('../data/glossary-emprendimiento/*.json', { eager: true, import: 'default' })).flat()
+  .sort((a, b) => a.term.localeCompare(b.term, 'es'));
+/** Todos los términos, para las cartulinas de palabras clave de cualquier formación. */
+export const glossaryAll = [...glossaryList, ...glossaryEm.filter((g) => !glossaryList.some((x) => x.id === g.id))];
 
 export async function lessons(): Promise<Lesson[]> {
   return (await getCollection('lessons', ({ data }) => !data.draft)).sort((a, b) =>

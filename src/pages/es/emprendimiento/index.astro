@@ -1,0 +1,81 @@
+---
+/** Portada de la formación Emprendimiento: sus tres niveles y el orden del Nivel 1. */
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Price from '../../../components/Price.astro';
+import { PRICING } from '../../../config/site';
+import { EM, EM_TRACKS, EM_SESSION, emSessions, emTrackHref } from '../../../lib/emprendimiento';
+const all = await emSessions();
+const count = (id: string) => all.filter((s) => s.data.track === id).length;
+const n2 = EM.n2.modules.reduce((a, m) => a + m.items.length, 0);
+const n3 = EM.n3.modules.reduce((a, m) => a + m.items.length, 0);
+const levels = [
+  { t: EM.tiers[0], meta: `${all.length} sesiones de 5 minutos`, price: null },
+  { t: EM.tiers[1], meta: `${n2} clases de 15 a 30 minutos`, price: `${PRICING.n2.monthly} o ${PRICING.n2.annual}` },
+  { t: EM.tiers[2], meta: `${n3} lecciones y un proyecto`, price: `curso ${PRICING.n3.course} · certificación aparte ${PRICING.n3.certification}` },
+];
+const core = EM.stages.find((s) => s.id === 'B')!.tracks;
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Emprendimiento · umotion Academy', description: EM.tiers[0].promise, inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' } };
+---
+<Base title="Emprendimiento: monta tu negocio desde cero" description="Formación de emprendimiento para España en tres niveles: desde cero y gratis, avanzado para llevar tu negocio y profesional para asesorar a empresas." jsonLd={jsonLd} allowAds={false}>
+  <section class="f-hero dots">
+    <div class="container">
+      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: 'Emprendimiento' }]} />
+      <p class="eyebrow">Formación · 3 niveles</p>
+      <h1>Emprendimiento</h1>
+      <p class="lede">Todo lo que necesitas para montar y llevar un negocio en España, en el orden en que lo vas a necesitar: comprobar tu idea, elegir la forma jurídica, darte de alta, pagar bien tus impuestos y cuotas, conseguir financiación y clientes, y cumplir la ley sin sustos.</p>
+      <div class="cta">
+        {all[0] && <a class="btn brand" href={`${EM_SESSION}${all[0].id}/`}>Empezar gratis <span class="arrow" aria-hidden="true">→</span></a>}
+        <a class="btn secondary" href="/es/emprendimiento/nivel-1/">Ver el Nivel 1</a>
+      </div>
+    </div>
+  </section>
+  <div class="container f-body">
+    <h2 class="h3">Tres niveles</h2>
+    <ol class="levels">
+      {levels.map(({ t, meta, price }) => (
+        <li><a class="card lv" href={t.href}>
+          <span class="ln mono">{t.n}</span>
+          <strong>{t.title}</strong>
+          <span class="small sub">{t.subtitle}</span>
+          <span class="small muted">{meta}</span>
+          <span class="small pr">{price ? <Price text={price} /> : 'Gratis'}</span>
+        </a></li>
+      ))}
+    </ol>
+    <h2 class="h3">El núcleo del Nivel 1, por orden de importancia</h2>
+    <p class="small muted">Antes, el Camino Cero: si tu idea tiene clientes, tus números y lo que arriesgas.</p>
+    <ol class="core">
+      <li><a href={emTrackHref('em-cero')}><span class="mono small">A</span><span><strong>{EM_TRACKS['em-cero'].label}</strong><span class="small muted">{EM_TRACKS['em-cero'].short}</span></span></a></li>
+      {core.map((id, i) => (
+        <li>{count(id)
+          ? <a href={emTrackHref(id)}><span class="mono small">B{i + 1}</span><span><strong>{EM_TRACKS[id].label}</strong><span class="small muted">{EM_TRACKS[id].short}</span></span></a>
+          : <span class="soon"><span class="mono small">B{i + 1}</span><span><strong>{EM_TRACKS[id].label}</strong><span class="small muted">En preparación</span></span></span>}</li>
+      ))}
+    </ol>
+    <div class="callout note legal"><p>Contenido educativo y general para residentes en España, basado en fuentes oficiales (BOE, Agencia Tributaria, Seguridad Social). No es asesoramiento jurídico, fiscal ni laboral: para tu caso concreto, consulta a una gestoría o a un profesional.</p></div>
+  </div>
+</Base>
+<style>
+  .f-hero { border-bottom: 1px solid var(--rule); padding: 0.5rem 0 2.2rem; margin-bottom: 1.5rem; }
+  .f-hero h1 { font-size: clamp(2.6rem, 1.8rem + 3.8vw, 4.8rem); margin: 0.2rem 0 0.8rem; letter-spacing: -0.045em; }
+  .f-hero .lede { max-width: 64ch; }
+  .cta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
+  .f-body { padding-bottom: 3rem; }
+  .h3 { font-size: 1.4rem; margin: 1.6rem 0 0.4rem; }
+  .levels { list-style: none; padding: 0; display: grid; gap: 0.7rem; margin: 1rem 0; }
+  @media (min-width: 760px) { .levels { grid-template-columns: repeat(3, 1fr); } }
+  .lv { display: flex; flex-direction: column; gap: 0.25rem; height: 100%; text-decoration: none; color: var(--ink); }
+  .lv strong { font-size: 1.15rem; }
+  .ln { width: 2.4rem; height: 2.4rem; border-radius: 12px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); margin-bottom: 0.4rem; }
+  .levels li:first-child .ln { background: var(--u-grad); color: #fff; }
+  .sub { color: var(--teal); font-weight: 600; }
+  .pr { margin-top: auto; padding-top: 0.4rem; font-weight: 600; }
+  .core { list-style: none; padding: 0; display: grid; gap: 0.4rem; margin: 0.8rem 0 1.5rem; }
+  @media (min-width: 760px) { .core { grid-template-columns: 1fr 1fr; } }
+  .core a, .core .soon { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0.6rem; align-items: center; padding: 0.7rem 0.85rem; border: 1px solid var(--rule); border-radius: 14px; background: var(--card); color: var(--ink); text-decoration: none; }
+  .core a:hover { border-color: var(--u-blue); }
+  .core .soon { opacity: 0.7; border-style: dashed; }
+  .core .mono { display: grid; place-items: center; height: 2.2rem; border-radius: 10px; background: var(--paper-2); color: var(--teal); font-weight: 700; }
+  .core a > span:last-child, .core .soon > span:last-child { display: flex; flex-direction: column; gap: 0.1rem; }
+</style>

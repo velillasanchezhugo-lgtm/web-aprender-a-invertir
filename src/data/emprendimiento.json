@@ -1,0 +1,1882 @@
+{
+  "_doc": "Formación Emprendimiento: niveles, módulos del Nivel 1, competencias y temario de los niveles 2 y 3. Mismo sistema que Inversión (docs/ESTANDAR-FORMACIONES.pdf). Las sesiones del Nivel 1 están en src/content/emprendimiento/.",
+  "id": "emprendimiento",
+  "title": "Emprendimiento",
+  "base": "/es/emprendimiento/",
+  "tiers": [
+    {
+      "n": 1,
+      "id": "n1",
+      "title": "Emprender desde cero",
+      "subtitle": "Montar tu negocio sin perderte",
+      "access": "free",
+      "promise": "Al terminar sabes si tu idea tiene clientes, qué forma jurídica te encaja, qué trámites hacer y en qué orden, qué impuestos y cuotas pagarás y cuándo, y dónde pedir ayuda y financiación.",
+      "forWho": "Cualquiera, desde cero.",
+      "format": "Sesiones de 5 minutos",
+      "closing": "Examen del Nivel 1 y «Mi proyecto en una página»",
+      "recognition": "Insignia gratuita «Fundamentos de emprendimiento — umotion»",
+      "href": "/es/emprendimiento/nivel-1/"
+    },
+    {
+      "n": 2,
+      "id": "n2",
+      "title": "Avanzado",
+      "subtitle": "Saber de sobra para llevar tu negocio",
+      "access": "plan-avanzado",
+      "promise": "Al terminar llevas tu negocio con soltura: lees tus cuentas, resuelves los casos de IVA, IRPF y Sociedades más habituales, contratas y gestionas personas, vendes de forma medible y negocias con bancos, socios y proveedores.",
+      "forWho": "Quien ya tiene un negocio o está a punto de abrirlo.",
+      "format": "Clases de 15 a 30 minutos",
+      "volume": "46 clases, unas 17 h, más una clase nueva cada mes",
+      "closing": "Examen del Nivel 2 y proyecto «Plan de empresa revisado»",
+      "recognition": "Insignia «Emprendimiento Nivel 2 — umotion»",
+      "href": "/es/emprendimiento/nivel-2/"
+    },
+    {
+      "n": 3,
+      "id": "n3",
+      "title": "Profesional",
+      "subtitle": "Con certificado umotion verificable",
+      "access": "curso-profesional",
+      "promise": "Al terminar tienes criterio técnico para asesorar a pequeñas empresas: cierre contable, planificación fiscal legítima, operaciones societarias, valoración y rondas, reestructuración, cumplimiento y empresa familiar.",
+      "forWho": "Quien quiere asesorar a empresas, trabajar en una gestoría o dirigir una pyme.",
+      "format": "Lecciones de 30 a 45 minutos",
+      "volume": "35 lecciones y un proyecto, unas 21 h",
+      "closing": "Examen final y proyecto profesional con revisión humana",
+      "recognition": "«Certificado umotion en Emprendimiento — Nivel Profesional», verificable",
+      "href": "/es/emprendimiento/nivel-3/"
+    }
+  ],
+  "stages": [
+    {
+      "id": "A",
+      "stage": "Etapa A",
+      "title": "Camino Cero del emprendedor",
+      "desc": "Antes de gastar un euro: si tu idea tiene clientes, tus números y lo que arriesgas.",
+      "tracks": [
+        "em-cero"
+      ]
+    },
+    {
+      "id": "B",
+      "stage": "Etapa B · núcleo",
+      "title": "Montar y llevar tu negocio",
+      "desc": "Por orden de importancia: forma jurídica, altas, impuestos, Seguridad Social, financiación, clientes y obligaciones legales.",
+      "tracks": [
+        "em-forma",
+        "em-alta",
+        "em-impuestos",
+        "em-cotizacion",
+        "em-dinero",
+        "em-clientes",
+        "em-legal"
+      ]
+    },
+    {
+      "id": "C",
+      "stage": "Ampliación",
+      "title": "Crecer o reconducir",
+      "desc": "Cuando el negocio ya funciona, o si deja de funcionar.",
+      "tracks": [
+        "em-crecer",
+        "em-cerrar"
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "em-cero",
+      "label": "Camino Cero del emprendedor",
+      "short": "Antes de montar nada: idea, números y riesgo",
+      "stage": "A"
+    },
+    {
+      "id": "em-forma",
+      "label": "Elegir la forma jurídica",
+      "short": "Autónomo, sociedad limitada y otras formas",
+      "stage": "B"
+    },
+    {
+      "id": "em-alta",
+      "label": "Darte de alta paso a paso",
+      "short": "Instituciones, trámites y licencias",
+      "stage": "B"
+    },
+    {
+      "id": "em-impuestos",
+      "label": "Impuestos del día a día",
+      "short": "IVA, facturas, IRPF, Sociedades y plazos",
+      "stage": "B"
+    },
+    {
+      "id": "em-cotizacion",
+      "label": "Seguridad Social y personas",
+      "short": "Cuotas, coberturas y tu primer empleado",
+      "stage": "B"
+    },
+    {
+      "id": "em-dinero",
+      "label": "Dinero para arrancar",
+      "short": "Cuánto necesitas, préstamos, ENISA y ayudas",
+      "stage": "B"
+    },
+    {
+      "id": "em-clientes",
+      "label": "Clientes, precio y ventas",
+      "short": "Conseguir clientes, poner precio y cobrar",
+      "stage": "B"
+    },
+    {
+      "id": "em-legal",
+      "label": "Obligaciones legales",
+      "short": "Datos, marca, contratos, seguros y libros",
+      "stage": "B"
+    },
+    {
+      "id": "em-crecer",
+      "label": "Crecer con cabeza",
+      "short": "Indicadores, gestoría, digitalizar y vender fuera",
+      "stage": "C"
+    },
+    {
+      "id": "em-cerrar",
+      "label": "Si las cosas van mal",
+      "short": "Señales de alarma, cerrar y volver a empezar",
+      "stage": "C"
+    }
+  ],
+  "n1Capacities": [
+    {
+      "id": "c1",
+      "text": "Explica qué problema resuelve su proyecto, para quién y cómo ha comprobado que alguien pagaría.",
+      "skills": [
+        "em-problema-cliente",
+        "em-cliente-propuesta"
+      ]
+    },
+    {
+      "id": "c2",
+      "text": "Calcula con la herramienta su margen, su punto de equilibrio y los meses de caja que necesita.",
+      "skills": [
+        "em-numeros-basicos",
+        "em-caja",
+        "em-necesidades-financiacion"
+      ]
+    },
+    {
+      "id": "c3",
+      "text": "Sabe qué arriesga personalmente y elige la forma jurídica que encaja con su caso.",
+      "skills": [
+        "em-riesgo-personal",
+        "em-formas-juridicas",
+        "em-socios"
+      ]
+    },
+    {
+      "id": "c4",
+      "text": "Ordena los trámites para empezar y sabe a qué organismo acudir en cada uno.",
+      "skills": [
+        "em-instituciones",
+        "em-tramites-alta",
+        "em-licencias"
+      ]
+    },
+    {
+      "id": "c5",
+      "text": "Tiene identificación digital y vigila sus notificaciones electrónicas.",
+      "skills": [
+        "em-administracion-electronica"
+      ]
+    },
+    {
+      "id": "c6",
+      "text": "Emite facturas correctas y entiende cómo funciona el IVA de su actividad.",
+      "skills": [
+        "em-iva",
+        "em-factura"
+      ]
+    },
+    {
+      "id": "c7",
+      "text": "Sabe cómo tributa su beneficio, qué gastos puede deducir y cuándo presenta cada modelo.",
+      "skills": [
+        "em-irpf-actividad",
+        "em-sociedades",
+        "em-gastos-deducibles",
+        "em-calendario-fiscal"
+      ]
+    },
+    {
+      "id": "c8",
+      "text": "Elige su base de cotización, conoce sus coberturas y el coste real de contratar.",
+      "skills": [
+        "em-cotizacion",
+        "em-coberturas",
+        "em-contratar"
+      ]
+    },
+    {
+      "id": "c9",
+      "text": "Compara fuentes de financiación y busca ayudas en fuentes oficiales.",
+      "skills": [
+        "em-fuentes-financiacion",
+        "em-ayudas"
+      ]
+    },
+    {
+      "id": "c10",
+      "text": "Pone un precio que cubre costes e impuestos y sabe cobrar y reclamar.",
+      "skills": [
+        "em-precio",
+        "em-ventas",
+        "em-cobro"
+      ]
+    },
+    {
+      "id": "c11",
+      "text": "Cumple lo básico en datos, web, marca, contratos, seguros y libros.",
+      "skills": [
+        "em-proteccion-datos",
+        "em-venta-online",
+        "em-marca",
+        "em-contratos",
+        "em-seguros-prl",
+        "em-contabilidad-basica"
+      ]
+    },
+    {
+      "id": "c12",
+      "text": "Sigue sus indicadores y reconoce a tiempo cuándo crecer, pedir ayuda o reconducir.",
+      "skills": [
+        "em-crecimiento",
+        "em-cierre-insolvencia"
+      ]
+    }
+  ],
+  "domains": [
+    {
+      "id": "em-base",
+      "label": "Tu proyecto",
+      "desc": "Problema, cliente, números básicos, caja y lo que arriesgas.",
+      "level": 1
+    },
+    {
+      "id": "em-forma",
+      "label": "Forma jurídica",
+      "desc": "Autónomo, sociedades y socios.",
+      "level": 1
+    },
+    {
+      "id": "em-tramites",
+      "label": "Trámites e instituciones",
+      "desc": "Quién es quién, altas, licencias y administración electrónica.",
+      "level": 1
+    },
+    {
+      "id": "em-fiscal",
+      "label": "Impuestos",
+      "desc": "IVA, facturas, IRPF, Sociedades, gastos y calendario.",
+      "level": 1
+    },
+    {
+      "id": "em-cotizacion",
+      "label": "Seguridad Social y personas",
+      "desc": "Cotización, coberturas y contratar.",
+      "level": 1
+    },
+    {
+      "id": "em-financiacion",
+      "label": "Financiación",
+      "desc": "Cuánto necesitas, de dónde sale y ayudas públicas.",
+      "level": 1
+    },
+    {
+      "id": "em-comercial",
+      "label": "Clientes y ventas",
+      "desc": "Cliente, precio, ventas, cobro y venta online.",
+      "level": 1
+    },
+    {
+      "id": "em-legal",
+      "label": "Legal y protección",
+      "desc": "Datos, marca, contratos, seguros, riesgos y libros.",
+      "level": 1
+    },
+    {
+      "id": "em-crecer",
+      "label": "Crecer o cerrar",
+      "desc": "Indicadores, crecimiento y salida ordenada.",
+      "level": 1
+    },
+    {
+      "id": "em2-gestion",
+      "label": "Gestión del negocio",
+      "desc": "Contabilidad, finanzas, costes y operaciones.",
+      "level": 2
+    },
+    {
+      "id": "em2-fiscal",
+      "label": "Fiscalidad aplicada",
+      "desc": "IVA, IRPF y Sociedades en casos reales.",
+      "level": 2
+    },
+    {
+      "id": "em2-personas",
+      "label": "Personas y laboral",
+      "desc": "Contratos, nóminas, convenios y conflictos.",
+      "level": 2
+    },
+    {
+      "id": "em2-mercado",
+      "label": "Mercado y crecimiento",
+      "desc": "Ventas, marketing, digital e internacional.",
+      "level": 2
+    },
+    {
+      "id": "em2-juridico",
+      "label": "Jurídico y riesgos",
+      "desc": "Socios, administradores, contratos y seguros.",
+      "level": 2
+    },
+    {
+      "id": "em3-pro",
+      "label": "Nivel profesional",
+      "desc": "Asesorar empresas con criterio técnico.",
+      "level": 3
+    }
+  ],
+  "skills": [
+    {
+      "id": "em-problema-cliente",
+      "domain": "em-base",
+      "label": "Problema y cliente",
+      "can": "Describes qué problema resuelves, para quién y cómo comprobar que pagarían.",
+      "level": 1
+    },
+    {
+      "id": "em-numeros-basicos",
+      "domain": "em-base",
+      "label": "Números básicos",
+      "can": "Separas ingresos, costes fijos y variables, y calculas margen y punto de equilibrio con la herramienta.",
+      "level": 1
+    },
+    {
+      "id": "em-caja",
+      "domain": "em-base",
+      "label": "Caja",
+      "can": "Distingues beneficio y caja y prevés los meses en que te faltará dinero.",
+      "level": 1
+    },
+    {
+      "id": "em-riesgo-personal",
+      "domain": "em-base",
+      "label": "Riesgo personal",
+      "can": "Sabes qué parte de tu patrimonio arriesgas según cómo emprendas y qué firmas.",
+      "level": 1
+    },
+    {
+      "id": "em-formas-juridicas",
+      "domain": "em-forma",
+      "label": "Formas jurídicas",
+      "can": "Comparas autónomo, SL, comunidad de bienes, cooperativa y sociedad laboral para un caso concreto.",
+      "level": 1
+    },
+    {
+      "id": "em-socios",
+      "domain": "em-forma",
+      "label": "Emprender con socios",
+      "can": "Sabes qué pactar con tus socios antes de empezar.",
+      "level": 1
+    },
+    {
+      "id": "em-instituciones",
+      "domain": "em-tramites",
+      "label": "Instituciones",
+      "can": "Sabes a qué organismo acudir para cada trámite y dónde pedir ayuda gratuita.",
+      "level": 1
+    },
+    {
+      "id": "em-tramites-alta",
+      "domain": "em-tramites",
+      "label": "Darse de alta",
+      "can": "Ordenas los trámites para empezar como autónomo o crear una SL.",
+      "level": 1
+    },
+    {
+      "id": "em-licencias",
+      "domain": "em-tramites",
+      "label": "Licencias y permisos",
+      "can": "Sabes cuándo necesitas licencia o declaración responsable y dónde se pide.",
+      "level": 1
+    },
+    {
+      "id": "em-administracion-electronica",
+      "domain": "em-tramites",
+      "label": "Administración electrónica",
+      "can": "Tienes identificación digital y no se te pasan las notificaciones.",
+      "level": 1
+    },
+    {
+      "id": "em-iva",
+      "domain": "em-fiscal",
+      "label": "IVA",
+      "can": "Entiendes cómo se repercute, se deduce y se declara el IVA.",
+      "level": 1
+    },
+    {
+      "id": "em-factura",
+      "domain": "em-fiscal",
+      "label": "Facturación",
+      "can": "Emites facturas con todos los requisitos y sabes qué cambia con los sistemas de facturación verificables.",
+      "level": 1
+    },
+    {
+      "id": "em-irpf-actividad",
+      "domain": "em-fiscal",
+      "label": "IRPF de la actividad",
+      "can": "Sabes cómo tributa el rendimiento de un autónomo y qué son pagos fraccionados y retenciones.",
+      "level": 1
+    },
+    {
+      "id": "em-sociedades",
+      "domain": "em-fiscal",
+      "label": "Impuesto sobre Sociedades",
+      "can": "Entiendes cómo tributa una SL pequeña y cómo sacar dinero de ella.",
+      "level": 1
+    },
+    {
+      "id": "em-gastos-deducibles",
+      "domain": "em-fiscal",
+      "label": "Gastos deducibles",
+      "can": "Distingues un gasto deducible de uno que no lo es y guardas la prueba.",
+      "level": 1
+    },
+    {
+      "id": "em-calendario-fiscal",
+      "domain": "em-fiscal",
+      "label": "Calendario fiscal",
+      "can": "Conoces tus declaraciones y plazos y no te pierdes ninguno.",
+      "level": 1
+    },
+    {
+      "id": "em-cotizacion",
+      "domain": "em-cotizacion",
+      "label": "Cotización del autónomo",
+      "can": "Eliges tu base según tus ingresos previstos y entiendes la regularización.",
+      "level": 1
+    },
+    {
+      "id": "em-coberturas",
+      "domain": "em-cotizacion",
+      "label": "Coberturas",
+      "can": "Sabes qué te cubre la Seguridad Social como autónomo y qué no.",
+      "level": 1
+    },
+    {
+      "id": "em-contratar",
+      "domain": "em-cotizacion",
+      "label": "Contratar",
+      "can": "Calculas el coste real de un empleado con la herramienta y conoces los pasos para contratar.",
+      "level": 1
+    },
+    {
+      "id": "em-necesidades-financiacion",
+      "domain": "em-financiacion",
+      "label": "Cuánto necesitas",
+      "can": "Estimas inversión inicial y dinero para los primeros meses.",
+      "level": 1
+    },
+    {
+      "id": "em-fuentes-financiacion",
+      "domain": "em-financiacion",
+      "label": "Fuentes de financiación",
+      "can": "Comparas ahorro, préstamos, ENISA, inversores y crowdfunding según tu caso.",
+      "level": 1
+    },
+    {
+      "id": "em-ayudas",
+      "domain": "em-financiacion",
+      "label": "Ayudas públicas",
+      "can": "Buscas ayudas en fuentes oficiales y lees sus condiciones antes de contar con ellas.",
+      "level": 1
+    },
+    {
+      "id": "em-cliente-propuesta",
+      "domain": "em-comercial",
+      "label": "Cliente y propuesta",
+      "can": "Defines a tu cliente ideal y por qué te elegiría.",
+      "level": 1
+    },
+    {
+      "id": "em-precio",
+      "domain": "em-comercial",
+      "label": "Precio",
+      "can": "Fijas un precio que cubre costes, tu tiempo e impuestos.",
+      "level": 1
+    },
+    {
+      "id": "em-ventas",
+      "domain": "em-comercial",
+      "label": "Primeras ventas",
+      "can": "Tienes un plan sencillo para conseguir los primeros clientes y darte a conocer.",
+      "level": 1
+    },
+    {
+      "id": "em-cobro",
+      "domain": "em-comercial",
+      "label": "Cobro",
+      "can": "Pactas plazos, reclamas impagos y reduces el riesgo de morosidad.",
+      "level": 1
+    },
+    {
+      "id": "em-venta-online",
+      "domain": "em-comercial",
+      "label": "Venta online",
+      "can": "Sabes qué exige la ley a una web que vende: aviso legal, condiciones y desistimiento.",
+      "level": 1
+    },
+    {
+      "id": "em-proteccion-datos",
+      "domain": "em-legal",
+      "label": "Protección de datos",
+      "can": "Cumples lo básico del RGPD en un negocio pequeño.",
+      "level": 1
+    },
+    {
+      "id": "em-marca",
+      "domain": "em-legal",
+      "label": "Marca y nombre",
+      "can": "Compruebas y proteges el nombre de tu negocio.",
+      "level": 1
+    },
+    {
+      "id": "em-contratos",
+      "domain": "em-legal",
+      "label": "Contratos básicos",
+      "can": "Sabes qué cláusulas mirar en contratos con clientes, proveedores y local.",
+      "level": 1
+    },
+    {
+      "id": "em-seguros-prl",
+      "domain": "em-legal",
+      "label": "Seguros y prevención",
+      "can": "Sabes qué seguros y qué prevención de riesgos necesita tu actividad.",
+      "level": 1
+    },
+    {
+      "id": "em-contabilidad-basica",
+      "domain": "em-legal",
+      "label": "Libros y contabilidad",
+      "can": "Sabes qué libros llevar, cuánto tiempo guardar papeles y cuándo delegar.",
+      "level": 1
+    },
+    {
+      "id": "em-crecimiento",
+      "domain": "em-crecer",
+      "label": "Crecer con cabeza",
+      "can": "Sigues unos pocos indicadores y decides cuándo contratar, digitalizar o vender fuera.",
+      "level": 1
+    },
+    {
+      "id": "em-cierre-insolvencia",
+      "domain": "em-crecer",
+      "label": "Cerrar o reconducir",
+      "can": "Reconoces las señales de alarma y conoces las salidas ordenadas, incluida la segunda oportunidad.",
+      "level": 1
+    },
+    {
+      "id": "em2-contabilidad",
+      "domain": "em2-gestion",
+      "label": "Contabilidad del PGC de pymes",
+      "can": "Lees y preparas balance y cuenta de resultados de una pyme.",
+      "level": 2
+    },
+    {
+      "id": "em2-finanzas",
+      "domain": "em2-gestion",
+      "label": "Finanzas de la pyme",
+      "can": "Analizas rentabilidad, liquidez y endeudamiento y haces un presupuesto de tesorería.",
+      "level": 2
+    },
+    {
+      "id": "em2-costes",
+      "domain": "em2-gestion",
+      "label": "Costes y precios",
+      "can": "Calculas el coste completo de un producto o servicio y defiendes tu precio.",
+      "level": 2
+    },
+    {
+      "id": "em2-operaciones",
+      "domain": "em2-gestion",
+      "label": "Operaciones y proveedores",
+      "can": "Gestionas compras, stock, proveedores y calidad.",
+      "level": 2
+    },
+    {
+      "id": "em2-iva",
+      "domain": "em2-fiscal",
+      "label": "IVA en casos reales",
+      "can": "Resuelves operaciones intracomunitarias, inversión del sujeto pasivo, recargo de equivalencia y prorrata.",
+      "level": 2
+    },
+    {
+      "id": "em2-renta-sociedades",
+      "domain": "em2-fiscal",
+      "label": "IRPF y Sociedades aplicados",
+      "can": "Comparas la tributación de autónomo y SL, retribución del socio y operaciones vinculadas.",
+      "level": 2
+    },
+    {
+      "id": "em2-inspeccion",
+      "domain": "em2-fiscal",
+      "label": "Comprobaciones e inspección",
+      "can": "Sabes responder a un requerimiento y qué derechos tienes.",
+      "level": 2
+    },
+    {
+      "id": "em2-laboral",
+      "domain": "em2-personas",
+      "label": "Laboral",
+      "can": "Eliges contrato, aplicas el convenio y entiendes una nómina.",
+      "level": 2
+    },
+    {
+      "id": "em2-conflictos",
+      "domain": "em2-personas",
+      "label": "Conflictos y extinción",
+      "can": "Conoces despidos, ERTE y cómo reducir el riesgo de demandas.",
+      "level": 2
+    },
+    {
+      "id": "em2-equipo",
+      "domain": "em2-personas",
+      "label": "Liderar un equipo",
+      "can": "Seleccionas, organizas y evalúas a un equipo pequeño.",
+      "level": 2
+    },
+    {
+      "id": "em2-marketing",
+      "domain": "em2-mercado",
+      "label": "Marketing y ventas",
+      "can": "Construyes un embudo de ventas medible.",
+      "level": 2
+    },
+    {
+      "id": "em2-digital",
+      "domain": "em2-mercado",
+      "label": "Negocio digital",
+      "can": "Vendes en tu web y en plataformas cumpliendo sus normas.",
+      "level": 2
+    },
+    {
+      "id": "em2-internacional",
+      "domain": "em2-mercado",
+      "label": "Vender fuera",
+      "can": "Planificas exportar o vender a la UE con su IVA y aduanas.",
+      "level": 2
+    },
+    {
+      "id": "em2-socios-administradores",
+      "domain": "em2-juridico",
+      "label": "Socios y administradores",
+      "can": "Redactas lo esencial de un pacto de socios y conoces la responsabilidad del administrador.",
+      "level": 2
+    },
+    {
+      "id": "em2-contratos",
+      "domain": "em2-juridico",
+      "label": "Contratos y garantías",
+      "can": "Negocias contratos mercantiles, avales y garantías.",
+      "level": 2
+    },
+    {
+      "id": "em2-riesgos",
+      "domain": "em2-juridico",
+      "label": "Riesgos y seguros",
+      "can": "Haces un mapa de riesgos y eliges coberturas.",
+      "level": 2
+    },
+    {
+      "id": "em2-financiacion",
+      "domain": "em2-gestion",
+      "label": "Financiación bancaria",
+      "can": "Negocias con bancos: póliza, leasing, confirming, factoring y avales.",
+      "level": 2
+    },
+    {
+      "id": "em3-contabilidad-avanzada",
+      "domain": "em3-pro",
+      "label": "Contabilidad avanzada y cierre",
+      "can": "Preparas el cierre, las cuentas anuales y su depósito.",
+      "level": 3
+    },
+    {
+      "id": "em3-planificacion-fiscal",
+      "domain": "em3-pro",
+      "label": "Planificación fiscal legítima",
+      "can": "Diseñas la estructura fiscal de una pyme dentro de la ley.",
+      "level": 3
+    },
+    {
+      "id": "em3-operaciones-societarias",
+      "domain": "em3-pro",
+      "label": "Operaciones societarias",
+      "can": "Conoces ampliaciones, transformaciones, fusiones y escisiones.",
+      "level": 3
+    },
+    {
+      "id": "em3-valoracion",
+      "domain": "em3-pro",
+      "label": "Valoración de empresas",
+      "can": "Valoras una pyme o una startup y explicas los supuestos.",
+      "level": 3
+    },
+    {
+      "id": "em3-startups",
+      "domain": "em3-pro",
+      "label": "Startups y rondas",
+      "can": "Conoces la Ley de startups, rondas, notas convertibles y planes de opciones.",
+      "level": 3
+    },
+    {
+      "id": "em3-insolvencia",
+      "domain": "em3-pro",
+      "label": "Reestructuración e insolvencia",
+      "can": "Conoces los planes de reestructuración, el concurso y la exoneración de deudas.",
+      "level": 3
+    },
+    {
+      "id": "em3-compliance",
+      "domain": "em3-pro",
+      "label": "Cumplimiento normativo",
+      "can": "Diseñas un programa de cumplimiento proporcionado al tamaño.",
+      "level": 3
+    },
+    {
+      "id": "em3-empresa-familiar",
+      "domain": "em3-pro",
+      "label": "Empresa familiar y sucesión",
+      "can": "Conoces el protocolo familiar y la fiscalidad de la sucesión.",
+      "level": 3
+    },
+    {
+      "id": "em3-estrategia",
+      "domain": "em3-pro",
+      "label": "Estrategia y dirección",
+      "can": "Haces un plan estratégico con indicadores.",
+      "level": 3
+    },
+    {
+      "id": "em3-asesoramiento",
+      "domain": "em3-pro",
+      "label": "Práctica profesional",
+      "can": "Asesoras a un cliente con método, ética y límites legales.",
+      "level": 3
+    }
+  ],
+  "n2": {
+    "monthly": "Clase del mes: cada mes, los cambios de normativa, cuotas y plazos que afectan a autónomos y pymes, explicados con ejemplos.",
+    "modules": [
+      {
+        "code": "num",
+        "title": "Contabilidad que sirve para decidir",
+        "desc": "Leer y preparar las cuentas de tu negocio.",
+        "minutes": 135,
+        "items": [
+          {
+            "id": "em2-num-01-la-contabilidad-por-dentro",
+            "title": "La contabilidad por dentro",
+            "minutes": 20,
+            "content": "Partida doble, cuentas del Plan General de Contabilidad de pymes, devengo frente a caja.",
+            "practice": "Registrar el primer mes de una tienda ficticia",
+            "skills": [
+              "em2-contabilidad"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-num-02-balance-y-cuenta-de-resultados",
+            "title": "Balance y cuenta de resultados",
+            "minutes": 25,
+            "content": "Activo, pasivo y patrimonio neto; ingresos, gastos y resultado; cómo se relacionan.",
+            "practice": "Leer las cuentas de una SL ficticia",
+            "skills": [
+              "em2-contabilidad"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-num-03-amortizaciones-y-provisiones",
+            "title": "Amortizaciones, provisiones y existencias",
+            "minutes": 20,
+            "content": "Por qué un ordenador no es gasto de un año, tablas de amortización fiscal, inventario.",
+            "practice": "Amortizar la furgoneta de un reparto",
+            "skills": [
+              "em2-contabilidad"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-num-04-ratios-que-importan",
+            "title": "Los ratios que importan",
+            "minutes": 20,
+            "content": "Liquidez, endeudamiento, rentabilidad, periodo medio de cobro y pago.",
+            "practice": "Diagnóstico de una pyme con cinco ratios",
+            "skills": [
+              "em2-finanzas"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-num-05-presupuesto-y-tesoreria",
+            "title": "Presupuesto anual y previsión de tesorería",
+            "minutes": 25,
+            "content": "Presupuesto de ingresos y gastos, previsión mensual de caja, desviaciones.",
+            "practice": "Previsión de caja de 12 meses con la herramienta",
+            "skills": [
+              "em2-finanzas"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-num-06-coste-completo",
+            "title": "El coste completo de lo que vendes",
+            "minutes": 25,
+            "content": "Costes directos e indirectos, reparto de costes, coste por hora, margen de contribución.",
+            "practice": "Coste por hora de una consultora",
+            "skills": [
+              "em2-costes"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "iva",
+        "title": "IVA en casos reales",
+        "desc": "Las situaciones que generan más errores y sanciones.",
+        "minutes": 110,
+        "items": [
+          {
+            "id": "em2-iva-01-iva-intracomunitario",
+            "title": "Vender y comprar en la UE",
+            "minutes": 25,
+            "content": "Operaciones intracomunitarias, Registro de Operadores Intracomunitarios (ROI), modelo 349.",
+            "practice": "Factura a un cliente francés con NIF-IVA",
+            "skills": [
+              "em2-iva",
+              "em2-internacional"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-iva-02-ventanilla-unica-oss",
+            "title": "Ventas a distancia y ventanilla única (OSS)",
+            "minutes": 20,
+            "content": "Umbral europeo de ventas a consumidores, IVA del país de destino, ventanilla única.",
+            "practice": "Tienda online que vende a Italia y Alemania",
+            "skills": [
+              "em2-iva",
+              "em2-digital"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-iva-03-inversion-del-sujeto-pasivo",
+            "title": "Inversión del sujeto pasivo",
+            "minutes": 20,
+            "content": "Cuándo el IVA lo declara el cliente: obras, servicios de fuera de España, otros supuestos.",
+            "practice": "Reforma de un local con subcontratas",
+            "skills": [
+              "em2-iva"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-iva-04-regimenes-especiales",
+            "title": "Regímenes especiales de IVA",
+            "minutes": 25,
+            "content": "Recargo de equivalencia, simplificado, criterio de caja, franquicia europea para pequeñas empresas.",
+            "practice": "Comercio minorista con recargo de equivalencia",
+            "skills": [
+              "em2-iva"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-iva-05-prorrata-y-bienes-de-inversion",
+            "title": "Prorrata y bienes de inversión",
+            "minutes": 20,
+            "content": "Actividades exentas y no exentas a la vez, regularización de bienes de inversión.",
+            "practice": "Academia que da clases exentas y vende material",
+            "skills": [
+              "em2-iva"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "ren",
+        "title": "IRPF y Sociedades aplicados",
+        "desc": "Tributar bien y elegir con números.",
+        "minutes": 135,
+        "items": [
+          {
+            "id": "em2-ren-01-autonomo-o-sl-con-numeros",
+            "title": "Autónomo o SL: la comparación con números",
+            "minutes": 30,
+            "content": "Carga total (impuestos y cotización) en cada forma, costes de mantener una SL, factores no fiscales.",
+            "practice": "Tres niveles de beneficio, dos formas jurídicas",
+            "skills": [
+              "em2-renta-sociedades"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ren-02-estimacion-objetiva-y-directa",
+            "title": "Estimación directa, simplificada y módulos",
+            "minutes": 20,
+            "content": "Métodos de cálculo del rendimiento, límites, renuncia y exclusión.",
+            "practice": "Taxista: ¿módulos o directa?",
+            "skills": [
+              "em2-renta-sociedades"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ren-03-sacar-dinero-de-la-sl",
+            "title": "Sacar dinero de tu SL",
+            "minutes": 25,
+            "content": "Sueldo de administrador, nómina, dividendos, préstamos socio-sociedad y sus riesgos.",
+            "practice": "Plan de retribución de un socio único",
+            "skills": [
+              "em2-renta-sociedades"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ren-04-operaciones-vinculadas",
+            "title": "Operaciones vinculadas",
+            "minutes": 20,
+            "content": "Valor de mercado entre socio y sociedad, servicios profesionales del socio, documentación.",
+            "practice": "Socio que factura a su propia SL",
+            "skills": [
+              "em2-renta-sociedades"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ren-05-incentivos-fiscales",
+            "title": "Incentivos fiscales para empresas",
+            "minutes": 20,
+            "content": "Tipo reducido de nuevas entidades, reserva de capitalización y nivelación, deducción por I+D+i.",
+            "practice": "Elegir los incentivos de una SL de tres años",
+            "skills": [
+              "em2-renta-sociedades"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ren-06-requerimientos-e-inspeccion",
+            "title": "Requerimientos, comprobaciones e inspección",
+            "minutes": 20,
+            "content": "Qué es cada procedimiento, plazos, derechos, recargos y sanciones, cómo responder.",
+            "practice": "Responder a un requerimiento de gastos",
+            "skills": [
+              "em2-inspeccion"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "lab",
+        "title": "Personas y laboral",
+        "desc": "Contratar, pagar y gestionar sin sustos.",
+        "minutes": 130,
+        "items": [
+          {
+            "id": "em2-lab-01-tipos-de-contrato",
+            "title": "Los contratos que puedes usar",
+            "minutes": 20,
+            "content": "Indefinido, fijo discontinuo, temporal por circunstancias de la producción o sustitución, formativos, tiempo parcial.",
+            "practice": "Elegir contrato para cinco casos",
+            "skills": [
+              "em2-laboral"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-lab-02-el-convenio-colectivo",
+            "title": "Tu convenio colectivo",
+            "minutes": 20,
+            "content": "Cómo encontrar el aplicable, qué fija (salario, jornada, categorías) y por qué manda.",
+            "practice": "Buscar el convenio de una peluquería",
+            "skills": [
+              "em2-laboral"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-lab-03-leer-una-nomina",
+            "title": "Leer y preparar una nómina",
+            "minutes": 25,
+            "content": "Devengos, deducciones, bases de cotización, retención de IRPF, coste de empresa.",
+            "practice": "Nómina de un empleado a jornada completa",
+            "skills": [
+              "em2-laboral"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-lab-04-jornada-vacaciones-y-registro",
+            "title": "Jornada, registro horario y vacaciones",
+            "minutes": 20,
+            "content": "Registro de jornada obligatorio, horas extra, descansos, vacaciones y permisos.",
+            "practice": "Organizar turnos de un bar",
+            "skills": [
+              "em2-laboral"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-lab-05-despidos-y-ertes",
+            "title": "Despidos, ERTE y fin de contrato",
+            "minutes": 25,
+            "content": "Tipos de despido, indemnizaciones, ERTE y mecanismo RED, cómo documentarlo.",
+            "practice": "Caída de ventas: ¿ERTE o despido objetivo?",
+            "skills": [
+              "em2-conflictos"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-lab-06-seleccionar-y-liderar",
+            "title": "Seleccionar y liderar un equipo pequeño",
+            "minutes": 20,
+            "content": "Perfil, entrevista, periodo de prueba, objetivos y conversaciones difíciles.",
+            "practice": "Primer año con dos empleados",
+            "skills": [
+              "em2-equipo"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "ven",
+        "title": "Ventas y marketing medibles",
+        "desc": "Conseguir clientes de forma repetible.",
+        "minutes": 110,
+        "items": [
+          {
+            "id": "em2-ven-01-propuesta-de-valor",
+            "title": "Propuesta de valor y posicionamiento",
+            "minutes": 20,
+            "content": "Por qué te eligen, competencia, diferenciación real.",
+            "practice": "Reescribir la propuesta de una gestoría",
+            "skills": [
+              "em2-marketing"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ven-02-embudo-de-ventas",
+            "title": "El embudo de ventas",
+            "minutes": 25,
+            "content": "Captar, convertir y repetir; coste de adquirir un cliente y valor de un cliente.",
+            "practice": "Medir el embudo de una academia online",
+            "skills": [
+              "em2-marketing"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ven-03-marketing-digital-basico",
+            "title": "Web, buscadores y redes con método",
+            "minutes": 25,
+            "content": "Posicionamiento local, ficha de empresa, contenidos, publicidad de pago y medición.",
+            "practice": "Plan de 90 días para un fisioterapeuta",
+            "skills": [
+              "em2-marketing",
+              "em2-digital"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ven-04-negociar",
+            "title": "Negociar con clientes y proveedores",
+            "minutes": 20,
+            "content": "Preparación, margen de maniobra, concesiones y cierre.",
+            "practice": "Renegociar el precio con un proveedor",
+            "skills": [
+              "em2-marketing"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ven-05-plataformas-y-marketplaces",
+            "title": "Vender en plataformas y marketplaces",
+            "minutes": 20,
+            "content": "Comisiones, dependencia, obligaciones de información de las plataformas a Hacienda.",
+            "practice": "Vender en un marketplace y en web propia",
+            "skills": [
+              "em2-digital"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "ope",
+        "title": "Operaciones y finanzas del día a día",
+        "desc": "Comprar, producir y financiar bien.",
+        "minutes": 105,
+        "items": [
+          {
+            "id": "em2-ope-01-compras-y-proveedores",
+            "title": "Compras y proveedores",
+            "minutes": 20,
+            "content": "Homologar proveedores, condiciones de pago, dependencia, calidad.",
+            "practice": "Elegir proveedor de café para una cafetería",
+            "skills": [
+              "em2-operaciones"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ope-02-stock-y-logistica",
+            "title": "Stock y logística",
+            "minutes": 20,
+            "content": "Rotación, ruptura de stock, envíos y devoluciones.",
+            "practice": "Stock de una tienda online de ropa",
+            "skills": [
+              "em2-operaciones"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ope-03-productos-bancarios-empresa",
+            "title": "Productos bancarios para empresas",
+            "minutes": 25,
+            "content": "Póliza de crédito, préstamo, leasing, renting, confirming, factoring, descuento.",
+            "practice": "Financiar un pedido grande",
+            "skills": [
+              "em2-financiacion"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ope-04-negociar-con-el-banco",
+            "title": "Negociar con el banco",
+            "minutes": 20,
+            "content": "Qué mira el banco, CIRBE, avales personales y cómo limitarlos.",
+            "practice": "Preparar la reunión para un préstamo",
+            "skills": [
+              "em2-financiacion"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-ope-05-ayudas-publicas-a-fondo",
+            "title": "Ayudas públicas a fondo",
+            "minutes": 20,
+            "content": "Convocatorias, bases reguladoras, justificación, minimis y reintegro.",
+            "practice": "Leer una convocatoria autonómica",
+            "skills": [
+              "em2-financiacion"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "jur",
+        "title": "Socios, contratos y riesgos",
+        "desc": "Lo jurídico que evita los problemas caros.",
+        "minutes": 130,
+        "items": [
+          {
+            "id": "em2-jur-01-pacto-de-socios",
+            "title": "El pacto de socios",
+            "minutes": 25,
+            "content": "Aportaciones, dedicación, salida, arrastre y acompañamiento, no competencia, bloqueo.",
+            "practice": "Redactar lo esencial para tres socios",
+            "skills": [
+              "em2-socios-administradores"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-jur-02-estatutos-y-junta",
+            "title": "Estatutos, junta y libros de la SL",
+            "minutes": 20,
+            "content": "Junta general, mayorías, libro de actas y de socios, depósito de cuentas.",
+            "practice": "Convocar una junta ordinaria",
+            "skills": [
+              "em2-socios-administradores"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-jur-03-responsabilidad-del-administrador",
+            "title": "Responsabilidad del administrador",
+            "minutes": 25,
+            "content": "Deberes, responsabilidad por deudas sociales, derivación de responsabilidad tributaria.",
+            "practice": "SL con pérdidas: qué debe hacer el administrador",
+            "skills": [
+              "em2-socios-administradores"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-jur-04-contratos-mercantiles",
+            "title": "Contratos mercantiles habituales",
+            "minutes": 20,
+            "content": "Prestación de servicios, suministro, distribución, agencia, franquicia, confidencialidad.",
+            "practice": "Revisar un contrato de distribución",
+            "skills": [
+              "em2-contratos"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-jur-05-alquiler-de-local",
+            "title": "Alquilar un local de negocio",
+            "minutes": 20,
+            "content": "Arrendamiento para uso distinto de vivienda, fianza y garantías, obras, traspaso.",
+            "practice": "Negociar el contrato de un local",
+            "skills": [
+              "em2-contratos"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-jur-06-mapa-de-riesgos-y-seguros",
+            "title": "Mapa de riesgos y seguros",
+            "minutes": 20,
+            "content": "Responsabilidad civil, daños, ciberriesgo, D&O, cobertura de impago.",
+            "practice": "Mapa de riesgos de un taller",
+            "skills": [
+              "em2-riesgos"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "fue",
+        "title": "Vender fuera y crecer",
+        "desc": "Internacionalizar y escalar con orden.",
+        "minutes": 55,
+        "items": [
+          {
+            "id": "em2-fue-01-exportar-fuera-de-la-ue",
+            "title": "Exportar fuera de la UE",
+            "minutes": 20,
+            "content": "Aduanas, EORI, Incoterms, exención de IVA en exportación.",
+            "practice": "Primer envío a un cliente de Suiza",
+            "skills": [
+              "em2-internacional"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-fue-02-apoyo-publico-a-la-internacionalizacion",
+            "title": "Apoyo a la internacionalización",
+            "minutes": 15,
+            "content": "ICEX, cámaras de comercio y agencias autonómicas.",
+            "practice": "Elegir un programa de apoyo",
+            "skills": [
+              "em2-internacional"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-fue-03-escalar-sin-morir",
+            "title": "Escalar sin morir en el intento",
+            "minutes": 20,
+            "content": "Crecer exige caja, procesos y personas: errores típicos de crecimiento.",
+            "practice": "Doblar ventas en un año: qué falla primero",
+            "skills": [
+              "em2-finanzas",
+              "em2-equipo"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "sec",
+        "title": "Sectores con reglas propias",
+        "desc": "Lo específico de las actividades más comunes.",
+        "minutes": 80,
+        "items": [
+          {
+            "id": "em2-sec-01-hosteleria-y-comercio",
+            "title": "Hostelería y comercio",
+            "minutes": 20,
+            "content": "Licencias, sanidad y manipulación de alimentos, horarios, terrazas, recargo de equivalencia.",
+            "practice": "Abrir una cafetería",
+            "skills": [
+              "em2-operaciones"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-sec-02-profesionales-y-servicios",
+            "title": "Profesionales y servicios",
+            "minutes": 20,
+            "content": "Colegiación cuando es obligatoria, retenciones, seguros de responsabilidad profesional.",
+            "practice": "Psicóloga que abre consulta",
+            "skills": [
+              "em2-renta-sociedades"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-sec-03-comercio-electronico",
+            "title": "Comercio electrónico",
+            "minutes": 20,
+            "content": "Condiciones generales, garantías, devoluciones, IVA europeo y logística.",
+            "practice": "Tienda online de cosmética",
+            "skills": [
+              "em2-digital"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em2-sec-04-construccion-y-reformas",
+            "title": "Construcción y reformas",
+            "minutes": 20,
+            "content": "Registro de empresas acreditadas, subcontratación, IVA reducido en reformas de vivienda.",
+            "practice": "Empresa de reformas con subcontratas",
+            "skills": [
+              "em2-iva"
+            ],
+            "access": "paid"
+          }
+        ]
+      }
+    ],
+    "order": [
+      "num",
+      "iva",
+      "ren",
+      "lab",
+      "ven",
+      "ope",
+      "jur",
+      "fue",
+      "sec"
+    ]
+  },
+  "n3": {
+    "certificateNotice": "El certificado umotion acredita que has superado esta formación. No es un título oficial, no sustituye a un grado universitario ni a la colegiación, y no habilita para profesiones reguladas como la abogacía. Si asesoras a terceros, comprueba los requisitos legales de tu actividad.",
+    "clients": [
+      {
+        "id": "nerea",
+        "name": "Nerea, diseñadora autónoma",
+        "situation": "Factura cada vez más, trabaja para clientes de la UE y se plantea crear una SL.",
+        "topics": "formas jurídicas, IVA intracomunitario, retribución, planificación fiscal"
+      },
+      {
+        "id": "ruiz",
+        "name": "Talleres Hermanos Ruiz SL",
+        "situation": "Empresa familiar de 14 empleados con tensión de tesorería y una jubilación a la vista.",
+        "topics": "tesorería, financiación, protocolo familiar, sucesión"
+      },
+      {
+        "id": "brote",
+        "name": "Brote Foods SL",
+        "situation": "Startup de alimentación que prepara su primera ronda con business angels y un préstamo de ENISA.",
+        "topics": "valoración, rondas, Ley de startups, planes de opciones"
+      },
+      {
+        "id": "esquina",
+        "name": "Bar La Esquina CB",
+        "situation": "Comunidad de bienes de dos hermanos con deudas, un local en riesgo y un socio que quiere salir.",
+        "topics": "responsabilidad, reestructuración, concurso, segunda oportunidad"
+      }
+    ],
+    "modules": [
+      {
+        "code": "con",
+        "title": "Contabilidad avanzada y cierre",
+        "desc": "Cuentas anuales y su lectura profesional.",
+        "minutes": 155,
+        "items": [
+          {
+            "id": "em3-con-01-el-cierre-del-ejercicio",
+            "title": "El cierre del ejercicio",
+            "minutes": 40,
+            "content": "Periodificaciones, deterioros, impuesto diferido, regularización y asientos de cierre.",
+            "practice": "`ruiz`: cierre con existencias y deterioro de clientes",
+            "skills": [
+              "em3-contabilidad-avanzada"
+            ],
+            "access": "sample"
+          },
+          {
+            "id": "em3-con-02-cuentas-anuales-y-deposito",
+            "title": "Cuentas anuales, auditoría y depósito",
+            "minutes": 35,
+            "content": "Modelos abreviados y normales, memoria, cuándo es obligatoria la auditoría, depósito en el Registro.",
+            "practice": "Preparar el depósito de una SL",
+            "skills": [
+              "em3-contabilidad-avanzada"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-con-03-analisis-financiero-profesional",
+            "title": "Análisis financiero profesional",
+            "minutes": 40,
+            "content": "Fondo de maniobra, ciclo de caja, EBITDA, apalancamiento, rentabilidad económica y financiera.",
+            "practice": "`ruiz`: informe de diagnóstico financiero",
+            "skills": [
+              "em3-contabilidad-avanzada",
+              "em3-estrategia"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-con-04-plan-financiero",
+            "title": "Plan financiero a tres años",
+            "minutes": 40,
+            "content": "Previsión de resultados, balance y tesorería; escenarios; necesidades de financiación.",
+            "practice": "`brote`: plan financiero para la ronda",
+            "skills": [
+              "em3-valoracion"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "fis",
+        "title": "Planificación fiscal legítima",
+        "desc": "Estructurar bien sin cruzar la línea.",
+        "minutes": 180,
+        "items": [
+          {
+            "id": "em3-fis-01-economia-de-opcion-y-fraude",
+            "title": "Economía de opción, conflicto y fraude",
+            "minutes": 35,
+            "content": "Dónde está la línea: economía de opción, conflicto en la aplicación de la norma, simulación, delito fiscal.",
+            "practice": "Cinco esquemas: ¿legítimos o no?",
+            "skills": [
+              "em3-planificacion-fiscal",
+              "em3-asesoramiento"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-fis-02-estructura-holding",
+            "title": "Sociedades holding y patrimoniales",
+            "minutes": 40,
+            "content": "Exención de dividendos y plusvalías, sociedad patrimonial, riesgos de las estructuras.",
+            "practice": "`nerea`: ¿tiene sentido una holding?",
+            "skills": [
+              "em3-planificacion-fiscal"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-fis-03-retribucion-optima",
+            "title": "Retribución del socio-administrador",
+            "minutes": 35,
+            "content": "Combinación de sueldo, dividendo y otros conceptos; criterios de vinculación; cotización.",
+            "practice": "`nerea`: diseñar su retribución",
+            "skills": [
+              "em3-planificacion-fiscal"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-fis-04-regimenes-territoriales",
+            "title": "Diferencias territoriales",
+            "minutes": 30,
+            "content": "Territorios forales, Canarias, Ceuta y Melilla; tributos autonómicos y locales.",
+            "practice": "Comparar tres ubicaciones para una sede",
+            "skills": [
+              "em3-planificacion-fiscal"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-fis-05-fiscalidad-internacional-pyme",
+            "title": "Fiscalidad internacional de la pyme",
+            "minutes": 40,
+            "content": "Establecimiento permanente, convenios de doble imposición, retenciones en origen, precios de transferencia.",
+            "practice": "`nerea`: clientes en tres países",
+            "skills": [
+              "em3-planificacion-fiscal"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "soc",
+        "title": "Derecho societario y operaciones",
+        "desc": "Cambiar la estructura de una empresa.",
+        "minutes": 145,
+        "items": [
+          {
+            "id": "em3-soc-01-ampliaciones-y-reducciones",
+            "title": "Ampliaciones y reducciones de capital",
+            "minutes": 35,
+            "content": "Aportaciones dinerarias y no dinerarias, derecho de suscripción preferente, prima de emisión.",
+            "practice": "`brote`: ampliación para la ronda",
+            "skills": [
+              "em3-operaciones-societarias"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-soc-02-transmision-de-participaciones",
+            "title": "Compraventa de participaciones",
+            "minutes": 35,
+            "content": "Restricciones estatutarias, valoración, garantías, due diligence.",
+            "practice": "`esquina`: salida de un socio",
+            "skills": [
+              "em3-operaciones-societarias",
+              "em3-valoracion"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-soc-03-modificaciones-estructurales",
+            "title": "Transformación, fusión y escisión",
+            "minutes": 40,
+            "content": "Tipos de operación, régimen fiscal especial de neutralidad, motivos económicos válidos.",
+            "practice": "`esquina`: transformar la CB en SL",
+            "skills": [
+              "em3-operaciones-societarias",
+              "em3-planificacion-fiscal"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-soc-04-conflictos-entre-socios",
+            "title": "Conflictos entre socios",
+            "minutes": 35,
+            "content": "Impugnación de acuerdos, separación y exclusión, disolución por bloqueo, mediación.",
+            "practice": "Tres socios al 33 % que no se ponen de acuerdo",
+            "skills": [
+              "em3-operaciones-societarias"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "val",
+        "title": "Valoración, startups e inversión",
+        "desc": "Poner precio a una empresa y captar capital.",
+        "minutes": 185,
+        "items": [
+          {
+            "id": "em3-val-01-metodos-de-valoracion",
+            "title": "Métodos de valoración",
+            "minutes": 45,
+            "content": "Descuento de flujos, múltiplos, valor patrimonial; supuestos y sensibilidad.",
+            "practice": "Valorar un taller con tres métodos",
+            "skills": [
+              "em3-valoracion"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-val-02-valorar-una-startup",
+            "title": "Valorar una startup",
+            "minutes": 35,
+            "content": "Pre-money y post-money, dilución, métodos para empresas sin beneficios.",
+            "practice": "`brote`: tabla de capitalización tras la ronda",
+            "skills": [
+              "em3-valoracion",
+              "em3-startups"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-val-03-ley-de-startups",
+            "title": "La Ley de startups",
+            "minutes": 35,
+            "content": "Requisitos de empresa emergente, certificación de ENISA, ventajas fiscales y de cotización.",
+            "practice": "`brote`: ¿cumple los requisitos?",
+            "skills": [
+              "em3-startups"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-val-04-instrumentos-de-ronda",
+            "title": "Instrumentos de una ronda",
+            "minutes": 40,
+            "content": "Términos clave de una carta de intenciones, préstamos convertibles, preferencia de liquidación, antidilución.",
+            "practice": "Leer una carta de intenciones",
+            "skills": [
+              "em3-startups"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-val-05-planes-de-opciones",
+            "title": "Planes de opciones y participación de empleados",
+            "minutes": 30,
+            "content": "Opciones sobre participaciones, phantom shares, fiscalidad y requisitos.",
+            "practice": "`brote`: plan para el primer equipo",
+            "skills": [
+              "em3-startups"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "ins",
+        "title": "Reestructuración e insolvencia",
+        "desc": "Actuar antes de que sea tarde.",
+        "minutes": 145,
+        "items": [
+          {
+            "id": "em3-ins-01-deteccion-temprana",
+            "title": "Detección temprana y probabilidad de insolvencia",
+            "minutes": 35,
+            "content": "Indicadores, deberes del administrador, causa de disolución por pérdidas.",
+            "practice": "`ruiz`: ¿está en probabilidad de insolvencia?",
+            "skills": [
+              "em3-insolvencia"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-ins-02-planes-de-reestructuracion",
+            "title": "Planes de reestructuración",
+            "minutes": 40,
+            "content": "El preconcurso, comunicación de negociaciones, planes de reestructuración y su homologación.",
+            "practice": "`ruiz`: negociar con bancos y proveedores",
+            "skills": [
+              "em3-insolvencia"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-ins-03-procedimiento-microempresas",
+            "title": "Procedimiento especial para microempresas",
+            "minutes": 35,
+            "content": "Quién puede usarlo, liquidación o continuación, tramitación en línea.",
+            "practice": "`esquina`: ¿continuación o liquidación?",
+            "skills": [
+              "em3-insolvencia"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-ins-04-exoneracion-de-deudas",
+            "title": "Exoneración del pasivo insatisfecho",
+            "minutes": 35,
+            "content": "La segunda oportunidad para personas físicas: requisitos, deudas exonerables y no exonerables.",
+            "practice": "`esquina`: los dos hermanos tras el cierre",
+            "skills": [
+              "em3-insolvencia"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "cum",
+        "title": "Cumplimiento normativo",
+        "desc": "Programas proporcionados al tamaño de la empresa.",
+        "minutes": 130,
+        "items": [
+          {
+            "id": "em3-cum-01-compliance-penal",
+            "title": "Responsabilidad penal de la persona jurídica",
+            "minutes": 35,
+            "content": "Qué delitos, modelos de organización y gestión, canal de denuncias.",
+            "practice": "Programa mínimo para una pyme de 50 empleados",
+            "skills": [
+              "em3-compliance"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-cum-02-proteccion-de-datos-avanzada",
+            "title": "Protección de datos avanzada",
+            "minutes": 35,
+            "content": "Registro de actividades, evaluación de impacto, encargados, transferencias internacionales.",
+            "practice": "Clínica con historiales y una app",
+            "skills": [
+              "em3-compliance"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-cum-03-blanqueo-y-sujetos-obligados",
+            "title": "Prevención del blanqueo",
+            "minutes": 30,
+            "content": "Quién es sujeto obligado (asesores, gestorías…), diligencia debida, comunicación.",
+            "practice": "Alta de un cliente con fondos dudosos",
+            "skills": [
+              "em3-compliance",
+              "em3-asesoramiento"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-cum-04-igualdad-y-canal-de-denuncias",
+            "title": "Igualdad, acoso y canal interno",
+            "minutes": 30,
+            "content": "Planes de igualdad, registro retributivo, protocolos de acoso, sistema interno de información.",
+            "practice": "Qué obligaciones tiene una empresa de 60 personas",
+            "skills": [
+              "em3-compliance"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "fam",
+        "title": "Empresa familiar y sucesión",
+        "desc": "Que la empresa sobreviva al cambio de generación.",
+        "minutes": 110,
+        "items": [
+          {
+            "id": "em3-fam-01-protocolo-familiar",
+            "title": "El protocolo familiar",
+            "minutes": 35,
+            "content": "Qué regula, órganos de gobierno familiar, incorporación de familiares, publicidad registral.",
+            "practice": "`ruiz`: borrador de protocolo",
+            "skills": [
+              "em3-empresa-familiar"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-fam-02-fiscalidad-de-la-sucesion",
+            "title": "Fiscalidad de la empresa familiar",
+            "minutes": 40,
+            "content": "Exención en el Impuesto sobre el Patrimonio, reducciones en Sucesiones y Donaciones, requisitos y riesgos.",
+            "practice": "`ruiz`: donar participaciones en vida",
+            "skills": [
+              "em3-empresa-familiar",
+              "em3-planificacion-fiscal"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-fam-03-vender-la-empresa",
+            "title": "Vender o traspasar la empresa",
+            "minutes": 35,
+            "content": "Preparar la venta, compradores posibles, relevo generacional y venta a empleados.",
+            "practice": "Jubilación sin sucesor familiar",
+            "skills": [
+              "em3-empresa-familiar",
+              "em3-valoracion"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "dir",
+        "title": "Estrategia y dirección",
+        "desc": "Decidir hacia dónde va la empresa.",
+        "minutes": 105,
+        "items": [
+          {
+            "id": "em3-dir-01-analisis-estrategico",
+            "title": "Análisis estratégico",
+            "minutes": 35,
+            "content": "Entorno, competencia, recursos propios, ventaja competitiva.",
+            "practice": "Análisis de un taller frente a una cadena",
+            "skills": [
+              "em3-estrategia"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-dir-02-plan-estrategico-e-indicadores",
+            "title": "Plan estratégico e indicadores",
+            "minutes": 35,
+            "content": "Objetivos, iniciativas, cuadro de mando, revisión trimestral.",
+            "practice": "`ruiz`: cuadro de mando de 8 indicadores",
+            "skills": [
+              "em3-estrategia"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-dir-03-direccion-de-personas",
+            "title": "Dirección de personas",
+            "minutes": 35,
+            "content": "Estructura, retribución, cultura, sucesión de puestos clave.",
+            "practice": "Organigrama de una empresa que pasa de 10 a 40",
+            "skills": [
+              "em3-estrategia"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "pro",
+        "title": "Práctica profesional",
+        "desc": "Asesorar a otros con método y límites.",
+        "minutes": 110,
+        "items": [
+          {
+            "id": "em3-pro-01-el-metodo-de-asesoramiento",
+            "title": "El método de asesoramiento",
+            "minutes": 35,
+            "content": "Entrevista, diagnóstico, propuesta por escrito, seguimiento.",
+            "practice": "Primera reunión con `nerea`",
+            "skills": [
+              "em3-asesoramiento"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-pro-02-etica-y-limites-legales",
+            "title": "Ética y límites legales",
+            "minutes": 30,
+            "content": "Secreto profesional, conflicto de interés, qué actividades están reservadas y cuándo derivar.",
+            "practice": "Cinco dilemas de una gestoría",
+            "skills": [
+              "em3-asesoramiento"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "em3-pro-03-proyecto-final",
+            "title": "Proyecto final",
+            "minutes": 45,
+            "content": "Diagnóstico completo de uno de los cuatro clientes con propuesta y plan de acción.",
+            "practice": "Proyecto con revisión humana",
+            "skills": [
+              "em3-asesoramiento",
+              "em3-estrategia"
+            ],
+            "access": "paid"
+          }
+        ]
+      }
+    ],
+    "order": [
+      "con",
+      "fis",
+      "soc",
+      "val",
+      "ins",
+      "cum",
+      "fam",
+      "dir",
+      "pro"
+    ]
+  }
+}

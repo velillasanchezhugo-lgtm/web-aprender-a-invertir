@@ -10,14 +10,18 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import yaml from 'js-yaml';
 
 const sources = JSON.parse(readFileSync('src/data/sources.json', 'utf8'));
-const glossary = JSON.parse(readFileSync('src/data/glossary.json', 'utf8'));
+const EM_GLOSS = 'src/data/glossary-emprendimiento';
+const glossary = [
+  ...JSON.parse(readFileSync('src/data/glossary.json', 'utf8')),
+  ...(existsSync(EM_GLOSS) ? readdirSync(EM_GLOSS).filter((f) => f.endsWith('.json')).flatMap((f) => JSON.parse(readFileSync(`${EM_GLOSS}/${f}`, 'utf8'))) : []),
+];
+const errors = [], warnings = [];
 const seenGloss = new Set();
 for (const g of glossary) {
   if (seenGloss.has(g.id)) errors.push(`glosario: id repetido «${g.id}»`); seenGloss.add(g.id);
   if (!g.short) errors.push(`glosario «${g.id}»: falta la definición corta (short)`);
   else if (g.short.length > 120) errors.push(`glosario «${g.id}»: la definición corta pasa de 120 caracteres`);
 }
-const errors = [], warnings = [];
 const load = (dir) => readdirSync(dir).filter((f) => f.endsWith('.md')).map((f) => {
   const s = readFileSync(`${dir}/${f}`, 'utf8');
   const [, fm, body] = s.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/) ?? [];
@@ -28,7 +32,7 @@ const lessonIds = new Set(lessons.map((l) => l.id));
 const glossIds = new Set(glossary.map((g) => g.id));
 
 const need = (doc, headings) => headings.forEach((h) => { if (!doc.body.includes(`## ${h}`)) errors.push(`${doc.file}: falta la sección «${h}»`); });
-for (const doc of [...lessons, ...strategies, ...investors, ...sessions]) {
+for (const doc of [...lessons, ...strategies, ...investors, ...sessions, ...(existsSync('src/content/emprendimiento') ? load('src/content/emprendimiento') : [])]) {
   for (const s of doc.data.sources ?? []) if (!sources[s]) errors.push(`${doc.file}: fuente desconocida «${s}»`);
   if (!doc.data.author) errors.push(`${doc.file}: sin autor`);
   if (doc.data.status === 'revisado' && !doc.data.reviewer) errors.push(`${doc.file}: «revisado» sin revisor identificado`);
@@ -64,12 +68,26 @@ const skillMap = JSON.parse(readFileSync('src/data/skills.json', 'utf8'));
 const skillIds = new Set(skillMap.skills.map((k) => k.id));
 const taught = new Set();
 const TRACKS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener', 'empresas', 'noticias', 'trading'];
+// Formación Emprendimiento: mismas reglas, con sus módulos y competencias (src/data/emprendimiento.json).
+const em = JSON.parse(readFileSync('src/data/emprendimiento.json', 'utf8'));
+const emSessions = existsSync('src/content/emprendimiento') ? load('src/content/emprendimiento') : [];
+const emSkillIds = new Set(em.skills.map((k) => k.id));
+const emTaught = new Set();
+checkSessions(sessions, { tracks: TRACKS, skillIds, taught, sessionIds, def: 'camino-cero' });
+checkSessions(emSessions, { tracks: em.tracks.map((t) => t.id), skillIds: emSkillIds, taught: emTaught, sessionIds: new Set(emSessions.map((x) => x.id)), def: 'em-cero' });
+for (const t of em.tracks) if (!emSessions.some((x) => x.data.track === t.id)) warnings.push(`emprendimiento: el módulo «${t.id}» aún no tiene sesiones`);
+for (const k of em.skills) if (k.level === 1 && emSessions.length && !emTaught.has(k.id)) warnings.push(`emprendimiento: competencia «${k.id}» sin ninguna sesión que la enseñe`);
+for (const c of em.n1Capacities) for (const k of c.skills) if (!emSkillIds.has(k)) errors.push(`emprendimiento: la capacidad ${c.id} usa la competencia desconocida «${k}»`);
+for (const m of [...em.n2.modules, ...em.n3.modules]) for (const i of m.items) for (const k of i.skills) if (!emSkillIds.has(k)) errors.push(`emprendimiento: «${i.id}» usa la competencia desconocida «${k}»`);
+function checkSessions(list, { tracks, skillIds, taught, sessionIds, def }) {
 const orders = new Map();
-for (const x of sessions) {
-  const track = x.data.track ?? 'camino-cero';
-  if (!TRACKS.includes(track)) errors.push(`${x.file}: módulo desconocido «${track}»`);
+for (const x of list) {
+  const track = x.data.track ?? def;
+  if (!tracks.includes(track)) errors.push(`${x.file}: módulo desconocido «${track}»`);
   if (orders.has(x.data.order)) errors.push(`${x.file}: orden ${x.data.order} repetido (también en ${orders.get(x.data.order)})`); orders.set(x.data.order, x.file);
   if (!(x.data.skills ?? []).length) errors.push(`${x.file}: sin competencias (skills)`);
+  if ((x.data.description ?? '').length > 170) errors.push(`${x.file}: la descripción pasa de 170 caracteres`);
+  if ((x.data.questions ?? []).length < 2 || x.data.questions.length > 4) errors.push(`${x.file}: debe tener de 2 a 4 preguntas`);
   for (const k of [...(x.data.skills ?? []), ...x.data.questions.flatMap((q) => q.skills ?? [])]) { if (!skillIds.has(k)) errors.push(`${x.file}: competencia desconocida «${k}»`); taught.add(k); }
   if (['noticias', 'empresas'].includes(track) && !x.data.scenario) errors.push(`${x.file}: las sesiones de ${track} necesitan un caso práctico (scenario)`);
   need(x, ['La idea', 'En la práctica']);
@@ -86,6 +104,7 @@ for (const x of sessions) {
     if (q.type === 'estimate' && (q.answer < q.min || q.answer > q.max || (q.answer - q.min) % q.step > 1e-9 && Math.abs(((q.answer - q.min) % q.step) - q.step) > 1e-9 && q.tolerance < q.step)) errors.push(`${x.file}: «${q.id}» no se puede responder exactamente con el deslizador`);
   }
 }
+}
 // Clases de los niveles 2 y 3 (muestras y, en el futuro, contenido de pago)
 const clases = existsSync('src/content/clases') ? load('src/content/clases') : [];
 const curriculum = JSON.parse(readFileSync('src/data/curriculum.json', 'utf8'));
@@ -100,7 +119,7 @@ for (const x of clases) {
   if (x.data.access === 'paid' && x.data.status !== 'revisado') warnings.push(`${x.file}: contenido de pago sin revisión humana (no se puede publicar, sección 11.3)`);
 }
 for (const k of skillMap.skills) if ((k.level ?? 1) === 1 && !taught.has(k.id)) warnings.push(`competencia «${k.id}» sin ninguna sesión que la enseñe`);
-console.log(`Revisados: ${sessions.length} sesiones, ${lessons.length} lecciones, ${strategies.length} estrategias, ${investors.length} historias, ${glossary.length} términos.`);
+console.log(`Revisados: ${sessions.length} sesiones de Inversión, ${emSessions.length} de Emprendimiento, ${lessons.length} lecciones, ${strategies.length} estrategias, ${investors.length} historias, ${glossary.length} términos.`);
 warnings.forEach((w) => console.warn('AVISO: ' + w));
 if (errors.length) { errors.forEach((e) => console.error('ERROR: ' + e)); process.exit(1); }
 console.log('Control editorial superado.');

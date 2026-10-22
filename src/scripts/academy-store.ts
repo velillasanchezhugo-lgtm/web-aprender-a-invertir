@@ -1,5 +1,6 @@
 /**
  * Estado de la academia en el navegador (localStorage, clave «uacademy:academy»).
+ * Cada formación guarda su progreso aparte: Inversión en «academy», Emprendimiento en «academy-emprendimiento».
  * Nada sale del dispositivo.
  */
 import { read, write } from './store';
@@ -25,11 +26,12 @@ export interface AcademyState {
 }
 const EMPTY: AcademyState = { plan: null, completed: {}, actions: {}, deck: {}, activity: [], exams: {}, placement: null, notes: {}, profile: null, model: {}, diagnostic: null };
 
-export const getState = (): AcademyState => {
-  const s = read<AcademyState>('academy', EMPTY);
+export type StoreKey = 'academy' | 'academy-emprendimiento';
+export const getState = (key: StoreKey = 'academy'): AcademyState => {
+  const s = read<AcademyState>(key, EMPTY);
   return { ...EMPTY, ...s, completed: s.completed ?? {}, actions: s.actions ?? {}, deck: s.deck ?? {}, activity: s.activity ?? [], exams: s.exams ?? {}, notes: s.notes ?? {}, model: s.model ?? {}, profile: s.profile ?? null, diagnostic: s.diagnostic ?? null };
 };
-export const saveState = (s: AcademyState) => write('academy', s);
+export const saveState = (s: AcademyState, key: StoreKey = 'academy') => write(key, s);
 export const today = () => toDay(new Date());
 
 export function logActivity(s: AcademyState): AcademyState {

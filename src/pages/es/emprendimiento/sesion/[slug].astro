@@ -1,0 +1,14 @@
+---
+import SessionPlayer from '../../../../components/SessionPlayer.astro';
+import { emSessions, EM_TRACKS, type EmSession } from '../../../../lib/emprendimiento';
+export async function getStaticPaths() {
+  const all = await emSessions();
+  return all.map((s) => {
+    const mod = all.filter((x) => x.data.track === s.data.track);
+    const i = mod.indexOf(s);
+    return { params: { slug: s.id }, props: { s, index: i, total: mod.length, next: mod[i + 1] ?? null } };
+  });
+}
+const { s, index, total, next } = Astro.props as { s: EmSession; index: number; total: number; next: EmSession | null };
+---
+<SessionPlayer s={s} index={index} total={total} next={next} trackLabel={EM_TRACKS[s.data.track].label} formation="emprendimiento" />

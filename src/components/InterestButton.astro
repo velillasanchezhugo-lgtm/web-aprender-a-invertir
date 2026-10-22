@@ -1,6 +1,7 @@
 ---
 /** «Avisadme cuando abra»: mide el interés sin pedir datos (evento anónimo y marca en el dispositivo). */
-const { tier } = Astro.props as { tier: 2 | 3 };
+/** `tier`: «2» o «3» en Inversión; «em-2» o «em-3» en Emprendimiento. */
+const { tier } = Astro.props as { tier: string | number };
 ---
 <div class="interest" data-tier={tier}>
   <button type="button" class="btn brand" data-interest>Avisadme cuando abra</button>
@@ -18,7 +19,7 @@ const { tier } = Astro.props as { tier: 2 | 3 };
     btn.addEventListener('click', async () => {
       const cur = read<Record<string, string>>('interest', {}); cur[tier] = new Date().toISOString(); write('interest', cur);
       done();
-      try { const { track } = await import('@vercel/analytics'); track('interes_nivel', { nivel: Number(tier) }); } catch { /* */ }
+      try { const { track } = await import('@vercel/analytics'); track('interes_nivel', { nivel: /^\d$/.test(tier) ? Number(tier) : tier }); } catch { /* */ }
     });
   });
 </script>

@@ -3,23 +3,30 @@ import Base from '../layouts/Base.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
 import TierSyllabus from './TierSyllabus.astro';
 import InterestButton from './InterestButton.astro';
-import curriculum from '../data/curriculum.json';
+import inversion from '../data/curriculum.json';
+import emprendimiento from '../data/emprendimiento.json';
 import { PRICING } from '../config/site';
 import Price from './Price.astro';
 import { getCollection } from 'astro:content';
-interface Props { tier: 2 | 3 }
-const { tier } = Astro.props;
-const t = curriculum.tiers.find((x) => x.n === tier)!;
-const samples = (await getCollection('clases', ({ data }) => data.tier === tier && data.access === 'sample' && !data.draft)).map((c) => c.id);
+/** Página de presentación de un nivel de pago (2 o 3) de cualquier formación. */
+interface Props { tier: 2 | 3; formation?: 'inversion' | 'emprendimiento' }
+const { tier, formation = 'inversion' } = Astro.props;
+const inv = formation === 'inversion';
+const curriculum: any = inv ? inversion : emprendimiento;
+const t = curriculum.tiers.find((x: any) => x.n === tier)!;
+// Las muestras abiertas de momento solo existen en Inversión (colección «clases»).
+const samples = inv ? (await getCollection('clases', ({ data }) => data.tier === tier && data.access === 'sample' && !data.draft)).map((c) => c.id) : [];
+const base = inv ? '/es/' : '/es/emprendimiento/';
+const crumbs = inv ? [{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/', label: 'Niveles' }, { label: `Nivel ${tier}` }] : [{ href: '/es/', label: 'Inicio' }, { href: base, label: 'Emprendimiento' }, { label: `Nivel ${tier}` }];
 const data = tier === 2 ? curriculum.n2 : curriculum.n3;
-const nItems = data.modules.reduce((a, m) => a + m.items.length, 0);
-const hours = Math.round(data.modules.reduce((a, m) => a + m.minutes, 0) / 60);
+const nItems = data.modules.reduce((a: number, m: any) => a + m.items.length, 0);
+const hours = Math.round(data.modules.reduce((a: number, m: any) => a + m.minutes, 0) / 60);
 ---
-<Base title={`Nivel ${tier} · ${t.title}`} description={`${t.promise.slice(0, 150)}…`} allowAds={false}>
+<Base title={inv ? `Nivel ${tier} · ${t.title}` : `Emprendimiento · Nivel ${tier} · ${t.title}`} description={`${t.promise.slice(0, 150)}…`} allowAds={false}>
   <section class="tp-hero dots">
     <div class="container">
-      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/niveles/', label: 'Niveles' }, { label: `Nivel ${tier}` }]} />
-      <p class="eyebrow"><span class="eb-text">Nivel {tier} · {tier === 2 ? <>Plan Avanzado · <Price text={`${PRICING.n2.monthly} o ${PRICING.n2.annual}`} /></> : <>Curso Profesional · <Price text={`${PRICING.n3.course}, pago único · certificación aparte ${PRICING.n3.certification}`} /></>} · próximamente</span></p>
+      <Breadcrumbs items={crumbs} />
+      <p class="eyebrow"><span class="eb-text">{!inv && 'Emprendimiento · '}Nivel {tier} · {tier === 2 ? <>Plan Avanzado · <Price text={`${PRICING.n2.monthly} o ${PRICING.n2.annual}`} /></> : <>Curso Profesional · <Price text={`${PRICING.n3.course}, pago único · certificación aparte ${PRICING.n3.certification}`} /></>} · próximamente</span></p>
       <h1>{t.title}</h1>
       {t.subtitle && <p class="sub">{t.subtitle}</p>}
       <p class="lede">{t.promise}</p>
@@ -29,8 +36,8 @@ const hours = Math.round(data.modules.reduce((a, m) => a + m.minutes, 0) / 60);
         <li><strong>{t.format}</strong></li>
         <li><strong>{t.recognition}</strong></li>
       </ul>
-      <InterestButton tier={tier} />
-      {samples.length > 0 && <p class="small samples">Pruébalo gratis: {samples.map((id, i) => <>{i > 0 && ' · '}<a href={`/es/nivel-${tier}/${id}/`}>muestra {i + 1}</a></>)}</p>}
+      <InterestButton tier={inv ? String(tier) : `em-${tier}`} />
+      {samples.length > 0 && <p class="small samples">Pruébalo gratis: {samples.map((id, i) => <>{i > 0 && ' · '}<a href={`${base}nivel-${tier}/${id}/`}>muestra {i + 1}</a></>)}</p>}
     </div>
   </section>
   <div class="container tp">
@@ -38,18 +45,18 @@ const hours = Math.round(data.modules.reduce((a, m) => a + m.minutes, 0) / 60);
     {tier === 2 && <div class="callout learn"><p class="callout-title">Siempre algo nuevo</p><p>{curriculum.n2.monthly}</p></div>}
     <h2 class="h3">Temario</h2>
     <p class="small muted">Las clases con candado se abrirán con el {tier === 2 ? 'Plan Avanzado' : 'Curso Profesional'}. Todo el contenido de pago se publicará revisado por una persona cualificada.</p>
-    <TierSyllabus tier={tier} published={samples} />
+    <TierSyllabus tier={tier} published={samples} formation={formation} />
     {tier === 3 && (
       <section aria-labelledby="cl-t">
         <h2 id="cl-t" class="h3">Los cuatro clientes del curso</h2>
         <p class="small muted">Clientes ficticios con fines educativos. Aparecen en los expedientes de las lecciones y en el proyecto final.</p>
-        <ul class="clients">{curriculum.n3.clients.map((c) => <li class="card"><strong>{c.name}</strong><span class="small">{c.situation}</span><span class="small muted">Temas: {c.topics}</span></li>)}</ul>
+        <ul class="clients">{curriculum.n3.clients.map((c: any) => <li class="card"><strong>{c.name}</strong><span class="small">{c.situation}</span><span class="small muted">Temas: {c.topics}</span></li>)}</ul>
       </section>
     )}
     <section class="card closing">
       <h2 class="h3">Cómo se termina</h2>
       <p>{t.closing}. Reconocimiento: {t.recognition}.</p>
-      <p class="small muted">Requisito recomendado: {tier === 2 ? 'haber terminado el Nivel 1 o aprobar su examen.' : 'haber terminado el Nivel 2 o aprobar el examen de acceso.'}</p>
+      <p class="small muted">Requisito recomendado: {tier === 2 ? `haber terminado el Nivel 1${inv ? '' : ' de Emprendimiento'} o aprobar su examen.` : 'haber terminado el Nivel 2 o aprobar el examen de acceso.'}</p>
     </section>
   </div>
 </Base>

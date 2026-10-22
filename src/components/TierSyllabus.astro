@@ -1,13 +1,17 @@
 ---
 /** Temario de un nivel de pago: módulos, clases con candado y muestras abiertas. */
-import curriculum from '../data/curriculum.json';
-import { skillById } from '../lib/content';
-interface Props { tier: 2 | 3; published: string[] }
-const { tier, published } = Astro.props;
+import inversion from '../data/curriculum.json';
+import { skillById as invSkills } from '../lib/content';
+import { EM, emSkillById } from '../lib/emprendimiento';
+interface Props { tier: 2 | 3; published: string[]; formation?: 'inversion' | 'emprendimiento' }
+const { tier, published, formation = 'inversion' } = Astro.props;
+const inv = formation === 'inversion';
+const curriculum: any = inv ? inversion : EM;
+const skillById: Record<string, { label: string }> = inv ? invSkills : emSkillById;
 const data = tier === 2 ? curriculum.n2 : curriculum.n3;
-const order: string[] = (data as any).order ?? data.modules.map((m) => m.code);
-const mods = [...data.modules].sort((a, b) => order.indexOf(a.code) - order.indexOf(b.code));
-const base = tier === 2 ? '/es/nivel-2/' : '/es/nivel-3/';
+const order: string[] = data.order ?? data.modules.map((m: any) => m.code);
+const mods: any[] = [...data.modules].sort((a: any, b: any) => order.indexOf(a.code) - order.indexOf(b.code));
+const base = `${inv ? '/es/' : '/es/emprendimiento/'}nivel-${tier}/`;
 const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
 ---
 <ol class="mods">
@@ -21,7 +25,7 @@ const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
         </summary>
         {m.items.length > 0 && (
           <ul class="items">
-            {m.items.map((it) => {
+            {m.items.map((it: any) => {
               const open = it.access === 'sample' && published.includes(it.id);
               return (
                 <li class:list={['it', { open }]}>
@@ -32,7 +36,7 @@ const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
                     {!open && <span class="sr-only"> (contenido de pago, próximamente)</span>}
                     <span class="small muted">{it.content}</span>
                     <span class="small prac">Caso: {it.practice}</span>
-                    <span class="skills">{it.skills.map((k) => <span class="sk small">{skillById[k]?.label ?? k}</span>)}</span>
+                    <span class="skills">{it.skills.map((k: string) => <span class="sk small">{skillById[k]?.label ?? k}</span>)}</span>
                   </span>
                   <span class="im mono small muted">{it.minutes} min</span>
                 </li>

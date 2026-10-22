@@ -85,14 +85,16 @@ const sessionQuestion = z.discriminatedUnion('type', [
 /** Módulos de sesiones. 'camino-cero' es el nivel Cero; el resto forman el nivel Básico. */
 export const TRACK_IDS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener', 'empresas', 'noticias', 'trading'] as const;
 
-/** Sesiones de 5 minutos: gancho, idea, ejemplo, test y una acción aplicable hoy. */
-const sessions = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/sessions' }),
-  schema: z.object({
+/** Módulos del Nivel 1 de la formación Emprendimiento (ver src/data/emprendimiento.json). */
+export const EM_TRACK_IDS = ['em-cero', 'em-forma', 'em-alta', 'em-impuestos', 'em-cotizacion', 'em-dinero', 'em-clientes', 'em-legal', 'em-crecer', 'em-cerrar'] as const;
+
+/** Sesiones de 5 minutos: gancho, idea, ejemplo, test y una acción aplicable hoy. Mismo formato en todas las formaciones. */
+const sessionSchema = <T extends readonly [string, ...string[]]>(tracks: T, fallback: T[number]) =>
+  z.object({
     title: z.string(),
     description: z.string().max(170),
     level: z.enum(['cero', 'basico', 'intermedio', 'avanzado', 'experto']),
-    track: z.enum(TRACK_IDS).default('camino-cero'),
+    track: z.enum(tracks).default(fallback as any),
     order: z.number().int(),
     minutes: z.number().int().default(5),
     skills: z.array(z.string()).min(1),
@@ -111,7 +113,15 @@ const sessions = defineCollection({
     deeper: z.string().nullable().default(null),
     tool: z.string().nullable().default(null),
     ...editorial,
-  }),
+  });
+const sessions = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/sessions' }),
+  schema: sessionSchema(TRACK_IDS, 'camino-cero'),
+});
+/** Sesiones del Nivel 1 de Emprendimiento: colección aparte para que su progreso no se mezcle con el de Inversión. */
+const emprendimiento = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/emprendimiento' }),
+  schema: sessionSchema(EM_TRACK_IDS, 'em-cero'),
 });
 
 /**
@@ -146,4 +156,4 @@ const clases = defineCollection({
   }),
 });
 
-export const collections = { lessons, strategies, investors, sessions, clases };
+export const collections = { lessons, strategies, investors, sessions, emprendimiento, clases };

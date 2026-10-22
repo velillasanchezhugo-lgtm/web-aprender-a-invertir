@@ -1,0 +1,49 @@
+---
+/** Glosario de la formación Emprendimiento (src/data/glossary-emprendimiento/). */
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { glossaryEm } from '../../../../lib/content';
+const terms = glossaryEm;
+const letters = [...new Set(terms.map((t) => t.term[0].toUpperCase().normalize('NFD').replace(/\p{Diacritic}/gu, '')))];
+const jsonLd = { '@context': 'https://schema.org', '@type': 'DefinedTermSet', name: 'Glosario de emprendimiento de umotion Academy', inLanguage: 'es-ES', hasDefinedTerm: terms.map((t) => ({ '@type': 'DefinedTerm', name: t.term, description: t.def, url: new URL(`/es/emprendimiento/glosario/#${t.id}`, Astro.site).href })) };
+---
+<Base title="Glosario de emprendimiento" description={`${terms.length} términos para emprender en España explicados en una o dos frases: IVA, RETA, IAE, tarifa plana, sociedad limitada y más.`} jsonLd={jsonLd} allowAds={true}>
+  <div class="narrow">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/emprendimiento/', label: 'Emprendimiento' }, { label: 'Glosario' }]} />
+    <h1>Glosario de emprendimiento</h1>
+    <p class="lede">Las palabras de los trámites, los impuestos y la Seguridad Social, en una frase y con su definición precisa. Para los términos de inversión, mira el <a href="/es/glosario/">glosario de inversión</a>.</p>
+    <div class="field"><label for="gq">Filtrar términos</label><input id="gq" type="search" placeholder="Escribe un término" /></div>
+    <nav class="letters small" aria-label="Índice alfabético">{letters.map((l) => <a href={`#letra-${l}`}>{l}</a>)}</nav>
+    <dl class="gloss">
+      {terms.map((t, i) => {
+        const L = t.term[0].toUpperCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+        const first = i === 0 || terms[i - 1].term[0].toUpperCase().normalize('NFD').replace(/\p{Diacritic}/gu, '') !== L;
+        return (
+          <div class="entry" id={t.id} data-text={`${t.term} ${t.abbr ?? ''} ${t.short ?? ''} ${t.def}`.toLowerCase()}>
+            <dt id={first ? `letra-${L}` : undefined} data-letter={first ? L : undefined}>{t.term}</dt>
+            <dd>{t.abbr && <span class="abbr mono small">{t.abbr}</span>}{t.short && <strong class="short">{t.short}</strong>} {t.def}</dd>
+          </div>
+        );
+      })}
+    </dl>
+  </div>
+</Base>
+<style>.gloss .abbr { display: block; color: var(--teal); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.15rem; } .gloss .short { display: block; font-weight: 600; margin-bottom: 0.2rem; }</style>
+<style>
+  .letters { display: flex; flex-wrap: wrap; gap: 0.3rem 0.6rem; margin: 1rem 0; }
+  .letters a { text-decoration: none; font-weight: 700; padding: 0.3rem; }
+  .entry { border-bottom: 1px solid var(--rule); padding: 0.9rem 0; scroll-margin-top: 80px; }
+  .entry:target { background: var(--ochre-soft); }
+  .entry dt { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; }
+  .entry dd { margin: 0.25rem 0 0; }
+  .entry dt[data-letter]::before { content: attr(data-letter); display: block; font: 700 0.8rem var(--sans); color: var(--ochre); letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  .entry dt { scroll-margin-top: 80px; }
+</style>
+<script>
+  const q = document.getElementById('gq') as HTMLInputElement;
+  const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+  q.addEventListener('input', () => {
+    const v = norm(q.value.trim());
+    document.querySelectorAll<HTMLElement>('.entry').forEach((e) => { e.hidden = !!v && !norm(e.dataset.text!).includes(v); });
+  });
+</script>

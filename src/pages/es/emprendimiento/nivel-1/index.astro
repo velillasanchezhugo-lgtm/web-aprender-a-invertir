@@ -1,0 +1,95 @@
+---
+/** Presentación del Nivel 1 de Emprendimiento (gratis). Datos: src/data/emprendimiento.json. */
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { EM, EM_TRACKS, EM_SESSION, emSessions, emTrackHref } from '../../../../lib/emprendimiento';
+const t = EM.tiers[0];
+const all = await emSessions();
+const count = (id: string) => all.filter((s) => s.data.track === id).length;
+const total = all.length;
+const first = all[0];
+const onePage = all.find((s) => s.id.startsWith('em-c10'));
+---
+<Base title={`Emprendimiento · Nivel 1 · ${t.title}`} description={t.promise.slice(0, 160)} allowAds={false}>
+  <section class="tp-hero dots">
+    <div class="container">
+      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/emprendimiento/', label: 'Emprendimiento' }, { label: 'Nivel 1' }]} />
+      <p class="eyebrow"><span>Emprendimiento · Nivel 1 · Gratis · disponible ya</span></p>
+      <h1>{t.title}</h1>
+      <p class="sub">{t.subtitle}</p>
+      <p class="lede">{t.promise}</p>
+      <ul class="facts">
+        <li><strong>{total}</strong> sesiones</li>
+        <li><strong>{t.format}</strong></li>
+        <li><strong>{t.forWho}</strong></li>
+        <li><strong>{t.recognition}</strong></li>
+      </ul>
+      <div class="cta-row">
+        {first && <a class="btn brand" href={`${EM_SESSION}${first.id}/`} id="n1-start">Empezar gratis</a>}
+        <a class="btn ghost" href={emTrackHref('em-cero')}>Ir al Camino Cero</a>
+      </div>
+      <p class="small muted" id="n1-progress" aria-live="polite"></p>
+    </div>
+  </section>
+  <div class="container tp">
+    <h2 class="h3">Cómo está organizado</h2>
+    <p class="small muted">Los módulos del núcleo van por orden de importancia: primero lo que más dinero o problemas cuesta si se hace mal.</p>
+    <ol class="stages">
+      {EM.stages.map((s) => (
+        <li class="card stage">
+          <p class="mono small st">{s.stage}</p>
+          <h3>{s.title}</h3>
+          <p class="small muted">{s.desc}</p>
+          <ul class="tracks">
+            {s.tracks.map((id) => count(id)
+              ? <li><a href={emTrackHref(id)}><span class="tl"><strong>{EM_TRACKS[id].label}</strong><span class="small muted">{EM_TRACKS[id].short}</span></span><span class="mono small n">{count(id)} ses.</span></a></li>
+              : <li><span class="soon"><span class="tl"><strong>{EM_TRACKS[id].label}</strong><span class="small muted">{EM_TRACKS[id].short}</span></span><span class="mono small n">en preparación</span></span></li>)}
+          </ul>
+        </li>
+      ))}
+    </ol>
+    <h2 class="h3">Al terminar sabrás</h2>
+    <ul class="caps">{EM.n1Capacities.map((c) => <li>{c.text}</li>)}</ul>
+    <section class="card closing">
+      <h2 class="h3">Cómo se termina</h2>
+      <p>{t.closing}. Reconocimiento: {t.recognition}.</p>
+      <ul class="end">
+        {onePage && <li><a href={`${EM_SESSION}${onePage.id}/`}>Mi proyecto en una página</a></li>}
+        <li><a href="/es/emprendimiento/examen/">Examen del Nivel 1</a></li>
+        <li><a href="/es/emprendimiento/glosario/">Glosario de emprendimiento</a></li>
+      </ul>
+      <p class="small muted">¿Quieres seguir? <a href="/es/emprendimiento/nivel-2/">Nivel 2 · Avanzado</a>.</p>
+    </section>
+    <p class="small muted legal">Contenido educativo y general para residentes en España. No es asesoramiento jurídico, fiscal ni laboral. Las cuotas, tipos y plazos cambian: comprueba siempre la fuente oficial citada en cada sesión.</p>
+  </div>
+</Base>
+<style>
+  .tp-hero { border-bottom: 1px solid var(--rule); padding: 0.5rem 0 2rem; margin-bottom: 1.5rem; }
+  .tp-hero h1 { font-size: clamp(2.4rem, 1.7rem + 3.4vw, 4.4rem); margin: 0.2rem 0 0.2rem; }
+  .sub { font-size: 1.2rem; color: var(--teal); font-weight: 600; margin: 0 0 0.6rem; }
+  .facts { list-style: none; padding: 0; margin: 1.2rem 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .facts li { padding: 0.45rem 0.8rem; border-radius: 999px; background: var(--card); border: 1px solid var(--rule); font-size: 0.92rem; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .tp { padding-bottom: 3rem; }
+  .h3 { font-size: 1.4rem; margin: 1.6rem 0 0.4rem; }
+  .stages { list-style: none; padding: 0; display: grid; gap: 0.8rem; grid-template-columns: minmax(0, 1fr); }
+  .stage h3 { margin: 0.1rem 0 0.2rem; font-size: 1.15rem; }
+  .st { margin: 0; color: var(--teal); text-transform: uppercase; letter-spacing: 0.06em; }
+  .tracks { list-style: none; padding: 0; margin: 0.6rem 0 0; display: grid; gap: 0.35rem; }
+  .tracks a, .tracks .soon { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; padding: 0.6rem 0.75rem; border-radius: 12px; border: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+  .tracks .soon { opacity: 0.7; border-style: dashed; }
+  .tracks a:hover { background: var(--paper-2); }
+  .tl { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+  .n { flex: none; color: var(--ink-3); }
+  .caps { padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+  .closing { margin-top: 1.5rem; }
+  .closing .h3 { margin-top: 0; }
+  .end { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; padding: 0; list-style: none; }
+  .legal { margin-top: 1.5rem; }
+</style>
+<script>
+  import { getState } from '../../../../scripts/academy-store';
+  const s = getState('academy-emprendimiento');
+  const n = Object.keys(s.completed).length;
+  if (n) document.getElementById('n1-progress')!.textContent = `Llevas ${n} ${n === 1 ? 'sesión hecha' : 'sesiones hechas'} en Emprendimiento.`;
+</script>
