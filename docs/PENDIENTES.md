@@ -69,6 +69,32 @@ Escrito con asistencia de IA y en estado «Pendiente de revisión humana». Prio
 - **Referencias bibliográficas** marcadas como «no consultada en línea»: comprobar edición y páginas.
 - **Resoluciones de la CNMV sobre CFD (2019 y 2023)**: confirmar que siguen vigentes sin cambios (se revisan cada año).
 
+## Mejoras pedagógicas propuestas (octubre de 2026)
+
+Revisión del temario como experto: que se aprenda de verdad, sin relleno. Datos de partida: 77 sesiones de unas 770 palabras, todas con `reviewer: null`; 155 preguntas de opción múltiple y 74 de verdadero o falso; 39 sesiones sin herramienta; solo 3 citan una crisis real. Orden recomendado: 1 → 2 → 3 → 4.
+
+1. **Credibilidad (urgente)**
+   - Revisión humana con titulación (EFPA o similar) del Camino Cero y el núcleo, con su nombre como revisor.
+   - Ejemplos reales junto a los ficticios: 2008, 2020 y 2022, y cuánto se tardó en recuperar.
+2. **Que aprendan de verdad**
+   - Preguntas de decisión con consecuencias («tu cartera cae un 25 %: ¿vendes, esperas o aportas?»), mostrando qué habría pasado con cada opción.
+   - Una pregunta al principio de cada sesión, antes de la explicación.
+   - Repaso mezclado y espaciado: una pregunta de sesiones anteriores en cada sesión; los fallos vuelven días después (conectar `/es/repaso/` con el motor adaptativo).
+   - Calculadoras pequeñas con los números del alumno en las 39 sesiones sin herramienta que lo necesiten.
+   - Explicación de por qué tienta y por qué falla cada opción incorrecta.
+3. **Quitar relleno**
+   - Pasar de 4 consejos por sesión a 1 o ninguno (repiten la idea clave).
+   - Una idea por sesión, unos 5 minutos; por encima de 600 palabras, partir o recortar.
+   - Trading: en el Nivel 1 solo una sesión («por qué no es para ti»); el resto, a la Biblioteca o al Nivel 2.
+   - Que cada acción final rellene «Mi plan en una página».
+4. **Web**
+   - Progreso por las 12 capacidades, no por sesiones completadas.
+   - Porcentaje de acierto anónimo por pregunta, para detectar preguntas mal hechas.
+   - Ruta exprés de unas 8 sesiones clave (colchón, deudas, fondo indexado, bróker, primera compra, aportar cada mes, qué hacer en una caída).
+   - En `/es/empezar/`, entrar en la primera sesión con un clic.
+
+Siguiente paso propuesto: sesión piloto `ya-08-cuando-cae` con todo aplicado, para comparar el antes y el después.
+
 ## Funcionalidades no incluidas a propósito
 
 - **Cuentas de usuario**: no existe un backend seguro; el progreso es local, exportable y borrable.
