@@ -15,7 +15,9 @@ const w = (s: string) => new RegExp(s, 'i');
 /** Piezas de una buena petición, en el orden en que se enseñan (sesiones cla-c03 y cla-pe01 a cla-pe06). */
 export const CRITERIA: Criterion[] = [
   { id: 'tarea', label: 'Una tarea clara', weight: 3, hint: 'Empieza por lo que quieres que haga: «Escribe…», «Resume…», «Prepara…».',
-    re: [w('\\b(escribe|redacta|resume|res[uú]meme|explica|expl[ií]came|crea|haz|hazme|prepara|prep[aá]rame|analiza|traduce|tradúceme|revisa|corrige|dame|dime|prop[oó]n|prop[oó]nme|ayúdame a|ay[uú]dame con|genera|compara|lista|organiza|sugiere|planifica|calcula|clasifica|extrae|reescribe|mejora|convierte|adapta|elabora|diseña|ordena|identifica|evalúa|valora)\\b')] },
+    re: [w('\\b(escribe|redacta|resume|res[uú]meme|explica|expl[ií]came|crea|haz|hazme|prepara|prep[aá]rame|analiza|traduce|tradúceme|revisa|corrige|dame|dime|prop[oó]n|prop[oó]nme|ayúdame a|ay[uú]dame con|genera|compara|lista|organiza|sugiere|planifica|calcula|clasifica|extrae|reescribe|mejora|convierte|adapta|elabora|diseña|ordena|identifica|evalúa|valora)\\b'),
+      // Verbos con pronombre pegado: «compáralas», «resúmelo», «explícamelo»…
+      w('\\b(compár|resúm|explíc|revís|corríg|tradúc|escríb|redáct|prepár|analíz|organíz|ordén|cré|clasifíc|reescríb|mejór|conviért|adápt|elabór|diséñ|identifíc|calcúl|planifíc|sugiér|propón|genér|enséñ|díg|dí|dá|ház|ayúd|búsc|léel|lée)[a-záéíóúñ]*(me|te|lo|la|los|las|le|les|nos)\\b')] },
   { id: 'contexto', label: 'Contexto', weight: 2, hint: 'Cuenta quién eres o la situación: «Soy profesora de primaria…», «Tengo una tienda…».',
     re: [w('\\b(soy|trabajo (en|como|de)|tengo|tenemos|estoy|estamos|mi (empresa|negocio|tienda|jefe|cliente|clase|equipo|hijo|hija)|nuestra|nuestro|la situaci[oó]n|el contexto|se trata de|llevo|acabo de|he recibido|me han)\\b')] },
   { id: 'publico', label: 'Para quién o para qué', weight: 2, hint: 'Di quién lo va a leer o para qué lo quieres: «para mis clientes», «para presentarlo el lunes».',
@@ -27,11 +29,11 @@ export const CRITERIA: Criterion[] = [
   { id: 'ejemplos', label: 'Un ejemplo', weight: 1, hint: 'Si tienes uno, muestra cómo lo quieres: «Por ejemplo: …», «Algo parecido a esto: …».',
     re: [w('\\b(por ejemplo|ejemplo|como este|como esta|parecido a|al estilo de|algo as[ií]|as[ií]:)'), /[«"“][^»"”]{12,}[»"”]/] },
   { id: 'limites', label: 'Límites', weight: 1, hint: 'Di lo que no quieres: «sin tecnicismos», «no inventes datos», «evita…».',
-    re: [w('\\b(sin |no (uses|incluyas|inventes|pongas|menciones|des|a[nñ]adas|cambies|repitas)|evita|solo |s[oó]lamente|nada de|que no)')] },
+    re: [w('\\b(sin |no (me )?(uses|incluyas|inventes|pongas|menciones|des|digas|hagas|escribas|a[nñ]adas|cambies|repitas|env[ií]es|borres|toques)|evita|solo |s[oó]lamente|nada de|que no)')] },
   { id: 'verificar', label: 'Pedir fuentes o avisos', weight: 1, hint: 'Pide que diga si duda o de dónde saca los datos: «cita la fuente», «dime si no estás seguro».',
     re: [w('\\b(fuentes?|cita|citas|referencias|enlaces|si no (lo )?sabes|si no est[aá]s seguro|dime si|ind[ií]came si|marca lo que|qu[eé] (dudas|datos) )')] },
   { id: 'preguntas', label: 'Que te pregunte antes', weight: 1, hint: 'Para tareas grandes: «Antes de empezar, hazme las preguntas que necesites».',
-    re: [w('\\b(preg[uú]ntame|hazme (las |unas |algunas )?preguntas|antes de (empezar|responder|escribir)|si te falta|si necesitas m[aá]s)')] },
+    re: [w('\\b(preg[uú]ntame|hazme (hasta |las |unas |algunas |\\w+ )?(\\w+ )?preguntas|antes de (empezar|responder|escribir|opinar|contestar|seguir)|si te falta|si necesitas m[aá]s)')] },
 ];
 export const CRITERION = Object.fromEntries(CRITERIA.map((c) => [c.id, c])) as Record<CriterionId, Criterion>;
 
