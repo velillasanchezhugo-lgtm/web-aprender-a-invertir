@@ -35,7 +35,6 @@ questions:
 tips:
   - "Pídele que te enseñe su plan antes de empezar y corrígelo si no te convence."
   - "Puedes intervenir a mitad de tarea para reconducirla: no hace falta esperar al final."
-  - "Para empezar, elige tareas en las que un error sea fácil de detectar y de deshacer."
 action:
   title: Encarga tu primera tarea larga
   steps:
@@ -61,7 +60,7 @@ En un chat normal, tú preguntas y Claude contesta. Un **agente de IA** va más 
 
 Qué tareas largas puede hacer hoy Claude:
 
-- **Investigación a fondo:** busca en muchas fuentes y te entrega un informe con citas.
+- **Investigación a fondo:** en los planes de pago, busca en muchas fuentes y te entrega un informe con citas.
 - **Trabajo con tus archivos y apps:** en los planes de pago, Claude puede encargarse de tareas de varios pasos (antes se llamaba Cowork y se está integrando en la app normal): describes el resultado, te vas y vuelves al trabajo hecho. Puede crear hojas de cálculo, documentos y presentaciones, usar tus conectores y las carpetas que le conectes.
 
 La clave es **cuánto le dejas hacer sin preguntarte**. Hay tres modos de aprobación:

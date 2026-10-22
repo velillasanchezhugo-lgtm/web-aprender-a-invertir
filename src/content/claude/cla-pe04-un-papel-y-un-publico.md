@@ -35,7 +35,6 @@ questions:
 tips:
   - "Combina los dos: «Como profesor de autoescuela, explícaselo a alguien que nunca ha conducido»."
   - "Cuanto más concreto el papel, mejor: «revisor de un tribunal de oposiciones» dice más que «experto»."
-  - "Si vas a usar el mismo papel muchas veces, guárdalo como plantilla o en las instrucciones de un proyecto."
 action:
   title: Pide una crítica con papel
   steps:
@@ -61,7 +60,7 @@ Dos piezas cambian mucho una respuesta:
 - **El papel**: desde dónde mira Claude. «Actúa como revisor de textos», «como entrevistador de trabajo», «como profesor de matemáticas de 2.º de la ESO». El papel decide qué se fija, qué critica y qué vocabulario usa.
 - **El público**: a quién habla. «Para un niño de 10 años», «para mi abuela, que no usa internet», «para un comité de dirección con prisa». El público decide el nivel, los ejemplos y la longitud.
 
-**Por qué ayuda:** con un papel y un público, Claude no tiene que adivinar el punto de vista. Un «revisor exigente» busca fallos; un «amigo» anima. Los dos son útiles, pero para cosas distintas.
+**Por qué ayuda:** con un papel y un público, Claude no tiene que adivinar el punto de vista. Un «revisor exigente» busca fallos; un «amigo» anima.
 
 **Sus límites, que importan:**
 

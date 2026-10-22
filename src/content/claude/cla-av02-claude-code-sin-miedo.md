@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: La web de Inés
-  body: "Inés da clases de yoga en Gijón. Abre Claude Code desde la app de escritorio, en una carpeta vacía, y le pide una web de una página con horarios, precios y un formulario de contacto. Claude la crea y le explica cómo verla en su navegador. Inés pide cambios de color y de texto, revisa la página en el móvil y, antes de publicarla, pide a una amiga que sabe de webs que le eche un vistazo."
+  body: "Inés da clases de yoga en Gijón. Abre Claude Code en la app de escritorio, en una carpeta vacía, y pide una web de una página con horarios y precios. Claude la crea y le explica cómo verla. Inés pide cambios y, antes de publicarla, se la enseña a una amiga que sabe de webs."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -20,7 +20,7 @@ questions:
     q: "Claude Code te pide permiso para ejecutar una orden que no entiendes. ¿Qué haces?"
     options: ["Aprobarla: si la propone Claude, estará bien", "Pedirle que te explique en palabras sencillas qué hace y qué puede cambiar, y aprobar solo si lo entiendes", "Aprobar todas a partir de ahora para no perder tiempo"]
     answer: 1
-    explain: "Las órdenes pueden borrar, mover o instalar cosas en tu ordenador. Pedir la explicación es gratis y te ayuda a aprender. Tienta aprobarlo todo por comodidad, pero así renuncias a tu única barrera."
+    explain: "Las órdenes pueden borrar, mover o instalar cosas en tu ordenador. Pedir la explicación te protege y te enseña. Aprobarlo todo tienta por cómodo, pero quitas tu única barrera."
   - type: choice
     id: cla-av02-q2
     q: "Raúl, que no programa, quiere probar Claude Code. ¿Por dónde empieza?"
@@ -35,7 +35,6 @@ questions:
 tips:
   - "Pídele que te explique cada cambio importante «como si no supiera programar»."
   - "Nunca le pegues contraseñas ni claves de acceso en el chat ni en los archivos."
-  - "Guarda una copia de la carpeta cuando algo funcione, antes de pedir más cambios."
 action:
   title: Echa un vistazo a Claude Code
   steps:
@@ -65,7 +64,7 @@ Dónde se usa hoy:
 - En la **aplicación de escritorio** de Claude, con ventanas y botones.
 - En la **web** y la app del móvil, para tareas que se ejecutan en la nube.
 
-Requiere un **plan de pago**. Lo usan sobre todo programadores, pero alguien que no programa puede hacer cosas **pequeñas y útiles**:
+Requiere un **plan de pago**. Lo usan sobre todo programadores, pero sin programar puedes hacer cosas **pequeñas y útiles**:
 
 - Una **web sencilla** de una página para un negocio o una afición.
 - Un pequeño programa que **renombre u ordene archivos** (por ejemplo, fotos por fecha).

@@ -34,7 +34,6 @@ questions:
     explain: "Preguntar «¿verdad que…?» invita a darte la razón. Pedir expresamente argumentos en contra le da permiso para llevarte la contraria y te deja decidir con más información."
 tips:
   - "Pide que separe «lo que sé seguro» de «lo que supongo»: verás dónde comprobar."
-  - "Responde a sus preguntas aunque sea con «no lo sé»: también es información útil."
   - "La crítica de Claude es un punto de vista más, no un veredicto. Para decisiones grandes, habla también con personas que conozcan el tema."
 action:
   title: Añade tus tres frases
@@ -63,8 +62,6 @@ Normalmente le das información a Claude y responde. Pero puedes cambiar las reg
 **2. «Dime si no estás seguro.»** Claude puede dar datos falsos con tono seguro. A esto se le llama **alucinación**. Pedirle que marque lo que no sabe o supone te ayuda a ver dónde comprobar. No lo elimina: lo reduce y lo hace visible.
 
 **3. «Critica mi idea.»** Los asistentes de IA tienden a ser amables y a seguirte la corriente, sobre todo si preguntas «¿verdad que…?». Anthropic dice que busca que Claude sea honesto aunque no sea lo que quieres oír, pero ayuda pedirlo de forma expresa. Pide los argumentos en contra, los riesgos o lo que se te escapa.
-
-Estas tres frases sirven para casi todo: decisiones, planes, textos, ideas de negocio, compras grandes.
 
 ## En la práctica
 

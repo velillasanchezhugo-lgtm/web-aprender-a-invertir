@@ -35,7 +35,6 @@ questions:
 tips:
   - "Antes de automatizar, haz la tarea a mano con Claude tres veces y ajusta la petición."
   - "Pausa o borra las tareas programadas que ya no uses."
-  - "Que las tareas automáticas preparen y te avisen; las que envían o cambian, mejor con tu aprobación."
 action:
   title: Encuentra tu tarea repetida
   steps:

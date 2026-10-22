@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: El lunes de Andrés
-  body: "Andrés coordina un club de baloncesto en Valladolid. El lunes conecta su correo y su calendario a Claude y le pide un resumen de la semana: partidos, reuniones y correos de padres sin contestar. Claude le prepara tres borradores de respuesta. Andrés corrige uno que daba una hora equivocada antes de aprobar el envío."
+  body: "Andrés coordina un club de baloncesto en Valladolid. Conecta su correo y su calendario y pide a Claude el resumen de la semana: partidos, reuniones y correos de padres sin contestar. De los tres borradores de respuesta, corrige uno con una hora equivocada antes de aprobar el envío."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -35,7 +35,6 @@ questions:
 tips:
   - "Pide siempre «dime de qué correo o documento sale cada dato»: así compruebas en un clic."
   - "Para cambios en el calendario, pídele primero la propuesta en lista y aprueba después."
-  - "No le pidas que busque en correos con datos de salud, bancarios o de terceros si no hace falta."
 action:
   title: Prepara tu semana con Claude
   steps:

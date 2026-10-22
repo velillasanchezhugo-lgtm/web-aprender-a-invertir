@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: Las facturas de Óscar
-  body: "Óscar lleva las cuentas de su tienda de bicicletas en Logroño. Copia las facturas del trimestre en una carpeta nueva, «Facturas T3», y solo conecta esa a Claude. Le pide una hoja de cálculo con fecha, proveedor e importe. Revisa diez filas al azar contra los PDF y corrige dos importes mal leídos."
+  body: "Óscar tiene una tienda de bicicletas en Logroño. Copia las facturas del trimestre en una carpeta nueva y solo conecta esa a Claude. Le pide una hoja con fecha, proveedor e importe, revisa diez filas al azar y corrige dos importes mal leídos."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -35,7 +35,6 @@ questions:
 tips:
   - "Crea una carpeta «Para Claude» y copia allí solo lo que necesite cada tarea."
   - "Haz copia de seguridad antes de pedirle que renombre, mueva u ordene archivos."
-  - "Revisa una muestra de los datos que extraiga: leer PDF o fotos a veces falla."
 action:
   title: Prepara tu carpeta de trabajo
   steps:

@@ -35,7 +35,6 @@ questions:
 tips:
   - "Empieza por una tarea que repitas cada semana con el mismo formato: es la que más rinde."
   - "Sube uno o dos ejemplos buenos de cómo lo haces tú; valen más que muchas explicaciones."
-  - "Si una habilidad hace algo mal, pídele a Claude que la actualice en vez de empezar de cero."
 action:
   title: Crea tu primera habilidad
   steps:

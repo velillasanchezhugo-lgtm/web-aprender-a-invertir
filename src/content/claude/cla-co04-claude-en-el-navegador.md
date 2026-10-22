@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: Las ofertas de Nuria
-  body: "Nuria, de Murcia, pide a Claude en Chrome que compare tres webs de alquiler de furgonetas para una mudanza y le ponga en una tabla precio y condiciones. Claude lo hace en unos minutos. Cuando le pregunta si reserva, Nuria responde que no: la reserva la hace ella, después de leer las condiciones."
+  body: "Nuria, de Murcia, pide a Claude en Chrome que compare tres webs de alquiler de furgonetas y le haga una tabla con precio y condiciones. Cuando Claude pregunta si reserva, Nuria dice que no: reserva ella, tras leer las condiciones."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -35,7 +35,6 @@ questions:
 tips:
   - "Pídele que investigue y te prepare la tabla; el último clic (pagar, enviar, firmar) dalo tú."
   - "En webs nuevas o con comentarios de desconocidos, usa la aprobación manual de cada acción."
-  - "Ciérralo en páginas con datos que no quieras que guarde: lo que ve queda en el historial del chat."
 action:
   title: Revisa tus permisos de navegador
   steps:

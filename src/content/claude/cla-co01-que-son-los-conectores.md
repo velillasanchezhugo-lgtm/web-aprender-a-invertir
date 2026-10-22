@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: El calendario de Marta
-  body: "Marta, administrativa en una gestoría de Zaragoza, conecta su calendario a Claude para preparar la semana. Le pregunta qué huecos libres tiene el miércoles y Claude se los lista. Después le pide que mueva una cita y Claude le enseña el cambio y espera a que ella lo apruebe."
+  body: "Marta, administrativa en Zaragoza, conecta su calendario a Claude. Le pregunta qué huecos tiene el miércoles y Claude se los lista. Cuando le pide mover una cita, Claude le enseña el cambio y espera su aprobación."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -20,7 +20,7 @@ questions:
     q: "Javier conecta su Google Drive a Claude. ¿Qué documentos puede ver Claude?"
     options: ["Todos los documentos de Google Drive del mundo", "Los mismos a los que Javier tiene acceso con su cuenta", "Solo los que Javier haya subido al chat"]
     answer: 1
-    explain: "Claude hereda los permisos de tu cuenta: ve lo que tú puedes ver, ni más ni menos. Tienta pensar que solo ve lo subido al chat, pero con el conector puede buscar en todo lo que tu cuenta alcanza, por eso conviene conectar solo lo que necesitas."
+    explain: "Claude hereda los permisos de tu cuenta: ve lo que tú puedes ver, ni más ni menos. Tienta pensar que solo ve lo subido al chat, pero con el conector puede buscar en todo lo que alcanza tu cuenta."
   - type: choice
     id: cla-co01-q2
     q: "Lucía ya no usa el conector de su gestor de tareas y quiere que Claude deje de tener acceso. ¿Qué hace?"
@@ -35,7 +35,6 @@ questions:
 tips:
   - "Activa en cada chat solo los conectores que necesites para esa tarea; el resto, apagados."
   - "Revisa cada pocos meses qué tienes conectado y desconecta lo que ya no uses."
-  - "Si trabajas en una empresa, pregunta antes: en los planes de equipo, el administrador decide qué conectores se pueden usar."
 action:
   title: Mira el directorio de conectores
   steps:
@@ -66,7 +65,7 @@ Tres reglas que conviene tener claras:
 - **Tú decides cuándo.** Los conectores se activan o desactivan en cada conversación, y Claude solo consulta datos cuando se lo pides.
 - **Las acciones se aprueban.** En los conectores de Google, por ejemplo, enviar un correo, compartir o mover un archivo pide tu aprobación por defecto.
 
-Hay conectores del **directorio** (revisados y listos con iniciar sesión) y **personalizados**, que se conectan a cualquier servicio compatible con MCP pero no están verificados por Anthropic. El directorio está en el plan gratuito y en los de pago.
+Hay conectores del **directorio** (listos con iniciar sesión) y **personalizados**, que conectan cualquier servicio compatible con MCP pero que Anthropic no ha verificado. El directorio está en el plan gratuito y en los de pago.
 
 Para quitar el acceso, **desconecta** el servicio en los ajustes de conectores. Con Google, además, puedes retirarlo desde tu cuenta de Google.
 
@@ -80,7 +79,7 @@ Para quitar el acceso, **desconecta** el servicio en los ajustes de conectores. 
 
 > Prueba: «Con mi calendario conectado, dime qué tengo entre el lunes y el miércoles. Solo consulta, no cambies nada.»
 
-Si la respuesta mezcla cosas o se deja algo, pídele que te diga **de dónde** ha sacado cada dato.
+Si algo no cuadra, pídele que diga **de dónde** sale cada dato.
 
 ## Error frecuente
 

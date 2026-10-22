@@ -34,7 +34,6 @@ questions:
     explain: "Un resumen puede dejarse algo importante o malinterpretar un detalle. Tienta fiarse porque parte de tus apuntes, pero el temario oficial es la referencia del examen."
 tips:
   - "Crea un proyecto por asignatura con tus apuntes: así no tienes que subirlos en cada chat."
-  - "Pide la corrección justo después de cada respuesta, no al final: aprendes del error en el momento."
   - "Sube tus propios apuntes. Con materiales de academias o de otras personas, comprueba que puedes usarlos."
 action:
   title: Hazte un test de tus apuntes
@@ -56,7 +55,7 @@ sources: [claude-ayuda]
 
 ## La idea
 
-Claude puede ser un buen compañero de estudio si lo usas para **practicar**, no solo para leer resúmenes. Lo que mejor funciona:
+Claude es un buen compañero de estudio si lo usas para **practicar**, no solo para leer resúmenes:
 
 - **Tests**: preguntas de opción múltiple o de respuesta corta. Pide la corrección con explicación.
 - **Tarjetas**: una pregunta por un lado y la respuesta por otro, para repasar en ratos sueltos.

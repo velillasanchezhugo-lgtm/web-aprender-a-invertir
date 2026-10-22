@@ -33,7 +33,6 @@ questions:
     answer: 1
     explain: "Para entender un texto, Claude ayuda mucho. Pero muchos trámites exigen traducción jurada, y un error en un documento legal puede salir caro."
 tips:
-  - "Pide vocabulario de tu vida real: tu trabajo, tu viaje, tu entrevista. Lo que usas se queda."
   - "Haz una lista con tus errores repetidos y pide que te ponga ejercicios solo con eso."
   - "Las conversaciones de voz se guardan como texto en tu historial: úsalo para repasar."
 action:
@@ -56,7 +55,7 @@ sources: [claude-ayuda]
 
 ## La idea
 
-Para aprender un idioma hace falta practicar mucho y sin vergüenza. Claude es útil porque **no se cansa**, está disponible a cualquier hora y puede adaptarse a tu nivel. Sirve para tres cosas:
+Un idioma se aprende practicando mucho y sin vergüenza. Claude **no se cansa**, está disponible a cualquier hora y se adapta a tu nivel. Sirve para:
 
 - **Conversación.** Le pides que haga un papel (camarero, entrevistador, vecino) y habláis en el idioma, a tu nivel.
 - **Corrección explicada.** Te señala los errores **y por qué** lo son. Mejor los dos o tres más importantes que todos.

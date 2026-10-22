@@ -34,7 +34,6 @@ questions:
     explain: "La tercera da contexto (6 personas, un vegetariano), restricciones (tiempo, dinero), tarea (3 menús) y formato (lista con compra). «Rica y sana» suena a detalle, pero no dice nada concreto."
 tips:
   - "Si no sabes qué contexto dar, imagina que se lo encargas a una persona que no te conoce: ¿qué te preguntaría?"
-  - "Escribe como hablas. No hacen falta palabras mágicas ni fórmulas especiales."
   - "No pongas datos personales que no hagan falta para la tarea: nombres completos, DNI, números de cuenta."
 action:
   title: Rehaz una petición tuya
@@ -56,7 +55,7 @@ sources: [claude-ayuda, claude-docs, anthropic-academy]
 
 ## La idea
 
-Un **prompt** es lo que le escribes a Claude para pedirle algo. Claude no sabe quién eres, para qué lo quieres ni qué has intentado ya: solo ve tu mensaje. Si falta información, la rellena con lo más típico. Por eso las respuestas a peticiones cortas suelen ser correctas pero genéricas.
+Un **prompt** es lo que le escribes a Claude para pedirle algo. Claude no sabe quién eres ni para qué lo quieres: solo ve tu mensaje. Si falta información, la rellena con lo más típico. Por eso las peticiones cortas dan respuestas correctas pero genéricas.
 
 Una petición completa tiene cinco piezas:
 
@@ -84,7 +83,7 @@ Mira la diferencia. **Antes:**
 
 > Prueba: «Vivo de alquiler en Zaragoza. La caldera lleva tres semanas estropeada y he avisado dos veces por teléfono sin respuesta. Escribe un correo a mi casero pidiendo una fecha de reparación esta semana. Que recuerde los avisos anteriores. Tono firme pero educado, menos de 120 palabras, sin amenazas.»
 
-Si el resultado no encaja, no empieces de cero: dile qué cambiar («más corto», «quita la segunda frase», «más cercano»). Claude recuerda lo que habéis hablado en esa conversación.
+Si el resultado no encaja, no empieces de cero: dile qué cambiar («más corto», «más cercano»). Claude recuerda lo hablado en esa conversación.
 
 Recuerda que Claude puede equivocarse. Si el correo menciona plazos legales o derechos como inquilino, compruébalos en una fuente oficial antes de enviarlo.
 

@@ -12,7 +12,7 @@ scenario:
   kind: operacion
   label: Caso práctico
   title: El menú semanal de Javier
-  body: "Javier pide cada semana un menú para su familia. Siempre tiene que recordar que su hija es celíaca, que cenan pronto y que el presupuesto es de unos 80 €. Guarda una plantilla en una nota con huecos para la semana y los ingredientes que le sobran. En sus instrucciones de Claude escribe que prefiere respuestas cortas y en listas. Ahora tarda un minuto."
+  body: "Javier pide cada semana un menú para su familia. Siempre tiene que recordar que su hija es celíaca, que cenan pronto y que el presupuesto es de unos 80 €. Guarda una plantilla con huecos y escribe en sus instrucciones de Claude que prefiere respuestas cortas. Ahora tarda un minuto."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -35,7 +35,6 @@ questions:
 tips:
   - "Marca los huecos siempre igual, por ejemplo entre corchetes: [TEMA], [PÚBLICO], [LONGITUD]."
   - "Cuando una respuesta te encante, pide: «Escríbeme la petición que debería usar la próxima vez para obtener esto a la primera»."
-  - "Revisa tus instrucciones de vez en cuando: si algo ya no te sirve, quítalo."
 action:
   title: Crea tu primera plantilla
   steps:
@@ -56,17 +55,17 @@ sources: [claude-ayuda, claude-planes]
 
 ## La idea
 
-Si escribes casi la misma petición cada semana, estás perdiendo tiempo y olvidando detalles. Hay dos formas de guardarla:
+Si repites casi la misma petición cada semana, pierdes tiempo y olvidas detalles. Hay dos formas de guardarla:
 
 **1. Plantillas.** Una **plantilla de prompt** es una petición que ya te funcionó, con huecos para lo que cambia:
 
 > «Prepara el menú de la semana del [FECHA] para 4 personas. Una es celíaca. Cenamos antes de las 20:00. Presupuesto: unos 80 €. Aprovecha estos ingredientes que me sobran: [INGREDIENTES]. Formato: tabla por días y lista de la compra por secciones.»
 
-Guárdalas donde las tengas a mano: una nota del móvil, un documento o tu nota «Mi kit de Claude». Sirven para tareas concretas que se repiten.
+Guárdalas a mano: en una nota del móvil o en «Mi kit de Claude». Sirven para tareas concretas.
 
 **2. Instrucciones para toda tu cuenta.** En los ajustes de Claude hay un apartado llamado **«Instrucciones para Claude»**. Lo que escribas ahí se tiene en cuenta en **todas** tus conversaciones. Es el sitio para preferencias generales: cómo quieres que te hable, en qué trabajas, qué formato prefieres, qué evitar.
 
-**Y un punto intermedio: los proyectos.** Un proyecto agrupa varias conversaciones con sus propias instrucciones y archivos, que solo valen dentro de él. Según el centro de ayuda de Claude, están disponibles también en el plan gratuito, con un número limitado de proyectos (lo ves en la sesión de proyectos y en la página de planes).
+**Y un punto intermedio: los proyectos.** Un proyecto agrupa varias conversaciones con sus propias instrucciones y archivos, que solo valen dentro de él. Según el centro de ayuda, también están en el plan gratuito, con un número limitado.
 
 Los nombres de estos ajustes cambian de vez en cuando. Si no los encuentras, búscalos en el centro de ayuda de Claude.
 
@@ -76,7 +75,7 @@ Para escribir tus instrucciones generales, empieza con pocas líneas:
 
 > Prueba: «Lee lo que te cuento sobre mí y redáctame unas instrucciones de menos de 100 palabras para pegar en los ajustes de Claude: vivo en Sevilla, trabajo en administración, prefiero respuestas cortas, de tú, en español de España, con listas cuando haya pasos, y que me avises cuando no estés seguro de un dato.»
 
-Léelas, ajústalas y pégalas en los ajustes. Después abre un chat nuevo y comprueba que se nota el cambio.
+Ajústalas, pégalas en los ajustes y comprueba el cambio en un chat nuevo.
 
 ## Error frecuente
 
