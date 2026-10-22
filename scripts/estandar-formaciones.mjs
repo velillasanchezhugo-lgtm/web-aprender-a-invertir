@@ -315,6 +315,10 @@ ${table(['Nivel', 'Modelo', 'Inversión (hoy)', 'Qué incluye'], [
 │   ├── 1  Emprender desde cero        Gratis            → /es/emprendimiento/nivel-1/
 │   ├── 2  Avanzado                    <s>${esc(P.monthly)}</s>          → /es/emprendimiento/nivel-2/
 │   └── 3  Profesional                 <s>curso ${esc(P.course)} · cert. ${esc(P.cert)}</s> → /es/emprendimiento/nivel-3/
+├── Claude                        3 niveles
+│   ├── 1  Empezar con Claude          Gratis            → /es/claude/nivel-1/
+│   ├── 2  Avanzado                    <s>${esc(P.monthly)}</s>          → /es/claude/nivel-2/
+│   └── 3  Profesional                 <s>curso ${esc(P.course)} · cert. ${esc(P.cert)}</s> → /es/claude/nivel-3/
 ├── (nueva formación)             3 niveles
 └── + Más formaciones             Próximamente</div>
 <p>En la portada, debajo del párrafo de bienvenida, cada formación tiene un pósit (un cuadrado de color) que lleva a su página. Al añadir una formación se añade su pósit (<span class="mono">FORMATIONS</span> en <span class="mono">src/pages/es/index.astro</span>) y su entrada del panel (<span class="mono">FORMATIONS</span> en <span class="mono">src/components/Drawer.astro</span>).</p>
@@ -359,8 +363,10 @@ ${table(['Dato', 'Archivo'], [
   ['Glosario (con nivel)', '<span class="mono">src/data/glossary.json</span>'],
   ['Precios', '<span class="mono">src/config/site.ts</span> → <span class="mono">PRICING</span>'],
   ['Panel de formaciones', '<span class="mono">src/components/Drawer.astro</span>'],
-  ['Emprendimiento: niveles, módulos, competencias y temario N2/N3', '<span class="mono">src/data/emprendimiento.json</span>'],
-  ['Emprendimiento: sesiones de N1 y glosario', '<span class="mono">src/content/emprendimiento/</span> y <span class="mono">src/data/glossary-emprendimiento/</span> (un archivo por módulo)'],
+  ['Otras formaciones: niveles, módulos, competencias, textos y temario N2/N3', '<span class="mono">src/data/&lt;id&gt;.json</span> (registradas en <span class="mono">src/lib/formations.ts</span>)'],
+  ['Otras formaciones: sesiones de N1 y glosario', '<span class="mono">src/content/&lt;id&gt;/</span> y <span class="mono">src/data/glossary-&lt;id&gt;/</span> (un archivo por módulo)'],
+  ['Páginas comunes de formación', '<span class="mono">src/pages/es/[f]/</span>: portada, niveles, módulos, sesión, examen y glosario'],
+  ['Herramientas propias de una formación', '<span class="mono">FORMATION_TOOLS</span> en <span class="mono">src/lib/formations.ts</span> (ejemplo: Claude)'],
   ['Reproductor de sesiones (común)', '<span class="mono">src/components/SessionPlayer.astro</span>'],
 ])}
 </section>

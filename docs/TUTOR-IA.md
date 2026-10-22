@@ -54,3 +54,7 @@ Si la función no está activa o falla, la página pasa sola al modo guiado.
 
 - Revisión jurídica: encaje con la normativa de servicios de inversión (información general, no recomendación), política de privacidad (encargado del tratamiento, transferencias internacionales) y aviso visible en la página (ya incluido).
 - Pruebas con preguntas reales, incluidas peticiones de recomendaciones concretas, para comprobar que el tutor mantiene los límites.
+
+## 3. Corrector de peticiones (`/api/prompt-coach`)
+
+Lo usa la formación Claude: en el paso «Practica» de las sesiones y en `/es/claude/herramientas/evaluador-de-peticiones/`, el alumno escribe un prompt. Siempre se evalúa primero en el navegador con `src/lib/claude/prompt-check.ts` (sin red). Si `AI_TUTOR_ENABLED=true` y hay `ANTHROPIC_API_KEY`, aparece además el botón «Opinión de Claude», que envía la petición, la tarea y los criterios a `api/prompt-coach.js`. La respuesta es estructurada (nota, lo que está bien, qué mejorar y una versión mejorada). Límite por IP: `AI_COACH_MAX_PER_HOUR` (20 por defecto). Lógica pura y pruebas: `api/_prompt-coach-core.js` y `tests/prompt-coach.test.ts`.

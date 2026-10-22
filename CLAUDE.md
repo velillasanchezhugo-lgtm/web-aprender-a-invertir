@@ -1,6 +1,6 @@
 # umotion Academy — guía para Claude Code
 
-Academia en español para residentes en España, con dos formaciones: **Inversión** y **Emprendimiento** (`docs/EMPRENDIMIENTO.md`). Gratis con anuncios en el Nivel 1, enfocada a principiantes. Prototipo: todas las páginas llevan `noindex` hasta que se publique.
+Academia en español para residentes en España, con tres formaciones: **Inversión**, **Emprendimiento** (`docs/EMPRENDIMIENTO.md`) y **Claude** (`docs/CLAUDE-FORMACION.md`; umotion Academy no está afiliada a Anthropic). Gratis con anuncios en el Nivel 1, enfocada a principiantes. Prototipo: todas las páginas llevan `noindex` hasta que se publique.
 
 Lee antes de cambiar contenido o estructura:
 - `docs/ESTANDAR-FORMACIONES.pdf` (fuente: `docs/estandar-formaciones.html`): el sistema común de todas las formaciones (tres niveles, formatos, exámenes, precios, checklist para una formación nueva).
@@ -30,7 +30,8 @@ Español de España, tuteo, frases cortas, comillas «», `5 €` (espacio antes
 - Motor adaptativo: `src/lib/adaptive.ts`. Estado de la academia: `src/lib/academy.ts`. Sincronización con la cuenta: `src/lib/sync.ts`.
 - Funciones de Vercel en `api/` (tutor con Claude, avisos push a las 16:00 de Madrid, cuenta con Supabase).
 - Cabecera: `src/components/Header.astro`; panel «Formaciones»: `src/components/Drawer.astro` (formación → niveles → página de cada nivel). Pósits de la portada: `FORMATIONS` en `src/pages/es/index.astro`.
-- Emprendimiento: datos en `src/data/emprendimiento.json`, sesiones en `src/content/emprendimiento/`, glosario en `src/data/glossary-emprendimiento/`, rutas bajo `/es/emprendimiento/`, progreso en la clave `academy-emprendimiento`. El reproductor de sesiones es común: `src/components/SessionPlayer.astro`.
+- Formaciones distintas de Inversión (`src/lib/formations.ts`): datos en `src/data/<id>.json`, sesiones en `src/content/<id>/`, glosario en `src/data/glossary-<id>/`, páginas comunes en `src/pages/es/[f]/` (rutas `/es/<id>/…`) y progreso en la clave `academy-<id>`. El reproductor de sesiones es común: `src/components/SessionPlayer.astro`.
+- Claude: evaluador de peticiones `src/lib/claude/prompt-check.ts` (paso «Practica» con el campo `practice` de las sesiones), corrector opcional con IA `api/prompt-coach.js` y herramientas en `src/pages/es/claude/herramientas/`.
 
 ## Comprobar antes de guardar
 
