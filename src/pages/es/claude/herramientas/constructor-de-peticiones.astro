@@ -1,0 +1,69 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+---
+<Base title="Constructor de peticiones para Claude" description="Rellena las piezas de tu petición (contexto, tarea, público, formato, tono, ejemplo y límites) y obtén un prompt completo listo para copiar en Claude." allowAds={false}>
+  <div class="container ct">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/claude/', label: 'Claude' }, { href: '/es/claude/herramientas/', label: 'Herramientas' }, { label: 'Constructor' }]} />
+    <h1>Constructor de peticiones</h1>
+    <p class="lede">Rellena solo lo que necesites. Abajo verás la petición montada, con su nota, lista para copiar en Claude.</p>
+    <div class="ct-grid">
+      <form id="pb" class="card" novalidate>
+        <div class="field"><label for="b-tarea">Qué quieres que haga <span class="hint">Obligatorio. Empieza por un verbo: escribe, resume, prepara…</span></label><textarea id="b-tarea" rows="2" maxlength="400" placeholder="Escribe un mensaje para avisar a mis clientes de que cambiamos de horario"></textarea></div>
+        <div class="field"><label for="b-contexto">Contexto <span class="hint">Quién eres y qué pasa.</span></label><textarea id="b-contexto" rows="2" maxlength="600" placeholder="Tengo una tienda de bicicletas en Zaragoza"></textarea></div>
+        <div class="field"><label for="b-publico">Para quién o para qué</label><input id="b-publico" maxlength="200" placeholder="clientes habituales, muchos mayores de 60" /></div>
+        <div class="field"><label for="b-formato">Formato y extensión</label><input id="b-formato" maxlength="200" placeholder="mensaje de WhatsApp, máximo 50 palabras" /></div>
+        <div class="field"><label for="b-tono">Tono</label><input id="b-tono" maxlength="120" placeholder="cercano y claro" /></div>
+        <div class="field"><label for="b-rol">Papel que quieres que adopte (opcional)</label><input id="b-rol" maxlength="160" placeholder="un experto en atención al cliente" /></div>
+        <div class="field"><label for="b-ejemplo">Un ejemplo de cómo lo quieres (opcional)</label><input id="b-ejemplo" maxlength="300" placeholder="Hola, Juan: desde el lunes abrimos…" /></div>
+        <div class="field"><label for="b-limites">Lo que no quieres (opcional)</label><input id="b-limites" maxlength="300" placeholder="sin emojis, no menciones precios" /></div>
+        <label class="choice"><input type="checkbox" id="b-preguntar" /> <span>Que me haga preguntas antes de empezar</span></label>
+        <label class="choice"><input type="checkbox" id="b-fuentes" /> <span>Que diga de dónde salen los datos y si duda</span></label>
+      </form>
+      <div class="out" aria-live="polite">
+        <h2 class="h3">Tu petición</h2>
+        <pre id="b-out" class="card"></pre>
+        <p class="score"><span class="mono" id="b-score">0</span><span class="mono muted">/10</span> <strong id="b-level"></strong></p>
+        <ul class="small" id="b-tips"></ul>
+        <p><button type="button" class="btn brand small" id="b-copy">Copiar la petición</button> <a class="btn ghost small" href="/es/claude/herramientas/plantillas/">Ver plantillas</a></p>
+      </div>
+    </div>
+  </div>
+</Base>
+<style>
+  .ct { padding-bottom: 3rem; }
+  .ct-grid { display: grid; gap: 1.2rem; margin: 1.2rem 0; }
+  @media (min-width: 960px) { .ct-grid { grid-template-columns: 1fr 1fr; align-items: start; } .out { position: sticky; top: 90px; } }
+  #pb textarea, #pb input:not([type=checkbox]) { width: 100%; }
+  .h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
+  #b-out { white-space: pre-wrap; font: 500 0.98rem/1.55 var(--sans); min-height: 8rem; margin: 0; }
+  .score { margin: 0.8rem 0 0.3rem; } #b-score { font-size: 1.6rem; font-weight: 700; }
+  #b-tips { padding-left: 1.2rem; }
+</style>
+<script>
+  import { buildPrompt, checkPrompt, LEVEL_LABEL } from '../../../../lib/claude/prompt-check';
+  import { read, write } from '../../../../scripts/store';
+  const ids = ['tarea', 'contexto', 'publico', 'formato', 'tono', 'rol', 'ejemplo', 'limites'] as const;
+  const el = (k: string) => document.getElementById(`b-${k}`) as HTMLInputElement;
+  const saved = read<Record<string, string | boolean>>('prompt-builder', {});
+  ids.forEach((k) => { if (typeof saved[k] === 'string') el(k).value = saved[k] as string; });
+  el('preguntar').checked = !!saved.preguntar; el('fuentes').checked = !!saved.fuentes;
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  function upd() {
+    const v = Object.fromEntries(ids.map((k) => [k, el(k).value])) as Record<(typeof ids)[number], string>;
+    const p = buildPrompt({ ...v, preguntar: el('preguntar').checked, fuentes: el('fuentes').checked });
+    document.getElementById('b-out')!.textContent = p || 'Empieza por escribir qué quieres que haga.';
+    const r = checkPrompt(p);
+    document.getElementById('b-score')!.textContent = String(r.score);
+    document.getElementById('b-level')!.textContent = p ? LEVEL_LABEL[r.level] : '';
+    document.getElementById('b-tips')!.innerHTML = p ? r.tips.map((t) => `<li>${esc(t)}</li>`).join('') : '';
+    write('prompt-builder', { ...v, preguntar: el('preguntar').checked, fuentes: el('fuentes').checked });
+  }
+  document.getElementById('pb')!.addEventListener('input', upd);
+  document.getElementById('b-copy')!.addEventListener('click', async (e) => {
+    const b = e.currentTarget as HTMLButtonElement;
+    try { await navigator.clipboard.writeText(document.getElementById('b-out')!.textContent ?? ''); b.textContent = 'Copiada ✓'; } catch { b.textContent = 'No se pudo copiar'; }
+    setTimeout(() => { b.textContent = 'Copiar la petición'; }, 1800);
+  });
+  upd();
+</script>

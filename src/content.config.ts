@@ -115,6 +115,13 @@ const sessionSchema = <T extends readonly [string, ...string[]]>(tracks: T, fall
     action: z.object({ title: z.string(), steps: z.array(z.string()).min(1), check: z.string() }),
     deeper: z.string().nullable().default(null),
     tool: z.string().nullable().default(null),
+    /** Práctica de peticiones (formación Claude): el alumno escribe un prompt y la web lo evalúa (src/lib/claude/prompt-check.ts). */
+    practice: z.object({
+      task: z.string(),
+      require: z.array(z.enum(['tarea', 'contexto', 'publico', 'formato', 'tono', 'ejemplos', 'limites', 'verificar', 'preguntas'])).default([]),
+      extra: z.array(z.object({ label: z.string(), any: z.array(z.string()).min(1), hint: z.string().optional() })).max(3).default([]),
+      sample: z.string(),
+    }).optional(),
     ...editorial,
   });
 const sessions = defineCollection({

@@ -28,7 +28,7 @@ const FORMATIONS = [
     ],
   },
   {
-    id: 'claude', title: 'Claude', overview: { href: '/es/claude/', label: 'Ver la formación' },
+    id: 'claude', title: 'Claude', overview: { href: '/es/claude/', label: 'Ver la formación' }, extra: { href: '/es/claude/herramientas/', label: 'Herramientas' },
     icon: 'M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z',
     levels: [
       { n: 1, title: 'Empezar con Claude', href: '/es/claude/nivel-1/', free: true },
@@ -80,6 +80,7 @@ const cur = (href: string) => (path === href || (href !== '/es/' && path.startsW
                   </li>
                 ))}
                 <li><a class="ov small" href={f.overview.href} aria-current={path === f.overview.href ? 'page' : undefined}>{f.overview.label}</a></li>
+                {'extra' in f && f.extra && <li><a class="ov small" href={f.extra.href} aria-current={path.startsWith(f.extra.href) ? 'page' : undefined}>{f.extra.label}</a></li>}
               </ul>
             </details>
           </li>

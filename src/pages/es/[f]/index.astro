@@ -4,7 +4,7 @@ import Base from '../../../layouts/Base.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Price from '../../../components/Price.astro';
 import { PRICING } from '../../../config/site';
-import { formation, formationSessions, formationPaths, type FormationId } from '../../../lib/formations';
+import { formation, formationSessions, formationPaths, FORMATION_TOOLS, type FormationId } from '../../../lib/formations';
 export const getStaticPaths = formationPaths;
 const F = formation(Astro.params.f as FormationId);
 const EM = F.d;
@@ -13,6 +13,7 @@ const count = (id: string) => all.filter((s) => s.data.track === id).length;
 const n2 = EM.n2.modules.reduce((a, m) => a + m.items.length, 0);
 const n3 = EM.n3.modules.reduce((a, m) => a + m.items.length, 0);
 const zero = EM.tracks[0].id;
+const tools = FORMATION_TOOLS[F.id];
 const levels = [
   { t: EM.tiers[0], meta: `${all.length} sesiones de 5 minutos`, price: null },
   { t: EM.tiers[1], meta: `${n2} clases de 15 a 30 minutos`, price: `${PRICING.n2.monthly} o ${PRICING.n2.annual}` },
@@ -57,6 +58,12 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${F
           : <span class="soon"><span class="mono small">B{i + 1}</span><span><strong>{F.tracks[id].label}</strong><span class="small muted">En preparación</span></span></span>}</li>
       ))}
     </ol>
+    {tools && (
+      <section aria-labelledby="tools-t">
+        <h2 class="h3" id="tools-t">Herramientas para practicar</h2>
+        <ul class="tools">{Object.entries(tools.items).map(([id, t]) => <li><a class="card tool" href={`${tools.href}${id}/`}><strong>{t.title}</strong><span class="small muted">{t.blurb}</span></a></li>)}</ul>
+      </section>
+    )}
     <div class="callout note legal"><p>{F.texts.notice}</p></div>
   </div>
 </Base>
@@ -80,6 +87,9 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${F
   .core a, .core .soon { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0.6rem; align-items: center; padding: 0.7rem 0.85rem; border: 1px solid var(--rule); border-radius: 14px; background: var(--card); color: var(--ink); text-decoration: none; }
   .core a:hover { border-color: var(--u-blue); }
   .core .soon { opacity: 0.7; border-style: dashed; }
+  .tools { list-style: none; padding: 0; display: grid; gap: 0.6rem; margin: 0.8rem 0 1.5rem; }
+  @media (min-width: 760px) { .tools { grid-template-columns: 1fr 1fr; } }
+  .tool { display: flex; flex-direction: column; gap: 0.2rem; height: 100%; text-decoration: none; color: var(--ink); }
   .core .mono { display: grid; place-items: center; height: 2.2rem; border-radius: 10px; background: var(--paper-2); color: var(--teal); font-weight: 700; }
   .core a > span:last-child, .core .soon > span:last-child { display: flex; flex-direction: column; gap: 0.1rem; }
 </style>

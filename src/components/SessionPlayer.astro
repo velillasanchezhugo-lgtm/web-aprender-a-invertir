@@ -8,12 +8,16 @@ import Base from '../layouts/Base.astro';
 import { lessons, TOOLS, sourceById, isoDate, guessFor } from '../lib/content';
 import BrokerDisclosure from './BrokerDisclosure.astro';
 import TermCards from './TermCards.astro';
+import PromptCoach from './PromptCoach.astro';
+import { FORMATION_TOOLS, type FormationId } from '../lib/formations';
 interface Props { s: any; index: number; total: number; next: any | null; trackLabel: string; formation?: string }
 const { s, index, total, next, trackLabel, formation = 'inversion' } = Astro.props;
 const inv = formation === 'inversion';
 const sessionBase = inv ? '/es/sesion/' : `/es/${formation}/sesion/`;
 const home = inv ? '/es/mi-plan/' : `/es/${formation}/nivel-1/`;
 const storeKey = inv ? 'academy' : `academy-${formation}`;
+const ftools = inv ? null : FORMATION_TOOLS[formation as FormationId];
+const toolLink = d.tool ? (ftools ? { href: `${ftools.href}${d.tool}/`, title: ftools.items[d.tool]?.title } : { href: `/es/herramientas/${d.tool}/`, title: TOOLS[d.tool]?.title }) : null;
 const d = s.data;
 const { Content } = await render(s);
 const ls = inv ? Object.fromEntries((await lessons()).map((l) => [l.id, l.data.title])) : {};
@@ -21,7 +25,8 @@ const nQ = d.questions.length;
 const sc = d.scenario;
 const K = d.terms?.length ? 1 : 0;
 const qBase = (sc ? 4 : 3) + K;
-const steps = ['Pregunta', ...(K ? ['Palabras clave'] : []), 'La idea', 'En la práctica', ...(sc ? ['Caso práctico'] : []), ...d.questions.map((_: unknown, i: number) => `Test ${i + 1}`), 'Acción de hoy', 'Hecho'];
+const P = d.practice ? 1 : 0;
+const steps = ['Pregunta', ...(K ? ['Palabras clave'] : []), 'La idea', 'En la práctica', ...(sc ? ['Caso práctico'] : []), ...d.questions.map((_: unknown, i: number) => `Test ${i + 1}`), ...(P ? ['Practica'] : []), 'Acción de hoy', 'Hecho'];
 const qmeta = Object.fromEntries(d.questions.map((q: any) => [q.id, { skills: q.skills ?? d.skills, guess: guessFor(q) }]));
 const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', name: d.title, description: d.description, inLanguage: 'es-ES', timeRequired: `PT${d.minutes}M`, educationalLevel: 'Principiante', learningResourceType: 'Microlección', isAccessibleForFree: true, datePublished: isoDate(d.published), provider: { '@type': 'Organization', name: 'umotion Academy' } };
 ---
@@ -106,17 +111,26 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
         </section>
       ))}
 
-      <section class="step action" data-step={qBase + nQ} aria-labelledby="h-action">
+      {P === 1 && (
+        <section class="step practice-step" data-step={qBase + nQ} aria-labelledby="h-practice">
+          <span class="chip">Practica · escribe tu petición</span>
+          <h2 id="h-practice" class="q-text">{d.practice.task}</h2>
+          <PromptCoach id={s.id} task={d.practice.task} require={d.practice.require} extra={d.practice.extra} sample={d.practice.sample} />
+          <p class="small muted">Puedes seguir sin hacerla, pero escribir la petición es lo que más se aprende. Después, pruébala en Claude.</p>
+        </section>
+      )}
+
+      <section class="step action" data-step={qBase + nQ + P} aria-labelledby="h-action">
         <span class="chip">Acción de hoy · 2 minutos</span>
         <h2 id="h-action">{d.action.title}</h2>
         <ol class="action-steps">{d.action.steps.map((st: string) => <li>{st}</li>)}</ol>
-        {d.tool && <p><a class="btn small secondary" href={`/es/herramientas/${d.tool}/`} target="_blank" rel="noopener">Abrir: {TOOLS[d.tool]?.title} ↗</a></p>}
+        {toolLink && <p><a class="btn small secondary" href={toolLink.href} target="_blank" rel="noopener">Abrir: {toolLink.title} ↗</a></p>}
         <label class="choice done-check"><input type="checkbox" id="action-done" /> <span>{d.action.check}</span></label>
         <div class="field"><label for="note">Tu nota (opcional, se queda en tu dispositivo)</label><textarea id="note" rows="2" maxlength="400"></textarea></div>
         {inv && <p class="small muted">Puedes hacerla ahora o más tarde: la encontrarás en «Mi plan».</p>}
       </section>
 
-      <section class="step finish" data-step={qBase + 1 + nQ} aria-labelledby="h-finish">
+      <section class="step finish" data-step={qBase + 1 + nQ + P} aria-labelledby="h-finish">
         <div class="panel-dark finish-card">
           <span class="chip">Sesión completada</span>
           <h2 id="h-finish">Hoy te llevas esto:</h2>
@@ -257,6 +271,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
   const qSteps = steps.filter((s) => s.classList.contains('q'));
   if (root.querySelector('.scenario-step')) labels.push('Caso práctico');
   qSteps.forEach((_, i) => labels.push(`Test ${i + 1}`));
+  if (root.querySelector('.practice-step')) labels.push('Practica');
   labels.push('Acción de hoy', 'Hecho');
   const segs = [...root.querySelectorAll<HTMLElement>('.segments span')];
   const prevBtn = document.getElementById('prev') as HTMLButtonElement;

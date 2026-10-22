@@ -2,7 +2,7 @@
 /** Presentación del Nivel 1 (gratis) de una formación. Datos: src/data/<id>.json. */
 import Base from '../../../../layouts/Base.astro';
 import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
-import { formation, formationSessions, formationPaths, type FormationId } from '../../../../lib/formations';
+import { formation, formationSessions, formationPaths, FORMATION_TOOLS, type FormationId } from '../../../../lib/formations';
 export const getStaticPaths = formationPaths;
 const F = formation(Astro.params.f as FormationId);
 const EM = F.d;
@@ -60,6 +60,7 @@ const onePage = all.filter((s) => s.data.track === EM.tracks[0].id).at(-1);
         {onePage && <li><a href={`${F.session}${onePage.id}/`}>{F.texts.onePage}</a></li>}
         <li><a href={`${F.base}examen/`}>Examen del Nivel 1</a></li>
         <li><a href={`${F.base}glosario/`}>{F.texts.glossTitle}</a></li>
+        {FORMATION_TOOLS[F.id] && <li><a href={FORMATION_TOOLS[F.id]!.href}>Herramientas para practicar</a></li>}
       </ul>
       <p class="small muted">¿Quieres seguir? <a href={`${F.base}nivel-2/`}>Nivel 2 · Avanzado</a>.</p>
     </section>

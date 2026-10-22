@@ -1,0 +1,88 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import data from '../../../../data/claude-plantillas.json';
+---
+<Base title="Plantillas de peticiones para Claude" description="Plantillas de prompts para escribir, resumir, decidir, aprender y organizarte, con huecos para tu caso, y un kit personal donde guardar las tuyas." allowAds={false}>
+  <div class="container ct">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/claude/', label: 'Claude' }, { href: '/es/claude/herramientas/', label: 'Herramientas' }, { label: 'Plantillas' }]} />
+    <h1>Plantillas y «Mi kit de Claude»</h1>
+    <p class="lede">Copia una plantilla, cambia lo que está entre [corchetes] por tu caso y pégala en Claude. Guarda en tu kit las que más uses o las tuyas propias.</p>
+    <section class="card kit" aria-labelledby="kit-t">
+      <h2 id="kit-t" class="h3">Mi kit de Claude</h2>
+      <p class="small muted">Se guarda solo en este dispositivo (o en tu cuenta, si la tienes).</p>
+      <ul id="kit-list" class="kit-list"></ul>
+      <form id="kit-form" class="kit-form">
+        <div class="field"><label for="kit-title">Nombre</label><input id="kit-title" maxlength="80" placeholder="Mi correo de reclamación" required /></div>
+        <div class="field"><label for="kit-text">Petición</label><textarea id="kit-text" rows="3" maxlength="2000" required></textarea></div>
+        <button class="btn small" type="submit">Guardar en mi kit</button>
+      </form>
+    </section>
+    <nav class="cats small" aria-label="Categorías">{data.categories.map((c) => <a href={`#cat-${c.id}`}>{c.label}</a>)}</nav>
+    {data.categories.map((c) => (
+      <section aria-labelledby={`cat-${c.id}`}>
+        <h2 class="h3 cat-h" id={`cat-${c.id}`}>{c.label}</h2>
+        <ul class="tpls">
+          {data.templates.filter((t) => t.cat === c.id).map((t) => (
+            <li class="card tpl" data-id={t.id}>
+              <h3 class="h4">{t.title}</h3>
+              <p class="small muted">{t.use}</p>
+              <pre class="tpl-text">{t.text}</pre>
+              <p class="tpl-actions"><button type="button" class="btn small secondary" data-copy>Copiar</button> <button type="button" class="btn small ghost" data-save>Guardar en mi kit</button></p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>
+<style>
+  .ct { padding-bottom: 3rem; }
+  .h3 { font-size: 1.25rem; margin: 0 0 0.4rem; } .h4 { font-size: 1.05rem; margin: 0 0 0.2rem; }
+  .kit { margin: 1.2rem 0; }
+  .kit-list { list-style: none; padding: 0; display: grid; gap: 0.5rem; margin: 0.6rem 0 1rem; }
+  .kit-list li { border: 1px solid var(--rule); border-radius: 12px; padding: 0.6rem 0.8rem; background: var(--paper); }
+  .kit-list pre { white-space: pre-wrap; font: 0.92rem/1.5 var(--sans); margin: 0.3rem 0; }
+  .kit-form textarea, .kit-form input { width: 100%; }
+  .cats { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin: 1rem 0; }
+  .cat-h { margin-top: 1.8rem; }
+  .tpls { list-style: none; padding: 0; display: grid; gap: 0.8rem; }
+  @media (min-width: 860px) { .tpls { grid-template-columns: 1fr 1fr; } }
+  .tpl-text { white-space: pre-wrap; font: 0.95rem/1.55 var(--sans); background: var(--paper-2); padding: 0.7rem 0.9rem; border-radius: 10px; margin: 0.5rem 0; }
+  .tpl-actions { margin: 0; }
+</style>
+<script>
+  import { read, write } from '../../../../scripts/store';
+  type Item = { id: string; title: string; text: string; at: string };
+  const KEY = 'claude-kit';
+  const list = () => read<{ items: Item[] }>(KEY, { items: [] }).items;
+  const save = (items: Item[]) => write(KEY, { items });
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  const ul = document.getElementById('kit-list')!;
+  function render() {
+    const items = list();
+    ul.innerHTML = items.length ? items.map((it) => `<li data-id="${esc(it.id)}"><strong>${esc(it.title)}</strong><pre>${esc(it.text)}</pre><button type="button" class="btn small ghost" data-kcopy>Copiar</button> <button type="button" class="btn small ghost" data-kdel>Borrar</button></li>`).join('') : '<li class="small muted">Aún no tienes nada guardado. Empieza por una plantilla o por tu mejor petición.</li>';
+  }
+  const copy = async (b: HTMLButtonElement, text: string) => { try { await navigator.clipboard.writeText(text); b.textContent = 'Copiada ✓'; } catch { b.textContent = 'No se pudo copiar'; } setTimeout(() => { b.textContent = 'Copiar'; }, 1600); };
+  document.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest('button'); if (!b) return;
+    const tpl = b.closest<HTMLElement>('.tpl');
+    if (b.matches('[data-copy]') && tpl) copy(b as HTMLButtonElement, tpl.querySelector('.tpl-text')!.textContent ?? '');
+    if (b.matches('[data-save]') && tpl) {
+      const items = list();
+      if (!items.some((i) => i.id === tpl.dataset.id)) items.push({ id: tpl.dataset.id!, title: tpl.querySelector('h3')!.textContent ?? '', text: tpl.querySelector('.tpl-text')!.textContent ?? '', at: new Date().toISOString() });
+      save(items); render(); b.textContent = 'Guardada ✓';
+    }
+    const li = b.closest<HTMLElement>('#kit-list li');
+    if (li && b.matches('[data-kcopy]')) copy(b as HTMLButtonElement, li.querySelector('pre')!.textContent ?? '');
+    if (li && b.matches('[data-kdel]')) { save(list().filter((i) => i.id !== li.dataset.id)); render(); }
+  });
+  document.getElementById('kit-form')!.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const t = (document.getElementById('kit-title') as HTMLInputElement), x = (document.getElementById('kit-text') as HTMLTextAreaElement);
+    if (!t.value.trim() || !x.value.trim()) return;
+    save([...list(), { id: `mio-${Date.now()}`, title: t.value.trim(), text: x.value.trim(), at: new Date().toISOString() }]);
+    t.value = ''; x.value = ''; render();
+  });
+  render();
+</script>

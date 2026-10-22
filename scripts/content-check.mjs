@@ -69,7 +69,9 @@ const skillMap = JSON.parse(readFileSync('src/data/skills.json', 'utf8'));
 const skillIds = new Set(skillMap.skills.map((k) => k.id));
 const taught = new Set();
 const TRACKS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener', 'empresas', 'noticias', 'trading'];
-checkSessions(sessions, { tracks: TRACKS, skillIds, taught, sessionIds, def: 'camino-cero' });
+checkSessions(sessions, { tracks: TRACKS, skillIds, taught, sessionIds, def: 'camino-cero', tools: toolIds });
+// Herramientas propias de cada formación (claves del registro en src/lib/<formación>/tools.ts, si existe).
+const toolsOf = (id) => { const p = `src/lib/${id}/tools.ts`; return new Set(existsSync(p) ? [...readFileSync(p, 'utf8').matchAll(/^\s+'?([a-z0-9-]+)'?: \{ title:/gm)].map((m) => m[1]) : []); };
 // Demás formaciones: mismas reglas, con sus módulos y competencias (src/data/<id>.json).
 const formationCounts = [];
 for (const f of FORMATIONS) {
@@ -77,14 +79,15 @@ for (const f of FORMATIONS) {
   const list = existsSync(f.dir) ? load(f.dir) : [];
   const ids = new Set(fd.skills.map((k) => k.id));
   const fTaught = new Set();
-  checkSessions(list, { tracks: fd.tracks.map((t) => t.id), skillIds: ids, taught: fTaught, sessionIds: new Set(list.map((x) => x.id)), def: fd.tracks[0].id });
+  checkSessions(list, { tracks: fd.tracks.map((t) => t.id), skillIds: ids, taught: fTaught, sessionIds: new Set(list.map((x) => x.id)), def: fd.tracks[0].id, tools: toolsOf(f.id) });
+  if (f.id === 'claude') for (const x of list) if (!x.data.practice) warnings.push(`${x.file}: sin práctica de peticiones (practice)`);
   for (const t of fd.tracks) if (!list.some((x) => x.data.track === t.id)) warnings.push(`${f.id}: el módulo «${t.id}» aún no tiene sesiones`);
   for (const k of fd.skills) if (k.level === 1 && list.length && !fTaught.has(k.id)) warnings.push(`${f.id}: competencia «${k.id}» sin ninguna sesión que la enseñe`);
   for (const c of fd.n1Capacities) for (const k of c.skills) if (!ids.has(k)) errors.push(`${f.id}: la capacidad ${c.id} usa la competencia desconocida «${k}»`);
   for (const m of [...fd.n2.modules, ...fd.n3.modules]) for (const i of m.items) for (const k of i.skills) if (!ids.has(k)) errors.push(`${f.id}: «${i.id}» usa la competencia desconocida «${k}»`);
   formationCounts.push(`${list.length} de ${fd.title}`);
 }
-function checkSessions(list, { tracks, skillIds, taught, sessionIds, def }) {
+function checkSessions(list, { tracks, skillIds, taught, sessionIds, def, tools }) {
 const orders = new Map();
 for (const x of list) {
   const track = x.data.track ?? def;
@@ -102,7 +105,7 @@ for (const x of list) {
   for (const q of x.data.questions) if (q.type === 'estimate') warnings.push(`${x.file}: «${q.id}» es de estimación; las sesiones deben evitar cálculos`);
   for (const p of x.data.prereqs ?? []) if (!sessionIds.has(p)) errors.push(`${x.file}: prerrequisito inexistente «${p}»`);
   if (x.data.deeper && !lessonIds.has(x.data.deeper)) errors.push(`${x.file}: lectura «${x.data.deeper}» inexistente`);
-  if (x.data.tool && !toolIds.has(x.data.tool)) errors.push(`${x.file}: herramienta «${x.data.tool}» inexistente`);
+  if (x.data.tool && !tools.has(x.data.tool)) errors.push(`${x.file}: herramienta «${x.data.tool}» inexistente`);
   for (const q of x.data.questions) {
     if (qids.has(q.id)) errors.push(`${x.file}: id de pregunta repetido «${q.id}»`); qids.add(q.id);
     if (q.type === 'choice' && q.answer >= q.options.length) errors.push(`${x.file}: «${q.id}» con respuesta fuera de rango`);

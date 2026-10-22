@@ -1,0 +1,37 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import PromptCoach from '../../../../components/PromptCoach.astro';
+import { CRITERIA } from '../../../../lib/claude/prompt-check';
+---
+<Base title="Evaluador de peticiones para Claude" description="Escribe tu prompt y descubre qué piezas tiene (tarea, contexto, público, formato, tono…) y cómo mejorarlo, con una nota del 0 al 10." allowAds={false}>
+  <div class="container ct">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/claude/', label: 'Claude' }, { href: '/es/claude/herramientas/', label: 'Herramientas' }, { label: 'Evaluador' }]} />
+    <h1>Evaluador de peticiones</h1>
+    <p class="lede">Escribe la petición que le mandarías a Claude. El evaluador revisa si tiene las piezas que hacen que una respuesta salga bien a la primera y te dice qué añadir.</p>
+    <div class="ct-grid">
+      <PromptCoach id="evaluador" rows={9} placeholder="Por ejemplo: Soy profesor de 4.º de ESO. Prepara un esquema de una clase de 50 minutos sobre…" />
+      <aside class="card">
+        <h2 class="h3">Las piezas de una buena petición</h2>
+        <ol class="pieces">{CRITERIA.map((c) => <li><strong>{c.label}.</strong> <span class="small muted">{c.hint}</span></li>)}</ol>
+        <p class="small">No todas las tareas necesitan todas. La tarea, el contexto y el formato casi siempre ayudan.</p>
+      </aside>
+    </div>
+    <details class="method">
+      <summary>Cómo funciona y sus límites</summary>
+      <ul>
+        <li>La nota del evaluador sale de buscar señales en el texto (por ejemplo, «para mis clientes», «en una tabla», «tono cercano»). Es orientativa: no entiende el significado ni comprueba si lo que pides tiene sentido.</li>
+        <li>También avisa si ves datos personales (DNI, IBAN, teléfono, correo, tarjeta) para que los quites antes de usar la petición.</li>
+        <li>Si la opción está activada en esta web, «Opinión de Claude» envía tu petición a Claude para que la corrija como un profesor y te proponga una versión mejorada.</li>
+      </ul>
+    </details>
+  </div>
+</Base>
+<style>
+  .ct { padding-bottom: 3rem; }
+  .ct-grid { display: grid; gap: 1.2rem; margin: 1.2rem 0; }
+  @media (min-width: 960px) { .ct-grid { grid-template-columns: 1fr 340px; align-items: start; } }
+  .h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
+  .pieces { padding-left: 1.2rem; display: grid; gap: 0.4rem; margin: 0 0 0.6rem; }
+  .method { margin-top: 1rem; }
+</style>

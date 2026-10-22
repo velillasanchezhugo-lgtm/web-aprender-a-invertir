@@ -1,0 +1,63 @@
+---
+/**
+ * Práctica de peticiones: el alumno escribe un prompt y recibe una valoración al momento (evaluador local,
+ * sin IA) y, si está activada, la opinión de Claude (api/prompt-coach.js). Se usa en las sesiones de la
+ * formación Claude y en la herramienta «Evaluador de peticiones».
+ */
+import type { CriterionId, ExtraCheck } from '../lib/claude/prompt-check';
+interface Props { id: string; task?: string; require?: CriterionId[]; extra?: ExtraCheck[]; sample?: string; placeholder?: string; label?: string; rows?: number }
+const { id, task = '', require = [], extra = [], sample, placeholder = 'Escribe aquí tu petición, como si se la mandaras a Claude.', label = 'Tu petición', rows = 6 } = Astro.props;
+const cfg = { id, task, require, extra };
+---
+<div class="pcoach" data-cfg={JSON.stringify(cfg)}>
+  <div class="field">
+    <label for={`pc-${id}`}>{label}</label>
+    <textarea id={`pc-${id}`} rows={rows} maxlength="3000" placeholder={placeholder} spellcheck="true"></textarea>
+    <span class="hint"><span class="pc-count">0</span> palabras · se queda en tu dispositivo salvo que pidas la opinión de la IA</span>
+  </div>
+  <div class="pc-actions">
+    <button type="button" class="btn brand small pc-check">Evaluar mi petición</button>
+    <button type="button" class="btn secondary small pc-ai" hidden>Opinión de Claude</button>
+    <button type="button" class="btn ghost small pc-copy">Copiar</button>
+  </div>
+  <div class="pc-result" role="status" aria-live="polite" hidden>
+    <div class="pc-score"><span class="pc-num mono">0</span><span class="pc-of mono">/10</span><strong class="pc-level"></strong></div>
+    <ul class="pc-items"></ul>
+    <div class="pc-tips"><p class="pc-tips-t">Para mejorarla</p><ul></ul></div>
+    <p class="small muted pc-note">Valoración orientativa: revisa si están las piezas de una buena petición, no si el contenido es correcto.</p>
+  </div>
+  <div class="pc-ai-result" role="status" aria-live="polite" hidden></div>
+  {sample && (
+    <details class="pc-sample">
+      <summary>Ver una petición de ejemplo</summary>
+      <p class="pc-sample-text">{sample}</p>
+      <p class="small muted">No es la única buena: compárala con la tuya y quédate con lo que te sirva.</p>
+    </details>
+  )}
+</div>
+<style>
+  .pcoach { background: var(--card); border: 1px solid var(--rule); border-radius: 18px; padding: 1.1rem; }
+  .pcoach textarea { width: 100%; font: 500 1rem/1.5 var(--sans); padding: 0.8rem 0.9rem; border-radius: 12px; border: 1.5px solid var(--rule-strong); background: var(--paper); color: var(--ink); resize: vertical; }
+  .pcoach textarea:focus { outline: 3px solid var(--focus); outline-offset: 1px; }
+  .pc-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pc-result, .pc-ai-result { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+  .pc-score { display: flex; align-items: baseline; gap: 0.3rem; margin-bottom: 0.6rem; }
+  .pc-num { font: 700 2.2rem/1 var(--display, var(--sans)); }
+  .pc-of { color: var(--ink-3); }
+  .pc-level { margin-left: 0.6rem; }
+  .pc-items { list-style: none; padding: 0; margin: 0 0 0.8rem; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .pc-items li { font-size: 0.85rem; padding: 0.2rem 0.6rem; border-radius: 999px; border: 1px solid var(--rule-strong); color: var(--ink-2); }
+  .pc-items li.ok { border-color: var(--gain); color: var(--ink); background: color-mix(in srgb, var(--gain) 12%, var(--card)); }
+  .pc-items li.req:not(.ok) { border-color: var(--loss); }
+  .pc-tips-t { font-weight: 700; margin: 0 0 0.3rem; }
+  .pc-tips ul { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.3rem; }
+  .pc-sample { margin-top: 1rem; }
+  .pc-sample summary { cursor: pointer; color: var(--teal); font-weight: 600; }
+  .pc-sample-text, :global(.pc-better) { white-space: pre-wrap; background: var(--paper-2); border-left: 3px solid var(--u-blue); padding: 0.7rem 0.9rem; border-radius: 10px; }
+  :global(.pc-ai-result h4) { margin: 0.6rem 0 0.3rem; font-size: 1rem; }
+  :global(.pc-ai-result ul) { margin: 0; padding-left: 1.2rem; }
+</style>
+<script>
+  import { initPromptCoach } from '../scripts/prompt-coach';
+  initPromptCoach();
+</script>

@@ -6,6 +6,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import emprendimiento from '../data/emprendimiento.json';
 import claude from '../data/claude.json';
+import { CLAUDE_TOOLS } from './claude/tools';
 
 export const FORMATIONS = { emprendimiento, claude } as const;
 export type FormationId = keyof typeof FORMATIONS;
@@ -29,6 +30,11 @@ export function formation(id: FormationId) {
   };
 }
 export type Formation = ReturnType<typeof formation>;
+
+/** Herramientas propias de una formación (como las calculadoras de Inversión). */
+export const FORMATION_TOOLS: Partial<Record<FormationId, { href: string; items: Record<string, { title: string; blurb: string }> }>> = {
+  claude: { href: '/es/claude/herramientas/', items: CLAUDE_TOOLS },
+};
 
 export async function formationSessions(id: FormationId): Promise<FSession[]> {
   return ((await getCollection(id, ({ data }: { data: { draft: boolean } }) => !data.draft)) as FSession[]).sort((a, b) => a.data.order - b.data.order);
