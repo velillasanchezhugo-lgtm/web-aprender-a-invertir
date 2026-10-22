@@ -5,7 +5,7 @@ level: basico
 track: cla-funciones
 order: 207
 skills: [cla-modelos-modos]
-terms: [razonamiento-extendido, modelo-de-lenguaje, ventana-de-contexto]
+terms: [razonamiento-extendido, modelo-de-lenguaje]
 hook: "Junto al botón de enviar ves un nombre de modelo y unas opciones de esfuerzo. ¿Lo cambias o lo dejas como está? ¿Para qué sirve pedirle que piense más?"
 takeaway: Para el día a día, el modelo y el esfuerzo que vienen por defecto bastan. Sube el esfuerzo o elige un modelo más capaz solo para tareas difíciles, y bájalo para tareas sencillas y repetitivas.
 scenario:

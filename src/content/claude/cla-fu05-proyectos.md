@@ -35,7 +35,6 @@ questions:
 tips:
   - "Escribe instrucciones cortas y concretas: quién eres, qué quieres conseguir y cómo quieres las respuestas."
   - "Sube solo los archivos que de verdad uses y quita los viejos: todo ocupa espacio en la memoria de trabajo de Claude."
-  - "No subas a un proyecto documentos con datos personales de otras personas si no es imprescindible."
 action:
   title: Crea un proyecto para algo que repites
   steps:

@@ -63,7 +63,6 @@ Claude lo crea cuando el contenido es **largo, independiente y reutilizable**. E
 - Un plan de comidas de la semana con lista de la compra.
 - Una tabla de gastos del mes con un gráfico.
 - Un cuadrante de turnos o de tareas de casa.
-- Un juego de preguntas para repasar un examen.
 - Una presentación para una reunión de vecinos.
 
 Lo que conviene saber:

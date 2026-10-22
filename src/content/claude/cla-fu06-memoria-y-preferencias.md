@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: cla-fu06-q1
-    q: "Hugo quiere consultar a Claude algo delicado sobre una deuda familiar y prefiere que no quede en la memoria ni en el historial. ¿Qué hace?"
+    q: "Tomás quiere consultar a Claude algo delicado sobre una deuda familiar y prefiere que no quede en la memoria ni en el historial. ¿Qué hace?"
     options: ["Usa un chat normal y lo borra luego", "Abre un chat de incógnito", "Restablece toda la memoria antes de preguntar"]
     answer: 1
     explain: "Los chats de incógnito no se guardan en la memoria ni en el historial. Restablecer la memoria tienta, pero borra todo lo demás para siempre y no hace falta."
@@ -28,7 +28,7 @@ questions:
     explain: "Restablecer borra para siempre todos los recuerdos, también los de tus proyectos. Si solo quieres parar un tiempo, usa la opción de pausar, que conserva lo guardado."
   - type: choice
     id: cla-fu06-q3
-    q: "Estás harta de que Claude te conteste siempre con listas larguísimas. ¿Cuál es la solución más duradera?"
+    q: "Te cansa que Claude te conteste siempre con listas larguísimas. ¿Cuál es la solución más duradera?"
     options: ["Pedirlo en cada mensaje", "Escribirlo en tus instrucciones para Claude, en los ajustes", "Cambiar de modelo"]
     answer: 1
     explain: "Las instrucciones de tu cuenta se aplican a todas las conversaciones, así no lo repites. Pedirlo en cada mensaje funciona, pero se olvida; cambiar de modelo no cambia tus preferencias."

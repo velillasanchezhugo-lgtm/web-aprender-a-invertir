@@ -35,7 +35,6 @@ questions:
 tips:
   - "Si conoces la web oficial, nómbrala: «busca en la web del ayuntamiento» o pega el enlace para que la lea."
   - "Si la cita no dice lo que Claude afirma, díselo y pídele que lo corrija o que busque otra fuente."
-  - "Para tareas que no necesitan datos frescos, desactiva la búsqueda si tu aplicación tiene el interruptor: gasta menos uso."
 action:
   title: Haz una búsqueda y revisa una cita
   steps:

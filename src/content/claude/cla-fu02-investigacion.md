@@ -34,7 +34,6 @@ questions:
     explain: "Hoy la investigación está en los planes de pago. La búsqueda web normal sí está en el gratuito. Actualizar la aplicación tienta, pero no cambia lo que incluye tu plan."
 tips:
   - "Antes de lanzarla, deja claro el alcance: país, años, qué fuentes prefieres y qué formato quieres al final."
-  - "Mientras trabaja puedes hacer otra cosa; vuelve al chat cuando termine."
   - "Pide al final una lista de «datos que no he podido confirmar»: es la parte más útil para revisar."
 action:
   title: Prepara una buena pregunta de investigación

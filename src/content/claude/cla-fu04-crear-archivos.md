@@ -34,7 +34,6 @@ questions:
     explain: "La propia ayuda de Claude avisa de que un archivo o una web pueden llevar instrucciones escondidas que intenten engañarlo. Por eso hay que saber qué subes y vigilar el resultado."
 tips:
   - "Pide el formato exacto: «un .xlsx con una pestaña por mes», «un .docx con estilos de título», «un PDF de una página»."
-  - "Si vas a enviar el archivo a otra persona, revisa también el nombre del archivo y los datos personales que contenga."
   - "Crear archivos gasta más uso del plan que una respuesta normal: pide primero el contenido, ajústalo y luego el archivo."
 action:
   title: Pide un archivo y revísalo

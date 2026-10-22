@@ -71,7 +71,7 @@ Requiere un **plan de pago**. Lo usan sobre todo programadores, pero alguien que
 - Un pequeño programa que **renombre u ordene archivos** (por ejemplo, fotos por fecha).
 - Convertir o limpiar **hojas de cálculo** que cada mes te llevan una hora.
 
-¿Por qué se revisa? Porque **actúa en tu ordenador**: puede borrar, mover o instalar cosas, y el código puede tener fallos que no se ven a simple vista. Por defecto, Claude Code **pide permiso** antes de cambiar archivos o ejecutar órdenes. Ese permiso es tu control: no lo des a ciegas.
+¿Por qué se revisa? Porque **actúa en tu ordenador**: puede borrar, mover o instalar cosas, y el código puede tener fallos que no se ven a simple vista. En su modo **manual**, Claude Code **pide permiso** antes de cambiar archivos o ejecutar órdenes; otros modos le dan más libertad. Al empezar, elige el manual: ese permiso es tu control, no lo des a ciegas.
 
 ## En la práctica
 
