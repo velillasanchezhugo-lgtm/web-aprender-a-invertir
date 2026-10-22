@@ -1,18 +1,21 @@
 ---
-/** Examen del Nivel 1 de Emprendimiento: 30 preguntas de las sesiones del Camino Cero y del núcleo, al menos 2 por capacidad. */
+/** Examen del Nivel 1 de una formación: 30 preguntas de las sesiones del Camino Cero y del núcleo, al menos 2 por capacidad. */
 import Base from '../../../../layouts/Base.astro';
 import { guessFor } from '../../../../lib/content';
-import { EM, emSessions } from '../../../../lib/emprendimiento';
+import { formation, formationSessions, formationPaths, type FormationId } from '../../../../lib/formations';
+export const getStaticPaths = formationPaths;
+const F = formation(Astro.params.f as FormationId);
+const EM = F.d;
 const core = EM.stages.filter((s) => s.id !== 'C').flatMap((s) => s.tracks);
-const all = (await emSessions()).filter((s) => core.includes(s.data.track));
+const all = (await formationSessions(F.id)).filter((s) => core.includes(s.data.track));
 const bank = all.flatMap((s) => s.data.questions.map((q) => ({ ...q, skills: q.skills ?? s.data.skills, session: s.id, sessionTitle: s.data.title, meta: { skills: q.skills ?? s.data.skills, guess: guessFor(q) } })));
-const zero = all.filter((s) => s.data.track === 'em-cero').map((s) => s.id);
+const zero = all.filter((s) => s.data.track === EM.tracks[0].id).map((s) => s.id);
 const badge = EM.tiers[0].recognition;
 ---
-<Base title="Examen del Nivel 1: Fundamentos de emprendimiento" description="30 preguntas sobre todo lo que necesitas para montar tu negocio en España. Se aprueba con el 80 % y da la insignia gratuita del Nivel 1 de Emprendimiento." noindex={true} allowAds={false} focusMode={true}>
+<Base title={`Examen del Nivel 1: ${F.texts.examTitle}`} description={F.texts.examDesc} noindex={true} allowAds={false} focusMode={true}>
   <div class="narrow ex">
-    <p class="eyebrow">Emprendimiento · Nivel 1 · examen final</p>
-    <h1>Fundamentos de emprendimiento</h1>
+    <p class="eyebrow">{F.title} · Nivel 1 · examen final</p>
+    <h1>{F.texts.examTitle}</h1>
     <p class="lede" id="ex-intro">30 preguntas sobre las {EM.n1Capacities.length} capacidades del Nivel 1, al menos 2 de cada una. Sin límite de tiempo. Se aprueba con el 80 % y te da la insignia gratuita {badge}. Si no apruebas, podrás repetirlo pasadas 24 horas.</p>
     <div id="ex-gate" class="callout note" hidden></div>
     <p><button class="btn brand" id="ex-start" type="button">Empezar el examen <span class="arrow" aria-hidden="true">→</span></button></p>
@@ -22,7 +25,7 @@ const badge = EM.tiers[0].recognition;
     <div class="ex-ctrl"><button class="btn" id="ex-next" type="button" hidden>Siguiente <span class="arrow" aria-hidden="true">→</span></button></div>
     <div id="ex-result" hidden tabindex="-1"></div>
   </div>
-  <script type="application/json" id="ex-data" set:html={JSON.stringify({ bank, caps: EM.n1Capacities, zero, badge })} />
+  <script type="application/json" id="ex-data" set:html={JSON.stringify({ bank, caps: EM.n1Capacities, zero, badge, store: F.storeKey, base: F.base, session: F.session, zeroHref: F.trackHref(EM.tracks[0].id) })} />
 </Base>
 <style>
   .ex { padding-top: 1.5rem; padding-bottom: 3rem; }
@@ -36,12 +39,13 @@ const badge = EM.tiers[0].recognition;
   :global(.fails li) { margin-bottom: 0.5rem; }
 </style>
 <script>
-  import { getState as load, saveState as store, answer, logActivity } from '../../../../scripts/academy-store';
+  import { getState as load, saveState as store, answer, logActivity, type StoreKey } from '../../../../scripts/academy-store';
   import { buildN1Exam, examWait, examPassed } from '../../../../lib/academy';
   import { ask } from '../../../../scripts/quiz-runner';
-  const getState = () => load('academy-emprendimiento');
-  const saveState = (s: ReturnType<typeof load>) => store(s, 'academy-emprendimiento');
   const D = JSON.parse(document.getElementById('ex-data')!.textContent!);
+  const KEY = D.store as StoreKey;
+  const getState = () => load(KEY);
+  const saveState = (s: ReturnType<typeof load>) => store(s, KEY);
   const $ = (id: string) => document.getElementById(id)!;
   const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
   const st0 = getState();
@@ -51,11 +55,11 @@ const badge = EM.tiers[0].recognition;
   const start = $('ex-start') as HTMLButtonElement;
   if (D.bank.length < 30) {
     gate.hidden = false;
-    gate.innerHTML = '<p class="callout-title">Aún en preparación</p><p>El examen se abrirá cuando estén publicadas todas las sesiones del núcleo. <a href="/es/emprendimiento/nivel-1/">Volver al Nivel 1</a></p>';
+    gate.innerHTML = `<p class="callout-title">Aún en preparación</p><p>El examen se abrirá cuando estén publicadas todas las sesiones del núcleo. <a href="${D.base}nivel-1/">Volver al Nivel 1</a></p>`;
     start.disabled = true;
   } else if (!zeroDone) {
     gate.hidden = false;
-    gate.innerHTML = '<p class="callout-title">Antes, el Camino Cero</p><p>Para hacer este examen hay que terminar las sesiones del Camino Cero del emprendedor. <a href="/es/emprendimiento/modulos/em-cero/">Ir al Camino Cero</a></p>';
+    gate.innerHTML = `<p class="callout-title">Antes, el Camino Cero</p><p>Para hacer este examen hay que terminar las sesiones del Camino Cero. <a href="${D.zeroHref}">Ir al Camino Cero</a></p>`;
     start.disabled = true;
   } else if (wait > 0) {
     gate.hidden = false;
@@ -85,15 +89,15 @@ const badge = EM.tiers[0].recognition;
     const passed = examPassed(ok, qids.length);
     let st = getState(); const prev = st.exams.n1;
     st.exams.n1 = { correct: ok, total: qids.length, at: new Date().toISOString(), passed: passed || !!prev?.passed }; st = logActivity(st); saveState(st);
-    try { const { track } = await import('@vercel/analytics'); track('examen_em_n1', { aprobado: passed, aciertos: ok }); } catch { /* */ }
+    try { const { track } = await import('@vercel/analytics'); track('examen_formacion_n1', { formacion: KEY, aprobado: passed, aciertos: ok }); } catch { /* */ }
     $('ex-q').hidden = true; $('ex-count').textContent = ''; ($('ex-bar') as HTMLElement).style.width = '100%';
     const caps = D.caps.map((c: any) => { const [a, t] = capOk[c.id] ?? [0, 0]; return `<li><span>${esc(c.text)}</span><span class="${t && a === t ? 'ok' : 'ko'}">${a}/${t}</span></li>`; }).join('');
-    const fails = [...new Map(failed.map((q) => [q.session, q])).values()].map((q: any) => `<li>${esc(q.q)}<br /><a class="small" href="/es/emprendimiento/sesion/${q.session}/">Repasa: ${esc(q.sessionTitle)}</a></li>`).join('');
+    const fails = [...new Map(failed.map((q) => [q.session, q])).values()].map((q: any) => `<li>${esc(q.q)}<br /><a class="small" href="${D.session}${q.session}/">Repasa: ${esc(q.sessionTitle)}</a></li>`).join('');
     const res = $('ex-result'); res.hidden = false;
     res.innerHTML = `<div class="panel-dark" style="padding:1.6rem"><span class="chip">${passed ? 'Nivel 1 superado' : 'Casi'}</span><h2 style="color:#f8f9fc;margin:.8rem 0 .4rem">${ok} de ${qids.length} correctas</h2><p style="color:#c4cada">${passed ? `¡Enhorabuena! Has ganado la insignia ${esc(D.badge)}.` : 'Necesitas el 80 %. Repasa lo que fallaste y vuelve a intentarlo dentro de 24 horas.'}</p></div>
       <h2 class="h3" style="margin-top:1.6rem">Tus ${D.caps.length} capacidades</h2><ul class="caps">${caps}</ul>
       ${fails ? `<h2 class="h3">Para repasar</h2><ul class="fails">${fails}</ul>` : ''}
-      <p style="margin-top:1rem"><a class="btn secondary" href="/es/emprendimiento/nivel-1/">Volver al Nivel 1</a></p>`;
+      <p style="margin-top:1rem"><a class="btn secondary" href="${D.base}nivel-1/">Volver al Nivel 1</a></p>`;
     res.focus();
   });
 </script>

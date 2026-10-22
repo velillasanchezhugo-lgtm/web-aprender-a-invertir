@@ -14,6 +14,7 @@ const blocks = [
 const FORMATIONS = [
   { cls: 'p-inv', kicker: '3 niveles', title: 'Inversión', text: 'Ordena tu dinero e invierte por tu cuenta, desde cero.', href: '/es/niveles/' },
   { cls: 'p-em', kicker: '3 niveles', title: 'Emprendimiento', text: 'Monta tu negocio: trámites, impuestos, cuotas y clientes.', href: '/es/emprendimiento/' },
+  { cls: 'p-cla', kicker: '3 niveles', title: 'Claude', text: 'Aprende a usar la inteligencia artificial de Claude, sin programar.', href: '/es/claude/' },
 ];
 const tools = ['interes-compuesto', 'inflacion', 'simulador-caidas', 'comparador-comisiones'];
 const jsonLd = [
@@ -204,10 +205,14 @@ const jsonLd = [
   .hero .lede { max-width: 62ch; }
   .postits-nav { margin: 1.6rem 0 0.4rem; }
   .postits-title { margin: 0 0 0.7rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
-  .postits { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); gap: 1.1rem; }
+  .postits { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 200px)); gap: 1.1rem; }
+  @media (max-width: 640px) { .postits { grid-template-columns: repeat(2, minmax(0, 220px)); } }
   .postit { --pi: #ffe27a; --pi-ink: #2a2410; position: relative; display: flex; flex-direction: column; gap: 0.35rem; aspect-ratio: 1 / 1; padding: 1.5rem 1rem 0.9rem; background: linear-gradient(180deg, color-mix(in srgb, var(--pi) 88%, #fff) 0%, var(--pi) 30%, var(--pi) 100%); color: var(--pi-ink); text-decoration: none; border-radius: 2px 2px 14px 2px; box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 10px 18px -8px rgb(0 0 0 / 35%); transform: rotate(-2deg); transition: transform .2s var(--ease-seda), box-shadow .2s var(--ease-seda); }
   .postits li:nth-child(2) .postit { transform: rotate(1.8deg); }
   .p-em { --pi: #a9e4ff; --pi-ink: #0f2230; }
+  .p-cla { --pi: #ffc9a8; --pi-ink: #2e160a; }
+  .postits li:nth-child(3) .postit { transform: rotate(-1deg); }
+  .postits li:nth-child(3) .postit:hover, .postits li:nth-child(3) .postit:focus-visible { transform: rotate(0) translateY(-4px); }
   .postit:hover, .postit:focus-visible { transform: rotate(0) translateY(-4px); box-shadow: 0 2px 2px rgb(0 0 0 / 12%), 0 18px 26px -10px rgb(0 0 0 / 40%); }
   .postits li:nth-child(2) .postit:hover, .postits li:nth-child(2) .postit:focus-visible { transform: rotate(0) translateY(-4px); }
   .postit:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
@@ -219,7 +224,8 @@ const jsonLd = [
   @media (max-width: 420px) { .postits { gap: 0.9rem; } .postit { gap: 0.25rem; padding: 1.1rem 0.75rem 0.7rem; } .pi-text { font-size: 0.8rem; line-height: 1.3; } }
   :global(:root[data-theme='dark']) .postit { --pi: #f2d566; }
   :global(:root[data-theme='dark']) .p-em { --pi: #92d3f2; }
-  @media (prefers-color-scheme: dark) { :global(:root:not([data-theme='light'])) .postit { --pi: #f2d566; } :global(:root:not([data-theme='light'])) .p-em { --pi: #92d3f2; } }
+  :global(:root[data-theme='dark']) .p-cla { --pi: #f4b48e; }
+  @media (prefers-color-scheme: dark) { :global(:root:not([data-theme='light'])) .postit { --pi: #f2d566; } :global(:root:not([data-theme='light'])) .p-em { --pi: #92d3f2; } :global(:root:not([data-theme='light'])) .p-cla { --pi: #f4b48e; } }
   @media (max-width: 359px) { .pi-kicker { display: none; } .pi-title { font-size: 1.1rem; } .pi-text { font-size: 0.76rem; line-height: 1.2; } .postit { padding-top: 0.95rem; } }
   @media (prefers-reduced-motion: reduce) { .postit { transition: none; } }
   .facts { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; color: var(--ink-3); }

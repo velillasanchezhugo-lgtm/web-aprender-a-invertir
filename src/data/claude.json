@@ -1,0 +1,1229 @@
+{
+  "_doc": "Formación Claude (uso y capacidades de Claude, de Anthropic): niveles, módulos del Nivel 1, competencias y temario de los niveles 2 y 3. Mismo sistema que las demás formaciones (docs/ESTANDAR-FORMACIONES.pdf). Sesiones en src/content/claude/. umotion Academy no está afiliada a Anthropic.",
+  "id": "claude",
+  "title": "Claude",
+  "base": "/es/claude/",
+  "tiers": [
+    {
+      "n": 1,
+      "id": "n1",
+      "title": "Empezar con Claude",
+      "subtitle": "Desde cero, sin programar",
+      "access": "free",
+      "promise": "Al terminar usas Claude cada día con soltura: sabes pedirle bien, aprovechar sus funciones, conectarlo con tus herramientas, comprobar lo que te dice y proteger tus datos.",
+      "forWho": "Cualquiera, desde cero.",
+      "format": "Sesiones de 5 minutos",
+      "closing": "Examen del Nivel 1 y «Mi kit de Claude»",
+      "recognition": "Insignia gratuita «Fundamentos de Claude — umotion»",
+      "href": "/es/claude/nivel-1/"
+    },
+    {
+      "n": 2,
+      "id": "n2",
+      "title": "Avanzado",
+      "subtitle": "Sacarle todo el partido",
+      "access": "plan-avanzado",
+      "promise": "Al terminar dominas las técnicas avanzadas, creas herramientas sin programar, automatizas tu semana, aplicas Claude a tu oficio y organizas su uso en un equipo.",
+      "forWho": "Quien ya usa Claude y quiere ir más lejos.",
+      "format": "Clases de 15 a 30 minutos",
+      "volume": "23 clases, unas 8 h, más una clase nueva cada mes",
+      "closing": "Examen del Nivel 2 y proyecto «Tu flujo de trabajo»",
+      "recognition": "Insignia «Claude Nivel 2 — umotion»",
+      "href": "/es/claude/nivel-2/"
+    },
+    {
+      "n": 3,
+      "id": "n3",
+      "title": "Profesional",
+      "subtitle": "Implantar o desarrollar con Claude",
+      "access": "curso-profesional",
+      "promise": "Al terminar sabes implantar Claude en una organización con criterio de seguridad, normativa y coste, o construir con la API y agentes, según el itinerario que elijas.",
+      "forWho": "Quien quiere implantar IA en empresas o desarrollar con ella.",
+      "format": "Lecciones de 30 a 45 minutos",
+      "volume": "20 lecciones en un tronco común y dos itinerarios, unas 12 h",
+      "closing": "Examen final y proyecto profesional con revisión humana",
+      "recognition": "«Certificado umotion en Claude — Nivel Profesional», verificable",
+      "href": "/es/claude/nivel-3/"
+    }
+  ],
+  "stages": [
+    {
+      "id": "A",
+      "stage": "Etapa A",
+      "title": "Camino Cero con Claude",
+      "desc": "Primer contacto: qué es, cómo hablarle, cuándo fiarte y qué no compartir.",
+      "tracks": [
+        "cla-cero"
+      ]
+    },
+    {
+      "id": "B",
+      "stage": "Etapa B · núcleo",
+      "title": "Usar Claude de verdad",
+      "desc": "Por orden de importancia: pedir bien, sus funciones, el trabajo, aprender, conectar herramientas y usarlo con cabeza.",
+      "tracks": [
+        "cla-pedir",
+        "cla-funciones",
+        "cla-trabajo",
+        "cla-aprender",
+        "cla-conectar",
+        "cla-seguro"
+      ]
+    },
+    {
+      "id": "C",
+      "stage": "Ampliación",
+      "title": "Un paso más",
+      "desc": "Cuando ya lo usas a diario: tareas largas, agentes y un vistazo a Claude Code.",
+      "tracks": [
+        "cla-avanzado"
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "cla-cero",
+      "label": "Camino Cero con Claude",
+      "short": "Qué es, primera conversación, límites y tus datos",
+      "stage": "A"
+    },
+    {
+      "id": "cla-pedir",
+      "label": "Pedir bien",
+      "short": "Contexto, ejemplos, formato y conversación",
+      "stage": "B"
+    },
+    {
+      "id": "cla-funciones",
+      "label": "Las funciones de Claude",
+      "short": "Búsqueda, archivos, artefactos, proyectos y modos",
+      "stage": "B"
+    },
+    {
+      "id": "cla-trabajo",
+      "label": "Claude en el trabajo",
+      "short": "Escribir, resumir, analizar, preparar y decidir",
+      "stage": "B"
+    },
+    {
+      "id": "cla-aprender",
+      "label": "Aprender con Claude",
+      "short": "Un tutor que te hace pensar",
+      "stage": "B"
+    },
+    {
+      "id": "cla-conectar",
+      "label": "Conectar tus herramientas",
+      "short": "Conectores, habilidades, navegador y escritorio",
+      "stage": "B"
+    },
+    {
+      "id": "cla-seguro",
+      "label": "Usarlo con cabeza",
+      "short": "Verificar, privacidad, ética y normas",
+      "stage": "B"
+    },
+    {
+      "id": "cla-avanzado",
+      "label": "Un paso más",
+      "short": "Tareas largas, agentes y Claude Code sin miedo",
+      "stage": "C"
+    }
+  ],
+  "n1Capacities": [
+    {
+      "id": "c1",
+      "text": "Explica qué es Claude, qué hace bien y en qué puede equivocarse.",
+      "skills": [
+        "cla-que-es",
+        "cla-limites"
+      ]
+    },
+    {
+      "id": "c2",
+      "text": "Usa Claude en el ordenador y el móvil y sabe qué ofrece cada plan.",
+      "skills": [
+        "cla-acceso"
+      ]
+    },
+    {
+      "id": "c3",
+      "text": "Protege sus datos: qué no compartir y qué ajustes revisar.",
+      "skills": [
+        "cla-privacidad",
+        "cla-empresa-datos"
+      ]
+    },
+    {
+      "id": "c4",
+      "text": "Escribe peticiones con contexto, tarea, público y formato.",
+      "skills": [
+        "cla-peticion",
+        "cla-ejemplos-formato"
+      ]
+    },
+    {
+      "id": "c5",
+      "text": "Conversa para mejorar el resultado y reutiliza plantillas.",
+      "skills": [
+        "cla-iterar",
+        "cla-plantillas"
+      ]
+    },
+    {
+      "id": "c6",
+      "text": "Usa la búsqueda web y la investigación revisando las fuentes.",
+      "skills": [
+        "cla-busqueda",
+        "cla-verificar"
+      ]
+    },
+    {
+      "id": "c7",
+      "text": "Trabaja con archivos y crea documentos y artefactos.",
+      "skills": [
+        "cla-archivos",
+        "cla-artefactos"
+      ]
+    },
+    {
+      "id": "c8",
+      "text": "Organiza su trabajo en proyectos y elige modelo y modo.",
+      "skills": [
+        "cla-proyectos",
+        "cla-modelos-modos"
+      ]
+    },
+    {
+      "id": "c9",
+      "text": "Aplica Claude a escribir, resumir, analizar y decidir.",
+      "skills": [
+        "cla-escribir",
+        "cla-analizar",
+        "cla-pensar"
+      ]
+    },
+    {
+      "id": "c10",
+      "text": "Aprende con Claude sin usarlo como atajo.",
+      "skills": [
+        "cla-aprender"
+      ]
+    },
+    {
+      "id": "c11",
+      "text": "Conecta sus herramientas con permisos claros y encarga tareas largas.",
+      "skills": [
+        "cla-conectores",
+        "cla-habilidades",
+        "cla-agentes"
+      ]
+    },
+    {
+      "id": "c12",
+      "text": "Comprueba lo importante y respeta las normas, la autoría y la ética.",
+      "skills": [
+        "cla-verificar",
+        "cla-etica-normas"
+      ]
+    }
+  ],
+  "domains": [
+    {
+      "id": "cla-base",
+      "label": "Entender Claude",
+      "desc": "Qué es, cómo funciona, sus límites y tus datos.",
+      "level": 1
+    },
+    {
+      "id": "cla-pedir",
+      "label": "Pedir bien",
+      "desc": "Contexto, ejemplos, formato y conversación.",
+      "level": 1
+    },
+    {
+      "id": "cla-funciones",
+      "label": "Funciones",
+      "desc": "Búsqueda, investigación, artefactos, proyectos, memoria y más.",
+      "level": 1
+    },
+    {
+      "id": "cla-uso",
+      "label": "Usos prácticos",
+      "desc": "Trabajo, estudio y vida diaria.",
+      "level": 1
+    },
+    {
+      "id": "cla-conectar",
+      "label": "Conectar y automatizar",
+      "desc": "Conectores, habilidades, navegador y agentes.",
+      "level": 1
+    },
+    {
+      "id": "cla-criterio",
+      "label": "Usarlo con cabeza",
+      "desc": "Verificación, privacidad, ética y normas.",
+      "level": 1
+    },
+    {
+      "id": "cla2-dominio",
+      "label": "Dominio avanzado",
+      "desc": "Técnicas, flujos y uso por oficios.",
+      "level": 2
+    },
+    {
+      "id": "cla2-equipo",
+      "label": "Equipos",
+      "desc": "Compartir, gobernar y medir el uso en un equipo.",
+      "level": 2
+    },
+    {
+      "id": "cla3-comun",
+      "label": "Tronco común",
+      "desc": "Fundamentos técnicos, riesgos y normativa.",
+      "level": 3
+    },
+    {
+      "id": "cla3-implantar",
+      "label": "Itinerario Implantación",
+      "desc": "Llevar Claude a una organización.",
+      "level": 3
+    },
+    {
+      "id": "cla3-desarrollar",
+      "label": "Itinerario Desarrollo",
+      "desc": "Construir con la API y agentes.",
+      "level": 3
+    }
+  ],
+  "skills": [
+    {
+      "id": "cla-que-es",
+      "domain": "cla-base",
+      "label": "Qué es Claude",
+      "can": "Explicas qué es un modelo de lenguaje, qué hace bien y qué no.",
+      "level": 1
+    },
+    {
+      "id": "cla-acceso",
+      "domain": "cla-base",
+      "label": "Dónde y cómo se usa",
+      "can": "Sabes usar Claude en la web, el escritorio y el móvil, y qué cambia entre planes.",
+      "level": 1
+    },
+    {
+      "id": "cla-limites",
+      "domain": "cla-base",
+      "label": "Límites y errores",
+      "can": "Reconoces cuándo puede inventarse algo y cómo comprobarlo.",
+      "level": 1
+    },
+    {
+      "id": "cla-privacidad",
+      "domain": "cla-base",
+      "label": "Tus datos",
+      "can": "Sabes qué no compartir, qué ajustes de privacidad tienes y cómo borrar.",
+      "level": 1
+    },
+    {
+      "id": "cla-peticion",
+      "domain": "cla-pedir",
+      "label": "Una buena petición",
+      "can": "Das contexto, tarea, público y formato en tus peticiones.",
+      "level": 1
+    },
+    {
+      "id": "cla-ejemplos-formato",
+      "domain": "cla-pedir",
+      "label": "Ejemplos y formato",
+      "can": "Usas ejemplos y pides el formato exacto que necesitas.",
+      "level": 1
+    },
+    {
+      "id": "cla-iterar",
+      "domain": "cla-pedir",
+      "label": "Conversar e iterar",
+      "can": "Corriges, afinas y divides tareas largas en pasos.",
+      "level": 1
+    },
+    {
+      "id": "cla-plantillas",
+      "domain": "cla-pedir",
+      "label": "Plantillas e instrucciones",
+      "can": "Guardas instrucciones y plantillas para no repetirte.",
+      "level": 1
+    },
+    {
+      "id": "cla-busqueda",
+      "domain": "cla-funciones",
+      "label": "Búsqueda e investigación",
+      "can": "Usas la búsqueda web y la investigación, y revisas las fuentes.",
+      "level": 1
+    },
+    {
+      "id": "cla-archivos",
+      "domain": "cla-funciones",
+      "label": "Archivos e imágenes",
+      "can": "Trabajas con PDF, hojas de cálculo e imágenes, y pides documentos.",
+      "level": 1
+    },
+    {
+      "id": "cla-artefactos",
+      "domain": "cla-funciones",
+      "label": "Artefactos",
+      "can": "Creas documentos, tablas, gráficos o pequeñas apps en un artefacto.",
+      "level": 1
+    },
+    {
+      "id": "cla-proyectos",
+      "domain": "cla-funciones",
+      "label": "Proyectos y memoria",
+      "can": "Organizas tu trabajo en proyectos con instrucciones y conocimiento, y gestionas la memoria.",
+      "level": 1
+    },
+    {
+      "id": "cla-modelos-modos",
+      "domain": "cla-funciones",
+      "label": "Modelos y modos",
+      "can": "Eliges modelo, razonamiento extendido, estilo o voz según la tarea.",
+      "level": 1
+    },
+    {
+      "id": "cla-escribir",
+      "domain": "cla-uso",
+      "label": "Escribir y revisar",
+      "can": "Redactas, corriges y adaptas textos con Claude sin perder tu voz.",
+      "level": 1
+    },
+    {
+      "id": "cla-analizar",
+      "domain": "cla-uso",
+      "label": "Resumir y analizar",
+      "can": "Resumes documentos y analizas datos comprobando el resultado.",
+      "level": 1
+    },
+    {
+      "id": "cla-pensar",
+      "domain": "cla-uso",
+      "label": "Pensar y decidir",
+      "can": "Usas Claude para ideas, planes y decisiones sin delegar tu criterio.",
+      "level": 1
+    },
+    {
+      "id": "cla-aprender",
+      "domain": "cla-uso",
+      "label": "Aprender con Claude",
+      "can": "Lo usas como tutor que te hace pensar, no como atajo.",
+      "level": 1
+    },
+    {
+      "id": "cla-conectores",
+      "domain": "cla-conectar",
+      "label": "Conectores",
+      "can": "Conectas Claude con tus herramientas y controlas sus permisos.",
+      "level": 1
+    },
+    {
+      "id": "cla-habilidades",
+      "domain": "cla-conectar",
+      "label": "Habilidades y extensiones",
+      "can": "Sabes qué son las habilidades, las extensiones y Claude en el navegador.",
+      "level": 1
+    },
+    {
+      "id": "cla-agentes",
+      "domain": "cla-conectar",
+      "label": "Tareas largas y agentes",
+      "can": "Encargas tareas de varios pasos y las supervisas.",
+      "level": 1
+    },
+    {
+      "id": "cla-verificar",
+      "domain": "cla-criterio",
+      "label": "Verificar",
+      "can": "Compruebas datos, citas y cálculos antes de usarlos.",
+      "level": 1
+    },
+    {
+      "id": "cla-etica-normas",
+      "domain": "cla-criterio",
+      "label": "Ética y normas",
+      "can": "Conoces las normas de uso, los derechos de autor y cuándo decir que usaste IA.",
+      "level": 1
+    },
+    {
+      "id": "cla-empresa-datos",
+      "domain": "cla-criterio",
+      "label": "Datos en el trabajo",
+      "can": "Sabes qué información de tu empresa puedes usar y con qué plan.",
+      "level": 1
+    },
+    {
+      "id": "cla2-prompting",
+      "domain": "cla2-dominio",
+      "label": "Técnicas avanzadas",
+      "can": "Usas estructura, ejemplos, pasos y autocrítica en peticiones complejas.",
+      "level": 2
+    },
+    {
+      "id": "cla2-proyectos",
+      "domain": "cla2-dominio",
+      "label": "Proyectos a fondo",
+      "can": "Diseñas proyectos con conocimiento e instrucciones que funcionan semanas.",
+      "level": 2
+    },
+    {
+      "id": "cla2-investigacion",
+      "domain": "cla2-dominio",
+      "label": "Investigación y análisis",
+      "can": "Haces investigaciones y análisis de datos fiables y reproducibles.",
+      "level": 2
+    },
+    {
+      "id": "cla2-sin-codigo",
+      "domain": "cla2-dominio",
+      "label": "Crear sin programar",
+      "can": "Creas herramientas útiles con artefactos y habilidades.",
+      "level": 2
+    },
+    {
+      "id": "cla2-automatizar",
+      "domain": "cla2-dominio",
+      "label": "Automatizar tu semana",
+      "can": "Conectas herramientas y repites flujos sin esfuerzo.",
+      "level": 2
+    },
+    {
+      "id": "cla2-oficios",
+      "domain": "cla2-dominio",
+      "label": "Claude en tu oficio",
+      "can": "Aplicas Claude a tu profesión con sus cautelas propias.",
+      "level": 2
+    },
+    {
+      "id": "cla2-calidad",
+      "domain": "cla2-dominio",
+      "label": "Calidad",
+      "can": "Mides si una respuesta es buena y la mejoras.",
+      "level": 2
+    },
+    {
+      "id": "cla2-equipos",
+      "domain": "cla2-equipo",
+      "label": "Claude en equipo",
+      "can": "Organizas el uso compartido, permisos y buenas prácticas.",
+      "level": 2
+    },
+    {
+      "id": "cla3-llm",
+      "domain": "cla3-comun",
+      "label": "Cómo funcionan los modelos",
+      "can": "Explicas tokens, contexto, entrenamiento y razonamiento.",
+      "level": 3
+    },
+    {
+      "id": "cla3-riesgos",
+      "domain": "cla3-comun",
+      "label": "Riesgos y seguridad",
+      "can": "Evalúas riesgos: errores, inyección de instrucciones, fugas de datos.",
+      "level": 3
+    },
+    {
+      "id": "cla3-normativa",
+      "domain": "cla3-comun",
+      "label": "Normativa",
+      "can": "Conoces el Reglamento europeo de IA y el RGPD aplicados.",
+      "level": 3
+    },
+    {
+      "id": "cla3-evaluar",
+      "domain": "cla3-comun",
+      "label": "Evaluar resultados",
+      "can": "Diseñas pruebas para medir calidad y fiabilidad.",
+      "level": 3
+    },
+    {
+      "id": "cla3-casos-uso",
+      "domain": "cla3-implantar",
+      "label": "Casos de uso",
+      "can": "Detectas y priorizas casos de uso con retorno.",
+      "level": 3
+    },
+    {
+      "id": "cla3-despliegue",
+      "domain": "cla3-implantar",
+      "label": "Despliegue",
+      "can": "Planificas un despliegue con planes, permisos y políticas.",
+      "level": 3
+    },
+    {
+      "id": "cla3-cambio",
+      "domain": "cla3-implantar",
+      "label": "Formar y medir",
+      "can": "Formas equipos y mides adopción e impacto.",
+      "level": 3
+    },
+    {
+      "id": "cla3-api",
+      "domain": "cla3-desarrollar",
+      "label": "API",
+      "can": "Haces llamadas a la API con instrucciones de sistema y control de costes.",
+      "level": 3
+    },
+    {
+      "id": "cla3-herramientas",
+      "domain": "cla3-desarrollar",
+      "label": "Herramientas y MCP",
+      "can": "Conectas Claude a herramientas y datos propios.",
+      "level": 3
+    },
+    {
+      "id": "cla3-agentes",
+      "domain": "cla3-desarrollar",
+      "label": "Agentes y Claude Code",
+      "can": "Construyes y supervisas agentes y usas Claude Code.",
+      "level": 3
+    }
+  ],
+  "n2": {
+    "monthly": "Clase del mes: cada mes, las novedades de Claude que importan y cómo aprovecharlas, con ejemplos.",
+    "modules": [
+      {
+        "code": "pro",
+        "title": "Peticiones avanzadas",
+        "desc": "Técnicas para tareas complejas.",
+        "minutes": 95,
+        "items": [
+          {
+            "id": "cla2-pro-01-estructura-con-etiquetas",
+            "title": "Estructurar peticiones largas",
+            "minutes": 20,
+            "content": "Separar instrucciones, contexto y datos; secciones y etiquetas; orden que funciona.",
+            "practice": "Reescribir una petición caótica de una página",
+            "skills": [
+              "cla2-prompting"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-pro-02-ejemplos-que-ensenan",
+            "title": "Ejemplos que enseñan",
+            "minutes": 20,
+            "content": "Cuántos ejemplos dar, variados y representativos; cuándo los ejemplos estorban.",
+            "practice": "Clasificar 30 correos con 3 ejemplos",
+            "skills": [
+              "cla2-prompting"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-pro-03-razonar-paso-a-paso",
+            "title": "Hacerle razonar y revisarse",
+            "minutes": 20,
+            "content": "Pedir que piense antes de responder, razonamiento extendido, autocrítica y segunda pasada.",
+            "practice": "Revisar un contrato de alquiler en dos pasadas",
+            "skills": [
+              "cla2-prompting",
+              "cla2-calidad"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-pro-04-cadenas-de-tareas",
+            "title": "Encadenar tareas",
+            "minutes": 20,
+            "content": "Dividir un trabajo en pasos con entradas y salidas claras; plantillas de flujo.",
+            "practice": "De notas de una reunión a acta, tareas y correo",
+            "skills": [
+              "cla2-prompting",
+              "cla2-automatizar"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-pro-05-instrucciones-personales",
+            "title": "Instrucciones y estilos a tu medida",
+            "minutes": 15,
+            "content": "Preferencias personales, estilos de escritura, instrucciones de proyecto: qué va en cada sitio.",
+            "practice": "Crear tu estilo de escritura",
+            "skills": [
+              "cla2-proyectos"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "inv",
+        "title": "Investigar y analizar",
+        "desc": "Información fiable con fuentes.",
+        "minutes": 90,
+        "items": [
+          {
+            "id": "cla2-inv-01-investigacion-a-fondo",
+            "title": "Investigación a fondo",
+            "minutes": 25,
+            "content": "Plantear la pregunta, alcance, fuentes, contraste y lectura crítica del informe.",
+            "practice": "Informe de mercado de una cafetería de barrio",
+            "skills": [
+              "cla2-investigacion"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-inv-02-analisis-de-datos",
+            "title": "Analizar una hoja de cálculo",
+            "minutes": 25,
+            "content": "Subir datos, limpiar, preguntar, gráficos y comprobación de cifras.",
+            "practice": "Ventas de un año: qué meses y productos tiran",
+            "skills": [
+              "cla2-investigacion",
+              "cla2-calidad"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-inv-03-documentos-largos",
+            "title": "Documentos largos y varios a la vez",
+            "minutes": 20,
+            "content": "Comparar documentos, extraer datos a una tabla, citar páginas.",
+            "practice": "Comparar tres presupuestos",
+            "skills": [
+              "cla2-investigacion"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-inv-04-verificar-como-un-profesional",
+            "title": "Verificar como un profesional",
+            "minutes": 20,
+            "content": "Lista de comprobación de datos, citas, cálculos y sesgos.",
+            "practice": "Detectar 5 errores plantados en un informe",
+            "skills": [
+              "cla2-calidad"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "cre",
+        "title": "Crear sin programar",
+        "desc": "Herramientas propias con artefactos y habilidades.",
+        "minutes": 70,
+        "items": [
+          {
+            "id": "cla2-cre-01-artefactos-utiles",
+            "title": "Artefactos útiles",
+            "minutes": 25,
+            "content": "Calculadoras, plantillas, cuadros de mando y pequeñas apps; compartir y publicar.",
+            "practice": "Calculadora de presupuestos para un fontanero",
+            "skills": [
+              "cla2-sin-codigo"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-cre-02-documentos-y-presentaciones",
+            "title": "Documentos, hojas y presentaciones",
+            "minutes": 20,
+            "content": "Pedir archivos de Word, Excel, PowerPoint o PDF bien hechos y revisarlos.",
+            "practice": "Presentación de 8 diapositivas desde un informe",
+            "skills": [
+              "cla2-sin-codigo"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-cre-03-crear-una-habilidad",
+            "title": "Crear tu propia habilidad",
+            "minutes": 25,
+            "content": "Qué es una habilidad, cuándo compensa, cómo describirla y probarla.",
+            "practice": "Habilidad «presupuesto con mi formato»",
+            "skills": [
+              "cla2-sin-codigo",
+              "cla2-automatizar"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "aut",
+        "title": "Conectar y automatizar",
+        "desc": "Que Claude trabaje con tus herramientas.",
+        "minutes": 60,
+        "items": [
+          {
+            "id": "cla2-aut-01-conectores-a-fondo",
+            "title": "Conectores a fondo",
+            "minutes": 20,
+            "content": "Correo, calendario, documentos y otras apps; permisos y qué puede leer o hacer.",
+            "practice": "Preparar la semana con correo y calendario",
+            "skills": [
+              "cla2-automatizar"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-aut-02-navegador-y-escritorio",
+            "title": "Claude en el navegador y el escritorio",
+            "minutes": 20,
+            "content": "Tareas en la web y con archivos locales; supervisión y límites.",
+            "practice": "Rellenar una tabla con datos de varias webs",
+            "skills": [
+              "cla2-automatizar"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-aut-03-tareas-programadas-y-agentes",
+            "title": "Tareas largas y programadas",
+            "minutes": 20,
+            "content": "Encargar trabajos de varios pasos, revisarlos y repetirlos.",
+            "practice": "Resumen semanal automático de tu correo",
+            "skills": [
+              "cla2-automatizar"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "ofi",
+        "title": "Claude en tu oficio",
+        "desc": "Usos y cautelas por profesión.",
+        "minutes": 105,
+        "items": [
+          {
+            "id": "cla2-ofi-01-docentes-y-formadores",
+            "title": "Docentes y formadores",
+            "minutes": 20,
+            "content": "Preparar clases, adaptar niveles, evaluar y normas del centro.",
+            "practice": "Unidad didáctica con tres niveles",
+            "skills": [
+              "cla2-oficios"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-ofi-02-comercio-y-autonomos",
+            "title": "Comercio y autónomos",
+            "minutes": 20,
+            "content": "Atención al cliente, redes, presupuestos y facturas sin datos sensibles.",
+            "practice": "Respuestas tipo para reseñas",
+            "skills": [
+              "cla2-oficios"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-ofi-03-oficina-y-administracion",
+            "title": "Oficina y administración",
+            "minutes": 20,
+            "content": "Correo, actas, procedimientos y hojas de cálculo.",
+            "practice": "Manual de un procedimiento interno",
+            "skills": [
+              "cla2-oficios"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-ofi-04-marketing-y-comunicacion",
+            "title": "Marketing y comunicación",
+            "minutes": 20,
+            "content": "Ideas, textos, calendario editorial y publicidad responsable.",
+            "practice": "Calendario de un mes para una marca local",
+            "skills": [
+              "cla2-oficios"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-ofi-05-sanidad-legal-y-finanzas",
+            "title": "Profesiones reguladas",
+            "minutes": 25,
+            "content": "Sanidad, abogacía y finanzas: confidencialidad, verificación y responsabilidad profesional.",
+            "practice": "Qué sí y qué no en tres consultas reales",
+            "skills": [
+              "cla2-oficios",
+              "cla2-calidad"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "equ",
+        "title": "Claude en equipo",
+        "desc": "Usarlo bien entre varias personas.",
+        "minutes": 60,
+        "items": [
+          {
+            "id": "cla2-equ-01-planes-de-equipo",
+            "title": "Planes de equipo y empresa",
+            "minutes": 20,
+            "content": "Qué cambia en datos, administración y compartir; cuándo compensa.",
+            "practice": "Elegir plan para una empresa de 12 personas",
+            "skills": [
+              "cla2-equipos"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-equ-02-proyectos-compartidos",
+            "title": "Proyectos compartidos y buenas prácticas",
+            "minutes": 20,
+            "content": "Bibliotecas de instrucciones, plantillas comunes y responsables.",
+            "practice": "Proyecto común de atención al cliente",
+            "skills": [
+              "cla2-equipos",
+              "cla2-proyectos"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla2-equ-03-politica-de-uso",
+            "title": "Una política de uso en una página",
+            "minutes": 20,
+            "content": "Qué datos, qué tareas, revisión humana y transparencia.",
+            "practice": "Redactar la política de tu equipo",
+            "skills": [
+              "cla2-equipos"
+            ],
+            "access": "paid"
+          }
+        ]
+      }
+    ],
+    "order": [
+      "pro",
+      "inv",
+      "cre",
+      "aut",
+      "ofi",
+      "equ"
+    ]
+  },
+  "n3": {
+    "certificateNotice": "El certificado umotion acredita que has superado esta formación de umotion Academy. No es una certificación oficial de Anthropic: umotion Academy no está afiliada a Anthropic. Tampoco es un título oficial.",
+    "clients": [
+      {
+        "id": "gestoria",
+        "name": "Gestoría Martín y Asociados",
+        "situation": "15 personas, mucho correo y documentos; quieren usar Claude sin riesgos con datos de clientes.",
+        "topics": "casos de uso, privacidad, despliegue, formación"
+      },
+      {
+        "id": "tienda",
+        "name": "Raíz, tienda online de cosmética",
+        "situation": "Cinco personas; atención al cliente desbordada y fichas de producto pendientes.",
+        "topics": "automatización, conectores, calidad, costes"
+      },
+      {
+        "id": "colegio",
+        "name": "Colegio Los Almendros",
+        "situation": "Profesores que ya usan IA por su cuenta y una dirección que quiere normas claras.",
+        "topics": "política de uso, normativa, formación, ética"
+      },
+      {
+        "id": "startup",
+        "name": "Tramita, startup de software",
+        "situation": "Quiere un asistente que responda a sus usuarios con su documentación.",
+        "topics": "API, herramientas, evaluaciones, agentes"
+      }
+    ],
+    "modules": [
+      {
+        "code": "fun",
+        "title": "Tronco común · Cómo funcionan los modelos",
+        "desc": "Base técnica sin programar.",
+        "minutes": 100,
+        "items": [
+          {
+            "id": "cla3-fun-01-tokens-y-contexto",
+            "title": "Tokens, contexto y memoria",
+            "minutes": 35,
+            "content": "Qué es un token, ventana de contexto, por qué olvida o se pierde, memoria y proyectos.",
+            "practice": "Diagnosticar por qué falla una conversación larga",
+            "skills": [
+              "cla3-llm"
+            ],
+            "access": "sample"
+          },
+          {
+            "id": "cla3-fun-02-entrenamiento-y-razonamiento",
+            "title": "Entrenamiento y razonamiento",
+            "minutes": 35,
+            "content": "Preentrenamiento, ajuste, entrenamiento con valores (enfoque de Anthropic), razonamiento extendido.",
+            "practice": "Explicar a un directivo por qué la IA se equivoca",
+            "skills": [
+              "cla3-llm"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-fun-03-familias-y-costes",
+            "title": "Familias de modelos y costes",
+            "minutes": 30,
+            "content": "Modelos grandes y rápidos, cuándo usar cada uno, coste por uso y límites.",
+            "practice": "Elegir modelo para tres tareas",
+            "skills": [
+              "cla3-llm",
+              "cla3-api"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "rie",
+        "title": "Tronco común · Riesgos, seguridad y normativa",
+        "desc": "Usar IA sin crear problemas.",
+        "minutes": 140,
+        "items": [
+          {
+            "id": "cla3-rie-01-errores-y-sesgos",
+            "title": "Errores, sesgos y alucinaciones",
+            "minutes": 30,
+            "content": "Tipos de error, cómo detectarlos y diseño con revisión humana.",
+            "practice": "`gestoria`: errores en resúmenes de escrituras",
+            "skills": [
+              "cla3-riesgos"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-rie-02-seguridad-e-inyeccion",
+            "title": "Seguridad e inyección de instrucciones",
+            "minutes": 35,
+            "content": "Instrucciones ocultas en webs y documentos, permisos mínimos, datos sensibles.",
+            "practice": "`tienda`: un correo que intenta engañar al asistente",
+            "skills": [
+              "cla3-riesgos"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-rie-03-reglamento-de-ia-y-rgpd",
+            "title": "Reglamento europeo de IA y RGPD",
+            "minutes": 40,
+            "content": "Obligaciones por nivel de riesgo, alfabetización en IA, transparencia, datos personales.",
+            "practice": "`colegio`: qué obligaciones tiene",
+            "skills": [
+              "cla3-normativa"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-rie-04-evaluar-con-pruebas",
+            "title": "Evaluar con pruebas",
+            "minutes": 35,
+            "content": "Conjuntos de prueba, criterios, comparar versiones, revisión humana.",
+            "practice": "`startup`: 30 preguntas de prueba",
+            "skills": [
+              "cla3-evaluar"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "imp",
+        "title": "Itinerario Implantación · Casos de uso y despliegue",
+        "desc": "Llevar Claude a una organización.",
+        "minutes": 165,
+        "items": [
+          {
+            "id": "cla3-imp-01-descubrir-casos-de-uso",
+            "title": "Descubrir y priorizar casos de uso",
+            "minutes": 35,
+            "content": "Entrevistas, mapa de tareas, impacto frente a riesgo, prueba piloto.",
+            "practice": "`gestoria`: priorizar 10 tareas",
+            "skills": [
+              "cla3-casos-uso"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-imp-02-disenar-flujos",
+            "title": "Diseñar flujos con revisión humana",
+            "minutes": 35,
+            "content": "Dónde entra Claude, qué revisa una persona, plantillas y proyectos compartidos.",
+            "practice": "`tienda`: flujo de atención al cliente",
+            "skills": [
+              "cla3-casos-uso",
+              "cla3-despliegue"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-imp-03-desplegar-planes-y-permisos",
+            "title": "Desplegar: planes, permisos y políticas",
+            "minutes": 35,
+            "content": "Planes de empresa, administración, conectores permitidos, retención de datos.",
+            "practice": "`gestoria`: plan de despliegue",
+            "skills": [
+              "cla3-despliegue"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-imp-04-formar-al-equipo",
+            "title": "Formar al equipo",
+            "minutes": 30,
+            "content": "Itinerarios por perfil, campeones internos, materiales y práctica.",
+            "practice": "`colegio`: plan de formación del claustro",
+            "skills": [
+              "cla3-cambio"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-imp-05-medir-el-impacto",
+            "title": "Medir el impacto",
+            "minutes": 30,
+            "content": "Adopción, tiempo ahorrado, calidad y coste; informe a dirección.",
+            "practice": "`gestoria`: cuadro de mando a 90 días",
+            "skills": [
+              "cla3-cambio"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "dev",
+        "title": "Itinerario Desarrollo · Construir con Claude",
+        "desc": "API, herramientas y agentes.",
+        "minutes": 265,
+        "items": [
+          {
+            "id": "cla3-dev-01-primera-llamada-a-la-api",
+            "title": "Tu primera llamada a la API",
+            "minutes": 40,
+            "content": "Consola, claves, mensajes, instrucciones de sistema, parámetros y costes.",
+            "practice": "Clasificador de correos con la API",
+            "skills": [
+              "cla3-api"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-dev-02-salidas-estructuradas",
+            "title": "Salidas estructuradas y fiables",
+            "minutes": 35,
+            "content": "Pedir JSON, validar, reintentar y registrar.",
+            "practice": "Extraer datos de facturas",
+            "skills": [
+              "cla3-api",
+              "cla3-evaluar"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-dev-03-uso-de-herramientas",
+            "title": "Uso de herramientas",
+            "minutes": 40,
+            "content": "Definir herramientas, bucle de llamadas, errores y permisos.",
+            "practice": "`startup`: consultar el estado de un trámite",
+            "skills": [
+              "cla3-herramientas"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-dev-04-documentacion-propia",
+            "title": "Responder con tu documentación",
+            "minutes": 40,
+            "content": "Recuperar fragmentos relevantes, citar fuentes, actualizar el conocimiento.",
+            "practice": "`startup`: asistente con su manual",
+            "skills": [
+              "cla3-herramientas",
+              "cla3-evaluar"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-dev-05-servidores-mcp",
+            "title": "Servidores MCP",
+            "minutes": 35,
+            "content": "Qué es el protocolo MCP, conectar datos propios y seguridad.",
+            "practice": "Conector a una base de datos de pedidos",
+            "skills": [
+              "cla3-herramientas"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-dev-06-agentes-y-claude-code",
+            "title": "Agentes y Claude Code",
+            "minutes": 40,
+            "content": "Bucles de agente, SDK, Claude Code en un repositorio, supervisión y límites.",
+            "practice": "Automatizar una tarea de programación con revisión",
+            "skills": [
+              "cla3-agentes"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "cla3-dev-07-produccion-y-costes",
+            "title": "Producción: costes, caché y límites",
+            "minutes": 35,
+            "content": "Caché de instrucciones, lotes, límites de uso y monitorización.",
+            "practice": "`startup`: bajar el coste a la mitad",
+            "skills": [
+              "cla3-api"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "cie",
+        "title": "Proyecto final",
+        "desc": "Un caso completo con revisión humana.",
+        "minutes": 45,
+        "items": [
+          {
+            "id": "cla3-cie-01-proyecto-final",
+            "title": "Proyecto final",
+            "minutes": 45,
+            "content": "Implantación para uno de los clientes o un desarrollo con evaluación, según tu itinerario.",
+            "practice": "Proyecto con revisión humana",
+            "skills": [
+              "cla3-casos-uso",
+              "cla3-evaluar"
+            ],
+            "access": "paid"
+          }
+        ]
+      }
+    ],
+    "order": [
+      "fun",
+      "rie",
+      "imp",
+      "dev",
+      "cie"
+    ]
+  },
+  "texts": {
+    "metaTitle": "Claude: aprende a usar la IA desde cero",
+    "metaDesc": "Formación para aprender a usar Claude, el asistente de IA de Anthropic, en tres niveles: desde cero y gratis, avanzado y profesional.",
+    "intro": "Aprende a usar Claude, el asistente de inteligencia artificial de Anthropic, desde la primera conversación: pedirle bien, aprovechar sus funciones, usarlo en el trabajo y los estudios, conectarlo con tus herramientas y comprobar lo que te dice. Sin programar.",
+    "coreTitle": "El núcleo del Nivel 1, por orden de importancia",
+    "coreLede": "Antes, el Camino Cero: qué es, tu primera conversación, cuándo fiarte y qué no compartir.",
+    "n1Order": "Los módulos del núcleo van por orden de importancia: primero lo que más mejora tus resultados desde el primer día.",
+    "notice": "umotion Academy no está afiliada a Anthropic. Contenido educativo e independiente. Las funciones, los planes y los nombres de Claude cambian a menudo: comprueba la información vigente en el centro de ayuda oficial de Claude.",
+    "moduleNote": "Claude cambia a menudo: algunas funciones dependen del plan o del país. Si algo no aparece como lo explicamos, consulta el centro de ayuda oficial. umotion Academy no está afiliada a Anthropic.",
+    "onePage": "Mi kit de Claude",
+    "examTitle": "Fundamentos de Claude",
+    "examDesc": "30 preguntas sobre cómo usar Claude con criterio. Se aprueba con el 80 % y da la insignia gratuita del Nivel 1 de Claude.",
+    "glossTitle": "Glosario de inteligencia artificial y Claude",
+    "glossDesc": "términos de inteligencia artificial y de Claude explicados en una o dos frases: modelo de lenguaje, alucinación, artefacto, conector, MCP y más.",
+    "glossLede": "Las palabras de la inteligencia artificial y de Claude, en una frase y con su definición precisa.",
+    "moduleDesc": "Módulo del Nivel 1 de Claude",
+    "titleVerb": "aprender"
+  }
+}

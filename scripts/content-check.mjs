@@ -10,10 +10,11 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import yaml from 'js-yaml';
 
 const sources = JSON.parse(readFileSync('src/data/sources.json', 'utf8'));
-const EM_GLOSS = 'src/data/glossary-emprendimiento';
+// Formaciones además de Inversión: datos, sesiones del Nivel 1 y glosario (un archivo por módulo).
+const FORMATIONS = ['emprendimiento', 'claude'].map((id) => ({ id, data: `src/data/${id}.json`, dir: `src/content/${id}`, gloss: `src/data/glossary-${id}` }));
 const glossary = [
   ...JSON.parse(readFileSync('src/data/glossary.json', 'utf8')),
-  ...(existsSync(EM_GLOSS) ? readdirSync(EM_GLOSS).filter((f) => f.endsWith('.json')).flatMap((f) => JSON.parse(readFileSync(`${EM_GLOSS}/${f}`, 'utf8'))) : []),
+  ...FORMATIONS.flatMap((f) => (existsSync(f.gloss) ? readdirSync(f.gloss).filter((x) => x.endsWith('.json')).flatMap((x) => JSON.parse(readFileSync(`${f.gloss}/${x}`, 'utf8'))) : [])),
 ];
 const errors = [], warnings = [];
 const seenGloss = new Set();
@@ -32,7 +33,7 @@ const lessonIds = new Set(lessons.map((l) => l.id));
 const glossIds = new Set(glossary.map((g) => g.id));
 
 const need = (doc, headings) => headings.forEach((h) => { if (!doc.body.includes(`## ${h}`)) errors.push(`${doc.file}: falta la sección «${h}»`); });
-for (const doc of [...lessons, ...strategies, ...investors, ...sessions, ...(existsSync('src/content/emprendimiento') ? load('src/content/emprendimiento') : [])]) {
+for (const doc of [...lessons, ...strategies, ...investors, ...sessions, ...FORMATIONS.flatMap((f) => (existsSync(f.dir) ? load(f.dir) : []))]) {
   for (const s of doc.data.sources ?? []) if (!sources[s]) errors.push(`${doc.file}: fuente desconocida «${s}»`);
   if (!doc.data.author) errors.push(`${doc.file}: sin autor`);
   if (doc.data.status === 'revisado' && !doc.data.reviewer) errors.push(`${doc.file}: «revisado» sin revisor identificado`);
@@ -68,17 +69,21 @@ const skillMap = JSON.parse(readFileSync('src/data/skills.json', 'utf8'));
 const skillIds = new Set(skillMap.skills.map((k) => k.id));
 const taught = new Set();
 const TRACKS = ['camino-cero', 'productos', 'formas', 'invertir-ya', 'trade-republic', 'mantener', 'empresas', 'noticias', 'trading'];
-// Formación Emprendimiento: mismas reglas, con sus módulos y competencias (src/data/emprendimiento.json).
-const em = JSON.parse(readFileSync('src/data/emprendimiento.json', 'utf8'));
-const emSessions = existsSync('src/content/emprendimiento') ? load('src/content/emprendimiento') : [];
-const emSkillIds = new Set(em.skills.map((k) => k.id));
-const emTaught = new Set();
 checkSessions(sessions, { tracks: TRACKS, skillIds, taught, sessionIds, def: 'camino-cero' });
-checkSessions(emSessions, { tracks: em.tracks.map((t) => t.id), skillIds: emSkillIds, taught: emTaught, sessionIds: new Set(emSessions.map((x) => x.id)), def: 'em-cero' });
-for (const t of em.tracks) if (!emSessions.some((x) => x.data.track === t.id)) warnings.push(`emprendimiento: el módulo «${t.id}» aún no tiene sesiones`);
-for (const k of em.skills) if (k.level === 1 && emSessions.length && !emTaught.has(k.id)) warnings.push(`emprendimiento: competencia «${k.id}» sin ninguna sesión que la enseñe`);
-for (const c of em.n1Capacities) for (const k of c.skills) if (!emSkillIds.has(k)) errors.push(`emprendimiento: la capacidad ${c.id} usa la competencia desconocida «${k}»`);
-for (const m of [...em.n2.modules, ...em.n3.modules]) for (const i of m.items) for (const k of i.skills) if (!emSkillIds.has(k)) errors.push(`emprendimiento: «${i.id}» usa la competencia desconocida «${k}»`);
+// Demás formaciones: mismas reglas, con sus módulos y competencias (src/data/<id>.json).
+const formationCounts = [];
+for (const f of FORMATIONS) {
+  const fd = JSON.parse(readFileSync(f.data, 'utf8'));
+  const list = existsSync(f.dir) ? load(f.dir) : [];
+  const ids = new Set(fd.skills.map((k) => k.id));
+  const fTaught = new Set();
+  checkSessions(list, { tracks: fd.tracks.map((t) => t.id), skillIds: ids, taught: fTaught, sessionIds: new Set(list.map((x) => x.id)), def: fd.tracks[0].id });
+  for (const t of fd.tracks) if (!list.some((x) => x.data.track === t.id)) warnings.push(`${f.id}: el módulo «${t.id}» aún no tiene sesiones`);
+  for (const k of fd.skills) if (k.level === 1 && list.length && !fTaught.has(k.id)) warnings.push(`${f.id}: competencia «${k.id}» sin ninguna sesión que la enseñe`);
+  for (const c of fd.n1Capacities) for (const k of c.skills) if (!ids.has(k)) errors.push(`${f.id}: la capacidad ${c.id} usa la competencia desconocida «${k}»`);
+  for (const m of [...fd.n2.modules, ...fd.n3.modules]) for (const i of m.items) for (const k of i.skills) if (!ids.has(k)) errors.push(`${f.id}: «${i.id}» usa la competencia desconocida «${k}»`);
+  formationCounts.push(`${list.length} de ${fd.title}`);
+}
 function checkSessions(list, { tracks, skillIds, taught, sessionIds, def }) {
 const orders = new Map();
 for (const x of list) {
@@ -119,7 +124,7 @@ for (const x of clases) {
   if (x.data.access === 'paid' && x.data.status !== 'revisado') warnings.push(`${x.file}: contenido de pago sin revisión humana (no se puede publicar, sección 11.3)`);
 }
 for (const k of skillMap.skills) if ((k.level ?? 1) === 1 && !taught.has(k.id)) warnings.push(`competencia «${k.id}» sin ninguna sesión que la enseñe`);
-console.log(`Revisados: ${sessions.length} sesiones de Inversión, ${emSessions.length} de Emprendimiento, ${lessons.length} lecciones, ${strategies.length} estrategias, ${investors.length} historias, ${glossary.length} términos.`);
+console.log(`Revisados: ${sessions.length} sesiones de Inversión, ${formationCounts.join(', ')}, ${lessons.length} lecciones, ${strategies.length} estrategias, ${investors.length} historias, ${glossary.length} términos.`);
 warnings.forEach((w) => console.warn('AVISO: ' + w));
 if (errors.length) { errors.forEach((e) => console.error('ERROR: ' + e)); process.exit(1); }
 console.log('Control editorial superado.');

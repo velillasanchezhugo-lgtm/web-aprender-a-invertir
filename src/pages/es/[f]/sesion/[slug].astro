@@ -1,0 +1,19 @@
+---
+import SessionPlayer from '../../../../components/SessionPlayer.astro';
+import { FORMATION_IDS, formation, formationSessions, type FormationId, type FSession } from '../../../../lib/formations';
+export async function getStaticPaths() {
+  const out = [];
+  for (const f of FORMATION_IDS) {
+    const all = await formationSessions(f);
+    for (const s of all) {
+      const mod = all.filter((x) => x.data.track === s.data.track);
+      const i = mod.indexOf(s);
+      out.push({ params: { f, slug: s.id }, props: { s, index: i, total: mod.length, next: mod[i + 1] ?? null } });
+    }
+  }
+  return out;
+}
+const { s, index, total, next } = Astro.props as { s: FSession; index: number; total: number; next: FSession | null };
+const F = formation(Astro.params.f as FormationId);
+---
+<SessionPlayer s={s} index={index} total={total} next={next} trackLabel={F.tracks[s.data.track].label} formation={F.id} />

@@ -1,20 +1,23 @@
 ---
-/** Presentación del Nivel 1 de Emprendimiento (gratis). Datos: src/data/emprendimiento.json. */
+/** Presentación del Nivel 1 (gratis) de una formación. Datos: src/data/<id>.json. */
 import Base from '../../../../layouts/Base.astro';
 import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
-import { EM, EM_TRACKS, EM_SESSION, emSessions, emTrackHref } from '../../../../lib/emprendimiento';
+import { formation, formationSessions, formationPaths, type FormationId } from '../../../../lib/formations';
+export const getStaticPaths = formationPaths;
+const F = formation(Astro.params.f as FormationId);
+const EM = F.d;
 const t = EM.tiers[0];
-const all = await emSessions();
+const all = await formationSessions(F.id);
 const count = (id: string) => all.filter((s) => s.data.track === id).length;
 const total = all.length;
 const first = all[0];
-const onePage = all.find((s) => s.id.startsWith('em-c10'));
+const onePage = all.filter((s) => s.data.track === EM.tracks[0].id).at(-1);
 ---
-<Base title={`Emprendimiento · Nivel 1 · ${t.title}`} description={t.promise.slice(0, 160)} allowAds={false}>
+<Base title={`${F.title} · Nivel 1 · ${t.title}`} description={t.promise.slice(0, 160)} allowAds={false}>
   <section class="tp-hero dots">
     <div class="container">
-      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/emprendimiento/', label: 'Emprendimiento' }, { label: 'Nivel 1' }]} />
-      <p class="eyebrow"><span>Emprendimiento · Nivel 1 · Gratis · disponible ya</span></p>
+      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: F.base, label: F.title }, { label: 'Nivel 1' }]} />
+      <p class="eyebrow"><span>{F.title} · Nivel 1 · Gratis · disponible ya</span></p>
       <h1>{t.title}</h1>
       <p class="sub">{t.subtitle}</p>
       <p class="lede">{t.promise}</p>
@@ -25,15 +28,15 @@ const onePage = all.find((s) => s.id.startsWith('em-c10'));
         <li><strong>{t.recognition}</strong></li>
       </ul>
       <div class="cta-row">
-        {first && <a class="btn brand" href={`${EM_SESSION}${first.id}/`} id="n1-start">Empezar gratis</a>}
-        <a class="btn ghost" href={emTrackHref('em-cero')}>Ir al Camino Cero</a>
+        {first && <a class="btn brand" href={`${F.session}${first.id}/`} id="n1-start">Empezar gratis</a>}
+        <a class="btn ghost" href={F.trackHref(EM.tracks[0].id)}>Ir al Camino Cero</a>
       </div>
-      <p class="small muted" id="n1-progress" aria-live="polite"></p>
+      <p class="small muted" id="n1-progress" aria-live="polite" data-store={F.storeKey} data-title={F.title}></p>
     </div>
   </section>
   <div class="container tp">
     <h2 class="h3">Cómo está organizado</h2>
-    <p class="small muted">Los módulos del núcleo van por orden de importancia: primero lo que más dinero o problemas cuesta si se hace mal.</p>
+    <p class="small muted">{F.texts.n1Order}</p>
     <ol class="stages">
       {EM.stages.map((s) => (
         <li class="card stage">
@@ -42,8 +45,8 @@ const onePage = all.find((s) => s.id.startsWith('em-c10'));
           <p class="small muted">{s.desc}</p>
           <ul class="tracks">
             {s.tracks.map((id) => count(id)
-              ? <li><a href={emTrackHref(id)}><span class="tl"><strong>{EM_TRACKS[id].label}</strong><span class="small muted">{EM_TRACKS[id].short}</span></span><span class="mono small n">{count(id)} ses.</span></a></li>
-              : <li><span class="soon"><span class="tl"><strong>{EM_TRACKS[id].label}</strong><span class="small muted">{EM_TRACKS[id].short}</span></span><span class="mono small n">en preparación</span></span></li>)}
+              ? <li><a href={F.trackHref(id)}><span class="tl"><strong>{F.tracks[id].label}</strong><span class="small muted">{F.tracks[id].short}</span></span><span class="mono small n">{count(id)} ses.</span></a></li>
+              : <li><span class="soon"><span class="tl"><strong>{F.tracks[id].label}</strong><span class="small muted">{F.tracks[id].short}</span></span><span class="mono small n">en preparación</span></span></li>)}
           </ul>
         </li>
       ))}
@@ -54,13 +57,13 @@ const onePage = all.find((s) => s.id.startsWith('em-c10'));
       <h2 class="h3">Cómo se termina</h2>
       <p>{t.closing}. Reconocimiento: {t.recognition}.</p>
       <ul class="end">
-        {onePage && <li><a href={`${EM_SESSION}${onePage.id}/`}>Mi proyecto en una página</a></li>}
-        <li><a href="/es/emprendimiento/examen/">Examen del Nivel 1</a></li>
-        <li><a href="/es/emprendimiento/glosario/">Glosario de emprendimiento</a></li>
+        {onePage && <li><a href={`${F.session}${onePage.id}/`}>{F.texts.onePage}</a></li>}
+        <li><a href={`${F.base}examen/`}>Examen del Nivel 1</a></li>
+        <li><a href={`${F.base}glosario/`}>{F.texts.glossTitle}</a></li>
       </ul>
-      <p class="small muted">¿Quieres seguir? <a href="/es/emprendimiento/nivel-2/">Nivel 2 · Avanzado</a>.</p>
+      <p class="small muted">¿Quieres seguir? <a href={`${F.base}nivel-2/`}>Nivel 2 · Avanzado</a>.</p>
     </section>
-    <p class="small muted legal">Contenido educativo y general para residentes en España. No es asesoramiento jurídico, fiscal ni laboral. Las cuotas, tipos y plazos cambian: comprueba siempre la fuente oficial citada en cada sesión.</p>
+    <p class="small muted legal">{F.texts.notice}</p>
   </div>
 </Base>
 <style>
@@ -88,8 +91,8 @@ const onePage = all.find((s) => s.id.startsWith('em-c10'));
   .legal { margin-top: 1.5rem; }
 </style>
 <script>
-  import { getState } from '../../../../scripts/academy-store';
-  const s = getState('academy-emprendimiento');
-  const n = Object.keys(s.completed).length;
-  if (n) document.getElementById('n1-progress')!.textContent = `Llevas ${n} ${n === 1 ? 'sesión hecha' : 'sesiones hechas'} en Emprendimiento.`;
+  import { getState, type StoreKey } from '../../../../scripts/academy-store';
+  const el = document.getElementById('n1-progress')!;
+  const n = Object.keys(getState(el.dataset.store as StoreKey).completed).length;
+  if (n) el.textContent = `Llevas ${n} ${n === 1 ? 'sesión hecha' : 'sesiones hechas'} en ${el.dataset.title}.`;
 </script>

@@ -1878,5 +1878,23 @@
       "dir",
       "pro"
     ]
+  },
+  "texts": {
+    "metaTitle": "Emprendimiento: monta tu negocio desde cero",
+    "metaDesc": "Formación de emprendimiento para España en tres niveles: desde cero y gratis, avanzado para llevar tu negocio y profesional para asesorar a empresas.",
+    "intro": "Todo lo que necesitas para montar y llevar un negocio en España, en el orden en que lo vas a necesitar: comprobar tu idea, elegir la forma jurídica, darte de alta, pagar bien tus impuestos y cuotas, conseguir financiación y clientes, y cumplir la ley sin sustos.",
+    "coreTitle": "El núcleo del Nivel 1, por orden de importancia",
+    "coreLede": "Antes, el Camino Cero: si tu idea tiene clientes, tus números y lo que arriesgas.",
+    "n1Order": "Los módulos del núcleo van por orden de importancia: primero lo que más dinero o problemas cuesta si se hace mal.",
+    "notice": "Contenido educativo y general para residentes en España, basado en fuentes oficiales (BOE, Agencia Tributaria, Seguridad Social). No es asesoramiento jurídico, fiscal ni laboral: para tu caso concreto, consulta a una gestoría o a un profesional.",
+    "moduleNote": "Contenido educativo y general para España. Las normas, cuotas y plazos cambian: antes de decidir, comprueba la fuente oficial que citamos en cada sesión o consulta a una gestoría.",
+    "onePage": "Mi proyecto en una página",
+    "examTitle": "Fundamentos de emprendimiento",
+    "examDesc": "30 preguntas sobre todo lo que necesitas para montar tu negocio en España. Se aprueba con el 80 % y da la insignia gratuita del Nivel 1 de Emprendimiento.",
+    "glossTitle": "Glosario de emprendimiento",
+    "glossDesc": "términos para emprender en España explicados en una o dos frases: IVA, RETA, IAE, tarifa plana, sociedad limitada y más.",
+    "glossLede": "Las palabras de los trámites, los impuestos y la Seguridad Social, en una frase y con su definición precisa.",
+    "moduleDesc": "Módulo del Nivel 1 de Emprendimiento",
+    "titleVerb": "emprender"
   }
 }

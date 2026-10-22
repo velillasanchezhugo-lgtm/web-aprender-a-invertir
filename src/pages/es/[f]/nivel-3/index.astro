@@ -1,0 +1,6 @@
+---
+import TierPage from '../../../../components/TierPage.astro';
+import { formationPaths, type FormationId } from '../../../../lib/formations';
+export const getStaticPaths = formationPaths;
+---
+<TierPage tier={3} formation={Astro.params.f as FormationId} />

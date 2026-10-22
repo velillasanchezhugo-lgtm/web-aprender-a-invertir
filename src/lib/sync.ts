@@ -88,7 +88,7 @@ export function mergeProgress(local: unknown, remote: unknown): Rec {
 }
 
 /** Claves que se sincronizan con la cuenta (el tema visual y el consentimiento se quedan en el dispositivo). */
-export const SYNC_KEYS = ['academy', 'academy-emprendimiento', 'progress', 'checklist', 'practice', 'final-exercise', 'quiz', 'one-page-plan', 'badge', 'interest', 'class-notes'] as const;
+export const SYNC_KEYS = ['academy', 'academy-emprendimiento', 'academy-claude', 'progress', 'checklist', 'practice', 'final-exercise', 'quiz', 'one-page-plan', 'badge', 'interest', 'class-notes'] as const;
 export type SyncKey = (typeof SYNC_KEYS)[number];
 export type Snapshot = Partial<Record<SyncKey, unknown>>;
 
@@ -98,7 +98,7 @@ export function mergeSnapshot(local: Snapshot, remote: Snapshot): Snapshot {
   for (const k of SYNC_KEYS) {
     const l = local[k], r = remote[k];
     if (l == null && r == null) continue;
-    if (k === 'academy' || k === 'academy-emprendimiento') out[k] = mergeAcademy(l, r);
+    if (k === 'academy' || k.startsWith('academy-')) out[k] = mergeAcademy(l, r);
     else if (k === 'progress') out[k] = mergeProgress(l, r);
     else out[k] = l ?? r;
   }

@@ -1161,5 +1161,96 @@
   "url": null,
   "type": "ley",
   "checked": null
+ },
+ "claude-ayuda": {
+  "title": "Centro de ayuda de Claude",
+  "publisher": "Anthropic",
+  "url": "https://support.claude.com/es/",
+  "type": "empresa",
+  "checked": "2026-10-22"
+ },
+ "claude-docs": {
+  "title": "Documentación para desarrolladores de Claude",
+  "publisher": "Anthropic",
+  "url": "https://platform.claude.com/docs/en/home",
+  "type": "empresa",
+  "checked": "2026-10-22"
+ },
+ "claude-planes": {
+  "title": "Planes y precios de Claude",
+  "publisher": "Anthropic",
+  "url": "https://claude.com/pricing",
+  "type": "empresa",
+  "checked": "2026-10-22"
+ },
+ "claude-privacidad": {
+  "title": "Centro de privacidad de Claude",
+  "publisher": "Anthropic",
+  "url": "https://privacy.claude.com/",
+  "type": "empresa",
+  "checked": "2026-10-22"
+ },
+ "anthropic-privacidad": {
+  "title": "Política de privacidad de Anthropic",
+  "publisher": "Anthropic",
+  "url": "https://www.anthropic.com/legal/privacy",
+  "type": "empresa",
+  "checked": "2026-10-22"
+ },
+ "anthropic-aup": {
+  "title": "Política de uso de Anthropic",
+  "publisher": "Anthropic",
+  "url": "https://www.anthropic.com/legal/aup",
+  "type": "empresa",
+  "checked": "2026-10-22"
+ },
+ "anthropic-condiciones": {
+  "title": "Condiciones para consumidores de Anthropic",
+  "publisher": "Anthropic",
+  "url": "https://www.anthropic.com/legal/consumer-terms",
+  "type": "empresa",
+  "checked": "2026-10-22"
+ },
+ "anthropic-constitucion": {
+  "title": "La constitución de Claude",
+  "publisher": "Anthropic",
+  "url": "https://www.anthropic.com/constitution",
+  "type": "empresa",
+  "checked": "2026-10-22"
+ },
+ "anthropic-noticias": {
+  "title": "Noticias de Anthropic",
+  "publisher": "Anthropic",
+  "url": "https://www.anthropic.com/news",
+  "type": "empresa",
+  "checked": "2026-10-22"
+ },
+ "anthropic-academy": {
+  "title": "Anthropic Academy: cursos gratuitos",
+  "publisher": "Anthropic",
+  "url": "https://academy.claude.com/",
+  "type": "empresa",
+  "checked": "2026-10-22"
+ },
+ "mcp": {
+  "title": "Model Context Protocol",
+  "publisher": "Model Context Protocol",
+  "url": "https://modelcontextprotocol.io/",
+  "type": "plataforma",
+  "checked": "2026-10-22"
+ },
+ "reglamento-ia": {
+  "title": "Reglamento (UE) 2024/1689 de inteligencia artificial",
+  "publisher": "EUR-Lex",
+  "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32024R1689",
+  "type": "normativa",
+  "checked": "2026-10-22"
+ },
+ "aepd-guias": {
+  "title": "Guías de la AEPD (incluida la inteligencia artificial)",
+  "publisher": "AEPD",
+  "url": "https://www.aepd.es/guias-y-herramientas/guias",
+  "type": "supervisor",
+  "checked": "2026-10-22"
  }
 }

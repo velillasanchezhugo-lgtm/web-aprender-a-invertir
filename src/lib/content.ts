@@ -29,11 +29,18 @@ export const sourceById = (id: string): Source | undefined => (sources as Record
 export type GlossaryEntry = { id: string; term: string; def: string; short?: string; abbr?: string; lesson: string | null };
 /** Glosario de Inversión (página /es/glosario/). */
 export const glossaryList = glossary as GlossaryEntry[];
-/** Glosario de Emprendimiento: un archivo por módulo en src/data/glossary-emprendimiento/. */
-export const glossaryEm = Object.values(import.meta.glob<GlossaryEntry[]>('../data/glossary-emprendimiento/*.json', { eager: true, import: 'default' })).flat()
-  .sort((a, b) => a.term.localeCompare(b.term, 'es'));
+/** Glosarios de las demás formaciones: un archivo por módulo en src/data/glossary-<formación>/. */
+const glossFiles = import.meta.glob<GlossaryEntry[]>('../data/glossary-*/*.json', { eager: true, import: 'default' });
+/** Formación de cada término de esas carpetas (para enlazar a su glosario). */
+export const glossaryFormation: Record<string, string> = {};
+const byFormation: Record<string, GlossaryEntry[]> = {};
+for (const [path, list] of Object.entries(glossFiles)) {
+  const f = path.match(/glossary-([a-z0-9-]+)\//)![1];
+  for (const g of list) { (byFormation[f] ??= []).push(g); glossaryFormation[g.id] ??= f; }
+}
+export const glossaryOf = (f: string) => [...(byFormation[f] ?? [])].sort((a, b) => a.term.localeCompare(b.term, 'es'));
 /** Todos los términos, para las cartulinas de palabras clave de cualquier formación. */
-export const glossaryAll = [...glossaryList, ...glossaryEm.filter((g) => !glossaryList.some((x) => x.id === g.id))];
+export const glossaryAll = [...glossaryList, ...Object.values(byFormation).flat().filter((g) => !glossaryList.some((x) => x.id === g.id))];
 
 export async function lessons(): Promise<Lesson[]> {
   return (await getCollection('lessons', ({ data }) => !data.draft)).sort((a, b) =>

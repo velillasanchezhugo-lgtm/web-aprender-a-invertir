@@ -2,16 +2,17 @@
 /** Temario de un nivel de pago: módulos, clases con candado y muestras abiertas. */
 import inversion from '../data/curriculum.json';
 import { skillById as invSkills } from '../lib/content';
-import { EM, emSkillById } from '../lib/emprendimiento';
-interface Props { tier: 2 | 3; published: string[]; formation?: 'inversion' | 'emprendimiento' }
-const { tier, published, formation = 'inversion' } = Astro.props;
-const inv = formation === 'inversion';
-const curriculum: any = inv ? inversion : EM;
-const skillById: Record<string, { label: string }> = inv ? invSkills : emSkillById;
+import { formation, type FormationId } from '../lib/formations';
+interface Props { tier: 2 | 3; published: string[]; formation?: 'inversion' | FormationId }
+const { tier, published, formation: fid = 'inversion' } = Astro.props;
+const inv = fid === 'inversion';
+const F = inv ? null : formation(fid as FormationId);
+const curriculum: any = F ? F.d : inversion;
+const skillById: Record<string, { label: string }> = F ? F.skillById : invSkills;
 const data = tier === 2 ? curriculum.n2 : curriculum.n3;
 const order: string[] = data.order ?? data.modules.map((m: any) => m.code);
 const mods: any[] = [...data.modules].sort((a: any, b: any) => order.indexOf(a.code) - order.indexOf(b.code));
-const base = `${inv ? '/es/' : '/es/emprendimiento/'}nivel-${tier}/`;
+const base = `${F ? F.base : '/es/'}nivel-${tier}/`;
 const lock = 'M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z';
 ---
 <ol class="mods">

@@ -3,40 +3,46 @@
 import Base from '../../../../layouts/Base.astro';
 import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
 import TermCards from '../../../../components/TermCards.astro';
-import { EM, emSessions, EM_TRACKS, EM_SESSION, emSkillById, emStageOf, type EmSession } from '../../../../lib/emprendimiento';
+import { FORMATION_IDS, FORMATIONS, formation, formationSessions, type FormationId, type FSession } from '../../../../lib/formations';
 export async function getStaticPaths() {
-  const all = await emSessions();
-  return EM.tracks.filter((t) => all.some((s) => s.data.track === t.id)).map((t) => ({ params: { track: t.id }, props: { track: t.id, ss: all.filter((s) => s.data.track === t.id) } }));
+  const out = [];
+  for (const f of FORMATION_IDS) {
+    const all = await formationSessions(f);
+    for (const t of FORMATIONS[f].tracks) { const ss = all.filter((s) => s.data.track === t.id); if (ss.length) out.push({ params: { f, track: t.id }, props: { track: t.id, ss } }); }
+  }
+  return out;
 }
-const { track, ss } = Astro.props as { track: string; ss: EmSession[] };
-const info = EM_TRACKS[track];
-const stage = emStageOf(track);
-const i = EM.tracks.findIndex((t) => t.id === track);
-const nextTrack = EM.tracks.slice(i + 1).find(Boolean);
-const skills = [...new Set(ss.flatMap((s) => s.data.skills))].map((k) => emSkillById[k]).filter(Boolean);
+const { track, ss } = Astro.props as { track: string; ss: FSession[] };
+const F = formation(Astro.params.f as FormationId);
+const info = F.tracks[track];
+const stage = F.stageOf(track);
+const i = F.d.tracks.findIndex((t) => t.id === track);
+const withSessions = new Set((await formationSessions(F.id)).map((s) => s.data.track));
+const nextTrack = F.d.tracks.slice(i + 1).find((t) => withSessions.has(t.id));
+const skills = [...new Set(ss.flatMap((s) => s.data.skills))].map((k) => F.skillById[k]).filter(Boolean);
 const vocab = [...new Set(ss.flatMap((s) => s.data.terms ?? []))];
-const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${info.label} · Emprendimiento · umotion Academy`, description: info.short, inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' } };
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${info.label} · ${F.title} · umotion Academy`, description: info.short, inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' } };
 ---
-<Base title={`${info.label}: emprender en ${ss.length} sesiones`} description={`Módulo del Nivel 1 de Emprendimiento: ${info.short.toLowerCase()}. ${ss.length} sesiones de 5 minutos con caso práctico, test y acción.`} jsonLd={jsonLd} allowAds={false}>
+<Base title={`${info.label}: ${F.texts.titleVerb} en ${ss.length} sesiones`} description={`${F.texts.moduleDesc}: ${info.short.toLowerCase()}. ${ss.length} sesiones de 5 minutos con caso práctico, test y acción.`} jsonLd={jsonLd} allowAds={false}>
   <section class="m-hero dots">
     <div class="container">
-      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/emprendimiento/', label: 'Emprendimiento' }, { href: '/es/emprendimiento/nivel-1/', label: 'Nivel 1' }, { label: info.label }]} />
-      <p class="eyebrow">Emprendimiento · Nivel 1 · {stage.stage} · {ss.length} sesiones · {ss.length * 5} minutos</p>
+      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: F.base, label: F.title }, { href: `${F.base}nivel-1/`, label: 'Nivel 1' }, { label: info.label }]} />
+      <p class="eyebrow">{F.title} · Nivel 1 · {stage.stage} · {ss.length} sesiones · {ss.length * 5} minutos</p>
       <h1>{info.label}</h1>
       <p class="lede">{info.short}.</p>
       <div class="m-cta">
-        <a class="btn brand" href={`${EM_SESSION}${ss[0].id}/`} id="m-start">Empezar <span class="arrow" aria-hidden="true">→</span></a>
-        <a class="btn secondary" href="/es/emprendimiento/nivel-1/">Ver todo el Nivel 1</a>
+        <a class="btn brand" href={`${F.session}${ss[0].id}/`} id="m-start">Empezar <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn secondary" href={`${F.base}nivel-1/`}>Ver todo el Nivel 1</a>
       </div>
       <div class="m-bar"><div class="progress-bar" aria-hidden="true"><span id="m-bar"></span></div><p class="small muted" id="m-txt" aria-live="polite"></p></div>
     </div>
   </section>
   {vocab.length > 0 && <div class="container vocab"><TermCards ids={vocab} title="Vocabulario del módulo" intro="Las palabras y siglas que vas a aprender, en una frase cada una." headingId="vocab-t" /></div>}
   <div class="container m-grid">
-    <ol class="sessions">
+    <ol class="sessions" data-store={F.storeKey} data-session={F.session}>
       {ss.map((s, n) => (
         <li data-id={s.id}>
-          <a class="card sess" href={`${EM_SESSION}${s.id}/`}>
+          <a class="card sess" href={`${F.session}${s.id}/`}>
             <span class="sn mono">{String(n + 1).padStart(2, '0')}</span>
             <span class="sb"><strong>{s.data.title}</strong><span class="small muted">{s.data.description}</span>{s.data.scenario && <span class="small act">Caso práctico: {s.data.scenario.title}</span>}</span>
             <span class="state small mono">5 min</span>
@@ -49,8 +55,8 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${i
         <h2 class="h3">Al terminar sabrás…</h2>
         <ul>{skills.map((k) => <li><strong>{k.label}.</strong> {k.can}</li>)}</ul>
       </div>
-      <div class="callout note"><p>Contenido educativo y general para España. Las normas, cuotas y plazos cambian: antes de decidir, comprueba la fuente oficial que citamos en cada sesión o consulta a una gestoría.</p></div>
-      {nextTrack && <p class="small">Siguiente módulo: <a href={`/es/emprendimiento/modulos/${nextTrack.id}/`}>{nextTrack.label}</a></p>}
+      <div class="callout note"><p>{F.texts.moduleNote}</p></div>
+      {nextTrack && <p class="small">Siguiente módulo: <a href={F.trackHref(nextTrack.id)}>{nextTrack.label}</a></p>}
     </aside>
   </div>
 </Base>
@@ -77,12 +83,13 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${i
   @media (max-width: 520px) { .sess { grid-template-columns: 2.8rem 1fr; } .state { grid-column: 2; } }
 </style>
 <script>
-  import { getState } from '../../../../scripts/academy-store';
-  const s = getState('academy-emprendimiento');
+  import { getState, type StoreKey } from '../../../../scripts/academy-store';
+  const list = document.querySelector<HTMLElement>('.sessions')!;
+  const s = getState(list.dataset.store as StoreKey);
   const items = [...document.querySelectorAll<HTMLElement>('.sessions li')];
   let n = 0; let first: string | null = null;
   items.forEach((li) => { const id = li.dataset.id!; if (s.completed[id]) { n++; li.classList.add('is-done'); li.querySelector('.state')!.textContent = '✓ Hecha'; } else first ??= id; });
   (document.getElementById('m-bar') as HTMLElement).style.width = `${(n / items.length) * 100}%`;
   document.getElementById('m-txt')!.textContent = n ? `Llevas ${n} de ${items.length} sesiones.` : `${items.length} sesiones. Tu progreso se guarda solo en este dispositivo.`;
-  if (n && first) { const b = document.getElementById('m-start') as HTMLAnchorElement; b.href = `/es/emprendimiento/sesion/${first}/`; b.firstChild!.textContent = 'Continuar '; }
+  if (n && first) { const b = document.getElementById('m-start') as HTMLAnchorElement; b.href = `${list.dataset.session}${first}/`; b.firstChild!.textContent = 'Continuar '; }
 </script>

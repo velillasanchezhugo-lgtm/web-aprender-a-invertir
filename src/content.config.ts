@@ -88,6 +88,9 @@ export const TRACK_IDS = ['camino-cero', 'productos', 'formas', 'invertir-ya', '
 /** Módulos del Nivel 1 de la formación Emprendimiento (ver src/data/emprendimiento.json). */
 export const EM_TRACK_IDS = ['em-cero', 'em-forma', 'em-alta', 'em-impuestos', 'em-cotizacion', 'em-dinero', 'em-clientes', 'em-legal', 'em-crecer', 'em-cerrar'] as const;
 
+/** Módulos del Nivel 1 de la formación Claude (ver src/data/claude.json). */
+export const CLA_TRACK_IDS = ['cla-cero', 'cla-pedir', 'cla-funciones', 'cla-trabajo', 'cla-aprender', 'cla-conectar', 'cla-seguro', 'cla-avanzado'] as const;
+
 /** Sesiones de 5 minutos: gancho, idea, ejemplo, test y una acción aplicable hoy. Mismo formato en todas las formaciones. */
 const sessionSchema = <T extends readonly [string, ...string[]]>(tracks: T, fallback: T[number]) =>
   z.object({
@@ -156,4 +159,10 @@ const clases = defineCollection({
   }),
 });
 
-export const collections = { lessons, strategies, investors, sessions, emprendimiento, clases };
+/** Sesiones del Nivel 1 de Claude: colección aparte, como Emprendimiento. */
+const claude = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/claude' }),
+  schema: sessionSchema(CLA_TRACK_IDS, 'cla-cero'),
+});
+
+export const collections = { lessons, strategies, investors, sessions, emprendimiento, claude, clases };

@@ -2,14 +2,14 @@
 /**
  * Cartulinas de vocabulario: término (y sigla desplegada) con una definición corta, sobre fondo de puntos.
  */
-import { glossaryAll, glossaryList } from '../lib/content';
+import { glossaryAll, glossaryList, glossaryFormation } from '../lib/content';
 interface Props { ids: string[]; title?: string; intro?: string; headingId?: string; level?: 2 | 3 }
 const { ids, title, intro, headingId, level = 2 } = Astro.props;
 const byId = Object.fromEntries(glossaryAll.map((g) => [g.id, g]));
 const cards = ids.map((id) => byId[id]).filter(Boolean);
 const H = level === 2 ? 'h2' : 'h3';
 const inv = new Set(glossaryList.map((g) => g.id));
-const more = (id: string) => (inv.has(id) ? `/es/glosario/#${id}` : `/es/emprendimiento/glosario/#${id}`);
+const more = (id: string) => (inv.has(id) ? `/es/glosario/#${id}` : `/es/${glossaryFormation[id]}/glosario/#${id}`);
 ---
 {cards.length > 0 && (
   <section class="terms dots" aria-labelledby={headingId}>

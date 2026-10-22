@@ -8,12 +8,12 @@ import Base from '../layouts/Base.astro';
 import { lessons, TOOLS, sourceById, isoDate, guessFor } from '../lib/content';
 import BrokerDisclosure from './BrokerDisclosure.astro';
 import TermCards from './TermCards.astro';
-interface Props { s: any; index: number; total: number; next: any | null; trackLabel: string; formation?: 'inversion' | 'emprendimiento' }
+interface Props { s: any; index: number; total: number; next: any | null; trackLabel: string; formation?: string }
 const { s, index, total, next, trackLabel, formation = 'inversion' } = Astro.props;
 const inv = formation === 'inversion';
-const sessionBase = inv ? '/es/sesion/' : '/es/emprendimiento/sesion/';
-const home = inv ? '/es/mi-plan/' : '/es/emprendimiento/nivel-1/';
-const storeKey = inv ? 'academy' : 'academy-emprendimiento';
+const sessionBase = inv ? '/es/sesion/' : `/es/${formation}/sesion/`;
+const home = inv ? '/es/mi-plan/' : `/es/${formation}/nivel-1/`;
+const storeKey = inv ? 'academy' : `academy-${formation}`;
 const d = s.data;
 const { Content } = await render(s);
 const ls = inv ? Object.fromEntries((await lessons()).map((l) => [l.id, l.data.title])) : {};

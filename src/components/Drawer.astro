@@ -27,9 +27,18 @@ const FORMATIONS = [
       { n: 3, title: 'Profesional', href: '/es/emprendimiento/nivel-3/', price: n3 },
     ],
   },
+  {
+    id: 'claude', title: 'Claude', overview: { href: '/es/claude/', label: 'Ver la formación' },
+    icon: 'M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z',
+    levels: [
+      { n: 1, title: 'Empezar con Claude', href: '/es/claude/nivel-1/', free: true },
+      { n: 2, title: 'Avanzado', href: '/es/claude/nivel-2/', price: n2 },
+      { n: 3, title: 'Profesional', href: '/es/claude/nivel-3/', price: n3 },
+    ],
+  },
 ];
 // Se abre la formación de la página actual (Inversión por defecto).
-const openId = path.startsWith('/es/emprendimiento/') ? 'emprendimiento' : 'inversion';
+const openId = FORMATIONS.find((f) => f.id !== 'inversion' && path.startsWith(`/es/${f.id}/`))?.id ?? 'inversion';
 const nav = [
   { href: '/es/mi-plan/', label: 'Mi plan' },
   { href: '/es/repaso/', label: 'Repaso' },
