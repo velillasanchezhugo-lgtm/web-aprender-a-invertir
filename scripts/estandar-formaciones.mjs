@@ -319,6 +319,10 @@ ${table(['Nivel', 'Modelo', 'Inversión (hoy)', 'Qué incluye'], [
 │   ├── 1  Empezar con Claude          Gratis            → /es/claude/nivel-1/
 │   ├── 2  Avanzado                    <s>${esc(P.monthly)}</s>          → /es/claude/nivel-2/
 │   └── 3  Profesional                 <s>curso ${esc(P.course)} · cert. ${esc(P.cert)}</s> → /es/claude/nivel-3/
+├── ChatGPT                       3 niveles
+│   ├── 1  Empezar con ChatGPT         Gratis            → /es/chatgpt/nivel-1/
+│   ├── 2  Avanzado                    <s>${esc(P.monthly)}</s>          → /es/chatgpt/nivel-2/
+│   └── 3  Profesional                 <s>curso ${esc(P.course)} · cert. ${esc(P.cert)}</s> → /es/chatgpt/nivel-3/
 ├── (nueva formación)             3 niveles
 └── + Más formaciones             Próximamente</div>
 <p>En la portada, debajo del párrafo de bienvenida, cada formación tiene un pósit (un cuadrado de color) que lleva a su página. Al añadir una formación se añade su pósit (<span class="mono">FORMATIONS</span> en <span class="mono">src/pages/es/index.astro</span>) y su entrada del panel (<span class="mono">FORMATIONS</span> en <span class="mono">src/components/Drawer.astro</span>).</p>
@@ -366,7 +370,7 @@ ${table(['Dato', 'Archivo'], [
   ['Otras formaciones: niveles, módulos, competencias, textos y temario N2/N3', '<span class="mono">src/data/&lt;id&gt;.json</span> (registradas en <span class="mono">src/lib/formations.ts</span>)'],
   ['Otras formaciones: sesiones de N1 y glosario', '<span class="mono">src/content/&lt;id&gt;/</span> y <span class="mono">src/data/glossary-&lt;id&gt;/</span> (un archivo por módulo)'],
   ['Páginas comunes de formación', '<span class="mono">src/pages/es/[f]/</span>: portada, niveles, módulos, sesión, examen y glosario'],
-  ['Herramientas propias de una formación', '<span class="mono">FORMATION_TOOLS</span> en <span class="mono">src/lib/formations.ts</span> (ejemplo: Claude)'],
+  ['Herramientas propias de una formación', '<span class="mono">FORMATION_TOOLS</span> en <span class="mono">src/lib/formations.ts</span> (ejemplo: Claude y ChatGPT)'],
   ['Reproductor de sesiones (común)', '<span class="mono">src/components/SessionPlayer.astro</span>'],
 ])}
 </section>

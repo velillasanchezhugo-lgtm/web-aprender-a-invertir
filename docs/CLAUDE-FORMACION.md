@@ -1,6 +1,6 @@
 # Formación Claude
 
-Tercera formación de umotion Academy: uso y capacidades de Claude, el asistente de IA de Anthropic, para personas que no programan. Sigue el sistema común de `docs/ESTANDAR-FORMACIONES.pdf`. **umotion Academy no está afiliada a Anthropic**: el tono es informativo, nunca publicitario. Más adelante habrá una formación de ChatGPT con la misma estructura.
+Tercera formación de umotion Academy: uso y capacidades de Claude, el asistente de IA de Anthropic, para personas que no programan. Sigue el sistema común de `docs/ESTANDAR-FORMACIONES.pdf`. **umotion Academy no está afiliada a Anthropic**: el tono es informativo, nunca publicitario. La formación ChatGPT (`docs/CHATGPT-FORMACION.md`) tiene la misma estructura.
 
 - Datos: `src/data/claude.json` (niveles, etapas, módulos, competencias, capacidades, textos y temario de los niveles 2 y 3).
 - Sesiones del Nivel 1: `src/content/claude/` (colección `claude`). Glosario: `src/data/glossary-claude/<módulo>.json`.
@@ -68,4 +68,4 @@ Pruebas: `tests/claude.test.ts`, `tests/prompt-coach.test.ts` y `tests/e2e/claud
 1. Revisión humana del Nivel 1.
 2. Activar la opinión con IA (necesita la clave de la API en Vercel) y medir su coste.
 3. Muestras gratuitas de los niveles 2 y 3.
-4. Formación ChatGPT reutilizando las páginas comunes (`src/lib/formations.ts`), el evaluador y las herramientas.
+4. Hecho: formación ChatGPT con las mismas páginas, evaluador y herramientas.

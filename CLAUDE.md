@@ -1,6 +1,6 @@
 # umotion Academy — guía para Claude Code
 
-Academia en español para residentes en España, con tres formaciones: **Inversión**, **Emprendimiento** (`docs/EMPRENDIMIENTO.md`) y **Claude** (`docs/CLAUDE-FORMACION.md`; umotion Academy no está afiliada a Anthropic). Gratis con anuncios en el Nivel 1, enfocada a principiantes. Prototipo: todas las páginas llevan `noindex` hasta que se publique.
+Academia en español para residentes en España, con cuatro formaciones: **Inversión**, **Emprendimiento** (`docs/EMPRENDIMIENTO.md`), **Claude** (`docs/CLAUDE-FORMACION.md`) y **ChatGPT** (`docs/CHATGPT-FORMACION.md`). umotion Academy no está afiliada a Anthropic ni a OpenAI, y no compara asistentes. Gratis con anuncios en el Nivel 1, enfocada a principiantes. Prototipo: todas las páginas llevan `noindex` hasta que se publique.
 
 Lee antes de cambiar contenido o estructura:
 - `docs/ESTANDAR-FORMACIONES.pdf` (fuente: `docs/estandar-formaciones.html`): el sistema común de todas las formaciones (tres niveles, formatos, exámenes, precios, checklist para una formación nueva).
@@ -31,7 +31,7 @@ Español de España, tuteo, frases cortas, comillas «», `5 €` (espacio antes
 - Funciones de Vercel en `api/` (tutor con Claude, avisos push a las 16:00 de Madrid, cuenta con Supabase).
 - Cabecera: `src/components/Header.astro`; panel «Formaciones»: `src/components/Drawer.astro` (formación → niveles → página de cada nivel). Pósits de la portada: `FORMATIONS` en `src/pages/es/index.astro`.
 - Formaciones distintas de Inversión (`src/lib/formations.ts`): datos en `src/data/<id>.json`, sesiones en `src/content/<id>/`, glosario en `src/data/glossary-<id>/`, páginas comunes en `src/pages/es/[f]/` (rutas `/es/<id>/…`) y progreso en la clave `academy-<id>`. El reproductor de sesiones es común: `src/components/SessionPlayer.astro`.
-- Claude: evaluador de peticiones `src/lib/claude/prompt-check.ts` (paso «Practica» con el campo `practice` de las sesiones), corrector opcional con IA `api/prompt-coach.js` y herramientas en `src/pages/es/claude/herramientas/`.
+- Claude y ChatGPT (mismas herramientas, `FORMATION_TOOLS`): evaluador de peticiones `src/lib/claude/prompt-check.ts` (paso «Practica» con el campo `practice` de las sesiones), corrector opcional con IA `api/prompt-coach.js` y herramientas en `src/pages/es/[f]/herramientas/`.
 
 ## Comprobar antes de guardar
 

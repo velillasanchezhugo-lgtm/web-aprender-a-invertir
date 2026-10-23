@@ -103,6 +103,10 @@ Ver `docs/EMPRENDIMIENTO.md`. Las 69 sesiones del Nivel 1 son un borrador: neces
 
 Ver `docs/CLAUDE-FORMACION.md`. Las 50 sesiones del Nivel 1 son un borrador pendiente de revisión humana. Las funciones y los planes de Claude cambian a menudo: hay que revisar su vigencia cada trimestre. La opinión con IA en las prácticas necesita `AI_TUTOR_ENABLED` y `ANTHROPIC_API_KEY` en Vercel.
 
+## Formación ChatGPT
+
+Ver `docs/CHATGPT-FORMACION.md`. Las 50 sesiones del Nivel 1 son un borrador pendiente de revisión humana. ChatGPT cambia muy a menudo (canvas, el agente, Atlas y los GPTs han cambiado o se han retirado en 2026): hay que revisar su vigencia cada trimestre. Pendiente de confirmar en el centro de ayuda oficial, que no se pudo leer directamente: grabación de reuniones, voz con cámara, anuncios en el plan gratis en España, memoria solo del proyecto por plan, qué incluye Work en el plan gratis y qué apps faltan en el Espacio Económico Europeo.
+
 ## Funcionalidades no incluidas a propósito
 
 - **Cuentas de usuario**: no existe un backend seguro; el progreso es local, exportable y borrable.
