@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: Los gastos del club de Óscar
-  body: "Óscar es tesorero de un club de baloncesto de barrio. Sube a ChatGPT la hoja con los gastos de la temporada y pide un resumen por categorías y un gráfico. ChatGPT dice haber leído 212 filas, pero Óscar sabe que hay 230. Pregunta y descubre que se ha saltado una pestaña. Lo corrige y comprueba el total con el extracto del banco."
+  body: "Óscar es tesorero de un club de baloncesto de barrio. Sube la hoja de gastos de la temporada y pide un resumen por categorías y un gráfico. ChatGPT dice haber leído 212 filas, pero hay 230: se ha saltado una pestaña. Óscar lo corrige y comprueba el total con el extracto del banco."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -20,7 +20,7 @@ questions:
     q: "ChatGPT te da el total de gastos de tu hoja. ¿Cuál es la mejor forma de comprobarlo?"
     options: ["Preguntarle si está seguro", "Pedirle cuántas filas ha usado y comparar el total con otra fuente, como el extracto del banco", "Fiarte: los ordenadores no fallan sumando"]
     answer: 1
-    explain: "El cálculo suele estar bien, pero puede haber leído mal el archivo: filas de menos, una columna equivocada, celdas vacías. Preguntar «¿estás seguro?» tienta, pero casi siempre contesta que sí."
+    explain: "El cálculo suele estar bien, pero puede haber leído mal el archivo: filas de menos, una columna equivocada. Preguntar «¿estás seguro?» tienta, pero casi siempre contesta que sí."
   - type: truefalse
     id: gpt-fu09-q2
     q: "Para analizar una hoja, ChatGPT puede escribir y ejecutar código por su cuenta sin que tú sepas programar."
@@ -34,7 +34,7 @@ questions:
     explain: "Para contar socios o cuotas no hacen falta el DNI ni el teléfono. Pasarlo a PDF tienta, pero los datos siguen ahí. Sube solo lo necesario."
 tips:
   - "Si la hoja tiene varias pestañas, di cuál usar."
-  - "Pide los resultados en un archivo para descargar (por ejemplo, un Excel) y revísalo en tu programa de siempre."
+  - "Si te devuelve un Excel, ábrelo en tu programa de siempre y revísalo allí."
 action:
   title: Analiza una hoja tuya
   steps:
@@ -69,7 +69,7 @@ sources: [openai-ayuda, openai-academy]
 
 Puedes subir a ChatGPT **documentos** (PDF, Word) y **hojas de cálculo** (Excel, CSV) en los planes gratis y de pago, con límites de tamaño y de uso según el plan.
 
-Con los datos, ChatGPT hace **análisis de datos**: escribe y ejecuta por su cuenta pequeños programas para calcular. Así puede:
+Con ellos hace **análisis de datos**: escribe y ejecuta por su cuenta pequeños programas para calcular. Así puede:
 
 - **Resumir y contar**: totales, medias, lo que más se repite.
 - **Ordenar y filtrar**: por mes, por categoría, de mayor a menor.
@@ -80,7 +80,7 @@ Con los datos, ChatGPT hace **análisis de datos**: escribe y ejecuta por su cue
 
 - Pide **cuántas filas ha leído** y qué columnas ha usado.
 - Compara **dos o tres cifras** con el original o con otra fuente.
-- Si algo no cuadra, díselo y pide que explique cómo lo ha calculado.
+- Si algo no cuadra, pide que explique cómo lo ha calculado.
 
 **Ojo con los datos personales.** Antes de subir una hoja, quita lo que no haga falta: nombres, DNI, teléfonos, cuentas bancarias.
 
@@ -91,8 +91,4 @@ Con los datos, ChatGPT hace **análisis de datos**: escribe y ejecuta por su cue
 3. Pide el formato: tabla, gráfico o archivo.
 4. Pide los datos de control y compruébalos.
 
-> Prueba: «Te subo el PDF de mis nóminas de este año. Hazme una tabla con el sueldo bruto, la retención de IRPF y el neto de cada mes. Dime de qué página sale cada dato y avísame si alguna nómina no se lee bien».
-
-## Error frecuente
-
-Copiar el total de ChatGPT a un informe sin mirar si ha leído todas las filas.
+> Prueba: «Te subo un PDF con mis facturas del gas de este año (he tapado mi nombre y mi dirección). Hazme una tabla con el periodo, el consumo y el importe de cada factura. Dime de qué página sale cada dato y avísame si alguna no se lee bien».

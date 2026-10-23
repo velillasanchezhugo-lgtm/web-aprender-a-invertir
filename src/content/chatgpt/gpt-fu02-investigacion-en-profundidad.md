@@ -33,7 +33,6 @@ questions:
     answer: 1
     explain: "Corregir el plan al principio es lo que más mejora el informe. Dejarlo correr tienta para no perder tiempo, pero puede tardar un buen rato en algo que no te sirve."
 tips:
-  - "Mientras trabaja puedes hacer otras cosas: ChatGPT avisa cuando el informe está listo."
   - "Si el tema es de salud, dinero o leyes, el informe te prepara para hablar con un profesional, no lo sustituye."
 action:
   title: Prepara el encargo de una investigación
@@ -66,21 +65,19 @@ sources: [openai-ayuda, openai-planes]
 
 La **investigación en profundidad** (en inglés, *deep research*) es un modo en el que ChatGPT no contesta enseguida: **busca y lee muchas fuentes durante un rato** y te entrega un **informe largo con citas**.
 
-Cómo funciona:
-
 - **Primero, un plan.** ChatGPT propone qué va a investigar (a veces con preguntas) y puedes cambiarlo. Mientras trabaja, puedes seguir su avance y corregir el rumbo.
 - **Puedes elegir webs**: limitarla a unas concretas o darles prioridad.
 - **Tarda** bastante más que una respuesta normal, a menudo varios minutos. Te avisa al terminar.
 - **El informe** trae las fuentes citadas y se puede descargar, por ejemplo en PDF, Word o Markdown.
-- **Disponibilidad.** Está en el plan gratis de forma **limitada** y con más usos en los de pago. El número cambia: míralo en la página de planes.
+- **Disponibilidad.** En el plan gratis, **limitada**; en los de pago, con más usos. Mira la página de planes.
 
-**Cuándo sí:** preguntas con muchas piezas (comparar opciones, reunir requisitos, ver qué se sabe de un tema). **Cuándo no:** un dato suelto, que es cosa de la búsqueda normal.
+**Cuándo sí:** preguntas con muchas piezas (comparar opciones, reunir requisitos). **Cuándo no:** un dato suelto, que es cosa de la búsqueda normal.
 
 ## En la práctica
 
 1. Ábrela desde el menú de herramientas del chat (el botón «+») o escribiendo «/».
 2. Escribe un encargo completo: tu situación, qué quieres saber, el alcance (lugar, fechas), las fuentes que prefieres y cómo quieres el informe.
-3. Revisa el plan antes de que empiece. Si conoces las webs buenas, dale prioridad a esas.
+3. Revisa el plan antes de que empiece.
 4. Al leer el informe, **comprueba las citas de lo que vayas a usar** y busca lo que mezcla: otra región, otra fecha, una opinión presentada como dato.
 
 > Prueba: «Quiero estudiar un ciclo de FP de grado superior en Andalucía relacionado con la informática. Investiga qué ciclos hay, qué salidas tienen y qué institutos públicos de Sevilla los ofrecen. Usa fuentes oficiales. Dame una tabla comparativa y dime qué datos no has podido confirmar».

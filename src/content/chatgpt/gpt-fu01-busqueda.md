@@ -34,11 +34,10 @@ questions:
     explain: "Manda la fuente oficial y actual. El blog tienta porque explica mejor, pero un plazo de hace dos años puede haber cambiado."
 tips:
   - "Si conoces la web oficial, nómbrala o pega el enlace: «busca en la web del ayuntamiento»."
-  - "Si una fuente no dice lo que ChatGPT afirma, díselo y pídele que lo corrija o busque otra."
 action:
   title: Haz una búsqueda y revisa una fuente
   steps:
-    - "Pide a ChatGPT un dato que cambie y te importe hoy (un horario, un plazo), con «busca en la web y cita las fuentes»."
+    - "Pide un dato que cambie y te importe hoy (un horario, un plazo), con «busca en la web y cita las fuentes»."
     - "Abre el primer enlace y busca el dato en la página. Mira su fecha."
     - "Apunta en «Mi kit de ChatGPT» la frase que mejor te ha funcionado para pedir fuentes."
   check: He pedido una búsqueda a ChatGPT y he comprobado una de sus fuentes
@@ -66,9 +65,7 @@ sources: [openai-ayuda]
 
 ## La idea
 
-ChatGPT aprende de textos hasta una **fecha de corte**: de lo que pasó después no sabe nada de memoria. Para eso tiene la **búsqueda en la web**: consulta páginas de internet en el momento y responde con lo que encuentra.
-
-Lo que conviene saber:
+ChatGPT aprende de textos hasta una **fecha de corte**: de lo que pasó después no sabe nada de memoria. Para eso tiene la **búsqueda en la web**: consulta internet en el momento y responde con lo que encuentra.
 
 - **Está en todos los planes**, gratis y de pago, e incluso sin iniciar sesión allí donde ChatGPT se puede usar sin cuenta. En los planes de empresa, el administrador puede desactivarla.
 - **Muchas veces busca solo**, cuando la pregunta pide información actual: noticias, plazos, horarios, normas. Pero no siempre: si no lo pides, puede contestar de memoria.
@@ -77,15 +74,13 @@ Lo que conviene saber:
 
 ## En la práctica
 
-1. **Pídelo por escrito**: «busca en la web». También puedes activarlo en el menú de herramientas del chat (el botón «+») o escribiendo «/» al principio del mensaje.
+1. **Pídelo**: escribe «busca en la web» o actívalo en el menú de herramientas del chat (el botón «+»), o con «/» al empezar el mensaje.
 2. **Pide fuentes oficiales** cuando el tema lo merezca: BOE, Agencia Tributaria, tu ayuntamiento.
 3. **Abre al menos un enlace** y busca el dato en la página. Mira la fecha.
-4. **Si no coincide, díselo** y pide que lo corrija.
+4. **Si no coincide, díselo** y pide que lo corrija. En un trámite, manda la web oficial.
 
 > Prueba: «Busca en la web el horario de verano de las bibliotecas municipales de mi ciudad, Valladolid. Usa solo la web del ayuntamiento, pon el enlace de cada dato y avísame si la página no dice de qué año es».
 
-En un trámite importante manda la web oficial, no el resumen.
-
 ## Error frecuente
 
-Ver que la respuesta tiene enlaces y no abrir ninguno. Una fuente sin revisar vale lo mismo que ninguna.
+Ver enlaces y no abrir ninguno. Una fuente sin revisar vale lo mismo que ninguna.

@@ -83,6 +83,8 @@ test('reconoce frases naturales de principiante para cada pieza', () => {
   ok('Una carta dirigida a la comunidad de vecinos.', 'publico');
   ok('Es un regalo para ella.', 'publico');
   ok('Me presento a unas oposiciones de auxiliar.', 'contexto');
+  ok('Dentro de dos meses nos mudamos de Zaragoza a Valencia con los niños.', 'contexto');
+  ok('Quiero respuestas breves, de tú.', 'tono');
   ok('No quiero nada sobre política.', 'limites');
   // Formato por longitud o canal
   ok('Escríbeme un whatsapp cortito y amable.', 'formato');

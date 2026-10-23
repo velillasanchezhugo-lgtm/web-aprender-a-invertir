@@ -5,7 +5,7 @@ level: basico
 track: gpt-trabajo
 order: 402
 skills: [gpt-escribir, gpt-canvas]
-terms: [tono, bloque-de-escritura]
+terms: [bloque-de-escritura]
 hook: "Has escrito la presentación de tu negocio y te suena torpe. Si se la das a ChatGPT para que la «mejore», ¿seguirá sonando a ti?"
 takeaway: "Primero pide un diagnóstico, no un texto nuevo: qué frases fallan y por qué. Luego arregla por partes lo que tú decidas y protege lo que no se puede tocar."
 scenario:
@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: gpt-tr02-q1
-    q: "Tomás es profesor de FP y ha escrito las instrucciones de las prácticas para sus alumnos. Quiere que ChatGPT las revise. ¿Qué pide?"
+    q: "Abel es profesor de FP y ha escrito las instrucciones de las prácticas para sus alumnos. Quiere que ChatGPT las revise. ¿Qué pide?"
     options: ["«Mejora este texto.»", "«Señala las faltas y las frases que se puedan entender mal, con el motivo de cada una. No cambies fechas ni requisitos y mantén mi tono directo.»", "«Reescríbelo para que parezca más profesional.»"]
     answer: 1
     explain: "La segunda acota qué mirar, protege lo que no puede cambiar y explica cada problema. «Mejora este texto» tienta por corta, pero da permiso para cambiarlo todo, incluido el sentido."

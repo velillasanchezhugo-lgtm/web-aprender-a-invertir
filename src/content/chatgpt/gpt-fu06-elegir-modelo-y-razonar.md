@@ -33,7 +33,6 @@ questions:
     answer: 1
     explain: "OpenAI cambia y retira modelos con frecuencia, y cada plan ve opciones distintas. Pensar que es un error tienta, pero lo normal es que el vídeo esté desfasado."
 tips:
-  - "No te aprendas nombres de versiones: aprende a distinguir «rápido» de «pensar más»."
   - "Si una respuesta rápida falla en algo complejo, prueba la misma petición pidiendo que piense más antes de reescribirla."
 action:
   title: Compara una respuesta rápida con una pensada
@@ -69,9 +68,7 @@ ChatGPT funciona con varios **modelos de lenguaje**, los programas que generan s
 - **Respuesta rápida.** Contesta enseguida. Va bien para casi todo: redactar, resumir, traducir, dudas sencillas.
 - **Pensar más (razonamiento).** Un **modelo de razonamiento** dedica más tiempo a trabajar el problema por pasos antes de responder. Acierta más cuando hay **muchas condiciones a la vez**, cálculos encadenados o una decisión con varios criterios. A cambio, tarda más y su uso puede estar más limitado.
 
-Lo que conviene saber:
-
-- **Cambia a menudo.** OpenAI renueva y retira modelos varias veces al año, y los nombres del selector cambian. Lo que leas en un tutorial puede estar ya desfasado.
+- **Cambia a menudo.** OpenAI renueva y retira modelos varias veces al año y los nombres del selector cambian. Un tutorial puede estar ya desfasado.
 - **Depende del plan.** En el plan gratis hay menos opciones, aunque también puedes pedir que piense más. Los planes de pago ofrecen más modelos y niveles de razonamiento.
 - **Pensar más no es infalible.** Reduce errores, pero no los elimina.
 
@@ -85,4 +82,4 @@ Lo que conviene saber:
 
 ## Error frecuente
 
-Aprenderse el nombre de un modelo como si fuera fijo. En unos meses cambiará: quédate con cuándo te conviene pensar más.
+Aprenderse el nombre de un modelo como si fuera fijo. Quédate con cuándo te conviene pensar más.

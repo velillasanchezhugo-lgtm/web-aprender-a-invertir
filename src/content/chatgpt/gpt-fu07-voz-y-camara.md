@@ -33,13 +33,13 @@ questions:
     answer: 1
     explain: "Compartir vídeo o pantalla solo está en algunas cuentas, en la app del móvil y con ciertas experiencias de voz. Pensar en una avería tienta, pero es cuestión de opciones."
 tips:
-  - "Pide respuestas cortas: escuchar una lista de diez puntos cansa mucho más que leerla."
+  - "Una lista larga cansa más oída que leída: pide los pasos de uno en uno."
   - "En sitios con gente, recuerda que los demás oyen lo que preguntas y lo que te contesta."
 action:
   title: Prueba una conversación de voz
   steps:
     - "Abre el modo de voz desde el icono de voz del chat."
-    - "Pregunta algo práctico de hoy (una receta, una duda de casa, preparar una entrevista) y pide respuestas breves."
+    - "Pregunta algo práctico de hoy (una receta, una duda de casa) y pide respuestas breves."
     - "Mira en la configuración qué opciones de voz tienes."
     - "Apunta en «Mi kit de ChatGPT» qué cosas no enseñarás nunca por la cámara."
   check: He tenido una conversación de voz con ChatGPT
@@ -67,7 +67,7 @@ sources: [openai-ayuda, openai-privacidad]
 Con el **modo de voz** hablas con ChatGPT y te contesta en voz alta, como en una llamada. Puedes interrumpirle y seguir.
 
 - **Dónde está.** En la app del móvil y en la web, desde el icono de voz junto a donde escribes. Gratis y de pago, con límites de uso que cambian.
-- **Hay varias experiencias de voz.** En la configuración eliges la experiencia y la voz. Las opciones dependen del plan, del país y de la versión de la app.
+- **Hay varias experiencias de voz.** En la configuración eliges la experiencia y la voz; las opciones dependen del plan, del país y de la app.
 - **Cámara y pantalla.** En la app del móvil (iOS y Android), algunas cuentas de pago pueden enseñar a ChatGPT lo que ve la cámara o lo que hay en la pantalla. Solo funciona con algunas experiencias de voz (no con la más reciente, «Live») y tiene límites de uso.
 
 **Usos que funcionan:** cocinar o hacer bricolaje con las manos ocupadas, ensayar una entrevista, practicar un idioma.
@@ -85,4 +85,4 @@ Con el **modo de voz** hablas con ChatGPT y te contesta en voz alta, como en una
 
 ## Error frecuente
 
-Compartir la pantalla con notificaciones abiertas. Un mensaje privado que aparece en ese momento también lo ve ChatGPT.
+Compartir la pantalla con las notificaciones activas: un mensaje privado que llegue en ese momento también lo ve ChatGPT.

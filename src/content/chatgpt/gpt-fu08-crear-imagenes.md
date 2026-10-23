@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: Las tazas de Vega
-  body: "Vega vende tazas de cerámica por internet. Sube a ChatGPT una foto de una taza hecha en su cocina y pide: «pon la taza sobre una mesa de madera clara, con luz de mañana, sin cambiar la taza». La primera versión cambia el color del asa. Ella responde: «deja el asa exactamente como en mi foto». La segunda le sirve para la web."
+  body: "Vega vende tazas de cerámica por internet. Sube una foto hecha en su cocina y pide: «pon la taza sobre una mesa de madera clara, con luz de mañana, sin cambiar la taza». La primera versión cambia el color del asa. Ella responde: «deja el asa como en mi foto». La segunda le sirve para la web."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -20,7 +20,7 @@ questions:
     q: "La imagen está casi bien, pero el texto del cartel tiene una falta. ¿Qué pides?"
     options: ["Que haga otra imagen nueva desde cero", "Que corrija solo esa palabra y deje todo lo demás igual", "«Mejórala»"]
     answer: 1
-    explain: "Pedir un cambio concreto conserva lo que ya te gustaba. Empezar de cero tienta, pero puede cambiar todo lo demás. Y revisa siempre el texto: las imágenes generadas a veces lo escriben mal."
+    explain: "Un cambio concreto conserva lo que ya te gustaba. Empezar de cero tienta, pero puede cambiar todo lo demás."
   - type: choice
     id: gpt-fu08-q2
     q: "Fede quiere una foto realista de su alcaldesa firmando un contrato que nunca firmó, para gastar una broma en el grupo del pueblo. ¿Qué es lo correcto?"
@@ -33,12 +33,12 @@ questions:
     answer: false
     explain: "OpenAI les añade metadatos C2PA y una marca invisible, pero una captura de pantalla, un recorte o algunas redes sociales pueden borrarlos o debilitarlos."
 tips:
-  - "Pide el formato desde el principio: cuadrado para redes, vertical para un cartel, horizontal para una cabecera."
+  - "Al editar una foto tuya, di qué debe quedar igual: el producto, la cara, tu logotipo."
   - "Si vas a publicar la imagen, añade una nota como «Imagen creada con IA» cuando pueda confundir."
 action:
   title: Crea una imagen que necesites
   steps:
-    - "Piensa en una imagen real para esta semana (una invitación, una portada, una ilustración para clase)."
+    - "Piensa en una imagen real para esta semana (una invitación, una portada)."
     - "Descríbela con qué sale, estilo, colores, formato y el texto exacto."
     - "Pide al menos un cambio concreto sobre la primera versión."
     - "Guarda en «Mi kit de ChatGPT» la descripción que mejor te ha funcionado."
@@ -72,8 +72,6 @@ sources: [openai-ayuda, openai-uso]
 
 ChatGPT puede **crear imágenes** a partir de una descripción y **editar** una que le subas o que haya creado. Gratis y de pago, con un límite de uso propio, más amplio en los de pago.
 
-Lo que conviene saber:
-
 - **Cuanto más concreto, mejor.** Di qué sale, el estilo (foto, ilustración, acuarela), los colores, el formato (cuadrado, vertical) y, si lleva texto, **el texto exacto** entre comillas.
 - **Se corrige por partes.** Pide un cambio cada vez y di qué debe quedar igual.
 - **Revisa el texto.** A veces sale con letras cambiadas o faltas.
@@ -92,4 +90,4 @@ Lo que conviene saber:
 
 ## Error frecuente
 
-Pedir algo vago («una imagen chula») y rehacerla diez veces. Un minuto describiéndola bien ahorra intentos.
+Pedir algo vago («una imagen chula») y rehacerla diez veces.

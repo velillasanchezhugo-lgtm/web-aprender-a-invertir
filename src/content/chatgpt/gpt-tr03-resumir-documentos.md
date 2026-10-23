@@ -11,8 +11,8 @@ takeaway: "Dile a ChatGPT quién eres y qué vas a hacer con el resumen, y pide 
 scenario:
   kind: operacion
   label: Caso práctico
-  title: La instrucción de Yolanda
-  body: "Yolanda coordina el primer ciclo de un colegio. La Consejería publica una instrucción de 40 páginas. Pide: «Soy coordinadora de 1.º y 2.º de Primaria; dime solo lo que cambia para mi ciclo, con la página de cada punto». Comprueba las tres páginas que más le importan y una no coincide: ChatGPT había mezclado dos apartados."
+  title: La instrucción de Olga
+  body: "Olga coordina el primer ciclo de un colegio. La Consejería publica una instrucción de 40 páginas. Pide: «Soy coordinadora de 1.º y 2.º de Primaria; dime solo lo que cambia para mi ciclo, con la página de cada punto». Comprueba las tres páginas que más le importan y una no coincide: ChatGPT había mezclado dos apartados."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -28,7 +28,7 @@ questions:
     explain: "Un resumen deja cosas fuera, y ChatGPT puede saltarse algo o no leer un escaneo. Si te preocupa un tema, pregunta por él y comprueba la página."
   - type: choice
     id: gpt-tr03-q3
-    q: "Fátima pide el resumen de las bases de una ayuda para su negocio. ChatGPT dice que el plazo acaba el 30 de septiembre, «página 7». Va a organizar su semana con esa fecha. ¿Qué hace?"
+    q: "Hernán pide el resumen de las bases de una ayuda para su negocio. ChatGPT dice que el plazo acaba el 30 de septiembre, «página 7». Va a organizar su semana con esa fecha. ¿Qué hace?"
     options: ["Se fía: ha dado hasta la página", "Abre el PDF por la página 7 y comprueba la fecha", "Pregunta a ChatGPT «¿seguro?» y se queda con lo que diga"]
     answer: 1
     explain: "La página sirve justo para comprobar en un minuto el dato del que depende todo. Preguntar «¿seguro?» tienta por cómodo, pero ChatGPT puede repetir el error o cambiar de respuesta solo por tu duda."
