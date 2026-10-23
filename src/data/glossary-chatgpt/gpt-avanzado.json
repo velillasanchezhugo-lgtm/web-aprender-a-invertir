@@ -1,0 +1,18 @@
+[
+  {
+    "id": "codex",
+    "term": "Codex",
+    "short": "El agente de OpenAI para programar: lee una carpeta, crea o cambia archivos y prueba lo que hace.",
+    "def": "Agente de programación de OpenAI que se usa con una cuenta de ChatGPT. Trabaja sobre los archivos de una carpeta o proyecto: los lee, los crea o los cambia y ejecuta órdenes para comprobar el resultado. Está en la app de escritorio de ChatGPT y, según el plan, en la web, la terminal y los editores de código.",
+    "lesson": null,
+    "level": 1
+  },
+  {
+    "id": "flujo-de-trabajo",
+    "term": "Flujo de trabajo",
+    "short": "Tu forma fija de hacer una tarea que repites: qué pasos hay, quién hace cada uno y qué se revisa.",
+    "def": "Secuencia de pasos que sigues cada vez que haces una tarea repetida. Con una IA, un buen flujo deja claro qué prepara la herramienta, qué decides o haces tú y qué compruebas antes de usar el resultado.",
+    "lesson": null,
+    "level": 1
+  }
+]
