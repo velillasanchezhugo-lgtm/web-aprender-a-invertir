@@ -60,6 +60,7 @@ const jsonLd = [
 </style>
 <script>
   import { getState, type StoreKey } from '../../scripts/academy-store';
+  import { getProgress } from '../../scripts/store';
   const D = JSON.parse(document.getElementById('home-data')!.textContent!) as Record<string, { store: StoreKey; total: number; title: string; href: string }>;
   const list = document.getElementById('resume-list')!;
   for (const f of Object.values(D)) {
@@ -71,6 +72,15 @@ const jsonLd = [
     a.className = 'card'; a.href = f.href;
     const t = document.createElement('strong'); t.textContent = f.title;
     const m = document.createElement('span'); m.className = 'small muted'; m.textContent = `${Math.min(n, f.total)} de ${f.total} sesiones del Nivel 1 · Continuar →`;
+    a.append(t, m); li.append(a); list.append(li);
+  }
+  // Si aún no has empezado ninguna formación, la última lectura de la biblioteca.
+  const last = getProgress().last;
+  if (!list.children.length && last && last.path.startsWith('/es/')) {
+    const li = document.createElement('li');
+    const a = document.createElement('a'); a.className = 'card'; a.href = last.path;
+    const t = document.createElement('strong'); t.textContent = last.title;
+    const m = document.createElement('span'); m.className = 'small muted'; m.textContent = 'Tu última lectura · Continuar →';
     a.append(t, m); li.append(a); list.append(li);
   }
   if (list.children.length) document.getElementById('resume')!.hidden = false;

@@ -26,11 +26,11 @@ const core = EM.stages.find((s) => s.id === 'B')!.tracks;
 const order = EM.stages.flatMap((st) => st.tracks.flatMap((t) => all.filter((x) => x.data.track === t))).map((x) => ({ id: x.id, href: `${F.session}${x.id}/`, title: x.data.title }));
 const hub = hubById[F.id];
 const squares = [
-  { cls: 'p-inv', kicker: `${all.length + n2 + n3} piezas`, title: 'Los tres niveles', text: 'Qué aprendes en cada nivel y cómo está organizado.', href: '#niveles', go: 'Ver' },
-  ...(tools ? [{ cls: 'p-gpt', kicker: `${Object.keys(tools.items).length} herramientas`, title: 'Herramientas', text: 'Practica con tus propias peticiones.', href: tools.href, go: 'Abrir' }] : []),
+  { cls: 'p-inv', kicker: '3 niveles', title: 'Los tres niveles', text: 'Qué aprendes en cada nivel y cómo está organizado.', href: '#niveles', go: 'Ver' },
+  ...(tools ? [{ cls: 'p-em', kicker: `${Object.keys(tools.items).length} herramientas`, title: 'Herramientas', text: 'Practica con tus propias peticiones.', href: tools.href, go: 'Abrir' }] : []),
   { cls: 'p-lila', kicker: `${glossaryOf(F.id).length} términos`, title: 'Glosario', text: 'Las palabras de la formación, explicadas en una frase.', href: `${F.base}glosario/`, go: 'Abrir' },
   { cls: 'p-rosa', kicker: 'Nivel 1', title: 'Examen', text: 'Comprueba lo que sabes y consigue tu insignia.', href: `${F.base}examen/`, go: 'Hacer' },
-  { cls: 'p-em', kicker: `${EM.tracks.length} módulos`, title: 'Módulos', text: 'Entra directo al tema que te interesa.', href: '#modulos', go: 'Ver' },
+  { cls: hub.cls === 'p-gpt' ? 'p-cla' : 'p-gpt', kicker: `${EM.tracks.length} módulos`, title: 'Módulos', text: 'Entra directo al tema que te interesa.', href: '#modulos', go: 'Ver' },
 ];
 const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${F.title} · umotion Academy`, description: EM.tiers[0].promise, inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' } };
 ---
