@@ -125,7 +125,7 @@ Responsable: el titular (`OWNER`). Destinatarios: solo los encargados del aparta
 
 | Actividad | Personas | Datos | Finalidad | Base legal | Plazo |
 |---|---|---|---|---|---|
-| Navegación y seguridad | Visitantes | IP, fecha, página, navegador | Servir la web y evitar abusos | Interés legítimo (6.1.f) | Según el plan de Vercel; IP del límite de peticiones solo en memoria, borrada poco después de una hora sin peticiones |
+| Navegación y seguridad (incluido el cortafuegos) | Visitantes | IP, fecha, página, navegador, acción del cortafuegos | Servir la web y evitar abusos | Interés legítimo (6.1.f) | Según el plan de Vercel; IP del límite de peticiones solo en memoria, borrada poco después de una hora sin peticiones |
 | Estadísticas | Visitantes | Ruta, eventos anónimos, identificador diario | Medir y mejorar | Interés legítimo (6.1.f) | Identificador, 24 horas; datos agregados, según Vercel |
 | Cuenta | Personas registradas (14 años o más) | Correo, progreso (incluidos perfil de aprendizaje, cartera de práctica y ejercicio final ficticio), notas, prácticas y nombre de la insignia (no el test ni el plan en una página); IP y fecha de acceso en los registros de Supabase | Guardar y sincronizar el progreso | Contrato (6.1.b) | Mientras exista la cuenta; copias según Supabase |
 | Protección contra robots (si se activa Turnstile) | Quien envía un formulario | Señales técnicas del navegador, IP (también la reenvía nuestro servidor o Supabase al validar el token) | Evitar abusos | Interés legítimo (6.1.f) | Según Cloudflare |
@@ -142,7 +142,7 @@ Se comprobó que los textos coinciden con el código: todas las claves de `local
 
 | Proveedor | Papel | Ubicación | Mecanismo de transferencia | Acción del titular |
 |---|---|---|---|---|
-| Vercel Inc. | Encargado: alojamiento, funciones, analítica | Red mundial; funciones en EE. UU. por defecto (región `iad1`) | Adherido al Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo en su DPA | Aceptar el DPA. Valorar fijar la región `fra1` (anotado para infraestructura) y reflejarlo en `LEGAL.functionsRegion` |
+| Vercel Inc. | Encargado: alojamiento, funciones, cortafuegos, analítica | Funciones en la UE (`fra1`, Fráncfort, fijado en `vercel.json`); archivos estáticos y registros del borde en su red mundial | Adherido al Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo en su DPA | Aceptar el DPA y confirmar el plazo de los registros y del cortafuegos |
 | Supabase Inc. | Encargado: cuenta, progreso, avisos y, por defecto, correo del enlace | Proyecto en la UE (Fráncfort); soporte desde fuera | Cláusulas contractuales tipo en su DPA (no consta adhesión al Marco) | Crear el proyecto en la UE y aceptar el DPA |
 | Proveedor SMTP (si se configura) | Encargado: correo del enlace | Según el proveedor | Según el proveedor | Elegirlo, aceptar su DPA y escribir su nombre en `LEGAL.mailProvider` |
 | Anthropic Ireland, Limited | Encargado: tutor y corrector | Procesa en EE. UU. | Cláusulas contractuales tipo en su DPA, que forma parte de sus condiciones comerciales | Usar una cuenta de la API (no un plan de consumo), revisar el DPA y fijar un límite de gasto |
