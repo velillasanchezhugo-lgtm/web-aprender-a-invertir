@@ -92,6 +92,8 @@ test('reconoce frases naturales de principiante para cada pieza', () => {
   ok('Acórtalo a la mitad.', 'formato');
   ok('Es para mandar a tres fontaneros.', 'publico');
   ok('Si no lo encuentras, dímelo.', 'verificar');
+  ok('Avísame de lo que no tengas claro.', 'verificar');
+  ok('Dudo entre dos pisos de alquiler.', 'contexto');
   // Límites con otros verbos
   ok('Compara los cursos, pero no me apuntes a nada ni pagues.', 'limites');
   ok('Prepara el menú. No compres nada.', 'limites');

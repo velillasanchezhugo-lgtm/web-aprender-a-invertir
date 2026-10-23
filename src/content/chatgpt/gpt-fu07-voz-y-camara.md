@@ -29,7 +29,7 @@ questions:
   - type: choice
     id: gpt-fu07-q3
     q: "Abres el modo de voz y no ves el botón de la cámara. ¿Qué es lo más probable?"
-    options: ["Tu móvil está roto", "ChatGPT ya no tiene voz", "Esa opción depende del plan, de la app y del tipo de voz que tengas elegido"]
+    options: ["Tu móvil está roto", "ChatGPT ya no tiene voz", "Esa opción depende del plan, de la app y de la experiencia de voz elegida"]
     answer: 2
     explain: "Compartir vídeo o pantalla solo está en algunas cuentas, en la app del móvil y con ciertas experiencias de voz. Pensar en una avería tienta, pero es cuestión de opciones."
 tips:
