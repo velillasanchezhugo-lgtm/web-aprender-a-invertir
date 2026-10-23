@@ -52,7 +52,7 @@ practice:
     - label: "Pedir una valoración al final"
       any: ["al final", "cuando terminemos", "despues dime", "que mejorar", "valoracion", "como lo he hecho"]
       hint: "Pide que, al terminar, te diga qué has hecho bien y qué mejorar."
-  sample: "Trabajo de dependienta en un supermercado de Jaén y la semana que viene quiero pedir a mi jefa pasar al turno de mañana para cuidar de mi padre por las tardes. Haz de mi jefa: es seria, justa y le preocupa cubrir los turnos. Hazme preguntas y pon pegas realistas, de una en una, y espera mi respuesta. No seas ni demasiado blanda ni demasiado dura. Al final, dime tres cosas que he hecho bien y tres que mejorar."
+  sample: "Trabajo de dependienta en un supermercado de Jaén y la semana que viene quiero pedir a mi jefa pasar al turno de mañana para cuidar de mi padre por las tardes. Haz de mi jefa: es seria, justa y le preocupa cubrir los turnos. Hazme preguntas y pon pegas realistas, de una en una, y espera mi respuesta. No me lo pongas fácil, pero sin exagerar. Al final, dime tres cosas que he hecho bien y tres que mejorar."
 deeper: null
 tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

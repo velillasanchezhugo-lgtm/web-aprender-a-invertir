@@ -5,7 +5,7 @@ level: basico
 track: gpt-pedir
 order: 105
 skills: [gpt-iterar]
-terms: [ventana-de-contexto, proyecto-de-chatgpt]
+terms: [ventana-de-contexto-chatgpt, proyecto-de-chatgpt]
 hook: "Le pides a ChatGPT «hazme la guía completa para los nuevos empleados de mi hotel» y te devuelve diez páginas correctas y vacías, que no se parecen a tu hotel. ¿Por dónde había que empezar?"
 takeaway: "En las tareas grandes, primero el esquema; luego, una parte cada vez, revisando antes de seguir. Si la conversación se hace muy larga, pide un resumen de lo decidido y sigue en un chat nuevo."
 scenario:

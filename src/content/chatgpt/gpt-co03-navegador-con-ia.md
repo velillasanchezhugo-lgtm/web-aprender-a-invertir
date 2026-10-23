@@ -89,6 +89,8 @@ Trata **el contenido de las webs como no fiable**: una página puede esconder in
 
 > Prueba: «Compara las pestañas abiertas de pisos en alquiler en una tabla con precio, metros, ascensor y fianza. Solo lee las páginas: no escribas a nadie ni rellenes formularios. Dime qué dato no aparece en cada anuncio.»
 
+Si ves que abre webs que no pediste o que te pide permisos raros, rechaza y para la tarea.
+
 ## Error frecuente
 
 Permitir «en todos los sitios» para no ver más avisos. Así ChatGPT puede actuar en cualquier web abierta, también en una preparada para engañarlo.

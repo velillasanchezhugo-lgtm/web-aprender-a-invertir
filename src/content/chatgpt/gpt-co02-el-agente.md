@@ -93,6 +93,8 @@ El riesgo principal es la **inyección de instrucciones**: textos escondidos en 
 
 > Prueba: «Compara en sus webs oficiales tres seguros de hogar para un piso de alquiler de 70 m² en Murcia. Hazme una tabla con coberturas y precio orientativo, con el enlace de cada dato. No rellenes formularios con mis datos. Antes de empezar, enséñame tu plan.»
 
+Cuando termine, abre los enlaces que ha usado y comprueba dos o tres datos antes de decidir nada.
+
 ## Error frecuente
 
 Dejar que el agente acepte todo sin preguntar para no tener que mirar. Trabaja más rápido… también en la dirección equivocada.

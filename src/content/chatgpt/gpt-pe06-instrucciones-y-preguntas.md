@@ -35,7 +35,6 @@ questions:
 tips:
   - "Pide que separe lo que sabe seguro de lo que supone: verás qué comprobar."
   - "Si un día las instrucciones te estorban (por ejemplo, quieres un texto largo), díselo en ese chat: suele seguir lo que le pides en la conversación. También puedes desactivarlas en la personalización."
-  - "Su crítica es un punto de vista más, no un veredicto. Para decisiones grandes, habla también con personas que conozcan el tema."
 action:
   title: Escribe tus instrucciones personalizadas
   steps:
@@ -80,7 +79,7 @@ Qué poner: tu situación general, el tono, la longitud y estos dos hábitos. Qu
 
 > Prueba: «Estoy pensando en apuntarme a un curso de inglés intensivo de tres meses por las tardes, mientras trabajo a jornada completa. Antes de opinar, hazme hasta cinco preguntas, de una en una. Después dime los tres motivos más probables por los que podría salirme mal y qué haría para evitarlos. Si algo es una suposición, márcalo.»
 
-Contesta a sus preguntas y, si su crítica te parece injusta, discútela: «¿Por qué crees que eso es un riesgo en mi caso?».
+Contesta a sus preguntas y, si su crítica te parece injusta, discútela. Es un punto de vista más, no un veredicto: para decisiones grandes, habla también con personas que conozcan el tema.
 
 ## Error frecuente
 

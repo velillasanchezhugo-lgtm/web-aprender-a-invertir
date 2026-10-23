@@ -35,7 +35,6 @@ questions:
 tips:
   - "Pide «tres versiones: una más cálida, una neutra y una más firme». Comparar te ayuda a ver qué tono encaja."
   - "Si un mensaje largo no te convence, pide «quita todo lo que no sea imprescindible». Los mensajes difíciles funcionan mejor cortos."
-  - "Pon «[nombre]», «[importe]» o «[fecha]» en lugar de los datos reales y complétalos tú al final."
 action:
   title: El mensaje que llevas días aplazando
   steps:
@@ -86,7 +85,7 @@ Y no pegues lo que no hace falta: **datos personales** (los que permiten saber q
 
 1. Escribe los hechos y el objetivo tal como te salgan.
 2. Pide el mensaje con tono y extensión.
-3. Corrige en la misma conversación: «más corto», «tutéale», «quita la segunda disculpa». Si tu versión de ChatGPT abre el texto en un panel de edición, puedes seleccionar una frase y pedir que cambie solo esa.
+3. Corrige en la misma conversación: «más corto», «tutéale», «quita la segunda disculpa». Si ChatGPT te muestra el texto en un recuadro editable (un bloque de escritura), puedes corregir tú una palabra o señalar una frase y pedir que cambie solo esa.
 4. Copia el texto, completa los huecos y **reléelo en frío**.
 
 > Prueba: «Tengo una tienda de electrodomésticos. Un cliente se queja en un correo muy enfadado porque la lavadora llegó con un golpe. Ya hemos pedido otra al proveedor y llega el [fecha]. Quiero que se sienta atendido sin admitir culpas que no son nuestras. Escribe una respuesta de máximo 120 palabras, de usted, amable y concreta, que ofrezca recogerla sin coste.»

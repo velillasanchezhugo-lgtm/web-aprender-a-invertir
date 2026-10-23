@@ -1,11 +1,11 @@
 ---
 title: Revisar textos sin perder tu voz
-description: "Cómo pedir a ChatGPT que corrija y mejore un texto tuyo con cada cambio explicado, usar las sugerencias de canvas y decidir tú qué aceptar."
+description: "Cómo pedir a ChatGPT que corrija y mejore un texto tuyo con cada cambio explicado, trabajarlo por partes y decidir tú qué aceptar."
 level: basico
 track: gpt-trabajo
 order: 402
 skills: [gpt-escribir, gpt-canvas]
-terms: [control-de-cambios, tono, canvas]
+terms: [control-de-cambios, tono, bloque-de-escritura]
 hook: "Le pides a ChatGPT que mejore tu texto y te devuelve otro: más pulido, sí, pero lleno de palabras que tú nunca usarías. ¿Dónde ha quedado lo que querías decir?"
 takeaway: "Pide correcciones marcadas y explicadas, no un texto nuevo, y dile qué no debe tocar. Así ves cada cambio, aprendes de él y decides tú cuál aceptar."
 scenario:
@@ -28,7 +28,7 @@ questions:
     explain: "Sonar mejor no es decir lo mismo. Al pulir, puede convertir un «quizá» en un «seguro», quitar un matiz o cambiar un dato. Revisa los cambios uno a uno."
   - type: choice
     id: gpt-tr02-q3
-    q: "Revisas en canvas el aviso de un plazo. Entre las sugerencias, ChatGPT cambia «antes del 15 de mayo» por «en las próximas semanas» porque «suena más natural». ¿Qué haces?"
+    q: "Pides a ChatGPT que revise el aviso de un plazo. En su tabla de cambios propone cambiar «antes del 15 de mayo» por «en las próximas semanas» porque «suena más natural». ¿Qué haces?"
     options: ["La aplico: si lo propone, será mejor", "La descarto y acepto solo las sugerencias que no cambian datos ni compromisos", "Borro todas las sugerencias y vuelvo a empezar"]
     answer: 1
     explain: "Una fecha concreta es información, no estilo: quitarla cambia el aviso. Fiarse tienta porque la sugerencia viene explicada, pero el motivo de estilo no compensa perder el dato. Las demás sugerencias pueden seguir siendo útiles."
@@ -76,13 +76,13 @@ Para revisar sin perderte, pide tres cosas:
 
 El motivo es lo más valioso: así **aprendes** y dejas de repetir el mismo error.
 
-Cuando se trata de un texto largo, ChatGPT puede abrirlo en **canvas**, un espacio de edición junto al chat en el que trabajáis sobre el mismo documento. Allí puedes pedirle que **sugiera cambios**: los deja como comentarios en el texto y tú decides en cada uno si lo aplicas, lo editas a mano o lo descartas. También puedes seleccionar un párrafo y pedir algo solo sobre él. Canvas está en los planes gratuito y de pago, aunque sus opciones pueden variar entre la web, el escritorio y el móvil.
+Para pulir el texto después, ChatGPT suele mostrarlo en un **bloque de escritura**: un recuadro editable dentro de la respuesta. Puedes cambiar tú una palabra o un dato a mano, o señalar un párrafo y pedir algo solo sobre él («acorta esto, deja el resto igual»). Sustituye a canvas, el editor en panel aparte que algunos recordarán. Las opciones exactas cambian según el plan, el dispositivo y el modelo.
 
 ## En la práctica
 
 1. Pega el texto y di **para quién es** (la plantilla, clientes, un tribunal de prácticas).
 2. Acota la revisión y lo que no debe cambiar.
-3. Pide la tabla o, en canvas, las sugerencias en el propio texto.
+3. Pide la tabla de cambios y, si quieres pulir después, trabaja por partes en el bloque de escritura.
 4. Decide tú cambio a cambio. Si una propuesta no te convence, pregunta: «¿Por qué esta?».
 
 > Prueba: «Revisa este texto para la carta de mi restaurante. Corrige faltas y frases liosas, pero no cambies los nombres de los platos ni los precios. Mantén mi tono cercano. Dame una tabla: original, propuesta y motivo.»
