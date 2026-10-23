@@ -18,8 +18,8 @@ questions:
   - type: choice
     id: gpt-fu07-q1
     q: "Vas a compartir la pantalla del móvil con ChatGPT para que te ayude a rellenar un formulario. ¿Qué haces antes?"
-    options: ["Nada: ChatGPT no se fija en lo que no le preguntas", "Cierras las notificaciones y las apps con datos privados que puedan verse", "Compartes la pantalla con la app del banco abierta, por si hace falta"]
-    answer: 1
+    options: ["Cierras las notificaciones y las apps con datos privados que puedan verse", "Nada: ChatGPT no se fija en lo que no le preguntas", "Compartes la pantalla con la app del banco abierta, por si hace falta"]
+    answer: 0
     explain: "Todo lo que aparece en pantalla llega a ChatGPT: mensajes, avisos, números. Pensar que «solo mira lo que le preguntas» tienta, pero la imagen va entera."
   - type: truefalse
     id: gpt-fu07-q2
@@ -29,8 +29,8 @@ questions:
   - type: choice
     id: gpt-fu07-q3
     q: "Abres el modo de voz y no ves el botón de la cámara. ¿Qué es lo más probable?"
-    options: ["Tu móvil está roto", "Esa opción depende del plan, de la app y del tipo de voz que tengas elegido", "ChatGPT ya no tiene voz"]
-    answer: 1
+    options: ["Tu móvil está roto", "ChatGPT ya no tiene voz", "Esa opción depende del plan, de la app y del tipo de voz que tengas elegido"]
+    answer: 2
     explain: "Compartir vídeo o pantalla solo está en algunas cuentas, en la app del móvil y con ciertas experiencias de voz. Pensar en una avería tienta, pero es cuestión de opciones."
 tips:
   - "Una lista larga cansa más oída que leída: pide los pasos de uno en uno."

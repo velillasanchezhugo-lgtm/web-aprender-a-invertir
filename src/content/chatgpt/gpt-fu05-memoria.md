@@ -29,8 +29,8 @@ questions:
   - type: choice
     id: gpt-fu05-q3
     q: "Quieres que ChatGPT deje de usar tus chats antiguos, pero sin perder esos chats. ¿Qué haces?"
-    options: ["Borras todo el historial", "Desactivas la referencia al historial de chats en la configuración", "Cambias de contraseña"]
-    answer: 1
+    options: ["Borras todo el historial", "Cambias de contraseña", "Desactivas la referencia al historial de chats en la configuración"]
+    answer: 2
     explain: "Desactivarla hace que deje de usar lo que recuerda de chats pasados, y esos chats siguen en tu historial. Borrar el historial tienta por rápido, pero pierdes conversaciones que quizá quieras."
 tips:
   - "Puedes pedirlo en el chat: «recuerda que soy vegetariana» u «olvida lo de mi mudanza». Luego compruébalo en la configuración."

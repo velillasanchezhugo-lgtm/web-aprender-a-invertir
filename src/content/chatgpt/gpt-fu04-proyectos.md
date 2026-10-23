@@ -18,8 +18,8 @@ questions:
   - type: choice
     id: gpt-fu04-q1
     q: "Eduardo escribe cada semana con ChatGPT una entrada para el blog de su huerto urbano: siempre el mismo tono, el mismo público y sus notas de cultivo. Ahora lo explica de nuevo en cada chat. ¿Qué le conviene?"
-    options: ["Seguir así: es lo más rápido", "Crear un proyecto con esas instrucciones y sus notas subidas", "Escribir todas las entradas en un único chat larguísimo"]
-    answer: 1
+    options: ["Crear un proyecto con esas instrucciones y sus notas subidas", "Seguir así: es lo más rápido", "Escribir todas las entradas en un único chat larguísimo"]
+    answer: 0
     explain: "Es un tema al que vuelve siempre, con un documento de referencia: justo para lo que sirve un proyecto. El chat único tienta, pero en conversaciones muy largas ChatGPT acaba perdiendo detalles del principio."
   - type: truefalse
     id: gpt-fu04-q2
@@ -29,8 +29,8 @@ questions:
   - type: choice
     id: gpt-fu04-q3
     q: "Yolanda comparte con su hermano el proyecto de la boda, pero no quiere que él cambie las instrucciones ni los archivos. ¿Qué acceso le da?"
-    options: ["Acceso para editar", "Acceso solo para chatear", "Su contraseña de ChatGPT"]
-    answer: 1
+    options: ["Acceso para editar", "Su contraseña de ChatGPT", "Acceso solo para chatear"]
+    answer: 2
     explain: "Con acceso para chatear puede usar el proyecto, pero no cambiarlo. Dar acceso de edición tienta por comodidad, pero le deja tocarlo todo. La contraseña no se comparte nunca."
 tips:
   - "Escribe instrucciones cortas: quién eres, qué buscas y cómo quieres las respuestas."

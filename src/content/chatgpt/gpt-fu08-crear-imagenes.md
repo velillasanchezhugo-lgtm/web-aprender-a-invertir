@@ -24,8 +24,8 @@ questions:
   - type: choice
     id: gpt-fu08-q2
     q: "Fede quiere una foto realista de su alcaldesa firmando un contrato que nunca firmó, para gastar una broma en el grupo del pueblo. ¿Qué es lo correcto?"
-    options: ["Hacerla: si ChatGPT la crea, está permitido", "No hacerla: una imagen falsa realista de una persona real puede engañar y dañarla", "Hacerla y quitarle la marca de procedencia"]
-    answer: 1
+    options: ["Hacerla: si ChatGPT la crea, está permitido", "Hacerla y quitarle la marca de procedencia", "No hacerla: una imagen falsa realista de una persona real puede engañar y dañarla"]
+    answer: 2
     explain: "Es un ultrafalso de una persona real, aunque sea en broma. Que la herramienta lo genere tienta a pensar que está permitido, pero quien la difunde responde de ella."
   - type: truefalse
     id: gpt-fu08-q3

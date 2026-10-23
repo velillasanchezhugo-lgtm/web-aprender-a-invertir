@@ -18,8 +18,8 @@ questions:
   - type: choice
     id: gpt-fu06-q1
     q: "Dudas entre tres tarifas de móvil con permanencias, datos y descuentos distintos durante dos años. ¿Cómo lo pides?"
-    options: ["Con la respuesta rápida, y te quedas con lo primero que diga", "Eligiendo pensar más, con todos los datos de cada tarifa, y revisando el resultado", "Sin datos: ChatGPT ya conoce todas las tarifas"]
-    answer: 1
+    options: ["Eligiendo pensar más, con todos los datos de cada tarifa, y revisando el resultado", "Con la respuesta rápida, y te quedas con lo primero que diga", "Sin datos: ChatGPT ya conoce todas las tarifas"]
+    answer: 0
     explain: "Hay muchas condiciones a la vez, justo donde el razonamiento ayuda, y le tienes que dar los datos. La rápida tienta por cómoda, pero en comparaciones así es fácil que se salte algo."
   - type: truefalse
     id: gpt-fu06-q2

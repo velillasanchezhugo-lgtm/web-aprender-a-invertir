@@ -18,8 +18,8 @@ questions:
   - type: choice
     id: gpt-fu09-q1
     q: "ChatGPT te da el total de gastos de tu hoja. ¿Cuál es la mejor forma de comprobarlo?"
-    options: ["Preguntarle si está seguro", "Pedirle cuántas filas ha usado y comparar el total con otra fuente, como el extracto del banco", "Fiarte: los ordenadores no fallan sumando"]
-    answer: 1
+    options: ["Pedirle cuántas filas ha usado y comparar el total con otra fuente, como el extracto del banco", "Preguntarle si está seguro", "Fiarte: los ordenadores no fallan sumando"]
+    answer: 0
     explain: "El cálculo suele estar bien, pero puede haber leído mal el archivo: filas de menos, una columna equivocada. Preguntar «¿estás seguro?» tienta, pero casi siempre contesta que sí."
   - type: truefalse
     id: gpt-fu09-q2

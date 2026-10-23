@@ -18,8 +18,8 @@ questions:
   - type: choice
     id: gpt-fu03-q1
     q: "Tu informe está casi listo, pero el segundo párrafo suena muy frío. ¿Qué pides?"
-    options: ["«Mejóralo»", "«Haz más cercano solo el segundo párrafo y deja el resto igual»", "«Escríbelo otra vez desde cero»"]
-    answer: 1
+    options: ["«Haz más cercano solo el segundo párrafo y deja el resto igual»", "«Mejóralo»", "«Escríbelo otra vez desde cero»"]
+    answer: 0
     explain: "Señalar la parte y decir qué no tocar evita cambios que no quieres. «Mejóralo» tienta por corto, pero deja que ChatGPT decida qué cambia, y suele cambiar de más."
   - type: truefalse
     id: gpt-fu03-q2

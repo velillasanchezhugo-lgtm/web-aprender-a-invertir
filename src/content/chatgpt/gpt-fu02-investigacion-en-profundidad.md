@@ -29,8 +29,8 @@ questions:
   - type: choice
     id: gpt-fu02-q3
     q: "Antes de empezar, ChatGPT te enseña el plan de investigación y no incluye lo que más te importa. ¿Qué haces?"
-    options: ["Lo dejas correr y ya preguntarás después", "Cambias el plan antes de que empiece", "Cancelas y haces diez búsquedas sueltas"]
-    answer: 1
+    options: ["Lo dejas correr y ya preguntarás después", "Cancelas y haces diez búsquedas sueltas", "Cambias el plan antes de que empiece"]
+    answer: 2
     explain: "Corregir el plan al principio es lo que más mejora el informe. Dejarlo correr tienta para no perder tiempo, pero puede tardar un buen rato en algo que no te sirve."
 tips:
   - "Si el tema es de salud, dinero o leyes, el informe te prepara para hablar con un profesional, no lo sustituye."

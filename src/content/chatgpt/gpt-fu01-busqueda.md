@@ -18,8 +18,8 @@ questions:
   - type: choice
     id: gpt-fu01-q1
     q: "Fátima va a renovar el DNI y pregunta a ChatGPT si necesita cita previa. La respuesta no trae ningún enlace. ¿Qué hace?"
-    options: ["Se fía: la respuesta suena muy segura", "Pide que busque en la web, cite la página oficial y la abre", "Repite la pregunta hasta que salga dos veces lo mismo"]
-    answer: 1
+    options: ["Pide que busque en la web, cite la página oficial y la abre", "Se fía: la respuesta suena muy segura", "Repite la pregunta hasta que salga dos veces lo mismo"]
+    answer: 0
     explain: "Un trámite cambia y hace falta una fuente actual y oficial. Repetir la pregunta tienta, pero dos respuestas iguales pueden estar igual de desfasadas."
   - type: truefalse
     id: gpt-fu01-q2
@@ -29,8 +29,8 @@ questions:
   - type: choice
     id: gpt-fu01-q3
     q: "Para el plazo de este año, ChatGPT te cita la web del ayuntamiento, sin fecha, y un blog de hace dos años que explica más. ¿Con qué te quedas?"
-    options: ["Con el blog, porque da más detalles", "Con la web oficial, y pides que busque la convocatoria de este año para confirmar", "Con los dos: si los cita, valen igual"]
-    answer: 1
+    options: ["Con el blog, porque da más detalles", "Con los dos: si los cita, valen igual", "Con la web oficial, y pides que busque la convocatoria de este año para confirmar"]
+    answer: 2
     explain: "Manda la fuente oficial y actual. El blog tienta porque explica mejor, pero un plazo de hace dos años puede haber cambiado."
 tips:
   - "Si conoces la web oficial, nómbrala o pega el enlace: «busca en la web del ayuntamiento»."
