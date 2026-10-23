@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { lessons, TOOLS } from '../../lib/content';
+import { jsonForScript } from '../../lib/safe-json';
 const all = await lessons();
 const meta = Object.fromEntries(all.map((l) => [l.id, { t: l.data.title, route: l.data.route?.order ?? null, q: l.data.quiz.length }]));
 const checklist = ['Tengo un fondo de emergencia suficiente.', 'He controlado mis deudas caras.', 'Tengo un objetivo con importe y fecha, y no necesitaré este dinero antes.', 'Sé qué es el producto y de dónde sale su rentabilidad.', 'Sé cómo puede perder valor y cuánto podría caer en un mal año.', 'Conozco todos sus costes y cómo tributa.', 'Está diversificado.', 'He leído su documento de datos fundamentales (KID) o su folleto.', 'He comprobado la entidad, su supervisor, su registro y su sistema de garantía.', 'Sé qué haría si cayera un 30 %, y por qué.'];
@@ -32,7 +33,7 @@ const checklist = ['Tengo un fondo de emergencia suficiente.', 'He controlado mi
       <p id="msg" class="small" aria-live="polite"></p>
     </section>
   </div>
-  <script type="application/json" id="meta" set:html={JSON.stringify({ meta, tools: Object.fromEntries(Object.entries(TOOLS).map(([k, v]) => [k, v.title])) })} />
+  <script type="application/json" id="meta" set:html={jsonForScript({ meta, tools: Object.fromEntries(Object.entries(TOOLS).map(([k, v]) => [k, v.title])) })} />
 </Base>
 <style>.row { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; } .row select, .row input { width: auto; } section { margin-bottom: 2rem; }</style>
 <script>

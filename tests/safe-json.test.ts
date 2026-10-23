@@ -16,7 +16,7 @@ test('un dato no puede cerrar la etiqueta <script> y se lee igual', () => {
 test('ninguna plantilla mete JSON.stringify sin escapar en set:html', () => {
   const walk = (d: string): string[] => readdirSync(d).flatMap((f) => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
   // progreso.astro: pendiente del Agente 1, que lo está editando (ver NOTAS-SEGURIDAD). Quitar la excepción al cambiarlo.
-  const PENDING = new Set(['src/pages/es/progreso.astro']);
+  const PENDING = new Set<string>();
   const bad = walk('src').filter((f) => f.endsWith('.astro') && !PENDING.has(f) && /set:html=\{\s*JSON\.stringify/.test(readFileSync(f, 'utf8')));
   assert.deepEqual(bad, [], 'usa jsonForScript de src/lib/safe-json.ts');
 });
