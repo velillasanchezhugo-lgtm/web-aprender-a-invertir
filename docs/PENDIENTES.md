@@ -21,6 +21,30 @@ No hace falta ninguna credencial para ejecutar ni compilar la web.
 2. **Fiscal**: lección de comisiones y fiscalidad (escala del ahorro 2025, traspasos, regla de los dos meses), criptoactivos y fiscalidad de dividendos. Confirmar la escala de 2026 cuando esté disponible.
 3. **Financiera / editorial**: todas las lecciones, estrategias e historias están en estado «Pendiente de revisión humana».
 
+## Cumplimiento legal (octubre de 2026)
+
+Detalle y listas por función en `docs/LEGAL.md`. **Todos los textos legales son borradores revisados el 23/10/2026 y deben pasar por un abogado**: aviso legal, privacidad, cookies, condiciones (incluye IA y planes de pago futuros), accesibilidad (página nueva), alcance educativo, financiación, metodología, contacto, la primera capa del alta en «Mi cuenta» y el aviso de la recomendación de bróker.
+
+**Titular**
+- Rellenar `OWNER` y, si hay SMTP propio, `LEGAL.mailProvider` (`src/config/site.ts`).
+- Aceptar o firmar y guardar los contratos de encargado: Vercel, Supabase, Anthropic, el proveedor de correo y, al activarlos, Cloudflare Turnstile y Google.
+- Confirmar los plazos de los registros de Vercel y de las copias de Supabase del plan contratado, y decidir si se borran las cuentas sin uso en 24 meses.
+- AdSense, al activarlo: mensaje del RGPD (CMP certificada, TCF v2.2) con «No consentir» en la primera capa, consentimiento recordado como máximo 24 meses y bloqueo de categorías (apuestas, CFD, criptoactivos, préstamos rápidos).
+- Confirmar que Trade Republic no paga nada (ni referidos); si paga, `PUBLIC_BROKER_PAID=true`.
+- Comprobar o registrar la marca «umotion» (OEPM o EUIPO) y no usar logotipos de Anthropic, OpenAI ni Trade Republic.
+- Mantener el registro de actividades (borrador en `docs/LEGAL.md`, apartado 3) y un procedimiento de brechas (72 horas).
+
+**Código**
+- Aviso de IA visible en la primera interacción del corrector de peticiones (`PromptCoach.astro`), junto al botón «Opinión con IA» y en su respuesta (art. 50 del Reglamento de IA). El tutor ya etiqueta cada respuesta.
+- Antes de cobrar: «impuestos incluidos» en los precios, información previa, botón «pedido con obligación de pago», botón de desistimiento y consentimiento para empezar el contenido digital antes de 14 días.
+
+**Abogado**
+- Encaje de Vercel Web Analytics con el art. 22.2 LSSI y la base de interés legítimo.
+- Excepción de consentimiento para el almacenamiento local técnico y de preferencias.
+- Transferencias internacionales de cada proveedor, ley aplicable y forma jurídica del titular.
+- Si la DSA (punto de contacto, avisos de contenido) y la Ley 11/2023 de accesibilidad aplican o hay exención por microempresa.
+- Condiciones de contratación de los niveles 2 y 3 antes de cobrar.
+
 ## Currículo v1.2 (docs/CURRICULO.md)
 
 - **Decisiones de los socios:** D-01, D-03, D-04, D-06, D-07, D-08 (precio y modelo del Nivel 3: propuesta de curso a 50 € y certificación aparte) y D-09 (supervisión e identidad del examen).

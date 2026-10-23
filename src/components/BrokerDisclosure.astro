@@ -3,10 +3,10 @@ import { RECOMMENDED_BROKER as R } from '../config/site';
 const { compact = false } = Astro.props as { compact?: boolean };
 ---
 <p class:list={['disclosure', { compact }]}>
-  <strong>{R.paid ? 'Colaboración pagada.' : 'Recomendación editorial.'}</strong>
+  <strong>{R.paid ? 'Publicidad · colaboración pagada.' : 'Recomendación editorial.'}</strong>
   {R.paid
-    ? ` umotion recibe una remuneración de ${R.name}. Aun así, contamos sus ventajas y sus limitaciones, y te animamos a comparar con otras entidades antes de decidir.`
-    : ` Recomendación educativa de umotion basada en la facilidad de uso para empezar. No recibimos ninguna comisión por ella. Puedes seguir el curso con cualquier bróker autorizado.`}
+    ? ` umotion recibe una remuneración de ${R.name}. Aun así, contamos sus ventajas y sus limitaciones, y te animamos a comparar con otras entidades antes de decidir. No es una recomendación sobre qué comprar.`
+    : ` Recomendación educativa de umotion basada en la facilidad de uso para empezar. No recibimos ninguna comisión por ella. No es publicidad ni una recomendación sobre qué comprar. Puedes seguir el curso con cualquier bróker autorizado.`}
   {' '}<a href="/es/financiacion/">Cómo nos financiamos</a>.
 </p>
 <style>

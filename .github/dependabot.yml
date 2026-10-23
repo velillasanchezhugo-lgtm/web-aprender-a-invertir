@@ -1,0 +1,22 @@
+# Dependabot: avisos y propuestas de actualización (punto 6 de docs/SEGURIDAD.md).
+# Las versiones mayores (por ejemplo, Astro 5 → 7) no se proponen solas: se migran a mano en una rama aparte.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: Europe/Madrid
+    open-pull-requests-limit: 5
+    groups:
+      menores-y-parches:
+        update-types: [minor, patch]
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

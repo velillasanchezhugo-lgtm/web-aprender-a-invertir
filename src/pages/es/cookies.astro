@@ -1,6 +1,7 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
 import { adsActive, ACCOUNTS, LEGAL } from '../../config/site';
+const turnstile = !!import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 <LegalPage title="Política de cookies" description="Qué cookies y qué almacenamiento del navegador usa este sitio, para qué sirven y cómo gestionar tu consentimiento." updated={LEGAL.updated} legal>
   <p>Una <strong>cookie</strong> es un pequeño archivo que una web guarda en tu navegador. El <strong>almacenamiento local</strong> es parecido: un espacio del navegador donde la web guarda datos. La ley (art. 22.2 LSSI) trata igual ambas cosas: si no son necesarias para el servicio que pides, hace falta tu consentimiento previo.</p>
@@ -11,7 +12,7 @@ import { adsActive, ACCOUNTS, LEGAL } from '../../config/site';
     : <p>El sitio <strong>no usa cookies propias ni de terceros</strong>, ni publicidad. Las estadísticas de uso (Vercel Web Analytics) funcionan sin cookies y sin guardar nada en tu dispositivo. Solo usamos el almacenamiento local necesario para las funciones que pides. Por eso no ves un aviso de cookies.</p>}
 
   <h2>Almacenamiento local que usamos</h2>
-  <p>Todo es propio (de este sitio) y se queda en tu navegador. Nada de esto se envía a publicidad ni a analítica. {ACCOUNTS.enabled ? 'Solo si entras en tu cuenta, el progreso se copia en tu cuenta para sincronizarlo (ver la política de privacidad).' : ''}</p>
+  <p>Todo es propio (de este sitio) y se queda en tu navegador. Nada de esto se envía a publicidad ni a analítica. {ACCOUNTS.enabled ? 'Solo si entras en tu cuenta, el progreso se copia en tu cuenta para sincronizarlo, salvo el test y el plan en una página, que no salen del dispositivo (ver la política de privacidad).' : ''}</p>
   <div class="table-wrap" tabindex="0" role="region" aria-label="Tabla de almacenamiento local (desplazable)"><table>
     <thead><tr><th>Clave</th><th>Para qué</th><th>Duración</th><th>Tipo</th></tr></thead>
     <tbody>
@@ -28,6 +29,8 @@ import { adsActive, ACCOUNTS, LEGAL } from '../../config/site';
   </table></div>
   <p>Si activas el recordatorio, el sitio instala además un pequeño programa del navegador (<em>service worker</em>) que solo sirve para mostrar el aviso.</p>
   <p>Según la guía de la AEPD sobre cookies (actualizada en julio de 2023), el almacenamiento técnico y el de preferencias que pides tú quedan exceptuados del consentimiento. Aun así, te lo contamos aquí. Puedes borrarlo todo en <a href="/es/progreso/">Mi progreso</a> o desde los ajustes de tu navegador. [Pendiente de confirmar en la revisión jurídica.]</p>
+
+  {turnstile && <><h2>Protección contra robots</h2><p>Los formularios que envían datos (cuenta, tutor y corrector) cargan Cloudflare Turnstile, un servicio de terceros que comprueba que eres una persona. Puede usar almacenamiento técnico del navegador solo para ese fin de seguridad, que está exceptuado del consentimiento. No se usa para publicidad.</p></>}
 
   <h2>Estadísticas sin cookies</h2>
   <p>Vercel Web Analytics no guarda cookies ni datos en tu dispositivo. Detalles en la <a href="/es/privacidad/">política de privacidad</a>, apartado 3.2.</p>

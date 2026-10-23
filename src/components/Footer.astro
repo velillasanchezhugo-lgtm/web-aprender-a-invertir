@@ -44,12 +44,13 @@ const year = new Date().getFullYear();
           <li><a href="/es/privacidad/">Privacidad</a></li>
           <li><a href="/es/cookies/">Cookies</a></li>
           <li><a href="/es/condiciones/">Condiciones</a></li>
+          <li><a href="/es/accesibilidad/">Accesibilidad</a></li>
           <li><a href="/es/contacto/">Contacto</a></li>
           {adsActive && <li><button type="button" class="linklike" id="privacy-settings">Configurar privacidad</button></li>}
         </ul>
       </nav>
     </div>
-    <p class="disclaimer">Contenido educativo general: no tiene en cuenta tu situación personal y no es asesoramiento financiero, fiscal ni jurídico.{inv && ' Invertir conlleva riesgo de pérdida, incluida la del capital. Rentabilidades pasadas no garantizan resultados futuros.'} umotion Academy no está afiliada a Anthropic ni a OpenAI.</p>
+    <p class="disclaimer">Contenido educativo general: no tiene en cuenta tu situación personal y no es asesoramiento financiero, fiscal ni jurídico.{inv && ' Invertir conlleva riesgo de pérdida, incluida la del capital. Rentabilidades pasadas no garantizan resultados futuros.'} umotion Academy no está afiliada a Anthropic, a OpenAI ni a ninguna entidad financiera. Claude, ChatGPT y las demás marcas citadas pertenecen a sus titulares y se nombran solo para identificar sus productos.</p>
     <p class="fine">© {year} {SITE.name} · {SITE.parent}.{!SITE.indexable && ' Versión prototipo, no indexada.'}</p>
   </div>
 </footer>

@@ -10,7 +10,9 @@
     "preview": "astro preview",
     "test": "node --test --experimental-strip-types \"tests/**/*.test.ts\"",
     "check:content": "node scripts/content-check.mjs",
-    "verify": "npm run test && npm run check:content && npm run build",
+    "check:deps": "node scripts/check-deps.mjs",
+    "audit:deps": "npm audit --omit=dev --audit-level=critical",
+    "verify": "npm run test && npm run check:content && npm run check:deps && npm run build",
     "audit:browser": "node tests/e2e/audit.mjs && node tests/e2e/academy.mjs && node tests/e2e/adaptive.mjs && node tests/e2e/curriculum.mjs && node tests/e2e/drawer.mjs && node tests/e2e/claude.mjs && node tests/e2e/progress.mjs",
     "og": "python3 scripts/assets/make-og.py"
   },
@@ -28,6 +30,6 @@
   },
   "devDependencies": {
     "axe-core": "^4.10.3",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.3.2"
   }
 }

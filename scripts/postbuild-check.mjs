@@ -30,7 +30,7 @@ for (const f of html) {
   const raw = readFileSync(f, 'utf8');
   const scripts = inlineScripts(raw);
   inlineCount += scripts.length;
-  const withCsp = injectMeta(raw, pagePolicy({ scripts, ads: adsEnabled, supabaseUrl }));
+  const withCsp = injectMeta(raw, pagePolicy({ scripts, ads: adsEnabled, supabaseUrl, turnstile: !!process.env.PUBLIC_TURNSTILE_SITE_KEY }));
   if (withCsp === null) errors.push(`${route}: sin <meta charset>; no se ha podido insertar la CSP`);
   else if (withCsp !== raw) writeFileSync(f, withCsp);
   const s = withCsp ?? raw;

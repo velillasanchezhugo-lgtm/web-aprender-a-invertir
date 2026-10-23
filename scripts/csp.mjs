@@ -32,6 +32,9 @@ export const ADS_FRAME = [
   'https://*.adtrafficquality.google',
 ];
 
+/** Cloudflare Turnstile (anti-robots opcional): solo con PUBLIC_TURNSTILE_SITE_KEY. Script e iframe del mismo origen. */
+export const TURNSTILE = ['https://challenges.cloudflare.com'];
+
 /** Techo para la cuenta: proyectos de Supabase en su dominio estándar. Un dominio propio de Supabase exige añadirlo aquí y en vercel.json. */
 export const SUPABASE_CEILING = ['https://*.supabase.co', 'wss://*.supabase.co'];
 
@@ -61,15 +64,17 @@ export function originOf(url) {
 /**
  * Política estricta de una página. `scripts`: contenidos en línea de la página.
  * `ads`: publicidad activa. `supabaseUrl`: PUBLIC_SUPABASE_URL de la compilación (vacío si no hay cuentas).
+ * `turnstile`: hay clave de sitio de Cloudflare Turnstile.
  */
-export function pagePolicy({ scripts = [], ads = false, supabaseUrl = '' } = {}) {
+export function pagePolicy({ scripts = [], ads = false, supabaseUrl = '', turnstile = false } = {}) {
   const hashes = [...new Set(scripts.map(sha256))].sort();
   const sb = originOf(supabaseUrl);
   const connect = ["'self'", ...(sb ? [sb, sb.replace(/^https:/, 'wss:')] : []), ...(ads ? ADS_CONNECT : [])];
+  const frames = [...(ads ? ADS_FRAME : []), ...(turnstile ? TURNSTILE : [])];
   return [
-    `script-src 'self' ${[...hashes, ...(ads ? ADS_SCRIPT : [])].join(' ')}`.trim(),
+    `script-src 'self' ${[...hashes, ...(ads ? ADS_SCRIPT : []), ...(turnstile ? TURNSTILE : [])].join(' ')}`.trim(),
     `connect-src ${connect.join(' ')}`,
-    `frame-src ${ads ? ADS_FRAME.join(' ') : "'none'"}`,
+    `frame-src ${frames.length ? frames.join(' ') : "'none'"}`,
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -80,12 +85,12 @@ export function pagePolicy({ scripts = [], ads = false, supabaseUrl = '' } = {})
 export function headerPolicy() {
   return [
     "default-src 'self'",
-    `script-src 'self' 'unsafe-inline' ${ADS_SCRIPT.join(' ')}`,
+    `script-src 'self' 'unsafe-inline' ${[...ADS_SCRIPT, ...TURNSTILE].join(' ')}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
     `connect-src 'self' ${[...SUPABASE_CEILING, ...ADS_CONNECT].join(' ')}`,
-    `frame-src ${ADS_FRAME.join(' ')}`,
+    `frame-src ${[...ADS_FRAME, ...TURNSTILE].join(' ')}`,
     "worker-src 'self'",
     "manifest-src 'self'",
     "media-src 'self'",

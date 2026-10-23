@@ -67,7 +67,8 @@ const prototype = !SITE.indexable;
     try { var saved = localStorage.getItem('uacademy:theme'); if (saved === 'dark' || saved === 'light') t = saved; } catch (e) {}
     document.documentElement.dataset.theme = t;
   </script>
-  {ld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+  {/* JSON-LD: «<» se escapa para que un dato nunca pueda cerrar la etiqueta <script>. */}
+  {ld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj).replace(/</g, "\\u003c")} />)}
   <Consent allowAds={allowAds} />
   <script is:inline>
     // Analítica de Vercel sin cookies: se envía solo la ruta, nunca los parámetros (búsquedas, preguntas del tutor…).
