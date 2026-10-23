@@ -31,7 +31,7 @@ questions:
     q: "Abres el modo de voz y no ves el botón de la cámara. ¿Qué es lo más probable?"
     options: ["Tu móvil está roto", "Esa opción depende del plan, de la app y del tipo de voz que tengas elegido", "ChatGPT ya no tiene voz"]
     answer: 1
-    explain: "Compartir vídeo o pantalla solo está en algunas cuentas, en la app del móvil y con ciertos ajustes de voz. Pensar en una avería tienta, pero es una cuestión de opciones."
+    explain: "Compartir vídeo o pantalla solo está en algunas cuentas, en la app del móvil y con ciertas experiencias de voz. Pensar en una avería tienta, pero es cuestión de opciones."
 tips:
   - "Pide respuestas cortas: escuchar una lista de diez puntos cansa mucho más que leerla."
   - "En sitios con gente, recuerda que los demás oyen lo que preguntas y lo que te contesta."
@@ -64,21 +64,19 @@ sources: [openai-ayuda, openai-privacidad]
 
 ## La idea
 
-Con el **modo de voz** hablas con ChatGPT y te contesta en voz alta, como en una llamada. Puedes interrumpirle y seguir la conversación con naturalidad.
+Con el **modo de voz** hablas con ChatGPT y te contesta en voz alta, como en una llamada. Puedes interrumpirle y seguir.
 
-Lo que conviene saber:
+- **Dónde está.** En la app del móvil, en la del ordenador y en la web, desde el icono de voz junto a donde escribes. Gratis y de pago, con límites de uso que cambian.
+- **Hay varias experiencias de voz.** En la configuración eliges la experiencia y la voz. Las opciones dependen del plan, del país y de la versión de la app.
+- **Cámara y pantalla.** En la app del móvil (iOS y Android), algunas cuentas de pago pueden enseñar a ChatGPT lo que ve la cámara o lo que hay en la pantalla. Solo funciona con algunas experiencias de voz (no con la más reciente, «Live») y tiene límites de uso.
 
-- **Dónde está.** En la app del móvil y en la web, desde el icono de voz junto a donde escribes. Está en los planes gratis y de pago, con límites de uso que cambian.
-- **Hay varios tipos de voz.** En la configuración puedes elegir la experiencia de voz y la voz que prefieras. Las opciones dependen del plan, del país y de la versión de la app.
-- **Cámara y pantalla.** En la app del móvil (iOS y Android), algunas cuentas de pago pueden enseñar a ChatGPT lo que ve la cámara o lo que hay en la pantalla durante la conversación. Solo funciona con algunos tipos de voz y tiene límites de uso. Si no ves la opción, no la tienes activa.
+**Usos que funcionan:** cocinar o hacer bricolaje con las manos ocupadas, ensayar una entrevista, practicar un idioma.
 
-**Usos que funcionan:** cocinar o hacer bricolaje con las manos ocupadas, ensayar una entrevista de trabajo, practicar un idioma, preguntar por un cartel o un aparato que tienes delante.
-
-**Cuidado con lo que muestras.** Lo que sale en la cámara o en la pantalla llega a ChatGPT: cartas, DNI, notificaciones, caras de otras personas. Aparta o cierra lo que no quieras compartir antes de empezar.
+**Cuidado con lo que muestras.** Lo que sale en la cámara o en la pantalla llega a ChatGPT: cartas, DNI, notificaciones, caras de otras personas. Apártalo o ciérralo antes.
 
 ## En la práctica
 
-1. Abre el modo de voz y habla con frases completas, como a una persona.
+1. Habla con frases completas, como a una persona.
 2. Pide **respuestas cortas** para escucharlas bien.
 3. Si vas a enseñar algo, encuadra solo eso y di qué es.
 4. Para lo importante (medicinas, electricidad, gas), comprueba la respuesta en el manual, el envase o con un profesional.

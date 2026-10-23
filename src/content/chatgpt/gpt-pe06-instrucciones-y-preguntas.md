@@ -24,13 +24,13 @@ questions:
   - type: choice
     id: gpt-pe06-q2
     q: "Joaquín tiene en sus instrucciones personalizadas «respuestas cortas», pero hoy necesita un informe largo y detallado. ¿Qué hace?"
-    options: ["Borra sus instrucciones y las vuelve a escribir mañana", "Se lo dice en ese chat: «Hoy necesito una respuesta larga y detallada»", "Lo deja así: las instrucciones no se pueden saltar"]
+    options: ["Borra sus instrucciones y las escribe otra vez mañana", "Se lo dice en ese chat: «Hoy necesito una respuesta larga y detallada»", "Lo deja así: las instrucciones no se pueden saltar"]
     answer: 1
     explain: "Lo que pides en el chat suele mandar sobre la preferencia general. Borrarlas tienta porque parece lo seguro, pero es trabajo de más. Si un día no quieres ninguna, se pueden desactivar en la personalización."
   - type: choice
     id: gpt-pe06-q3
     q: "Elena repite en casi todos sus chats «soy profesora de secundaria, respuestas cortas y sin emojis». ¿Qué le conviene?"
-    options: ["Seguir escribiéndolo en cada chat", "Ponerlo en las instrucciones personalizadas, sin datos personales que no hagan falta", "Poner su nombre completo, el instituto y su teléfono para que la conozca mejor"]
+    options: ["Seguir escribiéndolo en cada chat", "Ponerlo en las instrucciones personalizadas, sin datos que no hagan falta", "Añadir su nombre, su instituto y su teléfono para que la conozca mejor"]
     answer: 1
     explain: "Lo que vale para casi todo va en las instrucciones. Dar más datos tienta para «personalizar», pero su nombre o su teléfono no mejoran las respuestas."
 tips:
@@ -66,13 +66,13 @@ sources: [openai-ayuda, openai-model-spec]
 
 Tres hábitos cambian la conversación:
 
-**1. «Hazme preguntas antes de responder».** Si no sabes qué contar, deja que ChatGPT te lo pregunte. Pon un límite («hasta cinco preguntas, de una en una») para no eternizarlo.
+**1. «Hazme preguntas antes de responder».** Si no sabes qué contar, deja que ChatGPT pregunte, con un límite («hasta cinco, de una en una»).
 
 **2. «Dime los fallos».** Los asistentes de IA tienden a darte la razón, sobre todo si preguntas «¿verdad que es buena idea?»: es la **adulación**. OpenAI dice en sus normas para el modelo que quiere evitarla, pero ayuda pedirlo: «¿qué estoy pasando por alto?». Lo verás a fondo en «Usarlo con cabeza».
 
 **3. Instrucciones personalizadas.** Un campo de la **personalización**, en la configuración, donde escribes una vez qué debe saber de ti y cómo quieres que responda. Se aplican a tus chats, también a los ya empezados, en el plan gratis y en los de pago. En un proyecto con instrucciones propias, mandan las del proyecto.
 
-En el mismo sitio puedes elegir una **personalidad**, el estilo y tono base (más directo, más cercano, más eficiente…), y ajustar rasgos como la calidez o los emojis. Cambia cómo suena, no lo que sabe.
+Ahí mismo eliges una **personalidad**, el estilo y tono base (más directo, más cercano, más eficiente…), y ajustas rasgos como la calidez o los emojis. Cambia cómo suena, no lo que sabe.
 
 Pon tu situación general, el tono, la longitud y estos hábitos; no pongas DNI, dirección, salud ni cuentas. OpenAI puede usar lo que escribes ahí para mejorar sus modelos salvo que lo desactives en los **controles de datos**.
 
