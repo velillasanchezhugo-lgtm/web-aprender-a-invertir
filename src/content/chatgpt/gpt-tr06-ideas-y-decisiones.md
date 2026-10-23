@@ -7,7 +7,7 @@ order: 406
 skills: [gpt-pensar, gpt-limites]
 terms: [lluvia-de-ideas, abogado-del-diablo, matriz-de-decision, adulacion]
 hook: "Le cuentas a ChatGPT la decisión que llevas semanas pensando y te dice que tu idea es estupenda. ¿Te quedas más tranquilo o más preocupado?"
-takeaway: "ChatGPT abre opciones muy bien y juzga mal tus ideas: tiende a darte la razón. Pregunta de forma neutra, pídele que te lleve la contraria y pon tú los criterios. La decisión es tuya."
+takeaway: "ChatGPT abre opciones muy bien, pero tiende a darte la razón. Pregunta de forma neutra, pídele que te lleve la contraria y pon tú los criterios. La decisión es tuya."
 scenario:
   kind: empresa
   label: Caso práctico
@@ -71,7 +71,7 @@ ChatGPT sirve para pensar en dos fases:
 1. **Abrir: la lluvia de ideas**, es decir, sacar muchas ideas rápido sin juzgarlas. La mayoría no valdrán; con dos buenas basta.
 2. **Cerrar: poner a prueba.** Le das **tus criterios** por orden y te prepara una **matriz de decisión**, una tabla que puntúa cada opción según esos criterios. Después le pides que haga de **abogado del diablo**: que defienda la postura contraria para encontrar los fallos.
 
-Lo primero que debes saber: ChatGPT tiende a la **adulación**, a darte la razón y a ver bien lo que propones. OpenAI lo ha reconocido y trabaja para reducirlo, pero sigue pasando. Y empeora con la forma de preguntar:
+Lo más importante: ChatGPT tiende a la **adulación**, a darte la razón. OpenAI lo ha reconocido y trabaja para reducirlo, pero sigue pasando, sobre todo según cómo preguntes:
 
 - «¿Verdad que X es buena idea?» ya lleva la respuesta dentro.
 - «¿Qué opciones tengo y qué tiene cada una en contra?» es neutra.
@@ -81,13 +81,10 @@ Además, **no sabe lo que solo tú sabes**: tu dinero, tu energía, tu familia. 
 
 ## En la práctica
 
-1. **Abre:** pide muchas ideas variadas, sin filtrar.
-2. **Elige** dos o tres y escribe tus criterios por orden.
-3. **Compara** en una tabla y pregunta qué datos faltan.
-4. **Ataca** tu favorita, mejor en un chat nuevo.
-5. **Decide** tú y anota por qué.
-
-> Prueba: «Soy administrativa en una empresa de 25 personas y me han pedido ideas para gastar menos papel. Dame 20 ideas variadas, de las más fáciles a las más ambiciosas, sin juzgarlas todavía.»
+1. **Abre:** «Dame 20 ideas para gastar menos papel en la oficina, sin juzgarlas».
+2. **Compara** dos o tres con tus criterios en una tabla.
+3. **Ataca** tu favorita en un chat nuevo.
+4. **Decide** tú y anota por qué.
 
 > Prueba: «Dudo entre seguir en el turno de mañana o pasar al de tarde en mi trabajo de cajera. Antes de opinar, hazme 5 preguntas sobre mi situación. Después dame los argumentos en contra de la opción que yo prefiera.»
 

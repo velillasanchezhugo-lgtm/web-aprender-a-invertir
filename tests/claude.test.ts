@@ -87,6 +87,9 @@ test('reconoce frases naturales de principiante para cada pieza', () => {
   // Formato por longitud o canal
   ok('Escríbeme un whatsapp cortito y amable.', 'formato');
   ok('Hazlo breve, que lo lea en un minuto.', 'formato');
+  ok('Acórtalo a la mitad.', 'formato');
+  ok('Es para mandar a tres fontaneros.', 'publico');
+  ok('Si no lo encuentras, dímelo.', 'verificar');
   // Límites con otros verbos
   ok('Compara los cursos, pero no me apuntes a nada ni pagues.', 'limites');
   ok('Prepara el menú. No compres nada.', 'limites');

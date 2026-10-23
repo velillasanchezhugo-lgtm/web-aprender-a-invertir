@@ -23,12 +23,12 @@ questions:
     explain: "El cálculo suele estar bien, pero puede haber leído mal el archivo: filas de menos, una columna equivocada, celdas vacías. Preguntar «¿estás seguro?» tienta, pero casi siempre contesta que sí."
   - type: truefalse
     id: gpt-fu09-q2
-    q: "Para analizar una hoja, ChatGPT puede escribir y ejecutar código por su cuenta, sin que tú sepas programar."
+    q: "Para analizar una hoja, ChatGPT puede escribir y ejecutar código por su cuenta sin que tú sepas programar."
     answer: true
-    explain: "Cuando trabaja con datos, ChatGPT escribe y ejecuta código (en Python) para calcular y dibujar gráficos. Tú solo pides lo que necesitas en español."
+    explain: "Para muchas tareas con datos, ChatGPT escribe y ejecuta pequeños programas (en Python) para calcular y dibujar gráficos. Tú pides lo que necesitas en español; pensar que hace falta programar tienta, pero no es así."
   - type: choice
     id: gpt-fu09-q3
-    q: "Patricia quiere analizar una hoja con nombres, DNI y teléfonos de los socios de su asociación. ¿Qué hace antes de subirla?"
+    q: "Milagros quiere analizar una hoja con nombres, DNI y teléfonos de los socios de su asociación. ¿Qué hace antes de subirla?"
     options: ["La sube tal cual: es para un análisis", "Borra o cambia las columnas con datos personales que no necesita", "La convierte en PDF para que no se vean"]
     answer: 1
     explain: "Para contar socios o cuotas no hacen falta el DNI ni el teléfono. Pasarlo a PDF tienta, pero los datos siguen ahí. Sube solo lo necesario."
@@ -45,8 +45,11 @@ action:
   check: He analizado una hoja con ChatGPT y he comprobado dos cifras
 practice:
   task: "Llevas en una hoja de cálculo los gastos de tu comunidad de vecinos de este año y tienes que presentarlos en la junta. Escribe la petición al subir el archivo."
-  require: [formato, verificar]
+  require: [verificar]
   extra:
+    - label: "Pedir una tabla, un gráfico o un archivo"
+      any: ["tabla", "grafico", "excel", "archivo", "descargar"]
+      hint: "Di qué resultado quieres: una tabla, un gráfico de barras o un Excel para descargar."
     - label: "Pedir que diga cuántas filas ha leído o el total"
       any: ["filas", "total", "cuadra", "cuantos registros"]
       hint: "Pide que te diga cuántas filas ha leído y el total para comprobarlo con otra fuente."
@@ -70,7 +73,7 @@ Con los datos, ChatGPT hace **análisis de datos**: escribe y ejecuta por su cue
 
 - **Resumir y contar**: totales, medias, lo que más se repite.
 - **Ordenar y filtrar**: por mes, por categoría, de mayor a menor.
-- **Hacer gráficos**: de barras, de líneas, de sectores.
+- **Hacer gráficos**: de barras, de líneas, de sectores; algunos, interactivos.
 - **Crear archivos** para descargar: una hoja limpia, una tabla, un PDF.
 
 **Lo importante: comprobar.** Las cuentas suelen salir bien, pero el fallo está en **cómo lee el archivo**: se salta una pestaña, confunde columnas, toma una celda vacía por cero o lee mal un PDF escaneado. Por eso:

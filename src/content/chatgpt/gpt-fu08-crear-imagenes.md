@@ -11,8 +11,8 @@ takeaway: Una buena imagen empieza por una buena descripción (qué sale, estilo
 scenario:
   kind: producto
   label: Caso práctico
-  title: Las tazas de Lorena
-  body: "Lorena vende tazas de cerámica por internet. Sube a ChatGPT una foto de una taza hecha en su cocina y pide: «pon la taza sobre una mesa de madera clara, con luz de mañana, sin cambiar la taza». La primera versión cambia el color del asa. Ella responde: «deja el asa exactamente como en mi foto». La segunda le sirve para la web."
+  title: Las tazas de Vega
+  body: "Vega vende tazas de cerámica por internet. Sube a ChatGPT una foto de una taza hecha en su cocina y pide: «pon la taza sobre una mesa de madera clara, con luz de mañana, sin cambiar la taza». La primera versión cambia el color del asa. Ella responde: «deja el asa exactamente como en mi foto». La segunda le sirve para la web."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -23,7 +23,7 @@ questions:
     explain: "Pedir un cambio concreto conserva lo que ya te gustaba. Empezar de cero tienta, pero puede cambiar todo lo demás. Y revisa siempre el texto: las imágenes generadas a veces lo escriben mal."
   - type: choice
     id: gpt-fu08-q2
-    q: "Sergio quiere una foto realista de su alcaldesa firmando un contrato que nunca firmó, para gastar una broma en el grupo del pueblo. ¿Qué es lo correcto?"
+    q: "Fede quiere una foto realista de su alcaldesa firmando un contrato que nunca firmó, para gastar una broma en el grupo del pueblo. ¿Qué es lo correcto?"
     options: ["Hacerla: si ChatGPT la crea, está permitido", "No hacerla: una imagen falsa realista de una persona real puede engañar y dañarla", "Hacerla y quitarle la marca de procedencia"]
     answer: 1
     explain: "Es un ultrafalso de una persona real, aunque sea en broma. Que la herramienta lo genere tienta a pensar que está permitido, pero quien la difunde responde de ella."
@@ -45,8 +45,11 @@ action:
   check: He creado y corregido una imagen con ChatGPT
 practice:
   task: "Das clases de yoga en un centro cívico de Alicante y quieres anunciar en Instagram el nuevo horario de otoño. Escribe la petición para crear la imagen."
-  require: [formato, limites]
+  require: [limites]
   extra:
+    - label: "Decir el formato de la imagen"
+      any: ["cuadrad", "vertical", "horizontal", "formato", "tamano", "apaisad", "historia"]
+      hint: "Di el formato: cuadrado para una publicación, vertical para una historia o un cartel."
     - label: "Dar el texto exacto"
       any: ["texto", "que ponga", "que diga", "titulo"]
       hint: "Escribe entre comillas el texto exacto que debe salir: si no, lo inventará o lo escribirá mal."
@@ -67,26 +70,26 @@ sources: [openai-ayuda, openai-uso]
 
 ## La idea
 
-ChatGPT puede **crear imágenes** a partir de una descripción y **editar** una imagen que le subas o una que haya creado. Está en los planes gratis y de pago, con un límite de uso propio que es más amplio en los de pago.
+ChatGPT puede **crear imágenes** a partir de una descripción y **editar** una que le subas o que haya creado. Gratis y de pago, con un límite de uso propio, más amplio en los de pago.
 
 Lo que conviene saber:
 
 - **Cuanto más concreto, mejor.** Di qué sale, el estilo (foto, ilustración, acuarela), los colores, el formato (cuadrado, vertical) y, si lleva texto, **el texto exacto** entre comillas.
 - **Se corrige por partes.** Pide un cambio cada vez y di qué debe quedar igual.
 - **Revisa el texto.** A veces sale con letras cambiadas o faltas.
-- **Personas reales: más límites.** ChatGPT aplica restricciones más estrictas cuando sale alguien real, y puede negarse. Usar la cara de alguien sin su permiso, o fabricar una imagen falsa que parezca real (un **deepfake** o ultrafalso), puede dañarle y meterte en problemas.
+- **Personas reales: más límites.** ChatGPT es más estricto cuando sale alguien real, y puede negarse. Usar la cara de alguien sin permiso, o fabricar una imagen falsa que parezca real (un **deepfake** o ultrafalso), puede dañarle y meterte en problemas.
 - **Derechos.** Evita copiar personajes, logotipos u obras de otros: tienen **derechos de autor** o de marca.
-- **Marca de procedencia.** OpenAI añade a sus imágenes **metadatos C2PA** (una etiqueta interna que dice que se hizo con su herramienta) y una marca de agua invisible. Ayudan, pero pueden perderse.
+- **Marca de procedencia.** OpenAI añade a sus imágenes **metadatos C2PA** (una etiqueta interna que dice con qué herramienta se hizo) y una marca de agua invisible en los píxeles (SynthID). Ayudan, pero pueden perderse o debilitarse.
 
 ## En la práctica
 
-1. Pide la imagen desde el chat o desde el menú de herramientas (el botón «+»).
+1. Pídela en el chat o desde el menú de herramientas (el botón «+»).
 2. Para editar, sube tu foto y explica el cambio.
-3. Corrige con frases como «cambia solo…, deja el resto igual».
-4. Descárgala y revisa los detalles antes de usarla.
+3. Corrige con «cambia solo…, deja el resto igual».
+4. Descárgala y revisa los detalles.
 
-> Prueba: «Crea una invitación vertical para el cumpleaños de mi hija, que cumple 6 años. Estilo acuarela, con dinosaurios y globos en tonos pastel. El texto debe decir exactamente: “¡Lucía cumple 6! Sábado 14, a las 17:00”. Revisa que el texto no tenga faltas».
+> Prueba: «Crea una invitación vertical para el cumpleaños de mi hija, que cumple 6 años. Estilo acuarela, con dinosaurios y globos en tonos pastel. El texto debe decir exactamente: “¡Noa cumple 6! Sábado 14, a las 17:00”. Revisa que el texto no tenga faltas».
 
 ## Error frecuente
 
-Pedir algo vago («una imagen chula») y rehacerla diez veces. Dedica un minuto a describirla bien: ahorras intentos y uso del plan.
+Pedir algo vago («una imagen chula») y rehacerla diez veces. Un minuto describiéndola bien ahorra intentos.
