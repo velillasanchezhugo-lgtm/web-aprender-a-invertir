@@ -1,0 +1,3 @@
+[
+  {"id": "modo-estudio", "term": "Modo estudio", "short": "Opción de ChatGPT para estudiar: te guía con preguntas y pistas en vez de darte la respuesta hecha.", "def": "Modo de ChatGPT pensado para aprender, que en inglés se llama «Study and learn» y en español puede aparecer traducido. Te pregunta tu nivel y tu objetivo, explica por partes, te da pistas y te pone preguntas para comprobar lo que entiendes. Se activa y desactiva en cada conversación desde el menú de herramientas; aunque no lo uses, puedes pedir ese comportamiento con palabras.", "lesson": null, "level": 1}
+]
