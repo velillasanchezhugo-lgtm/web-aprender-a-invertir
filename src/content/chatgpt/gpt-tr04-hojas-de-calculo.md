@@ -18,8 +18,8 @@ questions:
   - type: choice
     id: gpt-tr04-q1
     q: "Ainhoa quiere analizar en su cuenta personal de ChatGPT un Excel de clientes de la empresa donde trabaja. ¿Qué hace primero?"
-    options: ["Lo sube: si desactiva que sus chats se usen para mejorar los modelos, no hay problema", "Pregunta en su empresa qué puede usar y, si le dejan, sube una copia sin datos de clientes", "Hace una captura de pantalla de la hoja para no subir el archivo"]
-    answer: 1
+    options: ["Pregunta en su empresa qué puede usar y, si le dejan, sube una copia sin datos de clientes", "Lo sube: si desactiva que sus chats se usen para mejorar los modelos, no hay problema", "Hace una captura de pantalla de la hoja para no subir el archivo"]
+    answer: 0
     explain: "Los datos de clientes no son suyos: decide la empresa. Desactivar ese ajuste tienta porque suena a solución, pero sigue compartiendo datos de otros sin permiso. Una captura lleva los mismos datos."
   - type: choice
     id: gpt-tr04-q2

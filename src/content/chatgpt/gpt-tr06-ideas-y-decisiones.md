@@ -29,8 +29,8 @@ questions:
   - type: choice
     id: gpt-tr06-q3
     q: "Tras ordenar con ChatGPT los pros y contras, la tabla dice que la opción B gana por poco, pero a ti algo no te convence. ¿Qué haces?"
-    options: ["Elijo B: los números son objetivos", "Busco qué me inquieta, reviso si los criterios son los míos y decido yo; si hay mucho en juego, consulto a un profesional", "Le pregunto a ChatGPT qué haría él"]
-    answer: 1
+    options: ["Busco qué me inquieta, reviso si los criterios son los míos y decido yo; si hay mucho en juego, consulto a un profesional", "Elijo B: los números son objetivos", "Le pregunto a ChatGPT qué haría él"]
+    answer: 0
     explain: "La tabla es tan buena como sus criterios, y tu inquietud suele señalar uno que falta. Elegir B tienta porque parece objetivo, pero los pesos los ha puesto alguien. Que ChatGPT elija es delegar lo que te toca."
 tips:
   - "Para la crítica, abre un chat nuevo: en la misma conversación ya sabe qué opción prefieres."

@@ -29,8 +29,8 @@ questions:
   - type: choice
     id: gpt-tr02-q3
     q: "Pides a ChatGPT que revise el aviso de un plazo. Propone cambiar «antes del 15 de mayo» por «en las próximas semanas» porque «suena más natural». ¿Qué haces?"
-    options: ["La aplico: si lo propone, será mejor", "La descarto y acepto solo las sugerencias que no cambian datos ni compromisos", "Borro todas las sugerencias y vuelvo a empezar"]
-    answer: 1
+    options: ["La aplico: si lo propone, será mejor", "Borro todas las sugerencias y vuelvo a empezar", "La descarto y acepto solo las sugerencias que no cambian datos ni compromisos"]
+    answer: 2
     explain: "Una fecha es información, no estilo: quitarla cambia el aviso. Fiarse tienta porque la sugerencia viene explicada, pero el estilo no compensa perder el dato. Las demás pueden seguir siendo útiles."
 tips:
   - "Lee el texto en voz alta al final. Si una frase no la dirías nunca, vuelve a la tuya."

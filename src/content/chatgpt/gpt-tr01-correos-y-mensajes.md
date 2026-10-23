@@ -24,8 +24,8 @@ questions:
   - type: choice
     id: gpt-tr01-q2
     q: "Un proveedor se retrasa por tercera vez y estás muy enfadado. ¿Qué es lo más sensato?"
-    options: ["Pedir a ChatGPT que escriba ya el mensaje «con todo mi enfado»", "Darle los hechos y lo que necesitas, pedir un tono firme sin reproches y releer el borrador más tarde", "No decir nada para no estropear la relación"]
-    answer: 1
+    options: ["Darle los hechos y lo que necesitas, pedir un tono firme sin reproches y releer el borrador más tarde", "Pedir a ChatGPT que escriba ya el mensaje «con todo mi enfado»", "No decir nada para no estropear la relación"]
+    answer: 0
     explain: "Los hechos y una petición clara consiguen más que el enfado. Desahogarse tienta, pero un mensaje agresivo suele funcionar peor y queda por escrito."
   - type: truefalse
     id: gpt-tr01-q3

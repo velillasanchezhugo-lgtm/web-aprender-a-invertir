@@ -18,9 +18,9 @@ questions:
   - type: choice
     id: gpt-tr03-q1
     q: "Gonzalo es jefe de sala en un restaurante de una cadena. Le llega un manual de 60 páginas sobre alérgenos y solo tiene diez minutos. ¿Qué pide?"
-    options: ["«Resume este manual.»", "«Soy jefe de sala. Dime qué tiene que hacer el personal de sala al tomar nota y servir, en 8 puntos como máximo, con la página de cada uno.»", "«Dime si el manual es importante.»"]
-    answer: 1
-    explain: "La segunda dice quién lo lee, para qué y en qué formato, y pide páginas. «Resume este manual» tienta por rápida, pero mezclará cocina, almacén y sala."
+    options: ["«Resume este manual.»", "«Dime si el manual es importante.»", "«Soy jefe de sala. Dime qué tiene que hacer el personal de sala al tomar nota y servir, en 8 puntos como máximo, con la página de cada uno.»"]
+    answer: 2
+    explain: "La tercera dice quién lo lee, para qué y en qué formato, y pide páginas. «Resume este manual» tienta por rápida, pero mezclará cocina, almacén y sala."
   - type: truefalse
     id: gpt-tr03-q2
     q: "Si el resumen de ChatGPT no menciona una cláusula, es que el documento no la tiene."

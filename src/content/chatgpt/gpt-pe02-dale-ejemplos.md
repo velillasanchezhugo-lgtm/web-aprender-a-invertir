@@ -5,7 +5,7 @@ level: basico
 track: gpt-pedir
 order: 102
 skills: [gpt-ejemplos-formato]
-terms: [prompt, tono]
+terms: [tono]
 hook: "Pides a ChatGPT mensajes para recordar las citas de tu consulta y salen larguísimos y llenos de emojis. Tú escribes justo lo contrario. ¿Cómo se lo explicas sin escribir una página?"
 takeaway: Un ejemplo vale más que muchos adjetivos. Pega uno o dos textos como los que quieres, di qué tienen en común y, si ayuda, uno de lo que no quieres, marcado como tal.
 scenario:
@@ -63,7 +63,7 @@ sources: [openai-ayuda, openai-academy]
 
 ## La idea
 
-«Hazlo cercano pero profesional» deja mucho a la interpretación. **Un ejemplo** no: ChatGPT ve la longitud, las palabras, la estructura y el tono, y los imita.
+«Hazlo cercano pero profesional» deja mucho a la interpretación. **Un ejemplo** no: ChatGPT ve la longitud, las palabras, la estructura y el **tono** (cómo suena: cercano, seco, formal), y los imita.
 
 Tres formas de usar ejemplos:
 

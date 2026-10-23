@@ -18,9 +18,9 @@ questions:
   - type: choice
     id: gpt-tr05-q1
     q: "Iker es encargado de una tienda de muebles y tiene que presentar a su jefa los resultados de las rebajas en cinco minutos. ¿Qué petición le ayuda más?"
-    options: ["«Hazme una presentación sobre las rebajas.»", "«Tengo 5 minutos para contar a mi jefa las rebajas: ventas +12 %, más devoluciones y falta de sofás. Propón 4 diapositivas con título y tres frases, y las 3 preguntas que probablemente me hará.»", "«Escribe un discurso largo para impresionar a mi jefa.»"]
-    answer: 1
-    explain: "La segunda da tiempo, público, datos y formato, y prepara las preguntas. La primera tienta por sencilla, pero ChatGPT tendría que inventarse los resultados."
+    options: ["«Hazme una presentación sobre las rebajas.»", "«Escribe un discurso largo para impresionar a mi jefa.»", "«Tengo 5 minutos para contar a mi jefa las rebajas: ventas +12 %, más devoluciones y falta de sofás. Propón 4 diapositivas con título y tres frases, y las 3 preguntas que probablemente me hará.»"]
+    answer: 2
+    explain: "La tercera da tiempo, público, datos y formato, y prepara las preguntas. La primera tienta por sencilla, pero ChatGPT tendría que inventarse los resultados."
   - type: truefalse
     id: gpt-tr05-q2
     q: "Si usas ChatGPT para grabar o transcribir una reunión solo para ti, no hace falta avisar a los demás."

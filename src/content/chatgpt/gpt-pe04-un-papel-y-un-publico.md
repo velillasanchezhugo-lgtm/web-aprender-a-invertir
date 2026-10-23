@@ -5,7 +5,7 @@ level: basico
 track: gpt-pedir
 order: 104
 skills: [gpt-peticion]
-terms: [prompt, contexto-de-la-peticion]
+terms: [contexto-de-la-peticion]
 hook: "Vas a explicar a un grupo de jubilados cómo detectar un SMS falso del banco y ChatGPT te prepara un texto con «phishing», «URL» y «autenticación». ¿Qué le faltaba saber?"
 takeaway: "El papel le dice a ChatGPT desde dónde mirar; el público, a quién hablar. Juntos cambian el vocabulario, los ejemplos y el nivel, pero no le dan conocimientos nuevos."
 scenario:
@@ -64,7 +64,7 @@ sources: [openai-ayuda, openai-academy, openai-uso]
 
 ## La idea
 
-Dos frases cambian mucho una respuesta:
+Dos frases del **contexto** (lo que le cuentas para que acierte) cambian mucho una respuesta:
 
 - **El papel**: desde dónde mira ChatGPT. «Haz de profesor de autoescuela», «revisa esto como un cliente enfadado». Cambia qué destaca, qué critica y cómo lo dice.
 - **El público**: a quién va dirigido. «Para niños de 8 años», «para mi jefa, que tiene dos minutos». Cambia el vocabulario, los ejemplos y la longitud.
