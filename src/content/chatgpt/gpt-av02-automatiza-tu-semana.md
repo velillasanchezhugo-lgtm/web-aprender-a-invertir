@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: El aviso de los scouts de Inma
-  body: "Inma coordina un grupo scout de Logroño y cada viernes envía a las familias el aviso de la semana. Primero hizo el aviso a mano con ChatGPT tres semanas, hasta tener una petición que salía bien. Después la convirtió en una tarea programada para los jueves por la tarde, con el calendario de actividades pegado en la propia petición. Ella revisa el borrador, corrige alguna hora y lo envía."
+  body: "Inma coordina un grupo scout de Huesca y cada viernes envía a las familias el aviso de la semana. Primero hizo el aviso a mano con ChatGPT tres semanas, hasta tener una petición que salía bien. Después la convirtió en una tarea programada para los jueves por la tarde, con el calendario de actividades pegado en la propia petición. Ella revisa el borrador, corrige alguna hora y lo envía."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -29,11 +29,11 @@ questions:
     explain: "Un resumen solo prepara: si sale mal, no pasa nada. Enviar candidaturas sola tienta por cómodo, pero un error llega a una empresa con su nombre. Y sí: las tareas programadas repiten un encargo a la hora que elijas."
   - type: truefalse
     id: gpt-av02-q3
-    q: "Si creas una tarea programada dentro de un proyecto con archivos, la tarea puede leer esos archivos."
+    q: "Para que ChatGPT recuerde las normas y documentos de un solo tema, como tu reforma de casa, lo mejor es ponerlos en tus instrucciones personalizadas."
     answer: false
-    explain: "Según el centro de ayuda de OpenAI, una tarea creada en un proyecto no usa los archivos del proyecto. Tienta pensar que sí porque está dentro, pero si la tarea necesita un dato, ponlo en la propia petición."
+    explain: "Las instrucciones personalizadas se aplican a todos tus chats, así que mezclarías la reforma con todo lo demás. Tienta porque es lo más rápido, pero lo de un solo tema va en un proyecto, con sus archivos y sus instrucciones."
 tips:
-  - "Escribe la petición de la tarea como si ChatGPT no supiera nada de ti: no verá los archivos del proyecto."
+  - "Si usas una plantilla varias veces por semana, quizá merece una tarea programada; si la usas una vez al mes, déjala en tu kit."
   - "Empieza con una frecuencia baja, por ejemplo semanal, y súbela solo si de verdad lees el resultado."
 action:
   title: Dale su sitio a una petición repetida
@@ -72,7 +72,7 @@ Si haces lo mismo con ChatGPT cada semana, una parte se puede **dejar hecha**. P
 - **El contexto de un tema** (documentos, notas, reglas de ese asunto) → un **proyecto**: lo tienes a mano en cada chat de ese tema.
 - **Una tarea concreta que haces igual** (corregir textos con tu estilo, preparar presupuestos) → una **plantilla**: la petición ya probada, guardada en tu kit con huecos para rellenar. Antes se usaban los GPTs propios, pero en las cuentas personales ya no se pueden crear nuevos.
 - **El «cuándo»** (cada lunes, cada mañana) → una **tarea programada**: ChatGPT ejecuta el encargo solo, con la frecuencia que elijas, y te avisa.
-- **Varios pasos en webs o apps** → **ChatGPT Work** (antes, el agente de ChatGPT), siempre supervisado.
+- **Varios pasos en webs o apps** → **ChatGPT Work**, que sustituye al antiguo agente, siempre supervisado.
 
 Las tareas programadas están en todos los planes, también el gratis, pero los más básicos tienen menos opciones de frecuencia y de hora. Compruébalo en la página de planes.
 
@@ -89,7 +89,7 @@ Y usa **lo más sencillo que funcione**: una plantilla antes que un proyecto, un
 
 Para una tarea programada, pídeselo en un chat o desde su apartado propio de la barra lateral, y di la frecuencia y el momento. Escribe en la petición todo lo que necesita: no verá los archivos de tus proyectos.
 
-> Prueba: «Cada lunes por la mañana, busca las ayudas al alquiler para jóvenes con plazo abierto en [MI COMUNIDAD AUTÓNOMA] y resúmelas en una tabla con nombre, plazo y enlace a la web oficial. Solo prepáralo: no rellenes ni envíes nada. Si no encuentras novedades, dímelo en una línea.»
+> Prueba: «El día 1 de cada mes, prepárame la lista de los recibos que me cobran ese mes a partir de esta tabla: [PEGA TUS RECIBOS, SIN NÚMEROS DE CUENTA]. Ordénalos por fecha, con el importe aproximado, y marca los que suelen cambiar de precio para que los mire en el banco. Solo prepáralo: no entres en ninguna web ni pagues nada.»
 
 ## Error frecuente
 

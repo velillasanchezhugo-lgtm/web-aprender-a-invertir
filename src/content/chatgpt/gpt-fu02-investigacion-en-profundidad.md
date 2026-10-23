@@ -1,6 +1,6 @@
 ---
 title: Investigación en profundidad
-description: Qué hace la investigación en profundidad (deep research) de ChatGPT, qué preguntas le van bien, cuánto tarda y cómo leer su informe con espíritu crítico.
+description: Qué hace la investigación en profundidad (deep research) de ChatGPT, qué preguntas le van bien y cómo leer su informe con espíritu crítico.
 level: basico
 track: gpt-funciones
 order: 202
@@ -17,15 +17,15 @@ scenario:
 questions:
   - type: choice
     id: gpt-fu02-q1
-    q: "¿Para cuál de estas preguntas compensa una investigación en profundidad?"
-    options: ["¿A qué hora cierra hoy la farmacia de mi calle?", "Comparar ayudas, requisitos y plazos para rehabilitar un edificio en mi comunidad autónoma", "Traducir un correo al inglés"]
+    q: "Mónica sale de casa en diez minutos y quiere saber a qué hora cierra hoy su oficina de Correos. ¿Usa la investigación en profundidad?"
+    options: ["Sí: así tendrá un informe completo", "No: para un dato suelto basta una búsqueda normal", "Sí, y se salta el plan para que vaya más rápido"]
     answer: 1
-    explain: "Es una pregunta con muchas piezas y fuentes. Para un dato suelto basta una búsqueda normal: lanzar una investigación tienta por ser «más completa», pero tarda mucho y gasta un uso limitado de tu plan."
+    explain: "La investigación tarda y gasta un uso limitado de tu plan. Tienta por ser «más completa», pero para un horario basta una búsqueda y abrir la web oficial."
   - type: truefalse
     id: gpt-fu02-q2
-    q: "Como el informe trae muchas fuentes, no hace falta revisar ninguna."
-    answer: false
-    explain: "Muchas citas no garantizan que estén bien leídas: puede mezclar regiones, fechas o fuentes flojas. Revisa al menos las de los datos que vayas a usar."
+    q: "Puedes pedir que la investigación dé prioridad a unas webs concretas, como las de organismos oficiales, o que se limite a ellas."
+    answer: true
+    explain: "Puedes elegir webs y nombrarlas en el encargo. Tienta pensar que busca donde quiere, pero decirle qué fuentes prefieres mejora mucho el informe."
   - type: choice
     id: gpt-fu02-q3
     q: "Antes de empezar, ChatGPT te enseña el plan de investigación y no incluye lo que más te importa. ¿Qué haces?"
@@ -68,9 +68,10 @@ La **investigación en profundidad** (en inglés, *deep research*) es un modo en
 
 Cómo funciona:
 
-- **Primero, un plan.** ChatGPT propone qué va a investigar y puedes cambiarlo. Durante el trabajo también puedes corregir el rumbo.
-- **Tarda.** Según OpenAI, entre unos minutos y media hora. Te avisa al terminar.
-- **El informe** trae índice, la lista de fuentes usadas y el registro de lo que ha hecho. Puedes descargarlo, por ejemplo en PDF o Word.
+- **Primero, un plan.** ChatGPT propone qué va a investigar (a veces con preguntas) y puedes cambiarlo. Mientras trabaja, puedes seguir su avance y corregir el rumbo.
+- **Puedes elegir webs**: limitarla a unas concretas o darles prioridad.
+- **Tarda** bastante más que una respuesta normal, a menudo varios minutos. Te avisa al terminar.
+- **El informe** trae las fuentes citadas y se puede descargar, por ejemplo en PDF, Word o Markdown.
 - **Disponibilidad.** Está en el plan gratis de forma **limitada** y con más usos en los de pago. El número cambia: míralo en la página de planes.
 
 **Cuándo sí:** preguntas con muchas piezas (comparar opciones, reunir requisitos, ver qué se sabe de un tema). **Cuándo no:** un dato suelto, que es cosa de la búsqueda normal.
@@ -79,11 +80,11 @@ Cómo funciona:
 
 1. Ábrela desde el menú de herramientas del chat (el botón «+») o escribiendo «/».
 2. Escribe un encargo completo: tu situación, qué quieres saber, el alcance (lugar, fechas), las fuentes que prefieres y cómo quieres el informe.
-3. Revisa el plan antes de que empiece.
+3. Revisa el plan antes de que empiece. Si conoces las webs buenas, dale prioridad a esas.
 4. Al leer el informe, **comprueba las citas de lo que vayas a usar** y busca lo que mezcla: otra región, otra fecha, una opinión presentada como dato.
 
 > Prueba: «Quiero estudiar un ciclo de FP de grado superior en Andalucía relacionado con la informática. Investiga qué ciclos hay, qué salidas tienen y qué institutos públicos de Sevilla los ofrecen. Usa fuentes oficiales. Dame una tabla comparativa y dime qué datos no has podido confirmar».
 
 ## Error frecuente
 
-Lanzar una pregunta de una línea. Sin alcance ni fuentes, el informe sale largo, pero genérico.
+Lanzar una pregunta de una línea: el informe sale largo, pero genérico.

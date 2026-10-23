@@ -1,5 +1,5 @@
 ---
-title: Canvas y bloques de escritura
+title: "Bloques de escritura: editar por partes"
 description: Cómo escribir y editar un texto con ChatGPT por partes, en un espacio editable, en lugar de pedir que lo rehaga entero cada vez.
 level: basico
 track: gpt-funciones
@@ -7,7 +7,7 @@ order: 203
 skills: [gpt-canvas, gpt-escribir]
 terms: [canvas, bloque-de-escritura]
 hook: "Le pides a ChatGPT que cambie una sola frase de tu carta y te devuelve la carta entera, con otros tres cambios que no querías. ¿Cómo se trabaja un texto por partes?"
-takeaway: Para un texto que vas a pulir, trabájalo en un espacio editable (hoy, los bloques de escritura) y pide cambios sobre una parte concreta, diciendo qué no debe tocar.
+takeaway: Para un texto que vas a pulir, trabájalo en un bloque de escritura (lo que antes hacía canvas) y pide cambios sobre una parte concreta, diciendo qué no debe tocar.
 scenario:
   kind: producto
   label: Caso práctico
@@ -34,7 +34,7 @@ questions:
     explain: "Según el centro de ayuda de OpenAI, en un chat temporal las ediciones pueden no conservarse. Dar por hecho que se guarda tienta, pero puedes perder el trabajo."
 tips:
   - "Cuando el texto esté listo, cópialo a tu documento o correo: el chat no es tu archivo."
-  - "Si no te sale un espacio editable, pídelo: «escríbelo en un documento que pueda editar»."
+  - "Si no te sale un bloque editable, pídelo: «escríbelo en un documento que pueda editar»."
 action:
   title: Pule un texto por partes
   steps:
@@ -59,21 +59,21 @@ published: 2026-10-22
 reviewed: 2026-10-22
 status: revision-pendiente
 jurisdiction: España
-sources: [openai-ayuda, openai-noticias]
+sources: [openai-ayuda]
 ---
 
 ## La idea
 
-Cuando pides un texto en un chat normal, cada cambio llega como una respuesta nueva y completa. Para pulir un documento eso cansa: hay que releerlo entero y a veces cambia lo que no querías.
+Si un texto llega como respuesta normal, cada cambio trae el texto entero otra vez. Para pulir un documento eso cansa: hay que releerlo todo y a veces cambia lo que no querías.
 
-Por eso ChatGPT tiene un **espacio editable** para textos y código:
+Por eso ChatGPT tiene **bloques de escritura**: recuadros editables dentro de la respuesta, pensados para correos, mensajes, informes o cartas. (Para el código hay **bloques de código**, que funcionan parecido.)
 
-- **Canvas** era un editor en un panel aparte. Con los modelos actuales **ya no se usa**: desde mediados de 2026 lo sustituyen los **bloques de escritura**. Puede que aún lo veas un tiempo con modelos antiguos en los planes de pago.
-- **Los bloques de escritura** son recuadros dentro de la respuesta. Puedes:
-  - **Editar a mano**: cambiar una palabra, un dato, un nombre.
-  - **Pedir cambios** sobre el texto o sobre una parte.
-  - **Abrirlo a pantalla completa** para trabajar con calma.
-- **Se guarda con el chat**, al poco de editar. En un chat temporal, las ediciones pueden no conservarse.
+- **Editas a mano**: cambias una palabra, un dato, un nombre.
+- **Pides cambios** sobre todo el texto o sobre la parte que selecciones, y puedes deshacerlos.
+- **Lo abres a pantalla completa** si el texto es largo, para trabajar con calma.
+- **Se guarda con el chat** al poco de editar, y ChatGPT usa tu última versión en lo que le pidas después. En un chat temporal, las ediciones pueden no conservarse.
+
+¿Y **canvas**? Era el editor anterior, en un panel aparte. Desde finales de mayo de 2026 ya no está en los modelos actuales: lo sustituyen estos bloques. En los planes de pago puede verse un tiempo con modelos antiguos.
 
 Las opciones exactas dependen del plan, del dispositivo y del modelo, y van cambiando.
 

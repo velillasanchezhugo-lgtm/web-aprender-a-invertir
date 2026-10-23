@@ -11,8 +11,8 @@ takeaway: Lo que publicas es responsabilidad tuya, aunque lo haya hecho la IA. C
 scenario:
   kind: empresa
   label: Caso práctico
-  title: El cartel de Jorge
-  body: "Jorge tiene una peluquería y pide a ChatGPT un cartel con un futbolista famoso. ChatGPT le pone pegas. Jorge lo piensa: aunque saliera, usaría la imagen de alguien para anunciarse sin su permiso. Pide otra cosa: un cliente inventado, con su corte estrella y los colores de su local. Lo publica con la nota «Imagen creada con IA»."
+  title: El cartel de Fermín
+  body: "Fermín tiene una peluquería y pide a ChatGPT un cartel con un futbolista famoso. ChatGPT le pone pegas. Fermín lo piensa: aunque saliera, usaría la imagen de alguien para anunciarse sin su permiso. Pide otra cosa: un cliente inventado, con su corte estrella y los colores de su local. Lo publica con la nota «Imagen creada con IA»."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -33,7 +33,7 @@ questions:
     answer: 1
     explain: "La cesión solo dice que OpenAI no se queda esos derechos. Tienta pensar que te blinda, pero si la imagen se parece a una obra ajena, el problema es tuyo; y en España la ley protege lo que crean las personas."
 tips:
-  - "Las imágenes de ChatGPT llevan metadatos de procedencia, pero se pierden con una captura o al subirlas a muchas redes: si importa, dilo tú."
+  - "Las marcas de procedencia de las imágenes de ChatGPT no se ven a simple vista y no todas las redes las muestran: si importa, dilo tú en el texto."
   - "Para fotos de personas reales en tu negocio (clientes, empleados), pide permiso por escrito, igual que sin IA."
   - "Evita pedir «al estilo de» un personaje o una marca concretos: pide colores, épocas y técnicas."
 action:
@@ -66,13 +66,13 @@ sources: [openai-condiciones-ue, openai-uso, openai-ayuda]
 
 Cuatro preguntas que conviene tener claras antes de publicar algo hecho con ChatGPT.
 
-**1. ¿De quién es?** Las condiciones de OpenAI para Europa dicen que, en lo que permita la ley, lo que genera es tuyo y te ceden los derechos que pudieran tener. Pero en España los **derechos de autor** protegen lo que crean las **personas**: algo hecho casi entero por la IA puede no estar protegido. Cuanto más pones tú, más tuyo es. Y, en todo caso, **respondes tú** de lo que publicas.
+**1. ¿De quién es?** Las condiciones de OpenAI para Europa dicen que, en lo que permita la ley, lo que genera es tuyo y te ceden los derechos que pudieran tener. Eso sí: avisan de que otra persona puede recibir algo parecido. Además, en España los **derechos de autor** protegen lo que crean las **personas**: algo hecho casi entero por la IA puede no estar protegido. Cuanto más pones tú, más tuyo es. Y, en todo caso, **respondes tú** de lo que publicas.
 
 **2. ¿Y lo de otros?** Un texto, una foto o un personaje ajenos tienen dueño. Pedir un resumen para entender algo está bien; publicar una copia reescrita o una imagen que imita una obra concreta puede vulnerar sus derechos o ser **plagio**.
 
 **3. ¿Personas reales?** Lo más delicado. Usar la cara o la voz de alguien sin su permiso de forma que parezca real va contra las normas de OpenAI y puede dañarle. Un **deepfake** (imagen, audio o vídeo falso que parece real) puede acabar en un problema legal, aunque empezara como broma. Por eso ChatGPT a veces pone pegas o se niega.
 
-**4. ¿Digo que es IA?** Sí cuando lo pidan las normas (tu empresa, tu centro de estudios, la web donde publicas) y cuando pueda confundir. Las imágenes de ChatGPT llevan **metadatos C2PA**, una etiqueta interna de procedencia, pero se borran con facilidad.
+**4. ¿Digo que es IA?** Sí cuando lo pidan las normas (tu empresa, tu centro de estudios, la web donde publicas) y cuando pueda confundir. Las imágenes de ChatGPT llevan **metadatos C2PA**, una etiqueta interna de procedencia, y una marca de agua invisible. Los metadatos se borran con facilidad (una captura basta); la marca aguanta más, pero tampoco es infalible. OpenAI tiene una página para comprobar si una imagen salió de sus herramientas.
 
 ## En la práctica
 
@@ -80,7 +80,7 @@ Cuatro preguntas que conviene tener claras antes de publicar algo hecho con Chat
 - **Textos**: escribe tú el fondo y pide ayuda para pulirlo. Cita las fuentes de los datos.
 - **Al publicar**: añade una nota sencilla, como «Imagen creada con IA» o «Texto revisado con ayuda de IA».
 
-> Prueba: «Te paso mi borrador para el blog de mi tienda. No lo reescribas: marca las frases poco claras, propón mejoras y dime qué datos necesitan citar una fuente.»
+> Prueba: «Quiero una imagen para el folleto de mi academia de baile. No copies el estilo de ningún artista, película ni marca: propón tres estilos descritos con colores, técnica y época, con bailarines inventados, y dime cuál encaja mejor con alumnos de 30 a 50 años.»
 
 ## Error frecuente
 

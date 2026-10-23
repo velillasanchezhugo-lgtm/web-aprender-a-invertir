@@ -10,7 +10,7 @@
       "title": "Empezar con ChatGPT",
       "subtitle": "Desde cero, sin programar",
       "access": "free",
-      "promise": "Al terminar usas ChatGPT cada día con soltura: sabes pedirle bien, aprovechar sus funciones y GPTs, conectarlo con tus herramientas, comprobar lo que te dice y proteger tus datos.",
+      "promise": "Al terminar usas ChatGPT cada día con soltura: sabes pedirle bien, aprovechar sus funciones y proyectos, conectarlo con tus herramientas, comprobar lo que te dice y proteger tus datos.",
       "forWho": "Cualquiera, desde cero.",
       "format": "Sesiones de 5 minutos",
       "closing": "Examen del Nivel 1 y «Mi kit de ChatGPT»",
@@ -23,7 +23,7 @@
       "title": "Avanzado",
       "subtitle": "Sacarle todo el partido",
       "access": "plan-avanzado",
-      "promise": "Al terminar dominas las técnicas avanzadas, diseñas proyectos y GPTs que duran, creas contenidos, automatizas tu semana, aplicas ChatGPT a tu oficio y organizas su uso en un equipo.",
+      "promise": "Al terminar dominas las técnicas avanzadas, diseñas proyectos y asistentes que duran, creas contenidos, automatizas tu semana, aplicas ChatGPT a tu oficio y organizas su uso en un equipo.",
       "forWho": "Quien ya usa ChatGPT y quiere ir más lejos.",
       "format": "Clases de 15 a 30 minutos",
       "volume": "23 clases, unas 8 h, más una clase nueva cada mes",
@@ -60,7 +60,7 @@
       "id": "B",
       "stage": "Etapa B · núcleo",
       "title": "Usar ChatGPT de verdad",
-      "desc": "Por orden de importancia: pedir bien, sus funciones, los GPTs, el trabajo, aprender, conectar y usarlo con cabeza.",
+      "desc": "Por orden de importancia: pedir bien, sus funciones, tu asistente a medida, el trabajo, aprender, conectar y usarlo con cabeza.",
       "tracks": [
         "gpt-pedir",
         "gpt-funciones",
@@ -102,8 +102,8 @@
     },
     {
       "id": "gpt-gpts",
-      "label": "Los GPTs",
-      "short": "Usar, crear y compartir asistentes a medida",
+      "label": "GPTs y plugins",
+      "short": "Usar GPTs con cuidado y llevar tu asistente a proyectos o plugins",
       "stage": "B"
     },
     {
@@ -204,7 +204,7 @@
     },
     {
       "id": "c9",
-      "text": "Usa y crea GPTs con cuidado.",
+      "text": "Usa asistentes a medida con cuidado y monta el tuyo.",
       "skills": [
         "gpt-usar-gpts",
         "gpt-crear-gpts"
@@ -259,8 +259,8 @@
     },
     {
       "id": "gpt-gpts",
-      "label": "GPTs",
-      "desc": "Usar, crear y compartir GPTs personalizados.",
+      "label": "GPTs y plugins",
+      "desc": "Usar asistentes a medida con cuidado y montar el tuyo con proyectos o plugins.",
       "level": 1
     },
     {
@@ -414,15 +414,15 @@
     {
       "id": "gpt-usar-gpts",
       "domain": "gpt-gpts",
-      "label": "Usar GPTs",
-      "can": "Eliges GPTs de la tienda con cuidado y sabes qué datos ven.",
+      "label": "Usar asistentes a medida",
+      "can": "Eliges GPTs y plugins con cuidado y sabes qué datos ven.",
       "level": 1
     },
     {
       "id": "gpt-crear-gpts",
       "domain": "gpt-gpts",
-      "label": "Crear GPTs",
-      "can": "Creas y compartes un GPT sencillo sin programar.",
+      "label": "Crear tu asistente",
+      "can": "Montas sin programar un asistente a medida (proyecto, GPT o plugin, según tu plan), lo pruebas y lo compartes con cuidado.",
       "level": 1
     },
     {
@@ -505,8 +505,8 @@
     {
       "id": "gpt2-proyectos-gpts",
       "domain": "gpt2-dominio",
-      "label": "Proyectos y GPTs a fondo",
-      "can": "Diseñas proyectos y GPTs que funcionan semanas.",
+      "label": "Proyectos y plugins a fondo",
+      "can": "Diseñas proyectos y asistentes que funcionan semanas.",
       "level": 2
     },
     {
@@ -681,7 +681,7 @@
       },
       {
         "code": "gpt",
-        "title": "Proyectos y GPTs a fondo",
+        "title": "Proyectos y plugins a fondo",
         "desc": "Asistentes que trabajan contigo semanas.",
         "minutes": 70,
         "items": [
@@ -698,10 +698,10 @@
           },
           {
             "id": "gpt2-gpt-02-disenar-un-gpt",
-            "title": "Diseñar un GPT útil",
+            "title": "Diseñar un asistente útil",
             "minutes": 25,
-            "content": "Instrucciones, conocimiento, capacidades, frases de inicio y pruebas.",
-            "practice": "GPT de atención al cliente de una tienda",
+            "content": "Instrucciones, archivos de referencia, frases de inicio y pruebas, en un proyecto o un plugin. Qué hacer con los GPTs que se retiran.",
+            "practice": "Asistente de atención al cliente de una tienda",
             "skills": [
               "gpt2-proyectos-gpts"
             ],
@@ -709,10 +709,10 @@
           },
           {
             "id": "gpt2-gpt-03-gpts-con-acciones",
-            "title": "GPTs con acciones y apps",
+            "title": "Plugins y apps conectadas",
             "minutes": 25,
-            "content": "Conectar un GPT con otros servicios: qué datos salen y cómo limitarlo.",
-            "practice": "GPT que consulta un calendario de reservas",
+            "content": "Conectar tu asistente con otros servicios mediante plugins y apps: qué datos salen y cómo limitarlo.",
+            "practice": "Asistente que consulta un calendario de reservas",
             "skills": [
               "gpt2-proyectos-gpts",
               "gpt2-automatizar"
@@ -917,10 +917,10 @@
           },
           {
             "id": "gpt2-equ-02-gpts-y-proyectos-compartidos",
-            "title": "GPTs y proyectos compartidos",
+            "title": "Proyectos y plugins compartidos",
             "minutes": 20,
             "content": "Bibliotecas comunes, responsables y mantenimiento.",
-            "practice": "GPT común de atención al cliente",
+            "practice": "Proyecto común de atención al cliente",
             "skills": [
               "gpt2-equipos",
               "gpt2-proyectos-gpts"
@@ -964,7 +964,7 @@
         "id": "hotel",
         "name": "Hotel Mirador, 40 habitaciones",
         "situation": "Reservas y reseñas en varios idiomas, y un equipo pequeño de recepción.",
-        "topics": "GPTs, apps, calidad, costes"
+        "topics": "proyectos, plugins, calidad, costes"
       },
       {
         "id": "instituto",
@@ -1095,7 +1095,7 @@
             "id": "gpt3-imp-02-disenar-flujos",
             "title": "Diseñar flujos con revisión humana",
             "minutes": 35,
-            "content": "Dónde entra la IA, qué revisa una persona, GPTs y proyectos compartidos.",
+            "content": "Dónde entra la IA, qué revisa una persona, proyectos y plugins compartidos.",
             "practice": "`hotel`: flujo de respuesta a reseñas",
             "skills": [
               "gpt3-casos-uso",
@@ -1246,7 +1246,7 @@
   "texts": {
     "metaTitle": "ChatGPT: aprende a usar la IA desde cero",
     "metaDesc": "Formación para aprender a usar ChatGPT, el asistente de IA de OpenAI, en tres niveles: desde cero y gratis, avanzado y profesional.",
-    "intro": "Aprende a usar ChatGPT, el asistente de inteligencia artificial de OpenAI, desde la primera conversación: pedirle bien, aprovechar sus funciones y los GPTs, usarlo en el trabajo y los estudios, conectarlo con tus herramientas y comprobar lo que te dice. Sin programar.",
+    "intro": "Aprende a usar ChatGPT, el asistente de inteligencia artificial de OpenAI, desde la primera conversación: pedirle bien, aprovechar sus funciones y proyectos, usarlo en el trabajo y los estudios, conectarlo con tus herramientas y comprobar lo que te dice. Sin programar.",
     "coreTitle": "El núcleo del Nivel 1, por orden de importancia",
     "coreLede": "Antes, el Camino Cero: qué es, tu primera conversación, cuándo fiarte y qué no compartir.",
     "n1Order": "Los módulos del núcleo van por orden de importancia: primero lo que más mejora tus resultados desde el primer día.",

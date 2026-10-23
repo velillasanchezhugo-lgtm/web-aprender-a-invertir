@@ -12,20 +12,20 @@ scenario:
   kind: producto
   label: Caso práctico
   title: Lo que ChatGPT sabía de Samuel
-  body: "Samuel abre la personalización de la configuración y revisa sus memorias guardadas: que es fisioterapeuta, que entrena para una media maratón y que tiene una deuda con un amigo, algo que comentó una vez. Borra esa memoria y también el chat donde lo contó. Desde entonces, para temas personales, abre un chat temporal."
+  body: "Samuel se mudó de Bilbao a Sevilla hace medio año, pero ChatGPT le sigue proponiendo planes en Bilbao. Le pregunta «¿qué sabes de mí?» y ve que tiene guardada su antigua ciudad. Borra esa memoria en la configuración, escribe «recuerda que ahora vivo en Sevilla» y comprueba que la nueva aparece en la lista."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-fu05-q1
-    q: "Elena quiere preguntar algo delicado sobre su salud y prefiere que no quede en la memoria ni en su historial. ¿Qué hace?"
-    options: ["Usa un chat normal y lo borra después", "Abre un chat temporal", "Desactiva toda la memoria para siempre"]
+    q: "Consuelo contó en un chat normal un problema de salud y ahora no quiere que ChatGPT lo recuerde. ¿Qué hace?"
+    options: ["Borra el chat y ya está", "Revisa sus memorias guardadas, borra la que hable de eso y borra también el chat", "Cambia la contraseña de su cuenta"]
     answer: 1
-    explain: "El chat temporal no aparece en el historial ni crea memorias. Borrar el chat después tienta, pero si ChatGPT ya guardó una memoria a partir de él, esa memoria sigue ahí."
+    explain: "Las memorias guardadas van aparte del historial. Borrar solo el chat tienta por rápido, pero si ChatGPT guardó una memoria a partir de él, esa memoria sigue ahí."
   - type: truefalse
     id: gpt-fu05-q2
-    q: "Si borras el chat donde contaste algo, también se borra la memoria que ChatGPT guardó de él."
-    answer: false
-    explain: "Las memorias guardadas van aparte del historial. Para que desaparezca del todo, borra la memoria y también el chat donde salió."
+    q: "Un chat temporal no crea memorias nuevas ni aparece en tu historial."
+    answer: true
+    explain: "Para eso sirve. Ojo: tienta pensar que no queda nada en ningún sitio, pero OpenAI puede guardar una copia hasta 30 días por seguridad."
   - type: choice
     id: gpt-fu05-q3
     q: "Quieres que ChatGPT deje de usar tus chats antiguos, pero sin perder esos chats. ¿Qué haces?"
@@ -34,7 +34,7 @@ questions:
     explain: "Desactivarla hace que deje de usar lo que recuerda de chats pasados, y esos chats siguen en tu historial. Borrar el historial tienta por rápido, pero pierdes conversaciones que quizá quieras."
 tips:
   - "Puedes pedirlo en el chat: «recuerda que soy vegetariana» u «olvida lo de mi mudanza». Luego compruébalo en la configuración."
-  - "Las opciones de memoria varían según el plan y el país; en el plan gratis usa un número menor de chats pasados."
+  - "Las opciones de memoria varían según el plan y el país; en el plan gratis, la referencia al historial es más ligera."
 action:
   title: Revisa tu memoria
   steps:
@@ -77,8 +77,8 @@ Lo que conviene saber:
 - **La controlas tú** en la personalización de la configuración: activarla o desactivarla, ver y borrar memorias. Lo que ves depende de tu plan y tu versión.
 - **Borrar un chat no borra la memoria** que salió de él. Para quitarlo del todo, borra las dos cosas.
 - **Desactivar la referencia al historial** no borra tus chats, pero sí lo que ChatGPT recordaba de ellos (OpenAI lo elimina en un plazo de 30 días).
-- **En Europa, en el plan gratis,** la referencia al historial se activa solo si tú la aceptas.
-- **El chat temporal** no aparece en tu historial, no crea memorias y no se usa para entrenar modelos. OpenAI puede guardar una copia hasta 30 días por seguridad.
+- **En Europa,** la referencia al historial no se activa sola: tienes que aceptarla o activarla tú.
+- **El chat temporal** no aparece en tu historial, no crea memorias y no se usa para entrenar modelos.
 
 ## En la práctica
 

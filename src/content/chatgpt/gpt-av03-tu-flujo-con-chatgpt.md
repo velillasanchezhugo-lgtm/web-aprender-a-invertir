@@ -17,10 +17,10 @@ scenario:
 questions:
   - type: choice
     id: gpt-av03-q1
-    q: "Elsa montó cinco tareas programadas en su primera semana y ya no sabe qué hace cada una. ¿Qué es lo más sensato?"
-    options: ["Añadir una sexta que le resuma las otras cinco", "Quedarse con las dos que de verdad usa, apuntarlas en su kit y pausar el resto", "Borrarlas todas y dejar de usar ChatGPT"]
+    q: "Elsa usa ChatGPT para preparar cada semana la factura de sus clases particulares a partir de sus horas. ¿Dónde pone su punto de control?"
+    options: ["Cuando la familia le avisa de que hay un error", "Antes de enviarla: comprueba horas, importe y fecha", "En ningún sitio: unas buenas instrucciones bastan"]
     answer: 1
-    explain: "Pocas tareas bien entendidas valen más que muchas olvidadas. Añadir otra tienta porque parece arreglarlo, pero suma más de lo mismo. Abandonar tampoco hace falta: basta con ordenar."
+    explain: "El punto de control sirve si llega antes de que el resultado salga. Fiarse de las instrucciones tienta porque ya funcionaron otras veces, pero ChatGPT puede equivocarse igual con una cifra. Esperar a que avise la familia es revisar cuando ya no tiene arreglo."
   - type: choice
     id: gpt-av03-q2
     q: "Cada semana corriges lo mismo en los textos que te prepara tu proyecto de redes: son demasiado largos y muy formales. ¿Qué haces?"
@@ -77,7 +77,7 @@ Fuera del flujo quedan siempre las contraseñas, los datos de salud o bancarios 
 
 Empieza por **una sola tarea**. Cuando salga bien sin pensarla, añade otra.
 
-Tu kit también envejece: ChatGPT cambia funciones y nombres a menudo. Por ejemplo, el agente ahora se llama ChatGPT Work. Repásalo cada mes.
+Tu kit también envejece: ChatGPT cambia funciones y nombres a menudo. Por ejemplo, el antiguo agente de ChatGPT ha dejado paso a ChatGPT Work. Repásalo cada mes.
 
 **¿Y después?** El **Nivel 2** profundiza en peticiones avanzadas, proyectos a fondo, investigar y analizar, crear contenidos, conectar y automatizar, ChatGPT en tu oficio y en equipo. Termina con un proyecto: tu flujo completo. OpenAI también ofrece recursos gratuitos en su OpenAI Academy.
 

@@ -11,8 +11,8 @@ takeaway: La forma de preguntar inclina la respuesta. Si quieres una opinión ú
 scenario:
   kind: producto
   label: Caso práctico
-  title: Las velas de Celia
-  body: "Celia le escribe a ChatGPT, con entusiasmo, su plan de dejar el trabajo para vender velas por internet, y recibe ánimos y una lista de pasos. Abre un chat nuevo y pide: «Analiza este plan como lo haría un banco antes de darme un préstamo». Aparecen lo que no había contado: cuántas velas tendría que vender al mes para cubrir su sueldo, los gastos de envío y la temporada baja de verano."
+  title: Las velas de Paloma
+  body: "Paloma pide a ChatGPT los puntos débiles de su plan de vender velas por internet. Le salen los gastos de envío. Ella contesta: «Eso no creo que importe», y ChatGPT le da la razón al momento. Paloma le pregunta qué argumento le ha hecho cambiar. Respuesta: ninguno nuevo. Mantiene la duda, pide tres presupuestos de mensajería y descubre que el envío se comería la mitad del margen de cada vela."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -28,14 +28,14 @@ questions:
     explain: "A veces cede solo para complacerte: es parte de la adulación. Tienta tomarlo como una confirmación, pero lo que cuenta son los argumentos y los datos, no quién insiste más."
   - type: choice
     id: gpt-se03-q3
-    q: "Íñigo pide a ChatGPT ideas de profesiones para su hija de 16 años y todas son de cuidados y educación. ¿Qué hace?"
+    q: "Ramiro pide a ChatGPT ideas de profesiones para su hija de 16 años y todas son de cuidados y educación. ¿Qué hace?"
     options: ["Nada: si lo dice ChatGPT, será lo que le va", "Le cuenta qué le gusta de verdad a su hija y le pide opciones variadas, sin dar por hecho nada por ser chica", "Deja de usarlo para estas cosas"]
     answer: 1
     explain: "Puede repetir estereotipos de los textos con los que aprendió, y sin datos tira de lo más típico. Dejar de usarlo tienta, pero es más útil darle información real y pedirle variedad."
 tips:
   - "Si te importa mucho la decisión, pide la crítica en un chat nuevo: así no arrastra tu entusiasmo de antes."
   - "Pide varios papeles: «hazlo como un cliente exigente, como un amigo prudente y como un banco»."
-  - "En las instrucciones personalizadas puedes pedirle que sea directo y que te diga cuando no está de acuerdo."
+  - "En la personalización de ChatGPT (instrucciones personalizadas o un estilo más directo) puedes pedirle que te diga cuándo no está de acuerdo."
 action:
   title: Pide la crítica de una idea tuya
   steps:
@@ -68,7 +68,7 @@ ChatGPT aprendió de enormes cantidades de texto escrito por personas, y despué
 
 El que más vas a notar tiene nombre: **adulación**. Es la tendencia a darte la razón, elogiar tus ideas o cambiar de opinión en cuanto le llevas la contraria. No es mala fe: un modelo que aprende de lo que gusta a la gente tiende a decir lo que gusta oír.
 
-No es una teoría: en 2025 OpenAI retiró una actualización de ChatGPT porque lo había vuelto demasiado complaciente, y explicó públicamente qué había fallado. Sus normas de comportamiento piden que el modelo sea sincero aunque no guste, pero **la forma de preguntar sigue influyendo**.
+No es una teoría: en abril de 2025 OpenAI retiró una actualización de ChatGPT porque lo había vuelto demasiado complaciente, y explicó públicamente qué había fallado. Sus normas de comportamiento piden que el modelo sea sincero aunque no guste, pero **la forma de preguntar sigue influyendo**.
 
 El otro sesgo frecuente son los **estereotipos**: ideas hechas sobre profesiones, edades, sexos o países, que aparecen sobre todo cuando no le das datos.
 
@@ -82,7 +82,7 @@ Tres formas de conseguir una opinión útil:
 2. **Pide la crítica expresamente.** «No me des la razón», «dime qué puede salir mal».
 3. **Cambia la mirada.** Pídele que lo analice como un banco, un cliente exigente o alguien que piensa lo contrario.
 
-> Prueba: «Estoy pensando en [tu decisión]. No me des la razón: dame los tres mejores argumentos en contra, qué tendría que ser verdad para que saliera bien y qué datos míos te faltan para opinar.»
+> Prueba: «Te he contado mi plan con mucha ilusión y quizá me has contestado para animarme. Repasa tu respuesta: separa lo que dijiste para animarme de lo que se sostiene con datos. Después dime qué tendría que ser verdad para que [tu plan] saliera bien y qué preguntaría alguien que pone su dinero en él.»
 
 Y cuéntale lo que no sabe: tu presupuesto, tus plazos, tus prioridades. Sin eso, opina a ciegas.
 

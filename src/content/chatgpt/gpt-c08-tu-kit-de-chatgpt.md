@@ -12,12 +12,12 @@ scenario:
   kind: producto
   label: Caso práctico
   title: La nota de Rubén
-  body: "Rubén es técnico de mantenimiento en un hotel. Usa ChatGPT para escribir a proveedores, redactar partes de avería y entender manuales en inglés. Antes reescribía cada petición; ahora tiene una nota con cinco plantillas y tres reglas. La primera: «nunca datos de huéspedes»."
+  body: "Rubén es técnico de mantenimiento en un hotel. Usa ChatGPT para escribir a proveedores, redactar partes de avería y entender manuales en inglés. Perdía tiempo rehaciendo peticiones hasta que guardó en el móvil las que le funcionaban, con huecos para rellenar, y una regla que no se salta: ni nombres ni habitaciones de huéspedes."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-c08-q1
-    q: "Un huésped se queja de una avería y Rubén quiere ayuda para contestarle. Su kit dice «nunca datos de huéspedes». ¿Cómo lo aplica?"
+    q: "Un huésped se queja de una avería y Rubén quiere ayuda para contestarle. Su regla dice «ni nombres ni habitaciones de huéspedes». ¿Cómo la aplica?"
     options: ["Pega la queja completa en un chat temporal, que no se guarda en el historial", "Describe la avería y la queja sin nombre, número de habitación ni datos de la reserva", "Pega la queja tal cual y borra el chat al terminar"]
     answer: 1
     explain: "Para contestar bien no hace falta saber quién es el huésped. El chat temporal y borrar después tientan porque parecen «limpiar» el rastro, pero el texto ya ha salido del hotel y puede conservarse un tiempo."
@@ -25,16 +25,15 @@ questions:
     id: gpt-c08-q2
     q: "Una buena plantilla deja huecos entre corchetes para lo que cambia cada vez, como [destinatario] o [plazo]."
     answer: true
-    explain: "Los huecos te obligan a dar el contexto que ChatGPT no puede adivinar. Tienta guardar peticiones cerradas, pero solo sirven para un caso; con huecos valen para muchos."
+    explain: "Los huecos te recuerdan dar el contexto que ChatGPT no puede adivinar. Tienta guardar peticiones cerradas, pero solo sirven para un caso."
   - type: choice
     id: gpt-c08-q3
     q: "Tu plantilla para entender cartas oficiales te da respuestas cada vez más largas y te cuesta encontrar lo importante. ¿Qué haces?"
     options: ["Añadir a la plantilla el formato que quieres (por ejemplo, «primero el plazo y qué tengo que hacer, en tres puntos») y guardar la versión nueva", "Dejar de usarla y preguntar cada vez de una forma distinta", "Pasarte a un plan de pago para que conteste mejor"]
     answer: 0
-    explain: "El kit es una nota viva: se mejora con el uso. Casi siempre basta con añadir la pieza que faltaba, aquí el formato. Cambiar de plan tienta, pero la longitud de la respuesta depende sobre todo de lo que pides."
+    explain: "El kit se mejora con el uso: casi siempre basta con añadir la pieza que faltaba, aquí el formato. Cambiar de plan tienta, pero la longitud de la respuesta depende sobre todo de lo que pides."
 tips:
-  - "Guarda el kit donde lo tengas siempre a mano, como las notas del móvil, y apunta la fecha de la última revisión."
-  - "Repasa tus controles de datos cada pocos meses: los nombres y opciones de ChatGPT cambian, y tu kit debe reflejarlo."
+  - "Repasa tus controles de datos cada pocos meses: los nombres y las opciones de ChatGPT cambian."
 action:
   title: Crea «Mi kit de ChatGPT»
   steps:
@@ -64,9 +63,9 @@ sources: [openai-ayuda, openai-privacidad]
 
 ## La idea
 
-Has terminado el **Camino Cero**. Lo que falta es **no olvidarlo**. Para eso sirve **«Mi kit de ChatGPT»**: una nota corta, tuya, con tres partes.
+Has terminado el **Camino Cero**. Ahora falta **no olvidarlo**. Para eso sirve **«Mi kit de ChatGPT»**: una nota corta, tuya, con tres partes.
 
-**1. Cinco peticiones-plantilla.** Una **plantilla** es una petición que ya te funcionó, guardada con **huecos entre corchetes** para lo que cambia. Así no empiezas de cero y no se te olvida el contexto.
+**1. Cinco peticiones-plantilla.** Una **plantilla** es una petición que ya te funcionó, guardada con **huecos entre corchetes** para lo que cambia. Así no empiezas de cero ni olvidas el contexto.
 
 **2. Tus ajustes revisados.** Una o dos líneas: cómo dejaste el ajuste «Mejorar el modelo para todos» en los **controles de datos**, cuándo usas el **chat temporal** y en qué fecha lo miraste.
 
@@ -74,7 +73,7 @@ Has terminado el **Camino Cero**. Lo que falta es **no olvidarlo**. Para eso sir
 
 - **Qué compruebo siempre.** Por ejemplo: «Plazos, cifras, nombres y fuentes, en la web oficial, antes de usarlos».
 - **Qué no comparto.** Por ejemplo: «Contraseñas, datos bancarios y datos de otras personas, en ningún modo de chat».
-- **Cuándo consulto a una persona.** Por ejemplo: «Salud, temas legales y decisiones de dinero: ChatGPT me ayuda a preparar las preguntas; decido con un profesional».
+- **Cuándo consulto a una persona.** Por ejemplo: «Salud, temas legales y dinero: ChatGPT me ayuda con las preguntas; decido con un profesional».
 
 ## En la práctica
 
@@ -90,4 +89,4 @@ Ideas de plantillas para empezar (cámbialas a tu vida):
 
 ## Error frecuente
 
-Hacer el kit y no volver a abrirlo. Úsalo la próxima vez que abras ChatGPT y añade lo que aprendas.
+Hacer el kit y no volver a abrirlo. Úsalo la próxima vez y añade lo que aprendas.

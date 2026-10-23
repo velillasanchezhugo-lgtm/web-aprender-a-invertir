@@ -7,12 +7,12 @@ order: 6
 skills: [gpt-privacidad]
 terms: [controles-de-datos, chat-temporal, datos-personales, openai]
 hook: "Vas a pegar en ChatGPT tu contrato de alquiler entero, con tu DNI y tu cuenta bancaria, para que te explique una cláusula. ¿Sabes adónde va ese texto?"
-takeaway: "Lo que escribes en ChatGPT sale de tu dispositivo y se guarda en tu cuenta. No compartas contraseñas, datos bancarios ni datos de otras personas; revisa hoy en los controles de datos si tus chats ayudan a entrenar, y usa el chat temporal para lo que no quieras en tu historial."
+takeaway: "Lo que escribes sale de tu dispositivo y se guarda en tu cuenta. No compartas contraseñas, datos bancarios ni datos de otros; decide en los controles de datos si tus chats ayudan a entrenar, y usa el chat temporal para lo que no quieras en tu historial."
 scenario:
   kind: operacion
   label: Caso práctico
   title: El contrato de Raúl
-  body: "Raúl no entiende una cláusula de su contrato de alquiler sobre la fianza. Iba a pegar el contrato entero, con su DNI, el de su casera, la dirección y el IBAN. Al final copia solo la cláusula, cambia los nombres por «inquilino» y «propietaria», y le pide a ChatGPT que se la explique."
+  body: "Raúl no entiende la cláusula de la fianza de su contrato de alquiler. Iba a pegarlo entero, con su DNI, el de su casera, la dirección y el IBAN. Al final copia solo la cláusula y cambia los nombres por «inquilino» y «propietaria»."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -20,37 +20,37 @@ questions:
     q: "Raúl quiere entender una cláusula de su contrato de alquiler. ¿Qué hace?"
     options: ["Pegar el contrato completo en un chat temporal, que luego se borra", "Copiar solo la cláusula, sin nombres, DNI, dirección ni IBAN", "Pegarlo entero: es su propio contrato y nadie más lo ve"]
     answer: 1
-    explain: "Para explicar una cláusula basta con la cláusula. El chat temporal tienta porque no queda en el historial, pero el texto sale igualmente de tu dispositivo y OpenAI puede conservarlo hasta 30 días. Además, el contrato tiene datos de su casera, que no son suyos."
+    explain: "Para explicar una cláusula basta con la cláusula. El chat temporal tienta porque no queda en el historial, pero el texto sale igual de tu dispositivo y OpenAI puede conservarlo hasta 30 días. Además, el contrato lleva datos de su casera, que no son suyos."
   - type: truefalse
     id: gpt-c06-q2
     q: "Si desactivas «Mejorar el modelo para todos», ChatGPT deja de guardar tus conversaciones en el historial."
     answer: false
-    explain: "Son cosas distintas. Ese ajuste decide si tus chats nuevos pueden usarse para entrenar modelos; tus conversaciones siguen en el historial hasta que las borres. Tienta pensar que es un «modo privado» total, pero no lo es."
+    explain: "Ese ajuste solo decide si tus chats nuevos pueden usarse para entrenar; siguen en el historial hasta que los borres. Tienta verlo como un «modo privado» total, pero no lo es."
   - type: choice
     id: gpt-c06-q3
     q: "Begoña quiere conservar sus chats antes de borrar la cuenta. ¿Qué hace primero?"
     options: ["Borrar los chats y luego pedir una copia", "Exportar sus datos desde los controles de datos y esperar el correo con la descarga", "Archivar los chats: así se guardan fuera de la cuenta"]
     answer: 1
-    explain: "La exportación te manda una copia de tus chats y datos de la cuenta. Hay que hacerlo antes de borrar: lo borrado ya no se puede exportar. Archivar tienta, pero solo esconde el chat de la lista; sigue en tu cuenta y se pierde con ella."
+    explain: "La exportación te manda una copia de tus chats, y hay que pedirla antes de borrar: lo borrado no se recupera. Archivar tienta, pero solo quita el chat de la lista y se pierde con la cuenta."
 tips:
   - "Si compartes un chat con un enlace, cualquiera que tenga ese enlace puede leerlo. Revisa qué contiene antes de mandarlo."
-  - "Para un caso real, cambia nombres por «persona A» o «cliente 1» y quita DNI, direcciones y cuentas: la respuesta sale igual de útil."
+  - "Si valoras una respuesta con el pulgar arriba o abajo, OpenAI puede usar esa conversación para entrenar aunque hayas quitado el ajuste. En chats delicados, no valores."
 action:
   title: Revisa tus controles de datos
   steps:
     - "Entra en la Configuración de ChatGPT y busca la sección de controles de datos."
-    - "Mira el ajuste «Mejorar el modelo para todos» (o como se llame ahora) y decide si lo quieres activado o no."
+    - "Mira el ajuste «Mejorar el modelo para todos» y decide si lo quieres activado o no."
     - "Localiza dónde se abre un chat temporal y dónde se exportan los datos, aunque hoy no los uses."
     - "Apunta en «Mi kit de ChatGPT» qué has decidido y la fecha."
   check: He revisado mis controles de datos y he decidido qué quiero
 practice:
-  task: "Quieres que ChatGPT te explique los conceptos de tu nómina de este mes. Escribe la petición sin tu nombre, DNI, número de la Seguridad Social, empresa ni IBAN: pon huecos como [EMPRESA] donde hagan falta."
+  task: "Te llega una carta de la comunidad de propietarios sobre una derrama, con tu nombre, tu piso y tu cuenta. Escribe la petición para entenderla con huecos como [VECINO] en lugar de tus datos."
   require: [contexto, limites]
   extra:
     - label: Huecos en lugar de datos reales
-      any: ["[", persona a, trabajador a]
-      hint: "Cambia cada dato personal por un hueco entre corchetes, como [NOMBRE] o [EMPRESA]."
-  sample: "Trabajo como dependiente a jornada completa y no entiendo algunos conceptos de mi nómina. Te copio solo las líneas de devengos y deducciones, sin mi nombre, DNI, número de la Seguridad Social ni cuenta: donde salían, he puesto [NOMBRE], [EMPRESA] y [IBAN]. Explícame cada concepto en una frase sencilla y dime cuáles conviene preguntar a la gestoría. No inventes importes."
+      any: ["[", persona a, vecino a]
+      hint: "Cambia cada dato personal por un hueco entre corchetes, como [NOMBRE] o [PISO]."
+  sample: "He recibido una carta de la administración de mi comunidad de propietarios sobre una derrama para arreglar la fachada. Te copio el texto sin mis datos: donde salían mi nombre, mi piso y mi cuenta he puesto [VECINO], [PISO] y [IBAN]. Explícame en cuatro puntos sencillos qué me piden, cuándo tengo que pagar y qué pasa si no estoy de acuerdo. No inventes importes ni plazos que no aparezcan."
 deeper: null
 tool: anonimizador
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -64,26 +64,26 @@ sources: [openai-ayuda, openai-privacidad, openai-privacidad-portal]
 
 ## La idea
 
-Lo que escribes en ChatGPT viaja a los servidores de **OpenAI** y se guarda en tu cuenta. Regla de oro: **no escribas nada que no te importaría que se guardara fuera de tu casa**.
+Lo que escribes viaja a los servidores de **OpenAI** y se guarda en tu cuenta. Regla de oro: **no escribas nada que no quieras guardado fuera de casa**.
 
 **Nunca compartas:**
 
 - **Contraseñas** ni códigos de verificación.
 - **Datos bancarios**: tarjeta, PIN, claves de la banca en línea.
-- **Datos personales de otras personas** (DNI, dirección, salud) sin su permiso. Son **datos personales**: cualquier dato que permita saber quién es alguien.
-- **Información confidencial del trabajo** si tu empresa no lo ha autorizado.
+- **Datos de otras personas** (DNI, dirección, salud) sin su permiso. Son **datos personales**: cualquier dato que permita saber quién es alguien.
+- **Información confidencial del trabajo** sin autorización.
 
-**Los controles de datos.** En la Configuración hay una sección de **controles de datos**. Ahí está el ajuste **«Mejorar el modelo para todos»**: decide si tus chats pueden usarse para entrenar los modelos. En las cuentas personales viene activado; puedes quitarlo cuando quieras y vale para toda tu cuenta. Tus chats siguen en el historial.
+**Los controles de datos.** Es una sección de la Configuración. Ahí está **«Mejorar el modelo para todos»**: decide si tus chats nuevos pueden usarse para entrenar los modelos. En las cuentas personales viene activado; puedes quitarlo cuando quieras y vale para toda la cuenta. Tus chats siguen en el historial.
 
-**El chat temporal.** Es una conversación que **no queda en tu historial**, no crea recuerdos en la memoria y no se usa para entrenar. Aun así, según OpenAI, se conserva **hasta 30 días** por seguridad antes de borrarse.
+**El chat temporal** **no queda en tu historial**, no crea recuerdos en la memoria y no se usa para entrenar. Aun así, OpenAI puede conservarlo **hasta 30 días** por seguridad.
 
-**Borrar y exportar.** Puedes **borrar** un chat o todos; según el centro de ayuda, se eliminan de sus sistemas en unos 30 días, salvo obligaciones legales o de seguridad. **Archivar** no es borrar: solo lo quita de la lista. Y puedes **exportar** una copia de tus datos desde los controles de datos: te llega por correo. Para otras solicitudes, OpenAI tiene un portal de privacidad (privacy.openai.com).
+**Borrar y exportar.** Puedes **borrar** un chat o todos: según el centro de ayuda, se eliminan de sus sistemas en unos 30 días, salvo obligaciones legales o de seguridad, y no se pueden recuperar. **Archivar** no es borrar: solo lo quita de la lista. Y puedes **exportar** una copia desde los controles de datos: te llega un enlace por correo. Para otras solicitudes, está el portal de privacidad de OpenAI (privacy.openai.com).
 
 ## En la práctica
 
-Antes de pegar algo, pregúntate: **¿hay aquí datos de alguien o algo que no debería salir de casa o de la oficina?** Si es así, quítalo o cámbialo por un hueco.
+Antes de pegar algo, pregúntate: **¿hay aquí datos de alguien o algo que no debería salir de casa?** Si es así, quítalo o cámbialo por un hueco.
 
-> Prueba: «Te copio una cláusula de mi contrato de alquiler en la que he cambiado los nombres por "inquilino" y "propietaria". Explícame en palabras sencillas qué pasa con la fianza al final del contrato y qué debería preguntar antes de firmar la salida».
+> Prueba: «Te copio una cláusula de mi contrato de alquiler en la que he cambiado los nombres por "inquilino" y "propietaria". Explícame en palabras sencillas qué pasa con la fianza al final del contrato y qué debería preguntar antes de entregar las llaves».
 
 ## Error frecuente
 

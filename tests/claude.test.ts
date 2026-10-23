@@ -76,8 +76,14 @@ test('reconoce frases naturales de principiante para cada pieza', () => {
   ok('Organizo la jubilación de una compañera.', 'contexto');
   ok('Hago 1.º de Bachillerato y mañana tengo examen de Economía.', 'contexto');
   ok('Mi banco me habla del euríbor. No sé nada de finanzas.', 'contexto');
+  ok('Eres el asistente de una biblioteca municipal.', 'contexto');
+  ok('Somos un club de lectura de diez personas.', 'contexto');
   // Público con «su», «tus»
   ok('Escribe un mensaje para su entrenador.', 'publico');
+  ok('Una carta dirigida a la comunidad de vecinos.', 'publico');
+  ok('Es un regalo para ella.', 'publico');
+  ok('Me presento a unas oposiciones de auxiliar.', 'contexto');
+  ok('No quiero nada sobre política.', 'limites');
   // Formato por longitud o canal
   ok('Escríbeme un whatsapp cortito y amable.', 'formato');
   ok('Hazlo breve, que lo lea en un minuto.', 'formato');
@@ -85,9 +91,14 @@ test('reconoce frases naturales de principiante para cada pieza', () => {
   ok('Compara los cursos, pero no me apuntes a nada ni pagues.', 'limites');
   ok('Prepara el menú. No compres nada.', 'limites');
   ok('No quiero que me des la respuesta.', 'limites');
+  ok('No te daré mi número de cuenta.', 'limites');
+  ok('No incluiré nombres reales.', 'limites');
+  ok('Si no tienes los datos, no te los inventes.', 'limites');
   // Verificar con otras palabras
   ok('Pásame el enlace oficial y, si no lo tienes claro, dímelo.', 'verificar');
   ok('Avísame si algo no lo sabes seguro.', 'verificar');
+  ok('Dime de qué cláusula sale cada dato.', 'verificar');
+  ok('Avísame cuando cambie el horario.', 'tarea');
 });
 
 test('las peticiones vagas siguen puntuando bajo con las piezas exigidas', () => {

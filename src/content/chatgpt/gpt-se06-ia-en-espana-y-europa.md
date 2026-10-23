@@ -11,8 +11,8 @@ takeaway: "Si usas IA en tu trabajo o tu empresa, el Reglamento europeo te pide 
 scenario:
   kind: empresa
   label: Caso práctico
-  title: Los pisos de Begoña
-  body: "Begoña tiene una inmobiliaria con cuatro empleados. Usan ChatGPT para redactar anuncios y para crear fotos de cómo quedarían los pisos amueblados. Desde agosto de 2026, Begoña añade en cada foto «Imagen recreada con IA», da a su equipo una hora de formación y escribe una norma de una página."
+  title: Los pisos de Montse
+  body: "Montse tiene una inmobiliaria con cuatro empleados. Usan ChatGPT para redactar anuncios y para crear fotos de cómo quedarían los pisos amueblados. Desde agosto de 2026, Montse añade en cada foto «Imagen recreada con IA», da a su equipo una hora de formación y escribe una norma de una página."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -37,12 +37,12 @@ tips:
   - "Pon la etiqueta donde se vea (en la imagen o junto a ella), no escondida en las condiciones de la web."
   - "Si usas IA con datos de clientes, sigue mandando el RGPD: lo viste en «Los datos de tu trabajo»."
 action:
-  title: Escribe tu norma de una página
+  title: Haz la lista de lo que publicas con IA
   steps:
-    - "Pide a ChatGPT un borrador de norma de uso de IA para tu trabajo o tu equipo, aunque seas solo tú."
-    - "Revísala: qué tareas sí, qué datos nunca, qué se comprueba y cuándo avisáis de que algo es de IA."
-    - "Guárdala en «Mi kit de ChatGPT»."
-  check: He escrito mi norma de uso de IA con cuándo avisar de que algo está hecho con IA
+    - "Apunta dónde publicas o enseñas a otros algo hecho con IA en tu trabajo: fotos, textos de la web, un chat, vídeos."
+    - "Marca lo que podría pasar por real y decide el aviso de cada cosa, por ejemplo «Imagen recreada con IA»."
+    - "Guarda la lista y los avisos en «Mi kit de ChatGPT»."
+  check: He apuntado lo que publico con IA y he decidido cómo avisar en cada caso
 practice:
   task: "Vas a poner un asistente de chat con IA en la web de tu agencia de viajes. Escribe la petición para que ChatGPT redacte el mensaje de bienvenida, que deje claro que es una IA."
   require: [contexto, formato, tono]
@@ -69,7 +69,7 @@ sources: [reglamento-ia, aepd]
 
 El **Reglamento europeo de IA** (Reglamento UE 2024/1689) pone normas a la inteligencia artificial según el riesgo de cada uso. Casi todo es para quien **fabrica** IA o la usa en cosas delicadas, como seleccionar personal o conceder créditos. Pero si usas ChatGPT en tu trabajo o tu pequeña empresa, te tocan **dos cosas**:
 
-**1. Alfabetización en IA.** Desde febrero de 2025, las organizaciones que usan IA deben tomar medidas para que su personal sepa usarla: qué hace, en qué falla y qué riesgos tiene. Una reforma de julio de 2026 (Reglamento UE 2026/1744, el llamado «ómnibus digital») lo suavizó: ya no hay que **garantizar** un nivel, sino **tomar medidas** para fomentarlo.
+**1. Alfabetización en IA.** Desde febrero de 2025, las organizaciones que usan IA tienen que ocuparse de que su personal sepa usarla: qué hace, en qué falla y qué riesgos tiene. Una reforma en vigor desde el 27 de julio de 2026 (Reglamento UE 2026/1744, el llamado «ómnibus digital») lo suavizó: ya no hay que **garantizar** un nivel, sino **tomar medidas** para fomentarlo.
 
 **2. Transparencia.** Desde el **2 de agosto de 2026**, para quien usa IA en su actividad profesional:
 
@@ -77,7 +77,7 @@ El **Reglamento europeo de IA** (Reglamento UE 2024/1689) pone normas a la intel
 - Si publicas textos de IA para informar al público de temas de interés general, también, salvo que una persona los revise y responda de ellos.
 - Un chat con IA debe dejar claro a quien lo usa que contesta una máquina, no una persona.
 
-El **uso puramente personal** queda fuera de estas obligaciones. La reforma retrasó las de alto riesgo a 2027 y 2028, pero no estas.
+El **uso puramente personal** queda fuera de estas obligaciones. La reforma retrasó las de alto riesgo a 2027 y 2028, pero no estas. Y añadió una prohibición, desde el 2 de diciembre de 2026: usar IA para crear imágenes, vídeos o audios íntimos o sexuales de una persona real sin su consentimiento.
 
 ## En la práctica
 
@@ -91,7 +91,7 @@ Para cumplir sin complicarte:
 1. Una **sesión de formación** corta y una **norma escrita** de una página.
 2. Una **etiqueta** visible en lo que pueda pasar por real: «Imagen recreada con IA».
 
-> Prueba: «Tengo un negocio de 4 personas en España que usa ChatGPT. Redacta una norma de uso de IA de una página: qué tareas sí, qué datos no se suben nunca, qué se comprueba antes de enviar y cuándo avisamos de que algo está hecho con IA. Lenguaje sencillo.»
+> Prueba: «Tengo una inmobiliaria con 4 empleados y usamos ChatGPT. Prepara una formación interna de 30 minutos: un guion en tres partes (qué hace bien, en qué falla y qué datos no se suben nunca), un caso práctico de nuestro sector y cinco preguntas tipo test para comprobar que se ha entendido. Lenguaje sencillo.»
 
 ## Error frecuente
 

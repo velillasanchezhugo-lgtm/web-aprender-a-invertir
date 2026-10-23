@@ -6,26 +6,26 @@ track: gpt-funciones
 order: 206
 skills: [gpt-modelos-modos]
 terms: [modelo-de-razonamiento, modelo-de-lenguaje]
-hook: "Pides a ChatGPT que te ayude a cuadrar los turnos de tu equipo con cinco condiciones y la respuesta rápida se salta dos. ¿Le pides que lo haga otra vez o hay una forma de que lo piense mejor?"
+hook: "Seis amigos, una casa rural y gastos pagados por personas distintas. Pides a ChatGPT quién debe cuánto a quién y la respuesta rápida no cuadra. ¿Lo repites tal cual o hay una forma de que lo piense mejor?"
 takeaway: Para lo sencillo, la respuesta rápida basta. Para problemas con varias condiciones o decisiones con peso, elige la opción de pensar más y revisa igual el resultado.
 scenario:
   kind: producto
   label: Caso práctico
-  title: Los turnos de Inés
-  body: "Inés lleva un pequeño bar en Logroño y necesita repartir los turnos de cuatro camareros con libranzas, festivos y un horario máximo por persona. La respuesta rápida incumple una libranza. Repite la petición eligiendo la opción de pensar más: tarda más, pero respeta todas las condiciones. Aun así, Inés lo revisa con la lista delante."
+  title: Las cuentas de Álvaro
+  body: "Álvaro y cinco amigos han pasado un fin de semana en una casa rural de Cuenca. Uno pagó la reserva, otro la compra y otro la gasolina. Pide a ChatGPT el reparto y la respuesta rápida deja a alguien pagando de más. Repite eligiendo la opción de pensar más: tarda un poco, pero las cuentas cuadran. Aun así, Álvaro suma los pagos antes de mandarlo al grupo."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-fu06-q1
-    q: "¿Para cuál de estas tareas compensa más pedir a ChatGPT que piense más?"
-    options: ["Traducir «buenos días» al italiano", "Planificar un viaje de cinco días en tren con presupuesto, horarios y dos personas con necesidades distintas", "Dar ideas de nombres para un gato"]
+    q: "Dudas entre tres tarifas de móvil con permanencias, datos y descuentos distintos durante dos años. ¿Cómo lo pides?"
+    options: ["Con la respuesta rápida, y te quedas con lo primero que diga", "Eligiendo pensar más, con todos los datos de cada tarifa, y revisando el resultado", "Sin datos: ChatGPT ya conoce todas las tarifas"]
     answer: 1
-    explain: "Tiene muchas condiciones que cumplir a la vez, justo donde el razonamiento ayuda. Usarlo para todo tienta, pero en tareas sencillas solo tarda más y gasta un uso que puede estar limitado."
+    explain: "Hay muchas condiciones a la vez, justo donde el razonamiento ayuda, y le tienes que dar los datos. La rápida tienta por cómoda, pero en comparaciones así es fácil que se salte algo."
   - type: truefalse
     id: gpt-fu06-q2
-    q: "Si ChatGPT ha razonado más tiempo, su respuesta ya no necesita revisión."
+    q: "En el plan gratis no hay ninguna forma de pedir a ChatGPT que piense más."
     answer: false
-    explain: "Pensar más reduce errores en problemas complejos, pero no los elimina. Lo que tenga consecuencias (dinero, salud, plazos) se comprueba igual."
+    explain: "También en el plan gratis puedes elegir que piense más desde el menú de herramientas, o pedirlo por escrito. Tienta creer que es solo de pago, pero lo que cambia según el plan es cuánto puedes usarlo."
   - type: choice
     id: gpt-fu06-q3
     q: "En un vídeo de hace un año explican un modelo de ChatGPT que tú no ves en tu selector. ¿Qué piensas?"
@@ -38,19 +38,19 @@ tips:
 action:
   title: Compara una respuesta rápida con una pensada
   steps:
-    - "Busca un problema real con varias condiciones (un horario, un reparto, una comparación)."
+    - "Busca un problema real con varias condiciones (un reparto de gastos, un menú, una comparación)."
     - "Pídelo con la respuesta rápida y, luego, con la opción de pensar más."
     - "Compara si cumplen todas las condiciones."
     - "Apunta en «Mi kit de ChatGPT» qué tipo de tareas te merece la pena pensar más."
   check: He comparado una respuesta rápida con una razonada
 practice:
-  task: "Dudas entre dos pisos de alquiler en Granada con precios, distancias y condiciones distintas. Escribe la petición para que ChatGPT razone la comparación con calma."
+  task: "Te han ofrecido dos trabajos en Zaragoza con sueldos, jornadas y distancias distintos. Escribe la petición para que ChatGPT razone la comparación con calma."
   require: [contexto, formato, verificar]
   extra:
     - label: "Pedir que razone paso a paso"
       any: ["paso a paso", "piensa", "razona", "con calma"]
       hint: "Pide que lo piense con calma y compare paso a paso cada criterio."
-  sample: "Estoy entre dos pisos de alquiler en Granada. Piso A: 650 € al mes, a 10 minutos andando del trabajo, sin ascensor. Piso B: 580 € al mes, a 35 minutos en autobús, con terraza y dos meses de fianza. Piensa con calma y compara paso a paso el coste mensual, el tiempo de viaje y los gastos de entrada. Dame una tabla con los criterios y una conclusión de tres líneas. Dime qué datos te faltan o qué supuestos haces."
+  sample: "Me han ofrecido dos trabajos en Zaragoza. Oferta A: 1.600 € netos al mes, jornada partida, a 10 minutos andando. Oferta B: 1.750 € netos, jornada intensiva, a 40 minutos en coche y unos 120 € de gasolina al mes. Piensa con calma y compara paso a paso el dinero que me queda, el tiempo libre y el tiempo de viaje. Dame una tabla con los criterios y una conclusión de tres líneas. Dime qué datos te faltan o qué supuestos haces."
 deeper: null
 tool: evaluador-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -81,7 +81,7 @@ Lo que conviene saber:
 2. Si la tarea tiene muchas piezas o la respuesta falla, elige la opción de pensar más. Según tu plan, está en el selector de modelo o en el menú de herramientas del chat (el botón «+»).
 3. También ayuda escribirlo: «piensa con calma y comprueba cada condición».
 
-> Prueba: «Tengo que repartir las tareas de casa entre cuatro compañeros de piso: nadie repite la misma tarea dos semanas seguidas y Pablo no puede los martes. Piensa con calma, hazme un calendario de cuatro semanas en una tabla y comprueba al final que se cumplen todas las condiciones».
+> Prueba: «Organizo una cena para doce personas: tres son vegetarianas, una es celíaca y dos no comen pescado. Propón un menú de tres platos que puedan comer todos. Piensa con calma y comprueba al final, persona por persona, que se cumplen todas las condiciones».
 
 ## Error frecuente
 

@@ -6,43 +6,41 @@ track: gpt-conectar
 order: 604
 skills: [gpt-automatizar]
 terms: [tareas-programadas-chatgpt, apps-en-chatgpt]
-hook: "Cada lunes buscas las mismas noticias de tu sector y cada mes se te olvida revisar las ayudas al alquiler. ¿Y si ChatGPT lo hiciera solo y te avisara?"
-takeaway: "Una tarea programada es una petición que ChatGPT hace sola en el momento que eliges, una vez o cada cierto tiempo. Escríbela tan completa como un encargo normal, empieza por una y revisa lo que te entrega."
+hook: "Cada lunes buscas las mismas noticias de tu sector y cada mes se te olvida mirar las ayudas al alquiler. ¿Y si ChatGPT lo hiciera solo y te avisara?"
+takeaway: "Una tarea programada es una petición que ChatGPT hace sola cuando eliges, una vez o cada cierto tiempo. Escríbela como un buen encargo, dale solo los permisos que necesita y revisa cada resultado."
 scenario:
   kind: producto
   label: Caso práctico
-  title: Las noticias de Carmen
-  body: "Carmen tiene una tienda de bicicletas en Logroño. Programa una tarea para cada lunes a primera hora: tres noticias de la semana sobre ayudas a la movilidad en La Rioja, con enlace. La segunda semana, una noticia era de 2024; añade a la tarea «solo de los últimos siete días» y desde entonces llega bien."
+  title: Las novedades de Rocío
+  body: "Rocío tiene una autoescuela en Cáceres. Programa una tarea para cada lunes a primera hora: tres novedades de la semana sobre el examen de conducir, con enlace a la fuente. La segunda semana, una noticia era de hace dos años; añade «solo de los últimos siete días» y desde entonces llega bien."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-co04-q1
-    q: "Hugo quiere que ChatGPT le avise si abren la convocatoria de becas de su comunidad, pero no quiere recibir un mensaje cada día. ¿Qué tarea crea?"
+    q: "Iván quiere que ChatGPT le avise si abren la convocatoria de becas de su comunidad, pero no quiere un mensaje cada día. ¿Qué tarea crea?"
     options: ["Una tarea diaria que le resuma todas las noticias de becas", "Una tarea que vigile la convocatoria y le avise solo cuando haya un cambio importante", "Ninguna: las tareas solo sirven para recordatorios"]
     answer: 1
-    explain: "Además de recordatorios y resúmenes, puedes pedirle que compruebe algo y te avise solo si hay novedades. El resumen diario tienta porque parece más completo, pero llena tu bandeja de mensajes sin interés."
+    explain: "Puedes pedirle que compruebe algo y te avise solo si hay novedades. El resumen diario tienta porque parece más completo, pero llena tu bandeja de mensajes sin interés."
   - type: choice
     id: gpt-co04-q2
-    q: "Patricia crea una tarea dentro de un proyecto en el que tiene subidos sus apuntes en PDF. ¿Qué pasará?"
-    options: ["La tarea usará los PDF del proyecto sin problema", "La tarea no podrá leer los archivos del proyecto: tendrá que contarle en la petición lo que necesita", "La tarea borrará el proyecto al terminar"]
+    q: "Patricia tiene una academia y quiere una tarea que cada viernes revise su correo conectado y conteste a las familias que preguntan por plazas. ¿Qué le encarga?"
+    options: ["Que conteste ella sola a todos, para ahorrar tiempo", "Que le prepare una lista de correos pendientes con un borrador de respuesta para cada uno, que Patricia revisa y envía", "Nada: una tarea no puede usar el correo"]
     answer: 1
-    explain: "El centro de ayuda avisa de que una tarea creada en un proyecto con archivos no puede acceder a esos archivos. Es fácil suponer que lo ve todo porque está en el mismo sitio, pero no es así."
+    explain: "La tarea se ejecuta cuando Patricia no está delante, así que lo sensato es que solo prepare. Contestar sola tienta por cómodo, pero un error llegaría a una familia con su nombre y nadie lo vería a tiempo."
   - type: truefalse
     id: gpt-co04-q3
     q: "Como la tarea se repite sola, basta con revisar su resultado la primera vez."
     answer: false
-    explain: "Cada resultado es una respuesta nueva y puede traer errores nuevos: una fecha antigua, una fuente dudosa, un dato inventado. Tienta fiarse porque «ya funcionó», pero conviene echar un vistazo cada vez."
+    explain: "Cada resultado es una respuesta nueva y puede traer errores nuevos: una fecha antigua o un dato inventado. Tienta fiarse porque «ya funcionó», pero conviene echar un vistazo cada vez."
 tips:
-  - "Ponle a cada tarea un límite de tiempo en la búsqueda («de los últimos siete días») para que no te traiga noticias viejas."
-  - "Si una tarea usa una app, como tu correo, recuerda que se ejecutará cuando tú no estés mirando: dale solo permiso para leer."
-  - "En el plan gratis las tareas se repiten con menos frecuencia y a horas aproximadas; consulta los detalles de tu plan en la página de planes."
+  - "Ponle a cada búsqueda un límite de fechas («de los últimos siete días») para que no te traiga noticias viejas."
+  - "Si la tarea necesita los archivos de un proyecto, copia lo esencial en la propia petición: no puede leerlos."
 action:
   title: Programa tu primera tarea
   steps:
     - "Elige algo que repites cada semana: un repaso de noticias, un recordatorio o una lista de pendientes."
-    - "Pídeselo a ChatGPT diciendo qué quieres, cuándo y cómo, o créala desde la página de tareas programadas de la barra lateral."
-    - "Cuando llegue el primer resultado, revísalo y ajusta la petición."
-    - "Guarda la petición final en «Mi kit de ChatGPT»."
+    - "Pídeselo en el chat diciendo qué, cuándo y cómo, o créala en la página de tareas programadas."
+    - "Revisa el primer resultado, ajusta la petición y guárdala en «Mi kit de ChatGPT»."
   check: He programado una tarea y he revisado su primer resultado
 practice:
   task: "Eres administrativo en una gestoría y cada lunes repasas las novedades fiscales de la semana. Escribe la petición de una tarea programada que te lo prepare."
@@ -57,7 +55,7 @@ tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22
-reviewed: 2026-10-22
+reviewed: 2026-10-23
 status: revision-pendiente
 jurisdiction: España
 sources: [openai-ayuda, openai-planes]
@@ -65,22 +63,22 @@ sources: [openai-ayuda, openai-planes]
 
 ## La idea
 
-Una **tarea programada** es una petición que ChatGPT hace **sola**, en el momento que eliges, y te avisa del resultado. Sirve para tres cosas:
+Una **tarea programada** es una petición que ChatGPT hace **sola**, en el momento que eliges, y te avisa del resultado. Sirve para:
 
 - **Recordatorios:** «El día 1 de cada mes, recuérdame mandar la lectura del contador de agua».
 - **Resúmenes que se repiten:** «Cada viernes, las noticias de la semana sobre el alquiler en Madrid».
 - **Vigilancias:** «Comprueba si sale la convocatoria y avísame solo si hay novedades».
 
-Se crean de dos formas: **pidiéndolo en el chat** («cada lunes a las 8:00, …») o desde la **página de tareas programadas** de la barra lateral (en inglés, «Scheduled»), en la web, el móvil y el escritorio. Desde esa página las **pausas, editas o borras**.
+Se crean **pidiéndolo en el chat** («cada lunes a las 8:00, …») o desde la **página de tareas programadas** de la barra lateral (en inglés, «Scheduled»). Ahí las **pausas, editas o borras**.
 
-Están en el plan gratis y en los de pago. En el gratis, con menos frecuencia y a horas aproximadas; los planes de pago permiten más tareas activas y, con ChatGPT Work, tareas que se lanzan cuando pasa algo en una app (por ejemplo, un correo nuevo).
+Están en el plan gratis y en los de pago; en el gratis, con menos frecuencia y a horas aproximadas. Algunos planes de pago permiten también tareas que se lanzan cuando pasa algo en una app, como un correo nuevo. Detalles, en la página de planes.
 
-Dos cosas que conviene saber:
+Dos avisos:
 
-- Una tarea puede usar **tus apps conectadas**, como el correo, si están disponibles en tu cuenta. Trabajará **sin que estés delante**: dale solo lo que necesita.
+- Una tarea puede usar **tus apps conectadas**, como el correo, y trabajará **sin que estés delante**. Dale solo lo que necesita y que **prepare**, no que envíe.
 - Si la creas **dentro de un proyecto con archivos**, no podrá leer esos archivos.
 
-Lo más importante: **el resultado se revisa siempre.** Cada vez es una respuesta nueva y puede traer una fecha vieja o un dato equivocado.
+Y lo más importante: **cada resultado se revisa.** Es una respuesta nueva y puede traer una fecha vieja o un dato equivocado.
 
 ## En la práctica
 
@@ -88,7 +86,7 @@ Escribe la tarea como un buen encargo: **qué** quieres, **cuándo** se repite, 
 
 > Prueba: «Cada domingo a las 19:00, proponme cinco cenas sencillas para la semana, para dos personas, de menos de 30 minutos y con verduras de temporada. Dámelas en una lista con la compra agrupada por secciones del supermercado. Dime qué verduras son de temporada este mes.»
 
-Después del primer resultado, **afina**: añade un límite de fechas, quita lo que sobra o cambia la hora. Si un resultado trae datos importantes (fechas, plazos, importes), compruébalos en la fuente. Y borra las tareas que ya no lees.
+Tras el primer resultado, **afina**: añade un límite de fechas, quita lo que sobra o cambia la hora. Los datos importantes (plazos, importes), compruébalos en la fuente.
 
 ## Error frecuente
 

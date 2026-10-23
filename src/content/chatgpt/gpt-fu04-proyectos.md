@@ -11,27 +11,27 @@ takeaway: Un proyecto agrupa los chats, los archivos y unas instrucciones de un 
 scenario:
   kind: producto
   label: Caso práctico
-  title: La mudanza de Andrés y Lucía
-  body: "Andrés y Lucía se mudan a Burgos en enero. Andrés crea un proyecto llamado «Mudanza», sube la lista de muebles y los tres presupuestos de empresas de mudanzas, y escribe unas instrucciones: «Somos dos, presupuesto máximo de 1.500 €, respuestas cortas». Comparte el proyecto con Lucía para que ella también pueda preguntar."
+  title: La mudanza de Andrés y Aurora
+  body: "Andrés y Aurora se mudan a Burgos en enero. Andrés crea un proyecto llamado «Mudanza», sube la lista de muebles y tres presupuestos de empresas de mudanzas, y escribe unas instrucciones: «Somos dos, presupuesto máximo de 1.500 €, respuestas cortas». Comparte el proyecto con Aurora para que ella también pregunte."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-fu04-q1
-    q: "¿En cuál de estos casos compensa más crear un proyecto?"
-    options: ["Preguntar una vez cómo se hace una tortilla", "Preparar durante tres meses tu trabajo de fin de grado, con apuntes, artículos y borradores", "Traducir un mensaje al francés"]
+    q: "Eduardo escribe cada semana con ChatGPT una entrada para el blog de su huerto urbano: siempre el mismo tono, el mismo público y sus notas de cultivo. Ahora lo explica de nuevo en cada chat. ¿Qué le conviene?"
+    options: ["Seguir así: es lo más rápido", "Crear un proyecto con esas instrucciones y sus notas subidas", "Escribir todas las entradas en un único chat larguísimo"]
     answer: 1
-    explain: "El TFG es un tema largo, con documentos que ChatGPT debe tener a mano y al que volverás muchas veces. Para dudas sueltas, un chat normal basta: crear un proyecto solo añade pasos."
+    explain: "Es un tema al que vuelve siempre, con un documento de referencia: justo para lo que sirve un proyecto. El chat único tienta, pero en conversaciones muy largas ChatGPT acaba perdiendo detalles del principio."
   - type: truefalse
     id: gpt-fu04-q2
-    q: "Las instrucciones de un proyecto se aplican a los chats de ese proyecto, no a todas tus conversaciones."
-    answer: true
-    explain: "Valen solo dentro del proyecto. Para algo que quieras en todos tus chats están las instrucciones personalizadas de tu cuenta."
+    q: "Un proyecto compartido también usa lo que ChatGPT recuerda de tus otros chats."
+    answer: false
+    explain: "Los proyectos compartidos solo usan lo que hay dentro del proyecto. Tienta pensar que la otra persona verá tus recuerdos, pero la memoria de tus demás chats queda fuera."
   - type: choice
     id: gpt-fu04-q3
-    q: "Marta comparte con su hermano el proyecto de la boda, pero no quiere que él cambie las instrucciones ni los archivos. ¿Qué acceso le da?"
+    q: "Yolanda comparte con su hermano el proyecto de la boda, pero no quiere que él cambie las instrucciones ni los archivos. ¿Qué acceso le da?"
     options: ["Acceso para editar", "Acceso solo para chatear", "Su contraseña de ChatGPT"]
     answer: 1
-    explain: "Con acceso para chatear puede ver y usar los chats, archivos e instrucciones, pero no cambiarlos. Dar acceso de edición tienta por comodidad, pero le deja tocarlo todo. La contraseña no se comparte nunca."
+    explain: "Con acceso para chatear puede usar el proyecto, pero no cambiarlo. Dar acceso de edición tienta por comodidad, pero le deja tocarlo todo. La contraseña no se comparte nunca."
 tips:
   - "Escribe instrucciones cortas: quién eres, qué buscas y cómo quieres las respuestas."
   - "Antes de compartir un proyecto, revisa qué archivos tiene: la otra persona verá todo lo que hay dentro."
@@ -72,8 +72,8 @@ Un **proyecto** es una carpeta de trabajo dentro de ChatGPT. Junta tres cosas:
 
 Además:
 
-- **Memoria del proyecto.** Puedes elegir que el proyecto solo use lo que hay dentro de él y no lo que ChatGPT recuerda de tus otros chats. Así un tema delicado no se mezcla con el resto. Los proyectos compartidos funcionan siempre así.
-- **Se puede compartir** con otras personas, en planes gratis y de pago, con dos tipos de acceso: **editar** (cambiar instrucciones y archivos, invitar) o **solo chatear** (usarlo sin cambiarlo).
+- **Memoria del proyecto.** Según el plan, puedes elegir que el proyecto solo use lo que hay dentro de él, sin lo que ChatGPT recuerda de tus otros chats. Así un tema delicado no se mezcla. Los proyectos compartidos funcionan siempre así.
+- **Se puede compartir**, en planes gratis y de pago, con dos tipos de acceso: **editar** (cambiar instrucciones y archivos) o **solo chatear** (usarlo sin cambiarlo).
 - **Hay límites** de archivos y de personas según el plan. Míralos en el centro de ayuda de OpenAI.
 
 ## En la práctica

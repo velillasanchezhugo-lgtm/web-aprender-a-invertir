@@ -11,27 +11,27 @@ takeaway: Para datos que cambian (plazos, horarios, normas, noticias), pide que 
 scenario:
   kind: producto
   label: Caso práctico
-  title: El abono de transporte de Hugo
-  body: "Hugo pregunta a ChatGPT si el abono joven de su ciudad sigue con descuento este año. La respuesta no lleva enlaces y suena antigua. Repite la pregunta con «busca en la web, solo en fuentes oficiales». Ahora le salen dos enlaces: uno al consorcio de transportes y otro a un blog de hace dos años. Abre el oficial y comprueba el dato allí."
+  title: El abono de transporte de Damián
+  body: "Damián pregunta a ChatGPT si el abono joven de su ciudad sigue con descuento este año. La respuesta no lleva enlaces y suena antigua. Repite con «busca en la web, solo en fuentes oficiales». Le salen dos enlaces: el consorcio de transportes y un blog de hace dos años. Abre el oficial y comprueba el dato allí."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-fu01-q1
-    q: "Nerea quiere saber si este año ha cambiado el plazo para pedir la beca del Ministerio. ¿Qué hace primero?"
-    options: ["Pregunta sin más: ChatGPT lo sabe todo", "Pide que busque en la web y abre la fuente oficial que cite", "Pregunta tres veces y se queda con la respuesta que más se repita"]
+    q: "Fátima va a renovar el DNI y pregunta a ChatGPT si necesita cita previa. La respuesta no trae ningún enlace. ¿Qué hace?"
+    options: ["Se fía: la respuesta suena muy segura", "Pide que busque en la web, cite la página oficial y la abre", "Repite la pregunta hasta que salga dos veces lo mismo"]
     answer: 1
-    explain: "Un plazo de este año cambia y hace falta una fuente actual y oficial. Repetir la pregunta tienta, pero tres respuestas iguales pueden estar igual de desfasadas."
+    explain: "Un trámite cambia y hace falta una fuente actual y oficial. Repetir la pregunta tienta, pero dos respuestas iguales pueden estar igual de desfasadas."
   - type: truefalse
     id: gpt-fu01-q2
-    q: "Si la respuesta lleva enlaces a fuentes, puedes dar el dato por bueno sin abrirlos."
+    q: "Cuando preguntas por algo actual, ChatGPT siempre busca en internet aunque no se lo pidas."
     answer: false
-    explain: "Las citas están para comprobar. La página puede ser antigua, poco fiable o no decir lo que resume ChatGPT. Tienta fiarse porque «tiene fuentes», pero hay que abrir al menos una."
+    explain: "Muchas veces busca solo, pero no siempre: puede contestar de memoria. Tienta dar por hecho que ha mirado, pero si no ves enlaces, pídelo con «busca en la web»."
   - type: choice
     id: gpt-fu01-q3
-    q: "¿En cuál de estas peticiones aporta menos que ChatGPT busque en internet?"
-    options: ["Ideas para el nombre de un grupo de senderismo", "El horario de verano de la biblioteca de tu barrio", "Las últimas noticias sobre una huelga de autobuses"]
-    answer: 0
-    explain: "Inventar nombres no depende de datos recientes. Los horarios y las noticias sí cambian y necesitan una fuente actual."
+    q: "Para el plazo de este año, ChatGPT te cita la web del ayuntamiento, sin fecha, y un blog de hace dos años que explica más. ¿Con qué te quedas?"
+    options: ["Con el blog, porque da más detalles", "Con la web oficial, y pides que busque la convocatoria de este año para confirmar", "Con los dos: si los cita, valen igual"]
+    answer: 1
+    explain: "Manda la fuente oficial y actual. El blog tienta porque explica mejor, pero un plazo de hace dos años puede haber cambiado."
 tips:
   - "Si conoces la web oficial, nómbrala o pega el enlace: «busca en la web del ayuntamiento»."
   - "Si una fuente no dice lo que ChatGPT afirma, díselo y pídele que lo corrija o busque otra."
@@ -70,9 +70,9 @@ ChatGPT aprende de textos hasta una **fecha de corte**: de lo que pasó después
 
 Lo que conviene saber:
 
-- **Está en todos los planes**, gratis y de pago. En los planes de empresa, quien administra la cuenta puede desactivarla.
+- **Está en todos los planes**, gratis y de pago, e incluso sin iniciar sesión allí donde ChatGPT se puede usar sin cuenta. En los planes de empresa, el administrador puede desactivarla.
 - **Muchas veces busca solo**, cuando la pregunta pide información actual: noticias, plazos, horarios, normas. Pero no siempre: si no lo pides, puede contestar de memoria.
-- **Enseña sus fuentes.** Las respuestas que usan la búsqueda llevan enlaces junto a los datos y, a menudo, un botón de «Fuentes» con la lista completa.
+- **Enseña sus fuentes.** Las respuestas que usan la búsqueda llevan enlaces junto a los datos y, a menudo, una lista de «Fuentes».
 - **Puede fallar igual.** Puede citar una página antigua, un blog poco fiable o resumir mal. La búsqueda reduce las invenciones (las llamadas **alucinaciones**), pero no las elimina.
 
 ## En la práctica
@@ -84,7 +84,7 @@ Lo que conviene saber:
 
 > Prueba: «Busca en la web el horario de verano de las bibliotecas municipales de mi ciudad, Valladolid. Usa solo la web del ayuntamiento, pon el enlace de cada dato y avísame si la página no dice de qué año es».
 
-Para un trámite importante, la última palabra la tiene la web oficial, no el resumen.
+En un trámite importante manda la web oficial, no el resumen.
 
 ## Error frecuente
 

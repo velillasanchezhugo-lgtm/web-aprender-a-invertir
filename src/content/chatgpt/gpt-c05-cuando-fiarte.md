@@ -12,7 +12,7 @@ scenario:
   kind: noticia
   label: Caso práctico
   title: El viaje de Lorena
-  body: "Lorena va a viajar fuera de la UE con su hijo de 12 años y pregunta a ChatGPT qué documentos necesita. La respuesta llega sin fuentes. Le pide que lo busque en internet y le enlace la página oficial: allí ve que uno de los requisitos ha cambiado y que otro no aparece."
+  body: "Lorena viajará fuera de la UE con su hijo de 12 años y pregunta a ChatGPT qué documentos necesita. La respuesta llega sin fuentes. Le pide que lo busque y enlace la página oficial: allí ve que un requisito ha cambiado y otro faltaba."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -20,21 +20,21 @@ questions:
     q: "Lorena tiene la lista de documentos que le dio ChatGPT, sin fuentes, y viaja dentro de dos semanas. ¿Qué hace primero?"
     options: ["Preparar los papeles de la lista: está muy bien ordenada", "Pedirle a ChatGPT que confirme que la lista es correcta", "Comprobar los requisitos en la web oficial del Gobierno o del país de destino"]
     answer: 2
-    explain: "Solo la fuente oficial confirma lo que vale hoy. Pedirle que confirme tienta, pero puede contestar «sí» con la misma seguridad: escribe texto que encaja, no comprueba hechos. Que esté bien ordenada no dice nada de si es cierta."
+    explain: "Solo la fuente oficial confirma lo que vale hoy. Pedirle que confirme tienta, pero puede contestar «sí» con la misma seguridad. Que esté bien ordenada no dice nada de si es cierta."
   - type: truefalse
     id: gpt-c05-q2
     q: "Si la respuesta de ChatGPT trae enlaces a fuentes, ya no hace falta abrirlos."
     answer: false
-    explain: "Un enlace puede no decir exactamente lo que ChatGPT resume, ser antiguo o no ser oficial. Tienta fiarse porque una fuente da sensación de seriedad, pero solo cuenta si la abres y la lees."
+    explain: "Un enlace puede no decir lo que ChatGPT resume, ser antiguo o no ser oficial. Tienta fiarse porque una fuente parece seria, pero solo cuenta si la abres y la lees."
   - type: choice
     id: gpt-c05-q3
     q: "A Antonio le llega una carta de Hacienda con un requerimiento y un plazo de diez días. ¿Qué papel tiene ChatGPT?"
     options: ["Decirle qué contestar y enviarlo tal cual", "Ayudarle a entender las palabras de la carta y a preparar preguntas para su asesor o para la Agencia Tributaria", "Ninguno: no debe ni leerla con ChatGPT"]
     answer: 1
-    explain: "Entender el lenguaje y ordenar dudas es un buen uso; la respuesta a Hacienda la decide con un profesional o con la propia Agencia, que tiene un plazo y consecuencias. Contestar lo que diga ChatGPT tienta por rapidez, pero un error ahí cuesta dinero."
+    explain: "Entender el lenguaje y ordenar dudas es un buen uso; la respuesta a Hacienda, con plazo y consecuencias, la decide con un profesional o con la propia Agencia. Contestar lo que diga ChatGPT tienta por rapidez, pero un error ahí cuesta dinero."
 tips:
-  - "Para trámites, ayudas o requisitos, la única fuente que vale es la web del organismo: la sede de la Agencia Tributaria, la de la Seguridad Social o la de tu comunidad autónoma."
-  - "Pide que separe lo seguro de lo dudoso: «Marca lo que no puedas confirmar con una fuente». No sustituye a comprobar, pero te dice por dónde empezar."
+  - "Para trámites, ayudas o requisitos, la fuente que vale es la web del organismo: Agencia Tributaria, Seguridad Social o tu comunidad autónoma."
+  - "Pide que separe lo seguro de lo dudoso: «Marca lo que no puedas confirmar con una fuente». No sustituye a comprobar, pero orienta."
 action:
   title: Caza una fuente
   steps:
@@ -65,17 +65,17 @@ sources: [openai-ayuda, openai-condiciones-ue, openai-model-spec]
 
 ChatGPT escribe con la misma seguridad cuando acierta que cuando se equivoca. Hay dos motivos principales de error.
 
-**1. Las alucinaciones.** Una **alucinación** es cuando la IA se inventa algo y lo presenta como cierto: una cifra, un requisito, el artículo de una ley, una cita o incluso una fuente. Pasa porque genera el texto que **parece** correcto.
+**1. Las alucinaciones.** Una **alucinación** es cuando la IA se inventa algo y lo presenta como cierto: una cifra, un requisito, el artículo de una ley o incluso una fuente. Pasa porque genera el texto que **parece** correcto.
 
 **2. La fecha de corte.** El modelo aprendió de textos que llegan hasta una fecha, su **fecha de corte**. Lo que cambió después no lo sabe si no busca: puede darte como actual una norma, un precio o un requisito antiguo.
 
 **Qué hacer:**
 
-- Para datos **actuales**, usa la **búsqueda en internet**: ChatGPT consulta páginas web y enlaza las fuentes. Está en el plan gratuito y en los de pago. A veces busca solo; si no, pídeselo.
+- Para datos **actuales**, usa la **búsqueda**: ChatGPT consulta páginas web y enlaza las fuentes. Está en el plan gratuito y en los de pago. A veces busca solo; si no, pídeselo.
 - **Abre las fuentes.** Mira que sean oficiales y que digan lo mismo que el resumen.
 - **Comprueba en la fuente original** todo lo que vayas a usar: entregar, firmar, pagar o enviar.
 
-**Salud, derecho y dinero: un profesional decide.** ChatGPT te ayuda a **entender** un informe médico, un contrato o una carta de Hacienda y a preparar preguntas. La decisión, con un médico, un abogado o un asesor. Las condiciones de uso de OpenAI dicen que sus respuestas pueden no ser exactas y que no sustituyen el consejo profesional. Ante una urgencia médica, el 112.
+**Salud, derecho y dinero: un profesional decide.** ChatGPT te ayuda a **entender** un informe médico, un contrato o una carta de Hacienda y a preparar preguntas. La decisión, con un médico, un abogado o un asesor. Las propias condiciones de uso de OpenAI dicen que sus respuestas no sustituyen el consejo profesional. Ante una urgencia médica, el 112.
 
 ## En la práctica
 

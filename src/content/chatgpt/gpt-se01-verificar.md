@@ -11,8 +11,8 @@ takeaway: No todo se comprueba igual. Las ideas se revisan por encima; las cifra
 scenario:
   kind: empresa
   label: Caso práctico
-  title: El informe de Carmen
-  body: "Carmen prepara para su jefa un informe sobre el empleo joven en su provincia. ChatGPT le da tres cifras con enlaces. Abre el primero: lleva a la web oficial, pero el dato es de hace dos años. El segundo enlace no dice lo que ChatGPT afirma. Carmen pide que marque lo dudoso, actualiza las cifras con la fuente original y cita cada una."
+  title: El informe de Noelia
+  body: "Noelia prepara para su jefa un informe sobre el empleo joven en su provincia. ChatGPT le da tres cifras con enlaces. Abre el primero: lleva a la web oficial, pero el dato es de hace dos años. El segundo enlace no dice lo que ChatGPT afirma. Noelia pide que marque lo dudoso, actualiza las cifras con la fuente original y cita cada una."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -49,7 +49,7 @@ practice:
   require: [verificar, formato]
   extra:
     - label: Pedir que marque lo dudoso
-      any: [dudoso, dudas, no estas seguro, seguridad, anticuad, puede haber cambiado, marca]
+      any: [dudoso, dudas, no estas seguro, no estes seguro, no tengas claro, no lo tienes claro, seguridad, anticuad, desactualiz, puede haber cambiado, haya cambiado, marca, senala, avisa]
       hint: "Pide que marque los datos de los que no está seguro o que pueden haber cambiado."
     - label: Pedir la fecha o la fuente oficial
       any: [oficial, fecha, fuente original, actualizado]
@@ -89,9 +89,9 @@ Qué mirar primero, por orden:
 3. Para datos que cambian, pídele que **busque en la web** y abre tú los enlaces.
 4. Compruébalo en la web oficial: BOE, Agencia Tributaria, Seguridad Social, tu ayuntamiento.
 
-> Prueba: «Repasa tu respuesta anterior. Haz una tabla con cada dato concreto (cifras, fechas, plazos, nombres de leyes), dime de dónde sale, cuánta seguridad tienes en él y en qué web oficial puedo comprobarlo. Si alguno puede haber cambiado este año, márcalo.»
+> Prueba: «Antes de usar tu respuesta en mi informe, sepárame en una lista los datos que se pueden comprobar (cifras, fechas, plazos, nombres de normas). En cada uno, dime si lo has sacado de una web en esta conversación o de lo que ya sabías, y qué organismo oficial lo publica. Marca los que puedan estar anticuados.»
 
-Que te diga que tiene «mucha seguridad» no basta: es una pista para saber por dónde empezar, no una prueba.
+Lo que viene «de lo que ya sabía» es lo primero que hay que comprobar: puede ser anterior a su fecha de corte. Y que te diga que está seguro no basta: es una pista para saber por dónde empezar, no una prueba.
 
 ## Error frecuente
 

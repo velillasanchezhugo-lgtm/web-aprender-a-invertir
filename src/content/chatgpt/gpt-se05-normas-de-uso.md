@@ -11,8 +11,8 @@ takeaway: Al usar ChatGPT aceptas las políticas de uso de OpenAI. Si se niega a
 scenario:
   kind: producto
   label: Caso práctico
-  title: La novela de Marta
-  body: "Marta escribe una novela negra y pide «cómo envenenar a alguien sin dejar rastro». ChatGPT se niega. Marta lo piensa: no necesita una receta, sino que la trama sea creíble. Reformula: «Escribo una novela negra. Sin detalles técnicos reales, ayúdame con la escena en que la forense sospecha que no fue una muerte natural: qué pistas ve y qué pruebas pide». Obtiene una escena mejor que la que buscaba."
+  title: La novela de Lourdes
+  body: "Lourdes escribe una novela negra y pide «cómo envenenar a alguien sin dejar rastro». ChatGPT se niega. Lourdes lo piensa: no necesita una receta, sino que la trama sea creíble. Reformula: «Escribo una novela negra. Sin detalles técnicos reales, ayúdame con la escena en que la forense sospecha que no fue una muerte natural: qué pistas ve y qué pruebas pide». Obtiene una escena mejor que la que buscaba."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -28,14 +28,14 @@ questions:
     explain: "A veces una petición inocente se parece a algo dañino y se pasa de prudente. Tienta pensar que has hecho algo mal, pero muchas veces basta con dar contexto. Si aun así se niega, probablemente choca con una norma."
   - type: choice
     id: gpt-se05-q3
-    q: "Una gestoría quiere poner en su web un asistente con ChatGPT que diga a cada cliente cuánto pagará de IRPF y qué deducciones aplicarse, sin que lo revise nadie. ¿Qué choca con las normas de OpenAI?"
-    options: ["Nada: es información pública", "Dar asesoramiento a medida que requiere un profesional sin que intervenga ninguno", "Usar ChatGPT para temas de impuestos"]
+    q: "Una clínica quiere poner en su web un asistente hecho con la tecnología de OpenAI que diga a cada paciente qué medicamento y qué dosis tomar según sus síntomas, sin que lo revise ningún médico. ¿Qué choca con las normas de OpenAI?"
+    options: ["Nada: los prospectos son información pública", "Dar asesoramiento a medida que requiere un profesional sin que intervenga ninguno", "Hablar de temas de salud"]
     answer: 1
-    explain: "Las políticas piden que un profesional cualificado intervenga cuando se da asesoramiento a medida que lo requiere. Que sea información pública tienta, pero aplicarla al caso de cada cliente es asesorar. Explicar cómo funciona el IRPF en general sí está bien."
+    explain: "Las políticas piden que intervenga un profesional cuando se da asesoramiento a medida que lo exige, como el médico o el legal. Que sea información pública tienta, pero aplicarla al caso de cada paciente es asesorar. Explicar en general qué es un antiinflamatorio sí está bien."
 tips:
   - "Si te niega algo legítimo, dale contexto en el mismo chat: quién eres, para qué y qué no necesitas."
   - "Pide la versión segura: datos inventados, señales para reconocer algo en lugar de instrucciones para hacerlo."
-  - "Si crees que la negativa es un error, puedes valorar la respuesta en ChatGPT para que OpenAI lo revise."
+  - "Si crees que la negativa es un error, puedes valorar la respuesta con el pulgar. Ojo: al valorarla, esa conversación puede usarse para mejorar los modelos aunque lo tengas desactivado."
 action:
   title: Reformula una negativa
   steps:
@@ -64,9 +64,9 @@ sources: [openai-uso, openai-model-spec]
 
 ## La idea
 
-OpenAI tiene unas **políticas de uso**: las reglas sobre lo que no se puede hacer con ChatGPT. Las aceptas al usarlo y, si se incumplen, OpenAI puede limitar o cerrar la cuenta. En sencillo, giran en torno a tres ideas:
+OpenAI tiene unas **políticas de uso**: las reglas sobre lo que no se puede hacer con ChatGPT. Las aceptas al usarlo y, si se incumplen, OpenAI puede limitar o cerrar la cuenta (si crees que es un error, puedes reclamar). En sencillo, giran en torno a tres ideas:
 
-- **Proteger a las personas.** Nada de amenazas, acoso, violencia, armas, autolesiones, contenido sexual con menores, fraudes ni estafas. Tampoco dar a otros **asesoramiento a medida** que requiere un profesional (legal, médico, financiero) sin que intervenga uno.
+- **Proteger a las personas.** Nada de amenazas, acoso, violencia, armas, autolesiones, contenido sexual con menores, fraudes ni estafas. Tampoco dar a otros **asesoramiento a medida** que requiere un profesional con título (por ejemplo, legal o médico) sin que intervenga uno.
 - **Respetar la privacidad.** No vigilar a nadie, no recopilar datos de personas sin permiso y no usar la cara o la voz de alguien sin su consentimiento de forma que parezca real (un **deepfake**).
 - **No engañar ni saltarse las protecciones.** Ni desinformación, ni hacerse pasar por otra persona, ni trucos para que ChatGPT ignore sus reglas.
 
@@ -84,7 +84,7 @@ Si se niega y tu petición es legítima:
 2. **Pide lo que necesitas de verdad** y aclara lo que no: «sin instrucciones reales», «solo las señales para reconocerlo».
 3. **Acepta la versión segura**: ejemplos inventados, un caso marcado como falso.
 
-> Prueba: «Doy una charla a padres sobre el acoso por redes. No necesito saber cómo se hace: explícame las señales para detectar que un hijo lo sufre y qué pasos dar, en una lista sencilla.»
+> Prueba: «Soy tutora de 2.º de ESO y una familia cree que a su hijo le acosan por redes. Explícame las señales de alarma y qué pasos pueden dar en casa, en el instituto y, si hace falta, ante la policía, en una lista sencilla para entregarles. Sin detalles de cómo se hace el acoso: solo cómo detectarlo y actuar.»
 
 Si con contexto sigue sin poder ayudarte, probablemente choca con una norma: acéptalo y busca otro camino (un profesional, una fuente oficial).
 

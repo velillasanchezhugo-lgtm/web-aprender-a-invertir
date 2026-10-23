@@ -90,7 +90,7 @@ Sin programar puedes hacer **cosas pequeñas**:
 2. Cuenta lo que quieres como se lo dirías a una persona, y di que no sabes programar.
 3. Pide **el plan antes** de que toque nada.
 4. Aprueba solo los permisos que entiendas.
-5. **Comprueba el resultado** tú: abre la web, cuenta los archivos.
+5. **Comprueba el resultado** tú: abre lo que ha creado y cuenta los archivos.
 
 > Prueba: «No sé programar. En esta carpeta hay una copia de mis apuntes: unos 200 archivos Word y PDF con nombres desordenados. Crea una hoja de cálculo con el nombre de cada archivo, el tema del que trata y su fecha. No cambies, muevas ni borres ningún archivo: solo crea la hoja. Antes de empezar, cuéntame tu plan en dos o tres frases.»
 

@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: El último tren de Manuel
-  body: "Manuel tiene 68 años y estrena ChatGPT. Le pide que le explique una carta de la compañía del agua y la respuesta le aclara todo. Luego le pregunta a qué hora sale esta noche el último tren de cercanías a su pueblo, y ChatGPT le da una hora exacta sin enlazar ninguna fuente."
+  body: "Manuel tiene 68 años y estrena ChatGPT. Le pide que le explique una carta de la compañía del agua y le aclara todo. Luego le pregunta a qué hora sale esta noche el último tren de cercanías a su pueblo, y le da una hora exacta sin ninguna fuente."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -52,7 +52,7 @@ tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22
-reviewed: 2026-10-23
+reviewed: 2026-10-22
 status: revision-pendiente
 jurisdiction: España
 sources: [openai-ayuda, openai-condiciones-ue]

@@ -6,18 +6,18 @@ track: gpt-seguro
 order: 702
 skills: [gpt-empresa-datos, gpt-privacidad]
 terms: [datos-personales, anonimizar, rgpd, controles-de-datos]
-hook: "Tienes 25 correos de personas interesadas en pisos, con sus nombres, teléfonos y lo que buscan. ChatGPT te los ordenaría en un minuto. ¿Los pegas en tu cuenta personal?"
+hook: "Tienes 25 solicitudes de presupuesto de clientes, con sus nombres, teléfonos y la dirección de la obra. ChatGPT te las ordenaría en un minuto. ¿Las pegas en tu cuenta personal?"
 takeaway: Los datos de tu empresa y de sus clientes no son tuyos. Usa la cuenta de empresa si la hay; si no, pregunta qué se permite y quita todo lo que identifique a alguien antes de pegarlo.
 scenario:
   kind: empresa
   label: Caso práctico
-  title: Los interesados de Daniel
-  body: "Daniel trabaja en una inmobiliaria de barrio y quiere que ChatGPT clasifique los correos de interesados por zona y presupuesto. La agencia no tiene cuenta de empresa, pero su jefa le permite usar su cuenta personal con datos anonimizados. Daniel cambia nombres por «Interesado 1, 2, 3…», borra teléfonos y correos, y pega solo zona, presupuesto y lo que buscan."
+  title: Los presupuestos de Eloy
+  body: "Eloy trabaja en una pequeña empresa de reformas y quiere que ChatGPT ordene las solicitudes de presupuesto por tipo de obra y urgencia. La empresa no tiene cuenta de empresa, pero su jefa le permite usar su cuenta personal con datos anonimizados. Eloy cambia los nombres por «Cliente 1, 2, 3…», borra teléfonos, correos y direcciones, y deja solo el barrio, el tipo de obra y lo que piden."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-se02-q1
-    q: "Rocío, administrativa de una clínica dental, quiere que ChatGPT redacte recordatorios de cita a partir de la lista de pacientes con su tratamiento. Solo tiene su cuenta personal y la clínica no ha dicho nada. ¿Qué hace primero?"
+    q: "Maribel, administrativa de una clínica dental, quiere que ChatGPT redacte recordatorios de cita a partir de la lista de pacientes con su tratamiento. Solo tiene su cuenta personal y la clínica no ha dicho nada. ¿Qué hace primero?"
     options: ["Pega la lista en un chat temporal, que no queda en el historial", "Pregunta a la clínica qué se permite y, mientras, pide solo una plantilla sin datos de pacientes", "Desactiva en Controles de datos la mejora del modelo y pega la lista"]
     answer: 1
     explain: "Son datos de salud, de los más protegidos, y los controla la clínica. El chat temporal y el ajuste de entrenamiento tientan porque parecen proteger, pero los datos salen igualmente de la clínica sin su permiso. Una plantilla con [nombre] y [hora] no tiene ningún riesgo."
@@ -59,7 +59,7 @@ published: 2026-10-22
 reviewed: 2026-10-22
 status: revision-pendiente
 jurisdiction: España
-sources: [openai-privacidad, openai-planes, aepd]
+sources: [openai-ayuda, openai-privacidad, aepd]
 ---
 
 ## La idea
@@ -68,9 +68,9 @@ Lo que pegas en ChatGPT sale de tu ordenador y llega a los servidores de OpenAI.
 
 En la UE manda el **RGPD**, la ley europea de protección de datos: para dar datos de clientes a un servicio externo, la empresa necesita un motivo legal y un contrato con ese proveedor. Tu buena intención no basta.
 
-**Cuenta personal y planes de empresa**, en general (OpenAI lo explica en su centro de ayuda y en su página de privacidad para empresas; cambia, compruébalo):
+**Cuenta personal y planes de empresa**, en general (OpenAI lo explica en su centro de ayuda y en su página de privacidad para empresas; puede cambiar, compruébalo):
 
-- **Personal** (gratis y de pago): por defecto, tus chats pueden usarse para mejorar los modelos. Lo puedes desactivar en los **controles de datos**, dentro de Configuración.
+- **Personal** (gratis y de pago): por defecto, tus chats pueden usarse para mejorar los modelos. Lo puedes desactivar en los **controles de datos**, dentro de Configuración; vale para los chats nuevos.
 - **De empresa** (**ChatGPT Business**, antes llamado Team, y **Enterprise**; también hay Edu para centros educativos): OpenAI dice que **no entrena con esos datos por defecto**. La organización administra las cuentas y tiene su propio contrato.
 
 Qué **no** pegar en una cuenta personal sin permiso:
@@ -86,7 +86,7 @@ Qué **no** pegar en una cuenta personal sin permiso:
 3. Cambia lo real por etiquetas: «Cliente A», «Empresa X», «[importe]». La herramienta «Anonimizador» de esta web te ayuda a detectarlos.
 4. Deja solo lo que ChatGPT necesita para la tarea.
 
-> Prueba: «Te paso unos correos de interesados ya anonimizados: cada uno es "Interesado 1, 2, 3…". Clasifícalos en una tabla por zona, presupuesto y tipo de piso. Si ves algún dato que identifique a alguien, avísame y no lo repitas.»
+> Prueba: «Te paso 25 solicitudes de presupuesto ya anonimizadas: cada una es "Cliente 1, 2, 3…" y he quitado teléfonos y direcciones. Ordénalas en una tabla por tipo de obra, barrio y urgencia, y dime cuáles necesitan una visita antes de dar precio. Si se me ha escapado algún dato personal, señálamelo para que lo borre.»
 
 Si tienes dudas, la AEPD (la agencia española de protección de datos) tiene guías gratuitas.
 

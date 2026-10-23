@@ -12,7 +12,7 @@ scenario:
   kind: producto
   label: Caso práctico
   title: La ferretería de Tomás
-  body: "Tomás lleva una ferretería y quiere usar ChatGPT para los presupuestos y los correos a proveedores. No sabe si pagar. Su hija Inés, de 16 años, quiere su propia cuenta para preparar los exámenes de bachillerato."
+  body: "Tomás lleva una ferretería y quiere usar ChatGPT para presupuestos y correos a proveedores, pero no sabe si pagar. Su hija Inés, de 16 años, quiere su propia cuenta para estudiar bachillerato."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -26,12 +26,12 @@ questions:
     q: "Tomás nunca ha usado una IA y solo quiere probar con unos correos. ¿Qué le conviene?"
     options: ["Empezar con el plan gratuito unos días y ver si se le queda corto", "Pagar el plan más caro para no tener límites", "Esperar a que un proveedor le recomiende un plan"]
     answer: 0
-    explain: "El plan gratuito permite usarlo de verdad, con límites. Si se le queda corto, cambia después. Pagar el más caro tienta por «ir sobrado», pero sin saber cuánto lo usará es pagar a ciegas."
+    explain: "El gratuito permite usarlo de verdad, con límites, y puede cambiar después. Pagar el más caro tienta por «ir sobrado», pero sin saber cuánto lo usará es pagar a ciegas."
   - type: truefalse
     id: gpt-c02-q3
     q: "Si empiezas una conversación en el ordenador, puedes seguirla en el móvil con la misma cuenta."
     answer: true
-    explain: "Tus conversaciones se guardan en tu cuenta, no en el aparato. Tienta pensar que cada aplicación va por libre, como pasa con algunos programas, pero aquí se sincroniza."
+    explain: "Tus conversaciones se guardan en tu cuenta, no en el aparato. Tienta pensar que cada aplicación va por libre, pero se sincronizan."
 tips:
   - "Instala la aplicación solo desde la tienda oficial o desde chatgpt.com, y comprueba que el desarrollador es OpenAI."
   - "Si llegas al límite de una herramienta en el plan gratuito, no pierdes nada: tus chats siguen ahí y puedes volver a usarla cuando se renueve."
@@ -62,7 +62,7 @@ sources: [openai-condiciones-ue, openai-planes, openai-ayuda]
 
 ChatGPT se usa en tres sitios, todos con **la misma cuenta**:
 
-- **En la web**, desde el navegador, en chatgpt.com. No hay que instalar nada.
+- **En la web**, en chatgpt.com, sin instalar nada.
 - **En el móvil**, con la aplicación para Android e iPhone.
 - **En el ordenador**, con la aplicación para Windows y Mac.
 
