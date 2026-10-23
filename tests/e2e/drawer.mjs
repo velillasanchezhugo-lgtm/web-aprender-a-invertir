@@ -25,20 +25,21 @@ for (const [w, h, name] of [[390, 844, 'móvil'], [1366, 900, 'escritorio']]) {
   ok(JSON.stringify(await hrefs('inversion')) === JSON.stringify(['/es/nivel-1/', '/es/nivel-2/', '/es/nivel-3/']), `${name}: Inversión muestra sus 3 niveles, cada uno con su página`);
   ok(JSON.stringify(await hrefs('emprendimiento')) === JSON.stringify(['/es/emprendimiento/nivel-1/', '/es/emprendimiento/nivel-2/', '/es/emprendimiento/nivel-3/']), `${name}: Emprendimiento muestra sus 3 niveles, cada uno con su página`);
   ok(JSON.stringify(await hrefs('claude')) === JSON.stringify(['/es/claude/nivel-1/', '/es/claude/nivel-2/', '/es/claude/nivel-3/']), `${name}: Claude muestra sus 3 niveles, cada uno con su página`);
+  ok(JSON.stringify(await hrefs('chatgpt')) === JSON.stringify(['/es/chatgpt/nivel-1/', '/es/chatgpt/nivel-2/', '/es/chatgpt/nivel-3/']), `${name}: ChatGPT muestra sus 3 niveles, cada uno con su página`);
   ok(await p.locator('details.course[data-formation="inversion"]').getAttribute('open') !== null, `${name}: en la portada se abre Inversión`);
   ok(await p.locator('.drawer').getByText('99 €').count() > 0, `${name}: el Nivel 3 indica la certificación a 99 €`);
-  ok(await p.locator('.drawer .price-off s').count() === 6, `${name}: los precios de pago salen tachados mientras no se cobra`);
+  ok(await p.locator('.drawer .price-off s').count() === 8, `${name}: los precios de pago salen tachados mientras no se cobra`);
   if (SHOTS) await p.screenshot({ path: `${SHOTS}/drawer-${w}.png` });
   await p.keyboard.press('Escape');
   await p.waitForFunction(() => !document.getElementById('drawer').classList.contains('open'));
   ok(await p.evaluate(() => document.activeElement?.hasAttribute('data-drawer-open')), `${name}: Escape cierra y devuelve el foco`);
   // Pósits de la portada, justo después del párrafo de bienvenida
   const pits = p.locator('.hero .postits a.postit');
-  ok(await pits.count() === 3, `${name}: la portada muestra un pósit por formación`);
+  ok(await pits.count() === 4, `${name}: la portada muestra un pósit por formación`);
   ok(await p.evaluate(() => document.querySelector('.hero .lede')?.nextElementSibling?.classList.contains('postits-nav')), `${name}: los pósits van debajo del párrafo`);
   const pb = await pits.evaluateAll((as) => as.map((a) => ({ w: a.offsetWidth, h: a.offsetHeight, href: a.getAttribute("href") })));
   ok(pb.every((r) => r.w > 120 && Math.abs(r.w - r.h) < 2), `${name}: los pósits son cuadrados (${pb.map((r) => Math.round(r.w) + 'x' + Math.round(r.h)).join(', ')})`);
-  ok(pb.map((r) => r.href).join() === '/es/niveles/,/es/emprendimiento/,/es/claude/', `${name}: cada pósit lleva a su formación`);
+  ok(pb.map((r) => r.href).join() === '/es/niveles/,/es/emprendimiento/,/es/claude/,/es/chatgpt/', `${name}: cada pósit lleva a su formación`);
   if (SHOTS) await p.locator('.hero').screenshot({ path: `${SHOTS}/postits-${w}.png` });
   await ctx.close();
 }

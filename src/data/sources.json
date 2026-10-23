@@ -1252,5 +1252,75 @@
   "url": "https://www.aepd.es/guias-y-herramientas/guias",
   "type": "supervisor",
   "checked": "2026-10-22"
+ },
+ "openai-ayuda": {
+  "title": "Centro de ayuda de OpenAI (ChatGPT)",
+  "publisher": "OpenAI",
+  "url": "https://help.openai.com/es-es",
+  "type": "empresa",
+  "checked": null
+ },
+ "openai-planes": {
+  "title": "Planes y precios de ChatGPT",
+  "publisher": "OpenAI",
+  "url": "https://openai.com/chatgpt/pricing/",
+  "type": "empresa",
+  "checked": null
+ },
+ "openai-uso": {
+  "title": "Políticas de uso de OpenAI",
+  "publisher": "OpenAI",
+  "url": "https://openai.com/policies/usage-policies/",
+  "type": "empresa",
+  "checked": null
+ },
+ "openai-privacidad": {
+  "title": "Política de privacidad de OpenAI",
+  "publisher": "OpenAI",
+  "url": "https://openai.com/policies/privacy-policy/",
+  "type": "empresa",
+  "checked": null
+ },
+ "openai-condiciones-ue": {
+  "title": "Condiciones de uso de OpenAI para el Espacio Económico Europeo",
+  "publisher": "OpenAI",
+  "url": "https://openai.com/policies/eu-terms-of-use/",
+  "type": "empresa",
+  "checked": null
+ },
+ "openai-privacidad-portal": {
+  "title": "Portal de privacidad de OpenAI",
+  "publisher": "OpenAI",
+  "url": "https://privacy.openai.com/",
+  "type": "empresa",
+  "checked": null
+ },
+ "openai-model-spec": {
+  "title": "Model Spec: cómo deben comportarse los modelos de OpenAI",
+  "publisher": "OpenAI",
+  "url": "https://model-spec.openai.com/",
+  "type": "empresa",
+  "checked": "2026-10-23"
+ },
+ "openai-academy": {
+  "title": "OpenAI Academy: cursos gratuitos",
+  "publisher": "OpenAI",
+  "url": "https://academy.openai.com/",
+  "type": "empresa",
+  "checked": "2026-10-23"
+ },
+ "openai-developers": {
+  "title": "Documentación para desarrolladores de OpenAI",
+  "publisher": "OpenAI",
+  "url": "https://developers.openai.com/",
+  "type": "empresa",
+  "checked": "2026-10-23"
+ },
+ "openai-noticias": {
+  "title": "Noticias de OpenAI",
+  "publisher": "OpenAI",
+  "url": "https://openai.com/index/",
+  "type": "empresa",
+  "checked": null
  }
 }

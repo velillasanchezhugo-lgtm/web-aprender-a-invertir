@@ -57,7 +57,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
       {K === 1 && (
         <section class="step keywords" data-step="1" aria-labelledby="h-kw">
           <span class="chip">Palabras clave</span>
-          <TermCards ids={d.terms!} title="Antes de empezar, estas palabras" intro="Las vas a ver en esta sesión. Una frase cada una." headingId="h-kw" />
+          <TermCards formation={formation} ids={d.terms!} title="Antes de empezar, estas palabras" intro="Las vas a ver en esta sesión. Una frase cada una." headingId="h-kw" />
         </section>
       )}
 

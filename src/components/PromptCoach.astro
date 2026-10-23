@@ -13,11 +13,11 @@ const cfg = { id, task, require, extra };
   <div class="field">
     <label for={`pc-${id}`}>{label}</label>
     <textarea id={`pc-${id}`} rows={rows} maxlength="3000" placeholder={placeholder} spellcheck="true"></textarea>
-    <span class="hint"><span class="pc-count">0</span> palabras · se queda en tu dispositivo salvo que pidas la opinión de la IA</span>
+    <span class="hint"><span class="pc-count">0</span> palabras · se queda en tu dispositivo salvo que pidas la opinión con IA</span>
   </div>
   <div class="pc-actions">
     <button type="button" class="btn brand small pc-check">Evaluar mi petición</button>
-    <button type="button" class="btn secondary small pc-ai" hidden>Opinión de Claude</button>
+    <button type="button" class="btn secondary small pc-ai" hidden>Opinión con IA</button>
     <button type="button" class="btn ghost small pc-copy">Copiar</button>
   </div>
   <div class="pc-result" role="status" aria-live="polite" hidden>

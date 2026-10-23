@@ -51,7 +51,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${F
     <h2 class="h3">{F.texts.coreTitle}</h2>
     <p class="small muted">{F.texts.coreLede}</p>
     <ol class="core">
-      <li><a href={F.trackHref(zero)}><span class="mono small">A</span><span><strong>{F.tracks[zero].label}</strong><span class="small muted">{F.tracks[zero].short}</span></span></a></li>
+      <li>{count(zero) ? <a href={F.trackHref(zero)}><span class="mono small">A</span><span><strong>{F.tracks[zero].label}</strong><span class="small muted">{F.tracks[zero].short}</span></span></a> : <span class="soon"><span class="mono small">A</span><span><strong>{F.tracks[zero].label}</strong><span class="small muted">En preparación</span></span></span>}</li>
       {core.map((id, i) => (
         <li>{count(id)
           ? <a href={F.trackHref(id)}><span class="mono small">B{i + 1}</span><span><strong>{F.tracks[id].label}</strong><span class="small muted">{F.tracks[id].short}</span></span></a>

@@ -1,0 +1,1264 @@
+{
+  "_doc": "Formación ChatGPT (uso y capacidades de ChatGPT, de OpenAI): niveles, módulos del Nivel 1, competencias y temario de los niveles 2 y 3. Mismo sistema que las demás formaciones. Sesiones en src/content/chatgpt/. umotion Academy no está afiliada a OpenAI.",
+  "id": "chatgpt",
+  "title": "ChatGPT",
+  "base": "/es/chatgpt/",
+  "tiers": [
+    {
+      "n": 1,
+      "id": "n1",
+      "title": "Empezar con ChatGPT",
+      "subtitle": "Desde cero, sin programar",
+      "access": "free",
+      "promise": "Al terminar usas ChatGPT cada día con soltura: sabes pedirle bien, aprovechar sus funciones y GPTs, conectarlo con tus herramientas, comprobar lo que te dice y proteger tus datos.",
+      "forWho": "Cualquiera, desde cero.",
+      "format": "Sesiones de 5 minutos",
+      "closing": "Examen del Nivel 1 y «Mi kit de ChatGPT»",
+      "recognition": "Insignia gratuita «Fundamentos de ChatGPT — umotion»",
+      "href": "/es/chatgpt/nivel-1/"
+    },
+    {
+      "n": 2,
+      "id": "n2",
+      "title": "Avanzado",
+      "subtitle": "Sacarle todo el partido",
+      "access": "plan-avanzado",
+      "promise": "Al terminar dominas las técnicas avanzadas, diseñas proyectos y GPTs que duran, creas contenidos, automatizas tu semana, aplicas ChatGPT a tu oficio y organizas su uso en un equipo.",
+      "forWho": "Quien ya usa ChatGPT y quiere ir más lejos.",
+      "format": "Clases de 15 a 30 minutos",
+      "volume": "23 clases, unas 8 h, más una clase nueva cada mes",
+      "closing": "Examen del Nivel 2 y proyecto «Tu flujo de trabajo»",
+      "recognition": "Insignia «ChatGPT Nivel 2 — umotion»",
+      "href": "/es/chatgpt/nivel-2/"
+    },
+    {
+      "n": 3,
+      "id": "n3",
+      "title": "Profesional",
+      "subtitle": "Implantar o desarrollar con ChatGPT",
+      "access": "curso-profesional",
+      "promise": "Al terminar sabes implantar ChatGPT en una organización con criterio de seguridad, normativa y coste, o construir con la API de OpenAI y agentes, según el itinerario que elijas.",
+      "forWho": "Quien quiere implantar IA en empresas o desarrollar con ella.",
+      "format": "Lecciones de 30 a 45 minutos",
+      "volume": "19 lecciones en un tronco común y dos itinerarios, unas 11 h",
+      "closing": "Examen final y proyecto profesional con revisión humana",
+      "recognition": "«Certificado umotion en ChatGPT — Nivel Profesional», verificable",
+      "href": "/es/chatgpt/nivel-3/"
+    }
+  ],
+  "stages": [
+    {
+      "id": "A",
+      "stage": "Etapa A",
+      "title": "Camino Cero con ChatGPT",
+      "desc": "Primer contacto: qué es, cómo hablarle, cuándo fiarte y qué no compartir.",
+      "tracks": [
+        "gpt-cero"
+      ]
+    },
+    {
+      "id": "B",
+      "stage": "Etapa B · núcleo",
+      "title": "Usar ChatGPT de verdad",
+      "desc": "Por orden de importancia: pedir bien, sus funciones, los GPTs, el trabajo, aprender, conectar y usarlo con cabeza.",
+      "tracks": [
+        "gpt-pedir",
+        "gpt-funciones",
+        "gpt-gpts",
+        "gpt-trabajo",
+        "gpt-aprender",
+        "gpt-conectar",
+        "gpt-seguro"
+      ]
+    },
+    {
+      "id": "C",
+      "stage": "Ampliación",
+      "title": "Un paso más",
+      "desc": "Cuando ya lo usas a diario: Codex y tu propio flujo de trabajo.",
+      "tracks": [
+        "gpt-avanzado"
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": "gpt-cero",
+      "label": "Camino Cero con ChatGPT",
+      "short": "Qué es, primera conversación, límites y tus datos",
+      "stage": "A"
+    },
+    {
+      "id": "gpt-pedir",
+      "label": "Pedir bien",
+      "short": "Contexto, ejemplos, formato y conversación",
+      "stage": "B"
+    },
+    {
+      "id": "gpt-funciones",
+      "label": "Las funciones de ChatGPT",
+      "short": "Búsqueda, canvas, proyectos, memoria, imágenes y datos",
+      "stage": "B"
+    },
+    {
+      "id": "gpt-gpts",
+      "label": "Los GPTs",
+      "short": "Usar, crear y compartir asistentes a medida",
+      "stage": "B"
+    },
+    {
+      "id": "gpt-trabajo",
+      "label": "ChatGPT en el trabajo",
+      "short": "Escribir, resumir, analizar, preparar y decidir",
+      "stage": "B"
+    },
+    {
+      "id": "gpt-aprender",
+      "label": "Aprender con ChatGPT",
+      "short": "Un tutor que te hace pensar",
+      "stage": "B"
+    },
+    {
+      "id": "gpt-conectar",
+      "label": "Conectar y automatizar",
+      "short": "Apps, agente, navegador y tareas programadas",
+      "stage": "B"
+    },
+    {
+      "id": "gpt-seguro",
+      "label": "Usarlo con cabeza",
+      "short": "Verificar, privacidad, ética y normas",
+      "stage": "B"
+    },
+    {
+      "id": "gpt-avanzado",
+      "label": "Un paso más",
+      "short": "Codex sin miedo y tu propio flujo de trabajo",
+      "stage": "C"
+    }
+  ],
+  "n1Capacities": [
+    {
+      "id": "c1",
+      "text": "Explica qué es ChatGPT, qué hace bien y en qué puede equivocarse.",
+      "skills": [
+        "gpt-que-es",
+        "gpt-limites"
+      ]
+    },
+    {
+      "id": "c2",
+      "text": "Usa ChatGPT en el ordenador y el móvil y sabe qué ofrece cada plan.",
+      "skills": [
+        "gpt-acceso"
+      ]
+    },
+    {
+      "id": "c3",
+      "text": "Protege sus datos: qué no compartir y qué controles revisar.",
+      "skills": [
+        "gpt-privacidad",
+        "gpt-empresa-datos"
+      ]
+    },
+    {
+      "id": "c4",
+      "text": "Escribe peticiones con contexto, tarea, público y formato.",
+      "skills": [
+        "gpt-peticion",
+        "gpt-ejemplos-formato"
+      ]
+    },
+    {
+      "id": "c5",
+      "text": "Conversa para mejorar el resultado y usa instrucciones y plantillas.",
+      "skills": [
+        "gpt-iterar",
+        "gpt-instrucciones"
+      ]
+    },
+    {
+      "id": "c6",
+      "text": "Usa la búsqueda y la investigación revisando las fuentes.",
+      "skills": [
+        "gpt-busqueda",
+        "gpt-verificar"
+      ]
+    },
+    {
+      "id": "c7",
+      "text": "Trabaja con archivos, datos, canvas e imágenes.",
+      "skills": [
+        "gpt-archivos-datos",
+        "gpt-canvas",
+        "gpt-imagenes"
+      ]
+    },
+    {
+      "id": "c8",
+      "text": "Organiza su trabajo en proyectos, gestiona la memoria y elige modelo y modo.",
+      "skills": [
+        "gpt-proyectos-memoria",
+        "gpt-modelos-modos"
+      ]
+    },
+    {
+      "id": "c9",
+      "text": "Usa y crea GPTs con cuidado.",
+      "skills": [
+        "gpt-usar-gpts",
+        "gpt-crear-gpts"
+      ]
+    },
+    {
+      "id": "c10",
+      "text": "Aplica ChatGPT a escribir, resumir, analizar, decidir y aprender.",
+      "skills": [
+        "gpt-escribir",
+        "gpt-analizar",
+        "gpt-pensar",
+        "gpt-aprender"
+      ]
+    },
+    {
+      "id": "c11",
+      "text": "Conecta sus apps con permisos claros y encarga tareas al agente supervisándolas.",
+      "skills": [
+        "gpt-apps",
+        "gpt-agente",
+        "gpt-automatizar"
+      ]
+    },
+    {
+      "id": "c12",
+      "text": "Comprueba lo importante y respeta las normas, la autoría y la ética.",
+      "skills": [
+        "gpt-verificar",
+        "gpt-etica-normas"
+      ]
+    }
+  ],
+  "domains": [
+    {
+      "id": "gpt-base",
+      "label": "Entender ChatGPT",
+      "desc": "Qué es, cómo funciona, sus límites y tus datos.",
+      "level": 1
+    },
+    {
+      "id": "gpt-pedir",
+      "label": "Pedir bien",
+      "desc": "Contexto, ejemplos, formato y conversación.",
+      "level": 1
+    },
+    {
+      "id": "gpt-funciones",
+      "label": "Funciones",
+      "desc": "Búsqueda, investigación, canvas, proyectos, memoria, imágenes y más.",
+      "level": 1
+    },
+    {
+      "id": "gpt-gpts",
+      "label": "GPTs",
+      "desc": "Usar, crear y compartir GPTs personalizados.",
+      "level": 1
+    },
+    {
+      "id": "gpt-uso",
+      "label": "Usos prácticos",
+      "desc": "Trabajo, estudio y vida diaria.",
+      "level": 1
+    },
+    {
+      "id": "gpt-conectar",
+      "label": "Conectar y automatizar",
+      "desc": "Apps, agente, navegador y tareas.",
+      "level": 1
+    },
+    {
+      "id": "gpt-criterio",
+      "label": "Usarlo con cabeza",
+      "desc": "Verificación, privacidad, ética y normas.",
+      "level": 1
+    },
+    {
+      "id": "gpt2-dominio",
+      "label": "Dominio avanzado",
+      "desc": "Técnicas, flujos y uso por oficios.",
+      "level": 2
+    },
+    {
+      "id": "gpt2-equipo",
+      "label": "Equipos",
+      "desc": "Compartir, gobernar y medir el uso en un equipo.",
+      "level": 2
+    },
+    {
+      "id": "gpt3-comun",
+      "label": "Tronco común",
+      "desc": "Fundamentos técnicos, riesgos y normativa.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-implantar",
+      "label": "Itinerario Implantación",
+      "desc": "Llevar ChatGPT a una organización.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-desarrollar",
+      "label": "Itinerario Desarrollo",
+      "desc": "Construir con la API de OpenAI y agentes.",
+      "level": 3
+    }
+  ],
+  "skills": [
+    {
+      "id": "gpt-que-es",
+      "domain": "gpt-base",
+      "label": "Qué es ChatGPT",
+      "can": "Explicas qué es un modelo de lenguaje, qué hace bien y qué no.",
+      "level": 1
+    },
+    {
+      "id": "gpt-acceso",
+      "domain": "gpt-base",
+      "label": "Dónde y cómo se usa",
+      "can": "Usas ChatGPT en la web, el escritorio y el móvil, y sabes qué cambia entre planes.",
+      "level": 1
+    },
+    {
+      "id": "gpt-limites",
+      "domain": "gpt-base",
+      "label": "Límites y errores",
+      "can": "Reconoces cuándo puede inventarse algo y cómo comprobarlo.",
+      "level": 1
+    },
+    {
+      "id": "gpt-privacidad",
+      "domain": "gpt-base",
+      "label": "Tus datos",
+      "can": "Sabes qué no compartir, qué controles de datos tienes y cómo borrar.",
+      "level": 1
+    },
+    {
+      "id": "gpt-peticion",
+      "domain": "gpt-pedir",
+      "label": "Una buena petición",
+      "can": "Das contexto, tarea, público y formato en tus peticiones.",
+      "level": 1
+    },
+    {
+      "id": "gpt-ejemplos-formato",
+      "domain": "gpt-pedir",
+      "label": "Ejemplos y formato",
+      "can": "Usas ejemplos y pides el formato exacto que necesitas.",
+      "level": 1
+    },
+    {
+      "id": "gpt-iterar",
+      "domain": "gpt-pedir",
+      "label": "Conversar e iterar",
+      "can": "Corriges, afinas y divides tareas largas en pasos.",
+      "level": 1
+    },
+    {
+      "id": "gpt-instrucciones",
+      "domain": "gpt-pedir",
+      "label": "Instrucciones y plantillas",
+      "can": "Usas instrucciones personalizadas y plantillas para no repetirte.",
+      "level": 1
+    },
+    {
+      "id": "gpt-busqueda",
+      "domain": "gpt-funciones",
+      "label": "Búsqueda e investigación",
+      "can": "Usas la búsqueda y la investigación en profundidad, y revisas las fuentes.",
+      "level": 1
+    },
+    {
+      "id": "gpt-archivos-datos",
+      "domain": "gpt-funciones",
+      "label": "Archivos y datos",
+      "can": "Trabajas con PDF, hojas de cálculo e imágenes, y compruebas los análisis.",
+      "level": 1
+    },
+    {
+      "id": "gpt-canvas",
+      "domain": "gpt-funciones",
+      "label": "Canvas",
+      "can": "Escribes y editas documentos o código en canvas.",
+      "level": 1
+    },
+    {
+      "id": "gpt-proyectos-memoria",
+      "domain": "gpt-funciones",
+      "label": "Proyectos y memoria",
+      "can": "Organizas tu trabajo en proyectos y gestionas la memoria.",
+      "level": 1
+    },
+    {
+      "id": "gpt-modelos-modos",
+      "domain": "gpt-funciones",
+      "label": "Modelos y modos",
+      "can": "Eliges modelo, razonamiento o voz según la tarea.",
+      "level": 1
+    },
+    {
+      "id": "gpt-imagenes",
+      "domain": "gpt-funciones",
+      "label": "Imágenes",
+      "can": "Creas y editas imágenes con criterio y respetando derechos.",
+      "level": 1
+    },
+    {
+      "id": "gpt-usar-gpts",
+      "domain": "gpt-gpts",
+      "label": "Usar GPTs",
+      "can": "Eliges GPTs de la tienda con cuidado y sabes qué datos ven.",
+      "level": 1
+    },
+    {
+      "id": "gpt-crear-gpts",
+      "domain": "gpt-gpts",
+      "label": "Crear GPTs",
+      "can": "Creas y compartes un GPT sencillo sin programar.",
+      "level": 1
+    },
+    {
+      "id": "gpt-escribir",
+      "domain": "gpt-uso",
+      "label": "Escribir y revisar",
+      "can": "Redactas, corriges y adaptas textos sin perder tu voz.",
+      "level": 1
+    },
+    {
+      "id": "gpt-analizar",
+      "domain": "gpt-uso",
+      "label": "Resumir y analizar",
+      "can": "Resumes documentos y analizas datos comprobando el resultado.",
+      "level": 1
+    },
+    {
+      "id": "gpt-pensar",
+      "domain": "gpt-uso",
+      "label": "Pensar y decidir",
+      "can": "Usas ChatGPT para ideas, planes y decisiones sin delegar tu criterio.",
+      "level": 1
+    },
+    {
+      "id": "gpt-aprender",
+      "domain": "gpt-uso",
+      "label": "Aprender con ChatGPT",
+      "can": "Lo usas como tutor que te hace pensar, no como atajo.",
+      "level": 1
+    },
+    {
+      "id": "gpt-apps",
+      "domain": "gpt-conectar",
+      "label": "Apps y conectores",
+      "can": "Conectas ChatGPT con tus herramientas y controlas sus permisos.",
+      "level": 1
+    },
+    {
+      "id": "gpt-agente",
+      "domain": "gpt-conectar",
+      "label": "Agente y navegador",
+      "can": "Encargas tareas de varios pasos al agente o en el navegador y las supervisas.",
+      "level": 1
+    },
+    {
+      "id": "gpt-automatizar",
+      "domain": "gpt-conectar",
+      "label": "Automatizar",
+      "can": "Programas tareas y conviertes lo que repites en flujos.",
+      "level": 1
+    },
+    {
+      "id": "gpt-verificar",
+      "domain": "gpt-criterio",
+      "label": "Verificar",
+      "can": "Compruebas datos, citas y cálculos antes de usarlos.",
+      "level": 1
+    },
+    {
+      "id": "gpt-etica-normas",
+      "domain": "gpt-criterio",
+      "label": "Ética y normas",
+      "can": "Conoces las normas de uso, los derechos de autor y cuándo decir que usaste IA.",
+      "level": 1
+    },
+    {
+      "id": "gpt-empresa-datos",
+      "domain": "gpt-criterio",
+      "label": "Datos en el trabajo",
+      "can": "Sabes qué información de tu empresa puedes usar y con qué plan.",
+      "level": 1
+    },
+    {
+      "id": "gpt2-prompting",
+      "domain": "gpt2-dominio",
+      "label": "Técnicas avanzadas",
+      "can": "Usas estructura, ejemplos, pasos y autocrítica en peticiones complejas.",
+      "level": 2
+    },
+    {
+      "id": "gpt2-proyectos-gpts",
+      "domain": "gpt2-dominio",
+      "label": "Proyectos y GPTs a fondo",
+      "can": "Diseñas proyectos y GPTs que funcionan semanas.",
+      "level": 2
+    },
+    {
+      "id": "gpt2-investigacion",
+      "domain": "gpt2-dominio",
+      "label": "Investigación y análisis",
+      "can": "Haces investigaciones y análisis de datos fiables y reproducibles.",
+      "level": 2
+    },
+    {
+      "id": "gpt2-crear",
+      "domain": "gpt2-dominio",
+      "label": "Crear contenidos",
+      "can": "Creas documentos, imágenes y presentaciones útiles.",
+      "level": 2
+    },
+    {
+      "id": "gpt2-automatizar",
+      "domain": "gpt2-dominio",
+      "label": "Automatizar tu semana",
+      "can": "Conectas apps, usas el agente y repites flujos.",
+      "level": 2
+    },
+    {
+      "id": "gpt2-oficios",
+      "domain": "gpt2-dominio",
+      "label": "ChatGPT en tu oficio",
+      "can": "Aplicas ChatGPT a tu profesión con sus cautelas propias.",
+      "level": 2
+    },
+    {
+      "id": "gpt2-calidad",
+      "domain": "gpt2-dominio",
+      "label": "Calidad",
+      "can": "Mides si una respuesta es buena y la mejoras.",
+      "level": 2
+    },
+    {
+      "id": "gpt2-equipos",
+      "domain": "gpt2-equipo",
+      "label": "ChatGPT en equipo",
+      "can": "Organizas el uso compartido, permisos y buenas prácticas.",
+      "level": 2
+    },
+    {
+      "id": "gpt3-llm",
+      "domain": "gpt3-comun",
+      "label": "Cómo funcionan los modelos",
+      "can": "Explicas tokens, contexto, entrenamiento y razonamiento.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-riesgos",
+      "domain": "gpt3-comun",
+      "label": "Riesgos y seguridad",
+      "can": "Evalúas riesgos: errores, inyección de instrucciones, fugas de datos.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-normativa",
+      "domain": "gpt3-comun",
+      "label": "Normativa",
+      "can": "Conoces el Reglamento europeo de IA y el RGPD aplicados.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-evaluar",
+      "domain": "gpt3-comun",
+      "label": "Evaluar resultados",
+      "can": "Diseñas pruebas para medir calidad y fiabilidad.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-casos-uso",
+      "domain": "gpt3-implantar",
+      "label": "Casos de uso",
+      "can": "Detectas y priorizas casos de uso con retorno.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-despliegue",
+      "domain": "gpt3-implantar",
+      "label": "Despliegue",
+      "can": "Planificas un despliegue con planes, permisos y políticas.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-cambio",
+      "domain": "gpt3-implantar",
+      "label": "Formar y medir",
+      "can": "Formas equipos y mides adopción e impacto.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-api",
+      "domain": "gpt3-desarrollar",
+      "label": "API",
+      "can": "Haces llamadas a la API de OpenAI con instrucciones y control de costes.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-herramientas",
+      "domain": "gpt3-desarrollar",
+      "label": "Herramientas y datos",
+      "can": "Conectas el modelo a herramientas y datos propios.",
+      "level": 3
+    },
+    {
+      "id": "gpt3-agentes",
+      "domain": "gpt3-desarrollar",
+      "label": "Agentes y Codex",
+      "can": "Construyes y supervisas agentes y usas Codex.",
+      "level": 3
+    }
+  ],
+  "n2": {
+    "monthly": "Clase del mes: cada mes, las novedades de ChatGPT que importan y cómo aprovecharlas, con ejemplos.",
+    "modules": [
+      {
+        "code": "pro",
+        "title": "Peticiones avanzadas",
+        "desc": "Técnicas para tareas complejas.",
+        "minutes": 80,
+        "items": [
+          {
+            "id": "gpt2-pro-01-estructurar-peticiones-largas",
+            "title": "Estructurar peticiones largas",
+            "minutes": 20,
+            "content": "Separar instrucciones, contexto y datos; secciones; orden que funciona.",
+            "practice": "Reescribir una petición caótica de una página",
+            "skills": [
+              "gpt2-prompting"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-pro-02-ejemplos-que-ensenan",
+            "title": "Ejemplos que enseñan",
+            "minutes": 20,
+            "content": "Cuántos ejemplos dar, variados y representativos; cuándo estorban.",
+            "practice": "Clasificar 30 correos con 3 ejemplos",
+            "skills": [
+              "gpt2-prompting"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-pro-03-razonar-y-revisarse",
+            "title": "Hacerle razonar y revisarse",
+            "minutes": 20,
+            "content": "Modelos con razonamiento, autocrítica y segunda pasada.",
+            "practice": "Revisar un contrato de alquiler en dos pasadas",
+            "skills": [
+              "gpt2-prompting",
+              "gpt2-calidad"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-pro-04-encadenar-tareas",
+            "title": "Encadenar tareas",
+            "minutes": 20,
+            "content": "Dividir un trabajo en pasos con entradas y salidas claras.",
+            "practice": "De notas de una reunión a acta, tareas y correo",
+            "skills": [
+              "gpt2-prompting",
+              "gpt2-automatizar"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "gpt",
+        "title": "Proyectos y GPTs a fondo",
+        "desc": "Asistentes que trabajan contigo semanas.",
+        "minutes": 70,
+        "items": [
+          {
+            "id": "gpt2-gpt-01-proyectos-que-duran",
+            "title": "Proyectos que duran",
+            "minutes": 20,
+            "content": "Archivos, instrucciones y memoria de proyecto; mantenerlos al día.",
+            "practice": "Proyecto para preparar unas oposiciones",
+            "skills": [
+              "gpt2-proyectos-gpts"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-gpt-02-disenar-un-gpt",
+            "title": "Diseñar un GPT útil",
+            "minutes": 25,
+            "content": "Instrucciones, conocimiento, capacidades, frases de inicio y pruebas.",
+            "practice": "GPT de atención al cliente de una tienda",
+            "skills": [
+              "gpt2-proyectos-gpts"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-gpt-03-gpts-con-acciones",
+            "title": "GPTs con acciones y apps",
+            "minutes": 25,
+            "content": "Conectar un GPT con otros servicios: qué datos salen y cómo limitarlo.",
+            "practice": "GPT que consulta un calendario de reservas",
+            "skills": [
+              "gpt2-proyectos-gpts",
+              "gpt2-automatizar"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "inv",
+        "title": "Investigar y analizar",
+        "desc": "Información fiable con fuentes.",
+        "minutes": 70,
+        "items": [
+          {
+            "id": "gpt2-inv-01-investigacion-en-profundidad",
+            "title": "Investigación en profundidad",
+            "minutes": 25,
+            "content": "Plantear la pregunta, alcance, fuentes, contraste y lectura crítica del informe.",
+            "practice": "Informe de mercado de un negocio local",
+            "skills": [
+              "gpt2-investigacion"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-inv-02-analisis-de-datos-a-fondo",
+            "title": "Análisis de datos a fondo",
+            "minutes": 25,
+            "content": "Limpiar datos, cruzar tablas, gráficos y comprobación de cifras.",
+            "practice": "Un año de gastos de una asociación",
+            "skills": [
+              "gpt2-investigacion",
+              "gpt2-calidad"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-inv-03-verificar-como-un-profesional",
+            "title": "Verificar como un profesional",
+            "minutes": 20,
+            "content": "Lista de comprobación de datos, citas, cálculos y sesgos.",
+            "practice": "Detectar 5 errores plantados en un informe",
+            "skills": [
+              "gpt2-calidad"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "cre",
+        "title": "Crear contenidos",
+        "desc": "Documentos, imágenes y presentaciones.",
+        "minutes": 65,
+        "items": [
+          {
+            "id": "gpt2-cre-01-canvas-a-fondo",
+            "title": "Canvas a fondo",
+            "minutes": 20,
+            "content": "Editar por partes, comentarios, versiones y exportar.",
+            "practice": "Una memoria de proyecto de 6 páginas",
+            "skills": [
+              "gpt2-crear"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-cre-02-imagenes-con-criterio",
+            "title": "Imágenes con criterio",
+            "minutes": 25,
+            "content": "Pedir, editar y mantener un estilo; derechos, personas reales y marcas.",
+            "practice": "Cartelería de unas fiestas del barrio",
+            "skills": [
+              "gpt2-crear"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-cre-03-presentaciones-y-documentos",
+            "title": "Presentaciones, hojas y documentos",
+            "minutes": 20,
+            "content": "Pedir archivos bien hechos y revisarlos antes de usarlos.",
+            "practice": "Presentación de 8 diapositivas desde un informe",
+            "skills": [
+              "gpt2-crear"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "aut",
+        "title": "Conectar y automatizar",
+        "desc": "Que ChatGPT trabaje con tus herramientas.",
+        "minutes": 60,
+        "items": [
+          {
+            "id": "gpt2-aut-01-apps-a-fondo",
+            "title": "Apps y conectores a fondo",
+            "minutes": 20,
+            "content": "Correo, calendario, documentos y otras apps; permisos y qué puede leer o hacer.",
+            "practice": "Preparar la semana con correo y calendario",
+            "skills": [
+              "gpt2-automatizar"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-aut-02-agente-supervisado",
+            "title": "El agente, supervisado",
+            "minutes": 25,
+            "content": "Encargos de varios pasos, puntos de confirmación, riesgos y límites.",
+            "practice": "Comparar y reservar sin pagar",
+            "skills": [
+              "gpt2-automatizar"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-aut-03-tareas-programadas",
+            "title": "Tareas programadas y rutinas",
+            "minutes": 15,
+            "content": "Qué repetir, cada cuánto y cómo revisar los resultados.",
+            "practice": "Resumen semanal automático",
+            "skills": [
+              "gpt2-automatizar"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "ofi",
+        "title": "ChatGPT en tu oficio",
+        "desc": "Usos y cautelas por profesión.",
+        "minutes": 85,
+        "items": [
+          {
+            "id": "gpt2-ofi-01-docentes-y-formadores",
+            "title": "Docentes y formadores",
+            "minutes": 20,
+            "content": "Preparar clases, adaptar niveles, evaluar y normas del centro.",
+            "practice": "Unidad didáctica con tres niveles",
+            "skills": [
+              "gpt2-oficios"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-ofi-02-comercio-y-autonomos",
+            "title": "Comercio y autónomos",
+            "minutes": 20,
+            "content": "Atención al cliente, redes, presupuestos sin datos sensibles.",
+            "practice": "Respuestas tipo para reseñas",
+            "skills": [
+              "gpt2-oficios"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-ofi-03-oficina-y-administracion",
+            "title": "Oficina y administración",
+            "minutes": 20,
+            "content": "Correo, actas, procedimientos y hojas de cálculo.",
+            "practice": "Manual de un procedimiento interno",
+            "skills": [
+              "gpt2-oficios"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-ofi-04-profesiones-reguladas",
+            "title": "Profesiones reguladas",
+            "minutes": 25,
+            "content": "Sanidad, abogacía y finanzas: confidencialidad, verificación y responsabilidad.",
+            "practice": "Qué sí y qué no en tres consultas reales",
+            "skills": [
+              "gpt2-oficios",
+              "gpt2-calidad"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "equ",
+        "title": "ChatGPT en equipo",
+        "desc": "Usarlo bien entre varias personas.",
+        "minutes": 60,
+        "items": [
+          {
+            "id": "gpt2-equ-01-planes-de-empresa",
+            "title": "Planes de empresa",
+            "minutes": 20,
+            "content": "Qué cambia en datos, administración y compartir; cuándo compensa.",
+            "practice": "Elegir plan para una empresa de 12 personas",
+            "skills": [
+              "gpt2-equipos"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-equ-02-gpts-y-proyectos-compartidos",
+            "title": "GPTs y proyectos compartidos",
+            "minutes": 20,
+            "content": "Bibliotecas comunes, responsables y mantenimiento.",
+            "practice": "GPT común de atención al cliente",
+            "skills": [
+              "gpt2-equipos",
+              "gpt2-proyectos-gpts"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt2-equ-03-politica-de-uso",
+            "title": "Una política de uso en una página",
+            "minutes": 20,
+            "content": "Qué datos, qué tareas, revisión humana y transparencia.",
+            "practice": "Redactar la política de tu equipo",
+            "skills": [
+              "gpt2-equipos"
+            ],
+            "access": "paid"
+          }
+        ]
+      }
+    ],
+    "order": [
+      "pro",
+      "gpt",
+      "inv",
+      "cre",
+      "aut",
+      "ofi",
+      "equ"
+    ]
+  },
+  "n3": {
+    "certificateNotice": "El certificado umotion acredita que has superado esta formación de umotion Academy. No es una certificación oficial de OpenAI: umotion Academy no está afiliada a OpenAI. Tampoco es un título oficial.",
+    "clients": [
+      {
+        "id": "asesoria",
+        "name": "Asesoría Vidal",
+        "situation": "12 personas que usan ChatGPT por su cuenta con documentos de clientes; quieren hacerlo bien.",
+        "topics": "casos de uso, privacidad, despliegue, formación"
+      },
+      {
+        "id": "hotel",
+        "name": "Hotel Mirador, 40 habitaciones",
+        "situation": "Reservas y reseñas en varios idiomas, y un equipo pequeño de recepción.",
+        "topics": "GPTs, apps, calidad, costes"
+      },
+      {
+        "id": "instituto",
+        "name": "IES Ribera",
+        "situation": "Alumnado y profesorado que ya usan IA; la dirección quiere normas y formación.",
+        "topics": "política de uso, normativa, formación, ética"
+      },
+      {
+        "id": "saas",
+        "name": "Facturo, startup de software",
+        "situation": "Quiere un asistente dentro de su app que responda con su documentación.",
+        "topics": "API, herramientas, evaluaciones, agentes"
+      }
+    ],
+    "modules": [
+      {
+        "code": "fun",
+        "title": "Tronco común · Cómo funcionan los modelos",
+        "desc": "Base técnica sin programar.",
+        "minutes": 100,
+        "items": [
+          {
+            "id": "gpt3-fun-01-tokens-y-contexto",
+            "title": "Tokens, contexto y memoria",
+            "minutes": 35,
+            "content": "Qué es un token, ventana de contexto, por qué olvida, memoria y proyectos.",
+            "practice": "Diagnosticar por qué falla una conversación larga",
+            "skills": [
+              "gpt3-llm"
+            ],
+            "access": "sample"
+          },
+          {
+            "id": "gpt3-fun-02-entrenamiento-y-razonamiento",
+            "title": "Entrenamiento y razonamiento",
+            "minutes": 35,
+            "content": "Preentrenamiento, ajuste, alineamiento y modelos que razonan.",
+            "practice": "Explicar a un directivo por qué la IA se equivoca",
+            "skills": [
+              "gpt3-llm"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-fun-03-modelos-y-costes",
+            "title": "Modelos y costes",
+            "minutes": 30,
+            "content": "Modelos grandes y rápidos, cuándo usar cada uno, coste por uso y límites.",
+            "practice": "Elegir modelo para tres tareas",
+            "skills": [
+              "gpt3-llm",
+              "gpt3-api"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "rie",
+        "title": "Tronco común · Riesgos, seguridad y normativa",
+        "desc": "Usar IA sin crear problemas.",
+        "minutes": 140,
+        "items": [
+          {
+            "id": "gpt3-rie-01-errores-y-sesgos",
+            "title": "Errores, sesgos y alucinaciones",
+            "minutes": 30,
+            "content": "Tipos de error, cómo detectarlos y diseño con revisión humana.",
+            "practice": "`asesoria`: errores en resúmenes de contratos",
+            "skills": [
+              "gpt3-riesgos"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-rie-02-seguridad-e-inyeccion",
+            "title": "Seguridad e inyección de instrucciones",
+            "minutes": 35,
+            "content": "Instrucciones ocultas en webs y documentos, permisos mínimos, datos sensibles.",
+            "practice": "`hotel`: una reseña que intenta engañar al asistente",
+            "skills": [
+              "gpt3-riesgos"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-rie-03-reglamento-de-ia-y-rgpd",
+            "title": "Reglamento europeo de IA y RGPD",
+            "minutes": 40,
+            "content": "Obligaciones por nivel de riesgo, alfabetización, transparencia y datos personales.",
+            "practice": "`instituto`: qué obligaciones tiene",
+            "skills": [
+              "gpt3-normativa"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-rie-04-evaluar-con-pruebas",
+            "title": "Evaluar con pruebas",
+            "minutes": 35,
+            "content": "Conjuntos de prueba, criterios, comparar versiones y revisión humana.",
+            "practice": "`saas`: 30 preguntas de prueba",
+            "skills": [
+              "gpt3-evaluar"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "imp",
+        "title": "Itinerario Implantación · Casos de uso y despliegue",
+        "desc": "Llevar ChatGPT a una organización.",
+        "minutes": 165,
+        "items": [
+          {
+            "id": "gpt3-imp-01-descubrir-casos-de-uso",
+            "title": "Descubrir y priorizar casos de uso",
+            "minutes": 35,
+            "content": "Entrevistas, mapa de tareas, impacto frente a riesgo, prueba piloto.",
+            "practice": "`asesoria`: priorizar 10 tareas",
+            "skills": [
+              "gpt3-casos-uso"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-imp-02-disenar-flujos",
+            "title": "Diseñar flujos con revisión humana",
+            "minutes": 35,
+            "content": "Dónde entra la IA, qué revisa una persona, GPTs y proyectos compartidos.",
+            "practice": "`hotel`: flujo de respuesta a reseñas",
+            "skills": [
+              "gpt3-casos-uso",
+              "gpt3-despliegue"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-imp-03-desplegar-planes-y-permisos",
+            "title": "Desplegar: planes, permisos y políticas",
+            "minutes": 35,
+            "content": "Planes de empresa, administración, apps permitidas y retención de datos.",
+            "practice": "`asesoria`: plan de despliegue",
+            "skills": [
+              "gpt3-despliegue"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-imp-04-formar-al-equipo",
+            "title": "Formar al equipo",
+            "minutes": 30,
+            "content": "Itinerarios por perfil, campeones internos, materiales y práctica.",
+            "practice": "`instituto`: plan de formación del claustro",
+            "skills": [
+              "gpt3-cambio"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-imp-05-medir-el-impacto",
+            "title": "Medir el impacto",
+            "minutes": 30,
+            "content": "Adopción, tiempo ahorrado, calidad y coste; informe a dirección.",
+            "practice": "`asesoria`: cuadro de mando a 90 días",
+            "skills": [
+              "gpt3-cambio"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "dev",
+        "title": "Itinerario Desarrollo · Construir con la API de OpenAI",
+        "desc": "API, herramientas y agentes.",
+        "minutes": 230,
+        "items": [
+          {
+            "id": "gpt3-dev-01-primera-llamada-a-la-api",
+            "title": "Tu primera llamada a la API",
+            "minutes": 40,
+            "content": "Plataforma, claves, mensajes, instrucciones, parámetros y costes.",
+            "practice": "Clasificador de correos con la API",
+            "skills": [
+              "gpt3-api"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-dev-02-salidas-estructuradas",
+            "title": "Salidas estructuradas y fiables",
+            "minutes": 35,
+            "content": "Pedir JSON con esquema, validar, reintentar y registrar.",
+            "practice": "Extraer datos de facturas",
+            "skills": [
+              "gpt3-api",
+              "gpt3-evaluar"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-dev-03-llamadas-a-herramientas",
+            "title": "Llamadas a herramientas",
+            "minutes": 40,
+            "content": "Definir funciones, bucle de llamadas, errores y permisos.",
+            "practice": "`saas`: consultar el estado de una factura",
+            "skills": [
+              "gpt3-herramientas"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-dev-04-responder-con-tu-documentacion",
+            "title": "Responder con tu documentación",
+            "minutes": 40,
+            "content": "Búsqueda en archivos propios, citar fuentes y actualizar el conocimiento.",
+            "practice": "`saas`: asistente con su manual",
+            "skills": [
+              "gpt3-herramientas",
+              "gpt3-evaluar"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-dev-05-agentes-y-codex",
+            "title": "Agentes y Codex",
+            "minutes": 40,
+            "content": "Bucles de agente, SDK de agentes, Codex en un repositorio, supervisión y límites.",
+            "practice": "Automatizar una tarea de programación con revisión",
+            "skills": [
+              "gpt3-agentes"
+            ],
+            "access": "paid"
+          },
+          {
+            "id": "gpt3-dev-06-produccion-y-costes",
+            "title": "Producción: costes y límites",
+            "minutes": 35,
+            "content": "Caché, lotes, límites de uso y monitorización.",
+            "practice": "`saas`: bajar el coste a la mitad",
+            "skills": [
+              "gpt3-api"
+            ],
+            "access": "paid"
+          }
+        ]
+      },
+      {
+        "code": "cie",
+        "title": "Proyecto final",
+        "desc": "Un caso completo con revisión humana.",
+        "minutes": 45,
+        "items": [
+          {
+            "id": "gpt3-cie-01-proyecto-final",
+            "title": "Proyecto final",
+            "minutes": 45,
+            "content": "Implantación para uno de los clientes o un desarrollo con evaluación, según tu itinerario.",
+            "practice": "Proyecto con revisión humana",
+            "skills": [
+              "gpt3-casos-uso",
+              "gpt3-evaluar"
+            ],
+            "access": "paid"
+          }
+        ]
+      }
+    ],
+    "order": [
+      "fun",
+      "rie",
+      "imp",
+      "dev",
+      "cie"
+    ]
+  },
+  "texts": {
+    "metaTitle": "ChatGPT: aprende a usar la IA desde cero",
+    "metaDesc": "Formación para aprender a usar ChatGPT, el asistente de IA de OpenAI, en tres niveles: desde cero y gratis, avanzado y profesional.",
+    "intro": "Aprende a usar ChatGPT, el asistente de inteligencia artificial de OpenAI, desde la primera conversación: pedirle bien, aprovechar sus funciones y los GPTs, usarlo en el trabajo y los estudios, conectarlo con tus herramientas y comprobar lo que te dice. Sin programar.",
+    "coreTitle": "El núcleo del Nivel 1, por orden de importancia",
+    "coreLede": "Antes, el Camino Cero: qué es, tu primera conversación, cuándo fiarte y qué no compartir.",
+    "n1Order": "Los módulos del núcleo van por orden de importancia: primero lo que más mejora tus resultados desde el primer día.",
+    "notice": "umotion Academy no está afiliada a OpenAI. Contenido educativo e independiente. Las funciones, los planes y los nombres de ChatGPT cambian a menudo: comprueba la información vigente en el centro de ayuda oficial de OpenAI.",
+    "moduleNote": "ChatGPT cambia a menudo: algunas funciones dependen del plan o del país. Si algo no aparece como lo explicamos, consulta el centro de ayuda oficial. umotion Academy no está afiliada a OpenAI.",
+    "onePage": "Mi kit de ChatGPT",
+    "examTitle": "Fundamentos de ChatGPT",
+    "examDesc": "30 preguntas sobre cómo usar ChatGPT con criterio. Se aprueba con el 80 % y da la insignia gratuita del Nivel 1 de ChatGPT.",
+    "glossTitle": "Glosario de inteligencia artificial y ChatGPT",
+    "glossDesc": "términos de inteligencia artificial y de ChatGPT explicados en una o dos frases: modelo de lenguaje, alucinación, canvas, GPT personalizado, agente y más.",
+    "glossLede": "Las palabras de la inteligencia artificial y de ChatGPT, en una frase y con su definición precisa.",
+    "moduleDesc": "Módulo del Nivel 1 de ChatGPT",
+    "titleVerb": "aprender"
+  }
+}

@@ -1,4 +1,4 @@
-/** Formación Claude: herramientas (evaluador, constructor, plantillas, anonimizador) y paso «Practica» de las sesiones. */
+/** Formaciones Claude y ChatGPT: herramientas (evaluador, constructor, plantillas, anonimizador) y paso «Practica» de las sesiones. */
 import { createRequire } from 'module';
 const require = createRequire(process.env.PLAYWRIGHT_ROOT || '/opt/node22/lib/node_modules/');
 const { chromium } = require('playwright');
@@ -56,5 +56,13 @@ ok(await p.locator('#step-label').textContent() === 'Practica', 'el paso «Pract
 await p.fill('.practice-step textarea', 'Soy profesor. Prepara un esquema de clase de 50 minutos sobre el reciclaje para alumnos de 10 años, en una tabla, tono sencillo.');
 await p.click('.practice-step .pc-check');
 ok(Number(await p.locator('.practice-step .pc-num').textContent()) > 0, 'la práctica se evalúa dentro de la sesión');
+// ChatGPT comparte las herramientas, con su propio kit
+await p.goto(BASE + '/es/chatgpt/herramientas/plantillas/');
+ok(/ChatGPT/.test(await p.locator('h1').textContent()), 'las plantillas de ChatGPT tienen su página');
+await p.locator('.tpl [data-save]').nth(1).click();
+const kits = await p.evaluate(() => ({ gpt: JSON.parse(localStorage.getItem('uacademy:chatgpt-kit') || '{"items":[]}').items.length, cla: JSON.parse(localStorage.getItem('uacademy:claude-kit') || '{"items":[]}').items.length }));
+ok(kits.gpt === 1 && kits.cla === 1, `cada formación guarda su propio kit (${JSON.stringify(kits)})`);
+await p.goto(BASE + '/es/chatgpt/');
+ok(await p.locator('h1').textContent() === 'ChatGPT', 'la formación ChatGPT tiene su portada');
 ok(errs.length === 0, 'sin errores de JavaScript' + (errs.length ? ': ' + errs.join('; ') : ''));
 await b.close();

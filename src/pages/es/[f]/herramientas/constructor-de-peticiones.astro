@@ -1,12 +1,15 @@
 ---
 import Base from '../../../../layouts/Base.astro';
 import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { formation, toolPaths, FORMATION_TOOLS, type FormationId } from '../../../../lib/formations';
+export const getStaticPaths = toolPaths;
+const F = formation(Astro.params.f as FormationId);
 ---
-<Base title="Constructor de peticiones para Claude" description="Rellena las piezas de tu petición (contexto, tarea, público, formato, tono, ejemplo y límites) y obtén un prompt completo listo para copiar en Claude." allowAds={false}>
+<Base title={`Constructor de peticiones para ${F.title}`} description={`Rellena las piezas de tu petición (contexto, tarea, público, formato, tono, ejemplo y límites) y obtén un prompt completo listo para copiar en ${F.title}.`} allowAds={false}>
   <div class="container ct">
-    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/claude/', label: 'Claude' }, { href: '/es/claude/herramientas/', label: 'Herramientas' }, { label: 'Constructor' }]} />
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: F.base, label: F.title }, { href: `${F.base}herramientas/`, label: 'Herramientas' }, { label: 'Constructor' }]} />
     <h1>Constructor de peticiones</h1>
-    <p class="lede">Rellena solo lo que necesites. Abajo verás la petición montada, con su nota, lista para copiar en Claude.</p>
+    <p class="lede">Rellena solo lo que necesites. Abajo verás la petición montada, con su nota, lista para copiar en {F.title}.</p>
     <div class="ct-grid">
       <form id="pb" class="card" novalidate>
         <div class="field"><label for="b-tarea">Qué quieres que haga <span class="hint">Obligatorio. Empieza por un verbo: escribe, resume, prepara…</span></label><textarea id="b-tarea" rows="2" maxlength="400" placeholder="Escribe un mensaje para avisar a mis clientes de que cambiamos de horario"></textarea></div>
@@ -25,7 +28,7 @@ import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
         <pre id="b-out" class="card"></pre>
         <p class="score"><span class="mono" id="b-score">0</span><span class="mono muted">/10</span> <strong id="b-level"></strong></p>
         <ul class="small" id="b-tips"></ul>
-        <p><button type="button" class="btn brand small" id="b-copy">Copiar la petición</button> <a class="btn ghost small" href="/es/claude/herramientas/plantillas/">Ver plantillas</a></p>
+        <p><button type="button" class="btn brand small" id="b-copy">Copiar la petición</button> <a class="btn ghost small" href={`${F.base}herramientas/plantillas/`}>Ver plantillas</a></p>
       </div>
     </div>
   </div>

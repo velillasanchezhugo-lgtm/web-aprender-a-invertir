@@ -36,6 +36,15 @@ const FORMATIONS = [
       { n: 3, title: 'Profesional', href: '/es/claude/nivel-3/', price: n3 },
     ],
   },
+  {
+    id: 'chatgpt', title: 'ChatGPT', overview: { href: '/es/chatgpt/', label: 'Ver la formación' }, extra: { href: '/es/chatgpt/herramientas/', label: 'Herramientas' },
+    icon: 'M4 5h16v11H9l-5 4z',
+    levels: [
+      { n: 1, title: 'Empezar con ChatGPT', href: '/es/chatgpt/nivel-1/', free: true },
+      { n: 2, title: 'Avanzado', href: '/es/chatgpt/nivel-2/', price: n2 },
+      { n: 3, title: 'Profesional', href: '/es/chatgpt/nivel-3/', price: n3 },
+    ],
+  },
 ];
 // Se abre la formación de la página actual (Inversión por defecto).
 const openId = FORMATIONS.find((f) => f.id !== 'inversion' && path.startsWith(`/es/${f.id}/`))?.id ?? 'inversion';

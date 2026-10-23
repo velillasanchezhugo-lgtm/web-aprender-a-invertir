@@ -88,7 +88,7 @@ export function mergeProgress(local: unknown, remote: unknown): Rec {
 }
 
 /** Claves que se sincronizan con la cuenta (el tema visual y el consentimiento se quedan en el dispositivo). */
-export const SYNC_KEYS = ['academy', 'academy-emprendimiento', 'academy-claude', 'progress', 'checklist', 'practice', 'final-exercise', 'quiz', 'one-page-plan', 'badge', 'interest', 'class-notes', 'claude-kit', 'prompt-practice', 'prompt-builder'] as const;
+export const SYNC_KEYS = ['academy', 'academy-emprendimiento', 'academy-claude', 'academy-chatgpt', 'progress', 'checklist', 'practice', 'final-exercise', 'quiz', 'one-page-plan', 'badge', 'interest', 'class-notes', 'claude-kit', 'chatgpt-kit', 'prompt-practice', 'prompt-builder'] as const;
 export type SyncKey = (typeof SYNC_KEYS)[number];
 export type Snapshot = Partial<Record<SyncKey, unknown>>;
 

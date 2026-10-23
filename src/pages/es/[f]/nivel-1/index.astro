@@ -29,7 +29,7 @@ const onePage = all.filter((s) => s.data.track === EM.tracks[0].id).at(-1);
       </ul>
       <div class="cta-row">
         {first && <a class="btn brand" href={`${F.session}${first.id}/`} id="n1-start">Empezar gratis</a>}
-        <a class="btn ghost" href={F.trackHref(EM.tracks[0].id)}>Ir al Camino Cero</a>
+        {count(EM.tracks[0].id) > 0 && <a class="btn ghost" href={F.trackHref(EM.tracks[0].id)}>Ir al Camino Cero</a>}
       </div>
       <p class="small muted" id="n1-progress" aria-live="polite" data-store={F.storeKey} data-title={F.title}></p>
     </div>

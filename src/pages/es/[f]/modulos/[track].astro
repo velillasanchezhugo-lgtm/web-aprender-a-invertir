@@ -37,7 +37,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${i
       <div class="m-bar"><div class="progress-bar" aria-hidden="true"><span id="m-bar"></span></div><p class="small muted" id="m-txt" aria-live="polite"></p></div>
     </div>
   </section>
-  {vocab.length > 0 && <div class="container vocab"><TermCards ids={vocab} title="Vocabulario del módulo" intro="Las palabras y siglas que vas a aprender, en una frase cada una." headingId="vocab-t" /></div>}
+  {vocab.length > 0 && <div class="container vocab"><TermCards formation={F.id} ids={vocab} title="Vocabulario del módulo" intro="Las palabras y siglas que vas a aprender, en una frase cada una." headingId="vocab-t" /></div>}
   <div class="container m-grid">
     <ol class="sessions" data-store={F.storeKey} data-session={F.session}>
       {ss.map((s, n) => (

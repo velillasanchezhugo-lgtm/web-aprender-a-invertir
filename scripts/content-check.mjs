@@ -11,7 +11,7 @@ import yaml from 'js-yaml';
 
 const sources = JSON.parse(readFileSync('src/data/sources.json', 'utf8'));
 // Formaciones además de Inversión: datos, sesiones del Nivel 1 y glosario (un archivo por módulo).
-const FORMATIONS = ['emprendimiento', 'claude'].map((id) => ({ id, data: `src/data/${id}.json`, dir: `src/content/${id}`, gloss: `src/data/glossary-${id}` }));
+const FORMATIONS = ['emprendimiento', 'claude', 'chatgpt'].map((id) => ({ id, data: `src/data/${id}.json`, dir: `src/content/${id}`, gloss: `src/data/glossary-${id}` }));
 const glossary = [
   ...JSON.parse(readFileSync('src/data/glossary.json', 'utf8')),
   ...FORMATIONS.flatMap((f) => (existsSync(f.gloss) ? readdirSync(f.gloss).filter((x) => x.endsWith('.json')).flatMap((x) => JSON.parse(readFileSync(`${f.gloss}/${x}`, 'utf8'))) : [])),
@@ -80,7 +80,7 @@ for (const f of FORMATIONS) {
   const ids = new Set(fd.skills.map((k) => k.id));
   const fTaught = new Set();
   checkSessions(list, { tracks: fd.tracks.map((t) => t.id), skillIds: ids, taught: fTaught, sessionIds: new Set(list.map((x) => x.id)), def: fd.tracks[0].id, tools: toolsOf(f.id) });
-  if (f.id === 'claude') for (const x of list) if (!x.data.practice) warnings.push(`${x.file}: sin práctica de peticiones (practice)`);
+  if (['claude', 'chatgpt'].includes(f.id)) for (const x of list) if (!x.data.practice) warnings.push(`${x.file}: sin práctica de peticiones (practice)`);
   for (const t of fd.tracks) if (!list.some((x) => x.data.track === t.id)) warnings.push(`${f.id}: el módulo «${t.id}» aún no tiene sesiones`);
   for (const k of fd.skills) if (k.level === 1 && list.length && !fTaught.has(k.id)) warnings.push(`${f.id}: competencia «${k.id}» sin ninguna sesión que la enseñe`);
   for (const c of fd.n1Capacities) for (const k of c.skills) if (!ids.has(k)) errors.push(`${f.id}: la capacidad ${c.id} usa la competencia desconocida «${k}»`);

@@ -6,12 +6,14 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import emprendimiento from '../data/emprendimiento.json';
 import claude from '../data/claude.json';
+import chatgpt from '../data/chatgpt.json';
 import { CLAUDE_TOOLS } from './claude/tools';
+import { CHATGPT_TOOLS } from './chatgpt/tools';
 
-export const FORMATIONS = { emprendimiento, claude } as const;
+export const FORMATIONS = { emprendimiento, claude, chatgpt } as const;
 export type FormationId = keyof typeof FORMATIONS;
 export const FORMATION_IDS = Object.keys(FORMATIONS) as FormationId[];
-export type FSession = CollectionEntry<'emprendimiento'> | CollectionEntry<'claude'>;
+export type FSession = CollectionEntry<'emprendimiento'> | CollectionEntry<'claude'> | CollectionEntry<'chatgpt'>;
 type Data = (typeof FORMATIONS)[FormationId];
 
 /** Todo lo que necesitan las páginas de una formación. */
@@ -34,7 +36,10 @@ export type Formation = ReturnType<typeof formation>;
 /** Herramientas propias de una formación (como las calculadoras de Inversión). */
 export const FORMATION_TOOLS: Partial<Record<FormationId, { href: string; items: Record<string, { title: string; blurb: string }> }>> = {
   claude: { href: '/es/claude/herramientas/', items: CLAUDE_TOOLS },
+  chatgpt: { href: '/es/chatgpt/herramientas/', items: CHATGPT_TOOLS },
 };
+/** Rutas de las páginas de herramientas: solo las formaciones que las tienen. */
+export const toolPaths = () => (Object.keys(FORMATION_TOOLS) as FormationId[]).map((f) => ({ params: { f } }));
 
 export async function formationSessions(id: FormationId): Promise<FSession[]> {
   return ((await getCollection(id, ({ data }: { data: { draft: boolean } }) => !data.draft)) as FSession[]).sort((a, b) => a.data.order - b.data.order);

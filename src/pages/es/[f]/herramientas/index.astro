@@ -1,0 +1,21 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { formation, toolPaths, FORMATION_TOOLS, type FormationId } from '../../../../lib/formations';
+export const getStaticPaths = toolPaths;
+const F = formation(Astro.params.f as FormationId);
+---
+<Base title={`Herramientas para aprender a usar ${F.title}`} description={`Evaluador de peticiones, constructor de prompts, plantillas y una herramienta para quitar datos personales antes de usar ${F.title}. Todo en tu navegador.`} allowAds={false}>
+  <div class="container ct">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: F.base, label: F.title }, { label: 'Herramientas' }]} />
+    <h1>Herramientas</h1>
+    <p class="lede">Para practicar lo que aprendes en la formación: escribe peticiones, compáralas con las piezas de una buena petición y prepara tus textos antes de pegarlos en {F.title}.</p>
+    <div class="grid cols-2">
+      {Object.entries(FORMATION_TOOLS[F.id]!.items).map(([id, t]) => (
+        <a class="card tool-card" href={`${F.base}herramientas/${id}/`}><h2 class="h3">{t.title}</h2><p class="small">{t.blurb}</p><span class="small go">Abrir →</span></a>
+      ))}
+    </div>
+    <div class="callout note"><p class="callout-title">Tus textos, en tu dispositivo</p><p>Las herramientas funcionan en tu navegador. Solo el botón «Opinión con IA» del evaluador envía tu petición a un modelo de IA (Claude, de Anthropic) para corregirla, y únicamente cuando lo pulsas. {F.texts.notice}</p></div>
+  </div>
+</Base>
+<style>.ct { padding-bottom: 3rem; } .h3 { font-size: 1.2rem; margin: 0 0 0.4rem; } .go { color: var(--teal); font-weight: 600; }</style>

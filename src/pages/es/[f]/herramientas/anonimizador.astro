@@ -1,12 +1,15 @@
 ---
 import Base from '../../../../layouts/Base.astro';
 import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
+import { formation, toolPaths, FORMATION_TOOLS, type FormationId } from '../../../../lib/formations';
+export const getStaticPaths = toolPaths;
+const F = formation(Astro.params.f as FormationId);
 ---
-<Base title="Quita datos personales antes de usar una IA" description="Pega un texto y sustituye DNI, NIE, IBAN, teléfonos, correos y tarjetas por etiquetas antes de enviarlo a Claude u otra IA. Funciona sin conexión." allowAds={false}>
+<Base title={`Quita datos personales antes de usar ${F.title}`} description={`Pega un texto y sustituye DNI, NIE, IBAN, teléfonos, correos y tarjetas por etiquetas antes de enviarlo a ${F.title} u otra IA. Funciona sin conexión.`} allowAds={false}>
   <div class="container ct">
-    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/claude/', label: 'Claude' }, { href: '/es/claude/herramientas/', label: 'Herramientas' }, { label: 'Quitar datos personales' }]} />
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: F.base, label: F.title }, { href: `${F.base}herramientas/`, label: 'Herramientas' }, { label: 'Quitar datos personales' }]} />
     <h1>Quita datos personales</h1>
-    <p class="lede">Antes de pegar un correo, un contrato o una hoja en Claude, cambia los datos personales por etiquetas como <span class="mono">[DNI 1]</span>. El texto no sale de tu navegador.</p>
+    <p class="lede">Antes de pegar un correo, un contrato o una hoja en {F.title}, cambia los datos personales por etiquetas como <span class="mono">[DNI 1]</span>. El texto no sale de tu navegador.</p>
     <div class="ct-grid">
       <div class="field"><label for="an-in">Tu texto</label><textarea id="an-in" rows="10" maxlength="20000" placeholder="Pega aquí el texto. Por ejemplo: Hola, soy Marta (DNI 12345678Z), mi teléfono es 612 345 678…"></textarea></div>
       <div class="field"><label for="an-out">Texto sin datos personales</label><textarea id="an-out" rows="10" readonly></textarea></div>

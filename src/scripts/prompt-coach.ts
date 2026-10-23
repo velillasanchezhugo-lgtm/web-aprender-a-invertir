@@ -37,16 +37,16 @@ export function initPromptCoach() {
     });
 
     aiBtn.addEventListener('click', async () => {
-      aiBtn.disabled = true; aiRes.hidden = false; aiRes.innerHTML = '<p class="small muted">Claude está leyendo tu petición…</p>';
+      aiBtn.disabled = true; aiRes.hidden = false; aiRes.innerHTML = '<p class="small muted">La IA está leyendo tu petición…</p>';
       try {
         const r = await fetch('/api/prompt-coach', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt: ta.value, task: cfg.task, criteria: [...(cfg.require ?? []), ...(cfg.extra ?? []).map((e) => e.label)] }) });
         const d = await r.json();
         if (!r.ok) throw new Error(d.error || 'No disponible');
-        aiRes.innerHTML = `<p><strong>Opinión de Claude: ${d.puntuacion}/10</strong></p>`
+        aiRes.innerHTML = `<p><strong>Opinión con IA: ${d.puntuacion}/10</strong></p>`
           + (d.bien.length ? `<h4>Lo que has hecho bien</h4><ul>${d.bien.map((x: string) => `<li>${esc(x)}</li>`).join('')}</ul>` : '')
           + (d.mejorar.length ? `<h4>Para mejorarla</h4><ul>${d.mejorar.map((x: string) => `<li>${esc(x)}</li>`).join('')}</ul>` : '')
           + (d.version_mejorada ? `<h4>Una versión mejorada</h4><p class="pc-better">${esc(d.version_mejorada)}</p>` : '')
-          + '<p class="small muted">Tu petición se ha enviado a Claude solo para corregirla. No incluyas datos personales.</p>';
+          + '<p class="small muted">Tu petición se ha enviado a un modelo de IA (Claude, de Anthropic) solo para corregirla. No incluyas datos personales.</p>';
       } catch (e) {
         aiRes.innerHTML = `<p class="small">${esc((e as Error).message)}</p>`;
       } finally { aiBtn.disabled = false; }

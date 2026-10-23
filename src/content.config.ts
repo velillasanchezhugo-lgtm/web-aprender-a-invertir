@@ -91,6 +91,9 @@ export const EM_TRACK_IDS = ['em-cero', 'em-forma', 'em-alta', 'em-impuestos', '
 /** Módulos del Nivel 1 de la formación Claude (ver src/data/claude.json). */
 export const CLA_TRACK_IDS = ['cla-cero', 'cla-pedir', 'cla-funciones', 'cla-trabajo', 'cla-aprender', 'cla-conectar', 'cla-seguro', 'cla-avanzado'] as const;
 
+/** Módulos del Nivel 1 de la formación ChatGPT (ver src/data/chatgpt.json). */
+export const GPT_TRACK_IDS = ['gpt-cero', 'gpt-pedir', 'gpt-funciones', 'gpt-gpts', 'gpt-trabajo', 'gpt-aprender', 'gpt-conectar', 'gpt-seguro', 'gpt-avanzado'] as const;
+
 /** Sesiones de 5 minutos: gancho, idea, ejemplo, test y una acción aplicable hoy. Mismo formato en todas las formaciones. */
 const sessionSchema = <T extends readonly [string, ...string[]]>(tracks: T, fallback: T[number]) =>
   z.object({
@@ -172,4 +175,9 @@ const claude = defineCollection({
   schema: sessionSchema(CLA_TRACK_IDS, 'cla-cero'),
 });
 
-export const collections = { lessons, strategies, investors, sessions, emprendimiento, claude, clases };
+const chatgpt = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/chatgpt' }),
+  schema: sessionSchema(GPT_TRACK_IDS, 'gpt-cero'),
+});
+
+export const collections = { lessons, strategies, investors, sessions, emprendimiento, claude, chatgpt, clases };

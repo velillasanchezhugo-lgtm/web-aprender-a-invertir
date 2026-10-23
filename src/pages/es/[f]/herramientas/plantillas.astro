@@ -2,14 +2,17 @@
 import Base from '../../../../layouts/Base.astro';
 import Breadcrumbs from '../../../../components/Breadcrumbs.astro';
 import data from '../../../../data/claude-plantillas.json';
+import { formation, toolPaths, FORMATION_TOOLS, type FormationId } from '../../../../lib/formations';
+export const getStaticPaths = toolPaths;
+const F = formation(Astro.params.f as FormationId);
 ---
-<Base title="Plantillas de peticiones para Claude" description="Plantillas de prompts para escribir, resumir, decidir, aprender y organizarte, con huecos para tu caso, y un kit personal donde guardar las tuyas." allowAds={false}>
+<Base title={`Plantillas de peticiones para ${F.title}`} description={`Plantillas de prompts para ${F.title}: escribir, resumir, decidir, aprender y organizarte, con huecos para tu caso, y un kit donde guardar las tuyas.`} allowAds={false}>
   <div class="container ct">
-    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: '/es/claude/', label: 'Claude' }, { href: '/es/claude/herramientas/', label: 'Herramientas' }, { label: 'Plantillas' }]} />
-    <h1>Plantillas y «Mi kit de Claude»</h1>
-    <p class="lede">Copia una plantilla, cambia lo que está entre [corchetes] por tu caso y pégala en Claude. Guarda en tu kit las que más uses o las tuyas propias.</p>
-    <section class="card kit" aria-labelledby="kit-t">
-      <h2 id="kit-t" class="h3">Mi kit de Claude</h2>
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: F.base, label: F.title }, { href: `${F.base}herramientas/`, label: 'Herramientas' }, { label: 'Plantillas' }]} />
+    <h1>Plantillas y «Mi kit de {F.title}»</h1>
+    <p class="lede">Copia una plantilla, cambia lo que está entre [corchetes] por tu caso y pégala en {F.title}. Guarda en tu kit las que más uses o las tuyas propias.</p>
+    <section class="card kit" aria-labelledby="kit-t" data-kit={`${F.id}-kit`}>
+      <h2 id="kit-t" class="h3">Mi kit de {F.title}</h2>
       <p class="small muted">Se guarda solo en este dispositivo (o en tu cuenta, si la tienes).</p>
       <ul id="kit-list" class="kit-list"></ul>
       <form id="kit-form" class="kit-form">
@@ -54,7 +57,7 @@ import data from '../../../../data/claude-plantillas.json';
 <script>
   import { read, write } from '../../../../scripts/store';
   type Item = { id: string; title: string; text: string; at: string };
-  const KEY = 'claude-kit';
+  const KEY = document.querySelector<HTMLElement>('[data-kit]')!.dataset.kit!;
   const list = () => read<{ items: Item[] }>(KEY, { items: [] }).items;
   const save = (items: Item[]) => write(KEY, { items });
   const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
