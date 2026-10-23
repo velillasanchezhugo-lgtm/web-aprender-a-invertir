@@ -99,6 +99,10 @@ Siguiente paso propuesto: sesión piloto `ya-08-cuando-cae` con todo aplicado, p
 
 Ver `docs/EMPRENDIMIENTO.md`. Las 69 sesiones del Nivel 1 son un borrador: necesitan revisión de una gestoría o asesor (impuestos, Seguridad Social y laboral) y de un abogado mercantil (forma jurídica y cierre). Allí están las cifras que faltan por confirmar en fuente oficial y los siguientes pasos (herramientas, muestras de los niveles 2 y 3, diagnóstico y repaso).
 
+## Formación Claude
+
+Ver `docs/CLAUDE-FORMACION.md`. Las 50 sesiones del Nivel 1 son un borrador pendiente de revisión humana. Las funciones y los planes de Claude cambian a menudo: hay que revisar su vigencia cada trimestre. La opinión con IA en las prácticas necesita `AI_TUTOR_ENABLED` y `ANTHROPIC_API_KEY` en Vercel.
+
 ## Funcionalidades no incluidas a propósito
 
 - **Cuentas de usuario**: no existe un backend seguro; el progreso es local, exportable y borrable.
