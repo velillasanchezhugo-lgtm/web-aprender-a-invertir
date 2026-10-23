@@ -11,13 +11,13 @@ takeaway: Claude puede leer tu hoja, responder preguntas en lenguaje normal y ha
 scenario:
   kind: empresa
   label: Caso práctico
-  title: Las ventas de la tienda de Inés
-  body: "Inés tiene una tienda de ropa infantil. Exporta las ventas del año en un CSV, borra nombre, correo y dirección de los clientes, y lo sube a Claude. Pregunta qué productos bajan en verano y pide un gráfico por meses. Antes de hacer el pedido, comprueba el total de julio en su programa: coincide."
+  title: Las ventas de la tienda de Lola
+  body: "Lola tiene una tienda de ropa infantil. Exporta las ventas del año en un CSV, borra nombre, correo y dirección de los clientes, y lo sube a Claude. Pregunta qué productos bajan en verano y pide un gráfico por meses. Antes de hacer el pedido, comprueba el total de julio en su programa: coincide."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-tr04-q1
-    q: "Pablo lleva las cuotas del club de pádel en un Excel con nombre, DNI, teléfono, cuota y fecha de pago. Quiere saber cuánto se cobró por meses. ¿Qué sube?"
+    q: "Enrique lleva las cuotas del club de pádel en un Excel con nombre, DNI, teléfono, cuota y fecha de pago. Quiere saber cuánto se cobró por meses. ¿Qué sube?"
     options: ["La hoja tal cual: es más rápido", "Una copia solo con las columnas de cuota y fecha de pago", "Una captura de pantalla de la hoja, que no es lo mismo que subir el archivo"]
     answer: 1
     explain: "Para sumar por meses no hacen falta nombres, DNI ni teléfonos. Subir la hoja entera tienta por rápido, pero compartes datos personales de otros sin necesidad. Una captura contiene los mismos datos."

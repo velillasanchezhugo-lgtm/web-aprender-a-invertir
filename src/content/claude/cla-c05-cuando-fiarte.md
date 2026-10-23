@@ -38,7 +38,7 @@ tips:
 action:
   title: Caza una fuente
   steps:
-    - "Pide a Claude, con la búsqueda web activada, un dato reciente que te interese (por ejemplo, el plazo de un trámite) y que te diga de dónde lo saca."
+    - "Pide a Claude que busque en la web un dato reciente que te interese (por ejemplo, el plazo de un trámite) y que te diga de dónde lo saca."
     - "Abre el enlace que te da y comprueba si dice exactamente lo mismo."
     - "Apunta en tu nota de «Mi kit de Claude» la regla: «Lo que voy a usar, lo compruebo en la fuente»."
   check: He comprobado en la fuente original un dato que me dio Claude
@@ -79,7 +79,7 @@ Claude escribe con la misma seguridad cuando acierta que cuando se equivoca. Hay
 
 ## En la práctica
 
-La búsqueda web se activa o desactiva desde el menú de herramientas del chat. Compruébalo antes de pedir un dato reciente y pide las fuentes de forma explícita.
+Según tu versión de la aplicación, la búsqueda web es un interruptor del menú «+» del chat o no tiene interruptor y Claude busca solo cuando hace falta. En los dos casos, lo más seguro es pedirlo por escrito («busca en la web…») y pedir las fuentes.
 
 > Prueba: «Busca en la web el plazo para presentar la declaración de la renta este año en España. Dame solo la respuesta corta y el enlace a la página oficial de la Agencia Tributaria de donde lo sacas».
 

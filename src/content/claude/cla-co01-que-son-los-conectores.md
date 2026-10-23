@@ -11,19 +11,19 @@ takeaway: Un conector deja a Claude consultar una app tuya y, si lo permites, ac
 scenario:
   kind: producto
   label: Caso práctico
-  title: El calendario de Marta
-  body: "Marta, administrativa en Zaragoza, conecta su calendario a Claude. Le pregunta qué huecos tiene el miércoles y Claude se los lista. Cuando le pide mover una cita, Claude le enseña el cambio y espera su aprobación."
+  title: El calendario de Elisa
+  body: "Elisa, administrativa en Zaragoza, conecta su calendario a Claude. Le pregunta qué huecos tiene el miércoles y Claude se los lista. Cuando le pide mover una cita, Claude le enseña el cambio y espera su aprobación."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-co01-q1
-    q: "Javier conecta su Google Drive a Claude. ¿Qué documentos puede ver Claude?"
-    options: ["Todos los documentos de Google Drive del mundo", "Los mismos a los que Javier tiene acceso con su cuenta", "Solo los que Javier haya subido al chat"]
+    q: "Gerardo conecta su Google Drive a Claude. ¿Qué documentos puede ver Claude?"
+    options: ["Todos los documentos de Google Drive del mundo", "Los mismos a los que Gerardo tiene acceso con su cuenta", "Solo los que Gerardo haya subido al chat"]
     answer: 1
     explain: "Claude hereda los permisos de tu cuenta: ve lo que tú puedes ver, ni más ni menos. Tienta pensar que solo ve lo subido al chat, pero con el conector puede buscar en todo lo que alcanza tu cuenta."
   - type: choice
     id: cla-co01-q2
-    q: "Lucía ya no usa el conector de su gestor de tareas y quiere que Claude deje de tener acceso. ¿Qué hace?"
+    q: "Tamara ya no usa el conector de su gestor de tareas y quiere que Claude deje de tener acceso. ¿Qué hace?"
     options: ["Borrar la última conversación en la que lo usó", "Desconectarlo en los ajustes de conectores y, si el servicio lo permite, retirar el acceso también desde su cuenta del servicio", "Nada: si no lo menciona, Claude no entra"]
     answer: 1
     explain: "Desconectar es lo que corta el acceso. Con Google, además, puedes retirar el permiso desde tu cuenta de Google. Borrar un chat elimina esa conversación, pero el conector sigue conectado."
@@ -73,10 +73,10 @@ Muchos conectores usan **MCP** (Model Context Protocol), un estándar abierto, e
 Tres reglas que conviene tener claras:
 
 - **Claude ve lo que ve tu cuenta.** Hereda tus permisos en ese servicio. Si no puedes abrir una carpeta, Claude tampoco.
-- **Tú decides cuándo.** Los conectores se activan o desactivan en cada conversación, y Claude solo consulta datos cuando se lo pides.
+- **Tú decides qué conectas.** Puedes activar o desactivar cada conector en cada conversación. Una vez conectada una app, Claude puede usarla por su cuenta cuando encaja con lo que pides, así que conecta solo lo que quieras que consulte.
 - **Las acciones se aprueban.** En los conectores de Google, por ejemplo, enviar un correo, compartir o mover un archivo pide tu aprobación por defecto.
 
-Hay conectores del **directorio** (listos con iniciar sesión) y **personalizados**, que conectan cualquier servicio compatible con MCP pero que Anthropic no ha verificado. El directorio está en el plan gratuito y en los de pago.
+Hay conectores del **directorio** (listos con iniciar sesión) y **personalizados**, que conectan cualquier servicio compatible con MCP pero que Anthropic no ha verificado. El directorio está en el plan gratuito y en los de pago; en el gratuito puedes añadir un solo conector personalizado.
 
 Para quitar el acceso, **desconecta** el servicio en los ajustes de conectores. Con Google, además, puedes retirarlo desde tu cuenta de Google.
 

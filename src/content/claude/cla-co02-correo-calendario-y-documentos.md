@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: cla-co02-q1
-    q: "Elena pide a Claude que conteste a un cliente que se queja de un retraso. Claude prepara la respuesta con el correo conectado. ¿Qué hace Elena antes de aprobar el envío?"
+    q: "Mercedes pide a Claude que conteste a un cliente que se queja de un retraso. Claude prepara la respuesta con el correo conectado. ¿Qué hace Mercedes antes de aprobar el envío?"
     options: ["Nada: si Claude la ha escrito, estará bien", "Leerla entera y comprobar fechas, importes y compromisos", "Pedirle que la envíe ya y revisarla después"]
     answer: 1
     explain: "Un correo enviado no se puede retirar y lleva tu nombre. Claude puede confundir una fecha o prometer algo que no quieres. Tienta revisarla después, pero entonces el error ya está en la bandeja del cliente."
@@ -28,7 +28,7 @@ questions:
     explain: "Según el centro de ayuda, ve los datos del adjunto (nombre, tipo), pero no su contenido. Si el adjunto está en Google Drive, puede leerlo con el conector de Drive."
   - type: choice
     id: cla-co02-q3
-    q: "Pablo quiere preparar la reunión del jueves con un proveedor. ¿Qué petición aprovecha mejor los conectores?"
+    q: "Jaime quiere preparar la reunión del jueves con un proveedor. ¿Qué petición aprovecha mejor los conectores?"
     options: ["«Prepárame la reunión del jueves»", "«Busca en mi correo y en mis documentos lo último sobre el proveedor Hierros Duero, resume lo pendiente y dime de qué correo o archivo sale cada punto»", "«Escribe un correo al proveedor para cancelar»"]
     answer: 1
     explain: "Dice dónde buscar, qué quiere y pide las fuentes para poder comprobarlo. La primera tienta por corta, pero Claude no sabe qué reunión ni qué buscar."

@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: cla-pe03-q1
-    q: "Marta va a pegar el texto de Claude en un mensaje de WhatsApp para su comunidad de vecinos. ¿Qué debe pedirle?"
+    q: "Carla va a pegar el texto de Claude en un mensaje de WhatsApp para su comunidad de vecinos. ¿Qué debe pedirle?"
     options: ["«Hazlo bonito, con títulos y negritas»", "«Texto sencillo, sin títulos ni tablas, en tres párrafos cortos»", "Nada: ya lo arreglará al pegarlo"]
     answer: 1
     explain: "Las tablas y algunos formatos no se ven bien en todas las aplicaciones al copiar y pegar. Si dices dónde va el texto, Claude lo adapta. Dejarlo para después suele costar más tiempo."
@@ -28,7 +28,7 @@ questions:
     explain: "Respeta bien la idea de longitud, pero no cuenta palabras con precisión perfecta. Si el número exacto importa (un formulario con límite), compruébalo tú con un contador."
   - type: choice
     id: cla-pe03-q3
-    q: "Pablo necesita en catalán un aviso para el colegio de su hija, en registro formal. ¿Qué es lo más eficaz?"
+    q: "Mateo necesita en catalán un aviso para el colegio de su hija, en registro formal. ¿Qué es lo más eficaz?"
     options: ["Pedirlo en español y traducirlo después con otra herramienta", "Pedirlo directamente: «Escríbelo en catalán, registro formal, para las familias del colegio»", "Escribir la petición en catalán, porque si no, no funciona"]
     answer: 1
     explain: "Puedes pedir el idioma y el registro de la respuesta directamente, aunque escribas en español. Traducir después añade un paso y puede perder matices. Si el aviso es importante, que lo revise alguien que domine el idioma."

@@ -11,16 +11,16 @@ takeaway: Un buen resumen depende de para qué lo quieres, así que díselo. Pid
 scenario:
   kind: operacion
   label: Caso práctico
-  title: El contrato de Óscar
-  body: "Óscar va a alquilar un local para abrir una frutería. Sube el contrato a Claude y pide un resumen. Le sale muy bien: duración, renta, fianza. Pero no preguntó por las penalizaciones y el resumen no menciona una cláusula que le obliga a pagar seis meses si se va antes del segundo año. La descubre al releer el contrato entero antes de firmar."
+  title: El contrato de Toni
+  body: "Toni va a alquilar un local para abrir una frutería. Sube el contrato a Claude y pide un resumen. Le sale muy bien: duración, renta, fianza. Pero no preguntó por las penalizaciones y el resumen no menciona una cláusula que le obliga a pagar seis meses si se va antes del segundo año. La descubre al releer el contrato entero antes de firmar."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-tr03-q1
-    q: "Elena tiene que decidir en una reunión si renueva el contrato con una empresa de limpieza. Sube el informe de evaluación. ¿Qué pide?"
+    q: "Pilar tiene que decidir en una reunión si renueva el contrato con una empresa de limpieza. Sube el informe de evaluación. ¿Qué pide?"
     options: ["«Resume este documento.»", "«Voy a decidir si renuevo. Resume en 5 puntos lo que influye en esa decisión (coste, quejas, incumplimientos) e indica la página de cada uno.»", "«Dime si debo renovar.»"]
     answer: 1
-    explain: "La segunda dice para qué es el resumen y pide páginas para comprobarlo. «Resume este documento» tienta por rápida, pero da un resumen general que puede saltarse justo lo que importa. La decisión, además, es de Elena."
+    explain: "La segunda dice para qué es el resumen y pide páginas para comprobarlo. «Resume este documento» tienta por rápida, pero da un resumen general que puede saltarse justo lo que importa. La decisión, además, es de Pilar."
   - type: truefalse
     id: cla-tr03-q2
     q: "Si Claude dice que un dato está en la página 12, seguro que está ahí."

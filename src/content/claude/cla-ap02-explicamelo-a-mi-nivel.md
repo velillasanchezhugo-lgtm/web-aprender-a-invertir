@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: cla-ap02-q1
-    q: "Nuria lee la explicación de Claude sobre la declaración de la renta y cree que la entiende. ¿Cuál es la mejor forma de comprobarlo?"
+    q: "Marisa lee la explicación de Claude sobre la declaración de la renta y cree que la entiende. ¿Cuál es la mejor forma de comprobarlo?"
     options: ["Releerla dos veces", "Explicársela a Claude con sus palabras y pedirle que señale lo que no está bien", "Pedir otra explicación más larga"]
     answer: 1
     explain: "Releer da sensación de entender, pero no lo demuestra. Al explicarlo tú aparecen los huecos, y Claude puede señalar en cuál te has equivocado."

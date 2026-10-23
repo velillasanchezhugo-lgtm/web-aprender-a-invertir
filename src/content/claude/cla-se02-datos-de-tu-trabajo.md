@@ -11,16 +11,16 @@ takeaway: Los datos de tu empresa y de sus clientes no son tuyos. Antes de usarl
 scenario:
   kind: empresa
   label: Caso práctico
-  title: Las reclamaciones de Javier
-  body: "Javier, de atención al cliente de una tienda online, quiere que Claude agrupe las quejas del mes. Pregunta a su responsable: no hay plan de empresa, pero se permite con datos anonimizados. Javier quita nombres, correos y números de pedido antes de pegarlas."
+  title: Las reclamaciones de Iker
+  body: "Iker, de atención al cliente de una tienda online, quiere que Claude agrupe las quejas del mes. Pregunta a su responsable: no hay plan de empresa, pero se permite con datos anonimizados. Iker quita nombres, correos y números de pedido antes de pegarlas."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-se02-q1
-    q: "Nuria, de una gestoría, quiere que Claude revise la declaración de la renta de un cliente con su nombre y su DNI. Solo tiene su cuenta personal y la gestoría no ha dicho nada sobre IA. ¿Qué hace primero?"
+    q: "Alicia, de una gestoría, quiere que Claude revise la declaración de la renta de un cliente con su nombre y su DNI. Solo tiene su cuenta personal y la gestoría no ha dicho nada sobre IA. ¿Qué hace primero?"
     options: ["Sube el documento: es para ayudar al cliente", "Pregunta a la gestoría qué está permitido y, mientras, no sube datos del cliente", "Lo sube en un chat de incógnito y así no hay problema"]
     answer: 1
-    explain: "Los datos del cliente los controla la gestoría, no Nuria, y son datos protegidos. El chat de incógnito tienta porque no queda en tu historial, pero los datos salen igual de la empresa sin su permiso."
+    explain: "Los datos del cliente los controla la gestoría, no Alicia, y son datos protegidos. El chat de incógnito tienta porque no queda en tu historial, pero los datos salen igual de la empresa sin su permiso."
   - type: truefalse
     id: cla-se02-q2
     q: "Para anonimizar un documento basta con cambiar el nombre de la persona."

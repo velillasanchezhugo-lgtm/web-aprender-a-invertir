@@ -6,13 +6,13 @@ track: cla-seguro
 order: 603
 skills: [cla-limites, cla-pensar]
 terms: [sesgo, inyeccion-de-instrucciones]
-hook: "Le has contado a Claude tu idea de dejar el trabajo para abrir una cafetería y le parece estupenda. ¿Es buena señal o te está dando la razón?"
+hook: "Le preguntas a Claude «¿verdad que es buena idea convertir el local que heredé en un piso para alquilar?» y te contesta que es estupenda. ¿Es buena señal o te está dando la razón?"
 takeaway: Claude puede inclinarse hacia lo que ya piensas o hacia estereotipos, y no conoce tu vida. Pídele siempre la otra cara y aporta tú el contexto que le falta.
 scenario:
   kind: producto
   label: Caso práctico
-  title: La cafetería de Andrés
-  body: "Andrés explica a Claude su plan con mucho entusiasmo y recibe ánimos y una lista de pasos. Luego abre un chat nuevo y le pide: «Haz de inversor escéptico y dime las tres razones por las que este plan podría fracasar». Aparecen el alquiler del local, la competencia de la zona y que no ha contado sus gastos de los primeros meses."
+  title: El local de Héctor
+  body: "Héctor le cuenta a Claude, con mucho entusiasmo, su plan de convertir en vivienda el local que heredó para alquilarlo, y recibe ánimos y una lista de pasos. Luego abre un chat nuevo y le pide: «Haz de inversor escéptico y dime las tres razones por las que este plan podría salir mal». Aparecen el permiso de cambio de uso del ayuntamiento, el coste real de la obra y los meses sin inquilino que no había contado."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice

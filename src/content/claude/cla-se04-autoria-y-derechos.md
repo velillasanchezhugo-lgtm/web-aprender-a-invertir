@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: cla-se04-q1
-    q: "Lorena entrega en clase un trabajo escrito casi entero por Claude. Las normas de la asignatura piden hacerlo tú y declarar el uso de IA. Ella no lo dice. ¿Qué ocurre?"
+    q: "Irene entrega en clase un trabajo escrito casi entero por Claude. Las normas de la asignatura piden hacerlo tú y declarar el uso de IA. Ella no lo dice. ¿Qué ocurre?"
     options: ["Nada: el texto es nuevo, así que no es plagio", "Incumple las normas: presenta como propio un trabajo que no ha hecho", "Solo es un problema si el profesor usa un detector"]
     answer: 1
     explain: "Aunque el texto no copie a nadie, entregarlo como propio cuando las normas lo prohíben es una falta. Pensar en el detector tienta, pero la regla no depende de que te pillen."

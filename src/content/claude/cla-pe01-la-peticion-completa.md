@@ -6,18 +6,18 @@ track: cla-pedir
 order: 101
 skills: [cla-peticion]
 terms: [prompt, contexto-de-la-peticion]
-hook: "Le pides a Claude «escríbeme un correo para mi casero» y te devuelve algo correcto pero que no sirve. ¿Qué le faltaba?"
+hook: "Le pides a Claude «escribe un mensaje para pedir presupuesto a un fontanero» y te devuelve algo tan genérico que ningún fontanero sabría qué contestarte. ¿Qué le faltaba?"
 takeaway: Claude solo sabe lo que le cuentas. Antes de enviar, repasa las cinco piezas (contexto, tarea, detalles, formato y tono) y añade las que falten.
 scenario:
   kind: operacion
   label: Caso práctico
-  title: El correo de Nerea al casero
-  body: "Nerea escribe: «Escríbeme un correo para mi casero». Claude le da un texto genérico y muy formal. Lo repite con contexto: lleva tres semanas con la caldera estropeada, ya llamó dos veces, quiere una fecha de reparación esta semana y prefiere un tono firme pero educado, en menos de 120 palabras. Esta vez el correo se puede enviar casi tal cual."
+  title: El fontanero de Begoña
+  body: "Begoña escribe: «Escribe un mensaje para pedir presupuesto a un fontanero». Claude le da un texto genérico y muy formal. Lo repite con contexto: el grifo de la cocina gotea y el calentador tiene diez años, quiere un precio aproximado con IVA y una visita esta semana por la tarde, y lo va a mandar por WhatsApp en menos de 60 palabras. Esta vez el mensaje se puede enviar casi tal cual."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-pe01-q1
-    q: "Iván pide «hazme un resumen de este informe» y el resultado es demasiado largo y técnico para su jefa. ¿Qué cambia primero?"
+    q: "Germán pide «hazme un resumen de este informe» y el resultado es demasiado largo y técnico para su jefa. ¿Qué cambia primero?"
     options: ["Repite la misma petición hasta que salga bien", "Añade para quién es, para qué lo quiere y qué longitud necesita", "Pide que lo resuma «mejor»"]
     answer: 1
     explain: "Faltaban el público, el uso y el formato. «Mejor» no le dice a Claude nada nuevo; repetir lo mismo suele dar algo parecido. Tienta porque parece más rápido, pero un minuto de contexto ahorra varias vueltas."
@@ -59,7 +59,7 @@ sources: [claude-ayuda, claude-docs, anthropic-academy]
 
 ## La idea
 
-Un **prompt** es lo que le escribes a Claude para pedirle algo. Claude no sabe quién eres ni para qué lo quieres: solo ve tu mensaje. Si falta información, la rellena con lo más típico. Por eso las peticiones cortas dan respuestas correctas pero genéricas.
+Un **prompt** (en español, petición) es lo que le escribes a Claude para pedirle algo. En el Camino Cero viste cuatro piezas; aquí las afinamos en cinco, separando los detalles y el tono. Claude no sabe quién eres ni para qué lo quieres: solo ve tu mensaje. Si falta información, la rellena con lo más típico. Por eso las peticiones cortas dan respuestas correctas pero genéricas.
 
 Una petición completa tiene cinco piezas:
 
@@ -81,15 +81,15 @@ No todas las peticiones necesitan las cinco. Para «¿cuántos gramos son una ta
 
 Mira la diferencia. **Antes:**
 
-> «Escríbeme un correo para mi casero.»
+> «Escribe un mensaje para pedir presupuesto a un fontanero.»
 
 **Después:**
 
-> Prueba: «Vivo de alquiler en Zaragoza. La caldera lleva tres semanas estropeada y he avisado dos veces por teléfono sin respuesta. Escribe un correo a mi casero pidiendo una fecha de reparación esta semana. Que recuerde los avisos anteriores. Tono firme pero educado, menos de 120 palabras, sin amenazas.»
+> Prueba: «Vivo en un tercero sin ascensor en Burgos. El grifo de la cocina gotea desde hace una semana y el calentador de agua tiene diez años. Escribe un mensaje de WhatsApp para pedir presupuesto a dos fontaneros: que me den un precio aproximado con IVA y me digan si pueden venir esta semana por la tarde. Tono educado y directo, menos de 60 palabras, sin dar todavía mi dirección.»
 
 Si el resultado no encaja, no empieces de cero: dile qué cambiar («más corto», «más cercano»). Claude recuerda lo hablado en esa conversación.
 
-Recuerda que Claude puede equivocarse. Si el correo menciona plazos legales o derechos como inquilino, compruébalos en una fuente oficial antes de enviarlo.
+Y léelo antes de enviarlo: Claude puede añadir algo que no le has dicho, como una hora o un precio orientativo.
 
 ## Error frecuente
 

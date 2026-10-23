@@ -11,8 +11,8 @@ takeaway: Claude Code es la herramienta de Claude para crear y cambiar programas
 scenario:
   kind: producto
   label: Caso práctico
-  title: La web de Inés
-  body: "Inés da clases de yoga en Gijón. Abre Claude Code en la app de escritorio, en una carpeta vacía, y pide una web de una página con horarios y precios. Claude la crea y le explica cómo verla. Inés pide cambios y, antes de publicarla, se la enseña a una amiga que sabe de webs."
+  title: La web de Olga
+  body: "Olga da clases de yoga en Gijón. Abre Claude Code en la app de escritorio, en una carpeta vacía, y pide una web de una página con horarios y precios. Claude la crea y le explica cómo verla. Olga pide cambios y, antes de publicarla, se la enseña a una amiga que sabe de webs."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -23,7 +23,7 @@ questions:
     explain: "Las órdenes pueden borrar, mover o instalar cosas en tu ordenador. Pedir la explicación te protege y te enseña. Aprobarlo todo tienta por cómodo, pero quitas tu única barrera."
   - type: choice
     id: cla-av02-q2
-    q: "Raúl, que no programa, quiere probar Claude Code. ¿Por dónde empieza?"
+    q: "Benito, que no programa, quiere probar Claude Code. ¿Por dónde empieza?"
     options: ["Por la aplicación de la empresa donde trabaja, con datos reales de clientes", "Por una carpeta nueva con un proyecto pequeño, como una web personal o un script para renombrar fotos copiadas", "Por un programa que gestione sus cuentas bancarias"]
     answer: 1
     explain: "Un proyecto pequeño en una carpeta aparte es fácil de revisar y, si algo sale mal, no rompe nada importante. Lo del trabajo tienta por útil, pero mezcla datos ajenos y sistemas que no controlas."

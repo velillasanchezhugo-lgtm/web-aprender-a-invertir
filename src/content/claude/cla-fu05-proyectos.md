@@ -28,7 +28,7 @@ questions:
     explain: "Las instrucciones del proyecto valen solo dentro de él. Para algo que quieras en todas tus conversaciones, están las instrucciones generales de tu cuenta, en los ajustes."
   - type: choice
     id: cla-fu05-q3
-    q: "Elena trabaja en una gestoría con plan de equipo y quiere que dos compañeros usen su proyecto de plantillas de correos, pero sin que cambien las instrucciones. ¿Qué hace?"
+    q: "Beatriz trabaja en una gestoría con plan de equipo y quiere que dos compañeros usen su proyecto de plantillas de correos, pero sin que cambien las instrucciones. ¿Qué hace?"
     options: ["Comparte el proyecto con permiso de solo ver", "Les da permiso para editar", "Les pasa su contraseña"]
     answer: 0
     explain: "Con permiso de ver pueden usar el proyecto y chatear en él, pero no tocar las instrucciones ni los archivos. Dar permiso de edición tienta por comodidad, pero les deja cambiarlo todo. La contraseña no se comparte nunca."

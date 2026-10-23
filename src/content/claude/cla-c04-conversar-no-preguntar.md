@@ -5,7 +5,7 @@ level: cero
 track: cla-cero
 order: 4
 skills: [cla-iterar]
-terms: [modelo-de-lenguaje]
+terms: [ventana-de-contexto]
 hook: "La respuesta de Claude está casi bien, pero es demasiado larga y el tono no te convence. ¿Empiezas de cero o hay algo mejor?"
 takeaway: La primera respuesta es un borrador. Pide cambios concretos, edita tu mensaje si te expresaste mal y abre un chat nuevo cuando cambies de tema, porque Claude tiene en cuenta todo lo anterior de la conversación.
 scenario:
@@ -47,7 +47,7 @@ practice:
   require: [formato, tono]
   extra:
     - label: Decir qué mantener
-      any: [mantén, manten, conserva, deja igual, no cambies, no toques, quédate con]
+      any: [mantén, manten, conserva, deja igual, dejalo igual, como esta, no cambies, no toques, quédate con, respeta]
       hint: "Di qué parte te gusta y quieres conservar: «Mantén la frase del café»."
   sample: "Está bien, pero es demasiado largo y solemne para una tarjeta. Déjalo en cuatro líneas con un tono cercano y un poco divertido: es para una compañera con la que he trabajado doce años. Mantén la frase sobre el café de las mañanas, que me encanta. Dame dos versiones para elegir."
 deeper: null
@@ -72,7 +72,7 @@ Tienes cuatro formas de mejorar un resultado:
 - **Editar tu mensaje.** Si te expresaste mal, corrige tu petición en lugar de añadir otra. Claude contesta de nuevo a la versión corregida.
 - **Regenerar la respuesta.** Pides otra respuesta a la misma petición. Sirve cuando el planteamiento era bueno pero el resultado no te convence.
 
-**Cuándo empezar un chat nuevo.** Claude tiene en cuenta **todo lo que hay en la conversación**: tus mensajes, sus respuestas y los archivos. A eso se le llama el **contexto**. Es muy útil mientras hablas de lo mismo. Pero si cambias de tema, lo anterior puede colarse en la respuesta. Además, las conversaciones muy largas gastan antes tu límite de uso.
+**Cuándo empezar un chat nuevo.** Claude tiene en cuenta **todo lo que hay en la conversación**: tus mensajes, sus respuestas y los archivos. Todo lo que Claude tiene a la vista en un chat cabe en su **ventana de contexto**, una especie de memoria de trabajo con límite. Es muy útil mientras hablas de lo mismo. Pero si cambias de tema, lo anterior puede colarse en la respuesta. Además, las conversaciones muy largas gastan antes tu límite de uso.
 
 Regla sencilla: **un tema, un chat**.
 

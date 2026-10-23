@@ -11,16 +11,16 @@ takeaway: Pide correcciones marcadas y explicadas, no un texto nuevo. Así ves c
 scenario:
   kind: empresa
   label: Caso práctico
-  title: El informe de Samuel
-  body: "Samuel trabaja en el departamento de compras de una empresa de 40 personas. Pega su informe trimestral y pide «corrígelo». Claude lo reescribe entero y, sin querer, cambia «el proveedor podría subir precios» por «el proveedor subirá precios». Samuel casi lo envía así. Desde entonces pide una tabla con el texto original, la propuesta y el motivo, y acepta los cambios uno a uno."
+  title: El informe de Esteban
+  body: "Esteban trabaja en el departamento de compras de una empresa de 40 personas. Pega su informe trimestral y pide «corrígelo». Claude lo reescribe entero y, sin querer, cambia «el proveedor podría subir precios» por «el proveedor subirá precios». Esteban casi lo envía así. Desde entonces pide una tabla con el texto original, la propuesta y el motivo, y acepta los cambios uno a uno."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-tr02-q1
-    q: "Nerea tiene que entregar mañana una memoria de prácticas y quiere que Claude la revise. ¿Qué petición le conviene?"
+    q: "Celia tiene que entregar mañana una memoria de prácticas y quiere que Claude la revise. ¿Qué petición le conviene?"
     options: ["«Mejora este texto.»", "«Corrige ortografía y frases confusas, sin cambiar el contenido. Dame una lista con cada cambio: original, propuesta y motivo.»", "«Reescríbelo para que parezca de un profesional.»"]
     answer: 1
-    explain: "La segunda acota qué tocar y deja cada cambio a la vista, así Nerea decide. «Mejora este texto» tienta porque es corta, pero da permiso para cambiarlo todo, incluido lo que querías decir."
+    explain: "La segunda acota qué tocar y deja cada cambio a la vista, así Celia decide. «Mejora este texto» tienta porque es corta, pero da permiso para cambiarlo todo, incluido lo que querías decir."
   - type: truefalse
     id: cla-tr02-q2
     q: "Si Claude propone un cambio, es porque tu versión tenía un error."

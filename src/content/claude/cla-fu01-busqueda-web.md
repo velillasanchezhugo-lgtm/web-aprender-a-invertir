@@ -11,8 +11,8 @@ takeaway: Para datos que cambian (horarios, normas, precios, noticias), pide a C
 scenario:
   kind: producto
   label: Caso práctico
-  title: El plazo de la beca de Nerea
-  body: "Nerea pregunta a Claude hasta cuándo puede pedir una beca universitaria. La primera respuesta da una fecha del curso anterior. Vuelve a preguntar con «busca en la web la convocatoria de este curso» y Claude le contesta con un enlace a la página oficial. Nerea abre el enlace y comprueba que el plazo coincide."
+  title: El plazo de la beca de Ainhoa
+  body: "Ainhoa pregunta a Claude hasta cuándo puede pedir una beca universitaria. La primera respuesta da una fecha del curso anterior. Vuelve a preguntar con «busca en la web la convocatoria de este curso» y Claude le contesta con un enlace a la página oficial. Ainhoa abre el enlace y comprueba que el plazo coincide."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice

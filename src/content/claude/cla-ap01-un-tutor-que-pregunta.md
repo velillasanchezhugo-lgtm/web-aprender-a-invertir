@@ -11,8 +11,8 @@ takeaway: Si Claude te da la respuesta, aprendes poco. Pídele que te guíe con 
 scenario:
   kind: operacion
   label: Caso práctico
-  title: Los porcentajes de Aitana
-  body: "Aitana, de 2.º de Bachillerato, no entiende los problemas de porcentajes encadenados. Primero pide a Claude que se los resuelva y los copia. Luego cambia: «No me des la solución. Hazme preguntas paso a paso y dime si voy bien». Tarda más, pero al tercer ejercicio ya los hace sola."
+  title: Los porcentajes de Claudia
+  body: "Claudia, de 2.º de Bachillerato, no entiende los problemas de porcentajes encadenados. Primero pide a Claude que se los resuelva y los copia. Luego cambia: «No me des la solución. Hazme preguntas paso a paso y dime si voy bien». Tarda más, pero al tercer ejercicio ya los hace sola."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -47,10 +47,10 @@ practice:
   require: [contexto]
   extra:
     - label: "Que no te dé la respuesta"
-      any: ["no me des", "sin darme", "no me digas la solucion", "no me resuelvas", "sin decirme", "sin resolver", "no me lo resuelvas"]
+      any: ["no me des", "sin darme", "no me digas la solucion", "no me resuelvas", "sin decirme", "sin resolver", "no me lo resuelvas", "no quiero que me des", "no quiero la respuesta", "no me la des"]
       hint: "Dilo claro: «No me des la respuesta»."
     - label: "Preguntas y pistas"
-      any: ["hazme preguntas", "preguntame", "de una en una", "una pregunta", "pista", "pistas"]
+      any: ["hazme preguntas", "preguntame", "de una en una", "una pregunta", "pista", "pistas", "guiame", "preguntandome"]
       hint: "Pide que te guíe: «Hazme preguntas de una en una y dame una pista si me atasco»."
   sample: "Estoy haciendo un curso de contabilidad para llevar las cuentas de la tienda de muebles donde trabajo y no entiendo los asientos del libro diario. Quiero aprenderlo, no copiarlo. Actúa como un tutor paciente: no me des la respuesta, hazme preguntas de una en una y dame una pista solo si me atasco. Empieza preguntándome qué sé ya. Cuando creas que lo entiendo, ponme un ejercicio sencillo sin ayuda."
 deeper: null
@@ -75,7 +75,7 @@ Puedes pedirle que funcione como un **tutor que pregunta**, al estilo del **mét
 - te da **pistas**, no soluciones, cuando te atascas;
 - te dice si vas bien y por qué.
 
-**¿Existe un modo especial?** Claude ha ofrecido una forma de responder llamada «Aprendizaje» (Learning) pensada justo para esto. Estas opciones cambian de nombre y de sitio a menudo, así que puede que la encuentres con otro nombre o que no la veas. Mira el menú de herramientas del chat o los ajustes, y consulta el centro de ayuda.
+**¿Existe un modo aprendizaje?** Claude ha ofrecido un estilo de respuesta llamado «Aprendizaje» (Learning) pensado justo para esto. Los estilos se han ido sustituyendo por habilidades, así que puede que lo encuentres como una habilidad, con otro nombre o que no lo veas. Mira la sección de habilidades de la aplicación y consulta el centro de ayuda.
 
 Lo importante: **no la necesitas**. Funciona igual pidiéndolo con palabras, en cualquier plan.
 

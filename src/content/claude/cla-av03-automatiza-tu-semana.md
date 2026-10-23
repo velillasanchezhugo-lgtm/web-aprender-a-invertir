@@ -23,7 +23,7 @@ questions:
     explain: "Lo que repites es el contexto, y eso va en un proyecto: archivos e instrucciones que Claude tiene a mano en cada chat de ese tema. La tarea programada tienta por automática, pero sirve para el «cuándo», no para el contexto."
   - type: choice
     id: cla-av03-q2
-    q: "Ana quiere que Claude le prepare cada viernes un resumen de noticias de su sector. Tiene un plan de pago. ¿Qué usa?"
+    q: "Fátima quiere que Claude le prepare cada viernes un resumen de noticias de su sector. Tiene un plan de pago. ¿Qué usa?"
     options: ["Una tarea programada semanal, revisando el resultado cada viernes", "Una habilidad, que se ejecuta sola cada semana", "Nada: Claude no puede hacer cosas sin que se lo pidas"]
     answer: 0
     explain: "Una tarea programada repite el encargo con la frecuencia que elijas. Una habilidad enseña cómo hacer algo, pero no decide cuándo. Y sí: en los planes de pago, Claude puede ejecutar tareas a horas fijas."
@@ -50,7 +50,7 @@ practice:
       any: [cada, semanal, todos los, a las]
       hint: "Di la frecuencia y la hora: «cada domingo a las 10:00»."
     - label: Pedir ver la tarea antes de programarla
-      any: [enséñame, ensename, muéstrame, muestrame, antes de programar]
+      any: [enséñame, ensename, muéstrame, muestrame, antes de programar, dejame ver, quiero ver, antes de dejarlo programado, antes de programarlo]
       hint: "Pide que te enseñe cómo quedaría la tarea antes de programarla."
   sample: "Cada domingo a las 10:00, prepárame el menú de cenas de la semana para dos adultos y un niño, con platos sencillos y sin marisco, y la lista de la compra agrupada por secciones del súper en una tabla. Solo prepáralo: no compres ni envíes nada. Antes de programarlo, enséñame cómo quedaría la tarea para revisarla."
 deeper: null
@@ -76,7 +76,7 @@ Automatizar empieza por **detectar lo que repites**. Mira tu semana: ¿qué le p
 Sobre las tareas programadas:
 
 - Están en los **planes de pago**.
-- Se ejecutan en la nube aunque tu ordenador esté apagado; las que usan archivos de tu ordenador necesitan la app de escritorio abierta.
+- Se ejecutan en la nube, aunque tu ordenador esté apagado, y sus resultados te esperan en la aplicación.
 - Pueden usar tus conectores y habilidades.
 - Puedes **pausarlas, editarlas o borrarlas**.
 

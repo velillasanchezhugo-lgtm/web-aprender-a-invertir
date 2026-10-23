@@ -5,14 +5,14 @@ level: basico
 track: cla-conectar
 order: 505
 skills: [cla-habilidades, cla-acceso, cla-privacidad]
-terms: [extension-de-escritorio, conector]
+terms: [extension-de-escritorio]
 hook: "Tienes 200 facturas en PDF en una carpeta del ordenador y quieres una tabla con fecha, proveedor e importe. ¿Las subes una a una al chat?"
 takeaway: La app de escritorio puede trabajar con programas y archivos de tu ordenador mediante extensiones y carpetas conectadas. Comparte solo una carpeta de trabajo, nunca la de documentos personales entera.
 scenario:
   kind: producto
   label: Caso práctico
-  title: Las facturas de Óscar
-  body: "Óscar tiene una tienda de bicicletas en Logroño. Copia las facturas del trimestre en una carpeta nueva y solo conecta esa a Claude. Le pide una hoja con fecha, proveedor e importe, revisa diez filas al azar y corrige dos importes mal leídos."
+  title: Las facturas de Marcelo
+  body: "Marcelo tiene una tienda de bicicletas en Logroño. Copia las facturas del trimestre en una carpeta nueva y solo conecta esa a Claude. Le pide una hoja con fecha, proveedor e importe, revisa diez filas al azar y corrige dos importes mal leídos."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -71,7 +71,7 @@ Claude tiene **aplicación de escritorio** para Mac y Windows (y una beta para L
 
 - **Extensiones de escritorio:** complementos que se instalan con un clic y conectan Claude con programas y archivos de tu equipo, o con servicios que no tienen versión en la nube. Solo funcionan en la app de escritorio. En la app hay un **directorio de extensiones revisadas** por Anthropic.
 - **Carpetas conectadas:** en los planes de pago, Claude puede leer y crear archivos **solo en las carpetas que tú le conectas**, sin subirlos uno a uno. Antes de **borrar** un archivo para siempre, te pide permiso.
-- **Uso del ordenador:** en algunos planes de pago, y en fase de prueba, Claude puede manejar aplicaciones de tu pantalla. Es lo más delicado: no tiene las barreras de las demás herramientas.
+- **Uso del ordenador:** en los planes Pro y Max, en fase beta, Claude puede manejar aplicaciones de tu pantalla haciendo clic y escribiendo. Es lo más delicado: no tiene las barreras de las demás herramientas.
 
 La regla de oro es **compartir poco**. Qué carpetas sí y cuáles no:
 

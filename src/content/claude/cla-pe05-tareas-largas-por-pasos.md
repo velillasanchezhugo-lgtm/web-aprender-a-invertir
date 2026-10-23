@@ -43,16 +43,16 @@ action:
     - "Desarrolla hoy solo la primera parte."
   check: He dividido un encargo grande y he hecho la primera parte con Claude
 practice:
-  task: "Quieres organizar la fiesta de jubilación de una compañera, con unas 40 personas, dentro de seis semanas. Escribe la primera petición: solo el esquema, sin desarrollar nada todavía."
+  task: "Te toca organizar la cena de reencuentro de tu promoción del instituto, unas 40 personas, dentro de seis semanas. Escribe la primera petición: solo el esquema, sin desarrollar nada todavía."
   require: [contexto, formato]
   extra:
     - label: "Pedir solo el esquema"
-      any: ["esquema", "solo la estructura", "solo los apartados", "solo las grandes tareas", "indice"]
+      any: ["esquema", "solo la estructura", "solo los apartados", "solo las grandes tareas", "grandes tareas", "estructura", "indice"]
       hint: "Pide primero solo el esquema: «Antes de nada, dame solo un esquema de…»."
     - label: "Parar para revisarlo"
-      any: ["no desarrolles", "todavia", "revisarlo", "lo reviso", "antes de seguir", "corregirlo", "espera"]
+      any: ["no desarrolles", "no me desarrolles", "todavia", "aun no", "primero quiero", "revisarlo", "lo reviso", "antes de seguir", "corregirlo", "espera"]
       hint: "Dile que pare ahí: «No desarrolles nada todavía: primero quiero revisarlo»."
-  sample: "Trabajo en una gestoría y quiero organizar la fiesta de jubilación de una compañera dentro de seis semanas. Seremos unas 40 personas y tenemos unos 600 € entre todos. Antes de nada, dame solo un esquema de las grandes tareas ordenadas por semanas, en una lista de 8 puntos como máximo. No desarrolles nada todavía: primero quiero revisarlo y corregirlo con lo que ya sé."
+  sample: "Soy una de las organizadoras de la cena de reencuentro de mi promoción del instituto, dentro de seis semanas. Seremos unas 40 personas y queremos que no pase de 35 € por cabeza. Antes de nada, dame solo un esquema de las grandes tareas ordenadas por semanas, en una lista de 8 puntos como máximo. No desarrolles nada todavía: primero quiero revisarlo y corregirlo con lo que ya sé."
 deeper: null
 tool: evaluador-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: cla-fu06-q1
-    q: "Tomás quiere consultar a Claude algo delicado sobre una deuda familiar y prefiere que no quede en la memoria ni en el historial. ¿Qué hace?"
+    q: "Luciano quiere consultar a Claude algo delicado sobre una deuda familiar y prefiere que no quede en la memoria ni en el historial. ¿Qué hace?"
     options: ["Usa un chat normal y lo borra luego", "Abre un chat de incógnito", "Restablece toda la memoria antes de preguntar"]
     answer: 1
     explain: "Los chats de incógnito no se guardan en la memoria ni en el historial. Restablecer la memoria tienta, pero borra todo lo demás para siempre y no hace falta."
@@ -79,11 +79,12 @@ Hay tres ajustes que hacen que Claude «te conozca»:
   - **Restablecer**: lo borra todo, también la memoria de tus proyectos. **No se puede deshacer.**
 - **Cada proyecto tiene su propia memoria**, que no se mezcla con la de otros proyectos.
 - **Los chats de incógnito** no se guardan en la memoria ni en el historial.
+- **Un chat sin memoria:** al empezar un chat puedes apagar la memoria solo para él desde el menú «+». A diferencia del incógnito, ese chat sí queda en tu historial.
 - **Los temas delicados** (como la salud) no se guardan por defecto, y algunos datos, como el número del DNI o de una cuenta, no se guardan nunca.
 
 **2. Las instrucciones para Claude.** Un texto en los ajustes de tu cuenta que se aplica a **todas** tus conversaciones: tu idioma, tu nivel, lo que no quieres.
 
-**3. El estilo de respuesta.** Cómo te escribe: corto o largo, formal o cercano. Claude tenía un menú de «estilos», que se está sustituyendo por **habilidades**. Lo más sencillo y estable es escribir tu estilo en tus instrucciones.
+**3. El estilo de respuesta.** Cómo te escribe: corto o largo, formal o cercano. Claude tuvo un menú de «estilos» que se ha sustituido por **habilidades** (las verás en el módulo de conectar). Lo más sencillo y estable es escribir tu estilo en tus instrucciones para Claude.
 
 ## En la práctica
 

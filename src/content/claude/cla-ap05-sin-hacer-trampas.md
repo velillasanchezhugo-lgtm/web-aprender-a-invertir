@@ -5,7 +5,7 @@ level: basico
 track: cla-aprender
 order: 405
 skills: [cla-aprender, cla-etica-normas]
-terms: [plagio, modo-aprendizaje]
+terms: [plagio]
 hook: "Son las 23:00, el trabajo se entrega mañana y Claude podría escribírtelo en un minuto. ¿Qué pierdes si lo haces?"
 takeaway: "La línea está en quién hace el trabajo de pensar. Usa Claude para entender, practicar y revisar; lo que entregas lo haces tú, siguiendo las normas de tu centro y diciendo cómo has usado la IA."
 scenario:

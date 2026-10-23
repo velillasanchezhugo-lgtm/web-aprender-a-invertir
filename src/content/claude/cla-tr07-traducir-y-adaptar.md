@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: cla-tr07-q1
-    q: "Carmen trabaja en una empresa de seguros y tiene que convertir una nota técnica sobre una nueva cobertura en un mensaje para clientes. ¿Qué pide?"
+    q: "Rebeca trabaja en una empresa de seguros y tiene que convertir una nota técnica sobre una nueva cobertura en un mensaje para clientes. ¿Qué pide?"
     options: ["«Resume esto.»", "«Adapta esta nota para clientes sin conocimientos de seguros: máximo 150 palabras, tono cercano, sin tecnicismos y sin cambiar las condiciones. Señala las frases que hayas simplificado para que compruebe que siguen siendo exactas.»", "«Hazlo más atractivo para vender más.»"]
     answer: 1
     explain: "La segunda dice para quién es, la longitud, el tono y lo que no puede cambiar, y pide marcar lo simplificado. «Resume esto» tienta por rápido, pero un resumen no es lo mismo que adaptar a otro público, y puede perder condiciones importantes."

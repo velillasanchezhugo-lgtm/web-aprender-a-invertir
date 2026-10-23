@@ -5,19 +5,19 @@ level: basico
 track: cla-funciones
 order: 204
 skills: [cla-archivos, cla-verificar]
-terms: [artefacto]
+terms: [habilidad-de-claude]
 hook: "Tu jefa te pide para mañana una hoja de Excel con las vacaciones del equipo y una presentación de cinco diapositivas. ¿Puede Claude darte los archivos, no solo el texto?"
 takeaway: Claude puede crear archivos de Word, Excel, PowerPoint y PDF que descargas y abres en tus programas. Antes de enviarlos, ábrelos y revisa datos, fórmulas y formato como si los hubiera hecho un compañero nuevo.
 scenario:
   kind: producto
   label: Caso práctico
-  title: El Excel de vacaciones de Rocío
-  body: "Rocío pega en Claude una lista con las vacaciones que ha pedido cada persona de su equipo y pide un Excel con un calendario por meses y una columna que sume los días de cada una. Lo descarga y lo abre. Al revisar, ve que a un compañero le cuenta un festivo como día de vacaciones. Se lo dice a Claude, que corrige la fórmula."
+  title: El Excel de vacaciones de Patricia
+  body: "Patricia pega en Claude una lista con las vacaciones que ha pedido cada persona de su equipo y pide un Excel con un calendario por meses y una columna que sume los días de cada una. Lo descarga y lo abre. Al revisar, ve que a un compañero le cuenta un festivo como día de vacaciones. Se lo dice a Claude, que corrige la fórmula."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-fu04-q1
-    q: "Javier pide a Claude un Excel, pero solo recibe una tabla escrita en el chat. ¿Qué revisa primero?"
+    q: "Ernesto pide a Claude un Excel, pero solo recibe una tabla escrita en el chat. ¿Qué revisa primero?"
     options: ["Que su plan sea de pago: en el gratuito no se pueden crear archivos", "Que tenga activada la ejecución de código y creación de archivos en los ajustes de Capacidades", "Que su ordenador tenga instalado Excel"]
     answer: 1
     explain: "La creación de archivos depende de ese ajuste y está en todos los planes, también en el gratuito. Pensar que es solo de pago tienta, pero hoy no es así. Tener Excel instalado solo hace falta para abrir el archivo después."
@@ -73,12 +73,12 @@ Claude no solo escribe texto en el chat: también puede **crear archivos de verd
 - **PowerPoint** (.pptx): presentaciones.
 - **PDF**: documentos listos para imprimir o enviar.
 
-Para hacerlo, Claude usa un **espacio aislado** donde ejecuta código y genera el archivo. Puedes descargarlo o guardarlo en tu Google Drive.
+Para hacerlo, Claude usa un **espacio aislado** (un ordenador virtual separado del tuyo) donde ejecuta código y genera el archivo, con la ayuda de sus **habilidades** de documentos: paquetes de instrucciones que le enseñan a hacer bien cada tipo de archivo. Puedes descargarlo o guardarlo en tu Google Drive.
 
 Lo que conviene saber:
 
 - **Está en todos los planes**, gratis y de pago, en la web, el escritorio y el móvil.
-- **Hay que activarlo.** Se llama algo así como «Ejecución de código y creación de archivos» y está en los ajustes de **Capacidades**. En los planes de empresa lo controla quien administra la cuenta.
+- **Viene activado** en los planes individuales. Si no te sale el archivo, mira en los ajustes de **Capacidades** que esté encendida la opción «Ejecución de código y creación de archivos». En los planes de empresa lo controla quien administra la cuenta.
 - **Gasta más uso** que un chat normal.
 - **Cuidado con lo que subes.** La ayuda de Claude avisa de que un archivo o una web de terceros pueden esconder instrucciones para engañarlo. Usa archivos de confianza y mira lo que hace.
 

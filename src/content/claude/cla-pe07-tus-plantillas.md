@@ -11,13 +11,13 @@ takeaway: "Guarda lo que repites en dos sitios: tus plantillas con huecos, para 
 scenario:
   kind: operacion
   label: Caso práctico
-  title: El menú semanal de Javier
-  body: "Javier pide cada semana un menú para su familia. Siempre tiene que recordar que su hija es celíaca, que cenan pronto y que el presupuesto es de unos 80 €. Guarda una plantilla con huecos y escribe en sus instrucciones de Claude que prefiere respuestas cortas. Ahora tarda un minuto."
+  title: El menú semanal de Fermín
+  body: "Fermín pide cada semana un menú para su familia. Siempre tiene que recordar que su hija es celíaca, que cenan pronto y que el presupuesto es de unos 80 €. Guarda una plantilla con huecos y escribe en sus instrucciones de Claude que prefiere respuestas cortas. Ahora tarda un minuto."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-pe07-q1
-    q: "Elena quiere que Claude le responda siempre de tú, en español de España y sin introducciones largas. ¿Dónde lo pone?"
+    q: "Sonia quiere que Claude le responda siempre de tú, en español de España y sin introducciones largas. ¿Dónde lo pone?"
     options: ["Al principio de cada conversación", "En las «Instrucciones para Claude» de los ajustes, que se aplican a todas sus conversaciones", "En una plantilla que pega solo los lunes"]
     answer: 1
     explain: "Es una preferencia general, así que va en los ajustes de la cuenta. Repetirla en cada chat tienta porque funciona, pero se olvida. Las plantillas son mejores para tareas concretas que se repiten."

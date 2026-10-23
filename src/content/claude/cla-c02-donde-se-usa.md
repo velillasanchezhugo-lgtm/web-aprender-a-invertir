@@ -74,7 +74,7 @@ Tus conversaciones se guardan en la cuenta, así que puedes empezar en un sitio 
 
 - **Cuánto lo puedes usar.** El gratuito tiene límites más bajos; si los alcanzas, toca esperar un rato.
 - **Qué modelos tienes.** Claude tiene varias versiones; algunas, las más potentes, solo están en los planes de pago.
-- **Algunas funciones** extra.
+- **Algunas funciones.** Hoy, por ejemplo, la investigación a fondo, Claude en Chrome, Claude Code y las tareas programadas son de pago; la búsqueda web, los archivos, los proyectos y la memoria también están en el gratuito. Lo verás en cada sesión.
 
 Los precios y los límites cambian a menudo. No los apuntes de memoria: consúltalos en la **página de planes** de Claude cuando vayas a decidir.
 

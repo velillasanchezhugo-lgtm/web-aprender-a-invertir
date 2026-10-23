@@ -385,7 +385,7 @@
       "id": "cla-modelos-modos",
       "domain": "cla-funciones",
       "label": "Modelos y modos",
-      "can": "Eliges modelo, razonamiento extendido, estilo o voz según la tarea.",
+      "can": "Eliges modelo, nivel de esfuerzo, razonamiento o voz según la tarea.",
       "level": 1
     },
     {
@@ -642,10 +642,10 @@
           },
           {
             "id": "cla2-pro-05-instrucciones-personales",
-            "title": "Instrucciones y estilos a tu medida",
+            "title": "Instrucciones y habilidades de escritura a tu medida",
             "minutes": 15,
-            "content": "Preferencias personales, estilos de escritura, instrucciones de proyecto: qué va en cada sitio.",
-            "practice": "Crear tu estilo de escritura",
+            "content": "Más allá de lo básico: instrucciones de cuenta y de proyecto que funcionan, una habilidad con tu forma de escribir, cómo probarlas y ajustarlas sin que choquen entre sí.",
+            "practice": "Crear y probar una habilidad con tu forma de escribir a partir de cinco textos tuyos",
             "skills": [
               "cla2-proyectos"
             ],
@@ -672,10 +672,10 @@
           },
           {
             "id": "cla2-inv-02-analisis-de-datos",
-            "title": "Analizar una hoja de cálculo",
+            "title": "Análisis de datos a fondo",
             "minutes": 25,
-            "content": "Subir datos, limpiar, preguntar, gráficos y comprobación de cifras.",
-            "practice": "Ventas de un año: qué meses y productos tiran",
+            "content": "Más allá de preguntar a una hoja: varias hojas a la vez, datos desordenados, cruces y tablas resumen, y un método para comprobar las cifras.",
+            "practice": "Cruzar ventas y gastos de un año para ver qué productos dejan más margen",
             "skills": [
               "cla2-investigacion",
               "cla2-calidad"
@@ -686,7 +686,7 @@
             "id": "cla2-inv-03-documentos-largos",
             "title": "Documentos largos y varios a la vez",
             "minutes": 20,
-            "content": "Comparar documentos, extraer datos a una tabla, citar páginas.",
+            "content": "Comparar varios documentos a la vez, extraer sus datos a una tabla y citar la página de cada uno.",
             "practice": "Comparar tres presupuestos",
             "skills": [
               "cla2-investigacion"
@@ -727,7 +727,7 @@
             "id": "cla2-cre-02-documentos-y-presentaciones",
             "title": "Documentos, hojas y presentaciones",
             "minutes": 20,
-            "content": "Pedir archivos de Word, Excel, PowerPoint o PDF bien hechos y revisarlos.",
+            "content": "Archivos de Word, Excel, PowerPoint o PDF y plantillas de documento y presentación: estructura, formato español, fórmulas que se pueden comprobar y revisión antes de enviar.",
             "practice": "Presentación de 8 diapositivas desde un informe",
             "skills": [
               "cla2-sin-codigo"
@@ -780,7 +780,7 @@
             "id": "cla2-aut-03-tareas-programadas-y-agentes",
             "title": "Tareas largas y programadas",
             "minutes": 20,
-            "content": "Encargar trabajos de varios pasos, revisarlos y repetirlos.",
+            "content": "Encargos largos que salgan bien a la primera: materiales, límites, modo de aprobación, programación y una lista fija para revisar cada resultado.",
             "practice": "Resumen semanal automático de tu correo",
             "skills": [
               "cla2-automatizar"

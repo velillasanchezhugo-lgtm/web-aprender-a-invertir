@@ -11,8 +11,8 @@ takeaway: Claude sigue una política de uso que prohíbe dañar, engañar o vuln
 scenario:
   kind: producto
   label: Caso práctico
-  title: El taller de Rocío
-  body: "Rocío prepara un taller contra estafas para su asociación de vecinos. Pide «un SMS falso de un banco» y Claude le propone otra cosa. Reformula: «Es para un taller de mayores. Haz un ejemplo con un banco inventado, marca en él las cinco señales de estafa y añade cómo actuar». Obtiene justo lo que necesitaba."
+  title: El taller de Maite
+  body: "Maite prepara un taller contra estafas para su asociación de vecinos. Pide «un SMS falso de un banco» y Claude le propone otra cosa. Reformula: «Es para un taller de mayores. Haz un ejemplo con un banco inventado, marca en él las cinco señales de estafa y añade cómo actuar». Obtiene justo lo que necesitaba."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice

@@ -83,7 +83,7 @@ La app de Claude para el móvil (iPhone y Android) hace lo mismo que la web y a�
 - Recetas médicas e informes con tu nombre.
 - Caras de otras personas o documentos ajenos.
 
-Claude puede **leer mal** una foto borrosa o inventarse un dato que no ve bien. En salud, dinero y trámites, confírmalo con la fuente o con un profesional.
+Claude puede **leer mal** una foto borrosa o inventarse un dato que no ve bien (una **alucinación**). En salud, dinero y trámites, confírmalo con la fuente o con un profesional.
 
 ## En la práctica
 

@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: cla-se06-q1
-    q: "Gonzalo tiene una gestoría de cuatro personas y todos usan IA en el trabajo. ¿Qué le pide el Reglamento europeo de IA en primer lugar?"
+    q: "Agustín tiene una gestoría de cuatro personas y todos usan IA en el trabajo. ¿Qué le pide el Reglamento europeo de IA en primer lugar?"
     options: ["Nada: solo afecta a las empresas que fabrican IA", "Tomar medidas para que su equipo sepa usar la IA con criterio", "Pedir permiso a la AESIA antes de usar un asistente"]
     answer: 1
     explain: "La alfabetización en IA también afecta a quien la usa en su organización. Pensar que solo afecta a los fabricantes tienta, pero no es así. Y no hace falta pedir permiso para usar un asistente."

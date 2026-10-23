@@ -11,13 +11,13 @@ takeaway: Claude escribe un buen borrador si le das la situación, lo que quiere
 scenario:
   kind: empresa
   label: Caso práctico
-  title: El «no» de Marta
-  body: "Marta lleva una imprenta. Un cliente habitual le pide un 20 % de descuento que no puede hacer. Pide a Claude «un correo para decir que no» y recibe un texto frío y larguísimo. Lo repite con el contexto, lo que sí puede ofrecer (entrega en 48 horas sin recargo) y un tono cercano y breve. El segundo borrador le sirve con dos retoques."
+  title: El «no» de Montse
+  body: "Montse lleva una imprenta. Un cliente habitual le pide un 20 % de descuento que no puede hacer. Pide a Claude «un correo para decir que no» y recibe un texto frío y larguísimo. Lo repite con el contexto, lo que sí puede ofrecer (entrega en 48 horas sin recargo) y un tono cercano y breve. El segundo borrador le sirve con dos retoques."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-tr01-q1
-    q: "Jorge quiere reclamar a su compañía de luz una factura cobrada dos veces. ¿Qué petición le dará mejor resultado?"
+    q: "Ramón quiere reclamar a su compañía de luz una factura cobrada dos veces. ¿Qué petición le dará mejor resultado?"
     options: ["«Escribe una reclamación a la compañía de luz.»", "«Escribe una reclamación firme y educada: me han cobrado dos veces la factura de septiembre (85 €). Pido la devolución en 10 días. Máximo 120 palabras.»", "«Escribe una reclamación muy dura para que me hagan caso.»"]
     answer: 1
     explain: "La segunda da los hechos, lo que pide, el tono y la longitud. La primera tienta por rápida, pero obliga a Claude a inventarse los detalles. La tercera suele salir agresiva y no acelera nada."
@@ -48,7 +48,7 @@ practice:
   require: [contexto, tono, formato]
   extra:
     - label: Decir qué quieres conseguir
-      any: [quiero que, quiero conseguir, objetivo, que acepte, que confirme, que me conteste, sin perder]
+      any: [quiero que, quiero conseguir, objetivo, que acepte, que confirme, que me conteste, sin perder, me gustaria que, que lo acepte, conseguir, para que]
       hint: "Di qué quieres que haga el cliente después de leerlo: «Quiero que acepte el nuevo precio sin perderlo»."
   sample: "Soy electricista autónomo. Hace dos meses di a un cliente un presupuesto de 2.400 € para renovar la instalación de su piso, pero el cable y los cuadros han subido un 15 %. Quiero que acepte el nuevo precio, 2.750 €, sin perderlo como cliente. Escribe un correo de máximo 120 palabras, tono cercano y profesional, que explique la subida con sencillez, ofrezca empezar la obra la semana que viene y no suene a excusa. Tutéale."
 deeper: null
@@ -77,7 +77,7 @@ Una buena petición de correo tiene cinco piezas:
 Dos reglas que no se rompen:
 
 1. **Lo revisas antes de enviar.** Cada cifra, cada fecha y cada promesa. El correo sale con tu nombre.
-2. **No subas lo que no hace falta**: IBAN, DNI, contraseñas, datos de salud de nadie. Pon un hueco («[IBAN]») y lo completas tú.
+2. **No subas lo que no hace falta**: los **datos personales**, es decir, los que permiten saber quién es alguien (IBAN, DNI, dirección, datos de salud), tuyos o de otros, y nunca contraseñas. Pon un hueco («[IBAN]») y lo completas tú.
 
 Para **mantener tu voz**, dale un mensaje tuyo como muestra.
 

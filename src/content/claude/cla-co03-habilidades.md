@@ -11,8 +11,8 @@ takeaway: Una habilidad guarda una forma de trabajar (instrucciones, ejemplos y 
 scenario:
   kind: producto
   label: Caso práctico
-  title: El acta de Rocío
-  body: "Rocío es secretaria de una comunidad de vecinos en Cádiz. Cada reunión redacta un acta con la misma estructura. Le pide a Claude que la entreviste sobre cómo la hace, le sube dos actas antiguas y Claude crea una habilidad. En la siguiente reunión, solo pega sus notas y el acta sale con su formato."
+  title: El acta de Encarna
+  body: "Encarna es secretaria de una comunidad de vecinos en Cádiz. Cada reunión redacta un acta con la misma estructura. Le pide a Claude que la entreviste sobre cómo la hace, le sube dos actas antiguas y Claude crea una habilidad. En la siguiente reunión, solo pega sus notas y el acta sale con su formato."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -71,7 +71,7 @@ Hay dos tipos:
 - **De Anthropic:** para crear hojas de cálculo de Excel, documentos de Word, presentaciones de PowerPoint y PDF. No las nombras: si pides «hazme una presentación», Claude usa la que toca.
 - **Propias:** las que creas tú (o tu empresa) para tu forma de trabajar: tus actas, tus informes, el estilo de tu marca.
 
-¿En qué se diferencian de un proyecto o de unas instrucciones? Un proyecto agrupa chats y archivos de un tema. Una habilidad es una **receta** que Claude puede usar en cualquier chat cuando encaja.
+¿En qué se diferencian de un proyecto o de unas instrucciones? Un proyecto agrupa chats y archivos de un tema. Una habilidad es una **receta** que Claude puede usar en cualquier chat cuando encaja. Las habilidades también han sustituido a los antiguos «estilos» de respuesta: para que Claude escriba siempre de una forma, sirve una habilidad o, más sencillo, una línea en tus instrucciones para Claude.
 
 Lo que conviene saber:
 

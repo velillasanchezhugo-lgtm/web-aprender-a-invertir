@@ -11,13 +11,13 @@ takeaway: Antes de una reunión, Claude te ayuda a ordenar objetivos, preguntas 
 scenario:
   kind: empresa
   label: Caso práctico
-  title: La negociación de Raúl
-  body: "Raúl tiene un taller de carpintería y va a negociar el precio de la madera. Cuenta a Claude lo que paga, lo que quiere y su límite, y le pide las objeciones probables del proveedor y cómo responderlas. Ensaya. Al salir, dicta sus notas y pide un correo con los acuerdos."
+  title: La negociación de Ismael
+  body: "Ismael tiene un taller de carpintería y va a negociar el precio de la madera. Cuenta a Claude lo que paga, lo que quiere y su límite, y le pide las objeciones probables del proveedor y cómo responderlas. Ensaya. Al salir, dicta sus notas y pide un correo con los acuerdos."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-tr05-q1
-    q: "Lucía tiene mañana una entrevista de trabajo para administrativa en una gestoría. ¿Qué petición le ayuda más?"
+    q: "Valeria tiene mañana una entrevista de trabajo para administrativa en una gestoría. ¿Qué petición le ayuda más?"
     options: ["«Dame preguntas típicas de entrevistas.»", "«Tengo una entrevista para administrativa en una gestoría pequeña. Mi experiencia es [resumen, sin datos personales]. Hazme las 8 preguntas más probables, de una en una, y después de cada respuesta dime cómo mejorarla.»", "«Escríbeme las respuestas perfectas para memorizarlas.»"]
     answer: 1
     explain: "La segunda da contexto y convierte a Claude en un entrenador: practica y recibe comentarios. Las preguntas genéricas tientan porque son rápidas, pero no se ajustan al puesto, y unas respuestas memorizadas suenan falsas."
@@ -90,7 +90,7 @@ Dos cuidados. Claude **solo sabe lo que tú le das**: si tus notas tienen huecos
 
 > Prueba: «Estas son mis notas de la reunión de hoy con mi equipo de cuatro personas [pega las notas]. Hazme un acta breve: decisiones tomadas y una tabla con tarea, responsable y fecha límite. Si en las notas falta el responsable o la fecha de alguna tarea, márcala como «pendiente de asignar» en vez de inventarla.»
 
-> Prueba: «La semana que viene presento mi proyecto de huerto escolar al claustro, en 10 minutos. Propón un guion con tiempos y dame las 5 preguntas difíciles que más probablemente me harán, con una respuesta breve para cada una.»
+> Prueba: «El jueves tengo 10 minutos para proponer a mi jefa que el equipo de atención al cliente cambie a turnos rotativos. Propón un guion con tiempos y dame las 5 objeciones que más probablemente pondrá, con una respuesta breve para cada una.»
 
 ## Error frecuente
 

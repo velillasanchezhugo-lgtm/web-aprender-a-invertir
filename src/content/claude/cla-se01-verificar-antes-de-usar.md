@@ -6,13 +6,13 @@ track: cla-seguro
 order: 601
 skills: [cla-verificar, cla-limites]
 terms: [alucinacion, fecha-de-corte]
-hook: "Claude te ha preparado un correo para tu casero con un artículo de la ley de alquileres y un plazo de 30 días. Suena muy seguro. ¿Lo envías tal cual?"
+hook: "Claude te ha preparado una reclamación para la tienda donde compraste un portátil que ya no funciona, con un artículo de la ley de consumidores y un plazo de garantía. Suena muy seguro. ¿La envías tal cual?"
 takeaway: Cuanto más te juegas, más compruebas. Las cifras, las fechas, las citas y las leyes se verifican siempre en una fuente fiable antes de usarlas, y en salud, derecho o dinero decide un profesional.
 scenario:
   kind: operacion
   label: Caso práctico
   title: La reclamación de Teresa
-  body: "Teresa pide a Claude un correo para reclamar a su casero la fianza. El borrador es bueno, pero cita un artículo concreto de la ley y un plazo. Teresa le pide que marque lo que no tiene claro, busca el artículo en el BOE y descubre que el número no coincide. Corrige esa línea y envía el resto."
+  body: "Teresa pide a Claude una reclamación para la tienda donde compró un portátil que dejó de funcionar a los 18 meses. El borrador es bueno, pero cita un artículo concreto de la ley de consumidores y un plazo de garantía. Teresa le pide que marque lo que no tiene claro, busca el artículo en el BOE y descubre que el número no coincide. Corrige esa línea y envía el resto."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice

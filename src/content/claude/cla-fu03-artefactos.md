@@ -11,8 +11,8 @@ takeaway: Un artefacto es un resultado que puedes reutilizar (documento, tabla, 
 scenario:
   kind: producto
   label: Caso práctico
-  title: El cuadrante de Lucía
-  body: "Lucía comparte piso con tres personas. Pide a Claude una pequeña app para repartir las tareas de limpieza por semanas. Claude la crea en un artefacto con botones para marcar lo hecho. Lucía pide dos cambios («añade la tarea de sacar el vidrio», «pon los nombres en colores») y la comparte con sus compañeras de piso, que también tienen cuenta de Claude."
+  title: El cuadrante de Noelia
+  body: "Noelia comparte piso con tres personas. Pide a Claude una pequeña app para repartir las tareas de limpieza por semanas. Claude la crea en un artefacto con botones para marcar lo hecho. Noelia pide dos cambios («añade la tarea de sacar el vidrio», «pon los nombres en colores») y, como tiene un plan de pago, la comparte con sus compañeras de piso, que también tienen cuenta de Claude."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -28,7 +28,7 @@ questions:
     explain: "Los artefactos empiezan siendo privados. Nada se comparte hasta que tú lo decides. Tienta pensar lo contrario porque tienen enlace, pero sin compartir nadie más puede abrirlo."
   - type: choice
     id: cla-fu03-q3
-    q: "Pablo tiene un artefacto con el presupuesto de su boda y quiere cambiar solo la tabla del catering. ¿Qué hace?"
+    q: "Gabriel tiene un artefacto con el presupuesto de su boda y quiere cambiar solo la tabla del catering. ¿Qué hace?"
     options: ["Pide que lo rehaga entero desde cero", "Pide el cambio concreto: «en la tabla del catering, sube el precio por invitado y recalcula el total»", "Copia el texto en otro chat y empieza de nuevo"]
     answer: 1
     explain: "Un cambio concreto mantiene lo que ya estaba bien. Rehacerlo entero tienta cuando algo falla, pero puede estropear partes que ya te servían."
@@ -75,16 +75,16 @@ Claude lo crea cuando el contenido es **largo, independiente y reutilizable**. E
 
 Lo que conviene saber:
 
-- **Está en todos los planes**, gratis y de pago. Necesita que esté activada la función de ejecución de código y creación de archivos, en los ajustes de **Capacidades**.
-- **Se guarda.** Los artefactos se quedan en una sección propia de la aplicación.
-- **Es privado** hasta que lo compartes. Al compartir eliges si lo ve cualquiera con el enlace o solo quien invites. En general, quien lo abra necesita cuenta de Claude. En los planes de empresa, por defecto se queda dentro de la organización.
+- **Está en todos los planes**, gratis y de pago. Necesita la función de ejecución de código y creación de archivos, que viene activada en los ajustes de **Capacidades**.
+- **Se guarda.** Todos tus artefactos quedan en la sección «Artefactos» de la barra lateral, donde también puedes empezar desde plantillas de documento, presentación o diseño.
+- **Es privado** hasta que lo compartes. Compartirlo (con un enlace o invitando a personas por correo) es cosa de los planes de pago, y quien lo abra necesita una cuenta de Claude. En los planes de empresa, por defecto se queda dentro de la organización.
 - **Apps que usan Claude.** Algunas apps llaman a Claude por dentro. Si las compartes, lo que gaste cada persona cuenta en su propio plan.
 
 ## En la práctica
 
 1. Pide el resultado diciendo **qué es, para quién y qué debe incluir**.
 2. Revisa el panel y pide **cambios concretos**, de uno en uno. En algunos documentos puedes seleccionar un trozo y pedir que cambie solo eso.
-3. Compártelo o expórtalo cuando esté listo, desde el botón de compartir del artefacto.
+3. Cuando esté listo, expórtalo (por ejemplo, a Word, PDF o PowerPoint, según el tipo) o compártelo desde su botón de compartir.
 
 > Prueba: «Crea una pequeña app para repartir las tareas de limpieza entre cuatro compañeros de piso: Ana, Iván, Sara y yo. Que rote cada semana, que se pueda marcar cada tarea como hecha y que se vea bien en el móvil».
 

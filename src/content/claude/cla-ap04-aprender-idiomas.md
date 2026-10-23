@@ -11,8 +11,8 @@ takeaway: Claude es un compañero de práctica paciente que corrige y explica. P
 scenario:
   kind: operacion
   label: Caso práctico
-  title: La entrevista de Carmen
-  body: "Carmen es enfermera y tiene una entrevista en inglés para un hospital de Irlanda. Cada noche practica quince minutos con Claude: le pide que haga de entrevistador, que le pregunte de una en una y que al final le corrija los tres errores que más repite. En la última semana practica en voz alta desde el móvil."
+  title: La entrevista de Inma
+  body: "Inma es enfermera y tiene una entrevista en inglés para un hospital de Irlanda. Cada noche practica quince minutos con Claude: le pide que haga de entrevistador, que le pregunte de una en una y que al final le corrija los tres errores que más repite. En la última semana practica en voz alta desde el móvil."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -70,7 +70,7 @@ Un idioma se aprende practicando mucho y sin vergüenza. Claude **no se cansa**,
 
 - **Conversación.** Le pides que haga un papel (camarero, entrevistador, vecino) y habláis en el idioma, a tu nivel.
 - **Corrección explicada.** Te señala los errores **y por qué** lo son. Mejor los dos o tres más importantes que todos.
-- **Vocabulario.** Listas de palabras de tu situación, tarjetas para repasar y frases de ejemplo.
+- **Vocabulario.** Listas de palabras de tu situación, tarjetas para repasar y frases de ejemplo. Lo que más fija es la **recuperación activa**: intentar recordar la palabra sin mirarla.
 
 **Hablando en voz alta.** Claude tiene un **modo voz** para conversar hablando, disponible en los planes gratuitos y de pago, en el móvil, el escritorio y la web. Según su centro de ayuda, admite muchos idiomas, pero los distintos del inglés están aún en **beta** (fase de pruebas). El idioma de la voz se elige en los ajustes y es distinto del idioma de la aplicación.
 

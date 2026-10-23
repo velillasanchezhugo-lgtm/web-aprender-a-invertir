@@ -5,14 +5,14 @@ level: basico
 track: cla-avanzado
 order: 704
 skills: [cla-agentes, cla-plantillas, cla-verificar]
-terms: [agente-de-ia, tarea-programada, conector]
+terms: [plantilla-de-prompt, tarea-programada]
 hook: "Ya sabes pedir bien, conectar tus apps y encargar tareas largas. Pero ¿qué parte de tu semana le das a Claude, y cuál no le darías nunca?"
 takeaway: "Un buen flujo reparte papeles: Claude prepara, busca y redacta; tú decides, apruebas y revisas. Escríbelo en «Mi kit de Claude» y revísalo cada mes."
 scenario:
   kind: producto
   label: Caso práctico
-  title: La semana de Lorena
-  body: "Lorena es fisioterapeuta autónoma en Pamplona. Su flujo: el lunes, Claude le resume la agenda y los correos; ella decide prioridades. El miércoles, Claude redacta la publicación de su web y ella la corrige. El viernes, Claude ordena los gastos de la semana en una tabla y ella la compara con el banco. Los datos de salud de sus pacientes nunca entran en el chat."
+  title: La semana de Paloma
+  body: "Paloma es fisioterapeuta autónoma en Pamplona. Su flujo: el lunes, Claude le resume la agenda y los correos; ella decide prioridades. El miércoles, Claude redacta la publicación de su web y ella la corrige. El viernes, Claude ordena los gastos de la semana en una tabla y ella la compara con el banco. Los datos de salud de sus pacientes nunca entran en el chat."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice

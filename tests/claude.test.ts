@@ -62,3 +62,39 @@ test('el constructor monta una petición en orden', () => {
   assert.match(p, /hazme las preguntas/);
   assert.ok(checkPrompt(p).score >= 7);
 });
+
+test('reconoce frases naturales de principiante para cada pieza', () => {
+  const ok = (texto: string, id: string) => assert.equal(checkPrompt(texto).items.find((i) => i.id === id)?.ok, true, `${id}: ${texto}`);
+  // Tarea con otras palabras
+  ok('Me gustaría que me prepararas un plan de comidas.', 'tarea');
+  ok('¿Me ayudas a organizar la mudanza por semanas?', 'tarea');
+  ok('Necesito una reclamación para la compañía de la luz.', 'tarea');
+  ok('Déjalo en cuatro líneas, más cercano.', 'tarea');
+  // Contexto con «mi…», «vivo», «estudio»
+  ok('Contesto yo las reseñas de mi academia.', 'contexto');
+  ok('Estudio contabilidad y no entiendo los asientos.', 'contexto');
+  ok('Organizo la jubilación de una compañera.', 'contexto');
+  // Público con «su», «tus»
+  ok('Escribe un mensaje para su entrenador.', 'publico');
+  // Formato por longitud o canal
+  ok('Escríbeme un whatsapp cortito y amable.', 'formato');
+  ok('Hazlo breve, que lo lea en un minuto.', 'formato');
+  // Límites con otros verbos
+  ok('Compara los cursos, pero no me apuntes a nada ni pagues.', 'limites');
+  ok('Prepara el menú. No compres nada.', 'limites');
+  ok('No quiero que me des la respuesta.', 'limites');
+  // Verificar con otras palabras
+  ok('Pásame el enlace oficial y, si no lo tienes claro, dímelo.', 'verificar');
+  ok('Avísame si algo no lo sabes seguro.', 'verificar');
+});
+
+test('las peticiones vagas siguen puntuando bajo con las piezas exigidas', () => {
+  for (const [texto, require] of [
+    ['¿qué te parece comprar un coche eléctrico?', ['preguntas', 'verificar', 'contexto']],
+    ['compara estas escuelas infantiles', ['formato']],
+    ['olvida lo de mi despido', ['tono', 'formato', 'limites']],
+  ] as const) {
+    const r = checkPrompt(texto, { require: [...require] });
+    assert.ok(r.score <= 4, `${texto}: ${r.score}`);
+  }
+});

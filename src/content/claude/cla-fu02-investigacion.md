@@ -11,8 +11,8 @@ takeaway: La investigación a fondo sirve para preguntas amplias que necesitarí
 scenario:
   kind: producto
   label: Caso práctico
-  title: El máster de Óscar
-  body: "Óscar duda entre estudiar en Valencia, Granada o Zaragoza. Con un plan de pago, activa la investigación y pide comparar el coste de una habitación, el transporte y las becas de cada ciudad. Al rato recibe un informe con tablas y enlaces. Abre las cifras de alquiler: una es de hace tres años. Le pide a Claude que la actualice y lo señale."
+  title: El máster de Julián
+  body: "Julián duda entre estudiar en Valencia, Granada o Zaragoza. Con un plan de pago, activa la investigación y pide comparar el coste de una habitación, el transporte y las becas de cada ciudad. Al rato recibe un informe con tablas y enlaces. Abre las cifras de alquiler: una es de hace tres años. Le pide a Claude que la actualice y lo señale."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -76,7 +76,7 @@ Lo que conviene saber:
 - **Cuánto tarda.** Desde unos minutos hasta bastante más en temas muy amplios. No es una respuesta al instante.
 - **Qué gasta.** Consume tu límite de uso más deprisa que un chat normal.
 - **Dónde está.** Solo en los **planes de pago**, en la web, el escritorio y el móvil. Necesita la búsqueda web activada.
-- **Qué más consulta.** Si tienes conectadas otras aplicaciones (por ejemplo, tu correo o tus documentos), también puede buscar en ellas.
+- **Qué más consulta.** Si tienes conectadas otras aplicaciones (por ejemplo, tu correo o tus documentos), también puede buscar en ellas desde la web o el escritorio; desde el móvil, solo busca en internet.
 
 ## En la práctica
 

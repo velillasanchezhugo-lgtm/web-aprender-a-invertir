@@ -11,13 +11,13 @@ takeaway: Para el día a día, el modelo y el esfuerzo que vienen por defecto ba
 scenario:
   kind: producto
   label: Caso práctico
-  title: El horario de Aitana
-  body: "Aitana tiene que cuadrar los turnos de seis personas en una tienda con muchas condiciones: nadie trabaja más de cinco días seguidos, dos personas no pueden coincidir y los sábados hacen falta tres. Con el esfuerzo bajo, la respuesta incumple una regla. Sube el nivel de esfuerzo, vuelve a pedirlo y el horario sale bien. Aun así, lo revisa persona por persona."
+  title: El horario de Nieves
+  body: "Nieves tiene que cuadrar los turnos de seis personas en una tienda con muchas condiciones: nadie trabaja más de cinco días seguidos, dos personas no pueden coincidir y los sábados hacen falta tres. Con el esfuerzo bajo, la respuesta incumple una regla. Sube el nivel de esfuerzo, vuelve a pedirlo y el horario sale bien. Aun así, lo revisa persona por persona."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: cla-fu07-q1
-    q: "Samuel quiere que Claude le corrija las faltas de ortografía de veinte frases cortas. ¿Qué elige?"
+    q: "Adrián quiere que Claude le corrija las faltas de ortografía de veinte frases cortas. ¿Qué elige?"
     options: ["El modelo más potente con el esfuerzo máximo", "Un modelo rápido o un esfuerzo bajo", "Da igual: todos gastan lo mismo"]
     answer: 1
     explain: "Es una tarea sencilla: ir rápido basta y gasta menos de tu límite. El modelo más potente tienta porque «será mejor», pero tarda más y consume más uso sin mejorar nada aquí."

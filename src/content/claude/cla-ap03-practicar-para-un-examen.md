@@ -11,8 +11,8 @@ takeaway: Sube tus apuntes y pide que te pregunte a partir de ellos, no de memor
 scenario:
   kind: operacion
   label: Caso práctico
-  title: Las oposiciones de Marcos
-  body: "Marcos prepara unas oposiciones de auxiliar administrativo. Sube sus apuntes de un tema a Claude y le pide un test de diez preguntas basado solo en ese texto. Falla tres. Pide que le explique esos tres fallos y, dos días después, otro test solo con lo que falló. Al revisar con el temario oficial ve que una pregunta hablaba de una ley que ya no estaba vigente."
+  title: El teórico de Yeray
+  body: "Yeray se examina del teórico del carné de conducir. Sube a Claude sus apuntes del tema de señales y prioridad y le pide un test de diez preguntas basado solo en ese texto. Falla tres. Pide que le explique esos fallos y, dos días después, otro test solo con lo que falló. Al repasar con el material oficial de la DGT ve que una explicación de Claude daba un límite de velocidad que ya no está vigente."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice

@@ -47,10 +47,10 @@ practice:
   require: [ejemplos, contexto]
   extra:
     - label: "Más de un ejemplo"
-      any: ["ejemplo 2", "ejemplo dos", "segundo ejemplo", "dos ejemplos", "tres ejemplos", "varios ejemplos", "otro ejemplo", "respuesta 2"]
+      any: ["ejemplo 2", "ejemplo dos", "segundo ejemplo", "dos ejemplos", "tres ejemplos", "varios ejemplos", "otro ejemplo", "respuesta 2", "segunda", "dos respuestas", "tres respuestas", "dos mensajes", "tres mensajes"]
       hint: "Pega al menos dos ejemplos distintos y numéralos: «Ejemplo 1: …», «Ejemplo 2: …»."
     - label: "Decir qué tienen en común"
-      any: ["en comun", "fijate", "comparten", "se repite", "se parecen", "mismo estilo", "ese estilo"]
+      any: ["en comun", "fijate", "comparten", "se repite", "se parecen", "mismo estilo", "ese estilo", "las dos son", "los dos son", "las tres son", "los tres son", "ambas", "todas son", "todos son"]
       hint: "Explica en una frase qué tienen en común: «Fíjate en que son cortas y…»."
   sample: "Llevo una academia de inglés en Getafe y respondo yo las reseñas de Google. Ejemplo 1: «Gracias por contarlo, nos alegra mucho que tu hijo haya aprobado el B1». Ejemplo 2: «Qué bien leer esto. Gracias por confiar en nosotros un curso más». Fíjate en que son cortas, dan las gracias al principio y no llevan emojis. Escribe con ese estilo una respuesta a una reseña de tres estrellas que se queja de que no hay aparcamiento. Evita sonar a anuncio y no prometas cosas que no dependen de nosotros."
 deeper: null

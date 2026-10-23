@@ -35,6 +35,7 @@ questions:
 tips:
   - "Si una foto sale torcida o borrosa, repítela con buena luz: Claude lee mucho mejor una imagen nítida."
   - "En documentos largos, pregunta por lo que te importa («¿qué dice sobre la permanencia?») en vez de pedir un resumen de todo."
+  - "Si las páginas impresas del PDF no coinciden con las del visor, aclara cuáles quieres: «usa el número de página del visor de PDF»."
 action:
   title: Resume un documento citando páginas
   steps:

@@ -11,8 +11,8 @@ takeaway: Un agente recibe un objetivo y encadena pasos con herramientas por su 
 scenario:
   kind: producto
   label: Caso práctico
-  title: El informe de Carmen
-  body: "Carmen trabaja en una ONG de Sevilla. Encarga a Claude un informe de actividades del año a partir de una carpeta con memorias trimestrales y hojas de asistencia. Le pide que no toque los originales y que deje el informe en una carpeta nueva. Mientras, prepara una reunión. Al volver, revisa las cifras: una actividad estaba contada dos veces."
+  title: El informe de Lourdes
+  body: "Lourdes trabaja en una ONG de Sevilla. Encarga a Claude un informe de actividades del año a partir de una carpeta con memorias trimestrales y hojas de asistencia. Le pide que no toque los originales y que deje el informe en una carpeta nueva. Mientras, prepara una reunión. Al volver, revisa las cifras: una actividad estaba contada dos veces."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -20,7 +20,7 @@ questions:
     q: "Vas a encargar a Claude una tarea larga que envía correos en tu nombre a 30 proveedores. ¿Qué modo de aprobación eliges?"
     options: ["Saltarse todas las aprobaciones, para que acabe antes", "Aprobación manual de cada acción, o al menos de cada envío", "Da igual: si el encargo está bien escrito, no puede fallar"]
     answer: 1
-    explain: "Los mensajes que salen en tu nombre son difíciles de deshacer. El centro de ayuda recomienda la aprobación manual para lo delicado. Saltarse las aprobaciones tienta por rápido, pero entonces nada revisa lo que hace."
+    explain: "Los mensajes que salen en tu nombre son difíciles de deshacer. Para lo que tiene consecuencias, el centro de ayuda recomienda estar encima y revisar cada paso. Saltarse las aprobaciones tienta por rápido, pero entonces nada revisa lo que hace."
   - type: choice
     id: cla-av01-q2
     q: "¿Cuál de estos encargos está mejor pensado para un agente?"
@@ -72,15 +72,16 @@ En un chat normal, tú preguntas y Claude contesta. Un **agente de IA** va más 
 Qué tareas largas puede hacer hoy Claude:
 
 - **Investigación a fondo:** en los planes de pago, busca en muchas fuentes y te entrega un informe con citas.
-- **Trabajo con tus archivos y apps:** en los planes de pago, Claude puede encargarse de tareas de varios pasos (antes se llamaba Cowork y se está integrando en la app normal): describes el resultado, te vas y vuelves al trabajo hecho. Puede crear hojas de cálculo, documentos y presentaciones, usar tus conectores y las carpetas que le conectes.
+- **Tareas de varios pasos:** en los planes de pago, describes el resultado, te vas y vuelves al trabajo hecho. Claude puede crear hojas de cálculo, documentos y presentaciones, usar tus conectores y las carpetas que le conectes. Esta función se llamaba **Claude Cowork** y se está uniendo al chat normal: según tu cuenta, la verás como una opción aparte («Cowork») o directamente en cualquier conversación. Las tareas siguen en la nube aunque cierres el ordenador; las que usan archivos de tu equipo necesitan la app de escritorio abierta.
 
-La clave es **cuánto le dejas hacer sin preguntarte**. Hay tres modos de aprobación:
+La clave es **cuánto le dejas hacer sin preguntarte**. Hay dos modos de aprobación, que eliges en la caja de mensajes:
 
-- **Manual:** te pide permiso en cada acción.
-- **Automático:** revisa él mismo cada acción y para las que parecen arriesgadas. No es una garantía.
-- **Sin aprobaciones:** nada revisa lo que hace. Solo para tareas que controlas por completo.
+- **Manual** (el que viene por defecto): te pide permiso antes de actuar.
+- **Automático:** trabaja sin preguntarte cada paso y unas comprobaciones automáticas revisan cada acción. No es una garantía.
 
-Para dinero, mensajes en tu nombre o archivos importantes, el centro de ayuda recomienda **estar encima** o volver al modo manual. Y siempre te pide permiso antes de borrar archivos para siempre.
+En la versión anterior de Cowork había además un modo sin comprobaciones: si lo ves, no lo uses para nada que importe.
+
+Para dinero, mensajes en tu nombre o archivos importantes, el centro de ayuda recomienda **estar encima** o volver al modo manual. Y, por defecto, te pide permiso antes de borrar archivos para siempre.
 
 ## En la práctica
 
