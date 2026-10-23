@@ -125,3 +125,22 @@ test('la mezcla descarta datos mal formados o peligrosos que lleguen de la nube'
   assert.deepEqual(out.progress.tools, { a: 2 });
   assert.equal(({} as any).p, undefined, 'sin contaminación global');
 });
+
+test('plazo de los avisos: se deja de avisar a los 30 días y se borra la suscripción a los 90', async () => {
+  const { isStale, runReminders } = await import('../api/_reminder-core.js');
+  const today = '2026-10-19';
+  assert.ok(reminderFor({ last_active: null, streak: 0, created_at: '2026-10-10T10:00:00Z' }, today), 'alta reciente sin estudiar: se le invita');
+  assert.equal(reminderFor({ last_active: null, streak: 0, created_at: '2026-08-01T10:00:00Z' }, today), null, 'alta antigua sin estudiar: no se molesta');
+  assert.equal(reminderFor({ last_active: '2026-09-01', streak: 3 }, today), null, 'más de 30 días sin estudiar: no se avisa');
+  assert.ok(!isStale({ last_active: '2026-08-01' }, today));
+  assert.ok(isStale({ last_active: '2026-07-01' }, today));
+  assert.ok(isStale({ last_active: null, created_at: '2026-06-01T00:00:00Z' }, today));
+  assert.ok(!isStale({ last_active: null }, today), 'sin fechas no se borra');
+  const removed: string[] = [];
+  const r = await runReminders({
+    today, page: async (after: string) => (after ? [] : [{ endpoint: 'https://old', last_active: '2026-06-01', streak: 1 }]),
+    send: async () => { throw new Error('no debe enviar'); }, markSent: async () => {}, remove: async (e: string) => { removed.push(e); },
+  });
+  assert.deepEqual(removed, ['https://old']);
+  assert.equal(r.removed, 1);
+});

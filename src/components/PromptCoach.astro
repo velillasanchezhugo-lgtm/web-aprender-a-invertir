@@ -6,7 +6,8 @@
  */
 import type { CriterionId, ExtraCheck } from '../lib/claude/prompt-check';
 interface Props { id: string; task?: string; require?: CriterionId[]; extra?: ExtraCheck[]; sample?: string; placeholder?: string; label?: string; rows?: number }
-const { id, task = '', require = [], extra = [], sample, placeholder = 'Escribe aquí tu petición, como si se la mandaras a Claude.', label = 'Tu petición', rows = 6 } = Astro.props;
+const assistant = Astro.url.pathname.startsWith('/es/chatgpt/') ? 'ChatGPT' : 'Claude';
+const { id, task = '', require = [], extra = [], sample, placeholder = `Escribe aquí tu petición, como si se la mandaras a ${assistant}.`, label = 'Tu petición', rows = 6 } = Astro.props;
 const cfg = { id, task, require, extra };
 ---
 <div class="pcoach" data-cfg={JSON.stringify(cfg)}>

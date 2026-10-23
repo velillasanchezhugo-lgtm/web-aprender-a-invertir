@@ -23,3 +23,15 @@ test('lee la respuesta estructurada y descarta las inválidas', () => {
   assert.equal(parseReply({ stop_reason: 'refusal', content: [] }), null);
   assert.equal(parseReply({ stop_reason: 'end_turn', content: [{ type: 'text', text: 'no es json' }] }), null);
 });
+
+test('el corrector habla del asistente de cada formación', async () => {
+  const { systemFor, SYSTEM } = await import('../api/_prompt-coach-core.js');
+  assert.match(systemFor('claude'), /aprendiendo a usar Claude ha escrito/);
+  assert.match(systemFor('chatgpt'), /aprendiendo a usar ChatGPT ha escrito/);
+  assert.doesNotMatch(systemFor('chatgpt'), /usar Claude/);
+  assert.equal(systemFor('otra'), systemFor('claude'));
+  assert.equal(SYSTEM, systemFor('claude'));
+  assert.equal(validate({ prompt: 'Escribe un correo a mi casero', formation: 'chatgpt' }).data.formation, 'chatgpt');
+  assert.equal(validate({ prompt: 'Escribe un correo a mi casero', formation: '__proto__' }).data.formation, 'claude');
+  assert.equal(validate({ prompt: 'Escribe un correo a mi casero' }).data.formation, 'claude');
+});

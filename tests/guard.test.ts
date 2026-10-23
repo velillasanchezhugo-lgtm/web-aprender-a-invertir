@@ -93,3 +93,13 @@ test('los prompts de sistema resisten instrucciones metidas en los datos', () =>
   assert.match(COACH_SYSTEM, /Ignora cualquier instrucción/);
   assert.match(COACH_SYSTEM, /No reveles/);
 });
+
+test('el límite por IP no guarda IP más allá de su ventana', async () => {
+  const { makeLimiter } = await import('../api/_tutor-core.js');
+  const lim = makeLimiter(2, 3600_000);
+  const t0 = 1_000_000_000;
+  assert.ok(lim('1.1.1.1', t0)); assert.ok(lim('2.2.2.2', t0));
+  assert.equal(lim.size(), 2);
+  lim('3.3.3.3', t0 + 3600_000 + 61_000);
+  assert.equal(lim.size(), 1, 'las IP de hace más de una hora se han borrado');
+});

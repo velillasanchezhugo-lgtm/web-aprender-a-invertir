@@ -4,7 +4,7 @@
  * solo el evaluador local (src/lib/claude/prompt-check.ts). Ver docs/TUTOR-IA.md.
  */
 import Anthropic from '@anthropic-ai/sdk';
-import { validate, SYSTEM, SCHEMA, buildMessages, parseReply } from './_prompt-coach-core.js';
+import { validate, systemFor, SCHEMA, buildMessages, parseReply } from './_prompt-coach-core.js';
 import { makeLimiter } from './_tutor-core.js';
 import { json, clientIp, sameOrigin, readJson, botCheck, verifyTurnstile, makeBudget, envInt } from './_guard.js';
 
@@ -41,7 +41,7 @@ export async function POST(request) {
       betas: ['server-side-fallback-2026-07-01'],
       fallbacks: 'default',
       output_config: { effort: 'low', format: { type: 'json_schema', schema: SCHEMA } },
-      system: [{ type: 'text', text: SYSTEM, cache_control: { type: 'ephemeral' } }],
+      system: [{ type: 'text', text: systemFor(v.data.formation), cache_control: { type: 'ephemeral' } }],
       messages: buildMessages(v.data),
     });
     const out = parseReply(res);

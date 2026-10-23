@@ -73,7 +73,7 @@ Estado: **Hecho** (en el código), **Titular** (depende de un dato, un contrato 
 - umotion pone el tutor y el corrector en servicio con su nombre, así que debe cumplir el art. 50.1 y 50.5: aviso **claro y a más tardar en la primera interacción**.
   - Hecho: condiciones (apartado 3), privacidad (3.6), alcance educativo y metodología.
   - Hecho en el tutor: cada respuesta lleva la etiqueta «Respuesta generada por IA (Claude) · puede equivocarse».
-  - **Código**: en el corrector (`PromptCoach.astro`), una línea junto a «Opinión con IA» y la misma etiqueta en su respuesta.
+  - Hecho en el corrector: una línea junto a «Opinión con IA» y la etiqueta «Generado por IA · puede equivocarse» en su respuesta (`src/scripts/prompt-coach.ts`). El botón solo aparece si la web se compiló con `PUBLIC_AI_TUTOR=true`, la misma condición que usan los textos legales.
 - Art. 50.4 (textos generados con IA que informan al público): el contenido está hecho con asistencia de IA y lo dice en cada página y en la metodología. Al pasar a «Revisado» con revisor identificable, hay control editorial humano.
 - Art. 4 (alfabetización en IA, reformulado por el ómnibus): **Titular**: que quien gestione el tutor conozca sus límites. Basta con documentarlo (por ejemplo, `docs/TUTOR-IA.md`).
 - No es un sistema de alto riesgo: no evalúa el acceso a la educación ni puntúa exámenes con efectos oficiales. **Abogado**: confirmar si el examen o la certificación del Nivel 3 llegaran a usar IA para puntuar (anexo III, punto 3).
@@ -125,14 +125,18 @@ Responsable: el titular (`OWNER`). Destinatarios: solo los encargados del aparta
 
 | Actividad | Personas | Datos | Finalidad | Base legal | Plazo |
 |---|---|---|---|---|---|
-| Navegación y seguridad | Visitantes | IP, fecha, página, navegador | Servir la web y evitar abusos | Interés legítimo (6.1.f) | Según el plan de Vercel; contador de peticiones en memoria, máximo 1 hora |
+| Navegación y seguridad | Visitantes | IP, fecha, página, navegador | Servir la web y evitar abusos | Interés legítimo (6.1.f) | Según el plan de Vercel; IP del límite de peticiones solo en memoria, borrada poco después de una hora sin peticiones |
 | Estadísticas | Visitantes | Ruta, eventos anónimos, identificador diario | Medir y mejorar | Interés legítimo (6.1.f) | Identificador, 24 horas; datos agregados, según Vercel |
-| Cuenta | Personas registradas (14 años o más) | Correo, progreso, notas, prácticas y nombre de la insignia (no el test ni el plan en una página) | Guardar y sincronizar el progreso | Contrato (6.1.b) | Mientras exista la cuenta; copias según Supabase |
-| Protección contra robots (si se activa Turnstile) | Quien envía un formulario | Señales técnicas del navegador, IP | Evitar abusos | Interés legítimo (6.1.f) | Según Cloudflare |
-| Recordatorio | Quien lo activa | Suscripción push, último día de estudio, racha, último aviso | Enviar el recordatorio | Consentimiento (6.1.a) | Hasta que se desactive o caduque la suscripción |
-| Tutor y corrector con IA | Quien los usa | Texto escrito, últimos turnos, resumen de nivel | Generar la respuesta | Solicitud de la persona (6.1.b) | umotion no guarda; Anthropic, 30 días (más si detecta un uso prohibido) |
+| Cuenta | Personas registradas (14 años o más) | Correo, progreso (incluidos perfil de aprendizaje, cartera de práctica y ejercicio final ficticio), notas, prácticas y nombre de la insignia (no el test ni el plan en una página); IP y fecha de acceso en los registros de Supabase | Guardar y sincronizar el progreso | Contrato (6.1.b) | Mientras exista la cuenta; copias según Supabase |
+| Protección contra robots (si se activa Turnstile) | Quien envía un formulario | Señales técnicas del navegador, IP (también la reenvía nuestro servidor o Supabase al validar el token) | Evitar abusos | Interés legítimo (6.1.f) | Según Cloudflare |
+| Recordatorio | Quien lo activa | Suscripción push, último día de estudio, racha, último aviso y, con sesión, la cuenta | Enviar el recordatorio | Consentimiento (6.1.a) | Hasta que se desactive o caduque; sin avisos tras 30 días sin estudiar y borrado a los 90 días sin actividad (`api/_reminder-core.js`) |
+| Tutor y corrector con IA | Quien los usa | Texto escrito, últimos turnos (hasta 8), pregunta de la sesión, resumen de nivel; en el corrector, la petición y el enunciado del ejercicio. Sin IP ni correo | Generar la respuesta | Solicitud de la persona (6.1.b) | umotion no guarda; Anthropic, 30 días (más si detecta un uso prohibido). **Abogado/Titular**: confirmar el plazo vigente y la entidad contratante en las condiciones comerciales de Anthropic |
 | Contacto y derechos | Quien escribe | Nombre, correo, mensaje | Responder y atender derechos | Solicitud (6.1.b) y obligación legal (6.1.c) | Hasta responder y 1 año; bloqueo según art. 32 LOPDGDD |
 | Publicidad (si se activa) | Visitantes que consienten | Identificadores de cookies, IP | Mostrar y medir anuncios | Consentimiento (6.1.a) | Según Google y la CMP |
+
+### 3.1. Revisión técnica cruzada (Agente 1, 23 de octubre de 2026)
+
+Se comprobó que los textos coinciden con el código: todas las claves de `localStorage` (`/es/cookies/`), lo que sincroniza `SYNC_KEYS`, los datos que recibe cada función de `api/` y los eventos de Vercel Analytics. Cambios de código que afectan a los textos: el corrector con IA ya exige `PUBLIC_AI_TUTOR=true` (antes bastaba la variable del servidor y la política decía que no se enviaba nada); los avisos se dejan de enviar a los 30 días sin estudiar y se borran a los 90; «Borrar todos mis datos» cierra la sesión y desactiva el recordatorio de ese navegador; la región de las funciones es `fra1` (`LEGAL.functionsRegion`). **Abogado**: revisar los plazos nuevos (30 y 90 días) y la frase sobre los registros de acceso de Supabase.
 
 ## 4. Encargados y transferencias
 

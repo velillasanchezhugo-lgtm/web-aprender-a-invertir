@@ -6,7 +6,12 @@ import { guard, waitMinimum, turnstileToken } from './bot-guard';
 const esc = (s: string) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
 const strList = (v: unknown): string[] => (Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string') : []);
 let aiEnabled: Promise<boolean> | null = null;
-const aiOn = () => (aiEnabled ??= fetch('/api/prompt-coach').then((r) => (r.ok ? r.json() : { enabled: false })).then((d) => !!d.enabled).catch(() => false));
+// La IA solo se ofrece si la web se compiló con PUBLIC_AI_TUTOR=true (así lo dicen la política de privacidad y las condiciones)
+// y además la función del servidor está activa.
+const PUBLIC_AI = (import.meta.env.PUBLIC_AI_TUTOR ?? 'false') === 'true';
+/** Formación de la página (el corrector adapta su explicación al asistente que se está aprendiendo). */
+const formation = () => (location.pathname.startsWith('/es/chatgpt/') ? 'chatgpt' : 'claude');
+const aiOn = () => (aiEnabled ??= !PUBLIC_AI ? Promise.resolve(false) : fetch('/api/prompt-coach').then((r) => (r.ok ? r.json() : { enabled: false })).then((d) => !!d.enabled).catch(() => false));
 
 export function initPromptCoach() {
   document.querySelectorAll<HTMLElement>('.pcoach:not([data-ready])').forEach((box) => {
@@ -52,7 +57,7 @@ export function initPromptCoach() {
       try {
         await waitMinimum(bot);
         const turnstile = await turnstileToken(box).catch(() => undefined);
-        const r = await fetch('/api/prompt-coach', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt: ta.value.slice(0, 3000), task: cfg.task, criteria: [...(cfg.require ?? []), ...(cfg.extra ?? []).map((e) => e.label)], bot: bot.payload(), turnstile }) });
+        const r = await fetch('/api/prompt-coach', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt: ta.value.slice(0, 3000), task: cfg.task, criteria: [...(cfg.require ?? []), ...(cfg.extra ?? []).map((e) => e.label)], formation: formation(), bot: bot.payload(), turnstile }) });
         const d = await r.json().catch(() => ({}));
         if (!r.ok) throw new Error(typeof d.error === 'string' ? d.error : 'No disponible');
         // Lo que llega de la IA se trata como texto: se escapa todo y la nota se fuerza a número.

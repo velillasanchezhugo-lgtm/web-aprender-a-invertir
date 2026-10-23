@@ -75,13 +75,21 @@ export function buildMessages({ mode, message, history, context, learner }) {
 /** Límite sencillo por IP y por instancia (mejor esfuerzo; en producción, añadir un límite en el borde). */
 export function makeLimiter(max = 30, windowMs = 3600_000) {
   const hits = new Map();
-  return (key, now = Date.now()) => {
+  let lastSweep = 0;
+  const limiter = (key, now = Date.now()) => {
+    // Cada minuto se borran las IP sin peticiones dentro de la ventana: no se guardan más de lo necesario.
+    if (now - lastSweep > 60_000) {
+      lastSweep = now;
+      for (const [k, arr] of hits) if (!arr.length || now - arr[arr.length - 1] >= windowMs) hits.delete(k);
+    }
     const arr = (hits.get(key) ?? []).filter((t) => now - t < windowMs);
     if (arr.length >= max) { hits.set(key, arr); return false; }
     arr.push(now); hits.set(key, arr);
     if (hits.size > 5000) hits.delete(hits.keys().next().value);
     return true;
   };
+  limiter.size = () => hits.size;
+  return limiter;
 }
 
 /** Texto final de la respuesta, ignorando bloques que no son texto. */

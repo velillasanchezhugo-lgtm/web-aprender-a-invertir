@@ -30,6 +30,8 @@ export const daysBetween = (a, b) => Math.round(dayNum(b) - dayNum(a));
  */
 export function reminderFor(sub, today) {
   const last = sub?.last_active ?? null;
+  const created = createdDay(sub);
+  if (!last && created && daysBetween(created, today) > STOP_AFTER_DAYS) return null;
   if (!last) return { title: 'Tu sesión de 5 minutos te espera', body: 'Empieza hoy tu racha: una idea, un test rápido y un consejo práctico.', tag: 'racha' };
   const gap = daysBetween(last, today);
   if (gap <= 0) return null;
@@ -41,6 +43,16 @@ export function reminderFor(sub, today) {
   }
   if (gap <= 30) return { title: 'Te echamos de menos', body: 'Retoma hoy: una sesión de 5 minutos y vuelves a empezar tu racha.', tag: 'racha' };
   return null;
+}
+
+/** Días sin estudiar tras los que dejamos de avisar, y tras los que se borra la suscripción (plazo de conservación). */
+export const STOP_AFTER_DAYS = 30;
+export const DELETE_AFTER_DAYS = 90;
+const createdDay = (sub) => (typeof sub?.created_at === 'string' && validDay(sub.created_at.slice(0, 10)) ? sub.created_at.slice(0, 10) : null);
+/** Suscripción sin actividad (ni alta reciente) en más de DELETE_AFTER_DAYS días: se borra. */
+export function isStale(sub, today) {
+  const ref = (validDay(sub?.last_active) ? sub.last_active : null) ?? createdDay(sub);
+  return !!ref && daysBetween(ref, today) > DELETE_AFTER_DAYS;
 }
 
 /**
@@ -84,6 +96,7 @@ export async function runReminders({ today, page, send, markSent, remove, pageSi
     const rows = await page(after, pageSize);
     if (!rows.length) break;
     await Promise.all(rows.map(async (s) => {
+      if (isStale(s, today)) { removed++; await remove(s.endpoint); return; }
       const msg = reminderFor(s, today);
       if (!msg) { skipped++; return; }
       try { await send(s, { ...msg, url: '/es/mi-plan/' }); sent++; await markSent(s.endpoint); }

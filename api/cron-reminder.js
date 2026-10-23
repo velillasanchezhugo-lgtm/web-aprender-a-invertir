@@ -21,7 +21,7 @@ export async function GET(request) {
     today,
     // Paginación por clave (endpoint) para no saltarse filas al ir marcando las ya enviadas.
     page: async (after, size) => {
-      const { data, error } = await db.from('push_subscriptions').select('endpoint,p256dh,auth,last_active,streak,last_sent')
+      const { data, error } = await db.from('push_subscriptions').select('endpoint,p256dh,auth,last_active,streak,last_sent,created_at')
         .or(`last_sent.is.null,last_sent.lt.${today}`).gt('endpoint', after).order('endpoint').limit(size);
       if (error) throw new Error('db');
       return data ?? [];

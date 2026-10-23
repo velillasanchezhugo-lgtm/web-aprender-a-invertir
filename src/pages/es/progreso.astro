@@ -67,9 +67,24 @@ const checklist = ['Tengo un fondo de emergencia suficiente.', 'He controlado mi
     const blob = new Blob([JSON.stringify(exportAll(), null, 2)], { type: 'application/json' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'criterio-mis-datos.json'; a.click(); URL.revokeObjectURL(a.href);
   });
-  $('wipe').addEventListener('click', () => {
-    if (!confirm('¿Borrar todo tu progreso, marcadores, respuestas y notas guardadas en este navegador? No se puede deshacer.')) return;
-    wipeAll(); render(); $('msg').textContent = 'Datos borrados de este navegador.';
+  const hasSession = () => { try { return Object.keys(localStorage).some((k) => k.startsWith('uacademy-auth')); } catch { return false; } };
+  const hasPush = () => { try { return !!localStorage.getItem('uacademy:push'); } catch { return false; } };
+  $('wipe').addEventListener('click', async () => {
+    const signedIn = hasSession(), push = hasPush();
+    const extra = [
+      signedIn ? 'Se cerrará tu sesión en este navegador. Lo guardado en tu cuenta no se borra: si vuelves a entrar, se recupera. Para borrarlo, borra la cuenta en «Mi cuenta».' : '',
+      push ? 'Se desactivará el recordatorio diario en este navegador.' : '',
+    ].filter(Boolean).join('\n\n');
+    if (!confirm(`¿Borrar todo tu progreso, marcadores, respuestas y notas guardadas en este navegador? No se puede deshacer.${extra ? `\n\n${extra}` : ''}`)) return;
+    // Primero se dan de baja los avisos (necesitan la suscripción) y se cierra la sesión (si no, la sincronización volvería a traer los datos).
+    if (push) { try { await (await import('../../scripts/push')).disablePush(); } catch { /* */ } }
+    if (signedIn) {
+      try { await (await import('../../scripts/account')).signOut(); } catch { /* */ }
+      try { Object.keys(localStorage).filter((k) => k.startsWith('uacademy-auth')).forEach((k) => localStorage.removeItem(k)); } catch { /* */ }
+    }
+    wipeAll(); render();
+    $('msg').textContent = signedIn ? 'Datos borrados de este navegador y sesión cerrada. Tu cuenta sigue guardando su copia hasta que la borres en «Mi cuenta».' : 'Datos borrados de este navegador.';
+    document.querySelectorAll('[data-account-link]').forEach((a) => a.classList.remove('signed-in'));
   });
   $('ics').addEventListener('click', () => {
     const day = Number(($('rday') as HTMLSelectElement).value); const [hh, mm] = ($('rtime') as HTMLInputElement).value.split(':').map(Number);
