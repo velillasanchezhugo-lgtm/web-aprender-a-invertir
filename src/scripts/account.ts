@@ -77,8 +77,12 @@ export async function startSync() {
   window.addEventListener('pagehide', () => { if (timer) { clearTimeout(timer); push(); } });
 }
 
-export async function signIn(email: string) {
-  return sb().auth.signInWithOtp({ email, options: { emailRedirectTo: `${location.origin}/es/cuenta/`, shouldCreateUser: true } });
+/**
+ * Pide el enlace mágico. Si Supabase tiene activada la protección CAPTCHA (Authentication → Attack Protection,
+ * con Cloudflare Turnstile), hay que pasar el token de Turnstile (ver src/scripts/bot-guard.ts).
+ */
+export async function signIn(email: string, captchaToken?: string) {
+  return sb().auth.signInWithOtp({ email, options: { emailRedirectTo: `${location.origin}/es/cuenta/`, shouldCreateUser: true, ...(captchaToken ? { captchaToken } : {}) } });
 }
 export async function signOut() { await sb().auth.signOut(); try { localStorage.removeItem(LAST_SYNC); } catch { /* */ } }
 

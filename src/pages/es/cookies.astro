@@ -1,27 +1,46 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
-import { adsActive } from '../../config/site';
+import { adsActive, ACCOUNTS, LEGAL } from '../../config/site';
 ---
-<LegalPage title="Política de cookies" description="Qué cookies y tecnologías de almacenamiento usa este sitio y cómo gestionar tu consentimiento." updated="2026-10-15" legal>
+<LegalPage title="Política de cookies" description="Qué cookies y qué almacenamiento del navegador usa este sitio, para qué sirven y cómo gestionar tu consentimiento." updated={LEGAL.updated} legal>
+  <p>Una <strong>cookie</strong> es un pequeño archivo que una web guarda en tu navegador. El <strong>almacenamiento local</strong> es parecido: un espacio del navegador donde la web guarda datos. La ley (art. 22.2 LSSI) trata igual ambas cosas: si no son necesarias para el servicio que pides, hace falta tu consentimiento previo.</p>
+
   <h2>Situación actual</h2>
   {adsActive
-    ? <p>El sitio usa publicidad de Google AdSense, que puede utilizar cookies y otros identificadores. Solo se usan los no necesarios si das tu consentimiento en el mensaje de la plataforma de gestión del consentimiento, que permite aceptar, rechazar o configurar con la misma facilidad, y retirar el consentimiento después desde «Configurar privacidad» en el pie de página.</p>
-    : <p>El sitio <strong>no usa cookies de terceros ni publicidad</strong>. Las estadísticas de uso (Vercel Web Analytics) funcionan sin cookies ni identificadores. Por eso no ves un aviso de cookies.</p>}
-  <h2>Almacenamiento local necesario</h2>
-  <div class="table-wrap" tabindex="0" role="region" aria-label="Tabla (desplazable)"><table>
-    <thead><tr><th>Clave</th><th>Finalidad</th><th>Duración</th><th>Tipo</th></tr></thead>
+    ? <p>El sitio muestra publicidad de Google AdSense, que puede usar cookies e identificadores. <strong>Solo se usan si das tu consentimiento</strong> en el mensaje que aparece al entrar en una página con anuncios. Ese mensaje te deja aceptar, rechazar o elegir por finalidades, con botones de la misma importancia. Puedes cambiar de opinión cuando quieras desde «Configurar privacidad» en el pie de página.</p>
+    : <p>El sitio <strong>no usa cookies propias ni de terceros</strong>, ni publicidad. Las estadísticas de uso (Vercel Web Analytics) funcionan sin cookies y sin guardar nada en tu dispositivo. Solo usamos el almacenamiento local necesario para las funciones que pides. Por eso no ves un aviso de cookies.</p>}
+
+  <h2>Almacenamiento local que usamos</h2>
+  <p>Todo es propio (de este sitio) y se queda en tu navegador. Nada de esto se envía a publicidad ni a analítica. {ACCOUNTS.enabled ? 'Solo si entras en tu cuenta, el progreso se copia en tu cuenta para sincronizarlo (ver la política de privacidad).' : ''}</p>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Tabla de almacenamiento local (desplazable)"><table>
+    <thead><tr><th>Clave</th><th>Para qué</th><th>Duración</th><th>Tipo</th></tr></thead>
     <tbody>
-      <tr><td><code>uacademy:progress</code></td><td>Lecciones completadas, marcadores, repasos y uso de herramientas</td><td>Hasta que lo borres</td><td>Propia, solicitada por ti</td></tr>
-      <tr><td><code>uacademy:academy</code></td><td>Tu plan, sesiones completadas, repasos, racha y perfil de aprendizaje</td><td>Hasta que lo borres</td><td>Propia, necesaria para el servicio que pides</td></tr>
-      <tr><td><code>uacademy-auth</code>, <code>uacademy:last-sync</code></td><td>Solo si entras en tu cuenta: mantener la sesión y la fecha de la última sincronización</td><td>Hasta que cierres sesión</td><td>Propia, necesaria para el servicio que pides</td></tr>
-      <tr><td><code>uacademy:push</code></td><td>Solo si activas el recordatorio: la suscripción de notificaciones de este navegador</td><td>Hasta que lo desactives</td><td>Propia, solicitada por ti</td></tr>
-      <tr><td><code>uacademy:theme</code></td><td>Recordar el tema claro u oscuro</td><td>Hasta que lo borres</td><td>Propia, preferencia</td></tr>
-      <tr><td><code>uacademy:quiz</code></td><td>Respuestas del test (solo si marcas «guardar»)</td><td>Hasta que lo borres</td><td>Propia, solicitada por ti</td></tr>
-      <tr><td><code>uacademy:checklist</code>, <code>uacademy:practice</code>, <code>uacademy:final-exercise</code></td><td>Tu lista de comprobación, la cartera de práctica y el ejercicio final</td><td>Hasta que lo borres</td><td>Propia, solicitada por ti</td></tr>
+      <tr><td><code>uacademy:academy</code>, <code>uacademy:academy-emprendimiento</code>, <code>uacademy:academy-claude</code>, <code>uacademy:academy-chatgpt</code></td><td>Tu plan, sesiones completadas, repasos, racha, exámenes y perfil de aprendizaje de cada formación</td><td>Hasta que lo borres</td><td>Necesaria para el servicio que pides</td></tr>
+      <tr><td><code>uacademy:progress</code></td><td>Lecciones completadas, marcadores, repasos y uso de herramientas</td><td>Hasta que lo borres</td><td>Necesaria para el servicio que pides</td></tr>
+      <tr><td><code>uacademy:quiz</code></td><td>Respuestas del test (solo si marcas «guardar»)</td><td>Hasta que lo borres</td><td>Solicitada por ti</td></tr>
+      <tr><td><code>uacademy:checklist</code>, <code>uacademy:practice</code>, <code>uacademy:final-exercise</code>, <code>uacademy:one-page-plan</code></td><td>Tu lista de comprobación, la cartera de práctica, el ejercicio final y tu plan en una página</td><td>Hasta que lo borres</td><td>Solicitada por ti</td></tr>
+      <tr><td><code>uacademy:class-notes</code>, <code>uacademy:badge</code>, <code>uacademy:interest</code></td><td>Tus notas de clase, el nombre de tu insignia y los niveles por los que has pedido aviso</td><td>Hasta que lo borres</td><td>Solicitada por ti</td></tr>
+      <tr><td><code>uacademy:prompt-practice</code>, <code>uacademy:prompt-builder</code>, <code>uacademy:claude-kit</code>, <code>uacademy:chatgpt-kit</code></td><td>Tus prácticas y plantillas de peticiones en las formaciones Claude y ChatGPT</td><td>Hasta que lo borres</td><td>Solicitada por ti</td></tr>
+      <tr><td><code>uacademy-auth</code>, <code>uacademy:last-sync</code></td><td>Solo si entras en tu cuenta: mantener la sesión y la fecha de la última sincronización</td><td>Hasta que cierres sesión</td><td>Necesaria para el servicio que pides</td></tr>
+      <tr><td><code>uacademy:push</code></td><td>Solo si activas el recordatorio: la suscripción de notificaciones de este navegador</td><td>Hasta que lo desactives</td><td>Solicitada por ti</td></tr>
+      <tr><td><code>uacademy:theme</code></td><td>Recordar el tema claro u oscuro que elegiste</td><td>Hasta que lo borres</td><td>Preferencia elegida por ti</td></tr>
     </tbody>
   </table></div>
-  <p>Este almacenamiento no se envía a ningún servidor. Según el criterio de la AEPD sobre cookies técnicas y de preferencias solicitadas por el usuario, puede considerarse exceptuado del deber de consentimiento; [pendiente de confirmar en la revisión jurídica].</p>
-  <h2>Si se activa la publicidad</h2>
-  <p>Google exige a los editores que muestran anuncios en el Espacio Económico Europeo, Reino Unido y Suiza usar una plataforma de gestión del consentimiento certificada por Google e integrada con el marco TCF de IAB. Además, la normativa española (LSSI, art. 22.2) y la guía de la AEPD exigen consentimiento previo, informado y revocable para cookies no necesarias. Usar anuncios no personalizados no elimina por sí solo todas estas obligaciones.</p>
-  <p>Gestiona también las cookies desde la configuración de tu navegador.</p>
+  <p>Si activas el recordatorio, el sitio instala además un pequeño programa del navegador (<em>service worker</em>) que solo sirve para mostrar el aviso.</p>
+  <p>Según la guía de la AEPD sobre cookies (actualizada en julio de 2023), el almacenamiento técnico y el de preferencias que pides tú quedan exceptuados del consentimiento. Aun así, te lo contamos aquí. Puedes borrarlo todo en <a href="/es/progreso/">Mi progreso</a> o desde los ajustes de tu navegador. [Pendiente de confirmar en la revisión jurídica.]</p>
+
+  <h2>Estadísticas sin cookies</h2>
+  <p>Vercel Web Analytics no guarda cookies ni datos en tu dispositivo. Detalles en la <a href="/es/privacidad/">política de privacidad</a>, apartado 3.2.</p>
+
+  <h2>Publicidad</h2>
+  {adsActive
+    ? <p>Las cookies de Google y de sus socios (para mostrar, medir y, si lo aceptas, personalizar anuncios) son de terceros y dependen de tu consentimiento. La lista de socios y su duración aparecen en el propio mensaje de consentimiento, en «Gestionar opciones». Si rechazas, no se usan cookies publicitarias, aunque puedes seguir viendo anuncios limitados.</p>
+    : <p>Si algún día se activa la publicidad, antes de cargarla:</p>}
+  <ul>
+    <li>usaremos una plataforma de gestión del consentimiento certificada por Google e integrada en el marco TCF de IAB, como exige Google en el Espacio Económico Europeo, Reino Unido y Suiza;</li>
+    <li>el botón «Rechazar» estará en la primera capa, junto a «Aceptar» y con la misma visibilidad, como pide la guía de la AEPD;</li>
+    <li>podrás aceptar o rechazar por finalidades y retirar tu consentimiento en cualquier momento desde «Configurar privacidad»;</li>
+    <li>no cargaremos cookies no necesarias antes de tu elección, y la recordaremos un máximo de 24 meses.</li>
+  </ul>
+  <p>Usar anuncios no personalizados no elimina por sí solo la necesidad de pedir consentimiento.</p>
 </LegalPage>

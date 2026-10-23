@@ -1,7 +1,9 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
+import BrokerDisclosure from '../../components/BrokerDisclosure.astro';
+import { RECOMMENDED_BROKER as R, LEGAL } from '../../config/site';
 ---
-<LegalPage title="Alcance educativo" description="Qué es y qué no es umotion Academy: una plataforma educativa que no asesora, no vende productos y no evalúa tu idoneidad." updated="2026-10-15">
+<LegalPage title="Alcance educativo" description="Qué es y qué no es umotion Academy: una plataforma educativa que no asesora, no vende productos y no evalúa tu idoneidad." updated={LEGAL.updated}>
   <h2>Qué es</h2>
   <ul>
     <li>Una plataforma para <strong>aprender</strong> cómo funciona la inversión, evaluar productos e intermediarios y comprender riesgos.</li>
@@ -12,8 +14,15 @@ import LegalPage from '../../components/LegalPage.astro';
     <li>No es <strong>asesoramiento en materia de inversión</strong> (servicio regulado que exige autorización y tener en cuenta tu situación personal).</li>
     <li>No es un <strong>test de idoneidad o conveniencia</strong>: el test de aprendizaje solo sugiere qué estudiar.</li>
     <li>No te asignamos carteras, productos ni cantidades, ni te decimos qué comprar o vender. Una advertencia al pie no convertiría una recomendación en otra cosa, por eso no las hacemos.</li>
-    <li>No somos intermediarios ni cobramos de ellos.</li>
+    <li>No somos intermediarios. {R.paid ? `Recibimos una remuneración de ${R.name}, identificada como colaboración pagada donde aparece.` : 'No cobramos de intermediarios, gestoras ni emisores.'}</li>
+    <li>No es <strong>publicidad</strong> de productos ni de entidades financieras. Cuando hablamos de un producto o un fondo concreto, es como ejemplo para aprender a evaluarlo, no como recomendación.</li>
+    <li>No es una <strong>recomendación de inversión</strong> en el sentido del Reglamento sobre abuso de mercado: no damos opiniones sobre comprar o vender acciones, bonos u otros instrumentos concretos.</li>
   </ul>
+  <h2>La recomendación de {R.name}</h2>
+  <p>Para quien empieza de cero sugerimos {R.name} por su facilidad de uso. Es una opinión editorial sobre un intermediario, no sobre qué comprar. La explicamos con sus ventajas y sus limitaciones, y puedes seguir el curso con cualquier bróker autorizado.</p>
+  <BrokerDisclosure />
+  <h2>Inteligencia artificial</h2>
+  <p>Los textos se redactan con asistencia de IA y los revisa una persona antes de darlos por revisados (ver la <a href="/es/metodologia/">metodología</a>). Cuando el tutor o el corrector responden con IA, lo indicamos: sus respuestas son automáticas, pueden equivocarse y siguen las mismas reglas de este alcance.</p>
   <h2>Cómo aprender aquí no significa operar más</h2>
   <p>Avanzar de nivel significa comprender más. No presentamos el apalancamiento, el trading frecuente ni los derivados como un paso natural del aprendizaje: los explicamos para que entiendas sus riesgos, y los ejercicios con ellos son siempre simulaciones.</p>
   <h2>Si necesitas asesoramiento</h2>

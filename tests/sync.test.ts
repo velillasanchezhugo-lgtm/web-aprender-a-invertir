@@ -57,9 +57,20 @@ test('qué recordatorio toca', () => {
 });
 
 test('suscripción push válida', () => {
-  assert.ok(validSubscription({ endpoint: 'https://fcm.googleapis.com/x', keys: { p256dh: 'a', auth: 'b' } }));
-  assert.ok(!validSubscription({ endpoint: 'http://x', keys: { p256dh: 'a', auth: 'b' } }));
+  const keys = { p256dh: 'BNcRdreALRFXTkOOUHK1EtK2wtaz5Ry4YfYCA_0QTpQtUbVlUls0VJXg7A8u-Ts1XbjhazAkj7I99e8QcYP7DkM', auth: 'tBHItJI5svbpez7KI4CCXg' };
+  assert.ok(validSubscription({ endpoint: 'https://fcm.googleapis.com/fcm/send/abc', keys }));
+  assert.ok(validSubscription({ endpoint: 'https://updates.push.services.mozilla.com/wpush/v2/abc', keys }));
+  assert.ok(validSubscription({ endpoint: 'https://web.push.apple.com/QF0abc', keys }));
+  assert.ok(validSubscription({ endpoint: 'https://wns2-par02p.notify.windows.com/w/?token=abc', keys }));
+  assert.ok(!validSubscription({ endpoint: 'http://fcm.googleapis.com/x', keys }), 'sin https');
   assert.ok(!validSubscription({ endpoint: 'https://x' }));
+  // Solo servicios push conocidos: evita que el servidor haga peticiones a cualquier dirección (SSRF).
+  assert.ok(!validSubscription({ endpoint: 'https://169.254.169.254/latest', keys }));
+  assert.ok(!validSubscription({ endpoint: 'https://fcm.googleapis.com.evil.example/x', keys }));
+  assert.ok(!validSubscription({ endpoint: 'https://evil.example/?fcm.googleapis.com', keys }));
+  assert.ok(!validSubscription({ endpoint: 'https://fcm.googleapis.com:8443/x', keys }), 'sin puertos raros');
+  assert.ok(!validSubscription({ endpoint: 'https://fcm.googleapis.com/x', keys: { p256dh: '<script>', auth: keys.auth } }));
+  assert.ok(!validSubscription({ endpoint: 'https://fcm.googleapis.com/x', keys: { p256dh: keys.p256dh, auth: 'x'.repeat(200) } }));
 });
 
 test('recordatorio diario para el calendario a las 16:00 de Madrid', () => {
@@ -90,4 +101,27 @@ test('envío diario: avisa a quien no ha estudiado, salta a quien sí y limpia s
   assert.match(sent[0], /https:\/\/a:.*4 días/);
   assert.deepEqual(marked.sort(), ['https://a', 'https://c']);
   assert.deepEqual(removed, ['https://d']);
+});
+
+test('la mezcla descarta datos mal formados o peligrosos que lleguen de la nube', () => {
+  const remote = JSON.parse(`{
+    "academy": {
+      "completed": { "__proto__": "x", "s1": "2026-10-01T10:00:00.000Z", "s2": { "malo": true } },
+      "deck": { "q1": null, "q2": { "box": 1, "due": "2026-10-20", "seen": 2, "wrong": 0 }, "q3": "texto" },
+      "model": { "k1": { "p": 7, "n": 1 }, "k2": { "p": 0.5, "n": 3, "ok": 2, "last": "2026-10-01" }, "__proto__": { "p": 0.1, "n": 1 } },
+      "activity": ["2026-10-01", "<img src=x>", 5],
+      "notes": { "s1": { "no": "texto" }, "s2": "Mi nota" }
+    },
+    "progress": { "bookmarks": ["/es/glosario/", "javascript:alert(1)", "//evil.example/", 3], "tools": { "a": 2, "b": "x" } }
+  }`);
+  const out = mergeSnapshot({}, remote) as any;
+  assert.equal(Object.getPrototypeOf(out.academy.completed), Object.prototype, 'no cambia el prototipo');
+  assert.deepEqual(Object.keys(out.academy.completed), ['s1']);
+  assert.deepEqual(Object.keys(out.academy.deck), ['q2']);
+  assert.deepEqual(Object.keys(out.academy.model), ['k2']);
+  assert.deepEqual(out.academy.activity, ['2026-10-01']);
+  assert.deepEqual(out.academy.notes, { s2: 'Mi nota' });
+  assert.deepEqual(out.progress.bookmarks, ['/es/glosario/']);
+  assert.deepEqual(out.progress.tools, { a: 2 });
+  assert.equal(({} as any).p, undefined, 'sin contaminación global');
 });

@@ -93,13 +93,15 @@ const EXAMPLES = ['¿Qué diferencia hay entre un fondo indexado y un ETF?', '¿
   import { learnerBrief, type SkillDef } from '../../lib/adaptive';
   import { analyzeNews, filterVerdict } from '../../lib/news';
   import { search, type Doc } from '../../scripts/search';
+  import { guard, waitMinimum, turnstileToken } from '../../scripts/bot-guard';
   const root = document.querySelector<HTMLElement>('.tutor')!;
   const D = JSON.parse(document.getElementById('tutor-data')!.textContent!) as { questions: Record<string, { q: string; explain: string; session: string }>; skills: SkillDef[]; goals: Record<string, string> };
   let ai = root.dataset.ai === '1';
   const endpoint = root.dataset.endpoint!;
   const $ = (id: string) => document.getElementById(id)!;
   const log = $('log'); const msg = $('msg') as HTMLTextAreaElement; const form = $('tf') as HTMLFormElement;
-  const esc = (t: string) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+  const bot = guard(form);
+  const esc = (t: string) => t.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!));
   let mode: 'pregunta' | 'noticia' | 'explicar' = 'pregunta';
   const history: { role: 'user' | 'assistant'; content: string }[] = [];
   const st = getState();
@@ -156,13 +158,16 @@ const EXAMPLES = ['¿Qué diferencia hay entre un fondo indexado y un ETF?', '¿
     if (!ai) return offlineAnswer(text);
     const wait = add('a', '<span class="typing">Pensando…</span>');
     try {
-      const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode, message: text, history, context, learner: brief }) });
+      await waitMinimum(bot);
+      const turnstile = await turnstileToken(form).catch(() => undefined);
+      const r = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode, message: text, context, learner: brief, bot: bot.payload(), turnstile, history: history.slice(-8).map((h) => ({ role: h.role, content: h.content.slice(0, 2000) })) }) });
       const j = await r.json().catch(() => ({}));
-      if (!r.ok || !j.reply) {
+      if (!r.ok || typeof j.reply !== 'string' || !j.reply) {
         if (r.status === 503) { ai = false; wait.remove(); return offlineAnswer(text); }
-        wait.className = 'a err'; wait.textContent = j.error ?? 'El tutor no está disponible ahora mismo.'; return;
+        wait.className = 'a err'; wait.textContent = typeof j.error === 'string' ? j.error : 'El tutor no está disponible ahora mismo.'; return;
       }
-      wait.innerHTML = md(j.reply);
+      // Aviso de IA en cada respuesta (Reglamento de IA, art. 50): quien lee sabe que no es una persona.
+      wait.innerHTML = `<span class="tag">Respuesta generada por IA (Claude) · puede equivocarse</span>${md(j.reply)}`;
       history.push({ role: 'user', content: text }, { role: 'assistant', content: j.reply });
       if (mode === 'noticia') $('filter').hidden = false;
       if (mode === 'explicar') { mode = 'pregunta'; context = null; }

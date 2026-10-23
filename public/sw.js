@@ -15,7 +15,12 @@ self.addEventListener('push', (e) => {
 });
 self.addEventListener('notificationclick', (e) => {
   e.notification.close();
-  const url = (e.notification.data && e.notification.data.url) || '/es/mi-plan/';
+  // Solo se abren rutas de esta web: una URL de otro origen en el aviso se sustituye por «Mi plan».
+  let url = '/es/mi-plan/';
+  try {
+    const u = new URL((e.notification.data && e.notification.data.url) || url, self.location.origin);
+    if (u.origin === self.location.origin) url = u.pathname + u.search + u.hash;
+  } catch (err) { /* se queda «Mi plan» */ }
   e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((wins) => {
     for (const w of wins) if ('focus' in w) { w.navigate(url); return w.focus(); }
     return self.clients.openWindow(url);

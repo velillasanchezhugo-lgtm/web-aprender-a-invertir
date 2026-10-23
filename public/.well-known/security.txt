@@ -1,0 +1,6 @@
+# umotion Academy · Cómo avisar de un fallo de seguridad (RFC 9116).
+# Escríbenos en privado antes de publicarlo. No hay programa de recompensas.
+# Contacto pendiente: se rellena con la variable de entorno SECURITY_CONTACT al compilar (ver docs/SEGURIDAD.md).
+Contact: PENDIENTE-SECURITY-CONTACT
+Expires: 2027-10-23T00:00:00Z
+Preferred-Languages: es, en

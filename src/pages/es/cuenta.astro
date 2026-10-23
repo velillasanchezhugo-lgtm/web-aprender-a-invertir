@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ReminderCard from '../../components/ReminderCard.astro';
-import { ACCOUNTS } from '../../config/site';
+import { ACCOUNTS, LEGAL } from '../../config/site';
 ---
 <Base title="Mi cuenta" description="Crea una cuenta opcional para guardar tu progreso en todos tus dispositivos y activa el recordatorio diario para no perder la racha." noindex={true} allowAds={false}>
   <div class="narrow acc" data-accounts={ACCOUNTS.enabled ? '1' : '0'}>
@@ -20,7 +20,8 @@ import { ACCOUNTS } from '../../config/site';
             <form id="signin" class="signin">
               <label for="email">Tu correo</label>
               <div class="row"><input id="email" name="email" type="email" required autocomplete="email" placeholder="tu@correo.com" /><button class="btn brand" type="submit">Enviarme el enlace</button></div>
-              <label class="choice small"><input type="checkbox" id="consent" required /> <span>Acepto que se guarden mi correo y mi progreso para este fin (<a href="/es/privacidad/">privacidad</a>).</span></label>
+              <label class="choice small"><input type="checkbox" id="consent" required /> <span>Tengo {LEGAL.minAge} años o más (o permiso de mi madre, padre o tutor) y he leído la <a href="/es/privacidad/">política de privacidad</a> y las <a href="/es/condiciones/">condiciones</a>.</span></label>
+              <p class="small muted first-layer">Responsable: el titular de umotion Academy. Para qué: enviarte el enlace de acceso y guardar tu progreso. Base legal: el servicio que pides. Proveedor: Supabase (servidores en la UE). Derechos: acceso, supresión y los demás que explica la <a href="/es/privacidad/">política de privacidad</a>. No te enviaremos publicidad.</p>
             </form>
           </div>
           <div data-state="in" hidden>
@@ -45,7 +46,7 @@ import { ACCOUNTS } from '../../config/site';
       <h2 class="h4">Qué guardamos</h2>
       <ul>
         <li><strong>Sin cuenta</strong>: todo se queda en tu navegador.</li>
-        <li><strong>Con cuenta</strong>: tu correo y tu progreso (sesiones, repasos, racha, plan, exámenes y notas). Nunca datos financieros.</li>
+        <li><strong>Con cuenta</strong>: tu correo y tu progreso (sesiones, repasos, racha, plan, exámenes y notas). Si has guardado el test o tu plan en una página, también esas respuestas, que pueden incluir datos de tu situación (colchón, deudas, aportación). Nunca datos bancarios ni de tus inversiones reales.</li>
         <li><strong>Con notificaciones</strong>: la dirección técnica de tu navegador para enviarte el aviso y el último día que estudiaste.</li>
       </ul>
     </section>
@@ -59,6 +60,7 @@ import { ACCOUNTS } from '../../config/site';
   .row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
   .row input { flex: 1 1 220px; }
   .row-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.6rem 0; }
+  .first-layer { margin: 0.5rem 0 0; }
   .danger { margin-top: 0.8rem; }
   .danger summary { cursor: pointer; color: var(--loss); font-weight: 600; }
   .status:empty { display: none; }
@@ -67,12 +69,15 @@ import { ACCOUNTS } from '../../config/site';
   .h4 { font-size: 1.05rem; margin: 0 0 0.3rem; }
 </style>
 <script>
+  import { guard, waitMinimum, turnstileToken } from '../../scripts/bot-guard';
   const root = document.querySelector<HTMLElement>('.acc')!;
   if (root.dataset.accounts === '1') {
     const $ = (id: string) => document.getElementById(id)!;
     const status = $('acc-status');
     const out = root.querySelector<HTMLElement>('[data-state=out]')!;
     const inn = root.querySelector<HTMLElement>('[data-state=in]')!;
+    const signinForm = $('signin') as HTMLFormElement;
+    const bot = guard(signinForm);
     import('../../scripts/account').then(async (A) => {
       const paint = async () => {
         const s = await A.session();
@@ -87,12 +92,18 @@ import { ACCOUNTS } from '../../config/site';
       window.addEventListener('uacademy:synced', paint);
       await A.startSync();
       await paint();
-      ($('signin') as HTMLFormElement).addEventListener('submit', async (e) => {
+      signinForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = ($('email') as HTMLInputElement).value.trim();
         if (!($('consent') as HTMLInputElement).checked) return;
+        if (email.length > 254) { status.textContent = 'Ese correo es demasiado largo.'; return; }
+        // Campo trampa relleno: no se envía nada (y no se le dice al robot por qué).
+        if (bot.payload().hp) { status.textContent = 'No hemos podido enviar el enlace. Inténtalo de nuevo.'; return; }
         status.textContent = 'Enviando…';
-        const { error } = await A.signIn(email);
+        await waitMinimum(bot);
+        let captcha: string | undefined;
+        try { captcha = await turnstileToken(signinForm); } catch { status.textContent = 'No hemos podido comprobar que no eres un robot. Recarga la página e inténtalo de nuevo.'; return; }
+        const { error } = await A.signIn(email, captcha);
         status.textContent = error ? 'No hemos podido enviar el enlace. Revisa el correo e inténtalo de nuevo.' : `Te hemos enviado un enlace a ${email}. Ábrelo en este dispositivo para entrar.`;
       });
       $('sync-now').addEventListener('click', async () => { status.textContent = (await A.pull()) ? 'Progreso sincronizado.' : 'No se pudo sincronizar.'; paint(); });

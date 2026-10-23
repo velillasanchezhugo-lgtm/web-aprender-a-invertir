@@ -4,11 +4,12 @@
  */
 import webpush from 'web-push';
 import { adminClient, serverConfigured, json } from './_supabase.js';
-import { madridParts, isSendHour, runReminders } from './_reminder-core.js';
+import { madridParts, isSendHour, runReminders, validEndpoint } from './_reminder-core.js';
+import { bearerMatches } from './_guard.js';
 
 export async function GET(request) {
-  const secret = process.env.CRON_SECRET;
-  if (!secret || request.headers.get('authorization') !== `Bearer ${secret}`) return json({ error: 'No autorizado.' }, 401);
+  // Vercel Cron envía «Authorization: Bearer CRON_SECRET». Se compara en tiempo constante.
+  if (!bearerMatches(request, process.env.CRON_SECRET)) return json({ error: 'No autorizado.' }, 401);
   if (!serverConfigured() || !process.env.VAPID_PRIVATE_KEY || !process.env.PUBLIC_VAPID_PUBLIC_KEY) return json({ skipped: 'sin configurar' });
   const now = new Date();
   const force = new URL(request.url).searchParams.get('force') === '1';
@@ -25,7 +26,8 @@ export async function GET(request) {
       if (error) throw new Error('db');
       return data ?? [];
     },
-    send: (s, msg) => webpush.sendNotification({ endpoint: s.endpoint, keys: { p256dh: s.p256dh, auth: s.auth } }, JSON.stringify(msg), { TTL: 6 * 3600, urgency: 'normal' }),
+    // Filas antiguas con direcciones que no son de un servicio push: se borran sin enviarles nada.
+    send: (s, msg) => !validEndpoint(s.endpoint) ? Promise.reject(Object.assign(new Error('endpoint'), { statusCode: 410 })) : webpush.sendNotification({ endpoint: s.endpoint, keys: { p256dh: s.p256dh, auth: s.auth } }, JSON.stringify(msg), { TTL: 6 * 3600, urgency: 'normal', timeout: 10_000 }),
     markSent: (endpoint) => db.from('push_subscriptions').update({ last_sent: today }).eq('endpoint', endpoint),
     remove: (endpoint) => db.from('push_subscriptions').delete().eq('endpoint', endpoint),
   }).catch(() => null);

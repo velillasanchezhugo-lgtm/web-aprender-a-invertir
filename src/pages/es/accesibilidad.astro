@@ -1,0 +1,35 @@
+---
+import LegalPage from '../../components/LegalPage.astro';
+import { LEGAL, OWNER } from '../../config/site';
+---
+<LegalPage title="Accesibilidad" description="Cómo hacemos que umotion Academy se pueda usar con lector de pantalla, teclado y en cualquier dispositivo, qué falta y cómo avisarnos." updated={LEGAL.updated}>
+  <p>Queremos que cualquier persona pueda aprender aquí, también si usa un lector de pantalla, solo el teclado, el zoom o un móvil pequeño.</p>
+
+  <h2>Estado de cumplimiento</h2>
+  <p>Nuestro objetivo es cumplir el nivel AA de las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.2, que recoge la norma europea EN 301 549. Hoy el sitio es <strong>parcialmente conforme</strong>: lo comprobamos con pruebas automáticas y revisiones manuales, pero no con una auditoría externa. No tenemos ninguna certificación.</p>
+  <p>Esta declaración sigue lo que piden la Ley 11/2023 y la Directiva (UE) 2019/882 (Acta Europea de Accesibilidad) a los servicios digitales que se venden a consumidores. [Pendiente de revisión jurídica: si el titular es una microempresa, la ley le exime, pero mantenemos la declaración de forma voluntaria.]</p>
+
+  <h2>Qué hacemos</h2>
+  <ul>
+    <li>Contraste de colores suficiente en tema claro y oscuro, comprobado con axe-core en cada cambio.</li>
+    <li>Navegación completa con teclado y un enlace para saltar al contenido.</li>
+    <li>Títulos ordenados, etiquetas en los formularios y avisos que leen los lectores de pantalla.</li>
+    <li>Los gráficos tienen título, descripción y una tabla con los mismos datos.</li>
+    <li>Diseño que se adapta al móvil sin desplazamiento horizontal y respeta la opción de reducir el movimiento.</li>
+    <li>Las clases funcionan sin registrarse y sin descargar nada.</li>
+  </ul>
+
+  <h2>Qué sabemos que falta</h2>
+  <ul>
+    <li>Algunas tablas largas obligan a desplazarse en horizontal dentro de la tabla en el móvil.</li>
+    <li>Los anuncios de terceros, si se activan, no dependen de nosotros y pueden no ser accesibles.</li>
+    <li>No hemos hecho pruebas con personas usuarias de lectores de pantalla. [Pendiente.]</li>
+  </ul>
+
+  <h2>Cómo avisarnos</h2>
+  <p>Si encuentras una barrera o necesitas el contenido en otro formato, escríbenos a {OWNER.email ? <a href={`mailto:${OWNER.email}`}>{OWNER.email}</a> : <a href="/es/contacto/">contacto</a>}. Te responderemos lo antes posible y, como máximo, en un mes.</p>
+  <p>Si no quedas satisfecho con la respuesta, puedes acudir a los servicios de consumo de tu comunidad autónoma.</p>
+
+  <h2>Fecha</h2>
+  <p>Declaración preparada el 23 de octubre de 2026 con una autoevaluación. La revisaremos al menos una vez al año y con cada cambio importante del diseño.</p>
+</LegalPage>

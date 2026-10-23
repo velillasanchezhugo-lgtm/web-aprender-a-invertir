@@ -43,8 +43,18 @@ Sin configurar nada, la web funciona igual: la página «Mi cuenta» explica que
 | `VAPID_PRIVATE_KEY` | Clave privada VAPID | **No** |
 | `VAPID_SUBJECT` | `mailto:` con un correo de contacto | No |
 | `CRON_SECRET` | Una cadena larga aleatoria (Vercel la envía al cron) | **No** |
+| `PUBLIC_TURNSTILE_SITE_KEY` | Opcional. Clave de sitio de Cloudflare Turnstile para el formulario del enlace mágico (ver «Seguridad») | Sí |
 
 5. Vuelve a desplegar. Comprueba el envío manualmente: `curl -H "Authorization: Bearer $CRON_SECRET" "https://TU-DOMINIO/api/cron-reminder?force=1"`.
+
+## Seguridad
+
+- **Sesión**: `api/push.js` y `api/account.js` validan el token con `auth.getUser` de Supabase (firma, caducidad y sesión abierta). La clave `service_role` solo vive en el servidor.
+- **Seguridad de filas (RLS)**: `progress` solo la lee y la cambia su dueño (`auth.uid() = user_id`); `push_subscriptions` no tiene políticas, así que solo el servidor accede. Compruébalo en *Table Editor → RLS* después de ejecutar `supabase/schema.sql`.
+- **Avisos**: solo se aceptan direcciones de los servicios push de los navegadores (Google, Mozilla, Apple y Microsoft), para que nadie pueda usar el envío diario contra otra dirección. Para cambiar la actividad o darse de baja hay que enviar la dirección y la clave `auth` de la suscripción, que solo conoce ese navegador. El cron (`CRON_SECRET`) se compara en tiempo constante.
+- **Todas las funciones**: rechazan peticiones de otros dominios, limitan el tamaño del cuerpo y las peticiones por IP (`api/_guard.js`).
+- **Robots en el enlace mágico** (bloqueo de intentos): el formulario tiene campo trampa y tiempo mínimo. El freno real está en Supabase: *Authentication → Rate Limits* (correos por hora) y *Authentication → Attack Protection → CAPTCHA* con Cloudflare Turnstile. Si activas el CAPTCHA en Supabase, pon también `PUBLIC_TURNSTILE_SITE_KEY` y recompila: el formulario enviará el token. No hay contraseñas, así que no hay intentos de contraseña que bloquear.
+- **Datos que vuelven de la nube**: antes de escribirlos en el navegador, `src/lib/sync.ts` descarta valores mal formados, claves como `__proto__` y marcadores que no sean rutas internas.
 
 ## Límites conocidos
 

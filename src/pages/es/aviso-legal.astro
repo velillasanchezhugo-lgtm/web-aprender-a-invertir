@@ -1,17 +1,37 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
 import OwnerData from '../../components/OwnerData.astro';
+import { LEGAL, OWNER, RECOMMENDED_BROKER } from '../../config/site';
+const contact = OWNER.email ? OWNER.email : 'el correo que figura arriba';
 ---
-<LegalPage title="Aviso legal" description="Datos del titular y condiciones de uso del sitio, conforme al artículo 10 de la LSSI." updated="2026-10-15" legal>
-  <h2>Datos identificativos</h2>
+<LegalPage title="Aviso legal" description="Datos del titular y condiciones generales del sitio, conforme al artículo 10 de la LSSI." updated={LEGAL.updated} legal>
+  <h2>1. Datos identificativos</h2>
   <p>En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI), se informa de:</p>
   <OwnerData />
-  <h2>Objeto</h2>
-  <p>Este sitio ofrece contenido educativo general sobre inversión. No presta servicios de inversión, no ofrece asesoramiento financiero personalizado, no comercializa productos financieros ni ejecuta operaciones. Consulta el <a href="/es/alcance-educativo/">alcance educativo</a>.</p>
-  <h2>Propiedad intelectual</h2>
-  <p>Los textos, gráficos y herramientas originales de este sitio pertenecen a su titular salvo indicación en contrario. Las marcas y documentos de terceros citados pertenecen a sus respectivos propietarios y se mencionan con fines informativos.</p>
-  <h2>Responsabilidad</h2>
-  <p>El contenido se elabora con cuidado y se basa en fuentes que se citan y fechan, pero puede contener errores o quedar desactualizado. Las decisiones de inversión son responsabilidad de cada persona. Los enlaces a sitios de terceros no implican aprobación de su contenido.</p>
-  <h2>Legislación aplicable</h2>
-  <p>[Pendiente de revisión jurídica: legislación y jurisdicción aplicables según la forma jurídica del titular.]</p>
+  <p>La actividad de umotion Academy es educativa y no necesita autorización administrativa previa. No es una entidad supervisada por la CNMV ni por el Banco de España, y no está inscrita en sus registros porque no presta servicios de inversión. [Pendiente de confirmar en la revisión jurídica.]</p>
+
+  <h2>2. Objeto</h2>
+  <p>Este sitio ofrece formación general sobre inversión, emprendimiento y uso de asistentes de inteligencia artificial. No presta servicios de inversión, no ofrece asesoramiento financiero, fiscal ni jurídico personalizado, no comercializa productos financieros y no ejecuta operaciones. Consulta el <a href="/es/alcance-educativo/">alcance educativo</a> y las <a href="/es/condiciones/">condiciones de uso</a>.</p>
+
+  <h2>3. Propiedad intelectual</h2>
+  <ul>
+    <li>Los textos, ejercicios, gráficos, herramientas y el diseño de este sitio pertenecen a su titular, salvo que se indique otra cosa. Puedes usarlos para tu aprendizaje personal y citar fragmentos breves con enlace a la fuente (art. 32 de la Ley de Propiedad Intelectual). Para cualquier otro uso, como copiar lecciones enteras, venderlas o usarlas para entrenar sistemas de IA, necesitas permiso por escrito.</li>
+    <li>Los documentos oficiales y estudios citados pertenecen a sus autores y se enlazan en su fuente original.</li>
+    <li>Las tipografías Instrument Sans y Geist Mono se usan con la licencia SIL Open Font License 1.1 y se sirven desde este mismo sitio.</li>
+    <li>El logotipo y el nombre «umotion» identifican al titular. [Pendiente: comprobar o registrar la marca en la OEPM o la EUIPO.]</li>
+  </ul>
+
+  <h2>4. Marcas de terceros y ausencia de afiliación</h2>
+  <p>Claude y Anthropic son marcas de Anthropic, PBC. ChatGPT y OpenAI son marcas de OpenAI. {RECOMMENDED_BROKER.name} es una marca de su titular. Las demás marcas citadas pertenecen a sus propietarios.</p>
+  <p>Las nombramos solo para identificar los productos de los que hablan las clases (uso descriptivo). umotion Academy <strong>no está afiliada</strong> a Anthropic, a OpenAI ni a ninguna entidad financiera, y ninguna de ellas patrocina, aprueba ni revisa este contenido. {RECOMMENDED_BROKER.paid ? `Recibimos una remuneración de ${RECOMMENDED_BROKER.name}; lo indicamos en cada página donde aparece.` : `La recomendación de ${RECOMMENDED_BROKER.name} para empezar es una opinión editorial sin remuneración.`} Detalles en <a href="/es/financiacion/">financiación</a>.</p>
+
+  <h2>5. Responsabilidad</h2>
+  <p>El contenido se elabora con cuidado y se basa en fuentes que se citan y fechan, pero puede contener errores o quedar desactualizado: las tarifas, la normativa y los impuestos cambian. Comprueba siempre la información vigente en la fuente oficial. Las decisiones que tomes con lo aprendido son tuyas. Nada en este sitio limita los derechos que te reconoce la ley como consumidor.</p>
+  <p>Los enlaces a sitios de terceros se ofrecen para ampliar información y no implican que aprobemos su contenido. Si un enlace lleva a contenido ilícito, avísanos y lo retiraremos (art. 17 LSSI).</p>
+
+  <h2>6. Punto de contacto</h2>
+  <p>Para comunicaciones de autoridades de la UE y de usuarios, incluido el aviso de contenido ilícito (arts. 11, 12 y 16 del Reglamento de Servicios Digitales, si son aplicables), escribe a {contact}. Atendemos en español.</p>
+
+  <h2>7. Legislación aplicable</h2>
+  <p>Este sitio se rige por la legislación española. Si eres consumidor, puedes acudir a los tribunales de tu domicilio. [Pendiente de revisión jurídica según la forma jurídica del titular.]</p>
 </LegalPage>

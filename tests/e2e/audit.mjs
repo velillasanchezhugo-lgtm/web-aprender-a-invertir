@@ -23,7 +23,8 @@ for (const scheme of ['light', 'dark']) {
     p.on('console', (m) => { if (m.type() === 'error' && !(m.location()?.url ?? '').includes('/_vercel/')) errs.push(m.text()); });
     p.on('request', (r) => { const u = new URL(r.url()); if (!['localhost', '127.0.0.1'].includes(u.hostname)) external.push(u.hostname); });
     await p.goto(BASE + path, { waitUntil: 'networkidle' });
-    await p.addScriptTag({ content: axe });
+    // axe se evalúa por el protocolo de depuración: una etiqueta <script> en línea la bloquearía la CSP de la página.
+    await p.evaluate(axe);
     const res = await p.evaluate(async () => (await window.axe.run(document, { runOnly: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] })).violations.map((v) => ({ id: v.id, impact: v.impact, n: v.nodes.length, sample: v.nodes[0]?.target?.join(' ') })));
     const hscroll = await p.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
     const bad = res.length || errs.length || hscroll || external.length;

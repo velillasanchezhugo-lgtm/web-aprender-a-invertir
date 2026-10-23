@@ -36,6 +36,14 @@ async function authHeader(): Promise<Record<string, string>> {
     return s ? { Authorization: `Bearer ${s.access_token}` } : {};
   } catch { return {}; }
 }
+/** Clave «auth» de la suscripción actual: el servidor la pide para cambiar o borrar el aviso. No se guarda aparte. */
+async function currentAuth(): Promise<string | undefined> {
+  try {
+    const reg = await navigator.serviceWorker.getRegistration('/sw.js');
+    const sub = await reg?.pushManager.getSubscription();
+    return (sub?.toJSON().keys?.auth as string | undefined) ?? undefined;
+  } catch { return undefined; }
+}
 const post = async (body: unknown) => fetch('/api/push', { method: 'POST', headers: { 'Content-Type': 'application/json', ...(await authHeader()) }, body: JSON.stringify(body) });
 
 /** Pide permiso, se suscribe y registra la suscripción. Devuelve un mensaje para mostrar si algo falla. */
@@ -60,12 +68,13 @@ async function subscribe(): Promise<{ ok: boolean; message?: string }> {
 
 export async function disablePush() {
   const info = read();
+  const auth = await currentAuth();
   try {
     const reg = await navigator.serviceWorker.getRegistration('/sw.js');
     const sub = await reg?.pushManager.getSubscription();
     await sub?.unsubscribe();
   } catch { /* */ }
-  if (info) await post({ action: 'unsubscribe', endpoint: info.endpoint }).catch(() => null);
+  if (info && auth) await post({ action: 'unsubscribe', endpoint: info.endpoint, auth }).catch(() => null);
   save(null);
 }
 
@@ -76,7 +85,9 @@ export function watchActivity() {
     if (!info) return;
     const { day, streak: st } = activityInfo();
     if (!day || info.reported === day) return;
-    const r = await post({ action: 'activity', endpoint: info.endpoint, day, streak: st }).catch(() => null);
+    const auth = await currentAuth();
+    if (!auth) return;
+    const r = await post({ action: 'activity', endpoint: info.endpoint, auth, day, streak: st }).catch(() => null);
     if (r?.ok) save({ ...info, reported: day });
   };
   window.addEventListener('uacademy:write', (e) => { if ((e as CustomEvent<string>).detail === 'academy') report(); });

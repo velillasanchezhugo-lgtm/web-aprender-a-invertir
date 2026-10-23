@@ -43,10 +43,35 @@ export function reminderFor(sub, today) {
   return null;
 }
 
+/**
+ * Servicios push de los navegadores. El servidor solo envía avisos a estos dominios: así nadie puede
+ * registrar una dirección cualquiera para que nuestra función le haga peticiones (SSRF).
+ */
+export const PUSH_HOSTS = [
+  'fcm.googleapis.com', 'android.googleapis.com', // Chrome, Edge (Android), Opera, Brave, Samsung
+  'updates.push.services.mozilla.com', 'push.services.mozilla.com', // Firefox
+  'web.push.apple.com', // Safari (macOS e iOS)
+];
+const PUSH_SUFFIXES = ['.notify.windows.com', '.push.apple.com']; // Edge (Windows) y Safari
+
+/** Dirección de un servicio push conocido, con https y longitud razonable. */
+export function validEndpoint(e) {
+  if (typeof e !== 'string' || e.length >= 1000) return false;
+  let u;
+  try { u = new URL(e); } catch { return false; }
+  if (u.protocol !== 'https:' || u.username || u.password || u.port) return false;
+  const h = u.hostname.toLowerCase();
+  return PUSH_HOSTS.includes(h) || PUSH_SUFFIXES.some((x) => h.endsWith(x));
+}
+
+const b64url = (v, min, max) => typeof v === 'string' && v.length >= min && v.length <= max && /^[A-Za-z0-9_-]+={0,2}$/.test(v);
+
 /** Validación de una suscripción push que llega del navegador. */
 export function validSubscription(s) {
-  return !!(s && typeof s.endpoint === 'string' && /^https:\/\//.test(s.endpoint) && s.endpoint.length < 1000 && s.keys && typeof s.keys.p256dh === 'string' && typeof s.keys.auth === 'string');
+  return !!(s && validEndpoint(s.endpoint) && s.keys && b64url(s.keys.p256dh, 16, 200) && b64url(s.keys.auth, 8, 64));
 }
+/** La clave «auth» de la suscripción sirve como prueba de que quien pide el cambio es ese navegador. */
+export const validAuthKey = (a) => b64url(a, 8, 64);
 export const validDay = (d) => typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d);
 
 /**

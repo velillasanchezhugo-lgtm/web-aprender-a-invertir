@@ -2,9 +2,11 @@
  * Tras compilar: genera sitemap.xml (solo páginas indexables, con hreflang si hay traducción),
  * genera ads.txt si hay cliente de AdSense configurado, y comprueba la calidad técnica:
  * títulos y descripciones únicos, canonical, enlaces internos rotos y scripts de terceros.
+ * Además inserta en cada página su política de seguridad del contenido (CSP) estricta: ver scripts/csp.mjs.
  */
 import { readdirSync, readFileSync, writeFileSync, statSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { inlineScripts, pagePolicy, injectMeta } from './csp.mjs';
 
 const DIST = 'dist';
 const site = (process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://umotion-academy.example')).replace(/\/$/, '');
@@ -21,9 +23,17 @@ const errors = [], warnings = [];
 const titles = new Map(), descs = new Map();
 const urls = [];
 
+const supabaseUrl = process.env.PUBLIC_SUPABASE_URL && process.env.PUBLIC_SUPABASE_ANON_KEY ? process.env.PUBLIC_SUPABASE_URL : '';
+let inlineCount = 0;
 for (const f of html) {
-  const s = readFileSync(f, 'utf8');
   const route = '/' + f.slice(DIST.length + 1).replace(/index\.html$/, '').replace(/\\/g, '/');
+  const raw = readFileSync(f, 'utf8');
+  const scripts = inlineScripts(raw);
+  inlineCount += scripts.length;
+  const withCsp = injectMeta(raw, pagePolicy({ scripts, ads: adsEnabled, supabaseUrl }));
+  if (withCsp === null) errors.push(`${route}: sin <meta charset>; no se ha podido insertar la CSP`);
+  else if (withCsp !== raw) writeFileSync(f, withCsp);
+  const s = withCsp ?? raw;
   const prototype = /data-prototype="true"/.test(s);
   const noindex = !prototype && /<meta name="robots" content="noindex/.test(s);
   const title = s.match(/<title>([^<]*)<\/title>/)?.[1];
@@ -58,6 +68,23 @@ writeFileSync(join(DIST, 'sitemap.xml'), xml);
 if (adsEnabled) writeFileSync(join(DIST, 'ads.txt'), `google.com, ${adsClient.replace('ca-', '')}, DIRECT, f08c47fec0942fa0\n`);
 else if (existsSync(join(DIST, 'ads.txt'))) errors.push('ads.txt presente sin configuración de AdSense');
 
+// security.txt (RFC 9116): el contacto sale de SECURITY_CONTACT (mailto: o https:), nunca se inventa.
+const secTxt = join(DIST, '.well-known', 'security.txt');
+if (!existsSync(secTxt)) errors.push('Falta /.well-known/security.txt');
+else {
+  const contact = (process.env.SECURITY_CONTACT || '').trim();
+  const txt = readFileSync(secTxt, 'utf8');
+  if (/^(mailto:[^\s@]+@[^\s@]+\.[^\s@]+|https:\/\/\S+)$/.test(contact)) writeFileSync(secTxt, txt.replace('PENDIENTE-SECURITY-CONTACT', contact));
+  else {
+    if (contact) errors.push('SECURITY_CONTACT debe empezar por mailto: o https://');
+    warnings.push('security.txt sin contacto: define SECURITY_CONTACT (mailto:… o https://…) en Vercel.');
+  }
+  const exp = txt.match(/^Expires: (\S+)/m)?.[1];
+  if (!exp || Date.parse(exp) < Date.now()) errors.push('security.txt caducado: actualiza «Expires» en public/.well-known/security.txt');
+  else if (Date.parse(exp) - Date.now() < 60 * 86400000) warnings.push('security.txt caduca en menos de 60 días: renueva «Expires».');
+}
+
+console.log(`CSP estricta insertada en ${html.length} páginas (${inlineCount} scripts en línea con huella).`);
 console.log(`Comprobadas ${html.length} páginas; ${urls.length} indexables en sitemap.xml${adsEnabled ? '; ads.txt generado' : '; publicidad desactivada (sin ads.txt)'}.`);
 if (html.some((f) => /data-prototype="true"/.test(readFileSync(f, 'utf8')))) warnings.push('Modo prototipo: todas las páginas llevan noindex y robots.txt bloquea el rastreo (PUBLIC_INDEXABLE=true para publicar).');
 if (site.includes('umotion-academy.example')) warnings.push('SITE_URL no definida: canonical y sitemap usan https://umotion-academy.example');

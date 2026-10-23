@@ -1,37 +1,95 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
 import OwnerData from '../../components/OwnerData.astro';
-import { adsActive, AUTHOR, AI_TUTOR, ACCOUNTS, PUSH } from '../../config/site';
+import { adsActive, AUTHOR, AI_TUTOR, ACCOUNTS, PUSH, LEGAL, OWNER } from '../../config/site';
+const mail = LEGAL.mailProvider || 'Supabase (servicio de correo de su plataforma de autenticación)';
+const fnRegion = LEGAL.functionsRegion ? `en la región ${LEGAL.functionsRegion}` : 'por defecto en EE. UU.';
+const contact = OWNER.email ? OWNER.email : 'el correo del responsable que figura arriba';
 ---
-<LegalPage title="Política de privacidad" description="Qué datos se tratan en este sitio, con qué finalidad y cómo ejercer tus derechos. El progreso y el test se guardan solo en tu dispositivo." updated="2026-10-15" legal>
-  <h2>Responsable</h2>
+<LegalPage title="Política de privacidad" description="Qué datos se tratan en este sitio, con qué finalidad y base legal, quién los recibe, cuánto tiempo se guardan y cómo ejercer tus derechos." updated={LEGAL.updated} legal>
+  <h2>1. Responsable</h2>
   <OwnerData />
-  <h2>Resumen</h2>
+  <p>Si tienes cualquier duda sobre tus datos, escribe a {contact}. No hay delegado de protección de datos porque la actividad no lo exige (art. 37 RGPD y art. 34 LOPDGDD). [Pendiente de confirmar en la revisión jurídica.]</p>
+
+  <h2>2. Resumen</h2>
   <ul>
     <li>No hace falta registrarse. {ACCOUNTS.enabled ? 'Puedes crear una cuenta opcional para guardar tu progreso en la nube.' : 'Las cuentas opcionales aún no están activas.'}</li>
-    <li>Tu progreso, marcadores, repasos, notas y (si lo pides) las respuestas del test se guardan <strong>solo en tu navegador</strong> (almacenamiento local), no en nuestros servidores. Puedes verlos, exportarlos y borrarlos en <a href="/es/progreso/">Mi progreso</a>.</li>
-    <li>Las respuestas del test, tu situación financiera o tus objetivos <strong>nunca</strong> se envían a sistemas publicitarios, de analítica ni a URL de seguimiento.</li>
-    <li>{adsActive ? 'Este sitio muestra publicidad de Google AdSense. Google y sus socios pueden tratar datos (por ejemplo, identificadores de cookies y dirección IP) según tus elecciones en el mensaje de consentimiento.' : 'Actualmente el sitio no carga publicidad. Solo usamos estadísticas de uso sin cookies (ver el apartado 4 bis).'}</li>
+    <li>Sin cuenta, tu progreso, tus notas y lo que escribes en las herramientas se guardan <strong>solo en tu navegador</strong>. Puedes verlo, exportarlo y borrarlo en <a href="/es/progreso/">Mi progreso</a>.</li>
+    <li>Nunca enviamos tus respuestas del test, tu plan ni tus notas a sistemas publicitarios, de analítica ni a URL de seguimiento. No vendemos datos.</li>
+    <li>{adsActive ? 'Este sitio muestra publicidad de Google AdSense. Google solo usa cookies o identificadores no necesarios si lo aceptas en el mensaje de consentimiento.' : 'Hoy el sitio no carga publicidad. Solo medimos visitas con estadísticas sin cookies (apartado 3.2).'}</li>
+    <li>No tomamos decisiones automatizadas con efectos jurídicos sobre ti. El motor que te recomienda qué estudiar funciona en tu navegador y solo ordena sesiones.</li>
   </ul>
-  <h2>Tratamientos</h2>
-  <h3>1. Navegación (servidor de alojamiento)</h3>
-  <p>El proveedor de alojamiento puede registrar datos técnicos (dirección IP, fecha, página solicitada) para prestar el servicio y por seguridad. [Pendiente: identificar el proveedor, la ubicación de los servidores, el plazo de conservación y la base jurídica (interés legítimo) una vez elegido el alojamiento.]</p>
-  <h3>2. Contacto</h3>
-  <p>Si nos escribes, trataremos tu nombre, correo y mensaje para responderte (base jurídica: tu consentimiento o la aplicación de medidas a petición tuya). Los conservaremos el tiempo necesario para atender la consulta. [Pendiente de revisión.]</p>
-  <h3>3. Publicidad (solo si se activa)</h3>
-  <p>Si se activa Google AdSense, se informará aquí de los proveedores, finalidades y bases jurídicas, y se pedirá tu consentimiento mediante una plataforma de gestión del consentimiento certificada por Google antes de usar cookies o identificadores no necesarios. Podrás retirarlo en cualquier momento desde «Configurar privacidad» en el pie de página.</p>
-  <h3>4. Personalización y tutor</h3>
-  <p>La personalización (tu perfil, el diagnóstico y la estimación de lo que dominas) se calcula y se guarda solo en tu navegador. {AI_TUTOR.enabled
-    ? `Si usas el tutor con inteligencia artificial, el texto que escribes y un resumen de tu nivel (sin nombre, correo ni datos financieros) se envían a nuestro servidor y a ${AI_TUTOR.provider} para generar la respuesta. No guardamos las conversaciones. Te pedimos que no incluyas datos personales. Lo mismo ocurre con el botón «Opinión con IA» del evaluador de peticiones de las formaciones Claude y ChatGPT: solo cuando lo pulsas, se envía la petición que has escrito a Anthropic (Claude) para corregirla. [Pendiente de revisión: base jurídica, encargado del tratamiento y transferencias internacionales.]`
-    : 'Hoy el tutor funciona en modo guiado dentro de tu navegador y no envía nada a terceros. El evaluador de peticiones de la formación Claude también funciona solo en tu navegador. Si se activa la inteligencia artificial, se informará aquí antes de usarla.'}</p>
-  <h3>4 bis. Estadísticas de uso</h3>
-  <p>Usamos Vercel Web Analytics para saber cuántas personas visitan cada página y cuántas sesiones se completan, y así mejorar la academia. No usa cookies ni identificadores persistentes, no permite identificarte y no recoge lo que escribes: solo enviamos la ruta de la página (sin búsquedas ni parámetros) y, al terminar una sesión, el módulo y el número de aciertos. Base jurídica: interés legítimo en medir y mejorar el servicio. [Pendiente de revisión.]</p>
-  <h3>5. Cuenta opcional</h3>
-  <p>Si creas una cuenta, tratamos tu correo electrónico (para enviarte el enlace de acceso) y tu progreso en la academia (sesiones, repasos, racha, plan, exámenes y notas), para guardarlo y sincronizarlo entre tus dispositivos. Base jurídica: tu consentimiento y la prestación del servicio que solicitas. Se conservan mientras tengas la cuenta; puedes borrarla en cualquier momento desde «Mi cuenta», lo que elimina la cuenta y el progreso guardado en la nube. Proveedor: Supabase (servidores en la UE). [Pendiente de revisión: contrato de encargado del tratamiento y transferencias internacionales.]</p>
-  <h3>6. Recordatorio diario</h3>
-  <p>Si activas las notificaciones, guardamos la dirección técnica que te asigna tu navegador para enviarte avisos (la suscripción), el último día que estudiaste y tu racha, solo para decidir si recordarte a las {PUSH.hour}. Base jurídica: tu consentimiento, que das al aceptar el permiso del navegador y puedes retirar desactivándolas en «Mi cuenta» o en los ajustes del navegador. El aviso lo entrega el servicio de notificaciones de tu navegador (Google, Apple o Mozilla). El recordatorio de calendario no envía ningún dato: es un archivo que guardas tú.</p>
-  <h2>Tus derechos</h2>
-  <p>Puedes ejercer los derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo al correo del responsable. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es). Como el progreso se guarda en tu dispositivo, puedes borrarlo directamente en <a href="/es/progreso/">Mi progreso</a>.</p>
+
+  <h2>3. Qué datos tratamos, para qué y con qué base legal</h2>
+
+  <h3>3.1. Navegación y seguridad</h3>
+  <p><strong>Datos:</strong> dirección IP, fecha y hora, página pedida, navegador y datos técnicos de la conexión. <strong>Para qué:</strong> servir la web, evitar abusos (por ejemplo, limitar las peticiones repetidas a las funciones del servidor) y resolver errores. <strong>Base legal:</strong> interés legítimo en prestar un servicio seguro (art. 6.1.f RGPD). <strong>Plazo:</strong> los registros técnicos del alojamiento se borran de forma automática según el plan contratado, normalmente en días o pocas semanas. El contador de peticiones por IP vive en la memoria del servidor y se pierde en, como mucho, una hora. [Pendiente: confirmar el plazo exacto del plan de Vercel.]</p>
+
+  <h3>3.2. Estadísticas de uso</h3>
+  <p>Usamos Vercel Web Analytics para saber cuántas personas visitan cada página y cuántas sesiones se completan. No usa cookies ni guarda nada en tu dispositivo. Solo enviamos la ruta de la página (sin búsquedas ni parámetros) y eventos anónimos, como «sesión completada» (módulo y aciertos) o «interés por un nivel». Vercel calcula un identificador temporal a partir de la petición que se descarta en 24 horas, de modo que no se te puede seguir de un día a otro. <strong>Base legal:</strong> interés legítimo en medir y mejorar el servicio (art. 6.1.f RGPD). Puedes oponerte escribiéndonos o bloqueando las estadísticas con tu navegador. [Pendiente de revisión jurídica: encaje con el art. 22.2 LSSI.]</p>
+
+  <h3>3.3. Contacto</h3>
+  <p>Si nos escribes, tratamos tu nombre, tu correo y tu mensaje para responderte. <strong>Base legal:</strong> tu solicitud (art. 6.1.b RGPD) o, si ejerces un derecho, el cumplimiento de una obligación legal (art. 6.1.c). <strong>Plazo:</strong> el necesario para atender la consulta y, después, como máximo un año para poder demostrar que respondimos. Las solicitudes de derechos se guardan bloqueadas mientras puedan exigirse responsabilidades (art. 32 LOPDGDD).</p>
+
+  <h3>3.4. Cuenta opcional</h3>
+  <p>{ACCOUNTS.enabled ? 'Si creas una cuenta' : 'Cuando se activen las cuentas, si creas una'}, tratamos:</p>
+  <ul>
+    <li>tu <strong>correo electrónico</strong>, para enviarte el enlace de acceso (sin contraseñas) e identificar tu cuenta;</li>
+    <li>tu <strong>progreso</strong> en las formaciones: sesiones, repasos, racha, exámenes, insignias, marcas de interés, notas de clase, prácticas de peticiones y el nombre que pongas en tu insignia;</li>
+    <li>si los has guardado, tus <strong>respuestas del test y tu plan en una página</strong>. Pueden incluir datos sobre tu situación (por ejemplo, si tienes colchón o deudas caras, o cuánto quieres aportar). Son opcionales: si no quieres que se guarden en la nube, no los guardes o bórralos en <a href="/es/progreso/">Mi progreso</a>.</li>
+  </ul>
+  <p><strong>Para qué:</strong> guardar tu progreso y sincronizarlo entre tus dispositivos. <strong>Base legal:</strong> la prestación del servicio que pides al crear la cuenta (art. 6.1.b RGPD). La casilla que marcas al registrarte confirma que has leído esta información. <strong>Plazo:</strong> mientras tengas la cuenta. Puedes borrarla en cualquier momento desde «Mi cuenta»: se eliminan la cuenta, el progreso guardado en la nube y tus avisos. Las copias de seguridad del proveedor se sobrescriben en su ciclo normal. [Pendiente: confirmar y escribir aquí el plazo de las copias del plan de Supabase contratado.] Si una cuenta no se usa durante 24 meses, podremos borrarla tras avisarte por correo. [Pendiente de decisión del titular.]</p>
+  <p><strong>Edad mínima:</strong> para crear una cuenta debes tener al menos {LEGAL.minAge} años (art. 7 LOPDGDD). Si tienes menos, puedes usar la academia sin cuenta, o crearla con el permiso de tu madre, padre o tutor. Si sabemos que una cuenta es de una persona menor de {LEGAL.minAge} años sin ese permiso, la borraremos.</p>
+
+  <h3>3.5. Recordatorio diario</h3>
+  <p>Si activas las notificaciones, guardamos la suscripción técnica que te asigna tu navegador, el último día que estudiaste, tu racha y el último día que te avisamos, solo para decidir si recordarte a las {PUSH.hour}. <strong>Base legal:</strong> tu consentimiento (art. 6.1.a RGPD), que das al aceptar el permiso del navegador. Puedes retirarlo cuando quieras desactivándolas en «Mi cuenta» o en los ajustes del navegador; la suscripción se borra entonces o cuando tu navegador nos dice que ya no es válida. El aviso lo entrega el servicio de notificaciones de tu navegador (Google, Apple, Mozilla o Microsoft). El recordatorio de calendario no envía ningún dato: es un archivo que guardas tú.</p>
+
+  <h3>3.6. Tutor y corrector con inteligencia artificial</h3>
+  <p>La personalización (tu perfil, el diagnóstico y la estimación de lo que dominas) se calcula y se guarda en tu navegador.</p>
+  {AI_TUTOR.enabled
+    ? <p>Si usas el tutor con IA, o pulsas «Opinión con IA» en el evaluador de peticiones de las formaciones Claude y ChatGPT, enviamos a nuestro servidor y de ahí a {AI_TUTOR.provider} el texto que escribes, los últimos turnos de la conversación y un resumen de tu nivel calculado en tu navegador (sin nombre, correo ni datos financieros). <strong>Para qué:</strong> generar la respuesta. <strong>Base legal:</strong> tu solicitud al usar la función (art. 6.1.b RGPD). <strong>Plazo:</strong> nosotros no guardamos las conversaciones. Anthropic, como encargado, borra las entradas y respuestas de la API en un plazo de 30 días, salvo que su sistema de seguridad detecte un uso prohibido, en cuyo caso puede conservarlas más tiempo; no las usa para entrenar sus modelos. <strong>No escribas datos personales</strong> (tuyos ni de otras personas) en el tutor ni en el corrector.</p>
+    : <p>Hoy el tutor funciona en modo guiado dentro de tu navegador y no envía nada a terceros. El evaluador de peticiones también funciona solo en tu navegador. Si se activa la inteligencia artificial, esta política se actualizará antes de usarla.</p>}
+
+  <h3>3.7. Publicidad</h3>
+  {adsActive
+    ? <p>Mostramos anuncios de Google AdSense en algunas páginas. Google y sus socios pueden usar cookies e identificadores (por ejemplo, para limitar cuántas veces ves un anuncio, medirlo o personalizarlo) <strong>solo si lo aceptas</strong> en el mensaje de consentimiento, que te deja aceptar, rechazar o elegir por finalidades con la misma facilidad. Si rechazas, Google puede mostrar anuncios limitados sin esas cookies. Para la publicidad, Google actúa como responsable independiente: consulta <a href="https://business.safety.google/privacy/" rel="noopener" target="_blank">cómo usa Google los datos</a>. <strong>Base legal:</strong> tu consentimiento (art. 6.1.a RGPD y art. 22.2 LSSI). Puedes retirarlo en cualquier momento desde «Configurar privacidad» en el pie de página.</p>
+    : <p>Hoy no hay publicidad. Si se activa Google AdSense, esta política se actualizará antes y se pedirá tu consentimiento con una plataforma de gestión del consentimiento certificada por Google antes de usar cookies o identificadores no necesarios.</p>}
+
+  <h2>4. Quién recibe los datos</h2>
+  <p>No cedemos datos a terceros salvo obligación legal. Usamos proveedores que tratan datos por cuenta nuestra (encargados del tratamiento, art. 28 RGPD), con contrato:</p>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Tabla de proveedores (desplazable)"><table>
+    <thead><tr><th>Proveedor</th><th>Para qué</th><th>Dónde</th><th>Garantía si sale de la UE</th></tr></thead>
+    <tbody>
+      <tr><td>{LEGAL.hosting}</td><td>Alojamiento, funciones del servidor, registros técnicos y estadísticas</td><td>Red mundial; funciones {fnRegion}</td><td>Marco de Privacidad de Datos UE-EE. UU. y cláusulas contractuales tipo</td></tr>
+      <tr><td>Supabase Inc.</td><td>{ACCOUNTS.enabled ? 'Cuenta, progreso en la nube y avisos' : 'Cuenta y avisos (cuando se activen)'}</td><td>Base de datos en la UE (Fráncfort); soporte con acceso desde fuera de la UE</td><td>Cláusulas contractuales tipo</td></tr>
+      <tr><td>{mail}</td><td>Enviar el correo del enlace de acceso</td><td>Según el proveedor</td><td>Cláusulas contractuales tipo o Marco de Privacidad de Datos</td></tr>
+      <tr><td>Anthropic Ireland, Limited (Claude)</td><td>{AI_TUTOR.enabled ? 'Tutor y corrector con IA' : 'Tutor y corrector con IA (desactivados hoy)'}</td><td>Procesa en EE. UU.</td><td>Cláusulas contractuales tipo del contrato de tratamiento</td></tr>
+      <tr><td>Servicio de notificaciones de tu navegador</td><td>Entregar el recordatorio, si lo activas</td><td>Según tu navegador</td><td>Las de tu navegador</td></tr>
+      {adsActive && <tr><td>Google Ireland Limited</td><td>Publicidad y mensaje de consentimiento</td><td>UE y EE. UU.</td><td>Marco de Privacidad de Datos y cláusulas contractuales tipo</td></tr>}
+    </tbody>
+  </table></div>
+  <p>Las <strong>cláusulas contractuales tipo</strong> son un contrato aprobado por la Comisión Europea que obliga al proveedor a proteger tus datos como en la UE. El <strong>Marco de Privacidad de Datos UE-EE. UU.</strong> es una decisión de la Comisión que reconoce que las empresas estadounidenses adheridas ofrecen una protección adecuada. [Pendiente de revisión jurídica y de firmar o aceptar los contratos de encargado de cada proveedor.]</p>
+
+  <h2>5. Tus derechos</h2>
+  <p>Puedes pedir en cualquier momento:</p>
+  <ul>
+    <li><strong>acceso</strong> a tus datos y una copia;</li>
+    <li><strong>rectificación</strong> de los que sean inexactos;</li>
+    <li><strong>supresión</strong>;</li>
+    <li><strong>oposición</strong> a los tratamientos basados en interés legítimo;</li>
+    <li><strong>limitación</strong> del tratamiento;</li>
+    <li><strong>portabilidad</strong> de los datos que nos diste;</li>
+    <li>y <strong>retirar tu consentimiento</strong>, sin que eso afecte a lo hecho antes.</li>
+  </ul>
+  <p>Escribe a {contact} indicando qué derecho ejerces. Si no podemos saber que la cuenta es tuya, te pediremos que lo confirmes desde el correo de la cuenta. Respondemos en un mes como máximo. Muchas cosas las puedes hacer tú: exportar o borrar el progreso en <a href="/es/progreso/">Mi progreso</a> y borrar la cuenta en <a href="/es/cuenta/">Mi cuenta</a>.</p>
+  <p>Si crees que no hemos respetado tus derechos, puedes reclamar ante la <a href={LEGAL.authority.url} rel="noopener" target="_blank">{LEGAL.authority.name}</a>.</p>
+
+  <h2>6. Seguridad</h2>
+  <p>Aplicamos medidas proporcionadas: conexión cifrada (HTTPS), acceso sin contraseñas, permisos por fila en la base de datos para que cada persona solo vea lo suyo, claves secretas fuera del código y acceso restringido a los paneles de los proveedores. [Pendiente: confirmar la verificación en dos pasos en todos los paneles, ver docs/SEGURIDAD.md.] Si hubiera una brecha de seguridad con riesgo para ti, la comunicaríamos a la AEPD en 72 horas y, si el riesgo es alto, también a ti.</p>
+
+  <h2>7. Cambios</h2>
+  <p>Si cambiamos esta política, actualizaremos la fecha de arriba. Si el cambio afecta a cómo usamos tus datos, te lo diremos de forma visible antes de aplicarlo.</p>
+
   <p class="author-fine">Autor y responsable del contenido: {AUTHOR.name} · {AUTHOR.email}</p>
 </LegalPage>
 <style>.author-fine { margin-top: 4rem; font-size: 0.68rem; line-height: 1.4; color: var(--ink-3); font-family: var(--sans); }</style>

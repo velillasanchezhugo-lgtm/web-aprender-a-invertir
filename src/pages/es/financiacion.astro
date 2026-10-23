@@ -1,8 +1,8 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
-import { adsActive, AFFILIATES, RECOMMENDED_BROKER } from '../../config/site';
+import { adsActive, AFFILIATES, RECOMMENDED_BROKER, LEGAL } from '../../config/site';
 ---
-<LegalPage title="Financiación y conflictos de interés" description="Cómo se financia umotion Academy, qué reglas aplicamos a la publicidad y qué haríamos si algún día hubiera afiliación." updated="2026-10-15">
+<LegalPage title="Financiación y conflictos de interés" description="Cómo se financia umotion Academy, qué reglas aplicamos a la publicidad y qué haríamos si algún día hubiera afiliación." updated={LEGAL.updated}>
   <h2>Situación actual</h2>
   <ul>
     <li>Publicidad: {adsActive ? 'activa (Google AdSense).' : 'desactivada. El sitio está preparado para mostrar anuncios de Google AdSense en el futuro.'}</li>
@@ -16,11 +16,15 @@ import { adsActive, AFFILIATES, RECOMMENDED_BROKER } from '../../config/site';
     <li>No hay anuncios dentro de ejercicios, cuestionarios, resultados del test, formularios de herramientas ni junto a botones de navegación de las lecciones, para evitar clics accidentales y que parezcan consejos.</li>
     <li>No hay anuncios en páginas con poco contenido (búsqueda, progreso, legales) ni en formatos que impidan completar una lección.</li>
     <li>Nunca pedimos que se haga clic en anuncios ni compramos tráfico.</li>
-    <li>Los anunciantes no influyen en el contenido. La CNMV prohíbe la publicidad de CFD dirigida a minoristas en España; si apareciera algún anuncio de ese tipo, agradeceremos que nos avises para bloquearlo.</li>
+    <li>Los anunciantes no influyen en el contenido. Los anuncios los elige Google, no nosotros, y son responsabilidad del anunciante.</li>
+    <li>Al activar AdSense, bloquearemos las categorías de apuestas, préstamos rápidos, criptoactivos y trading apalancado. La CNMV prohíbe la publicidad de CFD dirigida a minoristas en España y exige avisos de riesgo en la de criptoactivos; si apareciera algún anuncio de ese tipo, avísanos para bloquearlo. [Pendiente: configurar el bloqueo de categorías en el panel de AdSense.]</li>
+    <li>La publicidad personalizada solo se usa si la aceptas (ver <a href="/es/cookies/">cookies</a>).</li>
   </ul>
+  <h2>Planes de pago</h2>
+  <p>Los niveles 2 y 3 serán de pago cuando abran. Hoy no se cobra nada. El dinero de los planes, como el de la publicidad, no compra contenido ni recomendaciones.</p>
   <h2>Si algún día hubiera afiliación</h2>
   <ul>
-    <li>Los enlaces de afiliación se marcarían de forma visible.</li>
+    <li>Los enlaces de afiliación se marcarían de forma visible, con la palabra «Publicidad» o «Colaboración pagada» junto al enlace, no escondida al pie.</li>
     <li>Publicaríamos aquí qué entidades nos pagan y cómo.</li>
     <li>La remuneración no decidiría la inclusión, el orden ni las conclusiones del comparador.</li>
     <li>No habría afiliación con proveedores de CFD ni de productos apalancados.</li>

@@ -39,6 +39,9 @@ La página llama a la función `api/tutor.js` (Vercel), que llama a la API de Cl
 | `ANTHROPIC_API_KEY` | Clave de la API de Anthropic (nunca en el repositorio) |
 | `AI_TUTOR_MODEL` | Opcional. Por defecto `claude-opus-5-5` |
 | `AI_TUTOR_MAX_PER_HOUR` | Opcional. Preguntas por IP y hora en cada instancia (por defecto 30) |
+| `AI_TUTOR_MAX_PER_DAY` | Opcional. Tope de preguntas al día en cada instancia, para todas las IP juntas (por defecto 1000). Al llegar, la página pasa al modo guiado |
+| `AI_COACH_MAX_PER_DAY` | Opcional. Lo mismo para el corrector de peticiones (por defecto 1000) |
+| `PUBLIC_TURNSTILE_SITE_KEY` y `TURNSTILE_SECRET_KEY` | Opcionales, **las dos juntas**. Activan Cloudflare Turnstile (ver «Protección» abajo) |
 
 Si la función no está activa o falla, la página pasa sola al modo guiado.
 
@@ -49,6 +52,21 @@ Si la función no está activa o falla, la página pasa sola al modo guiado.
 **Configuración de la llamada**: esfuerzo bajo (`effort: low`, respuestas de chat cortas), prompt de sistema cacheado (`cache_control`) y respaldo automático del servidor si el modelo rechaza una petición (`fallbacks: "default"`).
 
 **Coste**: depende del modelo y del uso. Con el modelo por defecto (`claude-opus-5-5`: 4 $ por millón de tokens de entrada y 20 $ por millón de salida, con la parte cacheada del prompt mucho más barata), una respuesta típica (unos 3.000 tokens de entrada, la mayoría cacheados, y 300 de salida) cuesta del orden de un céntimo. Para un sitio gratuito con publicidad conviene medir el uso real y valorar un modelo más barato con `AI_TUTOR_MODEL` (por ejemplo `claude-haiku-5-5`), fijar un límite de gasto en la consola de Anthropic y un límite de peticiones en el borde (Vercel Firewall o similar), porque el límite por IP de la función es solo orientativo.
+
+### Protección de las funciones de IA (`api/_guard.js`, pruebas en `tests/guard.test.ts`)
+
+Cada llamada a `api/tutor.js` y `api/prompt-coach.js` pasa estos filtros, en este orden:
+
+1. **Solo desde la propia web**: se rechaza si `Origin` es de otro dominio o `Sec-Fetch-Site` es `cross-site` o `same-site`.
+2. **Límite por IP** (la IP la pone Vercel, no el cliente): ráfaga de 5 por minuto (4 en el corrector) y el límite por hora de arriba.
+3. **Tamaño**: cuerpo JSON de 40 KB como máximo (24 KB en el corrector); después, los límites de cada campo.
+4. **Anti-robots sin rastreo**: campo trampa oculto y tiempo mínimo de 1,2 s desde que se abre la página (`src/scripts/bot-guard.ts`). Sin ellos, la petición no llega a la IA.
+5. **Cloudflare Turnstile (opcional)**: con `PUBLIC_TURNSTILE_SITE_KEY` (en la compilación) y `TURNSTILE_SECRET_KEY` (en el servidor), el navegador pide un token y el servidor lo comprueba antes de llamar a la IA. Es invisible salvo que Cloudflare dude. Si solo se pone la clave secreta, el tutor deja de funcionar: hay que poner las dos. La Content-Security-Policy debe permitir `https://challenges.cloudflare.com` en `script-src` y `frame-src`.
+6. **Tope diario de gasto** por instancia (`AI_TUTOR_MAX_PER_DAY`, `AI_COACH_MAX_PER_DAY`).
+
+Los límites 2 y 6 son por instancia de la función: orientativos. El freno real es la regla de límite de peticiones del cortafuegos de Vercel para `/api/*` y el **límite de gasto mensual en la consola de Anthropic** (hazlo antes de activar).
+
+**Inyección de instrucciones**: el texto del alumno, el historial, el contexto y los criterios llegan del navegador y se tratan como datos (etiquetas `<alumno>`, `<sesion>`, `<noticia>`, `<peticion_del_alumno>`). Los prompts de sistema dicen que se ignoren las órdenes que vengan dentro y que no se revelen las instrucciones. El historial se puede manipular desde el navegador; el efecto se limita a la propia conversación de quien lo hace, porque no hay herramientas, datos de otros ni acciones. La respuesta se muestra siempre escapada: el tutor solo convierte negritas, listas y enlaces que empiezan por `/es/`; el corrector, solo texto.
 
 ### Antes de activarlo en producción
 

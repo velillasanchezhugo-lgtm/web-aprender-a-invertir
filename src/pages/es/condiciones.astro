@@ -1,13 +1,54 @@
 ---
 import LegalPage from '../../components/LegalPage.astro';
+import { LEGAL, PRICING } from '../../config/site';
 ---
-<LegalPage title="Condiciones de uso" description="Condiciones para usar el contenido y las herramientas educativas de umotion Academy." updated="2026-10-15" legal>
+<LegalPage title="Condiciones de uso" description="Condiciones para usar el contenido, las herramientas, la cuenta opcional y, cuando existan, los planes de pago de umotion Academy." updated={LEGAL.updated} legal>
+  <h2>1. Uso educativo</h2>
   <ol>
-    <li><strong>Uso educativo.</strong> El contenido y las herramientas son educativos y generales. No constituyen asesoramiento financiero, fiscal ni jurídico, ni una recomendación personalizada de compra o venta.</li>
+    <li><strong>Formación general.</strong> El contenido y las herramientas son educativos y generales. No tienen en cuenta tu situación personal. No son asesoramiento financiero, fiscal ni jurídico, ni una recomendación personalizada de compra o venta.</li>
     <li><strong>Sin servicios de inversión.</strong> No ejecutamos operaciones, no custodiamos dinero ni valores y no comercializamos productos.</li>
     <li><strong>Simulaciones.</strong> Las herramientas usan supuestos que eliges tú o escenarios ficticios. No son previsiones ni garantizan resultados.</li>
     <li><strong>Exactitud.</strong> Revisamos y fechamos el contenido, pero las tarifas, la normativa y la fiscalidad cambian. Comprueba siempre la información vigente en la fuente oficial.</li>
-    <li><strong>Uso aceptable.</strong> No está permitido usar el sitio para fines ilícitos ni intentar alterar su funcionamiento.</li>
-    <li><strong>Cambios.</strong> Estas condiciones pueden actualizarse; la fecha de la última versión aparece arriba.</li>
   </ol>
+
+  <h2>2. Acceso y cuenta</h2>
+  <ol>
+    <li>Puedes hacer las clases gratis y <strong>sin registrarte</strong>. La cuenta es opcional y solo sirve para guardar tu progreso en la nube.</li>
+    <li>Para crear una cuenta debes tener al menos {LEGAL.minAge} años o el permiso de tu madre, padre o tutor.</li>
+    <li>Tu acceso es personal: no compartas el enlace de entrada. Puedes borrar la cuenta en cualquier momento desde «Mi cuenta».</li>
+  </ol>
+
+  <h2>3. Tutor y corrector con inteligencia artificial</h2>
+  <ol>
+    <li>Cuando están activos, el tutor y el corrector de peticiones responden con un sistema de inteligencia artificial (Claude, de Anthropic). <strong>Hablas con una máquina, no con una persona.</strong></li>
+    <li>Sus respuestas se generan de forma automática, pueden equivocarse y no son asesoramiento. Contrasta las cifras fiscales o legales en la fuente oficial (AEAT, CNMV, Banco de España).</li>
+    <li>No escribas datos personales tuyos ni de otras personas. No los uses para fines ilícitos ni para intentar saltarte sus límites.</li>
+  </ol>
+
+  <h2>4. Uso aceptable</h2>
+  <ol>
+    <li>No uses el sitio para fines ilícitos ni intentes alterar su funcionamiento, saturar sus servicios o acceder a datos de otras personas.</li>
+    <li>No copies el contenido de forma masiva ni con programas automáticos, ni lo uses para entrenar sistemas de IA sin permiso escrito (ver el <a href="/es/aviso-legal/">aviso legal</a>).</li>
+    <li>Podemos suspender el acceso a funciones con servidor (cuenta, avisos, IA) si se usan de forma abusiva. Te lo explicaremos si nos es posible.</li>
+  </ol>
+
+  <h2>5. Planes de pago (cuando existan)</h2>
+  {PRICING.paymentsEnabled
+    ? <p>Las condiciones de contratación de los niveles de pago se muestran antes de pagar y se aplican junto con estas.</p>
+    : <p>Hoy no se cobra nada: los niveles 2 y 3 muestran su temario y una muestra gratuita. Cuando se abran, se aplicará lo siguiente, que se completará antes de cobrar:</p>}
+  <ol>
+    <li><strong>Información previa.</strong> Antes de pagar verás qué incluye el plan, su precio final con impuestos, la duración, cómo se renueva y cómo cancelarlo, los requisitos técnicos y quién te lo vende. El botón de pago dirá claramente que implica una obligación de pago.</li>
+    <li><strong>Desistimiento de 14 días.</strong> Como consumidor, puedes desistir sin dar motivos en los 14 días naturales siguientes a la contratación (art. 102 TRLGDCU), con el mismo medio que usaste para contratar o con un botón de desistimiento visible en tu cuenta.</li>
+    <li><strong>Contenido digital.</strong> Si pides empezar a usar el contenido de pago antes de que acaben esos 14 días, te pediremos tu consentimiento expreso y que confirmes que lo sabes. Si después desistes, la ley permite descontar la parte ya disfrutada o, en contenido digital que se te entrega de inmediato, perder el derecho de desistimiento (arts. 103 y 108 TRLGDCU). Te lo explicaremos en ese momento.</li>
+    <li><strong>Prueba gratuita y renovación.</strong> Si hay prueba gratuita, te avisaremos antes de que termine y podrás cancelar sin coste. Las suscripciones se podrán cancelar en cualquier momento desde tu cuenta, con efecto al final del periodo pagado.</li>
+    <li><strong>Conformidad.</strong> Si el contenido no funciona como se describe, tienes derecho a que lo corrijamos, a una rebaja o a resolver el contrato (arts. 114 y siguientes TRLGDCU).</li>
+    <li><strong>Reclamaciones.</strong> Puedes reclamar por escrito al correo de contacto y, si no quedas satisfecho, ante los servicios de consumo de tu comunidad autónoma o mediante un sistema de arbitraje de consumo.</li>
+  </ol>
+  <p>[Pendiente de revisión jurídica antes de activar los pagos: ver docs/LEGAL.md.]</p>
+
+  <h2>6. Cambios</h2>
+  <p>Estas condiciones pueden actualizarse. La fecha de la última versión aparece arriba. Si un cambio afecta a un plan de pago que ya tienes, te avisaremos antes y podrás cancelarlo.</p>
+
+  <h2>7. Ley aplicable</h2>
+  <p>Estas condiciones se rigen por la legislación española. Si eres consumidor, puedes acudir a los tribunales de tu domicilio.</p>
 </LegalPage>

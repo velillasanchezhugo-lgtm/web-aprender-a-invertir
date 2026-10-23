@@ -11,8 +11,10 @@ export function adminClient() {
 export async function userFromRequest(request) {
   const h = request.headers.get('authorization') ?? '';
   const token = h.startsWith('Bearer ') ? h.slice(7) : '';
-  if (!token || !serverConfigured()) return null;
-  const { data, error } = await adminClient().auth.getUser(token);
-  return error ? null : data.user;
+  // Un JWT de Supabase tiene tres partes en base64url; lo demás se descarta sin llamar a Supabase.
+  if (!token || token.length > 4096 || !/^[\w-]+\.[\w-]+\.[\w-]+$/.test(token) || !serverConfigured()) return null;
+  // getUser valida el token en Supabase (firma, caducidad y que la sesión siga abierta).
+  const { data, error } = await adminClient().auth.getUser(token).catch(() => ({ data: null, error: true }));
+  return error || !data?.user ? null : data.user;
 }
 export const json = (data, status = 200) => new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' } });

@@ -41,6 +41,24 @@ export const OWNER = {
 export const ownerComplete = Object.values(OWNER).slice(0, 4).every((v) => v.trim() !== '');
 
 /**
+ * Datos legales comunes a las páginas legales. Ver docs/LEGAL.md.
+ * - minAge: edad mínima para crear una cuenta sin permiso de los padres (art. 7 LOPDGDD: 14 años en España).
+ * - updated: fecha de la última revisión de los textos legales (AAAA-MM-DD). Son borradores hasta que los revise un abogado.
+ * - mailProvider: quién envía el correo del enlace mágico. Por defecto, el servicio de Supabase;
+ *   si el titular configura un SMTP propio, escribe aquí su nombre (por ejemplo, el proveedor elegido) para la política de privacidad.
+ * - hosting / functionsRegion: alojamiento de la web y región de las funciones (Vercel). Cámbialo si se fija otra región.
+ */
+export const LEGAL = {
+  minAge: 14,
+  updated: '2026-10-23',
+  mailProvider: '',
+  hosting: 'Vercel Inc. (EE. UU.)',
+  functionsRegion: '',
+  /** Autoridad de control para reclamar. */
+  authority: { name: 'Agencia Española de Protección de Datos (AEPD)', url: 'https://www.aepd.es/' },
+};
+
+/**
  * Publicidad. Desactivada hasta disponer de una cuenta real y de una CMP certificada por Google.
  * - client: identificador "ca-pub-XXXXXXXXXXXXXXXX" de AdSense.
  * - cmp: 'google' usa la mensajería de privacidad de Google (CMP certificada) configurada
