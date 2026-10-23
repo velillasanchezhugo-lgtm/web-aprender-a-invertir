@@ -53,7 +53,7 @@ practice:
     - label: "Describir el estilo"
       any: ["estilo", "colores", "ilustracion", "fotografia", "acuarela", "tonos"]
       hint: "Describe el estilo y los colores: «ilustración sencilla, tonos verdes y crema»."
-  sample: "Crea una imagen cuadrada para Instagram que anuncie mis clases de yoga en un centro cívico de Alicante. Estilo ilustración sencilla, tonos verdes y crema, con una esterilla y plantas junto a una ventana luminosa. El texto debe decir exactamente: «Yoga para principiantes · Martes y jueves, 19:00 · Desde octubre». Sin personas reconocibles ni logotipos de marcas. Deja espacio arriba para el título y revisa que el texto no tenga faltas."
+  sample: "Crea una imagen en formato cuadrado para Instagram que anuncie mis clases de yoga en un centro cívico de Alicante. Estilo ilustración sencilla, tonos verdes y crema, con una esterilla y plantas junto a una ventana luminosa. El texto debe decir exactamente: «Yoga para principiantes · Martes y jueves, 19:00 · Desde octubre». Sin personas reconocibles ni logotipos de marcas. Deja espacio arriba para el título y revisa que el texto no tenga faltas."
 deeper: null
 tool: evaluador-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -85,7 +85,7 @@ Lo que conviene saber:
 3. Corrige con frases como «cambia solo…, deja el resto igual».
 4. Descárgala y revisa los detalles antes de usarla.
 
-> Prueba: «Crea una invitación vertical para el cumpleaños de mi hija, que cumple 6 años. Estilo acuarela, con dinosaurios y globos en tonos pastel. El texto debe decir exactamente: «¡Lucía cumple 6! Sábado 14, a las 17:00». Revisa que el texto no tenga faltas».
+> Prueba: «Crea una invitación vertical para el cumpleaños de mi hija, que cumple 6 años. Estilo acuarela, con dinosaurios y globos en tonos pastel. El texto debe decir exactamente: “¡Lucía cumple 6! Sábado 14, a las 17:00”. Revisa que el texto no tenga faltas».
 
 ## Error frecuente
 

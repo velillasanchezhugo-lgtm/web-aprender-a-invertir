@@ -50,7 +50,7 @@ practice:
     - label: "Decir qué archivos debe usar"
       any: ["archivo", "documento", "he subido", "adjunt"]
       hint: "Di qué archivos del proyecto tiene que consultar: «usa la lista de preferencias que he subido»."
-  sample: "Organizamos entre tres amigas una despedida de soltera en Cádiz para diez personas, un fin de semana de junio. En este proyecto, ayúdanos a planificar actividades, comidas y transporte. Usa los archivos que he subido: la lista de preferencias del grupo y el presupuesto máximo por persona. Responde en listas cortas, con un máximo de tres opciones cada vez. No reserves ni des nada por confirmado: si te falta un dato, pregúntame."
+  sample: "Estamos organizando entre tres amigas una despedida de soltera en Cádiz para diez personas, un fin de semana de junio. En este proyecto, ayúdanos a planificar actividades, comidas y transporte. Usa los archivos que he subido: la lista de preferencias del grupo y el presupuesto máximo por persona. Responde en listas cortas, con un máximo de tres opciones cada vez. No reserves ni des nada por confirmado: si te falta un dato, pregúntame."
 deeper: null
 tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

@@ -50,7 +50,7 @@ practice:
     - label: Huecos en lugar de datos reales
       any: ["[", persona a, trabajador a]
       hint: "Cambia cada dato personal por un hueco entre corchetes, como [NOMBRE] o [EMPRESA]."
-  sample: "Trabajo a jornada completa y no entiendo algunos conceptos de mi nómina. Te copio solo las líneas de devengos y deducciones, sin mi nombre, DNI, número de la Seguridad Social ni cuenta: donde salían, he puesto [NOMBRE], [EMPRESA] y [IBAN]. Explícame cada concepto en una frase sencilla y dime cuáles conviene preguntar a la gestoría. No inventes importes."
+  sample: "Trabajo como dependiente a jornada completa y no entiendo algunos conceptos de mi nómina. Te copio solo las líneas de devengos y deducciones, sin mi nombre, DNI, número de la Seguridad Social ni cuenta: donde salían, he puesto [NOMBRE], [EMPRESA] y [IBAN]. Explícame cada concepto en una frase sencilla y dime cuáles conviene preguntar a la gestoría. No inventes importes."
 deeper: null
 tool: anonimizador
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

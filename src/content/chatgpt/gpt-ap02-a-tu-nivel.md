@@ -1,58 +1,57 @@
 ---
 title: Explicaciones a tu nivel
-description: "Pide a ChatGPT explicaciones ajustadas a lo que ya sabes, con analogías, y comprueba que lo entiendes explicándolo tú con tus palabras."
+description: "Pide a ChatGPT explicaciones ajustadas a lo que ya sabes, con analogías, y comprueba que lo entiendes explicándolo tú."
 level: basico
 track: gpt-aprender
 order: 502
 skills: [gpt-aprender]
 terms: [tecnica-feynman, alucinacion]
-hook: "Te llega una carta del banco que habla del «euríbor más un diferencial» y la explicación que encuentras en internet usa otras tres palabras que tampoco entiendes. ¿Cómo consigues una hecha para ti?"
+hook: "Una carta del banco habla del «euríbor más un diferencial» y lo que lees en internet trae otras tres palabras que tampoco entiendes. ¿Cómo consigues una explicación para ti?"
 takeaway: "Dile a ChatGPT qué sabes ya y pide un ejemplo de tu vida diaria. Luego explícaselo tú: donde te atascas está lo que aún no entiendes."
 scenario:
   kind: operacion
   label: Caso práctico
   title: La nómina de Samira
-  body: "Samira acaba de empezar a trabajar en un almacén de Zaragoza y no entiende su primera nómina. Le pide a ChatGPT que le explique qué es el «líquido a percibir» y la retención como a alguien que nunca ha tenido un trabajo, con un ejemplo de la vida diaria. Después se lo explica ella con sus palabras y ChatGPT le corrige un punto: pensaba que la retención era un dinero que perdía para siempre."
+  body: "Samira empieza en un almacén de Zaragoza y no entiende su primera nómina. Pide a ChatGPT que le explique el «líquido a percibir» y la retención como a alguien que nunca ha trabajado. Luego se lo explica ella y ChatGPT le corrige un punto: creía que la retención era dinero perdido para siempre."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-ap02-q1
-    q: "Andrés lee la explicación de ChatGPT sobre qué es una factura proforma y cree que la entiende. ¿Qué es lo mejor para comprobarlo?"
-    options: ["Leerla otra vez más despacio", "Explicársela a ChatGPT con sus palabras y pedirle que le diga qué ha entendido mal", "Pedir una explicación más larga"]
+    q: "Joaquín pide que le expliquen qué es una factura proforma y la respuesta trae tres palabras que tampoco conoce. ¿Qué hace?"
+    options: ["Abrir otro chat y hacer la misma pregunta", "Seguir en esa conversación: «No sé qué es [PALABRA]. Explícamelo otra vez sin esas palabras y con un ejemplo de una tienda»", "Buscar cada palabra por separado en internet"]
     answer: 1
-    explain: "Explicarlo tú obliga a ordenar las ideas, y los huecos salen enseguida. Releer tienta porque es cómodo y da sensación de dominio, pero no demuestra que puedas usarlo."
+    explain: "En la misma conversación, ChatGPT ve qué no ha funcionado y lo ajusta. Otro chat tienta porque parece empezar limpio, pero sin decir qué sabes saldrá algo parecido."
   - type: choice
     id: gpt-ap02-q2
-    q: "Pilar no entiende qué es la «nube» de su móvil. ¿Qué petición le dará una explicación a su medida?"
-    options: ["«Explícame qué es la nube»", "«Tengo 70 años y uso el móvil para WhatsApp y fotos. Explícame qué es la nube con un ejemplo de la vida diaria, sin palabras técnicas, en cinco frases»", "«Dame la definición técnica de computación en la nube»"]
+    q: "Remedios no entiende qué es la «nube» de su móvil. ¿Qué petición le dará una explicación a su medida?"
+    options: ["«Explícame qué es la nube»", "«Tengo 70 años y uso el móvil para WhatsApp y fotos. Explícame qué es la nube con un ejemplo cotidiano, en cinco frases»", "«Dame la definición técnica de computación en la nube»"]
     answer: 1
-    explain: "Al decir qué sabe y para qué usa el móvil, ChatGPT elige ejemplos y palabras que ella entiende. La pregunta corta tienta por rápida, pero ChatGPT tiene que adivinar su nivel y suele quedarse alto."
-  - type: truefalse
+    explain: "Al decir qué sabe y para qué usa el móvil, ChatGPT elige ejemplos que ella entiende. La pregunta corta tienta por rápida, pero ChatGPT tiene que adivinar su nivel y suele quedarse alto."
+  - type: choice
     id: gpt-ap02-q3
-    q: "Una analogía de ChatGPT siempre es exacta, así que puedes usarla para responder en un examen."
-    answer: false
-    explain: "Una analogía ayuda a entender, pero simplifica y nunca encaja del todo. Además, ChatGPT puede equivocarse. Úsala para hacerte la idea y luego aprende la definición de tu libro o tu temario."
+    q: "ChatGPT termina su explicación con «¿Lo has entendido?». ¿Qué respuesta te ayuda más a aprender?"
+    options: ["«Sí, gracias»", "«Creo que sí. Te lo cuento con mis palabras y me dices qué falla: …»", "«Hazme un resumen más largo»"]
+    answer: 1
+    explain: "Contarlo tú saca a la luz los huecos; un «sí» no demuestra nada. Decir que sí tienta porque la explicación parecía clara, pero entenderla al leer no es lo mismo que saber contarla."
 tips:
-  - "Si la explicación sigue siendo difícil, pide «más sencillo todavía» o «como si tuviera 12 años». Si es demasiado básica, di qué parte ya sabes."
-  - "Pide dos analogías distintas: si las dos apuntan a lo mismo, entenderás mejor qué es lo importante."
-  - "Para temas de salud, dinero o derecho, usa la explicación para entender y preparar preguntas, no para decidir: eso, con un profesional."
+  - "Las analogías simplifican: pregunta «¿en qué falla esta comparación?» y aprende la definición de tu libro o temario."
+  - "Para salud, dinero o derecho, usa la explicación para entender y preparar preguntas; decidir, con un profesional."
 action:
-  title: Explícaselo tú a ChatGPT
+  title: Cuéntale lo que has entendido
   steps:
-    - "Elige una palabra o idea que oyes a menudo y no entiendes del todo (de tu trabajo, del banco, de las noticias)."
+    - "Elige una palabra que oyes a menudo y no entiendes del todo (del trabajo, del banco, de las noticias)."
     - "Pide una explicación a tu nivel con un ejemplo de la vida diaria."
-    - "Explícasela tú en tres o cuatro frases y pide que te corrija."
-    - "Guarda la petición en «Mi kit de ChatGPT» si te ha servido."
-  check: He explicado una idea con mis palabras y ChatGPT me ha corregido
+    - "Cuéntasela tú en tres o cuatro frases, pide que te corrija y guarda la petición en «Mi kit de ChatGPT»."
+  check: He contado una idea con mis palabras y ChatGPT me ha corregido
 practice:
-  task: "Quieres entender qué es el euríbor porque tu hipoteca va ligada a él. Escribe la petición para que ChatGPT te lo explique a tu nivel, con una analogía, y luego te pida que lo expliques tú."
+  task: "Tu hipoteca va ligada al euríbor y no sabes qué es. Escribe la petición para que ChatGPT te lo explique a tu nivel, con una analogía, y luego te deje explicarlo a ti."
   require: [contexto, limites]
   extra:
     - label: "Pedir una analogía o un ejemplo cotidiano"
-      any: ["analogia", "como si", "ejemplo de la vida", "ejemplo cotidiano", "comparacion", "comparalo", "vida diaria", "dia a dia"]
+      any: ["analogia", "como si", "ejemplo de la vida", "ejemplo cotidiano", "comparacion", "comparalo", "vida diaria", "dia a dia", "algo que conozca", "algo cotidiano"]
       hint: "Pide una analogía: «Explícamelo con un ejemplo de la vida diaria»."
     - label: "Explicarlo tú después"
-      any: ["te lo explico", "te lo explicare", "lo explico yo", "con mis palabras", "explicartelo", "explicarlo yo", "mi explicacion"]
+      any: ["te lo explico", "te lo explicare", "lo explico yo", "con mis palabras", "explicartelo", "explicarlo yo", "mi explicacion", "te lo cuento", "contartelo"]
       hint: "Añade: «Después te lo explico yo con mis palabras y me dices qué he entendido mal»."
   sample: "Tengo una hipoteca variable y el banco dice que va ligada al euríbor, pero no sé qué es. No tengo estudios de economía. Explícamelo en cinco frases, sin palabras técnicas y con una analogía de la vida diaria. No me digas si me conviene cambiar de hipoteca: solo quiero entenderlo. Después te lo explico yo con mis palabras y me dices qué he entendido mal."
 deeper: null
@@ -68,21 +67,21 @@ sources: [openai-ayuda, openai-model-spec]
 
 ## La idea
 
-Una explicación no es buena o mala en sí: **es buena para ti** o no. La misma idea se explica distinto a alguien de 14 años, a un jubilado o a una enfermera. ChatGPT puede ajustarse, pero necesita saber **desde dónde partes**.
+Una explicación es **buena para ti** o no lo es. La misma idea se explica distinto a alguien de 14 años o a una enfermera. ChatGPT puede ajustarse, pero necesita saber **desde dónde partes**.
 
 Tres cosas que funcionan:
 
-- **Di qué sabes ya** y qué no. «Sé lo que es un préstamo, pero no qué es un interés variable.»
-- **Pide una analogía**: comparar la idea nueva con algo que conoces. «Explícamelo con algo de la cocina, del fútbol o de la compra.»
-- **Pon un límite de tamaño**: «en cinco frases», «sin palabras técnicas». Una explicación corta que entiendes vale más que una larga que no.
+- **Di qué sabes ya.** «Sé lo que es un préstamo, pero no qué es un interés variable.»
+- **Pide una analogía**: comparar la idea nueva con algo que conoces, como la compra o el fútbol.
+- **Pon un límite de tamaño**: «en cinco frases», «sin palabras técnicas».
 
-Y lo más útil: **explícalo tú después**. Es la **técnica Feynman**: si puedes contarlo con palabras sencillas, lo has entendido; donde te atascas, ahí está el hueco. ChatGPT puede hacer de oyente y decirte qué has entendido mal.
+Y lo más útil: **explícalo tú después**. Es la **técnica Feynman**: si puedes contarlo con palabras sencillas, lo has entendido; donde te atascas, está el hueco. ChatGPT puede hacer de oyente y decirte qué falla.
 
-Un aviso: las analogías **simplifican**, y ChatGPT puede cometer **alucinaciones** (respuestas que suenan seguras pero son falsas). Úsalas para entender y luego comprueba lo importante en tu libro, tu temario o una fuente oficial.
+Un aviso: las analogías **simplifican**, y ChatGPT puede tener **alucinaciones** (respuestas que suenan seguras pero son falsas). Comprueba lo importante en tu libro, tu temario o una fuente oficial.
 
 ## En la práctica
 
-> Prueba: «Explícame [IDEA] para alguien que [LO QUE SABES]. Hazlo en cinco frases, sin palabras técnicas, con una analogía de la vida diaria. Después te lo explico yo con mis palabras y me dices qué he entendido mal y qué me falta.»
+> Prueba: «Explícame [IDEA] para alguien que [LO QUE SABES]. Hazlo en cinco frases, sin palabras técnicas, con una analogía de la vida diaria. Después te lo explico yo con mis palabras y me dices qué he entendido mal.»
 
 Si no te convence, ajusta en la misma conversación:
 
@@ -92,4 +91,4 @@ Si no te convence, ajusta en la misma conversación:
 
 ## Error frecuente
 
-Pedir «explícamelo fácil» sin decir qué sabes. ChatGPT tiene que adivinar tu nivel y suele quedarse demasiado alto o demasiado bajo.
+Pedir «explícamelo fácil» sin decir qué sabes. ChatGPT adivina tu nivel y suele quedarse alto o bajo.

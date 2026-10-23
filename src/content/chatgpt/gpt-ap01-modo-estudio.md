@@ -1,24 +1,24 @@
 ---
 title: El modo estudio
-description: "Qué hace el modo estudio de ChatGPT, cómo se activa y cómo conseguir que te enseñe con preguntas aunque no lo uses."
+description: "Qué hace el modo estudio de ChatGPT, cómo se activa y cómo lograr que te enseñe con preguntas sin él."
 level: basico
 track: gpt-aprender
 order: 501
 skills: [gpt-aprender]
 terms: [modo-estudio, metodo-socratico, memoria-de-chatgpt]
-hook: "Le pides a ChatGPT que te explique las ecuaciones de segundo grado, lo lees todo, asientes… y al cerrar el chat no sabrías resolver una sola. ¿Qué cambiarías?"
-takeaway: "El modo estudio hace que ChatGPT te guíe con preguntas, pistas y pruebas en vez de darte la respuesta. Si no lo ves, pídeselo con palabras: consigues lo mismo."
+hook: "ChatGPT te explica las ecuaciones de segundo grado, lo lees, asientes… y al cerrar el chat no sabrías resolver una. ¿Qué cambiarías?"
+takeaway: "El modo estudio hace que ChatGPT te guíe con preguntas y pistas en vez de darte la respuesta. Si no lo ves, pídelo con palabras."
 scenario:
   kind: operacion
   label: Caso práctico
   title: Las fracciones de Mateo
-  body: "Mateo, de 15 años, suspende Matemáticas por las fracciones. Su madre, Rosario, activa con él el modo estudio. ChatGPT le pregunta qué le cuesta, le plantea un ejercicio pequeño y, cuando Mateo falla, le da una pista en vez de la solución. Al final le pone tres ejercicios parecidos para ver si ya los hace solo."
+  body: "Mateo, de 15 años, suspende Matemáticas por las fracciones. Su madre, Rosario, activa con él el modo estudio. ChatGPT le plantea un ejercicio pequeño y, cuando Mateo falla, le da una pista en vez de la solución. Al final le pone tres parecidos para ver si ya los hace solo."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-ap01-q1
     q: "Valeria repasa Biología y quiere que ChatGPT le haga pensar, no que le resuma. No encuentra el modo estudio. ¿Qué hace?"
-    options: ["Esperar a que aparezca o pagar un plan para tenerlo", "Pedirlo con palabras: «No me des la respuesta; hazme preguntas de una en una y dame pistas si me atasco»", "Pedirle un resumen y leerlo varias veces"]
+    options: ["Pagar un plan para tenerlo", "Pedirlo con palabras: «No me des la respuesta; hazme preguntas de una en una y dame pistas»", "Pedir un resumen y leerlo varias veces"]
     answer: 1
     explain: "Lo útil del modo estudio es el comportamiento, y eso se pide con palabras. Pagar tienta porque parece la solución, pero está en todos los planes y, además, no es imprescindible."
   - type: truefalse
@@ -29,7 +29,7 @@ questions:
   - type: choice
     id: gpt-ap01-q3
     q: "Estás en modo estudio con un problema de física que ya has resuelto. Solo quieres el resultado para comparar. ¿Qué haces?"
-    options: ["Decírselo claro: «Ya lo he resuelto; dame solo el resultado para compararlo»", "Contestar a sus preguntas aunque no las necesites", "Borrar la conversación y empezar de cero"]
+    options: ["Decirlo claro: «Ya lo he resuelto; dame solo el resultado»", "Contestar a sus preguntas aunque no las necesites", "Borrar la conversación y empezar de cero"]
     answer: 0
     explain: "El modo estudio guía, pero escucha lo que pides. Si el trabajo ya es tuyo, comparar es aprender. Seguir contestando por no «romper» el modo tienta, pero te hace perder tiempo."
 tips:
@@ -43,16 +43,16 @@ action:
     - "Guarda la petición que mejor te funcione en tu nota «Mi kit de ChatGPT»."
   check: He estudiado un tema con ChatGPT respondiendo a sus preguntas
 practice:
-  task: "Preparas el examen de Economía de 1.º de Bachillerato y no entiendes la inflación. Escribe la petición para que ChatGPT te enseñe con preguntas y pistas, sin darte la respuesta."
+  task: "Tienes examen de Economía de 1.º de Bachillerato y no entiendes la inflación. Escribe la petición para que ChatGPT te enseñe con preguntas y pistas."
   require: [contexto]
   extra:
     - label: "Que no te dé la respuesta"
-      any: ["no me des", "sin darme", "no me digas la solucion", "no me resuelvas", "sin decirme", "sin resolver", "no me lo resuelvas", "no quiero que me des", "no quiero la respuesta", "no me la des", "no me lo digas", "no me la expliques hecha", "explicacion hecha"]
+      any: ["no me des", "sin darme", "no me digas la solucion", "no me resuelvas", "sin decirme", "no quiero que me des", "no quiero la respuesta", "no me la des", "no me lo digas", "no me la expliques hecha", "explicacion hecha"]
       hint: "Dilo claro: «No me des la respuesta»."
     - label: "Preguntas y pistas"
-      any: ["hazme preguntas", "preguntame", "de una en una", "una pregunta", "pista", "pistas", "guiame", "preguntandome", "hazme pensar"]
+      any: ["hazme preguntas", "preguntame", "de una en una", "pista", "pistas", "guiame", "preguntandome", "hazme pensar"]
       hint: "Pide que te guíe: «Hazme preguntas de una en una y dame una pista si me atasco»."
-  sample: "Estoy en 1.º de Bachillerato y el jueves tengo examen de Economía. No entiendo qué es la inflación ni por qué todo sube de precio a la vez. No me des la explicación hecha: hazme preguntas de una en una, espera a que conteste y, si fallo, dame una pista. Usa ejemplos de la compra o del transporte. Al final, ponme tres preguntas de examen sin ayuda y corrígemelas."
+  sample: "Estoy en 1.º de Bachillerato y el jueves tengo examen de Economía. No entiendo qué es la inflación ni por qué todo sube de precio a la vez. No me des la explicación hecha: hazme preguntas de una en una, espera a que conteste y, si fallo, dame una pista. Al final, ponme tres preguntas de examen sin ayuda y corrígemelas."
 deeper: null
 tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -66,12 +66,12 @@ sources: [openai-ayuda, openai-noticias, openai-planes]
 
 ## La idea
 
-Leer una buena explicación da **sensación de entender**, pero se aprende pensando tú: intentas, fallas y corriges.
+Leer una buena explicación da **sensación de entender**, pero se aprende pensando: intentas, fallas y corriges.
 
 Para eso existe el **modo estudio** (en inglés, «Study and learn»). Cuando lo activas, ChatGPT:
 
-- te pregunta tu nivel y qué quieres conseguir;
-- explica por partes, sin soltarlo todo de golpe;
+- te pregunta tu nivel y tu objetivo;
+- explica por partes;
 - usa **preguntas y pistas**, al estilo del **método socrático** (enseñar preguntando para que llegues tú a la respuesta);
 - te pone pruebas para ver si lo has entendido.
 
@@ -79,7 +79,7 @@ Según el centro de ayuda de OpenAI:
 
 - **Está en todos los planes**, en la web y en el móvil.
 - **Se elige en cada conversación**, desde el menú de herramientas o el «+» de la caja de texto.
-- Si tienes activada la **memoria de ChatGPT** (lo que recuerda de ti entre chats), puede usarla para adaptarse a tu nivel. Sin memoria también funciona.
+- Si tienes activada la **memoria de ChatGPT** (lo que recuerda de ti entre chats), puede usarla para adaptarse a ti.
 
 Lo más importante: **no lo necesitas**. Es un atajo cómodo, pero consigues lo mismo con palabras. Y ChatGPT se equivoca, sobre todo con cálculos: si algo no te cuadra, compruébalo con el libro o tu profesor.
 
@@ -93,4 +93,4 @@ Si un día solo quieres el dato, dilo: «Hoy solo necesito la respuesta, sin pre
 
 ## Error frecuente
 
-Contestar «no sé» a todo hasta que ChatGPT suelta la solución. Si te atascas, pide una pista más concreta, no la respuesta.
+Contestar «no sé» a todo hasta que suelta la solución. Si te atascas, pide una pista más concreta.

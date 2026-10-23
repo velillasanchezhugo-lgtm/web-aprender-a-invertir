@@ -50,7 +50,7 @@ practice:
     - label: Pedir la página de cada dato
       any: [página, pagina, copia la frase, frase exacta, cita]
       hint: "Pide que indique la página o copie la frase de cada dato para comprobarlo."
-  sample: "Te adjunto el reglamento del huerto urbano de mi barrio, donde me acaban de dar una parcela. Hazme una lista de las normas que me afectan como usuario: horarios, riego, qué se puede plantar y qué pasa si no cuido la parcela. Pon junto a cada norma la página donde aparece. Si algo no viene en el documento, dímelo en vez de suponerlo."
+  sample: "Te adjunto el reglamento del huerto urbano de mi barrio, donde me acaban de dar una parcela. Hazme una lista de las normas que me afectan como usuario: horarios, riego, qué se puede plantar y qué pasa si no cuido la parcela. Pon junto a cada norma la página donde aparece. Si algo no viene en el documento o no estás seguro, dímelo en vez de suponerlo."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
