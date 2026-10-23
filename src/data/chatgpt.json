@@ -97,7 +97,7 @@
     {
       "id": "gpt-funciones",
       "label": "Las funciones de ChatGPT",
-      "short": "Búsqueda, canvas, proyectos, memoria, imágenes y datos",
+      "short": "Búsqueda, bloques de escritura, proyectos, memoria, imágenes y datos",
       "stage": "B"
     },
     {
@@ -187,7 +187,7 @@
     },
     {
       "id": "c7",
-      "text": "Trabaja con archivos, datos, canvas e imágenes.",
+      "text": "Trabaja con archivos, datos, bloques de escritura e imágenes.",
       "skills": [
         "gpt-archivos-datos",
         "gpt-canvas",
@@ -254,7 +254,7 @@
     {
       "id": "gpt-funciones",
       "label": "Funciones",
-      "desc": "Búsqueda, investigación, canvas, proyectos, memoria, imágenes y más.",
+      "desc": "Búsqueda, investigación, bloques de escritura, proyectos, memoria, imágenes y más.",
       "level": 1
     },
     {
@@ -386,8 +386,8 @@
     {
       "id": "gpt-canvas",
       "domain": "gpt-funciones",
-      "label": "Canvas",
-      "can": "Escribes y editas documentos o código en canvas.",
+      "label": "Bloques de escritura",
+      "can": "Escribes y editas textos por partes en los bloques de escritura (y código en los bloques de código).",
       "level": 1
     },
     {
@@ -771,9 +771,9 @@
         "items": [
           {
             "id": "gpt2-cre-01-canvas-a-fondo",
-            "title": "Canvas a fondo",
+            "title": "Bloques de escritura a fondo",
             "minutes": 20,
-            "content": "Editar por partes, comentarios, versiones y exportar.",
+            "content": "Bloques de escritura y de código: editar a mano o por partes, deshacer cambios, pantalla completa y guardar el documento.",
             "practice": "Una memoria de proyecto de 6 páginas",
             "skills": [
               "gpt2-crear"
