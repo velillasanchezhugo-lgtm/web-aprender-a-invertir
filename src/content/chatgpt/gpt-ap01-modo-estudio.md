@@ -47,10 +47,10 @@ practice:
   require: [contexto]
   extra:
     - label: "Que no te dé la respuesta"
-      any: ["no me des", "sin darme", "no me digas la solucion", "no me resuelvas", "sin decirme", "no quiero que me des", "no quiero la respuesta", "no me la des", "no me lo digas", "no me la expliques hecha", "explicacion hecha"]
+      any: ["no me des", "sin darme", "no me digas la solucion", "no me resuelvas", "sin decirme", "no quiero que me des", "no quiero la respuesta", "no me la des", "no me lo digas", "no me lo cuentes", "no me la expliques hecha", "explicacion hecha"]
       hint: "Dilo claro: «No me des la respuesta»."
     - label: "Preguntas y pistas"
-      any: ["hazme preguntas", "preguntame", "de una en una", "pista", "pistas", "guiame", "preguntandome", "hazme pensar"]
+      any: ["hazme preguntas", "preguntame", "de una en una", "pista", "pistas", "guiame", "preguntandome", "hazme pensar", "haciendome pensar", "pregunta a pregunta"]
       hint: "Pide que te guíe: «Hazme preguntas de una en una y dame una pista si me atasco»."
   sample: "Estoy en 1.º de Bachillerato y el jueves tengo examen de Economía. No entiendo qué es la inflación ni por qué todo sube de precio a la vez. No me des la explicación hecha: hazme preguntas de una en una, espera a que conteste y, si fallo, dame una pista. Al final, ponme tres preguntas de examen sin ayuda y corrígemelas."
 deeper: null

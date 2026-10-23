@@ -20,7 +20,7 @@ questions:
     q: "Ainhoa estudia Geografía de 3.º de la ESO. ¿Qué petición le da preguntas más fiables?"
     options: ["«Hazme un test de Geografía de España»", "Subir sus apuntes y pedir: «Hazme diez preguntas tipo test usando solo este documento»", "«¿Qué preguntas van a caer en el examen?»"]
     answer: 1
-    explain: "Con sus apuntes, las preguntas siguen lo que ella estudia. Sin documento, ChatGPT usa lo que sabe en general, que puede no coincidir con su temario. Y nadie puede saber qué caerá."
+    explain: "Con sus apuntes, las preguntas siguen lo que estudia. La petición corta tienta por rápida, pero ChatGPT usará lo que sabe en general, que puede no ser su temario. Y nadie sabe qué caerá."
   - type: choice
     id: gpt-ap03-q2
     q: "Gloria ha hecho un test de diez preguntas con ChatGPT y ha fallado tres. ¿Qué le conviene más?"
@@ -48,7 +48,7 @@ practice:
   require: [limites, formato]
   extra:
     - label: "Basarse en tu documento"
-      any: ["documento", "apuntes", "pdf", "adjunto", "este texto", "temario", "el archivo", "lo que te paso"]
+      any: ["documento", "apuntes", "pdf", "adjunto", "este texto", "temario", "archivo"]
       hint: "Di de dónde deben salir: «usando solo lo que pone en el documento»."
     - label: "Pedir tarjetas o preguntas para repasar"
       any: ["tarjeta", "tarjetas", "test", "pregunta y respuesta", "preguntas tipo", "flashcard", "fichas"]
@@ -75,7 +75,7 @@ Tres reglas para no llevarte sustos:
 
 1. **Que parta de tu material.** Sin apuntes, pregunta lo que sabe en general, que puede no ser tu temario o estar desactualizado.
 2. **El temario oficial manda.** La convocatoria o la guía de la asignatura deciden qué entra. Compara con ellas el plan de ChatGPT.
-3. **Sin trampas.** Usarlo para entender y practicar está bien. Entregar como tuyo un trabajo hecho por la IA puede ser **plagio** (presentar como propio lo que no lo es). Mira las **normas de tu centro** y **declara** cómo lo has usado.
+3. **Sin trampas.** Entender y practicar, bien. Entregar como tuyo un trabajo hecho por la IA puede ser **plagio** (presentar como propio lo que no lo es). Mira las **normas de tu centro** y **declara** cómo lo has usado.
 
 ## En la práctica
 
@@ -85,7 +85,7 @@ Tres reglas para no llevarte sustos:
 
 > Prueba: «Te paso mis apuntes del tema [N]. Hazme diez preguntas tipo test usando solo este texto, de una en una. Espera a que conteste, corrígeme y explica cada fallo en dos frases. Si algo no está en los apuntes, no lo preguntes.»
 
-Para el plan: «Mi examen es el [FECHA] y entran estos temas: [LISTA]. Tengo una hora al día. Propón un plan semanal con repasos de lo que más falle.»
+Para el plan: «Mi examen es el [FECHA] y entran estos temas: [LISTA]. Tengo una hora al día. Propón un plan semanal con repasos.»
 
 ## Error frecuente
 

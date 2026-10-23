@@ -1,18 +1,18 @@
 ---
 title: Automatiza tu semana
-description: "Cómo detectar lo que repites con ChatGPT y llevarlo a instrucciones, un proyecto, una plantilla, una tarea programada o el agente, empezando por lo que solo prepara."
+description: "Cómo detectar lo que repites con ChatGPT y llevarlo a instrucciones, un proyecto, una plantilla, una tarea programada o ChatGPT Work, empezando por lo que solo prepara."
 level: basico
 track: gpt-avanzado
 order: 802
 skills: [gpt-automatizar, gpt-instrucciones, gpt-proyectos-memoria]
 terms: [instrucciones-personalizadas, proyecto-de-chatgpt, plantilla-de-prompt, tareas-programadas-chatgpt, agente-de-chatgpt]
-hook: "Cada viernes abres ChatGPT, le explicas otra vez quién eres, pegas las notas de la semana y le pides el mismo boletín. ¿Qué parte de eso podría quedar ya hecha?"
-takeaway: "Cada cosa que repites tiene su sitio: cómo quieres que te responda, en instrucciones; el contexto de un tema, en un proyecto; una tarea concreta, en una plantilla; el «cuándo», en una tarea programada. Empieza por lo que solo prepara."
+hook: "Es jueves por la noche, mañana toca enviar el aviso semanal a las familias y vuelves a empezar de cero: buscar las fechas, recordarle a ChatGPT el tono, corregir lo de siempre. ¿Y si el borrador te estuviera esperando?"
+takeaway: "No todo lo que repites se automatiza igual: tu estilo va a las instrucciones, un tema a un proyecto, una petición probada a una plantilla y el «cuándo» a una tarea programada. Automatiza primero lo que solo prepara y revisas tú."
 scenario:
   kind: producto
   label: Caso práctico
-  title: El boletín de Inma
-  body: "Inma es la secretaria del AMPA de un colegio de Zaragoza. Cada viernes escribía con ChatGPT el boletín para las familias. Primero creó un proyecto con el calendario escolar y unas instrucciones de estilo. Después programó una tarea para que cada jueves por la tarde le prepare un borrador. Ella lo revisa y lo envía."
+  title: El aviso de los scouts de Inma
+  body: "Inma coordina un grupo scout de Logroño y cada viernes envía a las familias el aviso de la semana. Primero hizo el aviso a mano con ChatGPT tres semanas, hasta tener una petición que salía bien. Después la convirtió en una tarea programada para los jueves por la tarde, con el calendario de actividades pegado en la propia petición. Ella revisa el borrador, corrige alguna hora y lo envía."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -31,28 +31,28 @@ questions:
     id: gpt-av02-q3
     q: "Si creas una tarea programada dentro de un proyecto con archivos, la tarea puede leer esos archivos."
     answer: false
-    explain: "Según el centro de ayuda de OpenAI, una tarea creada en un proyecto no accede a sus archivos. Si la tarea los necesita, pon lo esencial en la propia petición."
+    explain: "Según el centro de ayuda de OpenAI, una tarea creada en un proyecto no usa los archivos del proyecto. Tienta pensar que sí porque está dentro, pero si la tarea necesita un dato, ponlo en la propia petición."
 tips:
-  - "Antes de automatizar, haz la tarea a mano tres veces y ajusta la petición hasta que salga bien."
-  - "Pausa o borra las tareas programadas que ya no lees."
+  - "Escribe la petición de la tarea como si ChatGPT no supiera nada de ti: no verá los archivos del proyecto."
+  - "Empieza con una frecuencia baja, por ejemplo semanal, y súbela solo si de verdad lees el resultado."
 action:
-  title: Encuentra tu tarea repetida
+  title: Dale su sitio a una petición repetida
   steps:
-    - "Repasa tus chats de la última semana y apunta una petición que hayas hecho más de una vez."
-    - "Decide dónde va: instrucciones, proyecto, plantilla o tarea programada."
-    - "Crea la opción más sencilla y apunta en «Mi kit de ChatGPT» qué es y dónde está."
-  check: He llevado una tarea repetida a instrucciones, un proyecto, una plantilla o una tarea programada
+    - "Busca en tu historial una petición que hayas escrito más de una vez esta semana."
+    - "Pregúntate qué repites: el estilo, el contexto, la petición o el «cuándo»."
+    - "Guárdala en el sitio que toca, con la opción más sencilla, y apunta en «Mi kit de ChatGPT» qué has creado y dónde."
+  check: He llevado una petición repetida a instrucciones, un proyecto, una plantilla o una tarea programada
 practice:
-  task: "Cada viernes escribes el boletín del AMPA con las novedades de la semana. Escribe la petición para convertirlo en una tarea programada que solo prepare un borrador para que tú lo revises."
+  task: "Cada viernes envías a las familias del grupo scout el aviso de la semana. Escribe la petición para convertirlo en una tarea programada que solo prepare un borrador para que tú lo revises."
   require: [formato, limites]
   extra:
     - label: Decir cuándo se repite
       any: [cada, semanal, todos los, a las]
-      hint: "Di la frecuencia y la hora: «cada jueves a las 18:00»."
+      hint: "Di la frecuencia y el momento: «cada jueves por la tarde»."
     - label: Que solo prepare un borrador
       any: [borrador, solo prepara, no lo envíes, no envíes]
       hint: "Deja claro que solo prepara un borrador y que el envío lo haces tú."
-  sample: "Cada jueves a las 18:00, prepárame un borrador del boletín del AMPA para las familias del colegio. Busca en el calendario escolar que te pego abajo las actividades y fechas de la semana siguiente y redáctalo en un tono cercano, con un titular y como máximo 5 puntos breves. Solo prepara el borrador: no lo envíes ni lo publiques. Si alguna fecha no está clara, márcala para que la revise."
+  sample: "Cada jueves por la tarde, prepárame un borrador del aviso semanal para las familias de mi grupo scout. Toma del calendario de actividades que te pego abajo las salidas y reuniones de la semana siguiente y redáctalo en un tono cercano, con un titular y como máximo 5 puntos breves con día, hora y lugar. Solo prepara el borrador: no lo envíes ni lo publiques. Si alguna fecha no está clara, márcala para que la revise."
 deeper: null
 tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -71,10 +71,10 @@ Si haces lo mismo con ChatGPT cada semana, una parte se puede **dejar hecha**. P
 - **Cómo quieres que te responda** (quién eres, el tono, la longitud) → **instrucciones personalizadas**: se aplican a todos tus chats.
 - **El contexto de un tema** (documentos, notas, reglas de ese asunto) → un **proyecto**: lo tienes a mano en cada chat de ese tema.
 - **Una tarea concreta que haces igual** (corregir textos con tu estilo, preparar presupuestos) → una **plantilla**: la petición ya probada, guardada en tu kit con huecos para rellenar. Antes se usaban los GPTs propios, pero en las cuentas personales ya no se pueden crear nuevos.
-- **El «cuándo»** (cada lunes, cada mañana) → una **tarea programada**: ChatGPT ejecuta el encargo solo a la hora que elijas y te avisa.
-- **Varios pasos en webs o apps** → el **agente**, siempre supervisado.
+- **El «cuándo»** (cada lunes, cada mañana) → una **tarea programada**: ChatGPT ejecuta el encargo solo, con la frecuencia que elijas, y te avisa.
+- **Varios pasos en webs o apps** → **ChatGPT Work** (antes, el agente de ChatGPT), siempre supervisado.
 
-Las tareas programadas y el agente dependen del plan: compruébalo en la página de planes.
+Las tareas programadas están en todos los planes, también el gratis, pero los más básicos tienen menos opciones de frecuencia y de hora. Compruébalo en la página de planes.
 
 La regla más importante: **empieza por tareas que solo preparan**. Un resumen, un borrador, una lista. Si salen mal, lo ves y no pasa nada. Lo que **envía, compra, publica o borra** déjalo para cuando confíes en el resultado, y siempre con tu aprobación.
 
@@ -87,9 +87,9 @@ Y usa **lo más sencillo que funcione**: una plantilla antes que un proyecto, un
 3. Llévala al sitio que toca.
 4. Revisa el resultado las primeras semanas.
 
-Para una tarea programada, pídeselo en un chat o desde su apartado propio, y di la frecuencia y la hora.
+Para una tarea programada, pídeselo en un chat o desde su apartado propio de la barra lateral, y di la frecuencia y el momento. Escribe en la petición todo lo que necesita: no verá los archivos de tus proyectos.
 
-> Prueba: «Cada lunes a las 8:00, busca las ayudas al alquiler para jóvenes con plazo abierto en [MI COMUNIDAD AUTÓNOMA] y resúmelas en una tabla con nombre, plazo y enlace a la web oficial. Solo prepáralo: no rellenes ni envíes nada. Si no encuentras novedades, dímelo en una línea.»
+> Prueba: «Cada lunes por la mañana, busca las ayudas al alquiler para jóvenes con plazo abierto en [MI COMUNIDAD AUTÓNOMA] y resúmelas en una tabla con nombre, plazo y enlace a la web oficial. Solo prepáralo: no rellenes ni envíes nada. Si no encuentras novedades, dímelo en una línea.»
 
 ## Error frecuente
 

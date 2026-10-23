@@ -1,18 +1,18 @@
 ---
 title: Usar GPTs con cuidado
-description: "Cómo elegir un GPT de la tienda: quién lo ha hecho, qué ve su creador, qué pasa con las acciones externas y qué datos no darle."
+description: "Cómo elegir un GPT o un plugin: quién lo ha hecho, qué ve su creador, qué pasa con los servicios externos y qué datos no darle."
 level: basico
 track: gpt-gpts
 order: 302
 skills: [gpt-usar-gpts, gpt-privacidad]
-terms: [tienda-de-gpts, accion-de-gpt, datos-personales]
+terms: [tienda-de-gpts, accion-de-gpt, plugin-de-chatgpt, datos-personales]
 hook: "Encuentras en la tienda un GPT que promete «revisar tu contrato de alquiler en un minuto». Te pide que subas el contrato. ¿Lo haces?"
-takeaway: "Antes de usar un GPT, mira quién lo ha hecho y si se conecta a servicios externos. Su creador no ve tus chats, pero lo que envía una acción sale de OpenAI: ahí, nada de datos personales."
+takeaway: "Antes de usar un GPT o un plugin, mira quién lo ha hecho y si se conecta a servicios externos. Su creador no ve tus chats, pero lo que se envía a otro servicio sale de OpenAI: ahí, nada de datos personales."
 scenario:
   kind: producto
   label: Caso práctico
-  title: El contrato de Óscar
-  body: "Óscar va a firmar su primer alquiler en Valencia y encuentra un GPT para revisar contratos. Antes de subir nada, mira quién lo ha creado y ve que usa una acción con una web desconocida. Decide copiar solo las cláusulas, sin nombres ni DNI, en un chat normal, y pedir que le explique qué preguntar al casero."
+  title: El contrato de Gorka
+  body: "Gorka va a firmar su primer alquiler en Valencia y encuentra un GPT para revisar contratos. Antes de subir nada, mira quién lo ha creado y ve que usa una acción con una web desconocida. Decide copiar solo las cláusulas, sin nombres ni DNI, en un chat normal, y pedir que le explique qué preguntar al casero."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -35,6 +35,7 @@ questions:
 tips:
   - "Si un GPT te pide iniciar sesión en otra web o datos que no necesita para la tarea, ciérralo."
   - "Tus controles de datos de ChatGPT también se aplican cuando usas un GPT: revísalos en la configuración."
+  - "Si un GPT que usas se retira y su creador te ofrece un plugin para sustituirlo, revísalo igual: quién lo publica y a qué servicios se conecta."
 action:
   title: Revisa un GPT antes de usarlo
   steps:
@@ -76,6 +77,8 @@ La **tienda de GPTs** reúne los GPTs que publican personas y empresas. Que est�
 - **Las acciones** son conexiones con servicios externos. Lo que el GPT les envía **sale de OpenAI** y ese servicio decide qué hace con ello. Por eso ChatGPT puede pedirte permiso antes y los GPTs públicos con acciones deben tener política de privacidad.
 
 **Regla práctica:** en GPTs de otros, **ningún dato personal** (DNI, cuentas, salud, contratos con nombres), y menos si usa acciones.
+
+**Con los plugins, lo mismo.** Los plugins que OpenAI propone como relevo también pueden conectarse a otros servicios. Cuando ChatGPT envía datos a uno, se aplican las condiciones y la privacidad de ese servicio. Mira quién lo publica y qué conecta antes de instalarlo.
 
 ## En la práctica
 

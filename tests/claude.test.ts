@@ -74,6 +74,8 @@ test('reconoce frases naturales de principiante para cada pieza', () => {
   ok('Contesto yo las reseñas de mi academia.', 'contexto');
   ok('Estudio contabilidad y no entiendo los asientos.', 'contexto');
   ok('Organizo la jubilación de una compañera.', 'contexto');
+  ok('Hago 1.º de Bachillerato y mañana tengo examen de Economía.', 'contexto');
+  ok('Mi banco me habla del euríbor. No sé nada de finanzas.', 'contexto');
   // Público con «su», «tus»
   ok('Escribe un mensaje para su entrenador.', 'publico');
   // Formato por longitud o canal

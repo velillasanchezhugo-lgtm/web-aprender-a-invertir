@@ -1,6 +1,6 @@
 ---
 title: Explicaciones a tu nivel
-description: "Pide a ChatGPT explicaciones ajustadas a lo que ya sabes, con analogías, y comprueba que lo entiendes explicándolo tú."
+description: "Pide a ChatGPT explicaciones ajustadas a lo que ya sabes, con analogías, y comprueba que lo entiendes contándolo tú."
 level: basico
 track: gpt-aprender
 order: 502
@@ -34,7 +34,7 @@ questions:
     answer: 1
     explain: "Contarlo tú saca a la luz los huecos; un «sí» no demuestra nada. Decir que sí tienta porque la explicación parecía clara, pero entenderla al leer no es lo mismo que saber contarla."
 tips:
-  - "Las analogías simplifican: pregunta «¿en qué falla esta comparación?» y aprende la definición de tu libro o temario."
+  - "Pregunta cada palabra que no entiendas, aunque te parezca básica: no se cansa ni te juzga."
   - "Para salud, dinero o derecho, usa la explicación para entender y preparar preguntas; decidir, con un profesional."
 action:
   title: Cuéntale lo que has entendido
@@ -83,11 +83,7 @@ Un aviso: las analogías **simplifican**, y ChatGPT puede tener **alucinaciones*
 
 > Prueba: «Explícame [IDEA] para alguien que [LO QUE SABES]. Hazlo en cinco frases, sin palabras técnicas, con una analogía de la vida diaria. Después te lo explico yo con mis palabras y me dices qué he entendido mal.»
 
-Si no te convence, ajusta en la misma conversación:
-
-- «Más sencillo todavía.»
-- «Otra analogía distinta.»
-- «Esa parte ya la sé; explícame solo [LO QUE FALTA].»
+Si no te convence, ajusta en la misma conversación: «Más sencillo todavía», «Otra analogía distinta» o «Esa parte ya la sé; explícame solo [LO QUE FALTA]».
 
 ## Error frecuente
 
