@@ -51,7 +51,7 @@ practice:
     - label: "Pedir que te pregunte antes de cambiar algo"
       any: ["preguntame", "consultame", "antes de cambiar", "antes de editar", "antes de compartir", "pide permiso", "mi aprobacion", "pideme permiso"]
       hint: "Di qué debe consultarte: «Pregúntame antes de editar o compartir nada»."
-  sample: "Con mi Google Drive conectado, busca el contrato de alquiler de mi piso y dime en una lista breve cuándo vence, cuántos días de preaviso hay que dar y de qué cláusula sale cada dato. Solo consulta: no edites, no muevas y no compartas ningún archivo. Si crees que hace falta algo más, pregúntame antes."
+  sample: "Con mi Google Drive conectado, busca el contrato de alquiler de mi piso y dime en una lista breve cuándo vence, cuántos días de preaviso hay que dar, y cita la cláusula de donde sale cada dato. Solo consulta: no edites, no muevas y no compartas ningún archivo. Si crees que hace falta algo más, pregúntame antes."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

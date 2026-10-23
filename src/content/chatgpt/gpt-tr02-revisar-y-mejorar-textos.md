@@ -1,26 +1,26 @@
 ---
 title: Revisar textos sin perder tu voz
-description: "Cómo pedir a ChatGPT que corrija y mejore un texto tuyo con cada cambio explicado, trabajarlo por partes y decidir tú qué aceptar."
+description: "Cómo pedir a ChatGPT un diagnóstico de tu texto antes que una versión nueva, pulirlo por partes y decidir tú qué cambios aceptar."
 level: basico
 track: gpt-trabajo
 order: 402
 skills: [gpt-escribir, gpt-canvas]
-terms: [control-de-cambios, tono, bloque-de-escritura]
-hook: "Le pides a ChatGPT que mejore tu texto y te devuelve otro: más pulido, sí, pero lleno de palabras que tú nunca usarías. ¿Dónde ha quedado lo que querías decir?"
-takeaway: "Pide correcciones marcadas y explicadas, no un texto nuevo, y dile qué no debe tocar. Así ves cada cambio, aprendes de él y decides tú cuál aceptar."
+terms: [tono, bloque-de-escritura]
+hook: "Has escrito la presentación de tu negocio y te suena torpe. Si se la das a ChatGPT para que la «mejore», ¿seguirá sonando a ti?"
+takeaway: "Primero pide un diagnóstico, no un texto nuevo: qué frases fallan y por qué. Luego arregla por partes lo que tú decidas y protege lo que no se puede tocar."
 scenario:
   kind: empresa
   label: Caso práctico
-  title: La web de Inés
-  body: "Inés es comercial en una pequeña distribuidora de vinos de La Rioja y escribe el texto de presentación de la web. Pide a ChatGPT «mejóralo» y recibe frases como «una experiencia sensorial inigualable». Ya no suena a ellos. Repite pidiendo que corrija solo errores y frases confusas, que mantenga su estilo sencillo y que explique cada cambio en una tabla. Acepta siete de los diez cambios."
+  title: La web de Jimena
+  body: "Jimena es comercial en una pequeña distribuidora de vinos de La Rioja y escribe el texto de presentación de la web. La primera vez pide «mejóralo» y le sale «una experiencia sensorial inigualable». Ya no suena a ellos. Vuelve a empezar: pide las cinco frases que peor se entienden y por qué. Arregla tres a su manera y, en el recuadro editable, señala el último párrafo y pide que lo acorte sin tocar el resto."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-tr02-q1
-    q: "Pablo es profesor de FP y ha escrito las instrucciones de las prácticas para sus alumnos. Quiere que ChatGPT las revise. ¿Qué pide?"
-    options: ["«Mejora este texto.»", "«Corrige faltas y frases que se puedan entender mal, sin cambiar las fechas ni los requisitos. Mantén mi tono directo. Dame una tabla con el original, la propuesta y el motivo.»", "«Reescríbelo para que parezca más profesional.»"]
+    q: "Tomás es profesor de FP y ha escrito las instrucciones de las prácticas para sus alumnos. Quiere que ChatGPT las revise. ¿Qué pide?"
+    options: ["«Mejora este texto.»", "«Señala las faltas y las frases que se puedan entender mal, con el motivo de cada una. No cambies fechas ni requisitos y mantén mi tono directo.»", "«Reescríbelo para que parezca más profesional.»"]
     answer: 1
-    explain: "La segunda acota qué tocar, protege lo que no puede cambiar y deja cada cambio a la vista. «Mejora este texto» tienta por corta, pero da permiso para cambiarlo todo, incluido el sentido."
+    explain: "La segunda acota qué mirar, protege lo que no puede cambiar y deja cada problema a la vista con su motivo. «Mejora este texto» tienta por corta, pero da permiso para cambiarlo todo, incluido el sentido."
   - type: truefalse
     id: gpt-tr02-q2
     q: "Si la versión de ChatGPT suena mejor, lo sensato es aceptarla entera."
@@ -28,31 +28,31 @@ questions:
     explain: "Sonar mejor no es decir lo mismo. Al pulir, puede convertir un «quizá» en un «seguro», quitar un matiz o cambiar un dato. Revisa los cambios uno a uno."
   - type: choice
     id: gpt-tr02-q3
-    q: "Pides a ChatGPT que revise el aviso de un plazo. En su tabla de cambios propone cambiar «antes del 15 de mayo» por «en las próximas semanas» porque «suena más natural». ¿Qué haces?"
+    q: "Pides a ChatGPT que revise el aviso de un plazo. Propone cambiar «antes del 15 de mayo» por «en las próximas semanas» porque «suena más natural». ¿Qué haces?"
     options: ["La aplico: si lo propone, será mejor", "La descarto y acepto solo las sugerencias que no cambian datos ni compromisos", "Borro todas las sugerencias y vuelvo a empezar"]
     answer: 1
     explain: "Una fecha concreta es información, no estilo: quitarla cambia el aviso. Fiarse tienta porque la sugerencia viene explicada, pero el motivo de estilo no compensa perder el dato. Las demás sugerencias pueden seguir siendo útiles."
 tips:
-  - "Si tienes un texto antiguo tuyo que te gusta, pégalo y pide: «Revisa el nuevo para que suene como este». Mantiene tu voz mejor que cualquier adjetivo."
-  - "Pide a la vez solo un tipo de revisión (ortografía, claridad o tono). Si pides todo junto, es más difícil ver qué ha cambiado."
+  - "Lee tu texto en voz alta después de los cambios. Si alguna frase no la dirías nunca, no es tuya: vuelve a la original."
+  - "Pide «dime qué está bien y no hay que tocar». Saberlo te evita cambiar lo que ya funcionaba."
 action:
-  title: Revisa un texto tuyo con los cambios a la vista
+  title: Diagnóstico antes que reescritura
   steps:
     - "Elige un texto que vayas a usar esta semana: un aviso, un informe corto o la presentación de tu negocio."
-    - "Pide a ChatGPT una revisión con tabla (original, propuesta y motivo) y dile qué no debe tocar."
-    - "Acepta o rechaza cada cambio tú, y apunta en «Mi kit de ChatGPT» el error que más te repite."
+    - "Pide a ChatGPT las frases que fallan y el motivo, sin reescribir el texto, y dile qué no debe tocar."
+    - "Arregla tú lo que te convenza y apunta en «Mi kit de ChatGPT» el error que más te repite."
   check: He revisado un texto mío con ChatGPT decidiendo yo cada cambio
 practice:
   task: "Eres técnica de recursos humanos en una empresa de 60 personas y has escrito el aviso del nuevo horario de verano. Escribe la petición para que ChatGPT lo revise sin quitarle tu estilo."
   require: [formato, limites]
   extra:
     - label: Pedir que explique cada cambio
-      any: [motivo, explica, explicando, por que, porque]
+      any: [motivo, explica, explicando, por que, razon]
       hint: "Pide el motivo de cada cambio: «Explica por qué propones cada uno»."
     - label: Proteger tu voz o los datos
-      any: [mi estilo, mi tono, mi voz, no cambies, sin cambiar, manten, mantén]
+      any: [mi estilo, mi tono, mi voz, mi forma de escribir, no cambies, sin cambiar, no toques, manten, respeta]
       hint: "Di qué tiene que respetar: «Mantén mi estilo y no cambies los horarios»."
-  sample: "Trabajo en recursos humanos de una empresa de 60 personas. Te pego el aviso del horario de verano para la plantilla. Revisa faltas, frases confusas y repeticiones. Mantén mi estilo sencillo y cercano, y no cambies los horarios, las fechas ni los nombres de los departamentos. Dame una tabla con tres columnas: texto original, propuesta y motivo del cambio. No reescribas el aviso entero: solo quiero ver los cambios para decidir yo cuáles aplico."
+  sample: "Trabajo en recursos humanos de una empresa de 60 personas. Te pego el aviso del horario de verano para la plantilla. Revisa faltas, frases confusas y repeticiones. Mantén mi estilo sencillo y cercano, y no cambies los horarios, las fechas ni los nombres de los departamentos. Dame una lista con cada frase que cambiarías, tu propuesta y el motivo. No reescribas el aviso entero: quiero decidir yo qué cambios aplico."
 deeper: null
 tool: evaluador-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -66,29 +66,26 @@ sources: [openai-ayuda]
 
 ## La idea
 
-Pedir «mejora este texto» es darle permiso a ChatGPT para cambiarlo todo. Suele devolverte algo más pulido, pero también más genérico, y a veces **cambia el sentido**: un «puede que» se vuelve «seguro», desaparece un matiz o se mueve una fecha.
+Pedir «mejora este texto» es darle permiso a ChatGPT para cambiarlo todo. Suele devolverte algo más pulido y más genérico, y a veces **cambia el sentido**: un «puede que» se vuelve «seguro» o se mueve una fecha.
 
-Para revisar sin perderte, pide tres cosas:
+Funciona mejor en dos pasos:
 
-- **Qué revisar**: ortografía, frases confusas, repeticiones o el tono, pero no todo a la vez.
-- **Qué no tocar**: datos, fechas, nombres, el contenido y **tu voz**, es decir, tu manera de escribir.
-- **Los cambios a la vista**: una tabla con el texto original, la propuesta y el motivo. Es parecido al **control de cambios** de un procesador de textos, que marca lo que se ha modificado.
+1. **Diagnóstico.** Pide que señale lo que falla (faltas, frases confusas, repeticiones, algo que suena exagerado) y **por qué**, sin reescribir nada. Dile qué no debe tocar: datos, fechas, nombres y **tu voz**, es decir, tu manera de escribir.
+2. **Arreglo por partes.** Corrige tú lo fácil y pide cambios solo donde los quieras.
 
-El motivo es lo más valioso: así **aprendes** y dejas de repetir el mismo error.
+El motivo de cada cambio es lo más valioso: así **aprendes** y dejas de repetir el error.
 
-Para pulir el texto después, ChatGPT suele mostrarlo en un **bloque de escritura**: un recuadro editable dentro de la respuesta. Puedes cambiar tú una palabra o un dato a mano, o señalar un párrafo y pedir algo solo sobre él («acorta esto, deja el resto igual»). Sustituye a canvas, el editor en panel aparte que algunos recordarán. Las opciones exactas cambian según el plan, el dispositivo y el modelo.
+Para el segundo paso ayuda el **bloque de escritura**: cuando ChatGPT escribe un texto largo, suele mostrarlo en un recuadro editable dentro de la respuesta. Puedes cambiar tú una palabra, señalar un párrafo y pedir algo solo sobre él, o abrirlo a pantalla completa. Con los modelos actuales ha sustituido a canvas, el antiguo editor en panel aparte. Lo que ves depende del plan, del dispositivo y del modelo.
 
 ## En la práctica
 
-1. Pega el texto y di **para quién es** (la plantilla, clientes, un tribunal de prácticas).
-2. Acota la revisión y lo que no debe cambiar.
-3. Pide la tabla de cambios y, si quieres pulir después, trabaja por partes en el bloque de escritura.
-4. Decide tú cambio a cambio. Si una propuesta no te convence, pregunta: «¿Por qué esta?».
+1. Pega el texto y di **para quién es**.
+2. Pide el diagnóstico con motivos y lo que no debe cambiar.
+3. Arregla y, si hace falta, señala la parte y di: «cambia solo esto».
+4. Decide tú. Si una propuesta no te convence, pregunta: «¿Por qué esta?».
 
-> Prueba: «Revisa este texto para la carta de mi restaurante. Corrige faltas y frases liosas, pero no cambies los nombres de los platos ni los precios. Mantén mi tono cercano. Dame una tabla: original, propuesta y motivo.»
-
-> Prueba: «Soy autónoma y este es el texto de mi perfil profesional. ¿Hay alguna frase que suene exagerada o poco creíble? Señálala, explica por qué y propón una alternativa más sencilla. No toques el resto.»
+> Prueba: «Te pego el texto de presentación de mi autoescuela, para la web. No lo reescribas. Dime las 5 frases que peor se entienden o que suenan exageradas, por qué, y una alternativa sencilla para cada una. No toques precios ni horarios. Mantén mi tono cercano.»
 
 ## Error frecuente
 
-Copiar la versión «mejorada» sin compararla con la tuya y enviar un texto que ya no dice exactamente lo que querías.
+Copiar la versión «mejorada» sin compararla con la tuya y enviar un texto que ya no dice lo que querías.
