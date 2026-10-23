@@ -45,6 +45,22 @@ Detalle y listas por función en `docs/LEGAL.md`. **Todos los textos legales son
 - Si la DSA (punto de contacto, avisos de contenido) y la Ley 11/2023 de accesibilidad aplican o hay exención por microempresa.
 - Condiciones de contratación de los niveles 2 y 3 antes de cobrar.
 
+## Seguridad e infraestructura (octubre de 2026)
+
+Detalle, lista del titular punto por punto y pasos de cada panel en `docs/SEGURIDAD.md`.
+
+**Titular (paneles)**
+- Poner `SECURITY_CONTACT` en Vercel (`mailto:` con el correo de `OWNER.email`, o una página `https://`) para `/.well-known/security.txt`. Hoy lleva un marcador y la compilación avisa. Renovar su fecha `Expires` antes del 23/10/2027.
+- Verificación en dos pasos (llave o aplicación, no SMS) en GitHub, Vercel, Supabase, Anthropic, Google y el registrador del dominio; códigos de recuperación en un gestor de contraseñas.
+- Vercel Firewall: Bot Protection y límites de peticiones en `/api/*` (tabla en `docs/SEGURIDAD.md`, apartado 3). Límite de gasto en la consola de Anthropic.
+- GitHub: activar Dependabot alerts y security updates, proteger la rama principal y pasar la rama por defecto a `main` al publicar.
+- Copias fuera de Vercel: clon del repositorio, exportación semanal de Supabase y variables en un gestor de contraseñas (apartado 6). Probar una restauración al año.
+- Dominio definitivo: bloqueo de transferencia, DNSSEC, registros CAA y, cuando todos los subdominios usen HTTPS, solicitar el HSTS preload.
+
+**Código**
+- Migrar a Astro 7 en una rama aparte: `npm audit` mantiene avisos (uno crítico) que no se arreglan en Astro 5. Riesgo bajo en una web estática; explicación en `docs/SEGURIDAD.md`, apartado 5.
+- Al activar AdSense, Supabase con dominio propio u otro servicio externo: revisar la consola y añadir sus dominios en `scripts/csp.mjs` y `vercel.json`.
+
 ## Currículo v1.2 (docs/CURRICULO.md)
 
 - **Decisiones de los socios:** D-01, D-03, D-04, D-06, D-07, D-08 (precio y modelo del Nivel 3: propuesta de curso a 50 € y certificación aparte) y D-09 (supervisión e identidad del examen).
