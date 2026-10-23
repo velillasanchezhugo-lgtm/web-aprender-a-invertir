@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../lib/safe-json';
 /**
  * Pantalla de inicio de una formación: un cuadrado para entrar en la formación (lleva a donde lo dejaste,
  * con el progreso de este dispositivo o de tu cuenta) y otro por cada apartado: niveles, herramientas, glosario…
@@ -31,7 +32,7 @@ const enter: PostitItem = { id: 'hub-go', cls: hub.cls, kicker: 'Nivel 1 · grat
   </div>
 </section>
 <slot />
-<script type="application/json" id="hub-data" set:html={JSON.stringify({ store, order, start })} />
+<script type="application/json" id="hub-data" set:html={jsonForScript({ store, order, start })} />
 <style>
   .hub-hero { border-bottom: 1px solid var(--rule); padding: 0.5rem 0 2.6rem; margin-bottom: 1.5rem; }
   .hub-hero h1 { font-size: clamp(2.6rem, 1.8rem + 3.8vw, 4.8rem); margin: 0.2rem 0 0.8rem; letter-spacing: -0.045em; }

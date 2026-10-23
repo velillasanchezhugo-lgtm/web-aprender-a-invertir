@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../../lib/safe-json';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 /** Plantilla única de «Mi plan en una página» (docs/CURRICULO.md, sección 5.6). Se empieza en ya-01 y se cierra en mr-07. */
@@ -42,7 +43,7 @@ const fields: { id: string; label: string; hint: string; kind?: 'yesno' | 'text'
     </form>
     <p class="small muted">Es tu plan, no una recomendación: umotion Academy no conoce tu situación completa ni te dice qué comprar. Si dudas, vuelve a las sesiones del Nivel 1.</p>
   </div>
-  <script type="application/json" id="opp-fields" set:html={JSON.stringify(fields.map((f) => ({ id: f.id, label: f.label })))} />
+  <script type="application/json" id="opp-fields" set:html={jsonForScript(fields.map((f) => ({ id: f.id, label: f.label })))} />
 </Base>
 <style>
   .opp { padding-bottom: 4rem; }

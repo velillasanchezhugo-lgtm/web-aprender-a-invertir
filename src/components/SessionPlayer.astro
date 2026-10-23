@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../lib/safe-json';
 /**
  * Reproductor de una sesión de 5 minutos (gancho, idea, práctica, caso, test, acción). Lo usan todas las formaciones:
  * `formation` cambia los enlaces y la clave donde se guarda el progreso (cada formación, el suyo).
@@ -170,7 +171,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', 
       </nav>
     </div>
   </div>
-  <script type="application/json" id="session-data" set:html={JSON.stringify({ questions: d.questions.map((q) => q.id), qmeta, skills: d.skills })} />
+  <script type="application/json" id="session-data" set:html={jsonForScript({ questions: d.questions.map((q) => q.id), qmeta, skills: d.skills })} />
 </Base>
 
 <style>

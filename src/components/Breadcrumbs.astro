@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../lib/safe-json';
 interface Props { items: { href?: string; label: string }[] }
 const { items } = Astro.props;
 const site = Astro.site!;
@@ -14,4 +15,4 @@ const ld = {
     ))}
   </ol>
 </nav>
-<script type="application/ld+json" set:html={JSON.stringify(ld)} />
+<script type="application/ld+json" set:html={jsonForScript(ld)} />

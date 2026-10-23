@@ -62,7 +62,9 @@ Sesiones de la academia que puedes recomendar:
 ${list}`;
 }
 
-const wrap = (tag, text) => (text ? `<${tag}>\n${text}\n</${tag}>\n` : '');
+/** Quita de los datos cualquier etiqueta de bloque (<alumno>, </sesion>…): así un texto no puede «cerrar» su bloque y colarse como instrucción. */
+export const neutralize = (text) => String(text).replace(/<\s*\/?\s*(alumno|sesion|noticia)\b[^>]*>/gi, '[etiqueta eliminada]');
+const wrap = (tag, text) => (text ? `<${tag}>\n${neutralize(text)}\n</${tag}>\n` : '');
 
 /** Mensajes para la API: historial reciente y el mensaje nuevo con su contexto. */
 export function buildMessages({ mode, message, history, context, learner }) {

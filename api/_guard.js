@@ -122,7 +122,8 @@ export async function verifyTurnstile(token, ip, fetchImpl = fetch) {
   if (typeof token !== 'string' || !token || token.length > 2048) return false;
   try {
     const form = new URLSearchParams({ secret, response: token });
-    if (ip && ip !== 'anon') form.set('remoteip', ip);
+    // Solo una IPv4 completa: la clave de una IPv6 es su red /64, que Cloudflare no acepta como IP.
+    if (typeof ip === 'string' && /^\d{1,3}(\.\d{1,3}){3}$/.test(ip)) form.set('remoteip', ip);
     const r = await fetchImpl('https://challenges.cloudflare.com/turnstile/v0/siteverify', { method: 'POST', body: form, signal: AbortSignal.timeout(5000) });
     const d = await r.json();
     return d?.success === true;

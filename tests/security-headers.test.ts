@@ -92,3 +92,26 @@ test('con cuentas y publicidad la CSP de la página añade solo esos orígenes',
   const plain = directives(pagePolicy({ supabaseUrl: 'http://inseguro.example' }));
   assert.deepEqual(plain['connect-src'], ["'self'"], 'una URL sin HTTPS no se admite');
 });
+
+/** ¿Admite una fuente de la cabecera (con comodín «https://*.dominio») el origen que pide la página? */
+const covers = (ceiling: string[], src: string) => ceiling.some((c) => {
+  if (c === src) return true;
+  const m = c.match(/^(https|wss):\/\/\*\.(.+)$/);
+  return !!m && src.startsWith(`${m[1]}://`) && src.endsWith(`.${m[2]}`);
+});
+
+test('todo lo que la CSP de una página permite también lo permite la cabecera (si no, el servicio se rompe al activarlo)', () => {
+  const header = directives(headerPolicy());
+  // Configuración más amplia: cuentas, publicidad y Turnstile activos a la vez.
+  const page = directives(pagePolicy({ scripts: ['x()'], ads: true, supabaseUrl: 'https://abcd.supabase.co', turnstile: true }));
+  for (const k of ['script-src', 'connect-src', 'frame-src']) {
+    for (const src of page[k]) {
+      if (src.startsWith("'sha256-")) continue; // las huellas pasan la cabecera por su 'unsafe-inline'
+      assert.ok(covers(header[k], src), `${k}: la cabecera no admite ${src}`);
+    }
+  }
+  // La mensajería de consentimiento de Google (CMP) y el servidor de anuncios de España.
+  for (const o of ['https://fundingchoicesmessages.google.com', 'https://adservice.google.es']) {
+    assert.ok(covers(page['script-src'], o) && covers(header['script-src'], o), `CMP o anuncios bloqueados: ${o}`);
+  }
+});

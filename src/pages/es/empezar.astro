@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../../lib/safe-json';
 import Base from '../../layouts/Base.astro';
 import academy from '../../data/academy.json';
 import { academyIndex, TRACKS, DOMAINS, SKILLS } from '../../lib/content';
@@ -97,7 +98,7 @@ const days = [['1', 'L', 'Lunes'], ['2', 'M', 'Martes'], ['3', 'X', 'Miércoles'
       </nav>
     </form>
   </div>
-  <script type="application/json" id="wz-data" set:html={JSON.stringify({ catalog, titles, bank, domains: DOMAINS, skills: SKILLS, tracks: TRACKS })} />
+  <script type="application/json" id="wz-data" set:html={jsonForScript({ catalog, titles, bank, domains: DOMAINS, skills: SKILLS, tracks: TRACKS })} />
 </Base>
 <style>
   .wizard { padding-top: 1.2rem; padding-bottom: 7rem; }

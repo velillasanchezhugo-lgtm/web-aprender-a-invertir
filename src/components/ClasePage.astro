@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../lib/safe-json';
 /** Clase del Nivel 2 o lección del Nivel 3 (docs/CURRICULO.md, secciones 4.2 y 4.3). Solo se publican las muestras abiertas. */
 import { render, type CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
@@ -108,7 +109,7 @@ const qs = d.questions.map((q) => ({ ...q, meta: { skills: q.skills ?? d.skills,
       <p class="muted">{d.author}. Estado: {d.status === 'revisado' ? 'revisado' : 'pendiente de revisión humana'}. Contenido educativo, no asesoramiento.</p>
     </details>
   </article>
-  <script type="application/json" id="clase-data" set:html={JSON.stringify({ qs })} />
+  <script type="application/json" id="clase-data" set:html={jsonForScript({ qs })} />
 </Base>
 <style>
   .clase { padding-bottom: 4rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.4rem; }

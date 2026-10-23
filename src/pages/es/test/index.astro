@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../../../lib/safe-json';
 import Base from '../../../layouts/Base.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import rules from '../../../data/quiz.json';
@@ -46,8 +47,8 @@ const blocks = [...new Set(rules.questions.map((q) => q.block))];
     </form>
     <section id="result" class="result" hidden tabindex="-1" aria-labelledby="plan-title"></section>
   </div>
-  <script type="application/json" id="quiz-rules" set:html={JSON.stringify(rules)} />
-  <script type="application/json" id="quiz-meta" set:html={JSON.stringify({ lessonTitles, toolTitles })} />
+  <script type="application/json" id="quiz-rules" set:html={jsonForScript(rules)} />
+  <script type="application/json" id="quiz-meta" set:html={jsonForScript({ lessonTitles, toolTitles })} />
 </Base>
 <style>
   .qblock h2 { font-size: 1.35rem; }

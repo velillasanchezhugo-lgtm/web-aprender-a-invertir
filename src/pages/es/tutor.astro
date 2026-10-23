@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../../lib/safe-json';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { sessions, SKILLS } from '../../lib/content';
@@ -51,7 +52,7 @@ const EXAMPLES = ['¿Qué diferencia hay entre un fondo indexado y un ETF?', '¿
       <p>El tutor puede equivocarse. Para cifras fiscales o legales, comprueba siempre la fuente oficial (AEAT, CNMV, Banco de España).</p>
     </details>
   </div>
-  <script type="application/json" id="tutor-data" set:html={JSON.stringify({ questions, skills: SKILLS, goals: Object.fromEntries(academy.goals.map((g) => [g.id, g.label])) })} />
+  <script type="application/json" id="tutor-data" set:html={jsonForScript({ questions, skills: SKILLS, goals: Object.fromEntries(academy.goals.map((g) => [g.id, g.label])) })} />
 </Base>
 <style>
   .tutor { padding-bottom: 4rem; }

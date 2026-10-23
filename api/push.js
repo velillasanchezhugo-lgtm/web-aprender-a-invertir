@@ -6,7 +6,7 @@
  * para cambiar la actividad o darse de baja hay que enviar las dos.
  */
 import { adminClient, serverConfigured, userFromRequest } from './_supabase.js';
-import { validSubscription, validEndpoint, validAuthKey, validDay } from './_reminder-core.js';
+import { validSubscription, validEndpoint, validAuthKey, validDay, subscribeAction } from './_reminder-core.js';
 import { makeLimiter } from './_tutor-core.js';
 import { json, clientIp, sameOrigin, readJson } from './_guard.js';
 
@@ -30,7 +30,14 @@ export async function POST(request) {
     const s = b.subscription;
     // Sin sesión no se toca user_id: así no se desvincula un aviso de su cuenta.
     const row = { endpoint: s.endpoint, p256dh: s.keys.p256dh, auth: s.keys.auth, last_active: day, streak, updated_at: now, ...(user ? { user_id: user.id } : {}) };
-    const { error } = await db.upsert(row);
+    const { data: existing, error: readError } = await db.select('auth').eq('endpoint', s.endpoint).maybeSingle();
+    if (readError) return json({ error: 'No se pudo guardar.' }, 500);
+    const action = subscribeAction(existing, s);
+    if (action === 'reject') return json({ error: 'Suscripción no válida.' }, 409);
+    // Si la fila ya existe, solo se actualiza la que tiene la misma clave «auth».
+    const { error } = action === 'update'
+      ? await db.update(row).eq('endpoint', s.endpoint).eq('auth', s.keys.auth)
+      : await db.insert(row);
     return error ? json({ error: 'No se pudo guardar.' }, 500) : json({ ok: true });
   }
   const endpoint = b.endpoint;

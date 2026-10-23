@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../../../lib/safe-json';
 import Base from '../../../layouts/Base.astro';
 import academy from '../../../data/academy.json';
 import { examQuestions, academyIndex } from '../../../lib/content';
@@ -20,7 +21,7 @@ const { level, questions } = Astro.props as { level: (typeof academy.levels)[num
     <div class="ex-ctrl"><button class="btn" id="ex-next" type="button" hidden>Siguiente <span class="arrow" aria-hidden="true">→</span></button></div>
     <div id="ex-result" hidden tabindex="-1"></div>
   </div>
-  <script type="application/json" id="ex-data" set:html={JSON.stringify(questions.map((q) => ({ ...q, meta: qmeta[q.id] ?? null })))} />
+  <script type="application/json" id="ex-data" set:html={jsonForScript(questions.map((q) => ({ ...q, meta: qmeta[q.id] ?? null })))} />
 </Base>
 <style>.ex { padding-top: 1.5rem; padding-bottom: 3rem; } .ex-ctrl { margin: 1rem 0; display: flex; justify-content: flex-end; } #ex-q { margin-top: 1rem; }</style>
 <script>

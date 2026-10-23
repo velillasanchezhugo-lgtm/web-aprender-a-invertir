@@ -82,6 +82,17 @@ const b64url = (v, min, max) => typeof v === 'string' && v.length >= min && v.le
 export function validSubscription(s) {
   return !!(s && validEndpoint(s.endpoint) && s.keys && b64url(s.keys.p256dh, 16, 200) && b64url(s.keys.auth, 8, 64));
 }
+/**
+ * Alta de una suscripción que puede existir ya (misma dirección). Solo el navegador que la creó conoce su clave
+ * «auth»: si la fila existe con otra clave, no se sobrescribe (quien solo conozca la dirección no puede
+ * quedarse con el aviso de otra persona ni cambiar sus claves).
+ * Devuelve 'insert', 'update' o 'reject'.
+ */
+export function subscribeAction(existing, sub) {
+  if (!existing) return 'insert';
+  return typeof existing.auth === 'string' && existing.auth === sub?.keys?.auth ? 'update' : 'reject';
+}
+
 /** La clave «auth» de la suscripción sirve como prueba de que quien pide el cambio es ese navegador. */
 export const validAuthKey = (a) => b64url(a, 8, 64);
 export const validDay = (d) => typeof d === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(d);

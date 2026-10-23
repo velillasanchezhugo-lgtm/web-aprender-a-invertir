@@ -23,6 +23,9 @@ export const ADS_SCRIPT = [
   'https://*.googleadservices.com',
   'https://*.doubleclick.net',
   'https://*.adtrafficquality.google',
+  // Dominios que el código de AdSense también usa: etiquetas de Google y el servidor de anuncios de google.es (visitas desde España).
+  'https://*.googletagservices.com',
+  'https://adservice.google.es',
 ];
 export const ADS_CONNECT = [...ADS_SCRIPT];
 export const ADS_FRAME = [

@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../../lib/safe-json';
 import Base from '../../layouts/Base.astro';
 import Postits from '../../components/Postits.astro';
 import { HUBS } from '../../lib/hubs';
@@ -37,7 +38,7 @@ const jsonLd = [
       <li><strong>Tu progreso, contigo</strong><span class="small">Se guarda en tu dispositivo, o en tu cuenta si la creas.</span></li>
     </ul>
   </section>
-  <script type="application/json" id="home-data" set:html={JSON.stringify(counts)} />
+  <script type="application/json" id="home-data" set:html={jsonForScript(counts)} />
 </Base>
 <style>
   .hero { padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--rule); background-color: var(--paper); position: relative; overflow: hidden; }

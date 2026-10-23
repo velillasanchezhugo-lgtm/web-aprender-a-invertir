@@ -38,6 +38,8 @@ Todas las cabeceras están en `vercel.json` y las comprueba `tests/security-head
 | `X-Permitted-Cross-Domain-Policies`, `Origin-Agent-Cluster` | `none`, `?1` | Endurecimiento menor |
 | En `/api/*` | `Cache-Control: no-store`, `X-Robots-Tag: noindex`, CSP `default-src 'none'` | Respuestas privadas, sin caché ni indexación. Sin CORS: las funciones rechazan otros orígenes |
 
+**Permissions-Policy y planes de pago futuros.** `payment=()` bloquea la API de pagos del navegador, y `publickey-credentials-get=()` bloquea las llaves de acceso (*passkeys*). Hoy no se usan. Si al cobrar se usa un formulario de pago incrustado (por ejemplo, con Apple Pay o Google Pay) o se añaden llaves de acceso, habrá que abrirlos solo para la propia web y el proveedor (por ejemplo, `payment=(self "https://js.stripe.com")`). Una página de pago alojada por el proveedor (redirección) no necesita cambios.
+
 **Navegación de los avisos push.** `public/sw.js` solo abre rutas de la propia web, aunque el aviso traiga otra dirección.
 
 ### Cómo funciona la CSP
@@ -51,11 +53,18 @@ Los estilos en línea están permitidos (`style-src 'unsafe-inline'`): la web us
 
 **Si un servicio nuevo deja de funcionar** (la consola dice «Refused to load… Content Security Policy»): añade su dominio a `scripts/csp.mjs` y regenera la cabecera de `vercel.json` con `headerPolicy()` (la prueba avisa si no coinciden). Para AdSense, el listado de dominios de Google está en `ADS_SCRIPT`, `ADS_CONNECT` y `ADS_FRAME`. Al activarlo, revisa la consola en una página con anuncios y el mensaje de consentimiento. Si la cuenta usa un dominio propio de Supabase (no `*.supabase.co`), añádelo a `SUPABASE_CEILING`.
 
+**Antes de activar AdSense (importante).** Google dice en su ayuda («Integrate the AdSense ad code with a Content Security Policy») que **solo da soporte a una CSP estricta** con *nonce* y `'strict-dynamic'` (su ejemplo incluye además `'unsafe-eval'`), porque los dominios de su código cambian con el tiempo. Esta web usa una lista de dominios, porque es estática y no puede generar un *nonce* por visita. Puede funcionar, pero Google no lo garantiza. Al activarlo:
+1. Despliega primero en una vista previa con `PUBLIC_ADS_ENABLED=true` y abre una página con anuncios y la página de cookies en un navegador limpio (sin consentimiento guardado).
+2. Comprueba en la consola que no aparece ningún «Refused to…» ni en el mensaje de consentimiento ni en los anuncios. Si falta un dominio, añádelo a `ADS_SCRIPT` (la prueba `tests/security-headers.test.ts` comprueba que la cabecera y la `<meta>` coinciden).
+3. Si Google pide `'unsafe-eval'` o los anuncios fallan de forma intermitente, la salida es una CSP por huellas con `'strict-dynamic'`: cargar AdSense y los scripts de Astro desde un pequeño cargador en línea con huella. Es un cambio de código que hay que probar aparte. No añadas `https:` ni `*` a `script-src` como atajo.
+
 **La barra de comentarios de Vercel** en las vistas previas (`vercel.live`) queda bloqueada por la CSP. Es a propósito; si se quiere usar, añadir `https://vercel.live` solo en las vistas previas.
 
 ### HSTS preload
 
 La cabecera ya lleva `preload`. Para entrar en la lista de los navegadores, **cuando el dominio definitivo esté en marcha** y todos sus subdominios funcionen con HTTPS (también correo web u otros servicios), envíalo en <https://hstspreload.org>. Es difícil de deshacer: no lo hagas si algún subdominio tiene que servir HTTP.
+
+La lista de precarga solo admite el **dominio raíz** (por ejemplo, `umotion.es`), no un subdominio (`academy.umotion.es`). Si la academia vive en un subdominio, el `preload` de esta cabecera no tiene efecto, y para precargar habría que poner HSTS con `includeSubDomains; preload` en el dominio raíz, lo que obliga a HTTPS a **todos** los subdominios de umotion. Decídelo con quien gestione el dominio principal.
 
 ## 3. Cortafuegos (Vercel Firewall)
 
@@ -81,6 +90,16 @@ La cabecera ya lleva `preload`. Para entrar en la lista de los navegadores, **cu
 ## 4. Funciones en la UE
 
 `vercel.json` fija `"regions": ["fra1"]` (Fráncfort): el tutor, la cuenta y los avisos se procesan en la UE. La llamada a Anthropic sigue yendo a EE. UU. (lo cubre la política de privacidad). Crea el proyecto de Supabase también en una región de la UE.
+
+### Privacidad de estas medidas
+
+Las medidas de seguridad también tratan datos personales. Tienen que estar en la política de privacidad (`/es/privacidad/`, apartado 3.1) y en el registro de actividades (`docs/LEGAL.md`):
+- **Cortafuegos y límites de peticiones**: el cortafuegos de Vercel ve y registra la **dirección IP**, la ruta, el navegador y la acción tomada (permitida, reto o bloqueo). Base legal: interés legítimo en la seguridad (RGPD art. 6.1.f y considerando 49). El plazo de los registros depende del plan de Vercel; confírmalo y escríbelo en la política.
+- **Retos contra robots** (*Bot Protection*, *Attack Challenge Mode*): el navegador resuelve una prueba en JavaScript y puede quedar guardada una cookie técnica de seguridad para no repetirla. Es necesaria para la seguridad y no requiere consentimiento, pero si se activan hay que citarla en `/es/cookies/`.
+- **Cloudflare Turnstile**: solo con su clave; ya está en privacidad y cookies.
+- **Región de las funciones**: `fra1` procesa las funciones en la UE. Los archivos estáticos y los registros del borde se sirven desde la red mundial de Vercel, y Vercel es una empresa de EE. UU., así que la transferencia sigue cubierta por su contrato (Marco de Privacidad de Datos y cláusulas contractuales tipo).
+- **`security.txt`**: si el titular es una persona física, su correo de contacto es un dato personal publicado. Mejor un buzón específico (por ejemplo, de seguridad o de contacto) que el correo personal.
+- **Repositorio público**: todo lo que se sube es visible para cualquiera, también `docs/` y el autor en `src/config/site.ts`. No subas nunca exportaciones de Supabase, registros, capturas con correos ni datos de alumnos.
 
 ## 5. Dependencias y análisis de código (puntos 5, 6 y 7)
 
@@ -149,7 +168,7 @@ No hay panel de administración propio. Cada proveedor es un panel y hay que pro
 
 ## 8. `security.txt` y avisos de fallos
 
-`public/.well-known/security.txt` (RFC 9116) dice a quien encuentre un fallo cómo avisar. El contacto **no está puesto** (no se inventa): se rellena al compilar con la variable `SECURITY_CONTACT` de Vercel (por ejemplo, `mailto:` y el mismo correo de `OWNER.email`). Mientras falte, la compilación avisa. La fecha `Expires` hay que renovarla cada año (la compilación avisa 60 días antes y falla si caduca).
+`public/.well-known/security.txt` (RFC 9116) dice a quien encuentre un fallo cómo avisar. El contacto **no está puesto** (no se inventa): se rellena al compilar con la variable `SECURITY_CONTACT` de Vercel (por ejemplo, `mailto:` y el mismo correo de `OWNER.email`). Mientras falte, la compilación avisa, **pero el archivo se publica con el texto `PENDIENTE-SECURITY-CONTACT`**, que no es un contacto válido según el RFC 9116. Define `SECURITY_CONTACT` antes del primer despliegue en producción. [Pendiente (código): que la compilación de producción (`VERCEL_ENV=production`) falle o no publique el archivo si falta el contacto.] La fecha `Expires` hay que renovarla cada año (la compilación avisa 60 días antes y falla si caduca).
 
 **Si hay un incidente:** rotar las claves afectadas (apartado 7), revisar los registros de Vercel y Supabase, y si afecta a datos personales, valorar la notificación a la AEPD en 72 horas (procedimiento en `docs/LEGAL.md`).
 

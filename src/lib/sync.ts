@@ -21,6 +21,13 @@ const isStr = (x: unknown): x is string => typeof x === 'string' && x.length <= 
 const isNum = (x: unknown): x is number => typeof x === 'number' && Number.isFinite(x);
 const isObj = (x: unknown): x is Rec => !!x && typeof x === 'object' && !Array.isArray(x);
 
+/**
+ * Ruta interna de la web («/es/…»). Sin espacios ni caracteres de control: el navegador los quita de las URL,
+ * y «/\t/otra.web» acabaría siendo «//otra.web» (otro dominio).
+ */
+export const internalPath = (u: unknown): u is string =>
+  typeof u === 'string' && u.length <= 300 && /^\/[^/\\]/.test(u) && !/[\s\u0000-\u001f\u007f\\]/.test(u);
+
 /** Une dos diccionarios de fechas quedándose con la más antigua (cuándo se hizo por primera vez). */
 export function unionEarliest(a: unknown, b: unknown): Record<string, string> {
   const out = clean(a, isStr);
@@ -94,14 +101,17 @@ export function mergeProgress(local: unknown, remote: unknown): Rec {
   const reviews: Rec = clean(R.reviews, isObj);
   for (const [k, v] of Object.entries(clean(L.reviews, isObj))) if (!reviews[k] || String(v.at) > String(obj(reviews[k]).at)) reviews[k] = v;
   const lastL = obj(L.last), lastR = obj(R.last);
-  return {
+  const out: Rec = {
     completed: unionEarliest(L.completed, R.completed),
     // Solo rutas internas de la web («/es/…»): nunca enlaces externos ni «javascript:».
-    bookmarks: [...new Set([...arr<unknown>(R.bookmarks), ...arr<unknown>(L.bookmarks)].filter((u): u is string => typeof u === 'string' && u.length <= 300 && /^\/[^/\\]/.test(u)))],
+    bookmarks: [...new Set([...arr<unknown>(R.bookmarks), ...arr<unknown>(L.bookmarks)].filter(internalPath))],
     reviews,
     tools,
     ...(lastL.at || lastR.at ? { last: String(lastL.at ?? '') >= String(lastR.at ?? '') ? lastL : lastR } : {}),
   };
+  // «Seguir donde lo dejaste» solo puede llevar a una ruta interna.
+  if (out.last && !internalPath(obj(out.last).path)) delete out.last;
+  return out;
 }
 
 /**

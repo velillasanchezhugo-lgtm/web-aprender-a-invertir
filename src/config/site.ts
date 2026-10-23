@@ -53,7 +53,7 @@ export const LEGAL = {
   updated: '2026-10-23',
   mailProvider: '',
   hosting: 'Vercel Inc. (EE. UU.)',
-  functionsRegion: 'fra1 (Fráncfort, Alemania)', // coincide con "regions" de vercel.json
+  functionsRegion: 'fra1 (Fráncfort, UE)', // coincide con "regions" de vercel.json
   /** Autoridad de control para reclamar. */
   authority: { name: 'Agencia Española de Protección de Datos (AEPD)', url: 'https://www.aepd.es/' },
 };

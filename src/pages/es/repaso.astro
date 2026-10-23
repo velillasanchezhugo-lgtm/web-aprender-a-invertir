@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../../lib/safe-json';
 import Base from '../../layouts/Base.astro';
 import { sessions, guessFor } from '../../lib/content';
 const all = await sessions();
@@ -15,7 +16,7 @@ const bank = Object.fromEntries(all.flatMap((s) => s.data.questions.map((q) => [
     <div class="rv-ctrl"><button class="btn" id="rv-next" type="button" hidden>Siguiente <span class="arrow" aria-hidden="true">→</span></button></div>
     <div class="callout learn" id="rv-done" hidden></div>
   </div>
-  <script type="application/json" id="bank" set:html={JSON.stringify(bank)} />
+  <script type="application/json" id="bank" set:html={jsonForScript(bank)} />
 </Base>
 <style>.rv { padding-top: 1.5rem; } .rv h1 { margin: 0.2rem 0 0.5rem; } #rv-q { margin-top: 1rem; } .rv-ctrl { margin: 1rem 0; display: flex; justify-content: flex-end; }</style>
 <script>

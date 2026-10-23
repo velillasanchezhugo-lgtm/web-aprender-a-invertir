@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../../../lib/safe-json';
 import Base from '../../../layouts/Base.astro';
 import curriculum from '../../../data/curriculum.json';
 import { sessions, guessFor } from '../../../lib/content';
@@ -21,7 +22,7 @@ const zero = all.filter((s) => s.data.track === 'camino-cero').map((s) => s.id);
     <div class="ex-ctrl"><button class="btn" id="ex-next" type="button" hidden>Siguiente <span class="arrow" aria-hidden="true">→</span></button></div>
     <div id="ex-result" hidden tabindex="-1"></div>
   </div>
-  <script type="application/json" id="ex-data" set:html={JSON.stringify({ bank, caps: curriculum.n1Capacities, zero })} />
+  <script type="application/json" id="ex-data" set:html={jsonForScript({ bank, caps: curriculum.n1Capacities, zero })} />
 </Base>
 <style>
   .ex { padding-top: 1.5rem; padding-bottom: 3rem; }

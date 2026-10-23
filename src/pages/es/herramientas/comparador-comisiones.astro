@@ -1,4 +1,5 @@
 ---
+import { jsonForScript } from '../../../lib/safe-json';
 import ToolLayout from '../../../components/ToolLayout.astro';
 import brokers from '../../../data/brokers.json';
 const list = brokers.brokers.map((b) => ({ id: b.id, name: b.name, verified: b.fees.v, ...b.fees, text: undefined }));
@@ -21,7 +22,7 @@ const list = brokers.brokers.map((b) => ({ id: b.id, name: b.name, verified: b.f
       <p class="small muted">Ordenado de menor a mayor coste estimado <strong>solo para esta situación</strong>. No es una clasificación general: con otros importes el orden cambia, y el coste no es el único criterio (protección, fiscalidad, servicio). No hay enlaces de afiliación.</p>
     </div>
   </div>
-  <script type="application/json" id="fees-data" set:html={JSON.stringify(list)} />
+  <script type="application/json" id="fees-data" set:html={jsonForScript(list)} />
   <Fragment slot="method">
     <details class="method" open>
       <summary>Supuestos publicados y limitaciones</summary>
