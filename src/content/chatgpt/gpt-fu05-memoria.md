@@ -6,13 +6,13 @@ track: gpt-funciones
 order: 205
 skills: [gpt-proyectos-memoria, gpt-privacidad]
 terms: [memoria-de-chatgpt, chat-temporal, datos-personales]
-hook: "Un día ChatGPT te sugiere recetas sin gluten. No se lo has dicho en ese chat, pero sí hace meses en otro. ¿Qué sabe de ti y cómo lo controlas?"
+hook: "Pides a ChatGPT un plan para el sábado y te propone algo «cerca de tu trabajo». En ese chat no le has dicho dónde trabajas. ¿De dónde lo ha sacado y dónde puedes verlo?"
 takeaway: La memoria hace que ChatGPT use en chats nuevos lo que sabe de ti. Revísala de vez en cuando, borra lo que no deba estar y usa un chat temporal para lo delicado.
 scenario:
   kind: producto
   label: Caso práctico
-  title: Lo que ChatGPT sabía de Samuel
-  body: "Samuel se mudó de Bilbao a Sevilla hace medio año, pero ChatGPT le sigue proponiendo planes en Bilbao. Le pregunta «¿qué sabes de mí?» y ve que tiene guardada su antigua ciudad. Borra esa memoria en la configuración, escribe «recuerda que ahora vivo en Sevilla» y comprueba que la nueva aparece en la lista."
+  title: Lo que ChatGPT sabía de Lisandro
+  body: "Lisandro se mudó de Logroño a Cartagena hace medio año, pero ChatGPT le sigue proponiendo planes en Logroño. Le pregunta «¿qué sabes de mí?» y ve que tiene guardada su antigua ciudad. Borra esa memoria en la configuración, escribe «recuerda que ahora vivo en Cartagena» y comprueba que la nueva aparece en la lista."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -33,7 +33,7 @@ questions:
     answer: 2
     explain: "Desactivarla hace que deje de usar lo que recuerda de chats pasados, y esos chats siguen en tu historial. Borrar el historial tienta por rápido, pero pierdes conversaciones que quizá quieras."
 tips:
-  - "Puedes pedirlo en el chat: «recuerda que soy vegetariana» u «olvida lo de mi mudanza». Luego compruébalo en la configuración."
+  - "También vale pedirlo en el chat («guarda que ahora trabajo de noche», «borra lo de mi viaje»). Después mira en la configuración que se ha hecho."
   - "Las opciones de memoria varían según el plan y el país; en el plan gratis, la referencia al historial es más ligera."
 action:
   title: Revisa tu memoria
@@ -44,7 +44,7 @@ action:
     - "Apunta en «Mi kit de ChatGPT» qué temas usarás solo en chats temporales."
   check: He revisado lo que ChatGPT recuerda de mí
 practice:
-  task: "Le contaste a ChatGPT que estás de baja por ansiedad y no quieres que lo recuerde, pero sí que preparas un traslado de trabajo a Valladolid. Escribe la petición."
+  task: "Quieres que ChatGPT recuerde para tus recetas que eres celíaca y no tienes horno, pero que olvide lo que le contaste ayer sobre la enfermedad de tu madre. Escribe la petición."
   require: [limites]
   extra:
     - label: "Pedir que olvide algo concreto"
@@ -53,7 +53,7 @@ practice:
     - label: "Pedir que te diga qué ha guardado"
       any: ["que has guardado", "que recuerdas", "que tienes guardado", "que sabes de mi"]
       hint: "Pide que te diga qué tiene guardado y compruébalo en la configuración."
-  sample: "Olvida lo que te conté sobre mi baja médica y no lo guardes en la memoria. En cambio, recuerda que estoy preparando un traslado de trabajo a Valladolid para septiembre y que prefiero respuestas cortas, en español de España y sin tecnicismos. No guardes datos de salud ni de mi familia. Al terminar, dime qué tienes guardado sobre mí para que lo compruebe en la configuración."
+  sample: "Olvida lo que te conté ayer sobre la enfermedad de mi madre y no lo guardes en la memoria. En cambio, recuerda para mis recetas que soy celíaca, que cocino para cuatro personas y que no tengo horno. No guardes datos de salud de mi familia. Al terminar, dime qué tienes guardado sobre mí para que lo compruebe en la configuración."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

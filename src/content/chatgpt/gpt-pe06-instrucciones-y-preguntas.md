@@ -17,15 +17,15 @@ scenario:
 questions:
   - type: choice
     id: gpt-pe06-q1
-    q: "Iván quiere planificar con ChatGPT un viaje de 10 días por Portugal, pero no sabe qué datos darle. ¿Qué hace?"
-    options: ["Pide «planifícame un viaje por Portugal» y ya irá corrigiendo", "Pide «antes de proponer nada, hazme hasta seis preguntas, de una en una»", "Espera a tenerlo todo decidido antes de abrir ChatGPT"]
-    answer: 1
-    explain: "Si no sabes qué contar, deja que te pregunte: saldrán presupuesto, ritmo y transporte. Pedirlo directamente tienta, pero rellenará los huecos con un viaje de folleto."
+    q: "Fabián pide ayuda para un viaje por Portugal y ChatGPT le hace seis preguntas. Solo sabe contestar dos: el resto aún no lo ha decidido. ¿Qué hace?"
+    options: ["Se inventa las respuestas que no sabe para que ChatGPT pueda seguir", "Lo deja: si no sabe contestarlo todo, no merece la pena", "Contesta las dos que sabe y pide que, en lo demás, le dé opciones y marque lo que supone"]
+    answer: 2
+    explain: "Las preguntas sirven para afinar, no son un examen: lo que no sabes también es información. Inventar respuestas tienta para salir del paso, pero el plan se construirá sobre datos falsos."
   - type: choice
     id: gpt-pe06-q2
-    q: "Joaquín tiene en sus instrucciones personalizadas «respuestas cortas», pero hoy necesita un informe largo y detallado. ¿Qué hace?"
-    options: ["Borra sus instrucciones y las escribe otra vez mañana", "Se lo dice en ese chat: «Hoy necesito una respuesta larga y detallada»", "Lo deja así: las instrucciones no se pueden saltar"]
-    answer: 1
+    q: "Octavio tiene en sus instrucciones personalizadas «respuestas cortas», pero hoy necesita un informe largo y detallado. ¿Qué hace?"
+    options: ["Se lo dice en ese chat: «Hoy necesito una respuesta larga y detallada»", "Borra sus instrucciones y las escribe otra vez mañana", "Lo deja así: las instrucciones no se pueden saltar"]
+    answer: 0
     explain: "Lo que pides en el chat suele mandar sobre la preferencia general. Borrarlas tienta porque parece lo seguro, pero es trabajo de más. Si un día no quieres ninguna, se pueden desactivar en la personalización."
   - type: choice
     id: gpt-pe06-q3
@@ -80,6 +80,6 @@ Pon tu situación general, el tono, la longitud y estos hábitos; no pongas DNI,
 
 En una petición importante:
 
-> Prueba: «Quiero organizar en diciembre un mercadillo solidario en el patio del colegio de mis hijos. Antes de proponer nada, hazme hasta cinco preguntas, de una en una. Con mis respuestas, dame un plan en pasos y termina con los dos riesgos que más podrían estropear el día. Si algo es una suposición, márcalo.»
+> Prueba: «Te pego abajo mi plan para el mercadillo solidario de diciembre en el patio del colegio de mis hijos. No me digas si es buena idea: dime qué estoy pasando por alto y los dos riesgos que más podrían estropear el día, del más probable al menos. Si para valorarlo te falta un dato, pregúntamelo primero.»
 
 Si su crítica te parece injusta, discútela: es un punto de vista, no un veredicto. Y un «sí, buena idea» no es un análisis.

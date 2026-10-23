@@ -1,0 +1,61 @@
+---
+/**
+ * Pantalla de inicio de una formación: un cuadrado para entrar en la formación (lleva a donde lo dejaste,
+ * con el progreso de este dispositivo o de tu cuenta) y otro por cada apartado: niveles, herramientas, glosario…
+ * Debajo, en el slot, el detalle de la formación.
+ */
+import Breadcrumbs from './Breadcrumbs.astro';
+import Postits, { type PostitItem } from './Postits.astro';
+import type { Hub } from '../lib/hubs';
+interface Props {
+  hub: Hub; intro: string;
+  /** Clave del progreso («academy» en Inversión, «academy-<id>» en las demás). */
+  store: string;
+  /** Sesiones del Nivel 1 en el orden recomendado. */
+  order: { id: string; href: string; title: string }[];
+  /** Adonde lleva si aún no has empezado. */
+  start: string;
+  squares: PostitItem[];
+}
+const { hub, intro, store, order, start, squares } = Astro.props;
+const enter: PostitItem = { id: 'hub-go', cls: hub.cls, kicker: 'Nivel 1 · gratis', title: 'Entrar en la formación', text: 'Empieza por la primera sesión: 5 minutos.', href: start, go: 'Empezar' };
+---
+<section class="hub-hero dots">
+  <div class="container">
+    <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: hub.title }]} />
+    <p class="eyebrow">Formación · 3 niveles</p>
+    <h1>{hub.title}</h1>
+    <p class="lede">{intro}</p>
+    <Postits items={[enter, ...squares]} label="Qué quieres hacer" labelId="hub-t" size="sm" />
+    <p class="small muted hub-note" id="hub-note" aria-live="polite" hidden></p>
+  </div>
+</section>
+<slot />
+<script type="application/json" id="hub-data" set:html={JSON.stringify({ store, order, start })} />
+<style>
+  .hub-hero { border-bottom: 1px solid var(--rule); padding: 0.5rem 0 2.6rem; margin-bottom: 1.5rem; }
+  .hub-hero h1 { font-size: clamp(2.6rem, 1.8rem + 3.8vw, 4.8rem); margin: 0.2rem 0 0.8rem; letter-spacing: -0.045em; }
+  .hub-hero .lede { max-width: 64ch; }
+  .hub-note { margin: 1.2rem 0 0; }
+</style>
+<script>
+  import { getState, type StoreKey } from '../scripts/academy-store';
+  const D = JSON.parse(document.getElementById('hub-data')!.textContent!) as { store: StoreKey; order: { id: string; href: string; title: string }[]; start: string };
+  const s = getState(D.store);
+  const done = s.completed;
+  const n = D.order.filter((o) => done[o.id]).length;
+  // Con plan (Inversión), se sigue su orden; si no, el orden recomendado del Nivel 1.
+  const planned = s.plan?.order?.length ? s.plan.order.map((id) => D.order.find((o) => o.id === id)).filter(Boolean) as typeof D.order : D.order;
+  if (n || s.plan) {
+    const go = document.getElementById('hub-go') as HTMLAnchorElement;
+    const next = planned.find((o) => !done[o.id]) ?? D.order.find((o) => !done[o.id]);
+    go.querySelector('[data-kicker]')!.textContent = `${n} de ${D.order.length} sesiones`;
+    go.querySelector('.pi-title')!.textContent = 'Continuar la formación';
+    go.querySelector('.pi-go')!.firstChild!.textContent = 'Continuar ';
+    if (next) { go.href = next.href; go.querySelector('[data-text]')!.textContent = `Te toca: ${next.title}`; }
+    else { go.href = D.start; go.querySelector('[data-text]')!.textContent = '¡Nivel 1 completado! Repasa o haz el examen.'; }
+    const note = document.getElementById('hub-note')!;
+    note.hidden = false;
+    note.textContent = 'Seguimos donde lo dejaste con el progreso guardado en este dispositivo (o en tu cuenta, si has entrado).';
+  }
+</script>

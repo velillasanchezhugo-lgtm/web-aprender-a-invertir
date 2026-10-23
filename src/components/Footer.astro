@@ -1,6 +1,8 @@
 ---
 import Logo from './Logo.astro';
 import { SITE, adsActive } from '../config/site';
+import { HUBS, hubOf } from '../lib/hubs';
+const inv = hubOf(Astro.url.pathname) === 'inversion';
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
@@ -8,29 +10,26 @@ const year = new Date().getFullYear();
     <div class="top">
       <div class="about">
         <Logo size={26} inverse />
-        <p>Aprende a invertir en 5 minutos al día. Un producto de <a href={SITE.parentUrl} rel="noopener">umotion</a>.</p>
-        <a class="btn small brand" href="/es/empezar/">Crear mi plan <span class="arrow" aria-hidden="true">→</span></a>
+        <p>Una escuela gratuita para aprender desde cero, en 5 minutos al día. Un producto de <a href={SITE.parentUrl} rel="noopener">umotion</a>.</p>
       </div>
-      <nav aria-label="Aprender">
-        <h2>Aprender</h2>
+      <nav aria-label="Formaciones">
+        <h2>Formaciones</h2>
         <ul>
-          <li><a href="/es/camino-cero/">Camino Cero</a></li>
-          <li><a href="/es/modulos/">Módulos</a></li>
-          <li><a href="/es/tutor/">Tutor</a></li>
-          <li><a href="/es/niveles/">Niveles</a></li>
-          <li><a href="/es/mi-plan/">Mi plan</a></li>
-          <li><a href="/es/repaso/">Repaso</a></li>
-          <li><a href="/es/biblioteca/">Biblioteca</a></li>
-          <li><a href="/es/glosario/">Glosario</a></li>
+          {HUBS.map((h) => <li><a href={h.href}>{h.title}</a></li>)}
+          <li><a href="/es/buscar/">Buscar</a></li>
+          <li><a href="/es/cuenta/">Mi cuenta</a></li>
         </ul>
       </nav>
-      <nav aria-label="Explorar">
-        <h2>Explorar</h2>
+      <nav aria-label="Inversión">
+        <h2>Inversión</h2>
         <ul>
+          <li><a href="/es/camino-cero/">Camino Cero</a></li>
+          <li><a href="/es/mi-plan/">Mi plan</a></li>
           <li><a href="/es/herramientas/">Herramientas</a></li>
           <li><a href="/es/brokers/">Comparador de brókeres</a></li>
           <li><a href="/es/estrategias/">Estrategias</a></li>
           <li><a href="/es/inversores/">Historias de inversores</a></li>
+          <li><a href="/es/glosario/">Glosario</a></li>
           <li><a href="/es/fuentes/">Fuentes</a></li>
         </ul>
       </nav>
@@ -50,7 +49,7 @@ const year = new Date().getFullYear();
         </ul>
       </nav>
     </div>
-    <p class="disclaimer">Contenido educativo general: no tiene en cuenta tu situación personal y no es asesoramiento financiero. Invertir conlleva riesgo de pérdida, incluida la del capital. Rentabilidades pasadas no garantizan resultados futuros.</p>
+    <p class="disclaimer">Contenido educativo general: no tiene en cuenta tu situación personal y no es asesoramiento financiero, fiscal ni jurídico.{inv && ' Invertir conlleva riesgo de pérdida, incluida la del capital. Rentabilidades pasadas no garantizan resultados futuros.'} umotion Academy no está afiliada a Anthropic ni a OpenAI.</p>
     <p class="fine">© {year} {SITE.name} · {SITE.parent}.{!SITE.indexable && ' Versión prototipo, no indexada.'}</p>
   </div>
 </footer>

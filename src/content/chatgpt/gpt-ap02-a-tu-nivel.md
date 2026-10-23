@@ -6,26 +6,26 @@ track: gpt-aprender
 order: 502
 skills: [gpt-aprender]
 terms: [tecnica-feynman, alucinacion]
-hook: "Una carta del banco habla del «euríbor más un diferencial» y lo que lees en internet trae otras tres palabras que tampoco entiendes. ¿Cómo consigues una explicación para ti?"
-takeaway: "Dile a ChatGPT qué sabes ya y pide un ejemplo de tu vida diaria. Luego explícaselo tú: donde te atascas está lo que aún no entiendes."
+hook: "Te llega una carta del banco: «revisión anual: euríbor más un diferencial». La lees dos veces y sigues igual. ¿Cómo consigues que te lo expliquen a ti, no a un economista?"
+takeaway: "Una explicación sirve si parte de lo que ya sabes. Dile a ChatGPT tu punto de partida, pide un ejemplo cercano y cuéntaselo luego tú: lo que no sabes contar es lo que falta."
 scenario:
   kind: operacion
   label: Caso práctico
   title: La nómina de Samira
-  body: "Samira empieza en un almacén de Zaragoza y no entiende su primera nómina. Pide a ChatGPT que le explique el «líquido a percibir» y la retención como a alguien que nunca ha trabajado. Luego se lo explica ella y ChatGPT le corrige un punto: creía que la retención era dinero perdido para siempre."
+  body: "Samira empieza en un almacén de Ourense y no entiende su primera nómina. Pide a ChatGPT que le explique el «líquido a percibir» y la retención como a alguien que nunca ha trabajado. Luego se lo explica ella y ChatGPT le corrige un punto: creía que la retención era dinero perdido para siempre."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-ap02-q1
-    q: "Joaquín pide que le expliquen qué es una factura proforma y la respuesta trae tres palabras que tampoco conoce. ¿Qué hace?"
-    options: ["Abrir otro chat y hacer la misma pregunta", "Seguir en esa conversación: «No sé qué es [PALABRA]. Explícamelo otra vez sin esas palabras y con un ejemplo de una tienda»", "Buscar cada palabra por separado en internet"]
-    answer: 1
+    q: "Telmo pide que le expliquen qué es una factura proforma y la respuesta trae tres palabras que tampoco conoce. ¿Qué hace?"
+    options: ["Abrir otro chat y hacer la misma pregunta", "Buscar cada palabra por separado en internet", "Seguir en esa conversación: «No sé qué es [PALABRA]. Explícamelo otra vez sin esas palabras y con un ejemplo de una tienda»"]
+    answer: 2
     explain: "En la misma conversación, ChatGPT ve qué no ha funcionado y lo ajusta. Otro chat tienta porque parece empezar limpio, pero sin decir qué sabes saldrá algo parecido."
   - type: choice
     id: gpt-ap02-q2
     q: "Remedios no entiende qué es la «nube» de su móvil. ¿Qué petición le dará una explicación a su medida?"
-    options: ["«Explícame qué es la nube»", "«Tengo 70 años y uso el móvil para WhatsApp y fotos. Explícame qué es la nube con un ejemplo cotidiano, en cinco frases»", "«Dame la definición técnica de computación en la nube»"]
-    answer: 1
+    options: ["«Tengo 70 años y uso el móvil para WhatsApp y fotos. Explícame qué es la nube con un ejemplo cotidiano, en cinco frases»", "«Explícame qué es la nube»", "«Dame la definición técnica de computación en la nube»"]
+    answer: 0
     explain: "Al decir qué sabe y para qué usa el móvil, ChatGPT elige ejemplos que ella entiende. La pregunta corta tienta por rápida, pero ChatGPT tiene que adivinar su nivel y suele quedarse alto."
   - type: choice
     id: gpt-ap02-q3

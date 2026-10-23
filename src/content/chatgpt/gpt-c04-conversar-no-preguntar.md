@@ -1,5 +1,5 @@
 ---
-title: Conversar, no solo preguntar
+title: Mejorar la respuesta conversando
 description: "Cómo mejorar una respuesta de ChatGPT: pedir cambios concretos, editar tu mensaje, generar otra versión, abrir una rama y empezar un chat nuevo al cambiar de tema."
 level: cero
 track: gpt-cero
@@ -7,7 +7,7 @@ order: 4
 skills: [gpt-iterar]
 terms: [prompt, ventana-de-contexto]
 hook: "La primera respuesta casi te sirve, pero no del todo. ¿Empiezas de cero, te conformas o hay algo mejor?"
-takeaway: "La primera respuesta es un borrador. Di qué cambiar y qué mantener, edita tu mensaje si te expresaste mal, abre una rama para probar otro camino y empieza un chat nuevo cuando cambies de tema."
+takeaway: "Trata la primera respuesta como un borrador: di qué cambiar y qué mantener, corrige tu mensaje si te explicaste mal, prueba otro camino en una rama y empieza un chat nuevo al cambiar de tema."
 scenario:
   kind: operacion
   label: Caso práctico
@@ -23,10 +23,10 @@ questions:
     explain: "Un cambio concreto, más lo que hay que conservar, da justo lo que buscas. Empezar de cero tienta por «limpiar», pero pierdes lo que ya funcionaba y repites una petición que dará algo parecido."
   - type: choice
     id: gpt-c04-q2
-    q: "Felipe ya tiene su brindis. Ahora quiere preguntar qué ropa es adecuada para una boda de tarde. ¿Qué hace?"
-    options: ["Abrir un chat nuevo: es otro tema", "Seguir en el mismo chat para tenerlo todo junto", "Borrar el chat del brindis antes de preguntar"]
+    q: "Felipe se da cuenta de que en su primer mensaje escribió que era la boda de su prima, no de su hermana. ¿Qué hace?"
+    options: ["Edita ese primer mensaje con el dato bueno para que ChatGPT responda de nuevo desde ahí", "Pulsa para generar otra respuesta hasta que lo adivine", "Lo deja así: total, es un brindis"]
     answer: 0
-    explain: "Un chat por tema mantiene las respuestas centradas y ordenadas. Seguir en el mismo tienta por comodidad, pero mezcla instrucciones («un minuto», «sin frases hechas») donde no tocan. Borrar no hace falta."
+    explain: "Si el error está en tu mensaje, lo corriges en tu mensaje. Generar otra respuesta tienta porque es un clic, pero ChatGPT sigue leyendo «prima» y volverá a equivocarse."
   - type: truefalse
     id: gpt-c04-q3
     q: "Felipe quiere probar un brindis en tono de humor sin perder el que ya tiene. Si abre una rama desde un mensaje, la conversación original se queda como estaba."
@@ -34,7 +34,7 @@ questions:
     explain: "La rama copia la conversación hasta ese punto en un chat nuevo; lo que hagas allí no toca el original. Tienta pensar que hay que empezar de cero o arriesgar el bueno, pero la rama sirve justo para probar sin miedo."
 tips:
   - "Señala la parte exacta que falla: «el segundo párrafo», «la frase del final». Cuanto más preciso, menos vueltas."
-  - "Cuando tengas dos versiones, pídele que las combine: «Usa el principio de la primera y el final de la segunda»."
+  - "Si la rama te sale mejor, sigue en ella: el chat original queda ahí por si quieres volver."
 action:
   title: Mejora una respuesta en dos vueltas
   steps:
@@ -44,7 +44,7 @@ action:
     - "Apunta en «Mi kit de ChatGPT» la frase de corrección que mejor te haya funcionado."
   check: He mejorado una respuesta pidiendo cambios concretos
 practice:
-  task: "ChatGPT te ha preparado el discurso de bienvenida para la fiesta de tu asociación de vecinos, pero es largo y muy formal. Escribe el mensaje de seguimiento: qué cambiar, cómo y qué mantener."
+  task: "ChatGPT te ha preparado el discurso de bienvenida para la fiesta de tu asociación de vecinos, pero es largo y muy formal. Escribe tu respuesta para mejorarlo sin perder lo que te gusta."
   require: [formato, tono]
   extra:
     - label: Decir qué mantener
@@ -79,7 +79,7 @@ Tienes cuatro formas de mejorar un resultado:
 
 Contesta con una o dos frases: qué cambiar y qué mantener. Si tras tres vueltas no mejora, abre un chat nuevo con una petición más completa.
 
-> Prueba: «Me gusta la estructura, pero es demasiado largo. Déjalo en la mitad, cambia el tono a más cercano y mantén la última frase tal cual».
+> Prueba: «Quédate con este brindis tal cual. Dame solo dos finales distintos para elegir: uno emotivo y otro con humor, de dos frases cada uno».
 
 Editar, generar otra respuesta y abrir una rama aparecen al pasar el ratón por un mensaje o al mantenerlo pulsado. Su sitio exacto cambia con las versiones de la aplicación.
 

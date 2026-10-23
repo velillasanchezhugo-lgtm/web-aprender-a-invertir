@@ -1,18 +1,18 @@
 ---
-title: La petición completa
+title: Las cinco piezas de una petición
 description: "Las cinco piezas de una buena petición a ChatGPT (contexto, tarea, detalles, formato y tono) y una lista rápida para repasarlas antes de enviar."
 level: basico
 track: gpt-pedir
 order: 101
 skills: [gpt-peticion]
 terms: [prompt, contexto-de-la-peticion]
-hook: "Pides a ChatGPT «un correo a mi casero porque la caldera no funciona» y te da un texto educadísimo que no dice desde cuándo pasa ni qué quieres. ¿Qué le faltaba?"
-takeaway: ChatGPT solo sabe lo que le cuentas y rellena los huecos con lo más típico. Antes de enviar, repasa las cinco piezas y añade las que falten.
+hook: "Pides a ChatGPT «un mensaje para el vecino de arriba por la mancha del techo» y te da un texto correcto que no dice desde cuándo está ni qué quieres que haga. ¿Qué se quedó fuera?"
+takeaway: Cada pieza que falta en tu petición es una vuelta más de corrección. Antes de enviar, repasa contexto, tarea, detalles, formato y tono.
 scenario:
   kind: operacion
   label: Caso práctico
-  title: La caldera de Nuria
-  body: "Nuria pide «un correo a mi casero porque la caldera no funciona» y sale un texto largo y genérico. Lo repite contando desde cuándo falla, que ya avisó por teléfono sin respuesta y que quiere un técnico esta semana, en menos de 120 palabras y con tono firme. Ahora le sirve casi tal cual."
+  title: La mancha de Ascensión
+  body: "A Ascensión le ha salido una mancha de humedad en el techo del baño y cree que viene del piso de arriba. Pide «un mensaje para el vecino por la mancha» y sale un texto largo y genérico. Lo repite contando desde cuándo está, que tiene fotos y que quiere que el vecino avise a su seguro esta semana, en menos de 80 palabras y con tono cordial. Ahora le sirve casi tal cual."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -28,15 +28,15 @@ questions:
     explain: "Lo normal es que no pregunte: rellena el hueco con lo más típico y responde con seguridad. Tienta pensar «ya me dirá si le falta algo», pero casi nunca lo hace. Si quieres que pregunte, pídeselo."
   - type: choice
     id: gpt-pe01-q3
-    q: "¿Qué petición le da a ChatGPT más piezas útiles?"
+    q: "Tienes exámenes en tres semanas. ¿Con cuál de estas peticiones tendrá ChatGPT menos que adivinar?"
     options: ["«Hazme un horario de estudio»", "«Hazme un buen horario de estudio para aprobar»", "«Estudio 2.º de Bachillerato y trabajo los sábados. Tengo exámenes de Historia y Química en tres semanas. Hazme un horario de lunes a viernes en una tabla, con descansos»"]
     answer: 2
     explain: "La tercera da contexto, detalles (asignaturas, plazo), tarea y formato. «Bueno» y «para aprobar» suenan a detalle, pero no dan nada que ChatGPT pueda usar."
 tips:
-  - "Si no sabes qué contar, imagina que se lo encargas a alguien que no te conoce: ¿qué te preguntaría primero?"
-  - "Cuenta tu situación, no tus datos: «vivo de alquiler en Gijón» basta; tu DNI o tu dirección no hacen falta."
+  - "Relee tu petición antes de enviarla y pregúntate qué tendría que adivinar ChatGPT: eso es lo que falta."
+  - "Cuenta tu situación, no tus datos: «vivo en un segundo piso en Ourense» basta; tu DNI o tu dirección no hacen falta."
 action:
-  title: Rehaz una petición tuya
+  title: Rescata una petición floja
   steps:
     - "Busca en tu historial una petición que te dio un resultado flojo."
     - "Reescríbela con las cinco piezas y envíala en un chat nuevo."
@@ -78,11 +78,11 @@ Para una duda general basta la pregunta. Pero cuando el resultado depende de tu 
 
 ## En la práctica
 
-La petición de Nuria, ya completa:
+La petición de Ascensión, ya completa:
 
-> Prueba: «Vivo de alquiler en un piso de Gijón. La caldera no da agua caliente desde el lunes y avisé a mi casero por teléfono hace cinco días, sin respuesta. Escribe un correo para pedirle que envíe un técnico esta semana y que me confirme el día. Menos de 120 palabras, tono firme pero educado, sin amenazas. No inventes fechas que no te he dado.»
+> Prueba: «Vivo en un segundo piso en Ourense. Desde hace diez días tengo una mancha de humedad en el techo del baño que va creciendo, y creo que viene del piso de arriba. Escribe un WhatsApp para mi vecino de arriba: que mire si tiene una fuga y que avise a su seguro esta semana. Le mandaré fotos aparte. Menos de 80 palabras, tono cordial, porque nos llevamos bien. No le eches la culpa ni inventes datos que no te he dado.»
 
-Lee el resultado antes de usarlo: a veces añade detalles que no le has dado, como una fecha o una cláusula del contrato. Si algo no es tuyo, quítalo.
+Lee el resultado antes de usarlo: a veces añade detalles que no le has dado, como una fecha o un arreglo que nadie ha prometido. Si algo no es tuyo, quítalo.
 
 El «Constructor de peticiones» de esta web te pide cada pieza para que no olvides ninguna.
 

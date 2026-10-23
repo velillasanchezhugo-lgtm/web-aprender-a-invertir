@@ -1,343 +1,77 @@
 ---
 import Base from '../../layouts/Base.astro';
-import academy from '../../data/academy.json';
-import curriculum from '../../data/curriculum.json';
-import { RECOMMENDED_BROKER } from '../../config/site';
-import { sessions, zeroSessions, TOOLS, glossaryList, TRACKS, SKILLS } from '../../lib/content';
-const all = await zeroSessions();
-const allSessions = await sessions();
-const modTracks = (Object.keys(TRACKS) as (keyof typeof TRACKS)[]).map((id) => ({ id, ...TRACKS[id], n: allSessions.filter((s) => s.data.track === id).length })).filter((t) => t.n);
-const blocks = [
-  { t: 'Tu base', r: [1, 4] }, { t: 'Cómo se mueve el dinero', r: [5, 8] }, { t: 'Productos y costes', r: [9, 11] }, { t: 'Protegerte', r: [12, 14] },
-];
-/** Pósits de la portada: una por formación. */
-const FORMATIONS = [
-  { cls: 'p-inv', kicker: '3 niveles', title: 'Inversión', text: 'Ordena tu dinero e invierte por tu cuenta, desde cero.', href: '/es/niveles/' },
-  { cls: 'p-em', kicker: '3 niveles', title: 'Emprendimiento', text: 'Monta tu negocio: trámites, impuestos, cuotas y clientes.', href: '/es/emprendimiento/' },
-  { cls: 'p-cla', kicker: '3 niveles', title: 'Claude', text: 'Aprende a usar la inteligencia artificial de Claude, sin programar.', href: '/es/claude/' },
-  { cls: 'p-gpt', kicker: '3 niveles', title: 'ChatGPT', text: 'Aprende a usar ChatGPT desde cero: pedir bien, sus funciones y más.', href: '/es/chatgpt/' },
-];
-const tools = ['interes-compuesto', 'inflacion', 'simulador-caidas', 'comparador-comisiones'];
+import Postits from '../../components/Postits.astro';
+import { HUBS } from '../../lib/hubs';
+import { sessions } from '../../lib/content';
+import { FORMATION_IDS, formationSessions } from '../../lib/formations';
+/** Portada de la academia: un pósit por formación y, si ya has empezado alguna, «Continuar». */
+const items = HUBS.map((h) => ({ cls: h.cls, kicker: '3 niveles', title: h.title, text: h.text, href: h.href }));
+// Sesiones del Nivel 1 de cada formación, para saber cuántas llevas en cada una.
+const counts: Record<string, { store: string; total: number; title: string; href: string }> = {
+  inversion: { store: 'academy', total: (await sessions()).length, title: 'Inversión', href: '/es/inversion/' },
+};
+for (const id of FORMATION_IDS) counts[id] = { store: `academy-${id}`, total: (await formationSessions(id)).length, title: HUBS.find((h) => h.id === id)!.title, href: `/es/${id}/` };
 const jsonLd = [
   { '@context': 'https://schema.org', '@type': 'WebSite', name: 'umotion Academy', url: new URL('/es/', Astro.site).href, inLanguage: 'es-ES', potentialAction: { '@type': 'SearchAction', target: new URL('/es/buscar/?q={q}', Astro.site).href, 'query-input': 'required name=q' } },
   { '@context': 'https://schema.org', '@type': 'EducationalOrganization', name: 'umotion Academy', url: new URL('/es/', Astro.site).href, logo: new URL('/brand/icon-512.png', Astro.site).href, parentOrganization: { '@type': 'Organization', name: 'umotion' } },
 ];
 ---
-<Base title="Bienvenido a umotion Academy" description="Escuela gratuita para aprender desde cero, en sesiones de 5 minutos: inversión y emprendimiento, a tu ritmo y sin que nadie te venda nada." jsonLd={jsonLd} allowAds={false}>
+<Base title="Bienvenido a umotion Academy" description="Escuela gratuita para aprender desde cero, en sesiones de 5 minutos: inversión, emprendimiento, Claude y ChatGPT, a tu ritmo y sin que nadie te venda nada." jsonLd={jsonLd} allowAds={false}>
   <section class="hero dots">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <h1>Bienvenido a <span class="grad-text">umotion Academy</span></h1>
-        <p class="lede">Una escuela gratuita para aprender desde cero, a tu ritmo y en 5 minutos al día. Elige por dónde empezar.</p>
-        <nav class="postits-nav" aria-labelledby="postits-t">
-          <p class="postits-title mono small" id="postits-t">Elige tu formación</p>
-          <ul class="postits">
-            {FORMATIONS.map((f) => (
-              <li>
-                <a class={`postit ${f.cls}`} href={f.href}>
-                  <span class="pi-tape" aria-hidden="true"></span>
-                  <span class="pi-kicker">{f.kicker}</span>
-                  <strong class="pi-title">{f.title}</strong>
-                  <span class="pi-text">{f.text}</span>
-                  <span class="pi-go">Entrar <span aria-hidden="true">→</span></span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <ul class="gains" aria-label="Lo que conseguirás">
-          <li><span class="gi" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Ordenar tu dinero: ahorro, colchón y deudas</li>
-          <li><span class="gi" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M3 20h18M6 16l4-5 3 3 5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Conocer los productos y las formas de invertir</li>
-          <li><span class="gi" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>Elegir productos y brókeres sin caer en engaños</li>
-          <li><span class="gi" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>Crear el hábito: 5 minutos al día</li>
-        </ul>
-        <div class="cta">
-          <a class="btn" href="/es/empezar/">Crea tu plan gratis <span class="arrow" aria-hidden="true">→</span></a>
-          <a class="btn secondary" href={`/es/sesion/${all[0].id}/`}>Prueba la primera sesión</a>
-        </div>
-        <a class="resume card" id="resume" href="/es/mi-plan/" hidden>
-          <span class="mono small muted">Continuar</span>
-          <strong id="resume-title"></strong>
-          <span class="small muted" id="resume-meta"></span>
-        </a>
-      </div>
-
-      <div class="panel-dark demo" aria-labelledby="demo-q">
-        <div class="demo-top">
-          <span class="demo-icon" aria-hidden="true"><img src="/brand/icon-32.png" width="22" height="22" alt="" /></span>
-          <div><strong>Tu sesión de hoy</strong><span class="mono small">Sesión 3 · El colchón, antes que la bolsa</span></div>
-        </div>
-        <div class="demo-steps mono small" aria-hidden="true"><span class="on">Idea</span><span class="on">Práctica</span><span class="on cur">Test</span><span>Consejos</span></div>
-        <p class="demo-label mono small">Pregunta rápida</p>
-        <p id="demo-q" class="demo-q">Tienes 3.000 € ahorrados y quizá los necesites dentro de 6 meses para cambiar de coche. ¿Dónde los dejarías?</p>
-        <div class="demo-opts" role="group" aria-labelledby="demo-q">
-          <button type="button" data-ok="0">En bolsa, que es donde más se gana</button>
-          <button type="button" data-ok="1">En una cuenta remunerada o un depósito</button>
-          <button type="button" data-ok="0">En criptomonedas, para que crezcan rápido</button>
-        </div>
-        <p class="demo-fb" id="demo-fb" role="status" aria-live="polite" hidden></p>
-        <div class="demo-foot">
-          <span class="dot" aria-hidden="true"></span>
-          <span class="small">Mañana repasarás lo que falles hoy.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="container how" aria-labelledby="how-t">
-    <p class="eyebrow">Cómo funciona</p>
-    <h2 id="how-t">Tres pasos. Cinco minutos.</h2>
-    <ol class="steps">
-      <li class="card reveal"><span class="sn mono">01</span><h3>Cuéntanos de dónde partes</h3><p>Tu objetivo, lo que ya sabes y lo que te interesa. Un diagnóstico que se adapta a tus respuestas crea tu ruta en 3 minutos.</p></li>
-      <li class="card reveal"><span class="sn mono">02</span><h3>Haz tu sesión</h3><p>Una idea explicada con palabras sencillas, un ejemplo real, un test interactivo y lo que te recomendamos hacer. Sin fórmulas ni teoría de relleno.</p></li>
-      <li class="card reveal"><span class="sn mono">03</span><h3>Aplícalo hoy</h3><p>Cada sesión termina con una acción de 2 minutos: calcular tu colchón, mirar la comisión de un fondo, comprobar un bróker…</p></li>
-    </ol>
-    <p><a class="btn brand" href="/es/empezar/">Empezar ahora <span class="arrow" aria-hidden="true">→</span></a></p>
-  </section>
-
-  <section class="path-sec" aria-labelledby="path-t">
     <div class="container">
-      <p class="eyebrow">Camino Cero · 2 semanas</p>
-      <h2 id="path-t">Lo que sabrás en 14 sesiones</h2>
-      <div class="path">
-        {blocks.map((b) => (
-          <div class="pblock reveal">
-            <h3 class="mono small">{b.t}</h3>
-            <ul>{all.filter((s) => s.data.order >= b.r[0] && s.data.order <= b.r[1]).map((s) => <li><a href={`/es/sesion/${s.id}/`}><span class="mono">{String(s.data.order).padStart(2, '0')}</span> {s.data.title}</a></li>)}</ul>
-          </div>
-        ))}
-      </div>
-      <p><a class="btn small secondary inv" href="/es/camino-cero/">Ver el Camino Cero</a></p>
+      <h1>Bienvenido a <span class="grad-text">umotion Academy</span></h1>
+      <p class="lede">Una escuela gratuita para aprender desde cero, a tu ritmo y en 5 minutos al día. Elige por dónde empezar.</p>
+      <Postits items={items} label="Elige tu formación" labelId="postits-t" />
+      <section class="resume-sec" id="resume" aria-labelledby="resume-t" hidden>
+        <h2 class="mono small" id="resume-t">Continuar donde lo dejaste</h2>
+        <ul class="resume-list" id="resume-list"></ul>
+      </section>
     </div>
   </section>
-
-  <section class="container perso" aria-labelledby="perso-t">
-    <div class="grid cols-2 perso-grid">
-      <div>
-        <p class="eyebrow">Formación personalizada</p>
-        <h2 id="perso-t">Cada persona, su ruta</h2>
-        <p class="lede">Cada respuesta actualiza, en tu dispositivo, cuánto dominas cada una de las {SKILLS.length} competencias de la academia. Con eso decidimos tu siguiente sesión y te decimos por qué: lo que aún no has trabajado, lo que has fallado y lo que te acerca antes a invertir con criterio.</p>
-        <ul class="checks">
-          <li>Diagnóstico adaptativo: no repites lo que ya sabes</li>
-          <li>Refuerzo automático de lo que te cuesta</li>
-          <li>Mapa de competencias con tus fortalezas y huecos</li>
-          <li>Tutor para tus dudas y para analizar noticias</li>
-        </ul>
-        <p><a class="btn brand" href="/es/empezar/">Crear mi ruta <span class="arrow" aria-hidden="true">→</span></a> <a class="btn secondary" href="/es/tutor/">Probar el tutor</a></p>
-      </div>
-      <ol class="mods reveal">
-        {modTracks.map((t, i) => <li><a class="card mod" href={t.id === 'camino-cero' ? '/es/camino-cero/' : `/es/modulos/${t.id}/`}><span class="mono small muted">{i === 0 ? 'Nivel 1 · Etapa A' : ['empresas', 'noticias', 'trading'].includes(t.id) ? 'Nivel 1 · Ampliación' : 'Nivel 1 · Núcleo'} · {t.n} sesiones</span><strong>{t.label}</strong><span class="small muted">{t.short}</span></a></li>)}
-      </ol>
-    </div>
-  </section>
-
-  <section class="container daily-sec" aria-labelledby="day-t">
-    <div class="grid cols-2">
-      <div>
-        <p class="eyebrow">Cada día, algo útil</p>
-        <h2 id="day-t">No necesitas una hora. Necesitas un hábito.</h2>
-        <p class="lede">Cinco minutos al día con repaso espaciado fijan más que una tarde entera una vez al mes. Lo que fallas vuelve mañana; lo que aciertas, cada vez más tarde.</p>
-        <ul class="checks">
-          <li>Plan con fechas y recordatorios en tu calendario</li>
-          <li>Repaso diario de 1 minuto</li>
-          <li>Rachas y logros por aprender, nunca por invertir</li>
-          <li>Tu progreso se queda en tu dispositivo</li>
-        </ul>
-      </div>
-      <div class="card term reveal">
-        <p class="eyebrow">Término del día</p>
-        <h3 id="term"><a href="/es/glosario/" id="term-link">Glosario</a></h3>
-        <p id="term-def">Definiciones breves de los conceptos que más se usan al invertir.</p>
-        <a class="small" href="/es/glosario/">Ver el glosario completo →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="container" aria-labelledby="lv-t">
-    <p class="eyebrow">Niveles</p>
-    <h2 id="lv-t">Tres niveles, sin prisas</h2>
-    <ol class="levels">
-      {curriculum.tiers.map((t) => (
-        <li class="reveal"><a href={t.href} class="card lv"><span class="ln mono">{t.n}</span><strong>{t.title}</strong><span class="small muted">{t.n === 1 ? 'Gratis · invertir por tu cuenta' : t.subtitle}</span></a></li>
-      ))}
-    </ol>
-    <p class="small muted">Subir de nivel significa comprender más. No operar más ni asumir más riesgo.</p>
-  </section>
-
-  <section class="container" aria-labelledby="tl-t">
-    <p class="eyebrow">Herramientas</p>
-    <h2 id="tl-t">Haz las cuentas con tus números</h2>
-    <div class="grid cols-4">
-      {tools.map((t) => <a class="card tool-card reveal" href={`/es/herramientas/${t}/`}><h3>{TOOLS[t].title}</h3><p class="small muted">{TOOLS[t].blurb}</p><span class="small go">Abrir →</span></a>)}
-    </div>
-    <p><a href="/es/herramientas/">Ver las 8 herramientas</a> · <a href="/es/brokers/">Comparador de brókeres</a> · <a href="/es/biblioteca/">Biblioteca</a></p>
-  </section>
-
-  <section class="container trust" aria-labelledby="tr-t">
-    <h2 id="tr-t" class="sr-only">Cómo trabajamos</h2>
-    <ul class="grid cols-4">
-      <li><strong>No vendemos productos</strong><span class="small">{RECOMMENDED_BROKER.paid ? `Ni asesoramos de forma personalizada ni ejecutamos operaciones. Colaboramos con ${RECOMMENDED_BROKER.name}, y lo indicamos.` : `Ni asesoramos de forma personalizada, ni cobramos de brókeres, ni ejecutamos operaciones. Recomendamos ${RECOMMENDED_BROKER.name} para empezar como opinión editorial.`}</span></li>
-      <li><strong>Fuentes oficiales</strong><span class="small">CNMV, Banco de España, AEAT, INE e investigación académica, con fecha.</span></li>
-      <li><strong>Para España</strong><span class="small">Impuestos, garantías y normativa explicados para residentes en España.</span></li>
-      <li><strong>Tus datos, contigo</strong><span class="small">Sin registro. Plan, progreso y respuestas, solo en tu dispositivo.</span></li>
+  <section class="container how" aria-labelledby="how-t">
+    <h2 class="sr-only" id="how-t">Cómo funciona la academia</h2>
+    <ul class="facts">
+      <li><strong>5 minutos al día</strong><span class="small">Una idea, un ejemplo, un test y algo que hacer hoy.</span></li>
+      <li><strong>Gratis y sin registro</strong><span class="small">El Nivel 1 de cada formación es gratis. La cuenta es opcional.</span></li>
+      <li><strong>Tres niveles</strong><span class="small">De cero a profesional, con el mismo sistema en todas las formaciones.</span></li>
+      <li><strong>Tu progreso, contigo</strong><span class="small">Se guarda en tu dispositivo, o en tu cuenta si la creas.</span></li>
     </ul>
   </section>
-
-  <section class="final">
-    <div class="container final-inner">
-      <h2>Tu primera sesión dura <span class="grad-text">5 minutos</span>.</h2>
-      <p>Empieza hoy. Mañana sabrás algo útil que la mayoría no sabe.</p>
-      <a class="btn brand" href="/es/empezar/">Crear mi plan gratis <span class="arrow" aria-hidden="true">→</span></a>
-    </div>
-  </section>
-  <script type="application/json" id="home-data" set:html={JSON.stringify({ glossary: glossaryList.map((g) => ({ id: g.id, term: g.term, def: g.def })), titles: Object.fromEntries(allSessions.map((s) => [s.id, s.data.title])), order: all.map((s) => s.id) })} />
+  <script type="application/json" id="home-data" set:html={JSON.stringify(counts)} />
 </Base>
 <style>
-  .hero { padding: 2.5rem 0 3.5rem; border-bottom: 1px solid var(--rule); background-color: var(--paper); position: relative; overflow: hidden; }
+  .hero { padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--rule); background-color: var(--paper); position: relative; overflow: hidden; }
   .hero::after { content: ''; position: absolute; right: -10%; top: -20%; width: 55%; height: 80%; background: radial-gradient(closest-side, color-mix(in srgb, var(--u-cyan) 22%, transparent), transparent); pointer-events: none; }
-  .hero-grid { display: grid; gap: 2.5rem; align-items: center; position: relative; z-index: 1; }
-  @media (min-width: 980px) { .hero-grid { grid-template-columns: 1.15fr 0.85fr; } }
+  .hero > .container { position: relative; z-index: 1; }
   .hero h1 { font-size: clamp(2.4rem, 1.5rem + 4vw, 4.4rem); line-height: 1; letter-spacing: -0.045em; margin: 0.3rem 0 1.2rem; }
-  .cta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.8rem 0 1.2rem; }
-  .gains { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; gap: 0.55rem; }
-  @media (min-width: 560px) { .gains { grid-template-columns: 1fr 1fr; } }
-  .gains li { display: flex; align-items: center; gap: 0.7rem; padding: 0.7rem 0.85rem; border-radius: 14px; background: var(--card); border: 1px solid var(--rule); font-weight: 500; font-size: 0.95rem; line-height: 1.3; }
-  .gi { flex: none; width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); }
   .hero .lede { max-width: 62ch; }
-  .postits-nav { margin: 1.6rem 0 0.4rem; }
-  .postits-title { margin: 0 0 0.7rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
-  .postits { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); gap: 1.1rem 1.3rem; }
-  .postit { --pi: #ffe27a; --pi-ink: #2a2410; position: relative; display: flex; flex-direction: column; gap: 0.35rem; aspect-ratio: 1 / 1; padding: 1.5rem 1rem 0.9rem; background: linear-gradient(180deg, color-mix(in srgb, var(--pi) 88%, #fff) 0%, var(--pi) 30%, var(--pi) 100%); color: var(--pi-ink); text-decoration: none; border-radius: 2px 2px 14px 2px; box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 10px 18px -8px rgb(0 0 0 / 35%); transform: rotate(-2deg); transition: transform .2s var(--ease-seda), box-shadow .2s var(--ease-seda); }
-  .postits li:nth-child(2) .postit { transform: rotate(1.8deg); }
-  .p-em { --pi: #a9e4ff; --pi-ink: #0f2230; }
-  .p-cla { --pi: #ffc9a8; --pi-ink: #2e160a; }
-  .p-gpt { --pi: #bdeccb; --pi-ink: #0d2416; }
-  .postits li:nth-child(4) .postit { transform: rotate(1.2deg); }
-  .postits li:nth-child(4) .postit:hover, .postits li:nth-child(4) .postit:focus-visible { transform: rotate(0) translateY(-4px); }
-  .postits li:nth-child(3) .postit { transform: rotate(-1deg); }
-  .postits li:nth-child(3) .postit:hover, .postits li:nth-child(3) .postit:focus-visible { transform: rotate(0) translateY(-4px); }
-  .postit:hover, .postit:focus-visible { transform: rotate(0) translateY(-4px); box-shadow: 0 2px 2px rgb(0 0 0 / 12%), 0 18px 26px -10px rgb(0 0 0 / 40%); }
-  .postits li:nth-child(2) .postit:hover, .postits li:nth-child(2) .postit:focus-visible { transform: rotate(0) translateY(-4px); }
-  .postit:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-  .pi-tape { position: absolute; top: -9px; left: 50%; width: 72px; height: 20px; transform: translateX(-50%) rotate(-3deg); background: rgb(255 255 255 / 55%); border: 1px solid rgb(0 0 0 / 6%); box-shadow: 0 1px 2px rgb(0 0 0 / 10%); }
-  .pi-kicker { font: 600 0.68rem/1.2 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75; }
-  .pi-title { font: 700 clamp(1.2rem, 1rem + 1vw, 1.55rem)/1.05 var(--display, var(--sans)); letter-spacing: -0.02em; }
-  .pi-text { font-size: 0.88rem; line-height: 1.35; }
-  .pi-go { margin-top: auto; font-weight: 700; font-size: 0.9rem; }
-  @media (max-width: 420px) { .postits { gap: 0.9rem; } .postit { gap: 0.25rem; padding: 1.1rem 0.75rem 0.7rem; } .pi-text { font-size: 0.8rem; line-height: 1.3; } }
-  :global(:root[data-theme='dark']) .postit { --pi: #f2d566; }
-  :global(:root[data-theme='dark']) .p-em { --pi: #92d3f2; }
-  :global(:root[data-theme='dark']) .p-cla { --pi: #f4b48e; }
-  :global(:root[data-theme='dark']) .p-gpt { --pi: #a4dcb4; }
-  @media (prefers-color-scheme: dark) { :global(:root:not([data-theme='light'])) .postit { --pi: #f2d566; } :global(:root:not([data-theme='light'])) .p-em { --pi: #92d3f2; } :global(:root:not([data-theme='light'])) .p-cla { --pi: #f4b48e; } :global(:root:not([data-theme='light'])) .p-gpt { --pi: #a4dcb4; } }
-  @media (max-width: 359px) { .pi-kicker { display: none; } .pi-title { font-size: 1.1rem; } .pi-text { font-size: 0.76rem; line-height: 1.2; } .postit { padding-top: 0.95rem; } }
-  @media (prefers-reduced-motion: reduce) { .postit { transition: none; } }
-  .facts { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; color: var(--ink-3); }
-  .facts strong { color: var(--ink); font-size: 1rem; }
-  .resume { margin-top: 1.4rem; max-width: 440px; }
-  .resume strong { display: block; font-size: 1.1rem; margin: 0.2rem 0; }
-  .demo { padding: 1.3rem; }
-  .demo-top { display: flex; gap: 0.8rem; align-items: center; }
-  .demo-top strong { display: block; color: #f8f9fc; }
-  .demo-top .mono { color: #a3acc4; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; }
-  .demo-icon { width: 40px; height: 40px; border-radius: 12px; background: #161b30; display: grid; place-items: center; }
-  .demo-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin: 1.2rem 0 1.4rem; }
-  .demo-steps span { border-top: 4px solid #232a42; padding-top: 0.4rem; color: #737d9a; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; }
-  .demo-steps span.on { border-top-color: #2b52f0; color: #c4cada; }
-  .demo-steps span.cur { border-top-color: #35c8ff; color: #35c8ff; }
-  .demo-label { color: #35c8ff; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.7rem; margin: 0; }
-  .demo-q { font-size: 1.3rem; line-height: 1.35; font-weight: 600; color: #f8f9fc; margin: 0.4rem 0 1rem; letter-spacing: -0.01em; }
-  .demo-opts { display: grid; gap: 0.5rem; }
-  .demo-opts button { text-align: left; font: 500 1rem var(--sans); padding: 0.85rem 1rem; border-radius: 14px; border: 1px solid #2a3150; background: #111527; color: #f2f4fa; cursor: pointer; transition: border-color .15s, transform .15s var(--ease-seda); }
-  .demo-opts button:hover:not(:disabled) { border-color: #35c8ff; transform: translateX(3px); }
-  .demo-opts button.ok { border-color: #5fd197; background: #10291d; }
-  .demo-opts button.ko { border-color: #ff8b78; background: #2d1714; }
-  .demo-fb { margin: 0.9rem 0 0; color: #c4cada; font-size: 0.95rem; }
-  .demo-fb a { color: #35c8ff; font-weight: 600; }
-  .demo-foot { display: flex; gap: 0.6rem; align-items: center; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid #232a42; color: #a3acc4; }
-  .dot { width: 8px; height: 8px; border-radius: 999px; background: #35c8ff; box-shadow: 0 0 0 4px rgb(53 200 255 / 18%); animation: pulse 2.4s var(--ease-seda) infinite; }
-  @keyframes pulse { 50% { box-shadow: 0 0 0 8px rgb(53 200 255 / 0%); } }
-  section.how, section.daily-sec, section.trust { margin-top: 4.5rem; }
-  section.perso { margin-top: 4.5rem; }
-  .perso-grid { gap: 2rem; align-items: center; }
-  .mods { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
-  @media (min-width: 640px) { .mods { grid-template-columns: 1fr 1fr; } }
-  .mod { display: flex; flex-direction: column; gap: 0.2rem; padding: 1rem 1.1rem; height: 100%; text-decoration: none; }
-  .mod strong { font-size: 1.1rem; color: var(--ink); }
-  .how h2, .daily-sec h2 { margin-top: 0.2rem; }
-  .steps { list-style: none; padding: 0; display: grid; gap: 1rem; margin: 1.5rem 0; }
-  @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); } }
-  .steps .sn { display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 12px; background: var(--u-ink); color: var(--u-cyan); }
-  .steps h3 { margin: 0.9rem 0 0.4rem; }
-  .steps p { color: var(--ink-2); margin: 0; }
-  .path-sec { background: var(--u-ink); color: #c4cada; padding: 3.5rem 0; margin-top: 4.5rem; }
-  .path-sec h2 { color: #f8f9fc; margin-top: 0.2rem; }
-  .path-sec .eyebrow { color: #a3acc4; }
-  .path { display: grid; gap: 1rem; margin: 1.5rem 0; }
-  @media (min-width: 760px) { .path { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1100px) { .path { grid-template-columns: repeat(4, 1fr); } }
-  .pblock { background: #111527; border: 1px solid #232a42; border-radius: 20px; padding: 1.1rem; }
-  .pblock h3 { color: #35c8ff; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 0.6rem; font-size: 0.74rem; }
-  .pblock ul { list-style: none; padding: 0; margin: 0; }
-  .pblock li a { display: block; padding: 0.45rem 0; color: #e1e6f0; text-decoration: none; border-bottom: 1px solid #1c2238; font-size: 0.95rem; }
-  .pblock li a:hover { color: #35c8ff; }
-  .pblock li .mono { color: #737d9a; margin-right: 0.4rem; font-size: 0.8rem; }
-  .btn.inv { color: #f8f9fc; border-color: #333c5a; }
-  .btn.inv:hover { color: #f8f9fc; border-color: #f8f9fc; }
-  .checks { list-style: none; padding: 0; }
-  .checks li { padding: 0.45rem 0 0.45rem 1.8rem; position: relative; }
-  .checks li::before { content: ''; position: absolute; left: 0; top: 0.75rem; width: 1rem; height: 1rem; border-radius: 999px; background: var(--u-grad); }
-  .term h3 { font-size: 1.8rem; margin: 0.2rem 0 0.5rem; }
-  .term h3 a { color: var(--ink); text-decoration: none; }
-  .levels { list-style: none; padding: 0; display: grid; gap: 0.6rem; margin: 1.4rem 0 0.6rem; }
-  @media (min-width: 760px) { .levels { grid-template-columns: repeat(3, 1fr); } }
-  .lv { display: flex; flex-direction: column; gap: 0.3rem; height: 100%; }
-  .ln { width: 2.4rem; height: 2.4rem; border-radius: 12px; display: grid; place-items: center; background: var(--u-ink); color: var(--u-cyan); margin-bottom: 0.4rem; }
-  .levels li:first-child .ln { background: var(--u-grad); color: #fff; }
-  section[aria-labelledby='lv-t'], section[aria-labelledby='tl-t'] { margin-top: 4.5rem; }
-  .tool-card h3 { font-size: 1.1rem; margin: 0 0 0.4rem; }
-  .tool-card .go { color: var(--teal); font-weight: 600; }
-  .trust ul { list-style: none; padding: 0; }
-  .trust li { display: flex; flex-direction: column; gap: 0.3rem; border-left: 3px solid var(--u-cyan); padding-left: 0.9rem; }
-  .final { margin-top: 4.5rem; background: var(--u-ink); color: #c4cada; padding: 4rem 0; text-align: center; }
-  .final h2 { color: #f8f9fc; font-size: clamp(2rem, 1.4rem + 3vw, 3.6rem); margin: 0 0 0.6rem; letter-spacing: -0.04em; }
-  .final p { margin-bottom: 1.6rem; }
+  .resume-sec { margin-top: 2rem; max-width: 720px; }
+  .resume-sec h2 { margin: 0 0 0.6rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .resume-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+  @media (min-width: 640px) { .resume-list { grid-template-columns: 1fr 1fr; } }
+  .resume-list :global(a) { display: flex; flex-direction: column; gap: 0.15rem; text-decoration: none; color: var(--ink); height: 100%; }
+  .resume-list :global(strong) { font-size: 1.05rem; }
+  .how { margin-top: 2.5rem; margin-bottom: 3rem; }
+  .facts { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+  @media (min-width: 640px) { .facts { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .facts { grid-template-columns: repeat(4, 1fr); } }
+  .facts li { display: flex; flex-direction: column; gap: 0.3rem; border-left: 3px solid var(--u-cyan); padding-left: 0.9rem; }
   :global(.site-footer) { margin-top: 0; }
 </style>
 <script>
-  import { getState } from '../../scripts/academy-store';
-  import { getProgress } from '../../scripts/store';
-  import { pickOfDay, toDay } from '../../lib/academy';
-  const D = JSON.parse(document.getElementById('home-data')!.textContent!);
-  const s = getState();
-  const order: string[] = s.plan?.order ?? D.order;
-  const done = Object.keys(s.completed).length;
-  if (s.plan || done) {
-    const next = order.find((id) => !s.completed[id]);
-    const r = document.getElementById('resume') as HTMLAnchorElement;
-    r.hidden = false;
-    if (next) { r.href = `/es/sesion/${next}/`; document.getElementById('resume-title')!.textContent = D.titles[next]; }
-    else document.getElementById('resume-title')!.textContent = '¡Camino Cero completado!';
-    document.getElementById('resume-meta')!.textContent = `${done} de ${D.order.length} sesiones hechas`;
-  } else {
-    const last = getProgress().last;
-    if (last && last.path.startsWith('/es/')) {
-      const r = document.getElementById('resume') as HTMLAnchorElement;
-      r.hidden = false; r.href = last.path;
-      document.getElementById('resume-title')!.textContent = last.title;
-      document.getElementById('resume-meta')!.textContent = 'Tu última lectura';
-    }
+  import { getState, type StoreKey } from '../../scripts/academy-store';
+  const D = JSON.parse(document.getElementById('home-data')!.textContent!) as Record<string, { store: StoreKey; total: number; title: string; href: string }>;
+  const list = document.getElementById('resume-list')!;
+  for (const f of Object.values(D)) {
+    const s = getState(f.store);
+    const n = Object.keys(s.completed).length;
+    if (!n && !s.plan) continue;
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.className = 'card'; a.href = f.href;
+    const t = document.createElement('strong'); t.textContent = f.title;
+    const m = document.createElement('span'); m.className = 'small muted'; m.textContent = `${Math.min(n, f.total)} de ${f.total} sesiones del Nivel 1 · Continuar →`;
+    a.append(t, m); li.append(a); list.append(li);
   }
-  const t = pickOfDay(D.glossary, toDay(new Date())) as any;
-  const link = document.getElementById('term-link') as HTMLAnchorElement;
-  link.textContent = t.term; link.href = `/es/glosario/#${t.id}`;
-  document.getElementById('term-def')!.textContent = t.def;
-  const fb = document.getElementById('demo-fb')!;
-  document.querySelectorAll<HTMLButtonElement>('.demo-opts button').forEach((b) => b.addEventListener('click', () => {
-    const ok = b.dataset.ok === '1';
-    document.querySelectorAll<HTMLButtonElement>('.demo-opts button').forEach((x) => { x.disabled = true; if (x.dataset.ok === '1') x.classList.add('ok'); });
-    if (!ok) b.classList.add('ko');
-    fb.hidden = false;
-    fb.innerHTML = `${ok ? '¡Correcto!' : 'No es buena idea.'} El dinero que vas a necesitar pronto <strong>no se invierte</strong>: la bolsa puede estar en caída justo cuando lo necesites. Para eso están las cuentas y los depósitos. <a href="/es/sesion/03-el-colchon-primero/">Haz la sesión completa →</a>`;
-  }));
+  if (list.children.length) document.getElementById('resume')!.hidden = false;
 </script>

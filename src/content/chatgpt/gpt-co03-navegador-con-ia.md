@@ -11,21 +11,21 @@ takeaway: "ChatGPT lee la web contigo y actúa en ella desde el navegador de su 
 scenario:
   kind: producto
   label: Caso práctico
-  title: Los pisos de Nerea
-  body: "Nerea busca piso en Gijón. Con la extensión de ChatGPT en Chrome, pide comparar las pestañas abiertas: precio, metros, ascensor y fianza. ChatGPT pide permiso para cada web y le da una tabla. Cuando Nerea quiere escribir a un anunciante, ChatGPT le enseña el mensaje antes de enviarlo."
+  title: Los pisos de Itziar
+  body: "Itziar busca piso en Vigo. Con la extensión de ChatGPT en Chrome, pide comparar las pestañas abiertas: precio, metros, ascensor y fianza. ChatGPT pide permiso para cada web y le da una tabla. Cuando Itziar quiere escribir a un anunciante, ChatGPT le enseña el mensaje antes de enviarlo."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-co03-q1
-    q: "Lorena usaba el navegador ChatGPT Atlas y ahora no le abre. ¿Qué hace?"
+    q: "Araceli usaba el navegador ChatGPT Atlas y ahora no le abre. ¿Qué hace?"
     options: ["Lo reinstala: será un fallo", "Usa el navegador de la app de escritorio o la extensión: Atlas dejó de funcionar en agosto de 2026", "Pasa a un plan de pago para seguir usándolo"]
     answer: 1
     explain: "OpenAI retiró Atlas y llevó sus funciones a la app de escritorio y a una extensión. Reinstalar tienta, pero el servicio ya no existe."
   - type: choice
     id: gpt-co03-q2
     q: "En una web que no conoces, la extensión te ofrece permitir una vez, en este sitio, en todos los sitios o rechazar. ¿Qué eliges?"
-    options: ["En todos los sitios, para que no vuelva a preguntar", "Una vez o rechazar, después de mirar qué web es", "Da igual: el permiso solo sirve para leer"]
-    answer: 1
+    options: ["Una vez o rechazar, después de mirar qué web es", "En todos los sitios, para que no vuelva a preguntar", "Da igual: el permiso solo sirve para leer"]
+    answer: 0
     explain: "«En todos los sitios» quita las preguntas en cualquier web, también en las que esconden instrucciones maliciosas. Tienta por cómodo, pero el permiso deja a ChatGPT actuar en la web, no solo leerla."
   - type: truefalse
     id: gpt-co03-q3
@@ -70,7 +70,7 @@ Un **navegador con IA** lee las páginas contigo y, si le dejas, **actúa** en e
 
 **Los permisos, de uno en uno:**
 
-- Al instalarla, la extensión pide permisos amplios: es el máximo que podría usar, no lo que usa siempre.
+- Al instalarla, la extensión pide permisos amplios: es el máximo posible, no lo que usa siempre.
 - ChatGPT **pregunta antes de usar cada web nueva**: una vez, en ese sitio o en todos. «En todos» quita las preguntas: evítalo.
 - Para tu **historial** pregunta cada vez.
 - Antes de **enviar datos, comprar o borrar**, pide confirmación.
@@ -88,7 +88,7 @@ Y trata **las webs como no fiables**: una página puede esconder instrucciones p
 
 > Prueba: «Compara las pestañas abiertas de pisos en alquiler en una tabla con precio, metros, ascensor y fianza. Solo lee las páginas: no escribas a nadie ni rellenes formularios. Dime qué dato no aparece en cada anuncio.»
 
-Si abre webs que no pediste o pide permisos raros, rechaza y para la tarea.
+Si abre webs que no pediste o pide permisos raros, para la tarea.
 
 ## Error frecuente
 

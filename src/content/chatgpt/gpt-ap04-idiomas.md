@@ -6,8 +6,8 @@ track: gpt-aprender
 order: 504
 skills: [gpt-aprender, gpt-modelos-modos]
 terms: [modo-de-voz, recuperacion-activa]
-hook: "Te vas de Erasmus a Italia en septiembre y solo sabes decir «ciao». No tienes con quién practicar. ¿Te sirve ChatGPT?"
-takeaway: "ChatGPT es un compañero de práctica paciente. Pide conversación a tu nivel y correcciones con el porqué al final; para soltarte del todo, habla también con personas."
+hook: "Te vas de Erasmus a Bolonia en septiembre y tu italiano no pasa de «ciao» y «grazie». ¿Puedes ir soltándote desde casa con ChatGPT?"
+takeaway: "Para practicar un idioma, pide a ChatGPT una situación real a tu nivel y los errores al final, con su explicación. Te quita el miedo a hablar; la soltura llega hablando también con personas."
 scenario:
   kind: operacion
   label: Caso práctico
@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: gpt-ap04-q1
-    q: "Óscar practica alemán en voz alta, pero ChatGPT habla muy rápido y usa palabras que no conoce. ¿Qué hace?"
+    q: "Ciro practica alemán en voz alta, pero ChatGPT habla muy rápido y usa palabras que no conoce. ¿Qué hace?"
     options: ["Dejar la voz y practicar solo por escrito", "Decírselo en ese momento: «Habla más despacio, con frases cortas y vocabulario de nivel A2»", "Cambiar el idioma de la aplicación al alemán"]
     answer: 1
     explain: "ChatGPT ajusta el ritmo y el vocabulario si se lo pides, también en voz. Pasarse a escribir tienta por cómodo, pero hablar es justo lo que necesita practicar."
@@ -43,7 +43,7 @@ action:
     - "Al terminar, pide tus tres errores más repetidos y guárdalos en «Mi kit de ChatGPT»."
   check: He conversado en otro idioma con ChatGPT y he guardado mis errores
 practice:
-  task: "Empiezas de recepcionista en un hotel de Benidorm y necesitas practicar inglés con clientes. Escribe la petición para que ChatGPT haga de cliente y te corrija al final."
+  task: "Tu suegra es portuguesa y quieres poder charlar con ella en la comida de Navidad. Escribe la petición para practicar esa conversación a tu nivel, con las correcciones al final."
   require: [contexto, formato]
   extra:
     - label: "Decir tu nivel"
@@ -52,13 +52,13 @@ practice:
     - label: "Correcciones al final y con el porqué"
       any: ["al final", "al terminar", "cuando acabemos", "por que", "explicame", "explicando", "cuando terminemos", "despues de la conversacion", "hasta el final", "con la explicacion", "explica"]
       hint: "Pide: «Corrígeme al final y explícame por qué en cada error»."
-  sample: "Empiezo a trabajar de recepcionista en un hotel de Benidorm y tengo un nivel B1 de inglés. Haz de cliente británico que llega con un problema en su reserva. Habla con frases cortas, de una en una, y espera a que conteste. No me corrijas durante la conversación. Al terminar, dame una lista con mis tres errores más repetidos, la forma correcta y por qué, y cinco expresiones útiles para la recepción."
+  sample: "Mi suegra es de Oporto y en Navidad quiero charlar con ella en portugués. Tengo un nivel A2: entiendo frases sencillas, pero me bloqueo al hablar. Haz de suegra que me pregunta por mi trabajo y mi familia durante la comida, con frases cortas y de una en una, y espera mi respuesta. No me corrijas mientras hablamos. Al terminar, dame en una tabla mis tres errores más repetidos, la forma correcta y por qué, y cinco expresiones útiles para la sobremesa."
 deeper: null
 tool: evaluador-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22
-reviewed: 2026-10-22
+reviewed: 2026-10-23
 status: revision-pendiente
 jurisdiction: España
 sources: [openai-ayuda, openai-planes]
@@ -84,7 +84,7 @@ Sus límites, claros:
 
 ## En la práctica
 
-> Prueba: «Quiero practicar [IDIOMA]. Mi nivel es [A2, B1…]. Haz de [CAMARERO, ENTREVISTADORA, VECINO] y habla solo en [IDIOMA], con frases cortas y de una en una. No me corrijas durante la conversación. Al terminar, dame mis tres errores más repetidos con la forma correcta y por qué, y cinco palabras nuevas para repasar mañana.»
+> Prueba: «Vamos a ensayar en [IDIOMA] esta situación: [PEDIR EN UN BAR, UNA ENTREVISTA, HABLAR CON UN VECINO]. Tú haces de [PAPEL]. Mi nivel es [A2, B1…]: habla solo en [IDIOMA], con frases cortas y de una en una. No me corrijas durante la conversación. Al terminar, dame mis tres errores más repetidos con la forma correcta y por qué, y cinco palabras nuevas para repasar mañana.»
 
 En voz alta, di lo mismo al empezar. Si va muy rápido: «Habla más despacio».
 

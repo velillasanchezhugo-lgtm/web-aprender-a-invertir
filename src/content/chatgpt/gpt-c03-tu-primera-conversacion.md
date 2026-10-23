@@ -1,13 +1,13 @@
 ---
-title: Tu primera petición útil
+title: Tu primera petición, en cuatro piezas
 description: "Las cuatro piezas de una buena petición a ChatGPT (quién eres, qué necesitas, para quién y cómo lo quieres) con un ejemplo pobre y uno bueno."
 level: cero
 track: gpt-cero
 order: 3
 skills: [gpt-peticion]
 terms: [prompt, contexto-de-la-peticion]
-hook: "Le pides a ChatGPT «un mensaje para la profesora» y te da un texto tan educado y tan vacío que nunca lo enviarías. ¿Qué le faltaba?"
-takeaway: "ChatGPT no sabe nada de tu situación. Si le dices quién eres, qué necesitas, para quién es y cómo lo quieres, la primera respuesta ya se parece a lo que buscas."
+hook: "Le pides a ChatGPT «un mensaje para la profesora» y te da un texto tan educado y tan vacío que nunca lo enviarías. ¿Qué tendrías que haberle contado?"
+takeaway: "Cuatro datos cambian la respuesta: quién eres, qué necesitas, para quién es y cómo lo quieres. No hace falta escribir mucho, sino lo que ChatGPT no puede adivinar."
 scenario:
   kind: operacion
   label: Caso práctico
@@ -17,36 +17,36 @@ scenario:
 questions:
   - type: choice
     id: gpt-c03-q1
-    q: "Hamza ha recibido un mensaje genérico que no enviaría. ¿Qué es lo más útil que puede hacer?"
+    q: "A Hamza le sale un mensaje largo y rígido que no enviaría. ¿Cuál es su mejor siguiente paso?"
     options: ["Generar otra respuesta varias veces hasta que salga una buena", "Contar quién es, el motivo, qué tardes puede ir y cómo lo quiere", "Pedirle que lo haga «más natural»"]
     answer: 1
     explain: "ChatGPT solo puede usar lo que le cuentas. Con el motivo, el destinatario y el formato, el mensaje pasa de genérico a útil. Regenerar tienta porque cada vez sale algo distinto, pero sin información nueva no puede acertar con tu caso."
   - type: choice
     id: gpt-c03-q2
-    q: "¿Cuál de estas peticiones dará un resultado más útil?"
-    options: ["«Ayúdame con las oposiciones»", "«Preparo las oposiciones de auxiliar administrativo y trabajo por las mañanas. Hazme un horario de estudio de lunes a viernes, por las tardes, en una tabla»", "«Oposiciones: horario»"]
-    answer: 1
-    explain: "La buena dice quién eres, qué necesitas y en qué formato. La primera tienta por directa, pero obliga a ChatGPT a adivinar qué oposición, cuánto tiempo tienes y qué quieres recibir."
+    q: "Hamza va a contarle a ChatGPT estos datos. ¿Cuál sobra?"
+    options: ["Que es el padre de Adam, de 3.º B", "Las tardes en que puede ir a la tutoría", "Su DNI y el nombre completo de su hijo"]
+    answer: 2
+    explain: "Quién es y cuándo puede ir cambian el mensaje; el DNI y el nombre completo no lo mejoran y son datos personales que no hace falta dar. Tienta pensar que cuantos más datos, mejor, pero basta con lo que ChatGPT no puede adivinar."
   - type: truefalse
     id: gpt-c03-q3
-    q: "Para que ChatGPT te entienda hay que usar palabras técnicas o fórmulas especiales."
-    answer: false
-    explain: "Basta con escribir como se lo explicarías a alguien que no te conoce. Tienta buscar «frases mágicas», pero lo que más mejora la respuesta es el contexto."
+    q: "Si no le dices qué tono quieres, ChatGPT elegirá uno por su cuenta."
+    answer: true
+    explain: "Lo que no le cuentas lo rellena con lo más típico, a menudo un texto formal y largo. Tienta pensar que acertará con tu estilo, pero no lo conoce: una palabra («cercano», «de usted») basta."
 tips:
-  - "Si no sabes qué contarle, termina con «Antes de escribirlo, pregúntame lo que necesites»."
-  - "No añadas datos que no aportan nada: el nombre completo de tu hijo o tu DNI no mejoran el mensaje."
+  - "Si no sabes qué más contarle, deja que pregunte él: «¿Qué te falta saber para hacerlo bien?»."
+  - "Escribe como hablas: no hace falta un orden fijo ni palabras técnicas, solo que estén las cuatro piezas."
 action:
-  title: Haz tu primera petición completa
+  title: Escribe una petición con las cuatro piezas
   steps:
     - "Piensa en algo real que tengas que escribir esta semana: un mensaje, un correo, una nota."
     - "Escríbele a ChatGPT las cuatro piezas: quién eres, qué necesitas, para quién es y cómo lo quieres."
     - "Si el resultado te sirve, copia la petición en tu nota «Mi kit de ChatGPT»."
   check: He hecho una petición con las cuatro piezas y la he guardado
 practice:
-  task: "Quieres cambiar la bañera por un plato de ducha y vas a pedir presupuesto a varios fontaneros por mensaje. Escribe la petición con las cuatro piezas: quién eres, qué necesitas, para quién es y cómo lo quieres."
+  task: "Tu hija quiere aprender violín en la escuela municipal de música y no sabes si quedan plazas. Escribe la petición del correo a la escuela con las cuatro piezas: quién eres, qué necesitas, para quién es y cómo lo quieres."
   require: [contexto, publico, formato]
   extra: []
-  sample: "Vivo en un piso de los años 80 y quiero cambiar la bañera por un plato de ducha. Escribe un mensaje para enviar a varios fontaneros de mi zona pidiendo presupuesto. Incluye qué quiero hacer, que el baño mide unos 4 metros cuadrados, que me vendría bien hacerlo en noviembre y que pueden venir a verlo por las tardes. Tono educado y directo, máximo seis líneas. Si te falta algún dato, pregúntamelo."
+  sample: "Soy madre de una niña de 9 años que quiere aprender violín. Escribe un correo para la secretaría de la escuela municipal de música de mi barrio preguntando si quedan plazas este curso, qué horarios hay por la tarde y cómo se hace la inscripción. Tono educado y directo, máximo seis líneas. Si te falta algún dato, pregúntamelo antes de escribir."
 deeper: null
 tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -79,7 +79,7 @@ No hace falta escribir mucho. Hace falta **lo que ChatGPT no puede adivinar**.
 
 Antes de enviar, repasa tu mensaje con las cuatro piezas. Si falta alguna, añádela en una frase.
 
-> Prueba: «Soy [quién eres]. Necesito [qué]. Es para [quién o para qué]. Lo quiero [tono, extensión y formato]. Si te falta algún dato, pregúntamelo antes de escribir».
+> Prueba: «Soy camarero y trabajo los fines de semana. Necesito un mensaje para el grupo de familias del equipo de baloncesto de mi hijo: este sábado no puedo llevar a los niños al partido y pido que alguien me cambie el turno de coche. Es para WhatsApp. Tono cercano, máximo cuatro líneas. Si te falta algún dato, pregúntamelo antes de escribir».
 
 Cuando llegue la respuesta, **léela entera** y cambia lo que no sea verdad o no suene a ti. Lo que envíes es tuyo, no de ChatGPT.
 

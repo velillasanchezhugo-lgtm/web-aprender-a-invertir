@@ -1,23 +1,23 @@
 ---
-title: Pide el formato
+title: Pide la forma y di dónde va
 description: "Cómo pedir a ChatGPT el formato exacto (tabla, lista, longitud, idioma o registro) y dejarlo listo para donde lo vas a pegar."
 level: basico
 track: gpt-pedir
 order: 103
 skills: [gpt-ejemplos-formato]
 terms: [registro-linguistico, hoja-de-calculo]
-hook: "Copias la respuesta de ChatGPT en el grupo de WhatsApp de la comunidad y aparece llena de asteriscos y almohadillas. ¿Cómo lo evitas desde el principio?"
+hook: "Copias la respuesta de ChatGPT en el grupo de WhatsApp del equipo de fútbol de tu hijo y aparece llena de asteriscos y almohadillas. ¿Cómo lo evitas desde el principio?"
 takeaway: "Di cómo lo quieres y dónde lo vas a usar: tabla o lista, cuántas palabras, en qué idioma y con qué trato. «Es para pegarlo en WhatsApp» o «en una hoja de cálculo» cambia mucho el resultado."
 scenario:
   kind: operacion
   label: Caso práctico
-  title: Los seguros de Irene
-  body: "Irene pide a ChatGPT que compare tres presupuestos de seguro de hogar y recibe párrafos que no dejan ver las diferencias. Repite: una tabla con una fila por seguro y columnas para precio, franquicia y cobertura de agua, para imprimirla y decidir con su madre. Ahora lo ve de un vistazo."
+  title: Los pintores de Irene
+  body: "Irene pide a ChatGPT que compare tres presupuestos para pintar el piso de su madre y recibe párrafos que no dejan ver las diferencias. Repite: una tabla con una fila por pintor y columnas para precio con IVA, días de trabajo y si incluye mover muebles, para imprimirla y decidir con su madre. Ahora lo ve de un vistazo."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-pe03-q1
-    q: "Inés tiene que pegar su motivación en el formulario online de una beca. El campo admite como máximo 1.000 caracteres y no acepta negritas. ¿Qué hace?"
+    q: "Zoe tiene que pegar su motivación en el formulario online de una beca. El campo admite como máximo 1.000 caracteres y no acepta negritas. ¿Qué hace?"
     options: ["Pide «un texto corto» y lo pega sin mirar", "Pide unas 150 palabras en texto sencillo, comprueba la longitud y, si se pasa, pide recortar", "Pide el texto más completo posible para impresionar"]
     answer: 1
     explain: "Destino y longitud acercan mucho el resultado, pero ChatGPT no cuenta como un procesador de textos: con un límite estricto, compruébalo tú. «Corto» tienta por rápido, pero no dice cuánto y el formulario puede cortar el final."
@@ -29,14 +29,14 @@ questions:
   - type: choice
     id: gpt-pe03-q3
     q: "Ane pide a ChatGPT un correo para la secretaría de su facultad solicitando la revisión de un examen. Le sale tuteando y con un «¡Hola!». ¿Qué le pide?"
-    options: ["Nada: lo importante es el contenido", "Registro formal, tratando de usted, con saludo y despedida de correo oficial", "Que lo haga «más serio» y con palabras más técnicas"]
-    answer: 1
+    options: ["Nada: lo importante es el contenido", "Que lo haga «más serio» y con palabras más técnicas", "Registro formal, tratando de usted, con saludo y despedida de correo oficial"]
+    answer: 2
     explain: "El registro es el grado de formalidad, y en un trámite cuenta. Decirlo así cambia el trato, el saludo y la despedida. «Más serio» tienta, pero puede llenarlo de palabras rebuscadas sin cambiar lo que importa."
 tips:
   - "Si casi nunca quieres títulos ni listas, puedes pedir menos en la personalización de ChatGPT (lo verás en la última sesión del módulo)."
   - "Para usar el texto fuera, pide «sin introducción ni despedida»: te ahorras borrar el «¡Claro! Aquí tienes…»."
 action:
-  title: Pide algo en tabla
+  title: Pide una tabla lista para pegar
   steps:
     - "Piensa en algo que estés comparando: tarifas, horarios, ofertas."
     - "Pide una tabla diciendo qué va en filas, qué en columnas y dónde la vas a pegar."
@@ -77,7 +77,7 @@ Ojo: una tabla ordenada no garantiza que **las cifras estén bien copiadas**. Si
 
 Pon el formato al final, en una frase que empiece por «Formato:»:
 
-> Prueba: «Te pego abajo tres ofertas de tarifa de luz para mi piso. Compáralas en una tabla: una fila por oferta y columnas para precio del kWh, precio de la potencia, permanencia y si es fija o variable. Formato: solo la tabla, sin texto antes ni después, porque la voy a pegar en una hoja de cálculo. Si falta un dato en una oferta, pon "no consta". No inventes cifras.»
+> Prueba: «Te pego abajo, tal como los apunté en el móvil, los gastos del viaje a Cantabria con mis amigos. Conviértelos en una tabla con columnas para fecha, concepto, quién pagó e importe, con coma decimal. Formato: solo la tabla, sin texto antes ni después, porque la voy a pegar en una hoja de cálculo. Si en una línea falta el importe, pon "no consta". No inventes cifras.»
 
 Si no encaja, corrige solo el formato: «Ahora en una lista para el móvil».
 

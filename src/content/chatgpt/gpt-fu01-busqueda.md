@@ -6,8 +6,8 @@ track: gpt-funciones
 order: 201
 skills: [gpt-busqueda, gpt-verificar]
 terms: [busqueda-en-chatgpt, fecha-de-corte, alucinacion]
-hook: "Preguntas a ChatGPT qué día abre el plazo de matrícula de la escuela de idiomas y te da una fecha con total seguridad. ¿La ha mirado hoy o es la del año pasado?"
-takeaway: Para datos que cambian (plazos, horarios, normas, noticias), pide que busque en la web y abre al menos una fuente antes de usar el dato.
+hook: "Preguntas a ChatGPT qué día abre el plazo de matrícula de la escuela de idiomas y te da una fecha exacta, sin un solo enlace. ¿De dónde la ha sacado?"
+takeaway: Si el dato puede haber cambiado, que ChatGPT lo busque en la web; tú abre la fuente y mira su fecha antes de usarlo.
 scenario:
   kind: producto
   label: Caso práctico
@@ -33,16 +33,17 @@ questions:
     answer: 2
     explain: "Manda la fuente oficial y actual. El blog tienta porque explica mejor, pero un plazo de hace dos años puede haber cambiado."
 tips:
-  - "Si conoces la web oficial, nómbrala o pega el enlace: «busca en la web del ayuntamiento»."
+  - "Nombra el organismo que manda en el tema («la Seguridad Social», «mi ayuntamiento»): así busca donde toca."
+  - "Añade «si no hay fuente oficial, dímelo»: así no rellena el hueco con cualquier página."
 action:
-  title: Haz una búsqueda y revisa una fuente
+  title: Busca un dato y abre la fuente
   steps:
     - "Pide un dato que cambie y te importe hoy (un horario, un plazo), con «busca en la web y cita las fuentes»."
     - "Abre el primer enlace y busca el dato en la página. Mira su fecha."
     - "Apunta en «Mi kit de ChatGPT» la frase que mejor te ha funcionado para pedir fuentes."
   check: He pedido una búsqueda a ChatGPT y he comprobado una de sus fuentes
 practice:
-  task: "Quieres apuntar a tu hijo a los cursos de natación de verano de las piscinas municipales y no sabes si han cambiado los plazos. Escribe la petición para que ChatGPT lo busque y puedas comprobarlo."
+  task: "Quieres apuntar a tu hijo a la colonia urbana de verano de tu ayuntamiento y no sabes si han cambiado los plazos. Escribe la petición para que ChatGPT lo busque y puedas comprobarlo."
   require: [verificar, limites]
   extra:
     - label: "Pedir que busque en la web"
@@ -51,7 +52,7 @@ practice:
     - label: "Pedir la fecha de cada fuente"
       any: ["fecha", "actualiz", "reciente"]
       hint: "Pide la fecha de cada página: un plazo de hace dos años no te sirve."
-  sample: "Busca en la web el plazo de inscripción y los requisitos de los cursos de natación de verano para niños en las piscinas municipales de Zaragoza. Usa solo fuentes oficiales, como la web del ayuntamiento. Pon el enlace junto a cada dato y dime la fecha de cada página. Si no encuentras algo o dos fuentes no coinciden, avísame en lugar de suponerlo."
+  sample: "Busca en la web el plazo de inscripción y los requisitos de la colonia urbana de verano para niños de 6 a 12 años del Ayuntamiento de Zaragoza. Usa solo fuentes oficiales, como la web del ayuntamiento. Pon el enlace junto a cada dato y dime la fecha de cada página. Si no encuentras algo o dos fuentes no coinciden, avísame en lugar de suponerlo."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -79,7 +80,7 @@ ChatGPT aprende de textos hasta una **fecha de corte**: de lo que pasó después
 3. **Abre al menos un enlace** y busca el dato en la página. Mira la fecha.
 4. **Si no coincide, díselo** y pide que lo corrija. En un trámite, manda la web oficial.
 
-> Prueba: «Busca en la web el horario de verano de las bibliotecas municipales de mi ciudad, Valladolid. Usa solo la web del ayuntamiento, pon el enlace de cada dato y avísame si la página no dice de qué año es».
+> Prueba: «Busca en la web el horario de verano de las bibliotecas municipales de mi ciudad, Palencia. Usa solo la web del ayuntamiento, pon el enlace de cada dato y avísame si la página no dice de qué año es».
 
 ## Error frecuente
 

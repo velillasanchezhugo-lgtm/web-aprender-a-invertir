@@ -94,6 +94,10 @@ test('reconoce frases naturales de principiante para cada pieza', () => {
   ok('Si no lo encuentras, dímelo.', 'verificar');
   ok('Avísame de lo que no tengas claro.', 'verificar');
   ok('Dudo entre dos pisos de alquiler.', 'contexto');
+  ok('No programo. Esta carpeta tiene 300 facturas.', 'contexto');
+  ok('Mi suegra es portuguesa.', 'contexto');
+  ok('Escríbele una guía corta.', 'publico');
+  ok('No quiero saber cómo se fabrican.', 'limites');
   // Límites con otros verbos
   ok('Compara los cursos, pero no me apuntes a nada ni pagues.', 'limites');
   ok('Prepara el menú. No compres nada.', 'limites');

@@ -6,13 +6,13 @@ track: gpt-funciones
 order: 209
 skills: [gpt-archivos-datos, gpt-analizar, gpt-verificar]
 terms: [analisis-de-datos, hoja-de-calculo, datos-personales]
-hook: "Tienes un Excel con los gastos de casa de todo el año y quieres saber en qué se te va el dinero. ¿Puede ChatGPT hacer las cuentas y un gráfico sin que tú escribas una sola fórmula?"
+hook: "Tienes un Excel con todo lo que te ha costado el coche en dos años: gasolina, taller, seguro, aparcamiento. ¿Puede ChatGPT decirte cuánto te cuesta al mes, con un gráfico, sin que escribas una sola fórmula?"
 takeaway: ChatGPT puede leer tus PDF y hojas de cálculo, hacer cuentas, gráficos y archivos nuevos. Pide que te diga cuántas filas ha leído y comprueba dos o tres cifras antes de usarlas.
 scenario:
   kind: producto
   label: Caso práctico
-  title: Los gastos del club de Óscar
-  body: "Óscar es tesorero de un club de baloncesto de barrio. Sube la hoja de gastos de la temporada y pide un resumen por categorías y un gráfico. ChatGPT dice haber leído 212 filas, pero hay 230: se ha saltado una pestaña. Óscar lo corrige y comprueba el total con el extracto del banco."
+  title: Los gastos del club de Ezequiel
+  body: "Ezequiel es tesorero de un club de baloncesto de barrio. Sube la hoja de gastos de la temporada y pide un resumen por categorías y un gráfico. ChatGPT dice haber leído 212 filas, pero hay 230: se ha saltado una pestaña. Ezequiel lo corrige y comprueba el total con el extracto del banco."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -28,10 +28,10 @@ questions:
     explain: "Para muchas tareas con datos, ChatGPT escribe y ejecuta pequeños programas (en Python) para calcular y dibujar gráficos. Tú pides lo que necesitas en español; pensar que hace falta programar tienta, pero no es así."
   - type: choice
     id: gpt-fu09-q3
-    q: "Milagros quiere analizar una hoja con nombres, DNI y teléfonos de los socios de su asociación. ¿Qué hace antes de subirla?"
-    options: ["La sube tal cual: es para un análisis", "Borra o cambia las columnas con datos personales que no necesita", "La convierte en PDF para que no se vean"]
+    q: "Milagros lleva las inscripciones del campamento de su parroquia: nombre de cada niño, edad, alergias y teléfono de la familia. Quiere saber cuántos niños hay de cada edad. ¿Qué sube?"
+    options: ["La hoja tal cual: es solo para contar", "Una copia con solo la columna de la edad", "La hoja convertida en PDF, para que no se pueda editar"]
     answer: 1
-    explain: "Para contar socios o cuotas no hacen falta el DNI ni el teléfono. Pasarlo a PDF tienta, pero los datos siguen ahí. Sube solo lo necesario."
+    explain: "Para contar por edades basta la edad; los nombres, las alergias (datos de salud) y los teléfonos sobran. Pasarlo a PDF tienta porque parece más protegido, pero los datos siguen ahí."
 tips:
   - "Si la hoja tiene varias pestañas, di cuál usar."
   - "Si te devuelve un Excel, ábrelo en tu programa de siempre y revísalo allí."
@@ -44,7 +44,7 @@ action:
     - "Guarda en «Mi kit de ChatGPT» la frase que usas para pedir comprobaciones."
   check: He analizado una hoja con ChatGPT y he comprobado dos cifras
 practice:
-  task: "Llevas en una hoja de cálculo los gastos de tu comunidad de vecinos de este año y tienes que presentarlos en la junta. Escribe la petición al subir el archivo."
+  task: "Eres voluntaria en un banco de alimentos y tienes una hoja con las donaciones de este año, por mes y tipo de producto. Tienes que presentarlas en la asamblea. Escribe la petición al subir el archivo."
   require: [verificar]
   extra:
     - label: "Pedir una tabla, un gráfico o un archivo"
@@ -53,7 +53,7 @@ practice:
     - label: "Pedir que diga cuántas filas ha leído o el total"
       any: ["filas", "total", "cuadra", "cuantos registros"]
       hint: "Pide que te diga cuántas filas ha leído y el total para comprobarlo con otra fuente."
-  sample: "Te subo la hoja con los gastos de mi comunidad de vecinos de este año, una fila por factura. Suma los gastos por categoría y por mes, y hazme un gráfico de barras con el total mensual. Dime cuántas filas has leído y el total general para que compruebe que cuadra con el extracto del banco. Avísame si hay filas vacías, importes raros o facturas repetidas. Al final, dame una tabla de resumen que pueda descargar en Excel."
+  sample: "Te subo la hoja con las donaciones que ha recibido este año el banco de alimentos de mi barrio, una fila por entrega, con fecha, tipo de producto y kilos. Suma los kilos por tipo de producto y por mes, y hazme un gráfico de barras con el total mensual. Dime cuántas filas has leído y el total general para que compruebe que cuadra con nuestro registro. Avísame si hay filas vacías, cantidades raras o entregas repetidas. Al final, dame una tabla de resumen que pueda descargar en Excel."
 deeper: null
 tool: anonimizador
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

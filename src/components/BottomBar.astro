@@ -1,27 +1,26 @@
 ---
-/** Barra de acceso rápido en móvil, como una app: hoy, aprender, repasar, herramientas. */
+/** Barra de acceso rápido en móvil, la misma en toda la academia: inicio, formaciones, buscar y cuenta. */
 const path = Astro.url.pathname;
 const items = [
-  { href: '/es/mi-plan/', label: 'Hoy', icon: 'M12 3v3M12 18v3M3 12h3M18 12h3M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8z' },
-  { href: '/es/modulos/', label: 'Aprender', icon: 'M4 6.5 12 3l8 3.5-8 3.5-8-3.5zM6 9v5c0 1.7 2.7 3 6 3s6-1.3 6-3V9' },
-  { href: '/es/repaso/', label: 'Repaso', icon: 'M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4' },
-  { href: '/es/tutor/', label: 'Tutor', icon: 'M4 5h16v11H9l-5 4zM8 9h8M8 12h5' },
+  { href: '/es/', label: 'Inicio', icon: 'M4 11 12 4l8 7M6 9.5V20h12V9.5', current: path === '/es/' },
+  { href: '/es/buscar/', label: 'Buscar', icon: 'M10.5 4a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13zM15.5 15.5l5 5', current: path.startsWith('/es/buscar/') },
+  { href: '/es/cuenta/', label: 'Cuenta', icon: 'M12 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM4 21c0-4.4 3.6-7 8-7s8 2.6 8 7', current: path.startsWith('/es/cuenta/') },
 ];
+const ico = (d: string) => `<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>`;
 ---
 <nav class="bottom-bar" aria-label="Accesos rápidos">
-  {items.map((i) => (
-    <a href={i.href} aria-current={path.startsWith(i.href) ? 'page' : undefined}>
-      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d={i.icon} fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
-      <span>{i.label}</span>
-    </a>
+  <a href={items[0].href} aria-current={items[0].current ? 'page' : undefined}><Fragment set:html={ico(items[0].icon)} /><span>{items[0].label}</span></a>
+  <button type="button" data-drawer-open aria-controls="drawer" aria-expanded="false"><Fragment set:html={ico('M4 6.5 12 3l8 3.5-8 3.5-8-3.5zM6 9v5c0 1.7 2.7 3 6 3s6-1.3 6-3V9')} /><span>Formaciones</span></button>
+  {items.slice(1).map((i) => (
+    <a href={i.href} aria-current={i.current ? 'page' : undefined}><Fragment set:html={ico(i.icon)} /><span>{i.label}</span></a>
   ))}
 </nav>
 <style>
   .bottom-bar { display: none; }
   @media (max-width: 760px) {
     .bottom-bar { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; background: var(--u-ink); padding: 6px 4px calc(6px + env(safe-area-inset-bottom)); border-top: 1px solid #1c2238; }
-    .bottom-bar a { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #a3acc4; text-decoration: none; font: 500 0.72rem/1.2 var(--sans); padding: 6px 0; border-radius: 12px; }
-    .bottom-bar a[aria-current='page'] { color: var(--u-cyan); }
+    .bottom-bar a, .bottom-bar button { border: 0; background: transparent; cursor: pointer; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 2px; color: #a3acc4; text-decoration: none; font: 500 0.72rem/1.2 var(--sans); padding: 6px 0; border-radius: 12px; }
+    .bottom-bar a[aria-current='page'], .bottom-bar button[aria-expanded='true'] { color: var(--u-cyan); }
     :global(body:not(.focus-mode)) { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
   }
 </style>

@@ -11,8 +11,8 @@ takeaway: Para un texto que vas a pulir, trabájalo en un bloque de escritura (l
 scenario:
   kind: producto
   label: Caso práctico
-  title: El discurso de Julián
-  body: "Julián tiene que leer unas palabras en la jubilación de su compañera Pilar. Pide a ChatGPT un borrador de dos minutos y le sale en un recuadro editable. Cambia él mismo una anécdota que no era exacta, abre el texto a pantalla completa y pide: «haz más emotivo solo el último párrafo». El resto queda como estaba."
+  title: El discurso de Anselmo
+  body: "Anselmo tiene que leer unas palabras en la jubilación de su compañera Pilar. Pide a ChatGPT un borrador de dos minutos y le sale en un recuadro editable. Cambia él mismo una anécdota que no era exacta, abre el texto a pantalla completa y pide: «haz más emotivo solo el último párrafo». El resto queda como estaba."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -84,7 +84,7 @@ Las opciones exactas dependen del plan, del dispositivo y del modelo, y van camb
 3. Para lo demás, **señala la parte** y **di qué no tocar**.
 4. Al final, copia el texto a su sitio.
 
-> Prueba: «Escribe un aviso de 120 palabras para el grupo de familias de la clase de mi hijo: la excursión al Retiro pasa del jueves al viernes. Tono amable. Luego te pediré cambios por partes: cambia solo lo que te diga y deja el resto igual».
+> Prueba: «Escribe un aviso de 120 palabras para los miembros de mi coro: el ensayo de los jueves pasa a la parroquia de San Lorenzo durante noviembre. Tono amable. Luego te pediré cambios por partes: cambia solo lo que te diga y deja el resto igual».
 
 ## Error frecuente
 

@@ -1,5 +1,5 @@
 ---
-title: Dale ejemplos
+title: Enséñale con ejemplos
 description: "Cómo enseñar a ChatGPT ejemplos de lo que quieres, y de lo que no, para que acierte con el estilo y la longitud a la primera."
 level: basico
 track: gpt-pedir
@@ -7,7 +7,7 @@ order: 102
 skills: [gpt-ejemplos-formato]
 terms: [tono]
 hook: "Pides a ChatGPT mensajes para recordar las citas de tu consulta y salen larguísimos y llenos de emojis. Tú escribes justo lo contrario. ¿Cómo se lo explicas sin escribir una página?"
-takeaway: Un ejemplo vale más que muchos adjetivos. Pega uno o dos textos como los que quieres, di qué tienen en común y, si ayuda, uno de lo que no quieres, marcado como tal.
+takeaway: "Enséñale en vez de describir: uno o dos textos como los que quieres, una frase con lo que tienen en común y, si sirve, uno marcado como «lo que no quiero»."
 scenario:
   kind: empresa
   label: Caso práctico
@@ -18,8 +18,8 @@ questions:
   - type: choice
     id: gpt-pe02-q1
     q: "Celia tiene una tienda online de cerámica y quiere que ChatGPT escriba con su estilo las fichas de 20 productos nuevos. ¿Qué le funciona mejor?"
-    options: ["Pedirle «fichas originales y con gancho»", "Pegar dos fichas suyas que funcionan, decir qué tienen en común y pedir las nuevas igual", "Pegar las 60 fichas de la web sin explicar nada"]
-    answer: 1
+    options: ["Pedirle «fichas originales y con gancho»", "Pegar las 60 fichas de la web sin explicar nada", "Pegar dos fichas suyas que funcionan, decir qué tienen en común y pedir las nuevas igual"]
+    answer: 2
     explain: "Dos buenos ejemplos y una frase sobre qué los une enseñan el estilo y la estructura. «Con gancho» tienta porque es rápido, pero cada uno lo entiende distinto. Pegarlo todo sin explicar mezcla fichas buenas y flojas."
   - type: truefalse
     id: gpt-pe02-q2
@@ -29,8 +29,8 @@ questions:
   - type: choice
     id: gpt-pe02-q3
     q: "Héctor quiere pegar un recordatorio real que mandó a un paciente. ¿Qué hace antes?"
-    options: ["Lo pega tal cual: es solo un ejemplo", "Cambia el nombre, el teléfono y los datos de salud por [NOMBRE] o algo inventado", "Renuncia a usar ejemplos"]
-    answer: 1
+    options: ["Cambia el nombre, el teléfono y los datos de salud por [NOMBRE] o algo inventado", "Lo pega tal cual: es solo un ejemplo", "Renuncia a usar ejemplos"]
+    answer: 0
     explain: "Para enseñar un estilo no hacen falta datos reales. Pegarlo tal cual tienta por comodidad, pero los datos de salud de un paciente son especialmente delicados."
 tips:
   - "Con dos o tres ejemplos suele bastar. Si son muy distintos entre sí, no sabrá cuál seguir."
@@ -77,7 +77,7 @@ Dos avisos: a veces **copia** frases o datos del ejemplo, así que di qué debe 
 
 Pon primero la tarea, luego los ejemplos (bien marcados, con «Ejemplo 1:» o comillas) y al final la regla:
 
-> Prueba: «Respondo los mensajes de los clientes de mi taller de bicis en Murcia. Escribe una respuesta para alguien que pregunta si arreglamos frenos de disco. Ejemplo 1 de cómo respondo: "Sí, los arreglamos. Tráela cuando quieras de 10:00 a 14:00 y te la tenemos en dos días". Ejemplo 2: "Ahora mismo no tenemos esa pieza. Te aviso en cuanto llegue". Fíjate en que son dos frases, directas y sin emojis. No copies los datos de los ejemplos.»
+> Prueba: «Respondo los mensajes de los clientes de mi tienda de reparación de móviles en Badajoz. Escribe una respuesta para alguien que pregunta si cambiamos la batería de un móvil de hace cinco años. Ejemplo 1 de cómo respondo: "Sí, la cambiamos. Tráelo cuando quieras de 10:00 a 14:00 y te lo tenemos en el día". Ejemplo 2: "Ahora mismo no tenemos esa pieza. Te aviso en cuanto llegue". Fíjate en que son dos frases, directas y sin emojis. No copies los datos de los ejemplos.»
 
 Si se parece demasiado a un ejemplo, dilo: «Mantén el estilo, pero cambia las frases».
 

@@ -10,6 +10,7 @@ import BrokerDisclosure from './BrokerDisclosure.astro';
 import TermCards from './TermCards.astro';
 import PromptCoach from './PromptCoach.astro';
 import { FORMATION_TOOLS, type FormationId } from '../lib/formations';
+import { hubById } from '../lib/hubs';
 interface Props { s: any; index: number; total: number; next: any | null; trackLabel: string; formation?: string }
 const { s, index, total, next, trackLabel, formation = 'inversion' } = Astro.props;
 const inv = formation === 'inversion';
@@ -30,7 +31,7 @@ const steps = ['Pregunta', ...(K ? ['Palabras clave'] : []), 'La idea', 'En la p
 const qmeta = Object.fromEntries(d.questions.map((q: any) => [q.id, { skills: q.skills ?? d.skills, guess: guessFor(q) }]));
 const jsonLd = { '@context': 'https://schema.org', '@type': 'LearningResource', name: d.title, description: d.description, inLanguage: 'es-ES', timeRequired: `PT${d.minutes}M`, educationalLevel: 'Principiante', learningResourceType: 'Microlección', isAccessibleForFree: true, datePublished: isoDate(d.published), provider: { '@type': 'Organization', name: 'umotion Academy' } };
 ---
-<Base title={`${d.title} · ${trackLabel} ${index + 1}`} description={d.description} jsonLd={jsonLd} allowAds={false} focusMode={true}>
+<Base title={`${d.title} · ${trackLabel} ${index + 1}${inv ? '' : ` · ${hubById[formation as FormationId].title}`}`} description={d.description} jsonLd={jsonLd} allowAds={false} focusMode={true}>
   <div class="player" data-id={s.id} data-store={storeKey} data-next={next ? `${sessionBase}${next.id}/` : ''} data-next-title={next?.data.title ?? ''} data-index={index + 1} data-total={total} data-track={d.track} data-track-label={trackLabel}>
     <div class="topbar">
       <div class="container tb-inner">

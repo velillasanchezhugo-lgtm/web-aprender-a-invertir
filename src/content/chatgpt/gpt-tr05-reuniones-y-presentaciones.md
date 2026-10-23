@@ -17,7 +17,7 @@ scenario:
 questions:
   - type: choice
     id: gpt-tr05-q1
-    q: "Iker es encargado de una tienda de muebles y tiene que presentar a su jefa los resultados de las rebajas en cinco minutos. ¿Qué petición le ayuda más?"
+    q: "Leandro es encargado de una tienda de muebles y tiene que presentar a su jefa los resultados de las rebajas en cinco minutos. ¿Qué petición le ayuda más?"
     options: ["«Hazme una presentación sobre las rebajas.»", "«Escribe un discurso largo para impresionar a mi jefa.»", "«Tengo 5 minutos para contar a mi jefa las rebajas: ventas +12 %, más devoluciones y falta de sofás. Propón 4 diapositivas con título y tres frases, y las 3 preguntas que probablemente me hará.»"]
     answer: 2
     explain: "La tercera da tiempo, público, datos y formato, y prepara las preguntas. La primera tienta por sencilla, pero ChatGPT tendría que inventarse los resultados."
@@ -43,13 +43,13 @@ action:
     - "Comprueba cada tarea con tus notas y guarda la petición en «Mi kit de ChatGPT»."
   check: He convertido unas notas en un acta con tareas y la he revisado antes de enviarla
 practice:
-  task: "Sales de la reunión semanal de tu tienda de deportes con notas desordenadas. Escribe la petición para que ChatGPT saque el acta y las tareas sin inventar nada."
-  require: [formato, limites]
+  task: "Eres delegada de tu clase de FP y el jueves tienes diez minutos con la jefa de estudios para pedir que cambien la fecha de un examen que coincide con otro. Escribe la petición para preparar la reunión."
+  require: [contexto, formato, limites]
   extra:
-    - label: Pedir responsable y fecha de cada tarea
-      any: [responsable, quien, encargado, fecha, plazo, para cuando]
-      hint: "Pide una tabla con tarea, responsable y fecha límite."
-  sample: "Tengo una tienda de deportes y estas son mis notas de la reunión semanal [pego las notas]. Hazme un acta corta con dos apartados, acuerdos y temas abiertos, y una tabla con tarea, responsable y fecha límite. No inventes nada que no esté en las notas: si falta un responsable o una fecha, escribe «sin asignar»."
+    - label: Pedir las preguntas o pegas probables
+      any: [preguntas, objeciones, pegas, dudas, que me dira, me pondra]
+      hint: "Pide las preguntas o pegas que probablemente te pondrán, para llevarlas pensadas."
+  sample: "Soy delegada de 2.º de un ciclo de FP de Administración. El jueves tengo diez minutos con la jefa de estudios para pedir que se cambie el examen de Contabilidad del 12 de diciembre, porque coincide con el de Inglés. Prepárame un guion de tres puntos, en una lista, y las tres pegas que probablemente me pondrá, con una respuesta corta para cada una. No inventes normas del centro: si algo depende del reglamento, dime que lo compruebe."
 deeper: null
 tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

@@ -23,7 +23,7 @@
       "title": "Avanzado",
       "subtitle": "Sacarle todo el partido",
       "access": "plan-avanzado",
-      "promise": "Al terminar dominas las técnicas avanzadas, diseñas proyectos y asistentes que duran, creas contenidos, automatizas tu semana, aplicas ChatGPT a tu oficio y organizas su uso en un equipo.",
+      "promise": "Al terminar dominas las técnicas avanzadas, montas proyectos que te sirven durante meses, creas contenidos, automatizas tu semana con apps, ChatGPT Work y tareas programadas, aplicas ChatGPT a tu oficio y organizas su uso en un equipo.",
       "forWho": "Quien ya usa ChatGPT y quiere ir más lejos.",
       "format": "Clases de 15 a 30 minutos",
       "volume": "23 clases, unas 8 h, más una clase nueva cada mes",
@@ -121,7 +121,7 @@
     {
       "id": "gpt-conectar",
       "label": "Conectar y automatizar",
-      "short": "Apps, agente, navegador y tareas programadas",
+      "short": "Apps, ChatGPT Work, navegador y tareas programadas",
       "stage": "B"
     },
     {
@@ -133,7 +133,7 @@
     {
       "id": "gpt-avanzado",
       "label": "Un paso más",
-      "short": "Codex sin miedo y tu propio flujo de trabajo",
+      "short": "Codex para quien no programa y tu propio flujo de trabajo",
       "stage": "C"
     }
   ],
@@ -222,7 +222,7 @@
     },
     {
       "id": "c11",
-      "text": "Conecta sus apps con permisos claros y encarga tareas al agente supervisándolas.",
+      "text": "Conecta sus apps con permisos claros y encarga tareas de varios pasos a ChatGPT Work, supervisándolas.",
       "skills": [
         "gpt-apps",
         "gpt-agente",
@@ -272,7 +272,7 @@
     {
       "id": "gpt-conectar",
       "label": "Conectar y automatizar",
-      "desc": "Apps, agente, navegador y tareas.",
+      "desc": "Apps, ChatGPT Work, navegador y tareas.",
       "level": 1
     },
     {
@@ -463,8 +463,8 @@
     {
       "id": "gpt-agente",
       "domain": "gpt-conectar",
-      "label": "Agente y navegador",
-      "can": "Encargas tareas de varios pasos al agente o en el navegador y las supervisas.",
+      "label": "ChatGPT Work y navegador",
+      "can": "Encargas tareas de varios pasos a ChatGPT Work o en el navegador y las supervisas.",
       "level": 1
     },
     {
@@ -506,7 +506,7 @@
       "id": "gpt2-proyectos-gpts",
       "domain": "gpt2-dominio",
       "label": "Proyectos y plugins a fondo",
-      "can": "Diseñas proyectos y asistentes que funcionan semanas.",
+      "can": "Diseñas proyectos y asistentes que funcionan durante meses.",
       "level": 2
     },
     {
@@ -527,7 +527,7 @@
       "id": "gpt2-automatizar",
       "domain": "gpt2-dominio",
       "label": "Automatizar tu semana",
-      "can": "Conectas apps, usas el agente y repites flujos.",
+      "can": "Conectas apps, supervisas ChatGPT Work y repites encargos con tareas programadas.",
       "level": 2
     },
     {
@@ -627,16 +627,16 @@
     "modules": [
       {
         "code": "pro",
-        "title": "Peticiones avanzadas",
-        "desc": "Técnicas para tareas complejas.",
+        "title": "Pedir a fondo",
+        "desc": "Técnicas para encargos complejos.",
         "minutes": 80,
         "items": [
           {
             "id": "gpt2-pro-01-estructurar-peticiones-largas",
-            "title": "Estructurar peticiones largas",
+            "title": "Peticiones largas con orden",
             "minutes": 20,
-            "content": "Separar instrucciones, contexto y datos; secciones; orden que funciona.",
-            "practice": "Reescribir una petición caótica de una página",
+            "content": "Separar encargo, contexto y material; títulos y listas; qué va al principio y qué al final; cuándo pasarlo a un proyecto.",
+            "practice": "Ordenar la petición de un plan de mudanza que lo mezcla todo",
             "skills": [
               "gpt2-prompting"
             ],
@@ -644,10 +644,10 @@
           },
           {
             "id": "gpt2-pro-02-ejemplos-que-ensenan",
-            "title": "Ejemplos que enseñan",
+            "title": "Enseñar con ejemplos",
             "minutes": 20,
-            "content": "Cuántos ejemplos dar, variados y representativos; cuándo estorban.",
-            "practice": "Clasificar 30 correos con 3 ejemplos",
+            "content": "Cuántos ejemplos poner, variados y reales; cuándo hacen que copie de más; ejemplos buenos y malos.",
+            "practice": "Etiquetar 40 reseñas de un restaurante con cuatro ejemplos",
             "skills": [
               "gpt2-prompting"
             ],
@@ -655,10 +655,10 @@
           },
           {
             "id": "gpt2-pro-03-razonar-y-revisarse",
-            "title": "Hacerle razonar y revisarse",
+            "title": "Pensar más y revisarse",
             "minutes": 20,
-            "content": "Modelos con razonamiento, autocrítica y segunda pasada.",
-            "practice": "Revisar un contrato de alquiler en dos pasadas",
+            "content": "Cuándo elegir un modelo que razona, pedir una revisión crítica de su propia respuesta y comparar dos versiones.",
+            "practice": "Revisar las condiciones de un seguro de coche en dos pasadas",
             "skills": [
               "gpt2-prompting",
               "gpt2-calidad"
@@ -667,10 +667,10 @@
           },
           {
             "id": "gpt2-pro-04-encadenar-tareas",
-            "title": "Encadenar tareas",
+            "title": "Trabajos en varios pasos",
             "minutes": 20,
-            "content": "Dividir un trabajo en pasos con entradas y salidas claras.",
-            "practice": "De notas de una reunión a acta, tareas y correo",
+            "content": "Partir un encargo en pasos con entrada y salida claras y revisar entre un paso y el siguiente.",
+            "practice": "De las notas de una asamblea de vecinos a acta, tareas y aviso",
             "skills": [
               "gpt2-prompting",
               "gpt2-automatizar"
@@ -681,15 +681,15 @@
       },
       {
         "code": "gpt",
-        "title": "Proyectos y plugins a fondo",
-        "desc": "Asistentes que trabajan contigo semanas.",
+        "title": "Proyectos y asistentes a fondo",
+        "desc": "Espacios que trabajan contigo durante meses.",
         "minutes": 70,
         "items": [
           {
             "id": "gpt2-gpt-01-proyectos-que-duran",
             "title": "Proyectos que duran",
             "minutes": 20,
-            "content": "Archivos, instrucciones y memoria de proyecto; mantenerlos al día.",
+            "content": "Archivos, instrucciones y memoria del proyecto; qué subir y qué no; cómo mantenerlo al día y cuándo empezar otro.",
             "practice": "Proyecto para preparar unas oposiciones",
             "skills": [
               "gpt2-proyectos-gpts"
@@ -700,8 +700,8 @@
             "id": "gpt2-gpt-02-disenar-un-gpt",
             "title": "Diseñar un asistente útil",
             "minutes": 25,
-            "content": "Instrucciones, archivos de referencia, frases de inicio y pruebas, en un proyecto o un plugin. Qué hacer con los GPTs que se retiran.",
-            "practice": "Asistente de atención al cliente de una tienda",
+            "content": "Instrucciones de proyecto, archivos de referencia y preguntas de prueba. Si usabas GPTs que se retiran: pasarlos a un proyecto o, en planes de empresa, a un plugin.",
+            "practice": "Asistente para las dudas frecuentes de una escuela de música",
             "skills": [
               "gpt2-proyectos-gpts"
             ],
@@ -709,9 +709,9 @@
           },
           {
             "id": "gpt2-gpt-03-gpts-con-acciones",
-            "title": "Plugins y apps conectadas",
+            "title": "Proyectos con apps conectadas",
             "minutes": 25,
-            "content": "Conectar tu asistente con otros servicios mediante plugins y apps: qué datos salen y cómo limitarlo.",
+            "content": "Usar apps del directorio de plugins en tu trabajo con un proyecto: qué datos salen, qué permisos dar y cómo comprobar lo que hace.",
             "practice": "Asistente que consulta un calendario de reservas",
             "skills": [
               "gpt2-proyectos-gpts",
@@ -723,16 +723,16 @@
       },
       {
         "code": "inv",
-        "title": "Investigar y analizar",
-        "desc": "Información fiable con fuentes.",
+        "title": "Buscar, investigar y analizar",
+        "desc": "Información con fuentes y datos que cuadran.",
         "minutes": 70,
         "items": [
           {
             "id": "gpt2-inv-01-investigacion-en-profundidad",
             "title": "Investigación en profundidad",
             "minutes": 25,
-            "content": "Plantear la pregunta, alcance, fuentes, contraste y lectura crítica del informe.",
-            "practice": "Informe de mercado de un negocio local",
+            "content": "Plantear la pregunta, revisar y editar el plan antes de que empiece, limitar las webs y leer el informe con ojo crítico.",
+            "practice": "Informe sobre abrir una tienda de mascotas en tu barrio",
             "skills": [
               "gpt2-investigacion"
             ],
@@ -740,9 +740,9 @@
           },
           {
             "id": "gpt2-inv-02-analisis-de-datos-a-fondo",
-            "title": "Análisis de datos a fondo",
+            "title": "Tus hojas de cálculo, a fondo",
             "minutes": 25,
-            "content": "Limpiar datos, cruzar tablas, gráficos y comprobación de cifras.",
+            "content": "Limpiar datos, cruzar tablas, hacer gráficos y comprobar cada cifra con la hoja original.",
             "practice": "Un año de gastos de una asociación",
             "skills": [
               "gpt2-investigacion",
@@ -752,10 +752,10 @@
           },
           {
             "id": "gpt2-inv-03-verificar-como-un-profesional",
-            "title": "Verificar como un profesional",
+            "title": "Revisar antes de firmar",
             "minutes": 20,
-            "content": "Lista de comprobación de datos, citas, cálculos y sesgos.",
-            "practice": "Detectar 5 errores plantados en un informe",
+            "content": "Tu propia lista para comprobar datos, citas, cálculos y sesgos, y cuánto revisar según el riesgo.",
+            "practice": "Encontrar los errores escondidos en una nota de prensa",
             "skills": [
               "gpt2-calidad"
             ],
@@ -785,7 +785,7 @@
             "title": "Imágenes con criterio",
             "minutes": 25,
             "content": "Pedir, editar y mantener un estilo; derechos, personas reales y marcas.",
-            "practice": "Cartelería de unas fiestas del barrio",
+            "practice": "Imágenes con el mismo estilo para la carta de un bar",
             "skills": [
               "gpt2-crear"
             ],
@@ -795,8 +795,8 @@
             "id": "gpt2-cre-03-presentaciones-y-documentos",
             "title": "Presentaciones, hojas y documentos",
             "minutes": 20,
-            "content": "Pedir archivos bien hechos y revisarlos antes de usarlos.",
-            "practice": "Presentación de 8 diapositivas desde un informe",
+            "content": "Pedir archivos descargables (presentaciones, hojas, documentos) bien hechos y revisarlos antes de usarlos.",
+            "practice": "Presentación para la junta de una comunidad a partir de sus cuentas",
             "skills": [
               "gpt2-crear"
             ],
@@ -812,10 +812,10 @@
         "items": [
           {
             "id": "gpt2-aut-01-apps-a-fondo",
-            "title": "Apps y conectores a fondo",
+            "title": "Apps a fondo",
             "minutes": 20,
-            "content": "Correo, calendario, documentos y otras apps; permisos y qué puede leer o hacer.",
-            "practice": "Preparar la semana con correo y calendario",
+            "content": "Instalar apps desde el directorio de plugins, permisos para cada acción, qué pueden leer o hacer y cómo desconectarlas.",
+            "practice": "Reunir las facturas del trimestre desde el correo",
             "skills": [
               "gpt2-automatizar"
             ],
@@ -823,10 +823,10 @@
           },
           {
             "id": "gpt2-aut-02-agente-supervisado",
-            "title": "El agente, supervisado",
+            "title": "ChatGPT Work, supervisado",
             "minutes": 25,
-            "content": "Encargos de varios pasos, puntos de confirmación, riesgos y límites.",
-            "practice": "Comparar y reservar sin pagar",
+            "content": "Encargos de varios pasos, puntos de confirmación, navegador en la nube, inyección de instrucciones y límites.",
+            "practice": "Comparar tres escapadas de fin de semana y parar antes de reservar",
             "skills": [
               "gpt2-automatizar"
             ],
@@ -836,8 +836,8 @@
             "id": "gpt2-aut-03-tareas-programadas",
             "title": "Tareas programadas y rutinas",
             "minutes": 15,
-            "content": "Qué repetir, cada cuánto y cómo revisar los resultados.",
-            "practice": "Resumen semanal automático",
+            "content": "Qué repetir, cada cuánto, tareas que vigilan un cambio y cómo revisar cada resultado.",
+            "practice": "Un aviso cuando salga la convocatoria que esperas",
             "skills": [
               "gpt2-automatizar"
             ],
@@ -855,8 +855,8 @@
             "id": "gpt2-ofi-01-docentes-y-formadores",
             "title": "Docentes y formadores",
             "minutes": 20,
-            "content": "Preparar clases, adaptar niveles, evaluar y normas del centro.",
-            "practice": "Unidad didáctica con tres niveles",
+            "content": "Preparar clases y materiales, adaptar a la diversidad del aula, corregir con criterio y respetar las normas del centro.",
+            "practice": "Una situación de aprendizaje con tres niveles de dificultad",
             "skills": [
               "gpt2-oficios"
             ],
@@ -866,8 +866,8 @@
             "id": "gpt2-ofi-02-comercio-y-autonomos",
             "title": "Comercio y autónomos",
             "minutes": 20,
-            "content": "Atención al cliente, redes, presupuestos sin datos sensibles.",
-            "practice": "Respuestas tipo para reseñas",
+            "content": "Atención al cliente, redes, presupuestos y fichas de producto, sin datos sensibles.",
+            "practice": "Fichas de producto para una tienda online de cerámica",
             "skills": [
               "gpt2-oficios"
             ],
@@ -877,8 +877,8 @@
             "id": "gpt2-ofi-03-oficina-y-administracion",
             "title": "Oficina y administración",
             "minutes": 20,
-            "content": "Correo, actas, procedimientos y hojas de cálculo.",
-            "practice": "Manual de un procedimiento interno",
+            "content": "Correo, actas, procedimientos, plantillas y hojas de cálculo del día a día.",
+            "practice": "Guía de bienvenida para una persona nueva en la oficina",
             "skills": [
               "gpt2-oficios"
             ],
@@ -888,8 +888,8 @@
             "id": "gpt2-ofi-04-profesiones-reguladas",
             "title": "Profesiones reguladas",
             "minutes": 25,
-            "content": "Sanidad, abogacía y finanzas: confidencialidad, verificación y responsabilidad.",
-            "practice": "Qué sí y qué no en tres consultas reales",
+            "content": "Sanidad, abogacía y asesoría fiscal: secreto profesional, plan adecuado, verificación y quién responde.",
+            "practice": "Clasificar diez usos: sí, con cautelas o no",
             "skills": [
               "gpt2-oficios",
               "gpt2-calidad"
@@ -908,8 +908,8 @@
             "id": "gpt2-equ-01-planes-de-empresa",
             "title": "Planes de empresa",
             "minutes": 20,
-            "content": "Qué cambia en datos, administración y compartir; cuándo compensa.",
-            "practice": "Elegir plan para una empresa de 12 personas",
+            "content": "Business, Enterprise y Edu: datos, administración, espacios compartidos y cuándo compensan frente a cuentas personales.",
+            "practice": "Decidir el plan para una clínica de fisioterapia de ocho personas",
             "skills": [
               "gpt2-equipos"
             ],
@@ -919,8 +919,8 @@
             "id": "gpt2-equ-02-gpts-y-proyectos-compartidos",
             "title": "Proyectos y plugins compartidos",
             "minutes": 20,
-            "content": "Bibliotecas comunes, responsables y mantenimiento.",
-            "practice": "Proyecto común de atención al cliente",
+            "content": "Proyectos compartidos y plugins del espacio de trabajo: quién los mantiene, quién puede cambiarlos y cuándo se revisan.",
+            "practice": "Proyecto compartido para la recepción de un hotel",
             "skills": [
               "gpt2-equipos",
               "gpt2-proyectos-gpts"
@@ -929,10 +929,10 @@
           },
           {
             "id": "gpt2-equ-03-politica-de-uso",
-            "title": "Una política de uso en una página",
+            "title": "Las normas de tu equipo",
             "minutes": 20,
-            "content": "Qué datos, qué tareas, revisión humana y transparencia.",
-            "practice": "Redactar la política de tu equipo",
+            "content": "Qué datos, qué tareas, revisión humana, transparencia y formación, en una página.",
+            "practice": "Redactar las normas de tu equipo y probarlas con casos reales",
             "skills": [
               "gpt2-equipos"
             ],
@@ -990,8 +990,8 @@
             "id": "gpt3-fun-01-tokens-y-contexto",
             "title": "Tokens, contexto y memoria",
             "minutes": 35,
-            "content": "Qué es un token, ventana de contexto, por qué olvida, memoria y proyectos.",
-            "practice": "Diagnosticar por qué falla una conversación larga",
+            "content": "Qué es un token, ventana de contexto, por qué se pierde en chats largos, memoria y proyectos de ChatGPT.",
+            "practice": "Explicar por qué un proyecto con muchos archivos responde peor",
             "skills": [
               "gpt3-llm"
             ],
@@ -1001,8 +1001,8 @@
             "id": "gpt3-fun-02-entrenamiento-y-razonamiento",
             "title": "Entrenamiento y razonamiento",
             "minutes": 35,
-            "content": "Preentrenamiento, ajuste, alineamiento y modelos que razonan.",
-            "practice": "Explicar a un directivo por qué la IA se equivoca",
+            "content": "Preentrenamiento, ajuste con valoraciones humanas, la especificación de modelos de OpenAI y modelos que razonan.",
+            "practice": "`asesoria`: explicar a la dirección por qué ChatGPT a veces da la razón",
             "skills": [
               "gpt3-llm"
             ],
@@ -1012,8 +1012,8 @@
             "id": "gpt3-fun-03-modelos-y-costes",
             "title": "Modelos y costes",
             "minutes": 30,
-            "content": "Modelos grandes y rápidos, cuándo usar cada uno, coste por uso y límites.",
-            "practice": "Elegir modelo para tres tareas",
+            "content": "Modelos rápidos y modelos que razonan, cuándo usar cada uno, coste por uso y límites, sin depender de una versión concreta.",
+            "practice": "`hotel`: qué modelo para reseñas, traducciones y análisis de ocupación",
             "skills": [
               "gpt3-llm",
               "gpt3-api"
@@ -1033,7 +1033,7 @@
             "title": "Errores, sesgos y alucinaciones",
             "minutes": 30,
             "content": "Tipos de error, cómo detectarlos y diseño con revisión humana.",
-            "practice": "`asesoria`: errores en resúmenes de contratos",
+            "practice": "`asesoria`: errores al extraer datos de nóminas",
             "skills": [
               "gpt3-riesgos"
             ],
@@ -1044,7 +1044,7 @@
             "title": "Seguridad e inyección de instrucciones",
             "minutes": 35,
             "content": "Instrucciones ocultas en webs y documentos, permisos mínimos, datos sensibles.",
-            "practice": "`hotel`: una reseña que intenta engañar al asistente",
+            "practice": "`hotel`: una web de reservas con instrucciones escondidas para ChatGPT Work",
             "skills": [
               "gpt3-riesgos"
             ],
@@ -1054,7 +1054,7 @@
             "id": "gpt3-rie-03-reglamento-de-ia-y-rgpd",
             "title": "Reglamento europeo de IA y RGPD",
             "minutes": 40,
-            "content": "Obligaciones por nivel de riesgo, alfabetización, transparencia y datos personales.",
+            "content": "Obligaciones por nivel de riesgo, alfabetización, transparencia, la reforma de 2026 y datos personales.",
             "practice": "`instituto`: qué obligaciones tiene",
             "skills": [
               "gpt3-normativa"
@@ -1066,7 +1066,7 @@
             "title": "Evaluar con pruebas",
             "minutes": 35,
             "content": "Conjuntos de prueba, criterios, comparar versiones y revisión humana.",
-            "practice": "`saas`: 30 preguntas de prueba",
+            "practice": "`saas`: un banco de pruebas con consultas reales de clientes",
             "skills": [
               "gpt3-evaluar"
             ],
@@ -1085,7 +1085,7 @@
             "title": "Descubrir y priorizar casos de uso",
             "minutes": 35,
             "content": "Entrevistas, mapa de tareas, impacto frente a riesgo, prueba piloto.",
-            "practice": "`asesoria`: priorizar 10 tareas",
+            "practice": "`asesoria`: de doce cuentas sueltas a cinco usos prioritarios",
             "skills": [
               "gpt3-casos-uso"
             ],
@@ -1107,8 +1107,8 @@
             "id": "gpt3-imp-03-desplegar-planes-y-permisos",
             "title": "Desplegar: planes, permisos y políticas",
             "minutes": 35,
-            "content": "Planes de empresa, administración, apps permitidas y retención de datos.",
-            "practice": "`asesoria`: plan de despliegue",
+            "content": "Planes Business y Enterprise, administración, apps y plugins permitidos, retención de datos y GPTs que se retiran.",
+            "practice": "`asesoria`: pasar de cuentas personales a un espacio de empresa",
             "skills": [
               "gpt3-despliegue"
             ],
@@ -1118,8 +1118,8 @@
             "id": "gpt3-imp-04-formar-al-equipo",
             "title": "Formar al equipo",
             "minutes": 30,
-            "content": "Itinerarios por perfil, campeones internos, materiales y práctica.",
-            "practice": "`instituto`: plan de formación del claustro",
+            "content": "Itinerarios por perfil, personas de referencia en cada equipo, materiales y práctica con casos propios.",
+            "practice": "`instituto`: formación del claustro y normas para el alumnado",
             "skills": [
               "gpt3-cambio"
             ],
@@ -1129,8 +1129,8 @@
             "id": "gpt3-imp-05-medir-el-impacto",
             "title": "Medir el impacto",
             "minutes": 30,
-            "content": "Adopción, tiempo ahorrado, calidad y coste; informe a dirección.",
-            "practice": "`asesoria`: cuadro de mando a 90 días",
+            "content": "Uso real, tiempo ahorrado, calidad y coste; informe periódico a dirección.",
+            "practice": "`hotel`: medir el antes y el después en recepción",
             "skills": [
               "gpt3-cambio"
             ],
@@ -1149,7 +1149,7 @@
             "title": "Tu primera llamada a la API",
             "minutes": 40,
             "content": "Plataforma, claves, mensajes, instrucciones, parámetros y costes.",
-            "practice": "Clasificador de correos con la API",
+            "practice": "`saas`: clasificar las consultas de soporte",
             "skills": [
               "gpt3-api"
             ],
@@ -1160,7 +1160,7 @@
             "title": "Salidas estructuradas y fiables",
             "minutes": 35,
             "content": "Pedir JSON con esquema, validar, reintentar y registrar.",
-            "practice": "Extraer datos de facturas",
+            "practice": "Extraer los datos de partes de trabajo escaneados",
             "skills": [
               "gpt3-api",
               "gpt3-evaluar"
@@ -1183,7 +1183,7 @@
             "title": "Responder con tu documentación",
             "minutes": 40,
             "content": "Búsqueda en archivos propios, citar fuentes y actualizar el conocimiento.",
-            "practice": "`saas`: asistente con su manual",
+            "practice": "`saas`: responder con su centro de ayuda y citar el artículo",
             "skills": [
               "gpt3-herramientas",
               "gpt3-evaluar"
@@ -1194,8 +1194,8 @@
             "id": "gpt3-dev-05-agentes-y-codex",
             "title": "Agentes y Codex",
             "minutes": 40,
-            "content": "Bucles de agente, SDK de agentes, Codex en un repositorio, supervisión y límites.",
-            "practice": "Automatizar una tarea de programación con revisión",
+            "content": "Bucles de agente, el SDK de agentes de OpenAI, Codex en un repositorio, permisos y revisión.",
+            "practice": "Codex corrige un fallo y deja los cambios listos para revisar",
             "skills": [
               "gpt3-agentes"
             ],
@@ -1206,7 +1206,7 @@
             "title": "Producción: costes y límites",
             "minutes": 35,
             "content": "Caché, lotes, límites de uso y monitorización.",
-            "practice": "`saas`: bajar el coste a la mitad",
+            "practice": "`saas`: presupuesto mensual de uso y alertas de gasto",
             "skills": [
               "gpt3-api"
             ],
@@ -1224,8 +1224,8 @@
             "id": "gpt3-cie-01-proyecto-final",
             "title": "Proyecto final",
             "minutes": 45,
-            "content": "Implantación para uno de los clientes o un desarrollo con evaluación, según tu itinerario.",
-            "practice": "Proyecto con revisión humana",
+            "content": "Implantación para uno de los cuatro clientes o un desarrollo evaluado, según tu itinerario.",
+            "practice": "Entrega, presentación y revisión por una persona del equipo",
             "skills": [
               "gpt3-casos-uso",
               "gpt3-evaluar"

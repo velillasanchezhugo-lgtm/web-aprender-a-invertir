@@ -1,62 +1,61 @@
 ---
-title: Los datos de tu trabajo
+title: "Datos del trabajo: qué pegar y dónde"
 description: Qué cambia entre tu cuenta personal de ChatGPT y una de empresa en el uso de los datos, qué no pegar nunca y cómo anonimizar antes.
 level: basico
 track: gpt-seguro
 order: 702
 skills: [gpt-empresa-datos, gpt-privacidad]
 terms: [datos-personales, anonimizar, rgpd, controles-de-datos]
-hook: "Tienes 25 solicitudes de presupuesto de clientes, con sus nombres, teléfonos y la dirección de la obra. ChatGPT te las ordenaría en un minuto. ¿Las pegas en tu cuenta personal?"
-takeaway: Los datos de tu empresa y de sus clientes no son tuyos. Usa la cuenta de empresa si la hay; si no, pregunta qué se permite y quita todo lo que identifique a alguien antes de pegarlo.
+hook: "Pegar en ChatGPT las 25 solicitudes de presupuesto del mes te ahorraría la tarde. Llevan nombres, teléfonos y direcciones de clientes. ¿Da igual si lo haces en tu cuenta personal o en la de la empresa?"
+takeaway: Lo que pegas del trabajo es de la empresa y de sus clientes. Con cuenta de empresa, sigue su norma; con la personal, solo con permiso y sin nada que identifique a nadie.
 scenario:
   kind: empresa
   label: Caso práctico
-  title: Los presupuestos de Eloy
-  body: "Eloy trabaja en una pequeña empresa de reformas y quiere que ChatGPT ordene las solicitudes de presupuesto por tipo de obra y urgencia. La empresa no tiene cuenta de empresa, pero su jefa le permite usar su cuenta personal con datos anonimizados. Eloy cambia los nombres por «Cliente 1, 2, 3…», borra teléfonos, correos y direcciones, y deja solo el barrio, el tipo de obra y lo que piden."
+  title: El sábado de Eloy
+  body: "Eloy trabaja en una empresa de reformas que tiene ChatGPT Business. La norma interna es clara: datos de clientes, solo en la cuenta de empresa. Un sábado, desde el móvil, va a pegar las solicitudes de presupuesto en su cuenta personal para adelantar trabajo. Se acuerda de la norma, prepara solo la estructura de la tabla y el lunes hace el resto en la cuenta de empresa."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-se02-q1
-    q: "Maribel, administrativa de una clínica dental, quiere que ChatGPT redacte recordatorios de cita a partir de la lista de pacientes con su tratamiento. Solo tiene su cuenta personal y la clínica no ha dicho nada. ¿Qué hace primero?"
-    options: ["Pega la lista en un chat temporal, que no queda en el historial", "Pregunta a la clínica qué se permite y, mientras, pide solo una plantilla sin datos de pacientes", "Desactiva en Controles de datos la mejora del modelo y pega la lista"]
+    q: "Maribel, administrativa de una clínica dental, quiere que ChatGPT le ayude con los recordatorios de cita. La clínica no tiene cuenta de empresa ni norma sobre IA. ¿Qué pega?"
+    options: ["La lista de pacientes con su tratamiento, para personalizar cada mensaje", "Nada de pacientes: pide una plantilla con huecos como [nombre] y [hora], y pregunta a la clínica", "La lista de pacientes, pero en un chat temporal"]
     answer: 1
-    explain: "Son datos de salud, de los más protegidos, y los controla la clínica. El chat temporal y el ajuste de entrenamiento tientan porque parecen proteger, pero los datos salen igualmente de la clínica sin su permiso. Una plantilla con [nombre] y [hora] no tiene ningún riesgo."
+    explain: "Son datos de salud, de los más protegidos, y los controla la clínica. El chat temporal tienta porque parece más privado, pero los datos salen igualmente de la clínica sin su permiso. Una plantilla con huecos no tiene riesgo."
   - type: truefalse
     id: gpt-se02-q2
     q: "Si desactivas en tu cuenta personal la opción de que tus chats mejoren los modelos, ya puedes pegar datos de clientes."
     answer: false
-    explain: "Ese ajuste decide si OpenAI entrena con tus chats, no si la empresa te permite sacar sus datos. Tienta pensar que soluciona el problema, pero el permiso lo da la empresa, con un contrato con el proveedor."
+    explain: "Ese ajuste decide si OpenAI entrena con tus chats, no si la empresa te deja sacar sus datos. Tienta pensar que lo soluciona, pero el permiso lo da la empresa, con un contrato con el proveedor."
   - type: choice
     id: gpt-se02-q3
-    q: "¿Qué dice OpenAI, en general, sobre los planes de empresa (como ChatGPT Business o Enterprise)?"
-    options: ["Que no guardan nunca las conversaciones", "Que por defecto no usa sus datos para entrenar sus modelos y la organización administra la cuenta", "Que funcionan igual que la cuenta gratuita"]
-    answer: 1
-    explain: "En los planes de empresa, OpenAI dice que no entrena con los datos por defecto y hay contrato y administración propios. Que no se guarde nada tienta, pero es falso: las conversaciones se guardan según la configuración de la empresa."
+    q: "Tu empresa tiene ChatGPT Business y en el móvil usas también tu cuenta personal. ¿Dónde pegas el borrador de un contrato con un cliente?"
+    options: ["En la de empresa, siguiendo la norma interna", "En la personal, que es la que tienes a mano", "En cualquiera de las dos: es el mismo ChatGPT"]
+    answer: 0
+    explain: "En los planes de empresa OpenAI no entrena con los datos por defecto y hay administración y contrato propios. La personal tienta porque está a mano, pero el contrato saldría de la empresa sin ese marco."
 tips:
-  - "Usa una cuenta para cada cosa: la de empresa para el trabajo y la tuya para lo personal."
+  - "Si usas las dos cuentas en el mismo móvil, mira cuál tienes abierta antes de pegar nada."
   - "Nunca, en ninguna cuenta: contraseñas, claves de acceso, números de tarjeta ni datos bancarios completos."
-  - "Si dudas si algo identifica a alguien, quítalo: casi nunca hace falta para que ChatGPT te ayude."
 action:
   title: Pregunta la norma y revisa tu ajuste
   steps:
     - "Pregunta a tu responsable si hay norma sobre IA y si la empresa tiene cuenta de ChatGPT."
-    - "En tu cuenta personal, entra en Configuración, busca Controles de datos y decide si quieres que tus chats ayuden a mejorar los modelos."
+    - "En tu cuenta personal, abre los controles de datos en Configuración y decide si tus chats ayudan a mejorar los modelos."
     - "Escribe en «Mi kit de ChatGPT» tu regla: «Datos de clientes y de la empresa, solo con permiso y anonimizados»."
   check: He preguntado la norma de mi empresa, he revisado mis controles de datos y he escrito mi regla
 practice:
-  task: "Das clases en una academia de repaso y tienes tus notas sobre cada alumno. Escribe la petición para que ChatGPT te ayude con los informes para las familias, sin datos que identifiquen a nadie."
+  task: "Trabajas en una inmobiliaria y te han llegado por correo seis consultas de posibles compradores. Escribe la petición para que ChatGPT te ayude a responderlas, sin datos que identifiquen a nadie."
   require: [contexto, formato, limites]
   extra:
     - label: Decir que los datos van anonimizados
-      any: [anonimiz, he quitado, sin nombres, he cambiado, alumno 1, alumno a, alumna 1, alumna a]
-      hint: "Cambia los nombres por «Alumno 1» o «Alumno A», quita lo que delate a alguien y dilo en la petición."
-  sample: "Soy profesor de Matemáticas en una academia de repaso y la dirección me permite usar IA con datos anonimizados. Te paso mis notas del trimestre de seis alumnos: he quitado nombres, colegios y cualquier detalle personal, y cada uno aparece como «Alumno 1», «Alumno 2»… Prepara un borrador de informe para la familia de cada uno, de unas cinco líneas, con un punto fuerte, algo que mejorar y una recomendación para casa. Tono cercano. No inventes notas ni datos que no estén en mis apuntes."
+      any: [anonimiz, he quitado, he borrado, sin nombres, he cambiado, comprador 1, cliente 1, cliente a, datos ya quitados]
+      hint: "Cambia los nombres por «[COMPRADOR 1]» o «Cliente A», quita teléfonos, correos y direcciones, y dilo en la petición."
+  sample: "Trabajo en una inmobiliaria y la dirección me deja usar ChatGPT sin datos personales. Te pego seis consultas de posibles compradores: he cambiado los nombres por [COMPRADOR 1], [COMPRADOR 2]… y he borrado teléfonos, correos y la dirección exacta de cada piso. Redacta una respuesta para cada una, de cuatro o cinco líneas, con tono amable y profesional, que proponga una visita. No inventes precios ni características que no estén en el texto: si falta un dato, déjalo entre corchetes."
 deeper: null
 tool: anonimizador
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22
-reviewed: 2026-10-22
+reviewed: 2026-10-23
 status: revision-pendiente
 jurisdiction: España
 sources: [openai-ayuda, openai-privacidad, aepd]
@@ -64,14 +63,14 @@ sources: [openai-ayuda, openai-privacidad, aepd]
 
 ## La idea
 
-Lo que pegas en ChatGPT sale de tu ordenador y llega a los servidores de OpenAI. Con lo tuyo decides tú. Con lo del trabajo, **no**: los datos de la empresa y de sus clientes los controla la empresa.
+Lo que pegas en ChatGPT llega a los servidores de OpenAI. Con lo tuyo decides tú. Con lo del trabajo, **no**: los datos de la empresa y de sus clientes los controla la empresa.
 
 En la UE manda el **RGPD**, la ley europea de protección de datos: para dar datos de clientes a un servicio externo, la empresa necesita un motivo legal y un contrato con ese proveedor. Tu buena intención no basta.
 
-**Cuenta personal y planes de empresa**, en general (OpenAI lo explica en su centro de ayuda y en su página de privacidad para empresas; puede cambiar, compruébalo):
+**Cuenta personal y planes de empresa**, en general (OpenAI lo explica en su centro de ayuda; puede cambiar):
 
-- **Personal** (gratis y de pago): por defecto, tus chats pueden usarse para mejorar los modelos. Lo puedes desactivar en los **controles de datos**, dentro de Configuración; vale para los chats nuevos.
-- **De empresa** (**ChatGPT Business**, antes llamado Team, y **Enterprise**; también hay Edu para centros educativos): OpenAI dice que **no entrena con esos datos por defecto**. La organización administra las cuentas y tiene su propio contrato.
+- **Personal** (gratis y de pago): por defecto, tus chats pueden usarse para mejorar los modelos. Se desactiva en los **controles de datos**, dentro de Configuración, y vale para los chats nuevos.
+- **De empresa** (**ChatGPT Business**, antes llamado Team, **Enterprise** y **Edu** para centros educativos): OpenAI dice que **no entrena con esos datos por defecto**. La organización administra las cuentas y tiene su propio contrato.
 
 Qué **no** pegar en una cuenta personal sin permiso:
 
@@ -83,13 +82,13 @@ Qué **no** pegar en una cuenta personal sin permiso:
 
 1. **Pregunta** si tu empresa tiene norma sobre IA y cuenta de empresa. Si la hay, usa esa.
 2. Si te dejan usar la tuya, **anonimiza**: quita nombres, DNI, teléfonos, correos, direcciones, matrículas y números de pedido.
-3. Cambia lo real por etiquetas: «Cliente A», «Empresa X», «[importe]». La herramienta «Anonimizador» de esta web te ayuda a detectarlos.
-4. Deja solo lo que ChatGPT necesita para la tarea.
+3. Cambia lo real por etiquetas: «Cliente A», «[importe]». La herramienta «Anonimizador» de esta web te ayuda a detectarlos.
+4. Deja solo lo que ChatGPT necesita: si dudas si algo identifica a alguien, quítalo.
 
-> Prueba: «Te paso 25 solicitudes de presupuesto ya anonimizadas: cada una es "Cliente 1, 2, 3…" y he quitado teléfonos y direcciones. Ordénalas en una tabla por tipo de obra, barrio y urgencia, y dime cuáles necesitan una visita antes de dar precio. Si se me ha escapado algún dato personal, señálamelo para que lo borre.»
+> Prueba: «Te paso 25 solicitudes de presupuesto ya anonimizadas: cada una es "Cliente 1, 2, 3…" y he quitado teléfonos y direcciones. Ordénalas en una tabla por tipo de obra, barrio y urgencia, y dime cuáles necesitan una visita antes de dar precio.»
 
 Si tienes dudas, la AEPD (la agencia española de protección de datos) tiene guías gratuitas.
 
 ## Error frecuente
 
-Creer que el chat temporal o desactivar el entrenamiento te da permiso para pegar datos de clientes. Esos ajustes protegen tu privacidad, pero no sustituyen el permiso de la empresa.
+Creer que el chat temporal o desactivar el entrenamiento te da permiso para pegar datos de clientes. Protegen tu privacidad, pero no sustituyen el permiso de la empresa.

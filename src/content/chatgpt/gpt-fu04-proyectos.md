@@ -7,12 +7,12 @@ order: 204
 skills: [gpt-proyectos-memoria, gpt-instrucciones]
 terms: [proyecto-de-chatgpt, memoria-de-chatgpt, instrucciones-personalizadas]
 hook: "Llevas un mes usando ChatGPT para buscar piso: tienes chats sueltos con anuncios, cuentas y correos al casero, y cada vez le vuelves a explicar tu presupuesto. ¿Cómo lo juntas todo?"
-takeaway: Un proyecto agrupa los chats, los archivos y unas instrucciones de un mismo asunto. Créalo cuando vayas a volver al tema muchas veces.
+takeaway: Si vas a volver muchas veces a un asunto, dale su propio proyecto, con los chats, los archivos de referencia y unas instrucciones fijas en un mismo sitio.
 scenario:
   kind: producto
   label: Caso práctico
-  title: La mudanza de Andrés y Aurora
-  body: "Andrés y Aurora se mudan a Burgos en enero. Andrés crea un proyecto llamado «Mudanza», sube la lista de muebles y tres presupuestos de empresas de mudanzas, y escribe unas instrucciones: «Somos dos, presupuesto máximo de 1.500 €, respuestas cortas». Comparte el proyecto con Aurora para que ella también pregunte."
+  title: La mudanza de Matías y Aurora
+  body: "Matías y Aurora se mudan a Burgos en enero. Matías crea un proyecto llamado «Mudanza», sube la lista de muebles y tres presupuestos de empresas de mudanzas, y escribe unas instrucciones: «Somos dos, presupuesto máximo de 1.500 €, respuestas cortas». Comparte el proyecto con Aurora para que ella también pregunte."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -28,15 +28,15 @@ questions:
     explain: "Los proyectos compartidos solo usan lo que hay dentro del proyecto. Tienta pensar que la otra persona verá tus recuerdos, pero la memoria de tus demás chats queda fuera."
   - type: choice
     id: gpt-fu04-q3
-    q: "Yolanda comparte con su hermano el proyecto de la boda, pero no quiere que él cambie las instrucciones ni los archivos. ¿Qué acceso le da?"
-    options: ["Acceso para editar", "Su contraseña de ChatGPT", "Acceso solo para chatear"]
+    q: "Yolanda va a compartir con su hermano el proyecto de la boda. Dentro hay una hoja con los teléfonos y las direcciones de todos los invitados. ¿Qué hace antes?"
+    options: ["Lo comparte tal cual: su hermano es de confianza", "Le pasa su contraseña para que entre con su cuenta", "Quita esa hoja, o los datos que él no necesita, y después lo comparte"]
     answer: 2
-    explain: "Con acceso para chatear puede usar el proyecto, pero no cambiarlo. Dar acceso de edición tienta por comodidad, pero le deja tocarlo todo. La contraseña no se comparte nunca."
+    explain: "Quien entra en un proyecto compartido ve sus archivos, y esos datos son de los invitados, no de Yolanda. Compartirlo tal cual tienta porque es su hermano, pero no necesita los teléfonos para ayudar. La contraseña no se comparte nunca."
 tips:
-  - "Escribe instrucciones cortas: quién eres, qué buscas y cómo quieres las respuestas."
-  - "Antes de compartir un proyecto, revisa qué archivos tiene: la otra persona verá todo lo que hay dentro."
+  - "Deja las instrucciones del proyecto en tres o cuatro líneas: en una página entera se diluye lo importante."
+  - "Al compartir, elige «solo chatear» si quieres que la otra persona use el proyecto sin cambiar instrucciones ni archivos."
 action:
-  title: Crea un proyecto para algo que repites
+  title: Monta tu primer proyecto
   steps:
     - "Piensa en un tema al que vuelves a menudo (estudios, una mudanza, una afición, tu trabajo)."
     - "Crea un proyecto con ese nombre y escribe tres líneas de instrucciones."

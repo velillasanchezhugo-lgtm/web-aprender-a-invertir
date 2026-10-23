@@ -17,15 +17,15 @@ scenario:
 questions:
   - type: choice
     id: gpt-tr02-q1
-    q: "Abel es profesor de FP y ha escrito las instrucciones de las prácticas para sus alumnos. Quiere que ChatGPT las revise. ¿Qué pide?"
-    options: ["«Mejora este texto.»", "«Señala las faltas y las frases que se puedan entender mal, con el motivo de cada una. No cambies fechas ni requisitos y mantén mi tono directo.»", "«Reescríbelo para que parezca más profesional.»"]
+    q: "Abel es monitor de un campamento de verano y ha escrito la circular para las familias. Quiere que ChatGPT la revise. ¿Qué pide?"
+    options: ["«Mejora este texto.»", "«Señala las faltas y las frases que se puedan entender mal, con el motivo de cada una. No cambies fechas ni lo que hay que llevar, y mantén mi tono directo.»", "«Reescríbelo para que parezca más profesional.»"]
     answer: 1
     explain: "La segunda acota qué mirar, protege lo que no puede cambiar y explica cada problema. «Mejora este texto» tienta por corta, pero da permiso para cambiarlo todo, incluido el sentido."
   - type: truefalse
     id: gpt-tr02-q2
-    q: "Si la versión de ChatGPT suena mejor, lo sensato es aceptarla entera."
+    q: "Si le has dicho «no cambies las fechas», ya no hace falta revisar las fechas del texto final."
     answer: false
-    explain: "Sonar mejor no es decir lo mismo. Al pulir, puede quitar un matiz o cambiar un dato. Revisa los cambios uno a uno."
+    explain: "Suele respetarlo, pero no siempre: al pulir una frase puede mover un día o quitar un matiz. Tienta fiarse porque se lo dijiste claro, pero lo que importa se revisa igual."
   - type: choice
     id: gpt-tr02-q3
     q: "Pides a ChatGPT que revise el aviso de un plazo. Propone cambiar «antes del 15 de mayo» por «en las próximas semanas» porque «suena más natural». ¿Qué haces?"
@@ -82,7 +82,7 @@ Para el segundo paso ayuda el **bloque de escritura**: cuando ChatGPT escribe un
 3. Arregla y, si hace falta, señala la parte y di: «cambia solo esto».
 4. Decide tú. Si una propuesta no te convence, pregunta: «¿Por qué esta?».
 
-> Prueba: «Te pego el texto de presentación de mi autoescuela, para la web. No lo reescribas. Dime las 5 frases que peor se entienden o que suenan exageradas, por qué, y una alternativa sencilla para cada una. No toques precios ni horarios. Mantén mi tono cercano.»
+> Prueba: «Te pego tres entradas de mi blog de recetas. Antes de corregir nada, describe en tres líneas cómo escribo. Después señala solo las frases que se salen de ese estilo o se entienden mal, y explica por qué. No toques las cantidades ni los tiempos. No reescribas las entradas.»
 
 ## Error frecuente
 

@@ -1,5 +1,5 @@
 ---
-title: Ideas y decisiones, con tu criterio
+title: Ideas y decisiones sin que te dé la razón
 description: "Cómo usar ChatGPT para sacar ideas y poner a prueba una decisión, preguntando de forma que no se limite a darte la razón."
 level: basico
 track: gpt-trabajo
@@ -28,13 +28,13 @@ questions:
     explain: "ChatGPT tiende a la adulación: a darte la razón. Su acuerdo dice poco. Pídele expresamente los puntos débiles."
   - type: choice
     id: gpt-tr06-q3
-    q: "Tras ordenar con ChatGPT los pros y contras, la tabla dice que la opción B gana por poco, pero a ti algo no te convence. ¿Qué haces?"
-    options: ["Busco qué me inquieta, reviso si los criterios son los míos y decido yo; si hay mucho en juego, consulto a un profesional", "Elijo B: los números son objetivos", "Le pregunto a ChatGPT qué haría él"]
+    q: "Gabriel pide 20 ideas para vender más entre semana y 17 no le sirven. ¿Qué concluye?"
+    options: ["Que es lo normal en una lluvia de ideas: se queda con las tres buenas y las pone a prueba", "Que ChatGPT no sirve para esto", "Que debe pedir «solo ideas buenas» la próxima vez"]
     answer: 0
-    explain: "La tabla es tan buena como sus criterios, y tu inquietud suele señalar uno que falta. Elegir B tienta porque parece objetivo, pero los pesos los ha puesto alguien. Que ChatGPT elija es delegar lo que te toca."
+    explain: "Sacar muchas sin juzgar es justo lo que se busca: con dos o tres buenas basta. Pedir «solo ideas buenas» tienta, pero ChatGPT no sabe cuáles encajan con tu panadería; eso lo decides tú con tus criterios."
 tips:
   - "Para la crítica, abre un chat nuevo: en la misma conversación ya sabe qué opción prefieres."
-  - "Pregunta «¿qué información me falta para decidir?»."
+  - "Si dudas mucho, pregunta «¿qué tendría que pasar para que cambiara de opinión?»: verás qué pesa de verdad."
 action:
   title: Hazle la pregunta al revés
   steps:
@@ -43,7 +43,7 @@ action:
     - "En un chat nuevo, pide «convénceme de no hacer» lo que prefieres y anota el argumento que más te haga dudar."
   check: He puesto a prueba una decisión con ChatGPT y he decidido yo con mis criterios
 practice:
-  task: "Tienes una clínica de fisioterapia y dudas entre contratar a alguien o alargar tu horario. Escribe la petición para que ChatGPT te ayude a pensarlo sin decidir por ti."
+  task: "Tienes una peluquería y dudas entre contratar a alguien o alargar tu horario. Escribe la petición para que ChatGPT te ayude a ordenar la decisión; la última palabra es tuya."
   require: [contexto, formato]
   extra:
     - label: Darle tus criterios
@@ -52,7 +52,7 @@ practice:
     - label: Pedir que te lleve la contraria
       any: [contraria, abogado del diablo, critica, puntos debiles, riesgos, en que me equivoco, salir mal, convenceme de que no, pegas, en contra]
       hint: "Pide los puntos débiles: «Haz de abogado del diablo con la opción que prefiero»."
-  sample: "Tengo una clínica de fisioterapia pequeña con la agenda llena tres semanas. Dudo entre contratar a otro fisioterapeuta a media jornada o alargar yo el horario dos tardes. Mis criterios, por orden: mi descanso, el coste y el riesgo de no llenar la agenda. Compara las dos opciones en una tabla. Después haz de abogado del diablo con la que prefiero, contratar. No decidas por mí."
+  sample: "Tengo una peluquería pequeña con la agenda llena tres semanas. Dudo entre contratar a otra peluquera a media jornada o alargar yo el horario dos tardes. Mis criterios, por orden: mi descanso, el coste y el riesgo de no llenar la agenda. Compara las dos opciones en una tabla. Después haz de abogado del diablo con la que prefiero, contratar. No decidas por mí."
 deeper: null
 tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -86,7 +86,7 @@ Además, **no sabe lo que solo tú sabes**: tu dinero, tu energía, tu familia. 
 3. **Ataca** tu favorita en un chat nuevo.
 4. **Decide** tú y anota por qué.
 
-> Prueba: «Dudo entre seguir en el turno de mañana o pasar al de tarde en mi trabajo de cajera. Antes de opinar, hazme 5 preguntas sobre mi situación. Después dame los argumentos en contra de la opción que yo prefiera.»
+> Prueba: «Tengo medio decidido dejar el gimnasio y entrenar en casa. Haz de abogado del diablo: dame los tres argumentos más fuertes para no hacerlo y, para cada uno, qué tendría que pasar para que no me afectara.»
 
 ## Error frecuente
 

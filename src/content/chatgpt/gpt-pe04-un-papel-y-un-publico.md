@@ -1,5 +1,5 @@
 ---
-title: Un papel y un público
+title: Dale un papel y dile para quién es
 description: "Dar a ChatGPT un papel («haz de entrevistador») y un público («para personas mayores»): por qué cambia la respuesta y cuáles son sus límites."
 level: basico
 track: gpt-pedir
@@ -7,19 +7,19 @@ order: 104
 skills: [gpt-peticion]
 terms: [contexto-de-la-peticion]
 hook: "Vas a explicar a un grupo de jubilados cómo detectar un SMS falso del banco y ChatGPT te prepara un texto con «phishing», «URL» y «autenticación». ¿Qué le faltaba saber?"
-takeaway: "El papel le dice a ChatGPT desde dónde mirar; el público, a quién hablar. Juntos cambian el vocabulario, los ejemplos y el nivel, pero no le dan conocimientos nuevos."
+takeaway: "El papel cambia desde dónde mira ChatGPT; el público, cómo lo cuenta. Úsalos para ensayar y para revisar con otros ojos, sabiendo que no le dan conocimientos nuevos."
 scenario:
   kind: operacion
   label: Caso práctico
   title: La charla de Marcos
-  body: "Marcos, voluntario en un centro cívico de Valladolid, prepara una charla sobre timos por SMS. Su primera petición da un texto técnico. La segunda dice: «Haz de formador con experiencia en grupos de mayores. El público tiene más de 70 años y usa poco el móvil. Sin palabras en inglés». Ahora el guion se entiende."
+  body: "Marcos, voluntario en un centro cívico de Salamanca, prepara una charla sobre timos por SMS. Su primera petición da un texto técnico. La segunda dice: «Haz de formador con experiencia en grupos de mayores. El público tiene más de 70 años y usa poco el móvil. Sin palabras en inglés». Ahora el guion se entiende."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-pe04-q1
     q: "Lucía tiene la semana que viene su primera entrevista como administrativa y quiere practicar. ¿Qué petición le ayuda más?"
-    options: ["«Dame las preguntas típicas de una entrevista»", "«Haz de responsable de selección de una gestoría. Pregúntame de una en una y al final dime qué mejorar»", "«Actúa como el mejor experto en entrevistas del mundo»"]
-    answer: 1
+    options: ["«Dame las preguntas típicas de una entrevista»", "«Actúa como el mejor experto en entrevistas del mundo»", "«Haz de responsable de selección de una gestoría. Pregúntame de una en una y al final dime qué mejorar»"]
+    answer: 2
     explain: "Un papel concreto y un modo de trabajar (una pregunta cada vez y valoración final) lo convierten en un entrenador. La lista tienta, pero no practicas. «El mejor experto del mundo» suena potente y no añade nada."
   - type: choice
     id: gpt-pe04-q2
@@ -30,8 +30,8 @@ questions:
   - type: choice
     id: gpt-pe04-q3
     q: "Mohamed ha escrito un aviso para su equipo de reparto sobre un cambio de rutas. ¿Qué público le indica a ChatGPT para revisarlo?"
-    options: ["Ninguno: que lo revise «en general»", "«Repartidores que lo leerán en el móvil antes de salir, algunos con el español como segundo idioma»", "«Un público exigente»"]
-    answer: 1
+    options: ["«Repartidores que lo leerán en el móvil antes de salir, algunos con el español como segundo idioma»", "Ninguno: que lo revise «en general»", "«Un público exigente»"]
+    answer: 0
     explain: "Un público concreto dice dónde se lee y qué dificultades tiene: con eso acorta frases y quita palabras raras. «Exigente» o «en general» tientan porque no hay que pensar, pero no le dan nada con qué trabajar."
 tips:
   - "Un papel con oficio y situación («profesora de FP que corrige memorias») funciona mejor que uno inflado («el mejor experto del mundo»): este no mejora nada y da falsa seguridad."
@@ -77,6 +77,6 @@ Dos usos muy prácticos: **ensayar** (hace de entrevistador, de cliente o de tu 
 
 Pon el papel al principio y el público justo después de la tarea:
 
-> Prueba: «Haz de profesora de primaria con experiencia en explicar ciencia. Explica por qué llueve para mi hija de 7 años. Usa un ejemplo de cosas de casa, como el vapor de la ducha, y frases cortas. Máximo 100 palabras.»
+> Prueba: «Haz de electricista que explica las cosas sin tecnicismos. Explica a mis compañeros de piso, que tienen 20 años y nunca han pagado una factura, por qué salta el automático cuando enchufamos a la vez el horno y la lavadora. Usa un ejemplo de casa y frases cortas. Máximo 100 palabras.»
 
-Si sale demasiado infantil o técnico, ajusta solo el público: «Tiene 10 años».
+Si sale demasiado simple o técnico, ajusta solo el público: «Uno de ellos estudia Ingeniería».

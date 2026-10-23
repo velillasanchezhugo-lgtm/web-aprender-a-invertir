@@ -1,5 +1,5 @@
 ---
-title: Resumir documentos largos
+title: Resúmenes hechos para ti
 description: "Cómo pedir a ChatGPT un resumen hecho para ti y para lo que vas a hacer, con la página de cada dato, y qué hacer con los PDF escaneados."
 level: basico
 track: gpt-trabajo
@@ -28,10 +28,10 @@ questions:
     explain: "Un resumen deja cosas fuera, y ChatGPT puede saltarse algo o no leer un escaneo. Si te preocupa un tema, pregunta por él y comprueba la página."
   - type: choice
     id: gpt-tr03-q3
-    q: "Hernán pide el resumen de las bases de una ayuda para su negocio. ChatGPT dice que el plazo acaba el 30 de septiembre, «página 7». Va a organizar su semana con esa fecha. ¿Qué hace?"
-    options: ["Se fía: ha dado hasta la página", "Abre el PDF por la página 7 y comprueba la fecha", "Pregunta a ChatGPT «¿seguro?» y se queda con lo que diga"]
+    q: "Hernán sube un PDF escaneado que le ha mandado la gestoría y ChatGPT le dice que «no aparece ningún plazo». ¿Qué hace?"
+    options: ["Da por hecho que no hay plazo", "Busca él el plazo en el escaneo, o sube una captura de la página o un PDF con texto", "Sube el mismo archivo hasta que lo encuentre"]
     answer: 1
-    explain: "La página sirve justo para comprobar en un minuto el dato del que depende todo. Preguntar «¿seguro?» tienta por cómodo, pero ChatGPT puede repetir el error o cambiar de respuesta solo por tu duda."
+    explain: "En un escaneo, el texto es una imagen y ChatGPT puede no leerlo: «no aparece» puede significar «no lo veo». Darlo por hecho tienta porque la respuesta suena segura, pero un plazo perdido cuesta caro. Repetir con el mismo archivo dará lo mismo."
 tips:
   - "Termina con: «¿Hay alguna parte que no hayas podido leer bien?»."
   - "Si vuelves a menudo a un documento, guárdalo en un proyecto de ChatGPT en vez de subirlo cada vez."
@@ -82,7 +82,7 @@ Dos límites más: lo que vas a **firmar o pagar** lo lees tú entero, y no suba
 3. Pregunta por lo que temes: plazos, requisitos, excepciones.
 4. Comprueba en el documento lo que vayas a usar.
 
-> Prueba: «Te adjunto las bases de una beca de mi universidad. Soy estudiante de 2.º de Enfermería. Dime en una lista: requisitos, documentos, plazo y cómo se elige a quién se la dan, con la página de cada punto. Si algo no aparece, dímelo.»
+> Prueba: «Te adjunto las normas de la residencia de estudiantes donde voy a vivir este curso. Soy estudiante de 1.º y nunca he vivido fuera de casa. Dime en una lista: horarios, visitas, qué pasa si incumplo una norma y cómo se pide la baja, con la página de cada punto. Si algo no aparece, dímelo.»
 
 ## Error frecuente
 

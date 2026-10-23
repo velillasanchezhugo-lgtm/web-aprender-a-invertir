@@ -11,15 +11,15 @@ takeaway: "Con los hechos, el objetivo y el tono, ChatGPT te da un buen borrador
 scenario:
   kind: empresa
   label: Caso práctico
-  title: La señal de Maite
-  body: "Maite lleva un hotel rural en Teruel. Un cliente canceló dos días antes y exige la señal de 150 €, que su política no devuelve. Maite pide a ChatGPT una respuesta amable y firme que ofrezca cambiar la fecha sin coste. El borrador le gusta, pero al releerlo ve una frase que no pidió: «como gesto, le devolveremos la mitad». La borra antes de enviarlo."
+  title: La señal de Arantxa
+  body: "Arantxa lleva un hotel rural en Teruel. Un cliente canceló dos días antes y exige la señal de 150 €, que su política no devuelve. Arantxa pide a ChatGPT una respuesta amable y firme que ofrezca cambiar la fecha sin coste. El borrador le gusta, pero al releerlo ve una frase que no pidió: «como gesto, le devolveremos la mitad». La borra antes de enviarlo."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-tr01-q1
     q: "Javier es profesor de Primaria y una compañera le pide que cubra su guardia del viernes. No puede. ¿Qué petición le dará un mensaje útil?"
-    options: ["«Escribe un mensaje para decir que no.»", "«No puedo cubrir la guardia del viernes de una compañera porque tengo tutoría con familias. Escribe un WhatsApp corto y cercano que diga que no, con el motivo en una frase, y le sugiera preguntar a otro compañero.»", "«Escribe una excusa creíble para no cubrir una guardia.»"]
-    answer: 1
+    options: ["«Escribe un mensaje para decir que no.»", "«Escribe una excusa creíble para no cubrir una guardia.»", "«No puedo cubrir la guardia del viernes de una compañera porque tengo tutoría con familias. Escribe un WhatsApp corto y cercano que diga que no, con el motivo en una frase, y le sugiera preguntar a otro compañero.»"]
+    answer: 2
     explain: "La segunda da situación, motivo, tono, formato y una salida. La primera tienta por rápida, pero ChatGPT tendrá que inventarse el motivo y el tono. La tercera pide una excusa: si no es verdad, el problema es tuyo."
   - type: choice
     id: gpt-tr01-q2

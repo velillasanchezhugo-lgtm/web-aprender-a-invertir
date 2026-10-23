@@ -52,7 +52,7 @@ practice:
     - label: Pedir una cifra o las filas para comprobar
       any: [compruebe, comprobar, comprobarlo, filas, verificar, revisar, cuadrar]
       hint: "Pide el total de un mes o las filas que ha usado, para comprobarlo tú."
-  sample: "Trabajo en una agencia de viajes pequeña. Te adjunto un Excel con las reservas de 2025: destino, fecha de viaje e importe. He quitado la columna con los nombres de los clientes. Primero dime qué columnas ves. Después hazme una tabla con los 5 destinos que más facturan y un gráfico de barras por mes. Dame el total de agosto y cuántas filas has sumado, para comprobarlo."
+  sample: "Trabajo en una agencia de viajes pequeña. Te adjunto un Excel con las reservas de 2025: destino, fecha de viaje e importe. He quitado la columna con los nombres de los clientes. Antes de nada, cuéntame qué columnas hay. Después hazme una tabla con los 5 destinos que más facturan y un gráfico de barras por mes. Dame el total de agosto y cuántas filas has sumado, para comprobarlo."
 deeper: null
 tool: anonimizador
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
@@ -81,7 +81,7 @@ En el trabajo importan tres cosas, por este orden:
 3. Pregunta una cosa cada vez y pide el formato final.
 4. Pide **qué filas ha usado** en las cifras importantes y compáralas.
 
-> Prueba: «Soy encargada de un almacén. Te adjunto las horas extra de 2025 por turno y mes, sin nombres. Primero dime qué columnas ves. Después hazme una tabla por turno y un gráfico de líneas por mes para la reunión del lunes. Dame el total de julio para comprobarlo.»
+> Prueba: «Soy encargada de un almacén. Te adjunto las horas extra de 2025 por turno y mes, sin nombres. Antes de calcular, dime qué crees que significa cada columna. Después hazme una tabla por turno y un gráfico de líneas por mes para la reunión del lunes. Dame el total de julio para comprobarlo.»
 
 ## Error frecuente
 

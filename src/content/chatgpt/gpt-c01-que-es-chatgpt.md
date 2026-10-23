@@ -18,8 +18,8 @@ questions:
   - type: choice
     id: gpt-c01-q1
     q: "Manuel tiene la hora del último tren que le ha dado ChatGPT, sin ninguna fuente. Si lo pierde, se queda sin volver a casa. ¿Qué hace?"
-    options: ["Fiarse: si le ha dado una hora exacta, es que lo sabe", "Comprobarlo en la web o la aplicación oficial del tren antes de salir", "Preguntarle a ChatGPT «¿seguro?» y fiarse si dice que sí"]
-    answer: 1
+    options: ["Fiarse: si le ha dado una hora exacta, es que lo sabe", "Preguntarle a ChatGPT «¿seguro?» y fiarse si dice que sí", "Comprobarlo en la web o la aplicación oficial del tren antes de salir"]
+    answer: 2
     explain: "Los horarios cambian y ChatGPT, si no busca en internet, responde con lo que aprendió, que puede ser antiguo o inventado. La hora exacta tienta porque suena a dato comprobado, pero el detalle no prueba nada. Y a «¿seguro?» puede contestar que sí con la misma seguridad."
   - type: truefalse
     id: gpt-c01-q2
@@ -34,7 +34,7 @@ questions:
     explain: "Redactar y aclarar un texto tuyo es justo lo que mejor hace, y tú compruebas el resultado al leerlo. La decisión médica es de un profesional. El partido tienta por fácil, pero es un dato reciente que quizá no tiene."
 tips:
   - "Empieza por cosas que puedas juzgar tú al leerlas: un texto, una explicación, una lista. Así aprendes a medir cuándo acierta."
-  - "Descarga la aplicación solo desde la tienda oficial y comprueba que el desarrollador es OpenAI: hay copias que se hacen pasar por ChatGPT."
+  - "Si no podrías comprobar una respuesta, trátala como una pista, no como un dato."
 action:
   title: Hazle una pregunta que puedas comprobar
   steps:
@@ -43,10 +43,10 @@ action:
     - "Apunta en una nota del móvil qué acertó y qué no: será el principio de «Mi kit de ChatGPT»."
   check: He probado ChatGPT con un tema que conozco y he buscado sus errores
 practice:
-  task: "Es tu primer día con ChatGPT. Escribe una petición para que te explique en qué te puede ayudar en tu día a día y en qué cosas no deberías fiarte de él sin comprobarlo."
+  task: "Es tu primer día con ChatGPT y en todas las webs te piden «aceptar cookies». Escribe una petición para que te lo explique con palabras sencillas y te diga dónde comprobarlo."
   require: [contexto, verificar]
   extra: []
-  sample: "Soy jubilada y es la primera vez que uso un asistente de IA. Explícame en cinco puntos cortos para qué me puedes servir en casa, por ejemplo con cartas, recetas o facturas. Después dime si hay cosas que debería comprobar siempre en otra fuente antes de fiarme de ti. Usa un lenguaje sencillo, sin tecnicismos."
+  sample: "Soy jubilada y es la primera vez que uso ChatGPT. En todas las webs me piden aceptar las «cookies» y no sé qué son. Explícamelo con un ejemplo de la vida diaria, en menos de 100 palabras y sin tecnicismos. Después dime en qué fuente oficial puedo comprobarlo, por ejemplo la web de la Agencia Española de Protección de Datos."
 deeper: null
 tool: null
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

@@ -1,7 +1,9 @@
 ---
 /** Portada de una formación: sus tres niveles y el orden del Nivel 1. */
 import Base from '../../../layouts/Base.astro';
-import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import FormationHub from '../../../components/FormationHub.astro';
+import { hubById } from '../../../lib/hubs';
+import { glossaryOf } from '../../../lib/content';
 import Price from '../../../components/Price.astro';
 import { PRICING } from '../../../config/site';
 import { formation, formationSessions, formationPaths, FORMATION_TOOLS, type FormationId } from '../../../lib/formations';
@@ -20,23 +22,22 @@ const levels = [
   { t: EM.tiers[2], meta: `${n3} lecciones y un proyecto`, price: `curso ${PRICING.n3.course} · certificación aparte ${PRICING.n3.certification}` },
 ];
 const core = EM.stages.find((s) => s.id === 'B')!.tracks;
+// Orden recomendado del Nivel 1: etapa A, núcleo por importancia y ampliación.
+const order = EM.stages.flatMap((st) => st.tracks.flatMap((t) => all.filter((x) => x.data.track === t))).map((x) => ({ id: x.id, href: `${F.session}${x.id}/`, title: x.data.title }));
+const hub = hubById[F.id];
+const squares = [
+  { cls: 'p-inv', kicker: `${all.length + n2 + n3} piezas`, title: 'Los tres niveles', text: 'Qué aprendes en cada nivel y cómo está organizado.', href: '#niveles', go: 'Ver' },
+  ...(tools ? [{ cls: 'p-gpt', kicker: `${Object.keys(tools.items).length} herramientas`, title: 'Herramientas', text: 'Practica con tus propias peticiones.', href: tools.href, go: 'Abrir' }] : []),
+  { cls: 'p-lila', kicker: `${glossaryOf(F.id).length} términos`, title: 'Glosario', text: 'Las palabras de la formación, explicadas en una frase.', href: `${F.base}glosario/`, go: 'Abrir' },
+  { cls: 'p-rosa', kicker: 'Nivel 1', title: 'Examen', text: 'Comprueba lo que sabes y consigue tu insignia.', href: `${F.base}examen/`, go: 'Hacer' },
+  { cls: 'p-em', kicker: `${EM.tracks.length} módulos`, title: 'Módulos', text: 'Entra directo al tema que te interesa.', href: '#modulos', go: 'Ver' },
+];
 const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${F.title} · umotion Academy`, description: EM.tiers[0].promise, inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' } };
 ---
 <Base title={F.texts.metaTitle} description={F.texts.metaDesc} jsonLd={jsonLd} allowAds={false}>
-  <section class="f-hero dots">
-    <div class="container">
-      <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { label: F.title }]} />
-      <p class="eyebrow">Formación · 3 niveles</p>
-      <h1>{F.title}</h1>
-      <p class="lede">{F.texts.intro}</p>
-      <div class="cta">
-        {all[0] && <a class="btn brand" href={`${F.session}${all[0].id}/`}>Empezar gratis <span class="arrow" aria-hidden="true">→</span></a>}
-        <a class="btn secondary" href={`${F.base}nivel-1/`}>Ver el Nivel 1</a>
-      </div>
-    </div>
-  </section>
+  <FormationHub hub={hub} intro={F.texts.intro} store={F.storeKey} order={order} start={order[0] ? order[0].href : `${F.base}nivel-1/`} squares={squares}>
   <div class="container f-body">
-    <h2 class="h3">Tres niveles</h2>
+    <h2 class="h3" id="niveles">Tres niveles</h2>
     <ol class="levels">
       {levels.map(({ t, meta, price }) => (
         <li><a class="card lv" href={t.href}>
@@ -48,7 +49,7 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${F
         </a></li>
       ))}
     </ol>
-    <h2 class="h3">{F.texts.coreTitle}</h2>
+    <h2 class="h3" id="modulos">{F.texts.coreTitle}</h2>
     <p class="small muted">{F.texts.coreLede}</p>
     <ol class="core">
       <li>{count(zero) ? <a href={F.trackHref(zero)}><span class="mono small">A</span><span><strong>{F.tracks[zero].label}</strong><span class="small muted">{F.tracks[zero].short}</span></span></a> : <span class="soon"><span class="mono small">A</span><span><strong>{F.tracks[zero].label}</strong><span class="small muted">En preparación</span></span></span>}</li>
@@ -66,12 +67,9 @@ const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${F
     )}
     <div class="callout note legal"><p>{F.texts.notice}</p></div>
   </div>
+  </FormationHub>
 </Base>
 <style>
-  .f-hero { border-bottom: 1px solid var(--rule); padding: 0.5rem 0 2.2rem; margin-bottom: 1.5rem; }
-  .f-hero h1 { font-size: clamp(2.6rem, 1.8rem + 3.8vw, 4.8rem); margin: 0.2rem 0 0.8rem; letter-spacing: -0.045em; }
-  .f-hero .lede { max-width: 64ch; }
-  .cta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.4rem; }
   .f-body { padding-bottom: 3rem; }
   .h3 { font-size: 1.4rem; margin: 1.6rem 0 0.4rem; }
   .levels { list-style: none; padding: 0; display: grid; gap: 0.7rem; margin: 1rem 0; }

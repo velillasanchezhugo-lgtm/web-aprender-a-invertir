@@ -23,24 +23,24 @@ questions:
     explain: "Para explicar una cláusula basta con la cláusula. El chat temporal tienta porque no queda en el historial, pero el texto sale igual de tu dispositivo y OpenAI puede conservarlo hasta 30 días. Además, el contrato lleva datos de su casera, que no son suyos."
   - type: truefalse
     id: gpt-c06-q2
-    q: "Si desactivas «Mejorar el modelo para todos», ChatGPT deja de guardar tus conversaciones en el historial."
-    answer: false
-    explain: "Ese ajuste solo decide si tus chats nuevos pueden usarse para entrenar; siguen en el historial hasta que los borres. Tienta verlo como un «modo privado» total, pero no lo es."
+    q: "Aunque hayas quitado «Mejorar el modelo para todos», si valoras una respuesta con el pulgar, esa conversación puede usarse para entrenar."
+    answer: true
+    explain: "Según el centro de ayuda de OpenAI, al valorar puedes enviar la conversación entera. Tienta pensar que el ajuste lo cubre todo, pero esta es una excepción: en chats delicados, no valores."
   - type: choice
     id: gpt-c06-q3
     q: "Begoña quiere conservar sus chats antes de borrar la cuenta. ¿Qué hace primero?"
-    options: ["Borrar los chats y luego pedir una copia", "Exportar sus datos desde los controles de datos y esperar el correo con la descarga", "Archivar los chats: así se guardan fuera de la cuenta"]
-    answer: 1
+    options: ["Borrar los chats y luego pedir una copia", "Archivar los chats: así se guardan fuera de la cuenta", "Exportar sus datos desde los controles de datos y esperar el correo con la descarga"]
+    answer: 2
     explain: "La exportación te manda una copia de tus chats, y hay que pedirla antes de borrar: lo borrado no se recupera. Archivar tienta, pero solo quita el chat de la lista y se pierde con la cuenta."
 tips:
   - "Si compartes un chat con un enlace, cualquiera que tenga ese enlace puede leerlo. Revisa qué contiene antes de mandarlo."
-  - "Si valoras una respuesta con el pulgar arriba o abajo, OpenAI puede usar esa conversación para entrenar aunque hayas quitado el ajuste. En chats delicados, no valores."
+  - "Si usas ChatGPT con una cuenta de tu empresa (Business o Enterprise), las reglas sobre qué datos puedes usar las pone la empresa: pregúntalas."
 action:
   title: Revisa tus controles de datos
   steps:
     - "Entra en la Configuración de ChatGPT y busca la sección de controles de datos."
     - "Mira el ajuste «Mejorar el modelo para todos» y decide si lo quieres activado o no."
-    - "Localiza dónde se abre un chat temporal y dónde se exportan los datos, aunque hoy no los uses."
+    - "Localiza dónde se abre un chat temporal y dónde se exportan los datos."
     - "Apunta en «Mi kit de ChatGPT» qué has decidido y la fecha."
   check: He revisado mis controles de datos y he decidido qué quiero
 practice:
@@ -73,7 +73,7 @@ Lo que escribes viaja a los servidores de **OpenAI** y se guarda en tu cuenta. R
 - **Datos de otras personas** (DNI, dirección, salud) sin su permiso. Son **datos personales**: cualquier dato que permita saber quién es alguien.
 - **Información confidencial del trabajo** sin autorización.
 
-**Los controles de datos.** Es una sección de la Configuración. Ahí está **«Mejorar el modelo para todos»**: decide si tus chats nuevos pueden usarse para entrenar los modelos. En las cuentas personales viene activado; puedes quitarlo cuando quieras y vale para toda la cuenta. Tus chats siguen en el historial.
+**Los controles de datos.** Es una sección de la Configuración. Ahí está **«Mejorar el modelo para todos»**: decide si tus chats nuevos pueden usarse para entrenar los modelos. En las cuentas personales viene activado; puedes quitarlo cuando quieras y tus chats siguen en el historial.
 
 **El chat temporal** **no queda en tu historial**, no crea recuerdos en la memoria y no se usa para entrenar. Aun así, OpenAI puede conservarlo **hasta 30 días** por seguridad.
 
@@ -83,7 +83,7 @@ Lo que escribes viaja a los servidores de **OpenAI** y se guarda en tu cuenta. R
 
 Antes de pegar algo, pregúntate: **¿hay aquí datos de alguien o algo que no debería salir de casa?** Si es así, quítalo o cámbialo por un hueco.
 
-> Prueba: «Te copio una cláusula de mi contrato de alquiler en la que he cambiado los nombres por "inquilino" y "propietaria". Explícame en palabras sencillas qué pasa con la fianza al final del contrato y qué debería preguntar antes de entregar las llaves».
+> Prueba: «Te copio una cláusula de mi contrato de alquiler en la que he cambiado los nombres por "inquilino" y "propietaria". Explícame en palabras sencillas qué pasa con la fianza al final del contrato».
 
 ## Error frecuente
 

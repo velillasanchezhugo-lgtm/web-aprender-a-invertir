@@ -11,22 +11,22 @@ takeaway: "Puedes subir PDF, documentos, fotos y capturas para que ChatGPT los l
 scenario:
   kind: producto
   label: Caso práctico
-  title: El seguro de Iván
-  body: "A Iván se le estropea la tele por una subida de tensión. Sube a ChatGPT las condiciones de su seguro de hogar, 80 páginas en PDF, y le dice que los daños eléctricos están cubiertos. Pide la página, la abre y ve que es así, pero con una franquicia y un límite para aparatos antiguos que no le había mencionado."
+  title: El seguro de Eusebio
+  body: "A Eusebio se le estropea la tele por una subida de tensión. Sube a ChatGPT las condiciones de su seguro de hogar, 80 páginas en PDF, y le dice que los daños eléctricos están cubiertos. Pide la página, la abre y ve que es así, pero con una franquicia y un límite para aparatos antiguos que no le había mencionado."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-c07-q1
-    q: "Iván tiene la respuesta «los daños eléctricos están cubiertos». ¿Qué hace antes de llamar al seguro?"
+    q: "Eusebio tiene la respuesta «los daños eléctricos están cubiertos». ¿Qué hace antes de llamar al seguro?"
     options: ["Llamar ya: ChatGPT ha leído el documento entero", "Pedir la página de ese dato y leerla él en el PDF", "Subir el PDF otra vez y ver si le dice lo mismo"]
     answer: 1
     explain: "Con la página, comprobarlo lleva un minuto y ves lo que hay alrededor (como la franquicia). Confiar porque «lo ha leído» tienta, pero en documentos largos puede saltarse partes. Que repita lo mismo no lo confirma."
   - type: choice
     id: gpt-c07-q2
     q: "Quieres que ChatGPT te explique un informe médico de tu madre que tienes en papel. ¿Cómo lo haces?"
-    options: ["Fotografiarlo entero, con su nombre, DNI y número de historia", "Tapar o recortar nombre, DNI y números antes de hacer la foto, y llevar las dudas a su médico", "No hacer nada: un informe médico no se puede subir nunca"]
-    answer: 1
-    explain: "Lo que hay que explicar es el contenido, no quién es la paciente: quitar lo que la identifica protege sus datos de salud. Prohibirlo tienta por prudencia, pero entender un informe para preparar preguntas al médico es razonable."
+    options: ["Tapar o recortar nombre, DNI y números antes de hacer la foto, y llevar las dudas a su médico", "Fotografiarlo entero, con su nombre, DNI y número de historia", "No hacer nada: un informe médico no se puede subir nunca"]
+    answer: 0
+    explain: "Lo que hay que explicar es el contenido, no quién es la paciente: quitar lo que la identifica protege sus datos de salud. Prohibirlo tienta por prudencia, pero entenderlo para preparar preguntas al médico es razonable."
   - type: truefalse
     id: gpt-c07-q3
     q: "Si un PDF tiene un gráfico que ChatGPT no interpreta bien, puedes hacer una captura de esa página y subirla como imagen."
@@ -42,7 +42,6 @@ action:
     - "Elige un PDF sin datos de nadie (un manual, unas bases, un reglamento público)."
     - "Súbelo con el botón de adjuntar o el «+» del chat y pregunta una cosa concreta, pidiendo la página."
     - "Abre el PDF en esa página y comprueba que dice lo mismo."
-    - "Guarda la petición que mejor te funcione en «Mi kit de ChatGPT»."
   check: He subido un documento y he comprobado en su página un dato que me dio ChatGPT
 practice:
   task: "Te han pasado en PDF el reglamento de 20 páginas del huerto urbano de tu barrio, donde te han dado una parcela. Escribe la petición para saber qué normas te afectan, con la página de cada una."
@@ -65,7 +64,7 @@ sources: [openai-ayuda, openai-privacidad, aepd-guias]
 
 ## La idea
 
-Además de escribirle, puedes **darle archivos** a ChatGPT: un PDF, un documento, una hoja de cálculo, una foto o una captura de pantalla. Está en el plan gratuito y en los de pago, con límites que cambian según el plan.
+Además de escribirle, puedes **darle archivos** a ChatGPT: un PDF, un documento, una hoja de cálculo, una foto o una captura de pantalla. Gratis y de pago, con límites según el plan.
 
 **Qué puede hacer con ellos:**
 

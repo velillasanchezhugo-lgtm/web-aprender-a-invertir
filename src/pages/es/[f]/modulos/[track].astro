@@ -23,7 +23,7 @@ const skills = [...new Set(ss.flatMap((s) => s.data.skills))].map((k) => F.skill
 const vocab = [...new Set(ss.flatMap((s) => s.data.terms ?? []))];
 const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: `${info.label} · ${F.title} · umotion Academy`, description: info.short, inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' } };
 ---
-<Base title={`${info.label}: ${F.texts.titleVerb} en ${ss.length} sesiones`} description={`${F.texts.moduleDesc}: ${info.short.toLowerCase()}. ${ss.length} sesiones de 5 minutos con caso práctico, test y acción.`} jsonLd={jsonLd} allowAds={false}>
+<Base title={`${info.label} (${F.title}): ${F.texts.titleVerb} en ${ss.length} sesiones`} description={`${F.texts.moduleDesc}: ${info.short.toLowerCase()}. ${ss.length} sesiones de 5 minutos con caso práctico, test y acción.`} jsonLd={jsonLd} allowAds={false}>
   <section class="m-hero dots">
     <div class="container">
       <Breadcrumbs items={[{ href: '/es/', label: 'Inicio' }, { href: F.base, label: F.title }, { href: `${F.base}nivel-1/`, label: 'Nivel 1' }, { label: info.label }]} />

@@ -6,34 +6,35 @@ track: gpt-cero
 order: 8
 skills: [gpt-instrucciones, gpt-privacidad, gpt-verificar]
 terms: [plantilla-de-prompt, controles-de-datos, chat-temporal]
-hook: "Ya sabes pedir, corregir y comprobar. Dentro de un mes, ¿te acordarás de qué petición te funcionó y de qué no debías subir?"
-takeaway: "Una nota corta con tus mejores peticiones, cómo dejaste tus ajustes y tus tres reglas te ahorra tiempo cada día y te protege de los errores más comunes. Créala hoy y mejórala cada vez que algo te funcione."
+hook: "Llevas siete sesiones probando peticiones y ajustes. ¿Dónde está ahora lo que te funcionó, para no empezar de cero la próxima vez?"
+takeaway: "«Mi kit de ChatGPT» reúne en un sitio tus peticiones con huecos, cómo dejaste tus ajustes y las tres reglas que no te saltas. Empiézalo hoy con lo que ya te ha funcionado y añádele cada hallazgo."
 scenario:
   kind: producto
   label: Caso práctico
-  title: La nota de Rubén
-  body: "Rubén es técnico de mantenimiento en un hotel. Usa ChatGPT para escribir a proveedores, redactar partes de avería y entender manuales en inglés. Perdía tiempo rehaciendo peticiones hasta que guardó en el móvil las que le funcionaban, con huecos para rellenar, y una regla que no se salta: ni nombres ni habitaciones de huéspedes."
+  title: La nota de Teodoro
+  body: "Teodoro es técnico de mantenimiento en un polideportivo municipal. Usa ChatGPT para escribir a proveedores, redactar partes de avería y entender manuales en inglés. Perdía tiempo rehaciendo peticiones hasta que guardó en el móvil las que le funcionaban, con huecos para rellenar, y una regla que no se salta: ni nombres ni datos de los abonados."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-c08-q1
-    q: "Un huésped se queja de una avería y Rubén quiere ayuda para contestarle. Su regla dice «ni nombres ni habitaciones de huéspedes». ¿Cómo la aplica?"
-    options: ["Pega la queja completa en un chat temporal, que no se guarda en el historial", "Describe la avería y la queja sin nombre, número de habitación ni datos de la reserva", "Pega la queja tal cual y borra el chat al terminar"]
+    q: "Un abonado se queja de que las duchas no tienen agua caliente y Teodoro quiere ayuda para contestarle. Su regla dice «ni nombres ni datos de los abonados». ¿Cómo la aplica?"
+    options: ["Pega la queja completa en un chat temporal, que no se guarda en el historial", "Describe la avería y la queja sin nombre, número de abonado ni datos de contacto", "Pega la queja tal cual y borra el chat al terminar"]
     answer: 1
-    explain: "Para contestar bien no hace falta saber quién es el huésped. El chat temporal y borrar después tientan porque parecen «limpiar» el rastro, pero el texto ya ha salido del hotel y puede conservarse un tiempo."
+    explain: "Para contestar bien no hace falta saber quién es el abonado. El chat temporal y borrar después tientan porque parecen «limpiar» el rastro, pero el texto ya ha salido del polideportivo y puede conservarse un tiempo."
   - type: truefalse
     id: gpt-c08-q2
-    q: "Una buena plantilla deja huecos entre corchetes para lo que cambia cada vez, como [destinatario] o [plazo]."
+    q: "En el kit conviene apuntar la fecha en que revisaste tus ajustes, porque las opciones de ChatGPT y sus nombres cambian."
     answer: true
-    explain: "Los huecos te recuerdan dar el contexto que ChatGPT no puede adivinar. Tienta guardar peticiones cerradas, pero solo sirven para un caso."
+    explain: "Con la fecha sabes cuándo toca mirarlos otra vez. Tienta pensar que un ajuste se revisa una vez y ya, pero ChatGPT cambia a menudo sus menús y sus opciones."
   - type: choice
     id: gpt-c08-q3
     q: "Tu plantilla para entender cartas oficiales te da respuestas cada vez más largas y te cuesta encontrar lo importante. ¿Qué haces?"
     options: ["Añadir a la plantilla el formato que quieres (por ejemplo, «primero el plazo y qué tengo que hacer, en tres puntos») y guardar la versión nueva", "Dejar de usarla y preguntar cada vez de una forma distinta", "Pasarte a un plan de pago para que conteste mejor"]
     answer: 0
-    explain: "El kit se mejora con el uso: casi siempre basta con añadir la pieza que faltaba, aquí el formato. Cambiar de plan tienta, pero la longitud de la respuesta depende sobre todo de lo que pides."
+    explain: "Casi siempre basta con añadir la pieza que faltaba, aquí el formato. Cambiar de plan tienta, pero la longitud depende sobre todo de lo que pides."
 tips:
-  - "Repasa tus controles de datos cada pocos meses: los nombres y las opciones de ChatGPT cambian."
+  - "Ten el kit a mano: una nota fijada en el móvil se usa; un documento perdido en una carpeta, no."
+  - "Cuando una petición te funcione a la primera, cópiala al kit en ese momento: luego se olvida."
 action:
   title: Crea «Mi kit de ChatGPT»
   steps:
@@ -65,7 +66,7 @@ sources: [openai-ayuda, openai-privacidad]
 
 Has terminado el **Camino Cero**. Ahora falta **no olvidarlo**. Para eso sirve **«Mi kit de ChatGPT»**: una nota corta, tuya, con tres partes.
 
-**1. Cinco peticiones-plantilla.** Una **plantilla** es una petición que ya te funcionó, guardada con **huecos entre corchetes** para lo que cambia. Así no empiezas de cero ni olvidas el contexto.
+**1. Cinco peticiones-plantilla.** Una **plantilla** es una petición que ya te funcionó, guardada con **huecos entre corchetes** para lo que cambia.
 
 **2. Tus ajustes revisados.** Una o dos líneas: cómo dejaste el ajuste «Mejorar el modelo para todos» en los **controles de datos**, cuándo usas el **chat temporal** y en qué fecha lo miraste.
 
@@ -77,15 +78,14 @@ Has terminado el **Camino Cero**. Ahora falta **no olvidarlo**. Para eso sirve *
 
 ## En la práctica
 
-Ideas de plantillas para empezar (cámbialas a tu vida):
+Ideas de plantillas para empezar (adáptalas a tu vida):
 
 - **Escribir:** «Soy [quién]. Escribe un [mensaje o correo] para [destinatario] sobre [tema]. Tono [cercano o formal], máximo [N] líneas».
 - **Entender:** «Explícame [tema] como si no supiera nada, en cinco puntos cortos y con un ejemplo de la vida diaria».
 - **Leer un documento:** «Te adjunto [documento]. Dime [lo que busco] e indica la página de cada dato. Si algo no aparece, dímelo».
 - **Buscar algo actual:** «Busca en internet [dato] y dame el enlace a la fuente oficial».
-- **Organizar:** «Ayúdame a repartir [tarea] en pasos pequeños para hacer en [plazo]».
 
-> Prueba: «Te paso mis cinco plantillas para usar contigo. Dime si a alguna le falta contexto importante y propón una versión mejorada de cada una, sin alargarlas: [pega tus plantillas]».
+> Prueba: «Esta es mi plantilla para escribir a proveedores: [pega tu plantilla]. Úsala con este caso: [describe el caso]. Después dime en una línea qué dato te ha faltado para hacerlo mejor, para añadirlo a la plantilla».
 
 ## Error frecuente
 

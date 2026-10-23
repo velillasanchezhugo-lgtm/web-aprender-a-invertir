@@ -34,6 +34,7 @@ questions:
     explain: "OpenAI cambia y retira modelos con frecuencia, y cada plan ve opciones distintas. Pensar que es un error tienta, pero lo normal es que el vídeo esté desfasado."
 tips:
   - "Si una respuesta rápida falla en algo complejo, prueba la misma petición pidiendo que piense más antes de reescribirla."
+  - "En cuentas y repartos, pide que enseñe la operación de cada persona: así lo compruebas en un minuto."
 action:
   title: Compara una respuesta rápida con una pensada
   steps:

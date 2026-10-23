@@ -1,5 +1,5 @@
 ---
-title: Cuándo fiarte (y cuándo no)
+title: Cuándo fiarte de lo que dice
 description: "Por qué ChatGPT puede inventarse datos con seguridad, qué es la fecha de corte, cómo usar la búsqueda con fuentes y cuándo ir a un profesional."
 level: cero
 track: gpt-cero
@@ -23,9 +23,9 @@ questions:
     explain: "Solo la fuente oficial confirma lo que vale hoy. Pedirle que confirme tienta, pero puede contestar «sí» con la misma seguridad. Que esté bien ordenada no dice nada de si es cierta."
   - type: truefalse
     id: gpt-c05-q2
-    q: "Si la respuesta de ChatGPT trae enlaces a fuentes, ya no hace falta abrirlos."
-    answer: false
-    explain: "Un enlace puede no decir lo que ChatGPT resume, ser antiguo o no ser oficial. Tienta fiarse porque una fuente parece seria, pero solo cuenta si la abres y la lees."
+    q: "Si preguntas por una norma que cambió hace un mes y ChatGPT no busca en internet, puede darte la versión antigua como si fuera la actual."
+    answer: true
+    explain: "Lo que pasó después de su fecha de corte no lo sabe de memoria, y no te avisará. Tienta pensar que, si fuera antigua, lo diría, pero escribe con la misma seguridad."
   - type: choice
     id: gpt-c05-q3
     q: "A Antonio le llega una carta de Hacienda con un requerimiento y un plazo de diez días. ¿Qué papel tiene ChatGPT?"
@@ -34,9 +34,9 @@ questions:
     explain: "Entender el lenguaje y ordenar dudas es un buen uso; la respuesta a Hacienda, con plazo y consecuencias, la decide con un profesional o con la propia Agencia. Contestar lo que diga ChatGPT tienta por rapidez, pero un error ahí cuesta dinero."
 tips:
   - "Para trámites, ayudas o requisitos, la fuente que vale es la web del organismo: Agencia Tributaria, Seguridad Social o tu comunidad autónoma."
-  - "Pide que separe lo seguro de lo dudoso: «Marca lo que no puedas confirmar con una fuente». No sustituye a comprobar, pero orienta."
+  - "Pregúntale de dónde sale un dato: «¿Esto lo has buscado o lo sabías?». No sustituye a comprobar, pero orienta."
 action:
-  title: Caza una fuente
+  title: Comprueba un dato en su fuente
   steps:
     - "Pide a ChatGPT que busque en internet un dato actual que te interese (un plazo, un horario, un requisito) y que te dé el enlace oficial."
     - "Abre el enlace y comprueba si dice exactamente lo mismo."
@@ -71,7 +71,7 @@ ChatGPT escribe con la misma seguridad cuando acierta que cuando se equivoca. Ha
 
 **Qué hacer:**
 
-- Para datos **actuales**, usa la **búsqueda**: ChatGPT consulta páginas web y enlaza las fuentes. Está en el plan gratuito y en los de pago. A veces busca solo; si no, pídeselo.
+- Para datos **actuales**, usa la **búsqueda**: ChatGPT consulta páginas web y enlaza las fuentes. Está en el plan gratuito y en los de pago.
 - **Abre las fuentes.** Mira que sean oficiales y que digan lo mismo que el resumen.
 - **Comprueba en la fuente original** todo lo que vayas a usar: entregar, firmar, pagar o enviar.
 
@@ -81,7 +81,7 @@ ChatGPT escribe con la misma seguridad cuando acierta que cuando se equivoca. Ha
 
 Si la respuesta no muestra fuentes, pide la búsqueda por escrito («busca en internet…») o actívala desde las herramientas del chat. Luego abre los enlaces.
 
-> Prueba: «Busca en internet el plazo para presentar la declaración de la renta este año en España. Dame la respuesta en una frase y el enlace a la página oficial de la Agencia Tributaria de donde lo sacas».
+> Prueba: «Busca en internet si este curso hay ayudas para comprar libros de texto en [tu comunidad autónoma]. Dame el plazo en una frase y el enlace a la web oficial de la consejería. Si no encuentras la convocatoria de este curso, dímelo».
 
 ## Error frecuente
 

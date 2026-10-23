@@ -1,0 +1,69 @@
+---
+/**
+ * Cuadrados tipo pósit, como los de la portada. Sirven para elegir formación (portada) y para elegir
+ * qué hacer dentro de una formación (su pantalla de inicio). Colores: p-inv, p-em, p-cla, p-gpt, p-rosa, p-lila.
+ */
+export interface PostitItem { title: string; text: string; href: string; kicker?: string; cls?: string; go?: string; id?: string; wide?: boolean }
+interface Props { items: PostitItem[]; label: string; labelId: string; size?: 'md' | 'sm' }
+const { items, label, labelId, size = 'md' } = Astro.props;
+---
+<nav class={`postits-nav ${size}`} aria-labelledby={labelId}>
+  <p class="postits-title mono small" id={labelId}>{label}</p>
+  <ul class="postits">
+    {items.map((f) => (
+      <li class={f.wide ? 'wide' : undefined}>
+        <a class={`postit ${f.cls ?? 'p-inv'}`} href={f.href} id={f.id}>
+          <span class="pi-tape" aria-hidden="true"></span>
+          {f.kicker && <span class="pi-kicker" data-kicker>{f.kicker}</span>}
+          <strong class="pi-title">{f.title}</strong>
+          <span class="pi-text" data-text>{f.text}</span>
+          <span class="pi-go">{f.go ?? 'Entrar'} <span aria-hidden="true">→</span></span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+<style>
+  .postits-nav { margin: 1.6rem 0 0.4rem; }
+  .postits-title { margin: 0 0 0.7rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .postits { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); gap: 1.1rem 1.3rem; }
+  .sm .postits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 640px) { .sm .postits { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 980px) { .sm .postits { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .postit { --pi: #ffe27a; --pi-ink: #2a2410; position: relative; display: flex; flex-direction: column; gap: 0.35rem; aspect-ratio: 1 / 1; height: 100%; padding: 1.5rem 1rem 0.9rem; background: linear-gradient(180deg, color-mix(in srgb, var(--pi) 88%, #fff) 0%, var(--pi) 30%, var(--pi) 100%); color: var(--pi-ink); text-decoration: none; border-radius: 2px 2px 14px 2px; box-shadow: 0 1px 1px rgb(0 0 0 / 12%), 0 10px 18px -8px rgb(0 0 0 / 35%); transform: rotate(-2deg); transition: transform .2s var(--ease-seda), box-shadow .2s var(--ease-seda); }
+  .wide { grid-column: span 2; }
+  .wide .postit { aspect-ratio: auto; min-height: 100%; }
+  .postits li:nth-child(4n + 2) .postit { transform: rotate(1.8deg); }
+  .postits li:nth-child(4n + 3) .postit { transform: rotate(-1deg); }
+  .postits li:nth-child(4n + 4) .postit { transform: rotate(1.2deg); }
+  .postits li .postit:hover, .postits li .postit:focus-visible { transform: rotate(0) translateY(-4px); box-shadow: 0 2px 2px rgb(0 0 0 / 12%), 0 18px 26px -10px rgb(0 0 0 / 40%); }
+  .postit:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  .p-em { --pi: #a9e4ff; --pi-ink: #0f2230; }
+  .p-cla { --pi: #ffc9a8; --pi-ink: #2e160a; }
+  .p-gpt { --pi: #bdeccb; --pi-ink: #0d2416; }
+  .p-rosa { --pi: #ffc8de; --pi-ink: #2e0f1d; }
+  .p-lila { --pi: #d9cffd; --pi-ink: #1b1238; }
+  .pi-tape { position: absolute; top: -9px; left: 50%; width: 72px; height: 20px; transform: translateX(-50%) rotate(-3deg); background: rgb(255 255 255 / 55%); border: 1px solid rgb(0 0 0 / 6%); box-shadow: 0 1px 2px rgb(0 0 0 / 10%); }
+  .pi-kicker { font: 600 0.68rem/1.2 var(--mono); text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75; }
+  .pi-title { font: 700 clamp(1.2rem, 1rem + 1vw, 1.55rem)/1.05 var(--display, var(--sans)); letter-spacing: -0.02em; }
+  .sm .pi-title { font-size: clamp(1.1rem, 0.95rem + 0.7vw, 1.35rem); }
+  .pi-text { font-size: 0.88rem; line-height: 1.35; }
+  .pi-go { margin-top: auto; font-weight: 700; font-size: 0.9rem; }
+  @media (max-width: 420px) { .postits { gap: 0.9rem; } .postit { gap: 0.25rem; padding: 1.1rem 0.75rem 0.7rem; } .pi-text { font-size: 0.8rem; line-height: 1.3; } }
+  :global(:root[data-theme='dark']) .postit { --pi: #f2d566; }
+  :global(:root[data-theme='dark']) .p-em { --pi: #92d3f2; }
+  :global(:root[data-theme='dark']) .p-cla { --pi: #f4b48e; }
+  :global(:root[data-theme='dark']) .p-gpt { --pi: #a4dcb4; }
+  :global(:root[data-theme='dark']) .p-rosa { --pi: #f2afcb; }
+  :global(:root[data-theme='dark']) .p-lila { --pi: #c3b6f2; }
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .postit { --pi: #f2d566; }
+    :global(:root:not([data-theme='light'])) .p-em { --pi: #92d3f2; }
+    :global(:root:not([data-theme='light'])) .p-cla { --pi: #f4b48e; }
+    :global(:root:not([data-theme='light'])) .p-gpt { --pi: #a4dcb4; }
+    :global(:root:not([data-theme='light'])) .p-rosa { --pi: #f2afcb; }
+    :global(:root:not([data-theme='light'])) .p-lila { --pi: #c3b6f2; }
+  }
+  @media (max-width: 359px) { .pi-kicker { display: none; } .pi-title { font-size: 1.1rem; } .pi-text { font-size: 0.76rem; line-height: 1.2; } .postit { padding-top: 0.95rem; } }
+  @media (prefers-reduced-motion: reduce) { .postit { transition: none; } }
+</style>

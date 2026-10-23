@@ -1,0 +1,78 @@
+---
+/** Pantalla de inicio de la formación Inversión: entrar en la formación y todos sus apartados. */
+import Base from '../../../layouts/Base.astro';
+import FormationHub from '../../../components/FormationHub.astro';
+import { hubById } from '../../../lib/hubs';
+import { RECOMMENDED_BROKER } from '../../../config/site';
+import { sessions, zeroSessions, glossaryList, TRACKS, lessons } from '../../../lib/content';
+import { getCollection } from 'astro:content';
+const all = await sessions();
+const zero = await zeroSessions();
+const ls = await lessons();
+const strategies = await getCollection('strategies');
+const investors = await getCollection('investors');
+const trackIds = Object.keys(TRACKS) as (keyof typeof TRACKS)[];
+const modTracks = trackIds.map((id) => ({ id, ...TRACKS[id], n: all.filter((s) => s.data.track === id).length })).filter((t) => t.n);
+// Orden recomendado sin plan: Camino Cero y luego el resto de módulos, en su orden.
+const order = trackIds.flatMap((t) => all.filter((s) => s.data.track === t).sort((a, b) => a.data.order - b.data.order)).map((s) => ({ id: s.id, href: `/es/sesion/${s.id}/`, title: s.data.title }));
+const blocks = [
+  { t: 'Tu base', r: [1, 4] }, { t: 'Cómo se mueve el dinero', r: [5, 8] }, { t: 'Productos y costes', r: [9, 11] }, { t: 'Protegerte', r: [12, 14] },
+];
+const squares = [
+  { cls: 'p-em', kicker: '3 minutos', title: 'Mi plan', text: 'Crea tu ruta con un diagnóstico, o sigue con tu sesión de hoy y tus repasos.', href: '/es/mi-plan/', go: 'Abrir' },
+  { cls: 'p-inv', kicker: '3 niveles', title: 'Los tres niveles', text: 'De invertir por tu cuenta a nivel profesional.', href: '/es/niveles/', go: 'Ver' },
+  { cls: 'p-gpt', kicker: '8 calculadoras', title: 'Herramientas', text: 'Interés compuesto, inflación, caídas, comisiones y más, con tus números.', href: '/es/herramientas/', go: 'Abrir' },
+  { cls: 'p-cla', kicker: 'Comparador', title: 'Brókeres', text: 'Compara comisiones y condiciones antes de abrir una cuenta.', href: '/es/brokers/', go: 'Comparar' },
+  { cls: 'p-lila', kicker: `${strategies.length} estrategias`, title: 'Estrategias', text: 'Las formas de invertir más conocidas, explicadas sin humo.', href: '/es/estrategias/', go: 'Leer' },
+  { cls: 'p-rosa', kicker: `${investors.length} historias`, title: 'Historias de inversores', text: 'Lo que hicieron los grandes inversores y lo que puedes aprender.', href: '/es/inversores/', go: 'Leer' },
+  { cls: 'p-em', kicker: `${ls.length} lecciones`, title: 'Biblioteca', text: 'Lecciones por tema y nivel para ir más a fondo.', href: '/es/biblioteca/', go: 'Abrir' },
+  { cls: 'p-inv', kicker: `${glossaryList.length} términos`, title: 'Glosario', text: 'Las palabras de la inversión, explicadas en una frase.', href: '/es/glosario/', go: 'Abrir' },
+  { cls: 'p-gpt', kicker: '1 minuto al día', title: 'Repaso', text: 'Vuelven las preguntas que fallaste, justo cuando toca.', href: '/es/repaso/', go: 'Repasar' },
+  { cls: 'p-cla', kicker: 'Dudas', title: 'Tutor', text: 'Pregunta tus dudas o analiza una noticia paso a paso.', href: '/es/tutor/', go: 'Preguntar' },
+  { cls: 'p-lila', kicker: 'Nivel 1', title: 'Examen', text: 'Comprueba lo que sabes y consigue tu insignia.', href: '/es/examen/n1/', go: 'Hacer' },
+];
+const hub = hubById.inversion;
+const intro = 'Aprende a ordenar tu dinero e invertir por tu cuenta, desde cero: ahorro y colchón, productos y costes, brókeres y cómo no caer en engaños. Información general, nunca recomendaciones personalizadas.';
+const jsonLd = { '@context': 'https://schema.org', '@type': 'Course', name: 'Inversión · umotion Academy', description: intro, inLanguage: 'es-ES', isAccessibleForFree: true, provider: { '@type': 'Organization', name: 'umotion Academy' } };
+---
+<Base title="Inversión: aprende a invertir desde cero" description="La formación de inversión de umotion Academy: sesiones de 5 minutos, calculadoras, comparador de brókeres, estrategias, historias de inversores y glosario." jsonLd={jsonLd} allowAds={false}>
+  <FormationHub hub={hub} intro={intro} store="academy" order={order} start={`/es/sesion/${zero[0].id}/`} squares={squares}>
+    <div class="container inv-body">
+      <section aria-labelledby="cc-t">
+        <h2 class="h3" id="cc-t">Camino Cero: lo que sabrás en {zero.length} sesiones</h2>
+        <div class="path">
+          {blocks.map((b) => (
+            <div class="card pblock">
+              <h3 class="mono small">{b.t}</h3>
+              <ul>{zero.filter((s) => s.data.order >= b.r[0] && s.data.order <= b.r[1]).map((s) => <li><a href={`/es/sesion/${s.id}/`}><span class="mono">{String(s.data.order).padStart(2, '0')}</span> {s.data.title}</a></li>)}</ul>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section aria-labelledby="mod-t">
+        <h2 class="h3" id="mod-t">Módulos del Nivel 1</h2>
+        <ol class="mods">
+          {modTracks.map((t) => <li><a class="card mod" href={t.id === 'camino-cero' ? '/es/camino-cero/' : `/es/modulos/${t.id}/`}><span class="mono small muted">{t.n} sesiones</span><strong>{t.label}</strong><span class="small muted">{t.short}</span></a></li>)}
+        </ol>
+      </section>
+      <div class="callout note legal"><p>{RECOMMENDED_BROKER.paid ? `Información general, no asesoramiento personalizado. Colaboramos con ${RECOMMENDED_BROKER.name}, y lo indicamos.` : `Información general, no asesoramiento personalizado. No cobramos de brókeres: recomendar ${RECOMMENDED_BROKER.name} para empezar es una opinión editorial.`}</p></div>
+    </div>
+  </FormationHub>
+</Base>
+<style>
+  .inv-body { padding-bottom: 3rem; }
+  .h3 { font-size: 1.4rem; margin: 1.6rem 0 0.6rem; }
+  .path { display: grid; gap: 0.8rem; }
+  @media (min-width: 760px) { .path { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1100px) { .path { grid-template-columns: repeat(4, 1fr); } }
+  .pblock h3 { color: var(--teal); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 0.5rem; font-size: 0.74rem; }
+  .pblock ul { list-style: none; padding: 0; margin: 0; }
+  .pblock li a { display: block; padding: 0.4rem 0; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); font-size: 0.95rem; }
+  .pblock li a:hover { color: var(--teal); }
+  .pblock li .mono { color: var(--ink-3); margin-right: 0.4rem; font-size: 0.8rem; }
+  .mods { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap: 0.6rem; }
+  @media (min-width: 640px) { .mods { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .mods { grid-template-columns: repeat(3, 1fr); } }
+  .mod { display: flex; flex-direction: column; gap: 0.2rem; height: 100%; text-decoration: none; }
+  .mod strong { font-size: 1.05rem; color: var(--ink); }
+</style>

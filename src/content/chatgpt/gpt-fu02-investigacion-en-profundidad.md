@@ -6,20 +6,20 @@ track: gpt-funciones
 order: 202
 skills: [gpt-busqueda, gpt-verificar]
 terms: [investigacion-en-profundidad, busqueda-en-chatgpt, alucinacion]
-hook: "Quieres comparar en serio tres ciclos de FP para tu hija: salidas, prácticas y centros cercanos. Una búsqueda rápida te da cuatro líneas. ¿Hay forma de que ChatGPT lo trabaje a fondo?"
+hook: "Tu hija duda entre tres ciclos de FP y queréis saber salidas, prácticas y qué centros hay cerca. Es demasiado para una respuesta rápida. ¿Puede ChatGPT dedicarle un rato y devolverte un informe?"
 takeaway: La investigación en profundidad es para preguntas grandes que merecen un informe con muchas fuentes. Dale un buen encargo, deja que trabaje y revisa las citas de lo que vayas a usar.
 scenario:
   kind: producto
   label: Caso práctico
-  title: El informe de Rocío
-  body: "Rocío quiere abrir una peluquería canina en su pueblo de Toledo. Lanza una investigación en profundidad sobre licencias, requisitos sanitarios y competencia en la comarca. ChatGPT le propone un plan, ella añade «solo normativa de Castilla-La Mancha» y se va a comer. Al volver tiene un informe con índice y fuentes. Abre las tres citas sobre la licencia y ve que una era de otra comunidad."
+  title: El informe de Covadonga
+  body: "Covadonga quiere abrir una peluquería canina en su pueblo de Toledo. Lanza una investigación en profundidad sobre licencias, requisitos sanitarios y competencia en la comarca. ChatGPT le propone un plan, ella añade «solo normativa de Castilla-La Mancha» y se va a comer. Al volver tiene un informe con índice y fuentes. Abre las tres citas sobre la licencia y ve que una era de otra comunidad."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-fu02-q1
     q: "Mónica sale de casa en diez minutos y quiere saber a qué hora cierra hoy su oficina de Correos. ¿Usa la investigación en profundidad?"
-    options: ["Sí: así tendrá un informe completo", "No: para un dato suelto basta una búsqueda normal", "Sí, y se salta el plan para que vaya más rápido"]
-    answer: 1
+    options: ["No: para un dato suelto basta una búsqueda normal", "Sí: así tendrá un informe completo", "Sí, y se salta el plan para que vaya más rápido"]
+    answer: 0
     explain: "La investigación tarda y gasta un uso limitado de tu plan. Tienta por ser «más completa», pero para un horario basta una búsqueda y abrir la web oficial."
   - type: truefalse
     id: gpt-fu02-q2
@@ -34,6 +34,7 @@ questions:
     explain: "Corregir el plan al principio es lo que más mejora el informe. Dejarlo correr tienta para no perder tiempo, pero puede tardar un buen rato en algo que no te sirve."
 tips:
   - "Si el tema es de salud, dinero o leyes, el informe te prepara para hablar con un profesional, no lo sustituye."
+  - "Si el informe mezcla regiones o años, pide que separe lo que vale para tu comunidad y para este año."
 action:
   title: Prepara el encargo de una investigación
   steps:
@@ -43,13 +44,13 @@ action:
     - "Guarda el encargo en «Mi kit de ChatGPT» como plantilla."
   check: He preparado y lanzado una investigación en profundidad
 practice:
-  task: "Tu madre quiere poner placas solares en su casa de Murcia y te pide que te informes de ayudas y trámites. Escribe el encargo para una investigación en profundidad."
+  task: "Tu padre, de 82 años, empieza a necesitar ayuda en casa y quieres saber qué servicios públicos hay y cómo se piden. Escribe el encargo para una investigación en profundidad."
   require: [contexto, formato, verificar, limites]
   extra:
     - label: "Decir qué fuentes priorizar"
       any: ["oficial", "boe", "prioriza", "fuentes como"]
       hint: "Di qué fuentes prefieres: «prioriza el BOE, el boletín autonómico y el ayuntamiento»."
-  sample: "Mi madre tiene una casa en Murcia y quiere instalar placas solares para su consumo. Investiga qué ayudas, deducciones fiscales y trámites hay hoy en la Región de Murcia y en su ayuntamiento. Prioriza fuentes oficiales: BOE, BORM, ayuntamiento y Agencia Tributaria. Entrégame un informe con un resumen de diez líneas, una tabla de ayudas con requisitos y plazos, y los trámites en orden. Cita la fuente de cada dato y dime cuáles no has podido confirmar. No incluyas ofertas de empresas."
+  sample: "Mi padre tiene 82 años, vive solo en un pueblo de Burgos y empieza a necesitar ayuda en casa. Investiga qué servicios públicos hay hoy en Castilla y León para mayores en su situación (ayuda a domicilio, teleasistencia y centros de día) y cómo se pide la valoración de la dependencia. Prioriza fuentes oficiales: la Junta, el IMSERSO y su ayuntamiento. Entrégame un informe con un resumen de diez líneas, una tabla de servicios con requisitos y dónde se piden, y los pasos en orden. Cita la fuente de cada dato y dime cuáles no has podido confirmar. No incluyas residencias ni empresas privadas."
 deeper: null
 tool: constructor-de-peticiones
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)

@@ -11,8 +11,8 @@ takeaway: El modo de voz sirve para conversar con ChatGPT cuando no puedes o no 
 scenario:
   kind: producto
   label: Caso práctico
-  title: La lavadora de Ramón
-  body: "A Ramón le parpadea un código de error en la lavadora. Abre el modo de voz en el móvil, enseña con la cámara el panel y pregunta qué significa. ChatGPT le dice que suele ser un filtro atascado y le explica dónde mirar, pero le avisa de que lo confirme en el manual de su modelo. Antes de enfocar, Ramón aparta la carta del banco que había encima."
+  title: El router de Ramón
+  body: "A Ramón se le va internet y el router tiene una luz roja parpadeando. Abre el modo de voz en el móvil, enseña con la cámara las luces y pregunta qué significan. ChatGPT le explica qué suele indicar cada una y qué probar primero, pero le avisa de que lo confirme con su compañía o en el manual de su modelo. Antes de enfocar, Ramón aparta la carta del banco que había al lado."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
@@ -81,7 +81,7 @@ Con el **modo de voz** hablas con ChatGPT y te contesta en voz alta, como en una
 3. Si vas a enseñar algo, encuadra solo eso y di qué es.
 4. Para lo importante (medicinas, electricidad, gas), comprueba la respuesta en el manual, el envase o con un profesional.
 
-> Prueba (en voz alta): «Voy a ensayar una entrevista para un puesto de dependiente en una librería. Hazme las preguntas de una en una, espera mi respuesta y, al final, dime en tres frases qué he hecho bien y qué puedo mejorar».
+> Prueba (en voz alta): «Estoy en la cocina con las manos ocupadas y voy a hacer un bizcocho de yogur. Dime los pasos de uno en uno y espera a que te diga "siguiente" antes de dar el próximo. Cuando un paso lleve una cantidad, repítemela dos veces».
 
 ## Error frecuente
 

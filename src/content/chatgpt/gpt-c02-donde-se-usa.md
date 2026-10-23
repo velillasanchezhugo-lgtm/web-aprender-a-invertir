@@ -1,5 +1,5 @@
 ---
-title: Dónde se usa y cómo empezar
+title: Dónde se usa, cuenta y edad
 description: "Dónde usar ChatGPT (web, móvil y ordenador), si hace falta cuenta, la edad mínima en España y qué cambia entre el plan gratuito y los de pago."
 level: cero
 track: gpt-cero
@@ -7,34 +7,34 @@ order: 2
 skills: [gpt-acceso]
 terms: [chatgpt, openai]
 hook: "Quieres probar ChatGPT hoy mismo y tu hija de 16 años también. ¿Hace falta cuenta, pagar o tener cierta edad?"
-takeaway: "ChatGPT se usa en la web, en el móvil y en el ordenador con la misma cuenta, y se puede empezar gratis. Los planes de pago cambian sobre todo cuánto usas las herramientas, qué modelos tienes y algunas funciones. Los menores de 18 necesitan permiso de su madre, padre o tutor."
+takeaway: "ChatGPT se usa en la web, en el móvil y en el ordenador con la misma cuenta, y se puede empezar gratis. Los de pago dan más uso, más modelos y algunas funciones más. Los menores de 18 necesitan permiso de su madre, padre o tutor."
 scenario:
   kind: producto
   label: Caso práctico
   title: La ferretería de Tomás
-  body: "Tomás lleva una ferretería y quiere usar ChatGPT para presupuestos y correos a proveedores, pero no sabe si pagar. Su hija Inés, de 16 años, quiere su propia cuenta para estudiar bachillerato."
+  body: "Tomás lleva una ferretería y quiere usar ChatGPT para presupuestos y correos a proveedores, en su móvil y en el ordenador de la tienda, que también usa su empleado. Su hija Iria, de 16 años, quiere su propia cuenta para estudiar bachillerato."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-c02-q1
-    q: "Inés tiene 16 años y quiere crear su cuenta de ChatGPT. ¿Qué es lo correcto según las condiciones de uso para Europa?"
-    options: ["Que se registre poniendo que tiene 18 años", "Que la cree con el permiso de su padre, después de leer juntos las condiciones", "Que no puede usarlo de ninguna manera hasta los 18"]
-    answer: 1
+    q: "Iria tiene 16 años y quiere crear su cuenta de ChatGPT. ¿Qué es lo correcto según las condiciones de uso para Europa?"
+    options: ["Que la cree con el permiso de su padre, después de leer juntos las condiciones", "Que se registre poniendo que tiene 18 años", "Que no puede usarlo de ninguna manera hasta los 18"]
+    answer: 0
     explain: "Las condiciones piden al menos 13 años o la edad que fije cada país (en España, 14), y a los menores de 18, permiso de madre, padre o tutor. Mentir en la fecha incumple las condiciones. Pensar que está prohibido hasta los 18 tienta, pero no es lo que dicen."
   - type: choice
     id: gpt-c02-q2
-    q: "Tomás nunca ha usado una IA y solo quiere probar con unos correos. ¿Qué le conviene?"
-    options: ["Empezar con el plan gratuito unos días y ver si se le queda corto", "Pagar el plan más caro para no tener límites", "Esperar a que un proveedor le recomiende un plan"]
-    answer: 0
-    explain: "El gratuito permite usarlo de verdad, con límites, y puede cambiar después. Pagar el más caro tienta por «ir sobrado», pero sin saber cuánto lo usará es pagar a ciegas."
+    q: "Tomás va a entrar en ChatGPT desde el ordenador de la tienda, que también usa su empleado. ¿Qué le conviene?"
+    options: ["Apuntar la contraseña en un pósit junto a la pantalla", "Usar su propia cuenta y cerrar la sesión al terminar", "Usar la cuenta del empleado para no crear otra"]
+    answer: 1
+    explain: "En sus chats quedarán presupuestos y correos de la tienda: con la sesión abierta, cualquiera que use el ordenador puede leerlos. Compartir cuenta tienta por cómodo, pero mezcla los chats de los dos."
   - type: truefalse
     id: gpt-c02-q3
-    q: "Si empiezas una conversación en el ordenador, puedes seguirla en el móvil con la misma cuenta."
-    answer: true
-    explain: "Tus conversaciones se guardan en tu cuenta, no en el aparato. Tienta pensar que cada aplicación va por libre, pero se sincronizan."
+    q: "Si al entrar en ChatGPT desde España te pide crear una cuenta, es que algo falla en tu móvil."
+    answer: false
+    explain: "Según el centro de ayuda de OpenAI, usarlo sin cuenta no está disponible en la mayor parte de Europa. Tienta pensar en una avería, pero es lo normal: crea tu cuenta o inicia sesión."
 tips:
-  - "Instala la aplicación solo desde la tienda oficial o desde chatgpt.com, y comprueba que el desarrollador es OpenAI."
-  - "Si llegas al límite de una herramienta en el plan gratuito, no pierdes nada: tus chats siguen ahí y puedes volver a usarla cuando se renueve."
+  - "Instala la aplicación solo desde la tienda oficial o desde chatgpt.com, y comprueba que el desarrollador es OpenAI: hay copias que se hacen pasar por ChatGPT."
+  - "Activa la verificación en dos pasos en los ajustes de seguridad de tu cuenta: protege tus chats aunque alguien consiga tu contraseña."
 action:
   title: Entra con tu cuenta desde el móvil y el ordenador
   steps:
@@ -68,7 +68,7 @@ ChatGPT se usa en tres sitios, todos con **la misma cuenta**:
 
 Tus chats se guardan en la cuenta: puedes empezar en un sitio y seguir en otro.
 
-**¿Hace falta cuenta?** En algunos países se puede probar sin registrarse, con menos funciones y sin guardar los chats. Según el centro de ayuda de OpenAI, esa opción no está disponible en la mayor parte de Europa. Si al entrar te pide registrarte, es por eso.
+**¿Hace falta cuenta?** En algunos países se puede probar sin registrarse, con menos funciones y sin guardar los chats. Según el centro de ayuda de OpenAI, esa opción no está disponible en la mayor parte de Europa.
 
 **La edad mínima.** Las condiciones de uso para Europa piden **al menos 13 años** o la edad que fije tu país para dar su consentimiento (en España, la ley de protección de datos la sitúa en **14**). **Por debajo de 18**, hace falta el **permiso de madre, padre o tutor**, que debería leer las condiciones con el menor.
 
@@ -76,9 +76,9 @@ Tus chats se guardan en la cuenta: puedes empezar en un sitio y seguir en otro.
 
 - **Cuánto puedes usar** herramientas como subir archivos, crear imágenes o la voz.
 - **Qué modelos tienes**: los más potentes suelen estar en los de pago.
-- **Algunas funciones.** Otras, como la búsqueda en internet o subir archivos, están también en el gratuito, con límites.
+- **Algunas funciones.** Otras, como buscar en internet o subir archivos, también están en el gratuito.
 
-En España, el plan gratuito y algún plan barato pueden mostrar **anuncios**. Nombres, precios y límites cambian a menudo: consúltalos en la **página de planes** el día que vayas a decidir.
+En España, el plan gratuito y algún plan barato pueden mostrar **anuncios**. Nombres, precios y límites cambian a menudo: mira la **página de planes** el día que decidas.
 
 ## En la práctica
 
@@ -86,7 +86,7 @@ En España, el plan gratuito y algún plan barato pueden mostrar **anuncios**. N
 2. Si quieres, instala la aplicación **desde la tienda oficial** o desde la propia web.
 3. Empieza **gratis**. Si durante una semana te quedas corto a menudo, compara planes.
 
-> Prueba: «Es la primera vez que uso ChatGPT. Tengo una ferretería pequeña. Dime cinco cosas concretas que te puedo pedir para ahorrarme tiempo con los clientes y los proveedores, en una lista corta».
+> Prueba: «Es la primera vez que uso ChatGPT. Tengo una ferretería de barrio y en agosto cerraremos por las tardes. Escribe un cartel corto para la puerta que lo avise, con tono amable. Que quepa en media hoja».
 
 ## Error frecuente
 

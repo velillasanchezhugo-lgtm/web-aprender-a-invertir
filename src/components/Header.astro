@@ -1,15 +1,12 @@
 ---
 import Logo from './Logo.astro';
 import Drawer from './Drawer.astro';
+import { HUBS, hubById, hubOf } from '../lib/hubs';
 const path = Astro.url.pathname;
-const nav = [
-  { href: '/es/mi-plan/', label: 'Mi plan' },
-  { href: '/es/modulos/', label: 'Módulos' },
-  { href: '/es/tutor/', label: 'Tutor' },
-  { href: '/es/herramientas/', label: 'Herramientas' },
-  { href: '/es/brokers/', label: 'Brókeres' },
-  { href: '/es/glosario/', label: 'Glosario' },
-];
+// Dentro de una formación, su nombre y sus apartados; fuera (portada, cuenta, legales…), las formaciones.
+const cur = hubOf(path);
+const hub = cur ? hubById[cur] : null;
+const nav = hub ? hub.nav : HUBS.map((h) => ({ href: h.href, label: h.title }));
 const isCurrent = (href: string) => path.startsWith(href);
 ---
 <header class="site-header">
@@ -18,8 +15,10 @@ const isCurrent = (href: string) => path.startsWith(href);
       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
     <a href="/es/" class="brand" aria-label="umotion Academy, inicio"><Logo /></a>
+    {hub && <a class="hub-chip" href={hub.href}>{hub.title}</a>}
     <nav aria-label="Principal" class="main-nav" id="main-nav">
       <ul>
+        {hub && <li class="hub-li"><a class="hub-link" href={hub.href} aria-current={path === hub.href ? 'page' : undefined}>{hub.title}<span class="sep" aria-hidden="true">▸</span></a></li>}
         {nav.map((n) => <li><a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a></li>)}
       </ul>
     </nav>
@@ -41,7 +40,7 @@ const isCurrent = (href: string) => path.startsWith(href);
           <span class="t-label">Oscuro</span>
         </button>
       </div>
-      <a class="btn small cta" href="/es/empezar/">Empieza gratis</a>
+      {hub && <a class="btn small cta" href={hub.cta.href}>{hub.cta.label}</a>}
     </div>
   </div>
 </header>
@@ -59,6 +58,8 @@ const isCurrent = (href: string) => path.startsWith(href);
   .main-nav a { display: block; white-space: nowrap; padding: 0.5rem 0.7rem; border-radius: 999px; color: var(--ink-2); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
   .main-nav a:hover { background: var(--paper-2); color: var(--ink); }
   .main-nav a[aria-current='page'] { color: var(--ink); background: var(--paper-2); }
+  .main-nav .hub-link { color: var(--ink); font-weight: 700; }
+  .main-nav .sep { margin-left: 0.45rem; color: var(--ink-3); font-size: 0.8em; }
   .actions { display: flex; gap: 0.25rem; align-items: center; }
   .icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink-2); cursor: pointer; }
   .icon-btn:hover { background: var(--paper-2); color: var(--ink); }
@@ -69,9 +70,12 @@ const isCurrent = (href: string) => path.startsWith(href);
   .theme-switch button[aria-pressed='true'] { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgb(0 0 0 / 15%); }
   @media (max-width: 1240px) { .theme-switch .t-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } .theme-switch button { padding: 0.45rem 0.55rem; } }
   .drawer-btn { margin-left: -0.6rem; flex: none; }
+  .hub-chip { display: none; padding: 0.35rem 0.7rem; border-radius: 999px; background: var(--paper-2); border: 1px solid var(--rule); color: var(--ink); font: 600 0.85rem/1.2 var(--sans); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .hub-chip:hover { border-color: var(--u-blue); }
   @media (max-width: 1180px) {
     .main-nav { display: none; }
     .actions { margin-left: auto; }
+    .hub-chip { display: inline-block; margin-left: -0.4rem; }
   }
   @media (max-width: 480px) { .cta { display: none; } .brand :global(.word) { display: none; } }
 </style>

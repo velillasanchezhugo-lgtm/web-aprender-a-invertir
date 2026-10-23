@@ -47,7 +47,7 @@ practice:
   require: [contexto]
   extra:
     - label: "Que no te dé la respuesta"
-      any: ["no me des", "sin darme", "no me digas la solucion", "no me resuelvas", "sin decirme", "no quiero que me des", "no quiero la respuesta", "no me la des", "no me lo digas", "no me lo cuentes", "no me la expliques hecha", "explicacion hecha"]
+      any: ["no me des", "sin darme", "no me digas la solucion", "no me resuelvas", "sin decirme", "no quiero que me des", "no quiero la respuesta", "no me la des", "no me lo digas", "no me lo cuentes", "no me la expliques hecha", "explicacion hecha", "sin que me la", "sin que me lo", "me la cuentes hecha"]
       hint: "Dilo claro: «No me des la respuesta»."
     - label: "Preguntas y pistas"
       any: ["hazme preguntas", "preguntame", "de una en una", "pista", "pistas", "guiame", "preguntandome", "hazme pensar", "haciendome pensar", "pregunta a pregunta"]

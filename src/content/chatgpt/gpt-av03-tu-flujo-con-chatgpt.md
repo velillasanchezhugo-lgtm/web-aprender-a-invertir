@@ -1,5 +1,5 @@
 ---
-title: Tu flujo semanal con ChatGPT
+title: Tu primer flujo de trabajo
 description: "Cierre del Nivel 1: convierte una tarea que repites en un flujo por pasos, con un punto de control tuyo, guárdalo en «Mi kit de ChatGPT» y mira qué trae el Nivel 2."
 level: basico
 track: gpt-avanzado
@@ -12,14 +12,14 @@ scenario:
   kind: producto
   label: Caso práctico
   title: Las reseñas de la casa rural de Teo
-  body: "Teo lleva una casa rural en Albarracín y antes contestaba cada reseña con una conversación nueva. Ahora sigue siempre los mismos pasos: copia la reseña sin el nombre del huésped, la pega en su proyecto «Reseñas», que tiene sus instrucciones de tono, y ChatGPT le propone dos respuestas. Teo elige una, comprueba que no promete nada que no pueda cumplir y la publica él. Una vez al mes le pide la lista de quejas que más se repiten."
+  body: "Teo lleva una casa rural en Albarracín. Antes contestaba cada reseña en un chat nuevo; ahora sigue siempre los mismos pasos: pega la reseña sin el nombre del huésped en su proyecto «Reseñas», que tiene sus instrucciones de tono, y ChatGPT le propone dos respuestas. Teo elige una, comprueba que no promete nada que no pueda cumplir y la publica él."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-av03-q1
     q: "Elsa usa ChatGPT para preparar cada semana la factura de sus clases particulares a partir de sus horas. ¿Dónde pone su punto de control?"
-    options: ["Cuando la familia le avisa de que hay un error", "Antes de enviarla: comprueba horas, importe y fecha", "En ningún sitio: unas buenas instrucciones bastan"]
-    answer: 1
+    options: ["Antes de enviarla: comprueba horas, importe y fecha", "Cuando la familia le avisa de que hay un error", "En ningún sitio: unas buenas instrucciones bastan"]
+    answer: 0
     explain: "El punto de control sirve si llega antes de que el resultado salga. Fiarse de las instrucciones tienta porque ya funcionaron otras veces, pero ChatGPT puede equivocarse igual con una cifra. Esperar a que avise la familia es revisar cuando ya no tiene arreglo."
   - type: choice
     id: gpt-av03-q2
@@ -41,7 +41,6 @@ action:
     - "Elige la tarea que más repites con ChatGPT y en la que un error se vea fácil."
     - "Envía la petición de ejemplo con esa tarea (sin datos de otras personas) y ajusta los pasos hasta que te convenzan."
     - "Guarda el flujo en «Mi kit de ChatGPT», con tus reglas: qué nunca compartes y qué revisas siempre."
-    - "Si quieres, crea una tarea programada mensual que te recuerde repasarlo."
   check: He escrito mi primer flujo con ChatGPT y lo he guardado en mi kit
 practice:
   task: "Cada semana contestas las reseñas de tu casa rural. Escribe la petición para que ChatGPT convierta esa tarea en un flujo por pasos: qué le das, qué hace él, qué haces tú y en qué paso revisas."
@@ -50,13 +49,13 @@ practice:
     - label: Pedir en qué paso revisas
       any: [revisar, reviso, revisa, comprobar, compruebo, punto de control]
       hint: "Pide que marque en qué paso revisas tú antes de seguir."
-  sample: "Llevo una casa rural pequeña en Teruel y cada semana contesto entre cinco y diez reseñas en las webs de reservas. Convierte esta tarea en un flujo de cinco pasos como máximo, en una tabla con estas columnas: paso, quién lo hace (tú o yo), qué necesito darte y qué reviso antes de seguir. Dime también dónde guardarlo en ChatGPT: un proyecto, una plantilla o una tarea programada. No te daré datos de los huéspedes: no inventes nombres en los ejemplos. Si te falta algo, pregúntame antes de empezar."
+  sample: "Llevo una casa rural pequeña en la sierra de Albarracín y cada semana contesto entre cinco y diez reseñas en las webs de reservas. Convierte esta tarea en un flujo de cinco pasos como máximo, en una tabla con estas columnas: paso, quién lo hace (tú o yo), qué necesito darte y qué reviso antes de seguir. Dime también dónde guardarlo en ChatGPT: un proyecto, una plantilla o una tarea programada. No te daré datos de los huéspedes: no inventes nombres en los ejemplos. Si te falta algo, pregúntame antes de empezar."
 deeper: null
 tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22
-reviewed: 2026-10-22
+reviewed: 2026-10-23
 status: revision-pendiente
 jurisdiction: España
 sources: [openai-ayuda, openai-academy]
@@ -64,7 +63,7 @@ sources: [openai-ayuda, openai-academy]
 
 ## La idea
 
-Has llegado al final del Nivel 1. Ya tienes las piezas: peticiones claras, instrucciones, proyectos, plantillas y tareas programadas. Ahora toca unirlas en un **flujo de trabajo**: la misma secuencia de pasos cada vez que haces una tarea que repites.
+Has llegado al final del Nivel 1. Ya tienes las piezas: peticiones claras, instrucciones, proyectos, plantillas y tareas programadas. Ahora toca unirlas en un **flujo de trabajo**: los mismos pasos cada vez que haces una tarea que repites.
 
 Un buen flujo contesta cuatro preguntas:
 
@@ -73,13 +72,11 @@ Un buen flujo contesta cuatro preguntas:
 - **¿Dónde revisas tú?** El **punto de control**: el paso en el que miras cifras, fechas, nombres y promesas **antes** de enviar o publicar. Sin él, no es un flujo, es una apuesta.
 - **¿Dónde vive?** En unas instrucciones, un proyecto, una plantilla o una tarea programada.
 
-Fuera del flujo quedan siempre las contraseñas, los datos de salud o bancarios de terceros y las decisiones que tocan a un médico, un abogado o un asesor.
+Fuera del flujo quedan siempre las contraseñas, los datos de salud o bancarios de terceros y las decisiones de un médico, un abogado o un asesor. Empieza por **una sola tarea**; cuando salga bien sin pensarla, añade otra.
 
-Empieza por **una sola tarea**. Cuando salga bien sin pensarla, añade otra.
+Tu kit también envejece: ChatGPT cambia funciones y nombres a menudo (el antiguo agente, por ejemplo, es hoy ChatGPT Work). Repásalo cada mes.
 
-Tu kit también envejece: ChatGPT cambia funciones y nombres a menudo. Por ejemplo, el antiguo agente de ChatGPT ha dejado paso a ChatGPT Work. Repásalo cada mes.
-
-**¿Y después?** El **Nivel 2** profundiza en peticiones avanzadas, proyectos a fondo, investigar y analizar, crear contenidos, conectar y automatizar, ChatGPT en tu oficio y en equipo. Termina con un proyecto: tu flujo completo. OpenAI también ofrece recursos gratuitos en su OpenAI Academy.
+**¿Y después?** El **Nivel 2** profundiza en pedir a fondo, proyectos y asistentes, investigar y analizar, crear contenidos, conectar y automatizar, ChatGPT en tu oficio y en equipo. Termina con un proyecto: tu flujo completo. OpenAI también ofrece recursos gratuitos en su OpenAI Academy.
 
 ## En la práctica
 

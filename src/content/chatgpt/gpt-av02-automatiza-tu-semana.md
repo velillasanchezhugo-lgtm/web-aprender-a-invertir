@@ -1,5 +1,5 @@
 ---
-title: Automatiza tu semana
+title: Lo que repites, en su sitio
 description: "Cómo detectar lo que repites con ChatGPT y llevarlo a instrucciones, un proyecto, una plantilla, una tarea programada o ChatGPT Work, empezando por lo que solo prepara."
 level: basico
 track: gpt-avanzado
@@ -7,25 +7,25 @@ order: 802
 skills: [gpt-automatizar, gpt-instrucciones, gpt-proyectos-memoria]
 terms: [instrucciones-personalizadas, proyecto-de-chatgpt, plantilla-de-prompt, tareas-programadas-chatgpt, agente-de-chatgpt]
 hook: "Es jueves por la noche, mañana toca enviar el aviso semanal a las familias y vuelves a empezar de cero: buscar las fechas, recordarle a ChatGPT el tono, corregir lo de siempre. ¿Y si el borrador te estuviera esperando?"
-takeaway: "No todo lo que repites se automatiza igual: tu estilo va a las instrucciones, un tema a un proyecto, una petición probada a una plantilla y el «cuándo» a una tarea programada. Automatiza primero lo que solo prepara y revisas tú."
+takeaway: "Antes de automatizar, mira qué repites: si es cómo quieres que te responda, un tema con sus documentos, una petición o una hora fija, cada cosa tiene su herramienta. Y empieza por encargos que solo preparan y revisas tú."
 scenario:
   kind: producto
   label: Caso práctico
   title: El aviso de los scouts de Inma
-  body: "Inma coordina un grupo scout de Huesca y cada viernes envía a las familias el aviso de la semana. Primero hizo el aviso a mano con ChatGPT tres semanas, hasta tener una petición que salía bien. Después la convirtió en una tarea programada para los jueves por la tarde, con el calendario de actividades pegado en la propia petición. Ella revisa el borrador, corrige alguna hora y lo envía."
+  body: "Inma coordina un grupo scout de Ponferrada y cada viernes envía a las familias el aviso de la semana. Lo hizo a mano con ChatGPT tres semanas, hasta tener una petición que salía bien. Después la convirtió en una tarea programada para los jueves, con el calendario pegado en la propia petición. Ella revisa el borrador, corrige alguna hora y lo envía."
   note: Ejemplo ficticio con fines educativos.
 questions:
   - type: choice
     id: gpt-av02-q1
-    q: "Iván es profesor de FP y en cada chat empieza igual: «Soy profesor, respóndeme corto y con ejemplos de taller». ¿Qué le ahorra más?"
-    options: ["Una tarea programada que se lo recuerde cada mañana", "Ponerlo en sus instrucciones personalizadas", "Crear un proyecto nuevo para cada asignatura"]
-    answer: 1
+    q: "Fausto es profesor de FP y en cada chat empieza igual: «Soy profesor, respóndeme corto y con ejemplos de taller». ¿Qué le ahorra más?"
+    options: ["Una tarea programada que se lo recuerde cada mañana", "Crear un proyecto nuevo para cada asignatura", "Ponerlo en sus instrucciones personalizadas"]
+    answer: 2
     explain: "Lo que repite es cómo quiere que le respondan siempre, y para eso están las instrucciones personalizadas: se aplican a todos sus chats. La tarea programada tienta por automática, pero sirve para el «cuándo», no para el estilo."
   - type: choice
     id: gpt-av02-q2
-    q: "Nuria busca trabajo de administrativa y quiere ayuda cada mañana. ¿Qué encargo automatiza primero?"
-    options: ["Que el agente envíe su currículum a todas las ofertas nuevas", "Una tarea programada que le prepare un resumen de ofertas publicadas en su zona, que ella revisa", "Ninguno: ChatGPT no puede hacer nada sin que se lo pidas"]
-    answer: 1
+    q: "Edurne busca trabajo de administrativa y quiere ayuda cada mañana. ¿Qué encargo automatiza primero?"
+    options: ["Una tarea programada que le prepare un resumen de ofertas publicadas en su zona, que ella revisa", "Que ChatGPT Work envíe su currículum a todas las ofertas nuevas", "Ninguno: ChatGPT no puede hacer nada sin que se lo pidas"]
+    answer: 0
     explain: "Un resumen solo prepara: si sale mal, no pasa nada. Enviar candidaturas sola tienta por cómodo, pero un error llega a una empresa con su nombre. Y sí: las tareas programadas repiten un encargo a la hora que elijas."
   - type: truefalse
     id: gpt-av02-q3
@@ -33,7 +33,6 @@ questions:
     answer: false
     explain: "Las instrucciones personalizadas se aplican a todos tus chats, así que mezclarías la reforma con todo lo demás. Tienta porque es lo más rápido, pero lo de un solo tema va en un proyecto, con sus archivos y sus instrucciones."
 tips:
-  - "Si usas una plantilla varias veces por semana, quizá merece una tarea programada; si la usas una vez al mes, déjala en tu kit."
   - "Empieza con una frecuencia baja, por ejemplo semanal, y súbela solo si de verdad lees el resultado."
 action:
   title: Dale su sitio a una petición repetida
@@ -58,7 +57,7 @@ tool: plantillas
 author: Equipo de umotion Academy (borrador elaborado con asistencia de IA)
 reviewer: null
 published: 2026-10-22
-reviewed: 2026-10-22
+reviewed: 2026-10-23
 status: revision-pendiente
 jurisdiction: España
 sources: [openai-ayuda, openai-planes]
@@ -74,11 +73,9 @@ Si haces lo mismo con ChatGPT cada semana, una parte se puede **dejar hecha**. P
 - **El «cuándo»** (cada lunes, cada mañana) → una **tarea programada**: ChatGPT ejecuta el encargo solo, con la frecuencia que elijas, y te avisa.
 - **Varios pasos en webs o apps** → **ChatGPT Work**, que sustituye al antiguo agente, siempre supervisado.
 
-Las tareas programadas están en todos los planes, también el gratis, pero los más básicos tienen menos opciones de frecuencia y de hora. Compruébalo en la página de planes.
+Las tareas programadas están en todos los planes, también el gratis, con menos opciones de frecuencia y hora en los más básicos.
 
 La regla más importante: **empieza por tareas que solo preparan**. Un resumen, un borrador, una lista. Si salen mal, lo ves y no pasa nada. Lo que **envía, compra, publica o borra** déjalo para cuando confíes en el resultado, y siempre con tu aprobación.
-
-Y usa **lo más sencillo que funcione**: una plantilla antes que un proyecto, una petición a mano antes que una tarea programada.
 
 ## En la práctica
 

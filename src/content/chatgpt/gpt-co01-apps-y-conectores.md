@@ -6,8 +6,8 @@ track: gpt-conectar
 order: 601
 skills: [gpt-apps, gpt-privacidad]
 terms: [apps-en-chatgpt, plugin-de-chatgpt, datos-personales]
-hook: "Le preguntas a ChatGPT qué facturas te han llegado este mes y te contesta que no puede ver tu correo. ¿Le das acceso? ¿Y qué podrá hacer entonces con él?"
-takeaway: "Una app conecta ChatGPT con un servicio tuyo. Ve lo que ve la cuenta que conectas, te pide permiso antes de las acciones importantes y se desconecta en Configuración cuando ya no la necesitas."
+hook: "Cada trimestre pierdes una tarde buscando en el correo las facturas de tus proveedores. ¿Puede ChatGPT buscarlas por ti? ¿Y qué más podría hacer con tu correo si le das acceso?"
+takeaway: "Una app da a ChatGPT acceso a un servicio tuyo. Conecta solo la cuenta que haga falta, deja que te pida permiso antes de enviar, cambiar o borrar, y desconéctala cuando ya no la uses."
 scenario:
   kind: producto
   label: Caso práctico
@@ -17,15 +17,15 @@ scenario:
 questions:
   - type: choice
     id: gpt-co01-q1
-    q: "Marta conecta su Google Drive del trabajo a ChatGPT. ¿Qué documentos puede consultar ChatGPT?"
-    options: ["Solo los que Marta suba al chat", "Los que puede abrir la cuenta que Marta ha conectado", "Todos los de su empresa, aunque Marta no tenga acceso"]
-    answer: 1
-    explain: "La app usa los permisos de la cuenta conectada, ni más ni menos. Tienta pensar que solo ve lo que subes, pero puede buscar en todo lo que alcanza esa cuenta."
+    q: "Eulalia quiere que ChatGPT le ordene las recetas que guarda en Google Drive. Tiene dos cuentas: la personal y la del trabajo, con informes de clientes. ¿Cuál conecta?"
+    options: ["La del trabajo, que tiene más espacio", "Las dos, por si un día necesita algo de la otra", "Solo la personal: ChatGPT podrá buscar en todo lo que abra la cuenta conectada"]
+    answer: 2
+    explain: "La app ve lo que ve la cuenta que conectas, no solo lo que subes al chat. Conectar las dos tienta por cómodo, pero pondría a su alcance informes de clientes que no necesita."
   - type: choice
     id: gpt-co01-q2
-    q: "Óscar tiene el correo conectado y le pide a ChatGPT que conteste a un cliente. Con el ajuste de permisos que viene por defecto, ¿qué pasa?"
-    options: ["Lo envía directamente, sin avisar", "Le enseña el mensaje y espera su aprobación antes de enviarlo", "No puede: las apps solo sirven para leer"]
-    answer: 1
+    q: "Fabiola tiene el correo conectado y le pide a ChatGPT que conteste a un cliente. Con el ajuste de permisos que viene por defecto, ¿qué pasa?"
+    options: ["Le enseña el mensaje y espera su aprobación antes de enviarlo", "Lo envía directamente, sin avisar", "No puede: las apps solo sirven para leer"]
+    answer: 0
     explain: "Por defecto lee sin preguntar, pero se para antes de enviar, borrar o comprar. Pensar que «solo lee» tienta, pero muchas apps también actúan."
   - type: truefalse
     id: gpt-co01-q3

@@ -5,12 +5,13 @@
  */
 import { PRICING } from '../config/site';
 import Price from './Price.astro';
+import { hubOf } from '../lib/hubs';
 const path = Astro.url.pathname;
 const n2 = PRICING.n2.monthly;
 const n3 = `curso ${PRICING.n3.course} · certificación ${PRICING.n3.certification}`;
 const FORMATIONS = [
   {
-    id: 'inversion', title: 'Inversión', overview: { href: '/es/niveles/', label: 'Ver los tres niveles' },
+    id: 'inversion', title: 'Inversión', overview: { href: '/es/inversion/', label: 'Inicio de la formación' }, extra: { href: '/es/herramientas/', label: 'Herramientas' },
     icon: 'M3 20h18M6 16l4-5 3 3 5-7',
     levels: [
       { n: 1, title: 'Invertir por tu cuenta', href: '/es/nivel-1/', free: true },
@@ -19,7 +20,7 @@ const FORMATIONS = [
     ],
   },
   {
-    id: 'emprendimiento', title: 'Emprendimiento', overview: { href: '/es/emprendimiento/', label: 'Ver la formación' },
+    id: 'emprendimiento', title: 'Emprendimiento', overview: { href: '/es/emprendimiento/', label: 'Inicio de la formación' },
     icon: 'M4 20V9l8-5 8 5v11M9 20v-6h6v6',
     levels: [
       { n: 1, title: 'Emprender desde cero', href: '/es/emprendimiento/nivel-1/', free: true },
@@ -28,7 +29,7 @@ const FORMATIONS = [
     ],
   },
   {
-    id: 'claude', title: 'Claude', overview: { href: '/es/claude/', label: 'Ver la formación' }, extra: { href: '/es/claude/herramientas/', label: 'Herramientas' },
+    id: 'claude', title: 'Claude', overview: { href: '/es/claude/', label: 'Inicio de la formación' }, extra: { href: '/es/claude/herramientas/', label: 'Herramientas' },
     icon: 'M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z',
     levels: [
       { n: 1, title: 'Empezar con Claude', href: '/es/claude/nivel-1/', free: true },
@@ -37,7 +38,7 @@ const FORMATIONS = [
     ],
   },
   {
-    id: 'chatgpt', title: 'ChatGPT', overview: { href: '/es/chatgpt/', label: 'Ver la formación' }, extra: { href: '/es/chatgpt/herramientas/', label: 'Herramientas' },
+    id: 'chatgpt', title: 'ChatGPT', overview: { href: '/es/chatgpt/', label: 'Inicio de la formación' }, extra: { href: '/es/chatgpt/herramientas/', label: 'Herramientas' },
     icon: 'M4 5h16v11H9l-5 4z',
     levels: [
       { n: 1, title: 'Empezar con ChatGPT', href: '/es/chatgpt/nivel-1/', free: true },
@@ -46,15 +47,11 @@ const FORMATIONS = [
     ],
   },
 ];
-// Se abre la formación de la página actual (Inversión por defecto).
-const openId = FORMATIONS.find((f) => f.id !== 'inversion' && path.startsWith(`/es/${f.id}/`))?.id ?? 'inversion';
+// Se abre la formación de la página actual (ninguna en las páginas generales de la academia).
+const openId = hubOf(path);
 const nav = [
-  { href: '/es/mi-plan/', label: 'Mi plan' },
-  { href: '/es/repaso/', label: 'Repaso' },
-  { href: '/es/tutor/', label: 'Tutor' },
-  { href: '/es/herramientas/', label: 'Herramientas' },
-  { href: '/es/brokers/', label: 'Brókeres' },
-  { href: '/es/glosario/', label: 'Glosario' },
+  { href: '/es/', label: 'Inicio de la academia' },
+  { href: '/es/buscar/', label: 'Buscar' },
   { href: '/es/cuenta/', label: 'Mi cuenta' },
 ];
 const cur = (href: string) => (path === href || (href !== '/es/' && path.startsWith(href)) ? 'page' : undefined);
@@ -79,6 +76,7 @@ const cur = (href: string) => (path === href || (href !== '/es/' && path.startsW
                 <span class="chev" aria-hidden="true"></span>
               </summary>
               <ul class="levels">
+                <li><a class="ov small" href={f.overview.href} aria-current={path === f.overview.href ? 'page' : undefined}>{f.overview.label}</a></li>
                 {f.levels.map((l) => (
                   <li>
                     <a class="lv" href={l.href} aria-current={path.startsWith(l.href) ? 'page' : undefined}>
@@ -88,7 +86,6 @@ const cur = (href: string) => (path === href || (href !== '/es/' && path.startsW
                     </a>
                   </li>
                 ))}
-                <li><a class="ov small" href={f.overview.href} aria-current={path === f.overview.href ? 'page' : undefined}>{f.overview.label}</a></li>
                 {'extra' in f && f.extra && <li><a class="ov small" href={f.extra.href} aria-current={path.startsWith(f.extra.href) ? 'page' : undefined}>{f.extra.label}</a></li>}
               </ul>
             </details>
