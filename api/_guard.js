@@ -18,10 +18,29 @@ export const json = (data, status = 200, extra = {}) => new Response(JSON.string
   headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...extra },
 });
 
-/** IP del visitante. En Vercel, x-vercel-forwarded-for y x-real-ip las pone la plataforma. */
+/**
+ * IP del visitante. En Vercel, x-vercel-forwarded-for y x-real-ip las pone la plataforma.
+ * Una IPv6 se agrupa por su red /64: quien tiene una conexión IPv6 dispone de millones de direcciones
+ * y, si no, podría saltarse el límite cambiando de dirección en cada petición.
+ */
 export function clientIp(request) {
   const h = (k) => (request.headers.get(k) ?? '').split(',')[0].trim();
-  return (h('x-vercel-forwarded-for') || h('x-real-ip') || h('x-forwarded-for') || 'anon').slice(0, 64);
+  return ipKey(h('x-vercel-forwarded-for') || h('x-real-ip') || h('x-forwarded-for'));
+}
+
+/** Clave de límite para una IP: IPv4 tal cual; IPv6, su prefijo /64; otra cosa, «anon». */
+export function ipKey(raw) {
+  let ip = String(raw ?? '').trim().slice(0, 64).replace(/^\[|\](:\d+)?$/g, '').replace(/%.*$/, '').toLowerCase();
+  const v4 = ip.match(/^(?:::ffff:)?(\d{1,3}(?:\.\d{1,3}){3})$/);
+  if (v4) return v4[1];
+  if (!/^[0-9a-f:.]+$/.test(ip) || !ip.includes(':')) return 'anon';
+  const [head, tail = ''] = ip.split('::');
+  if (ip.split('::').length > 2) return 'anon';
+  const a = head ? head.split(':') : [];
+  const b = tail ? tail.split(':') : [];
+  const groups = ip.includes('::') ? [...a, ...Array(Math.max(0, 8 - a.length - b.length)).fill('0'), ...b] : a;
+  if (groups.length < 4 || groups.slice(0, 4).some((g) => !/^[0-9a-f]{1,4}$/.test(g))) return 'anon';
+  return groups.slice(0, 4).map((g) => g.replace(/^0+(?=.)/, '')).join(':') + '::/64';
 }
 
 /**
@@ -46,13 +65,33 @@ export function sameOrigin(request) {
 export async function readJson(request, maxBytes = 32_000) {
   const declared = Number(request.headers.get('content-length') || 0);
   if (declared > maxBytes) return { ok: false, status: 413, error: 'La petición es demasiado grande.' };
+  // Se lee por trozos y se corta al pasar del máximo: un cuerpo troceado (sin Content-Length) o con una
+  // longitud falsa no llega a cargarse entero en memoria.
   let text;
-  try { text = await request.text(); } catch { return { ok: false, status: 400, error: 'Petición no válida.' }; }
-  if (Buffer.byteLength(text, 'utf8') > maxBytes) return { ok: false, status: 413, error: 'La petición es demasiado grande.' };
+  try {
+    text = await readCapped(request, maxBytes);
+  } catch { return { ok: false, status: 400, error: 'Petición no válida.' }; }
+  if (text === null) return { ok: false, status: 413, error: 'La petición es demasiado grande.' };
   let body;
   try { body = JSON.parse(text); } catch { return { ok: false, status: 400, error: 'Petición no válida.' }; }
   if (!body || typeof body !== 'object' || Array.isArray(body)) return { ok: false, status: 400, error: 'Petición no válida.' };
   return { ok: true, body };
+}
+
+/** Texto del cuerpo, o null si supera maxBytes (deja de leer en cuanto lo supera). */
+async function readCapped(request, maxBytes) {
+  if (!request.body) return '';
+  const reader = request.body.getReader();
+  const chunks = [];
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.byteLength;
+    if (size > maxBytes) { reader.cancel().catch(() => {}); return null; }
+    chunks.push(value);
+  }
+  return new TextDecoder('utf-8', { fatal: true }).decode(Buffer.concat(chunks));
 }
 
 /** Tiempo mínimo (ms) entre abrir la página o el formulario y enviarlo. Una persona tarda más; un robot simple, no. */
