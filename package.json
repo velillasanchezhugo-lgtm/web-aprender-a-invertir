@@ -13,8 +13,9 @@
     "check:deps": "node scripts/check-deps.mjs",
     "audit:deps": "npm audit --omit=dev --audit-level=critical",
     "verify": "npm run test && npm run check:content && npm run check:deps && npm run build",
-    "audit:browser": "node tests/e2e/audit.mjs && node tests/e2e/academy.mjs && node tests/e2e/adaptive.mjs && node tests/e2e/curriculum.mjs && node tests/e2e/drawer.mjs && node tests/e2e/claude.mjs && node tests/e2e/progress.mjs && node tests/e2e/dashboard.mjs",
-    "og": "python3 scripts/assets/make-og.py"
+    "audit:browser": "node tests/e2e/audit.mjs && node tests/e2e/academy.mjs && node tests/e2e/adaptive.mjs && node tests/e2e/curriculum.mjs && node tests/e2e/drawer.mjs && node tests/e2e/claude.mjs && node tests/e2e/progress.mjs && node tests/e2e/dashboard.mjs && node tests/e2e/empresas.mjs",
+    "og": "python3 scripts/assets/make-og.py",
+    "empresas:alta": "node scripts/empresas-alta.mjs"
   },
   "engines": {
     "node": ">=22.6"

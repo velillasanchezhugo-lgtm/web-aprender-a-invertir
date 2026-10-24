@@ -147,6 +147,10 @@ Ver `docs/CLAUDE-FORMACION.md`. Las 50 sesiones del Nivel 1 son un borrador pend
 
 Ver `docs/CHATGPT-FORMACION.md`. Las 50 sesiones del Nivel 1 son un borrador pendiente de revisión humana. ChatGPT cambia muy a menudo (canvas, el agente, Atlas y los GPTs han cambiado o se han retirado en 2026): hay que revisar su vigencia cada trimestre. Pendiente de confirmar en el centro de ayuda oficial, que no se pudo leer directamente: grabación de reuniones, voz con cámara, anuncios en el plan gratis en España, memoria solo del proyecto por plan, qué incluye Work en el plan gratis y qué apps faltan en el Espacio Económico Europeo.
 
+## Formación para empresas
+
+Área privada creada y vacía (`/es/empresas/`, ver `docs/SEGURIDAD.md`, apartado 11). Pendiente: crear `EMPRESAS_SECRET` y dar de alta la primera empresa; diseñar con ella su formación de Claude o ChatGPT; antes de subir materiales suyos, reforzar la contraseña (código aleatorio o cuentas por persona) y firmar el acuerdo de tratamiento de datos. Propuesta comercial en el documento «umotion Academy · Formación en IA para empresas».
+
 ## Funcionalidades no incluidas a propósito
 
 - **Cuentas de usuario**: no existe un backend seguro; el progreso es local, exportable y borrable.

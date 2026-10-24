@@ -164,6 +164,8 @@ No hay panel de administración propio. Cada proveedor es un panel y hay que pro
 | `VAPID_PRIVATE_KEY` | Sí | No rotar salvo fuga: obliga a que todos vuelvan a activar los avisos |
 | `TURNSTILE_SECRET_KEY` | Sí | Panel de Cloudflare → Turnstile → *Rotate secret* |
 | `PUBLIC_*` | No | Son públicas por diseño |
+| `EMPRESAS_SECRET` | Sí | Cadena aleatoria nueva (`openssl rand -hex 32`). Al cambiarla hay que volver a dar de alta todas las empresas (`npm run empresas:alta`) y cierra todas las sesiones |
+| `EMPRESAS_ACCESS` | Sí | Lista JSON de empresas (nombre y hash de su contraseña). Para dar de baja una empresa, quitar su entrada |
 | `SECURITY_CONTACT` | No | Contacto de `security.txt` (`mailto:…` o `https://…`) |
 
 ## 8. `security.txt` y avisos de fallos
@@ -191,3 +193,10 @@ Para probar la CSP en local con la cabecera de `vercel.json` (que `astro preview
 - **Informes de la CSP** (`report-to`): recibir avisos de bloqueos reales; necesita un servicio que los recoja.
 - **Fijar las acciones de GitHub por su commit** (SHA) en lugar de por versión; Dependabot las mantiene igual.
 - **Integridad (SRI)** de scripts externos: no es posible con AdSense (Google cambia el archivo), por eso se limita por dominio.
+
+## 11. Área «Formación para empresas»
+
+- **Cómo funciona:** la contraseña de cada empresa es «umotion» + su nombre. Se comprueba en el servidor (`api/empresas.js`) contra la lista `EMPRESAS_ACCESS`, que guarda solo un hash con la clave `EMPRESAS_SECRET`. Al acertar, una cookie firmada (`ua_emp`, HttpOnly, solo para `/api/empresas`, 12 horas) mantiene la sesión. La página estática no contiene nada privado: el contenido de cada empresa lo enviará la API solo con sesión.
+- **Límite:** 5 intentos cada 15 minutos por IP (por instancia). Añade también una regla de límite en el cortafuegos de Vercel para `/api/empresas` (por ejemplo, 10 por hora).
+- **Riesgo:** la contraseña sigue un patrón que cualquiera puede adivinar si sabe que la empresa es cliente. Mientras el área no tenga contenido confidencial es aceptable; antes de subir materiales de una empresa, añadir a la contraseña un código aleatorio o dar cuentas por persona.
+- **Dar de alta una empresa:** `EMPRESAS_SECRET=<la de Vercel> npm run empresas:alta -- "Café Luna"` → añadir la línea a `EMPRESAS_ACCESS` en Vercel y volver a desplegar.

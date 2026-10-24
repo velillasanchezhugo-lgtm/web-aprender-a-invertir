@@ -2,6 +2,7 @@
 import { jsonForScript } from '../../lib/safe-json';
 import Base from '../../layouts/Base.astro';
 import Postits from '../../components/Postits.astro';
+import EmpresasBox from '../../components/EmpresasBox.astro';
 import { HUBS } from '../../lib/hubs';
 import { sessions } from '../../lib/content';
 import { FORMATION_IDS, formationSessions } from '../../lib/formations';
@@ -27,6 +28,7 @@ const jsonLd = [
         <h2 class="mono small" id="resume-t">Continuar donde lo dejaste</h2>
         <ul class="resume-list" id="resume-list"></ul>
       </section>
+      <EmpresasBox />
     </div>
   </section>
   <section class="container how" aria-labelledby="how-t">
