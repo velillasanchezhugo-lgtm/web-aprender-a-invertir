@@ -1,0 +1,255 @@
+---
+/**
+ * Panel de progreso de «Mi cuenta»: formación elegida, medidor de lo que llevas del Nivel 1, rachas,
+ * siguiente sesión, ritmo, módulos y actividad de las últimas semanas. Lee el progreso de este dispositivo
+ * (que, con cuenta, es el sincronizado). Los cálculos están en src/lib/dashboard.ts.
+ */
+import { sessions, TRACKS } from '../lib/content';
+import { FORMATION_IDS, formation, formationSessions } from '../lib/formations';
+import { HUBS } from '../lib/hubs';
+import { jsonForScript } from '../lib/safe-json';
+import type { Catalog } from '../lib/dashboard';
+
+const hub = (id: string) => HUBS.find((h) => h.id === id)!;
+const inv = await sessions();
+const invTracks = Object.keys(TRACKS) as (keyof typeof TRACKS)[];
+const catalogs: (Catalog & { store: string })[] = [{
+  id: 'inversion', title: 'Inversión', href: hub('inversion').href, cls: hub('inversion').cls, store: 'academy',
+  tracks: Object.fromEntries(invTracks.map((t) => [t, TRACKS[t].label])),
+  sessions: invTracks.flatMap((t) => inv.filter((s) => s.data.track === t).sort((a, b) => a.data.order - b.data.order)).map((s) => ({ id: s.id, track: s.data.track, title: s.data.title, href: `/es/sesion/${s.id}/` })),
+}];
+for (const id of FORMATION_IDS) {
+  const F = formation(id);
+  const all = await formationSessions(id);
+  const order = F.d.stages.flatMap((st) => st.tracks);
+  catalogs.push({
+    id, title: F.title, href: F.base, cls: hub(id).cls, store: F.storeKey,
+    tracks: Object.fromEntries(order.map((t) => [t, F.tracks[t].label])),
+    sessions: order.flatMap((t) => all.filter((s) => s.data.track === t)).map((s) => ({ id: s.id, track: s.data.track, title: s.data.title, href: `${F.session}${s.id}/` })),
+  });
+}
+---
+<section class="card dash" aria-labelledby="dash-t">
+  <div class="d-head">
+    <h2 id="dash-t" class="h3">Tu panel</h2>
+    <p class="small muted" id="d-nudge" aria-live="polite">Cargando tu progreso…</p>
+  </div>
+  <div class="d-tabs" role="group" aria-label="Elige la formación">
+    {catalogs.map((c) => <button type="button" class={`d-tab ${c.cls}`} data-f={c.id} aria-pressed="false">{c.title} <span class="d-pct" data-pct></span></button>)}
+  </div>
+
+  <div class="d-grid">
+    <figure class="d-card gauge-card">
+      <svg class="gauge" viewBox="0 0 200 118" role="img" aria-labelledby="g-label">
+        <title id="g-label">Progreso del Nivel 1</title>
+        <defs>
+          <linearGradient id="g-grad" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="var(--u-blue)" /><stop offset="1" stop-color="var(--u-cyan)" /></linearGradient>
+        </defs>
+        <path class="g-track" d="M14 104 A86 86 0 0 1 186 104" pathLength="100" />
+        <path class="g-fill" id="g-fill" d="M14 104 A86 86 0 0 1 186 104" pathLength="100" stroke="url(#g-grad)" />
+        {[0, 25, 50, 75, 100].map((t) => {
+          const a = Math.PI * (1 - t / 100);
+          return <line class="g-tick" x1={100 + 72 * Math.cos(a)} y1={104 - 72 * Math.sin(a)} x2={100 + 64 * Math.cos(a)} y2={104 - 64 * Math.sin(a)} />;
+        })}
+        <g class="g-needle" id="g-needle"><line x1="100" y1="104" x2="100" y2="34" /><circle cx="100" cy="104" r="7" /></g>
+      </svg>
+      <figcaption>
+        <strong class="g-pct" id="g-pct">0 %</strong>
+        <span class="small" id="g-left">del Nivel 1</span>
+      </figcaption>
+    </figure>
+
+    <div class="d-card streaks">
+      <div class="st">
+        <svg class="ico flame" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 3.5-1.5 5-1.5 7.5 0 1.4 1 2.5 2.3 2.5 1.7 0 2.7-1.5 2.2-3.6C17.4 10 19 12.5 19 15a7 7 0 0 1-14 0c0-4 3.4-6.5 4.6-9.3C10.3 4 11 3 12 2z" /></svg>
+        <div><strong class="big" id="s-cur">0</strong><span class="small muted">días de racha</span></div>
+      </div>
+      <div class="st">
+        <svg class="ico trophy" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v4a5 5 0 0 1-10 0zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 13v4M8 21h8M9 17h6" /></svg>
+        <div><strong class="big" id="s-best">0</strong><span class="small muted">racha máxima</span></div>
+      </div>
+      <p class="small muted st-foot"><span id="s-days">0</span> días estudiados · <span id="s-done">0</span> sesiones en total</p>
+    </div>
+
+    <div class="d-card next">
+      <p class="mono small k">Siguiente</p>
+      <a class="next-link" id="n-link" href="/es/"><strong id="n-title">Elige una formación</strong><span class="small" id="n-mod"></span></a>
+      <ul class="facts small">
+        <li id="n-eta"></li>
+        <li id="n-time"></li>
+        <li id="n-strong"></li>
+        <li id="n-mast"></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="d-grid two">
+    <div class="d-card">
+      <h3 class="h4">Módulos</h3>
+      <ul class="mods" id="mods"></ul>
+    </div>
+    <div class="d-card">
+      <h3 class="h4">Esta semana</h3>
+      <div class="bars" id="bars" role="img" aria-label="Sesiones de los últimos 7 días"></div>
+      <h3 class="h4 heat-t">Las últimas 12 semanas</h3>
+      <div class="heat" id="heat" role="img" aria-label="Días con sesiones en las últimas 12 semanas"></div>
+      <p class="small muted legend"><span>Menos</span><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><span>Más</span></p>
+    </div>
+  </div>
+  <p class="small muted d-foot">Se calcula con el progreso de este dispositivo. Si entras con tu cuenta, se suma lo que hayas hecho en tus otros dispositivos.</p>
+</section>
+<script type="application/json" id="dash-data" set:html={jsonForScript(catalogs)} />
+
+<style>
+  .dash { display: grid; gap: 1rem; }
+  .d-head .h3 { font-size: 1.35rem; margin: 0 0 0.2rem; }
+  .d-head p { margin: 0; }
+  .d-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .d-tab { --pi: #ffe27a; border: 1px solid var(--rule-strong); background: var(--paper-2); color: var(--ink); font: 600 0.9rem/1 var(--sans); padding: 0.55rem 0.85rem; border-radius: 999px; cursor: pointer; min-height: 40px; }
+  .d-tab.p-em { --pi: #a9e4ff; } .d-tab.p-cla { --pi: #ffc9a8; } .d-tab.p-gpt { --pi: #bdeccb; }
+  .d-tab[aria-pressed='true'] { background: var(--pi); color: #14161f; border-color: transparent; }
+  .d-pct { font: 600 0.75rem/1 var(--mono); opacity: 0.75; }
+  .d-pct:empty { display: none; }
+  .d-tab:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .d-grid { display: grid; gap: 0.8rem; }
+  @media (min-width: 700px) { .d-grid { grid-template-columns: 1.1fr 1fr 1.2fr; } .d-grid.two { grid-template-columns: 1fr 1fr; } }
+  .d-card { border: 1px solid var(--rule); border-radius: 16px; padding: 0.9rem; background: var(--paper); min-width: 0; }
+  .h4 { font-size: 1rem; margin: 0 0 0.6rem; }
+  .gauge-card { margin: 0; display: flex; flex-direction: column; align-items: center; }
+  .gauge { width: 100%; max-width: 240px; overflow: visible; }
+  .g-track, .g-fill { fill: none; stroke-width: 14; stroke-linecap: round; }
+  .g-track { stroke: var(--paper-2); }
+  .g-fill { stroke-dasharray: 0 100; transition: stroke-dasharray 1.2s var(--ease-seda); }
+  .g-tick { stroke: var(--ink-3); stroke-width: 2; stroke-linecap: round; opacity: 0.6; }
+  .g-needle { transform-origin: 100px 104px; transform: rotate(-90deg); transition: transform 1.2s cubic-bezier(.34, 1.56, .64, 1); }
+  .g-needle line { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
+  .g-needle circle { fill: var(--ink); }
+  .gauge-card figcaption { text-align: center; display: flex; flex-direction: column; margin-top: -0.2rem; }
+  .g-pct { font-size: 2rem; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .streaks { display: grid; gap: 0.6rem; align-content: start; }
+  .st { display: flex; align-items: center; gap: 0.7rem; }
+  .st > div { display: flex; flex-direction: column; }
+  .big { font-size: 1.9rem; line-height: 1; font-variant-numeric: tabular-nums; }
+  .ico { width: 42px; height: 42px; flex: none; padding: 8px; border-radius: 12px; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .flame { background: color-mix(in srgb, #ff7a3d 18%, transparent); stroke: #e8590c; }
+  .flame.on { animation: flicker 1.6s ease-in-out infinite; transform-origin: 50% 90%; }
+  @keyframes flicker { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(1.08) rotate(-2deg); } }
+  .trophy { background: color-mix(in srgb, #f2b705 20%, transparent); stroke: #b07d00; }
+  .st-foot { margin: 0; }
+  .next { display: flex; flex-direction: column; gap: 0.5rem; }
+  .k { margin: 0; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .next-link { display: flex; flex-direction: column; gap: 0.1rem; padding: 0.7rem 0.8rem; border-radius: 12px; background: var(--u-grad); color: #fff; text-decoration: none; }
+  .next-link strong { font-size: 1.05rem; }
+  .next-link:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .facts { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.3rem; color: var(--ink-2); }
+  .facts li:empty { display: none; }
+  .mods { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
+  .mods :global(li) { display: grid; gap: 0.2rem; }
+  .mods :global(.mrow) { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.9rem; }
+  .mods :global(.bar) { height: 8px; border-radius: 999px; background: var(--paper-2); overflow: hidden; }
+  .mods :global(.bar i) { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--u-grad); transition: width 1s var(--ease-seda); }
+  .bars { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; align-items: end; height: 96px; margin-bottom: 1rem; }
+  .bars :global(div) { display: flex; flex-direction: column; align-items: center; justify-content: end; gap: 4px; height: 100%; font: 500 0.7rem/1 var(--mono); color: var(--ink-3); }
+  .bars :global(b) { width: 100%; max-width: 28px; border-radius: 6px 6px 3px 3px; background: var(--u-grad); min-height: 3px; height: 0; transition: height 0.9s var(--ease-seda); }
+  .bars :global(.today) { color: var(--ink); font-weight: 700; }
+  .heat-t { margin-top: 0.2rem; }
+  .heat { display: grid; grid-template-rows: repeat(7, 1fr); grid-auto-flow: column; grid-auto-columns: 1fr; gap: 3px; max-width: 100%; }
+  .heat :global(i), .legend i { display: block; aspect-ratio: 1; border-radius: 3px; background: var(--paper-2); }
+  .heat :global(i.l1), .legend .l1 { background: color-mix(in srgb, var(--u-blue) 35%, var(--paper-2)); }
+  .heat :global(i.l2), .legend .l2 { background: color-mix(in srgb, var(--u-blue) 65%, var(--paper-2)); }
+  .heat :global(i.l3), .legend .l3 { background: var(--u-blue); }
+  .heat :global(i.fut) { background: transparent; }
+  .heat :global(i.today) { outline: 2px solid var(--u-cyan); outline-offset: -1px; }
+  .legend { display: flex; align-items: center; gap: 4px; margin: 0.5rem 0 0; }
+  .legend i { width: 12px; height: 12px; flex: none; }
+  .d-foot { margin: 0; }
+  @media (prefers-reduced-motion: reduce) { .g-fill, .g-needle, .mods :global(.bar i), .bars :global(b) { transition: none; } .flame.on { animation: none; } }
+</style>
+<script>
+  import { getState, type StoreKey } from '../scripts/academy-store';
+  import { overview, nudge, type Catalog } from '../lib/dashboard';
+  import { toDay } from '../lib/academy';
+  const cats = JSON.parse(document.getElementById('dash-data')!.textContent!) as (Catalog & { store: StoreKey })[];
+  const $ = (id: string) => document.getElementById(id)!;
+  const fmtDay = (d: string) => new Date(d + 'T12:00').toLocaleDateString('es-ES', { weekday: 'short' }).replace('.', '');
+  let chosen: string | null = null;
+  try { chosen = localStorage.getItem('uacademy:dash-tab'); } catch { /* sin almacenamiento */ }
+
+  function paint() {
+    const today = toDay(new Date());
+    const states = Object.fromEntries(cats.map((c) => [c.id, getState(c.store)]));
+    const o = overview(cats, states, today);
+    // Por defecto, la formación en la que estudiaste por última vez.
+    if (!chosen || !o.formations.some((f) => f.id === chosen)) chosen = [...o.formations].filter((f) => f.lastDay).sort((a, b) => b.lastDay!.localeCompare(a.lastDay!))[0]?.id ?? o.formations[0].id;
+    const f = o.formations.find((x) => x.id === chosen)!;
+    document.querySelectorAll<HTMLButtonElement>('.d-tab').forEach((b) => {
+      b.setAttribute('aria-pressed', String(b.dataset.f === chosen));
+      const x = o.formations.find((y) => y.id === b.dataset.f)!;
+      b.querySelector('[data-pct]')!.textContent = x.done ? `${x.pct} %` : '';
+    });
+    $('d-nudge').textContent = nudge(o, f);
+    // Medidor
+    $('g-fill').style.strokeDasharray = `${f.pct} 100`;
+    ($('g-needle') as unknown as SVGGElement).style.transform = `rotate(${-90 + 1.8 * f.pct}deg)`;
+    $('g-pct').textContent = `${f.pct} %`;
+    $('g-left').textContent = f.pct === 100 ? `Nivel 1 de ${f.title} terminado` : `${f.done} de ${f.total} sesiones del Nivel 1 de ${f.title} · te queda un ${100 - f.pct} %`;
+    $('g-label').textContent = `Llevas el ${f.pct} % del Nivel 1 de ${f.title}: ${f.done} de ${f.total} sesiones.`;
+    // Rachas (todas las formaciones juntas)
+    $('s-cur').textContent = String(o.streak.current);
+    $('s-best').textContent = String(o.streak.best);
+    $('s-days').textContent = String(o.daysStudied);
+    $('s-done').textContent = String(o.sessionsDone);
+    document.querySelector('.flame')!.classList.toggle('on', o.streak.current > 0);
+    // Siguiente
+    const link = $('n-link') as HTMLAnchorElement;
+    if (f.next) { link.href = f.next.href; $('n-title').textContent = f.next.title; $('n-mod').textContent = `${cats.find((c) => c.id === f.id)!.tracks[f.next.track]} · ${f.done ? 'Continuar' : 'Empezar'} →`; }
+    else { link.href = f.href; $('n-title').textContent = '¡Nivel 1 completado!'; $('n-mod').textContent = 'Ir a la formación →'; }
+    $('n-eta').textContent = f.etaDays === null ? (f.done ? '' : `${f.total} sesiones de unos 5 minutos.`) : f.etaDays === 0 ? '' : `A tu ritmo de las últimas semanas, terminarías en unos ${f.etaDays > 60 ? `${Math.round(f.etaDays / 7)} semanas` : `${f.etaDays} días`}.`;
+    $('n-time').textContent = o.bestTime ? `Sueles estudiar por la ${o.bestTime}: es buen momento para tu recordatorio.` : '';
+    $('n-strong').textContent = f.strongest ? `Tu módulo más avanzado: ${f.strongest}.` : '';
+    $('n-mast').textContent = f.mastered ? `${f.mastered} ${f.mastered === 1 ? 'pregunta dominada' : 'preguntas dominadas'} en el repaso.` : '';
+    // Módulos
+    $('mods').replaceChildren(...f.tracks.map((t) => {
+      const li = document.createElement('li');
+      const row = document.createElement('span'); row.className = 'mrow';
+      const a = document.createElement('span'); a.textContent = t.label;
+      const b = document.createElement('span'); b.className = 'muted'; b.textContent = `${t.done}/${t.total}`;
+      row.append(a, b);
+      const bar = document.createElement('span'); bar.className = 'bar'; bar.setAttribute('role', 'progressbar'); bar.setAttribute('aria-label', t.label);
+      bar.setAttribute('aria-valuemin', '0'); bar.setAttribute('aria-valuemax', String(t.total)); bar.setAttribute('aria-valuenow', String(t.done));
+      const fill = document.createElement('i'); bar.append(fill);
+      requestAnimationFrame(() => { fill.style.width = `${t.total ? (t.done / t.total) * 100 : 0}%`; });
+      li.append(row, bar); return li;
+    }));
+    // Últimos 7 días
+    const max = Math.max(1, ...o.week.map((d) => d.n));
+    $('bars').replaceChildren(...o.week.map((d, i) => {
+      const col = document.createElement('div');
+      if (i === 6) col.className = 'today';
+      const b = document.createElement('b'); b.title = `${d.n} ${d.n === 1 ? 'sesión' : 'sesiones'}`;
+      const n = document.createElement('span'); n.textContent = String(d.n);
+      const l = document.createElement('span'); l.textContent = i === 6 ? 'hoy' : fmtDay(d.day);
+      col.append(n, b, l);
+      requestAnimationFrame(() => { b.style.height = `${(d.n / max) * 70}%`; });
+      return col;
+    }));
+    $('bars').setAttribute('aria-label', `Sesiones de los últimos 7 días: ${o.week.map((d) => d.n).join(', ')}`);
+    // Cuadrícula de 12 semanas
+    $('heat').replaceChildren(...o.heat.map((h) => {
+      const i = document.createElement('i');
+      i.className = h.n < 0 ? 'fut' : h.n === 0 ? '' : h.n === 1 ? 'l1' : h.n <= 3 ? 'l2' : 'l3';
+      if (h.day === today) i.classList.add('today');
+      if (h.n >= 0) i.title = `${new Date(h.day + 'T12:00').toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}: ${h.n} ${h.n === 1 ? 'sesión' : 'sesiones'}`;
+      return i;
+    }));
+    $('heat').setAttribute('aria-label', `En las últimas 12 semanas has estudiado ${o.heat.filter((h) => h.n > 0).length} días.`);
+  }
+  document.querySelectorAll<HTMLButtonElement>('.d-tab').forEach((b) => b.addEventListener('click', () => {
+    chosen = b.dataset.f!;
+    try { localStorage.setItem('uacademy:dash-tab', chosen); } catch { /* sin almacenamiento */ }
+    paint();
+  }));
+  paint();
+  // Con cuenta, al terminar de sincronizar se vuelve a dibujar con lo traído de la nube.
+  window.addEventListener('uacademy:synced', paint);
+</script>
